@@ -71,6 +71,7 @@ types:
         type: message_header
         doc: 'Length of the message'
       - id: payload
+        size: message_header.length + 2 - 3
         type:
           switch-on: message_header.message_type
           cases:

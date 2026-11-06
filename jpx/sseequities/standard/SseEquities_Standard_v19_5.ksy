@@ -86,6 +86,7 @@ types:
           cases:
             '"01"': stock_issue_code
             '"02"': cb_issue_code
+            _: blank_issue_code_value
   message_serial_no:
     seq:
       - id: multicast_group_number
@@ -932,6 +933,22 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Medium Classification of a Control Message. Indicates details and other information'
+  other_medium_classification_value:
+    seq:
+      - id: other_medium_classification
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Medium Classification of a Message Type whose Large Classification 5.3.3 (3) does not list. The two bytes are on the wire either way, so they are read rather than skipped'
+  blank_issue_code_value:
+    seq:
+      - id: blank_issue_code
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Issue Code layout for a Control, Index or Statistics Message, which 5.3.3 (7) sets to spaces. The twelve bytes are on the wire either way, so they are read rather than skipped'
   hhmmssuuuuuu_ascii_time:
     seq:
       - id: text

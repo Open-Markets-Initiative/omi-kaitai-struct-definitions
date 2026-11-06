@@ -39,19 +39,19 @@ doc: 'Currenex Currenex Forex Now Forex Market Data Cbp v10'
 doc-ref: https://www.currenex.com/support
 
 seq:
-  - id: packet
-    type: packet_struct
+  - id: itch_frame
+    type: itch_frame_struct
     repeat: eos
-    doc: 'Currenex Itch Udp Packet'
+    doc: 'One Currenex Itch record, from SOH through ETX'
 
 types:
-  packet_struct:
+  itch_frame_struct:
     seq:
-      - id: itch_soh
+      - id: itch_message_start
         type: u1
         doc: 'Start of Currenex Itch message'
       - id: message_header
-        type: message_header_struct
+        type: message_header
         doc: 'Currenex Itch Market Data Message Header'
       - id: message_body
         type:
@@ -71,10 +71,10 @@ types:
             'message_type::wamr_with_confidence_factor_message': wamr_with_confidence_factor_message
             'message_type::mid_activity_indicator_message': mid_activity_indicator_message
             'message_type::reject_message': reject_message
-      - id: itch_etx
+      - id: itch_message_end
         type: u1
         doc: 'End of Currenex Itch message'
-  message_header_struct:
+  message_header:
     seq:
       - id: sequence_number
         type: u4

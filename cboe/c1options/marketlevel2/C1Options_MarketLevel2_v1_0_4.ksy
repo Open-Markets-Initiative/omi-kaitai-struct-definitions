@@ -69,6 +69,7 @@ types:
       - id: message_header
         type: message_header
       - id: payload
+        size: message_header.message_length - 8
         type:
           switch-on: message_header.template_id
           cases:

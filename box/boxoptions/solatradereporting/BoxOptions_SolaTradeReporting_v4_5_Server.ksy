@@ -38,13 +38,13 @@ meta:
 doc: 'Box Options Market BOX Options Exchange Sola Trade Reporting Atr v4.5'
 
 seq:
-  - id: server_frame
-    type: server_frame_struct
+  - id: server_sola_frame
+    type: server_sola_frame_struct
     repeat: eos
     doc: 'One Atr message sent by the Atr server, opened by the header and closed by an end of text'
 
 types:
-  server_frame_struct:
+  server_sola_frame_struct:
     seq:
       - id: message_header
         type: message_header
@@ -61,7 +61,7 @@ types:
             '"50"': give_up
             '"51"': give_up_cancel
             '"99"': error_message
-      - id: end_of_text
+      - id: sola_message_end
         type: u1
         doc: 'End of text, an ascii character of 0x03, closing every Atr message'
   message_header:

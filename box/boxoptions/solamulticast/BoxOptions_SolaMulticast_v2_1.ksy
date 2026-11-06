@@ -39,19 +39,19 @@ doc: 'Box Options Market BOX Options Exchange Sola Multicast Hsvf v2.1'
 doc-ref: https://boxoptions.com/technology/trading-interface-specifications
 
 seq:
-  - id: packet
-    type: packet_struct
+  - id: sola_frame
+    type: sola_frame_struct
     repeat: eos
-    doc: 'Hsvf Udp Packet'
+    doc: 'One Hsvf record, from STX through ETX'
 
 types:
-  packet_struct:
+  sola_frame_struct:
     seq:
-      - id: hsvf_stx
+      - id: sola_message_start
         type: u1
         doc: 'Start of Hsvf message'
       - id: message_header
-        type: message_header_struct
+        type: message_header
         doc: 'Hsvf Udp Market Data Packet Header'
       - id: message_body
         type:
@@ -85,10 +85,10 @@ types:
             '"OS"': start_of_exposition_on_complex_order_message
             '"T"': end_of_auction_or_exposition_on_option_message
             '"TS"': end_of_auction_or_exposition_on_complex_instruments_message
-      - id: hsvf_etx
+      - id: sola_message_end
         type: u1
         doc: 'End of Hsvf message'
-  message_header_struct:
+  message_header:
     seq:
       - id: sequence_number
         type: str
@@ -135,54 +135,28 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Number of contracts for the trade'
-      - id: trade_price_fraction_pair
-        type:
-          switch-on: peek_trade_price_fraction_indicator
-          cases:
-            'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
-            'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
-            'trade_price_fraction_indicator::negative_hundred': trade_price_negative_hundred_pair
-            'trade_price_fraction_indicator::negative_thousand': trade_price_negative_thousand_pair
-            'trade_price_fraction_indicator::negative_ten_thousand': trade_price_negative_ten_thousand_pair
-            'trade_price_fraction_indicator::negative_hundred_thousand': trade_price_negative_hundred_thousand_pair
-            'trade_price_fraction_indicator::negative_million': trade_price_negative_million_pair
-            'trade_price_fraction_indicator::whole': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred': trade_price_numeric_pair
-            'trade_price_fraction_indicator::thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten_thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred_thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten_million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred_million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::billion': trade_price_numeric_pair
-            _: trade_price_unknown_fraction_pair
+      - id: trade_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Price at which the transaction took place'
+      - id: trade_price_fraction_indicator
+        type: u1
+        enum: trade_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
         type: u1
         enum: net_change_sign
         doc: 'For the net change field'
-      - id: net_change_fraction_pair
-        type:
-          switch-on: peek_net_change_fraction_indicator
-          cases:
-            'net_change_fraction_indicator::negative_whole': net_change_negative_whole_pair
-            'net_change_fraction_indicator::negative_ten': net_change_negative_ten_pair
-            'net_change_fraction_indicator::negative_hundred': net_change_negative_hundred_pair
-            'net_change_fraction_indicator::negative_thousand': net_change_negative_thousand_pair
-            'net_change_fraction_indicator::negative_ten_thousand': net_change_negative_ten_thousand_pair
-            'net_change_fraction_indicator::negative_hundred_thousand': net_change_negative_hundred_thousand_pair
-            'net_change_fraction_indicator::negative_million': net_change_negative_million_pair
-            'net_change_fraction_indicator::whole': net_change_numeric_pair
-            'net_change_fraction_indicator::ten': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred': net_change_numeric_pair
-            'net_change_fraction_indicator::thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::ten_thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred_thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::million': net_change_numeric_pair
-            'net_change_fraction_indicator::ten_million': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred_million': net_change_numeric_pair
-            'net_change_fraction_indicator::billion': net_change_numeric_pair
-            _: net_change_unknown_fraction_pair
+      - id: net_change
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Net change equals last trade price minus previous close'
+      - id: net_change_fraction_indicator
+        type: u1
+        enum: net_change_fraction_indicator
+        doc: 'Fraction indicator for the net change price'
       - id: opra_trade_marker
         type: str
         size: 1
@@ -201,15 +175,6 @@ types:
         type: u1
         enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
-    instances:
-      peek_trade_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: trade_price_fraction_indicator
-      peek_net_change_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: net_change_fraction_indicator
   instrument_description:
     seq:
       - id: root_symbol
@@ -225,28 +190,15 @@ types:
       - id: filler_1
         size: 1
         doc: 'Filler'
-      - id: strike_price_fraction_pair
-        type:
-          switch-on: peek_strike_price_fraction_indicator
-          cases:
-            'strike_price_fraction_indicator::negative_whole': strike_price_negative_whole_pair
-            'strike_price_fraction_indicator::negative_ten': strike_price_negative_ten_pair
-            'strike_price_fraction_indicator::negative_hundred': strike_price_negative_hundred_pair
-            'strike_price_fraction_indicator::negative_thousand': strike_price_negative_thousand_pair
-            'strike_price_fraction_indicator::negative_ten_thousand': strike_price_negative_ten_thousand_pair
-            'strike_price_fraction_indicator::negative_hundred_thousand': strike_price_negative_hundred_thousand_pair
-            'strike_price_fraction_indicator::negative_million': strike_price_negative_million_pair
-            'strike_price_fraction_indicator::whole': strike_price_numeric_pair
-            'strike_price_fraction_indicator::ten': strike_price_numeric_pair
-            'strike_price_fraction_indicator::hundred': strike_price_numeric_pair
-            'strike_price_fraction_indicator::thousand': strike_price_numeric_pair
-            'strike_price_fraction_indicator::ten_thousand': strike_price_numeric_pair
-            'strike_price_fraction_indicator::hundred_thousand': strike_price_numeric_pair
-            'strike_price_fraction_indicator::million': strike_price_numeric_pair
-            'strike_price_fraction_indicator::ten_million': strike_price_numeric_pair
-            'strike_price_fraction_indicator::hundred_million': strike_price_numeric_pair
-            'strike_price_fraction_indicator::billion': strike_price_numeric_pair
-            _: strike_price_unknown_fraction_pair
+      - id: strike_price
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Strike Price of the option in full'
+      - id: strike_price_fraction_indicator
+        type: u1
+        enum: strike_price_fraction_indicator
+        doc: 'Defines the number of decimal places or fraction positions'
       - id: expiry_year
         type: str
         size: 2
@@ -257,308 +209,6 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Expiry day of the leg of the Complex Order Instrument expiring first'
-    instances:
-      peek_strike_price_fraction_indicator:
-        pos: _io.pos + 7
-        type: u1
-        enum: strike_price_fraction_indicator
-  strike_price_negative_whole_pair:
-    seq:
-      - id: raw_strike_price
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Strike Price of the option in full'
-      - id: strike_price_fraction_indicator
-        type: u1
-        enum: strike_price_fraction_indicator
-        doc: 'Defines the number of decimal places or fraction positions'
-  strike_price_negative_ten_pair:
-    seq:
-      - id: raw_strike_price
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Strike Price of the option in full'
-      - id: strike_price_fraction_indicator
-        type: u1
-        enum: strike_price_fraction_indicator
-        doc: 'Defines the number of decimal places or fraction positions'
-  strike_price_negative_hundred_pair:
-    seq:
-      - id: raw_strike_price
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Strike Price of the option in full'
-      - id: strike_price_fraction_indicator
-        type: u1
-        enum: strike_price_fraction_indicator
-        doc: 'Defines the number of decimal places or fraction positions'
-  strike_price_negative_thousand_pair:
-    seq:
-      - id: raw_strike_price
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Strike Price of the option in full'
-      - id: strike_price_fraction_indicator
-        type: u1
-        enum: strike_price_fraction_indicator
-        doc: 'Defines the number of decimal places or fraction positions'
-  strike_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_strike_price
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Strike Price of the option in full'
-      - id: strike_price_fraction_indicator
-        type: u1
-        enum: strike_price_fraction_indicator
-        doc: 'Defines the number of decimal places or fraction positions'
-  strike_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_strike_price
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Strike Price of the option in full'
-      - id: strike_price_fraction_indicator
-        type: u1
-        enum: strike_price_fraction_indicator
-        doc: 'Defines the number of decimal places or fraction positions'
-  strike_price_negative_million_pair:
-    seq:
-      - id: raw_strike_price
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Strike Price of the option in full'
-      - id: strike_price_fraction_indicator
-        type: u1
-        enum: strike_price_fraction_indicator
-        doc: 'Defines the number of decimal places or fraction positions'
-  strike_price_numeric_pair:
-    seq:
-      - id: strike_price
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Strike Price of the option in full'
-      - id: strike_price_fraction_indicator
-        type: u1
-        enum: strike_price_fraction_indicator
-        doc: 'Defines the number of decimal places or fraction positions'
-  strike_price_unknown_fraction_pair:
-    seq:
-      - id: raw_strike_price
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Strike Price of the option in full'
-      - id: strike_price_fraction_indicator
-        type: u1
-        enum: strike_price_fraction_indicator
-        doc: 'Defines the number of decimal places or fraction positions'
-  trade_price_negative_whole_pair:
-    seq:
-      - id: raw_trade_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price at which the transaction took place'
-      - id: trade_price_fraction_indicator
-        type: u1
-        enum: trade_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  trade_price_negative_ten_pair:
-    seq:
-      - id: raw_trade_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price at which the transaction took place'
-      - id: trade_price_fraction_indicator
-        type: u1
-        enum: trade_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  trade_price_negative_hundred_pair:
-    seq:
-      - id: raw_trade_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price at which the transaction took place'
-      - id: trade_price_fraction_indicator
-        type: u1
-        enum: trade_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  trade_price_negative_thousand_pair:
-    seq:
-      - id: raw_trade_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price at which the transaction took place'
-      - id: trade_price_fraction_indicator
-        type: u1
-        enum: trade_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  trade_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_trade_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price at which the transaction took place'
-      - id: trade_price_fraction_indicator
-        type: u1
-        enum: trade_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  trade_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_trade_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price at which the transaction took place'
-      - id: trade_price_fraction_indicator
-        type: u1
-        enum: trade_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  trade_price_negative_million_pair:
-    seq:
-      - id: raw_trade_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price at which the transaction took place'
-      - id: trade_price_fraction_indicator
-        type: u1
-        enum: trade_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  trade_price_numeric_pair:
-    seq:
-      - id: trade_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price at which the transaction took place'
-      - id: trade_price_fraction_indicator
-        type: u1
-        enum: trade_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  trade_price_unknown_fraction_pair:
-    seq:
-      - id: raw_trade_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price at which the transaction took place'
-      - id: trade_price_fraction_indicator
-        type: u1
-        enum: trade_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  net_change_negative_whole_pair:
-    seq:
-      - id: raw_net_change
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Net change equals last trade price minus previous close'
-      - id: net_change_fraction_indicator
-        type: u1
-        enum: net_change_fraction_indicator
-        doc: 'Fraction indicator for the net change price'
-  net_change_negative_ten_pair:
-    seq:
-      - id: raw_net_change
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Net change equals last trade price minus previous close'
-      - id: net_change_fraction_indicator
-        type: u1
-        enum: net_change_fraction_indicator
-        doc: 'Fraction indicator for the net change price'
-  net_change_negative_hundred_pair:
-    seq:
-      - id: raw_net_change
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Net change equals last trade price minus previous close'
-      - id: net_change_fraction_indicator
-        type: u1
-        enum: net_change_fraction_indicator
-        doc: 'Fraction indicator for the net change price'
-  net_change_negative_thousand_pair:
-    seq:
-      - id: raw_net_change
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Net change equals last trade price minus previous close'
-      - id: net_change_fraction_indicator
-        type: u1
-        enum: net_change_fraction_indicator
-        doc: 'Fraction indicator for the net change price'
-  net_change_negative_ten_thousand_pair:
-    seq:
-      - id: raw_net_change
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Net change equals last trade price minus previous close'
-      - id: net_change_fraction_indicator
-        type: u1
-        enum: net_change_fraction_indicator
-        doc: 'Fraction indicator for the net change price'
-  net_change_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_net_change
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Net change equals last trade price minus previous close'
-      - id: net_change_fraction_indicator
-        type: u1
-        enum: net_change_fraction_indicator
-        doc: 'Fraction indicator for the net change price'
-  net_change_negative_million_pair:
-    seq:
-      - id: raw_net_change
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Net change equals last trade price minus previous close'
-      - id: net_change_fraction_indicator
-        type: u1
-        enum: net_change_fraction_indicator
-        doc: 'Fraction indicator for the net change price'
-  net_change_numeric_pair:
-    seq:
-      - id: net_change
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Net change equals last trade price minus previous close'
-      - id: net_change_fraction_indicator
-        type: u1
-        enum: net_change_fraction_indicator
-        doc: 'Fraction indicator for the net change price'
-  net_change_unknown_fraction_pair:
-    seq:
-      - id: raw_net_change
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Net change equals last trade price minus previous close'
-      - id: net_change_fraction_indicator
-        type: u1
-        enum: net_change_fraction_indicator
-        doc: 'Fraction indicator for the net change price'
   strategy_trade_message:
     seq:
       - id: exchange_id
@@ -582,54 +232,28 @@ types:
         size: 1
         encoding: ASCII
         doc: 'For Trade Price field (sign)'
-      - id: trade_price_fraction_pair
-        type:
-          switch-on: peek_trade_price_fraction_indicator
-          cases:
-            'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
-            'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
-            'trade_price_fraction_indicator::negative_hundred': trade_price_negative_hundred_pair
-            'trade_price_fraction_indicator::negative_thousand': trade_price_negative_thousand_pair
-            'trade_price_fraction_indicator::negative_ten_thousand': trade_price_negative_ten_thousand_pair
-            'trade_price_fraction_indicator::negative_hundred_thousand': trade_price_negative_hundred_thousand_pair
-            'trade_price_fraction_indicator::negative_million': trade_price_negative_million_pair
-            'trade_price_fraction_indicator::whole': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred': trade_price_numeric_pair
-            'trade_price_fraction_indicator::thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten_thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred_thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten_million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred_million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::billion': trade_price_numeric_pair
-            _: trade_price_unknown_fraction_pair
+      - id: trade_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Price at which the transaction took place'
+      - id: trade_price_fraction_indicator
+        type: u1
+        enum: trade_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
         type: u1
         enum: net_change_sign
         doc: 'For the net change field'
-      - id: net_change_fraction_pair
-        type:
-          switch-on: peek_net_change_fraction_indicator
-          cases:
-            'net_change_fraction_indicator::negative_whole': net_change_negative_whole_pair
-            'net_change_fraction_indicator::negative_ten': net_change_negative_ten_pair
-            'net_change_fraction_indicator::negative_hundred': net_change_negative_hundred_pair
-            'net_change_fraction_indicator::negative_thousand': net_change_negative_thousand_pair
-            'net_change_fraction_indicator::negative_ten_thousand': net_change_negative_ten_thousand_pair
-            'net_change_fraction_indicator::negative_hundred_thousand': net_change_negative_hundred_thousand_pair
-            'net_change_fraction_indicator::negative_million': net_change_negative_million_pair
-            'net_change_fraction_indicator::whole': net_change_numeric_pair
-            'net_change_fraction_indicator::ten': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred': net_change_numeric_pair
-            'net_change_fraction_indicator::thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::ten_thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred_thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::million': net_change_numeric_pair
-            'net_change_fraction_indicator::ten_million': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred_million': net_change_numeric_pair
-            'net_change_fraction_indicator::billion': net_change_numeric_pair
-            _: net_change_unknown_fraction_pair
+      - id: net_change
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Net change equals last trade price minus previous close'
+      - id: net_change_fraction_indicator
+        type: u1
+        enum: net_change_fraction_indicator
+        doc: 'Fraction indicator for the net change price'
       - id: opra_trade_marker
         type: str
         size: 1
@@ -645,15 +269,6 @@ types:
         type: u1
         enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
-    instances:
-      peek_trade_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: trade_price_fraction_indicator
-      peek_net_change_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: net_change_fraction_indicator
   option_request_for_quote_message:
     seq:
       - id: exchange_id
@@ -683,23 +298,7 @@ types:
           cases:
             '"000OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
-            '"A"': bid_price_quote_negative_whole_pair
-            '"B"': bid_price_quote_negative_ten_pair
-            '"C"': bid_price_quote_negative_hundred_pair
-            '"D"': bid_price_quote_negative_thousand_pair
-            '"E"': bid_price_quote_negative_ten_thousand_pair
-            '"F"': bid_price_quote_negative_hundred_thousand_pair
-            '"G"': bid_price_quote_negative_million_pair
-            '"1"': bid_price_quote_numeric_pair
-            '"2"': bid_price_quote_numeric_pair
-            '"3"': bid_price_quote_numeric_pair
-            '"4"': bid_price_quote_numeric_pair
-            '"5"': bid_price_quote_numeric_pair
-            '"6"': bid_price_quote_numeric_pair
-            '"7"': bid_price_quote_numeric_pair
-            '"8"': bid_price_quote_numeric_pair
-            '"9"': bid_price_quote_numeric_pair
-            _: bid_price_quote_unknown_fraction_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
@@ -711,23 +310,7 @@ types:
           cases:
             '"000OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
-            '"A"': ask_price_quote_negative_whole_pair
-            '"B"': ask_price_quote_negative_ten_pair
-            '"C"': ask_price_quote_negative_hundred_pair
-            '"D"': ask_price_quote_negative_thousand_pair
-            '"E"': ask_price_quote_negative_ten_thousand_pair
-            '"F"': ask_price_quote_negative_hundred_thousand_pair
-            '"G"': ask_price_quote_negative_million_pair
-            '"1"': ask_price_quote_numeric_pair
-            '"2"': ask_price_quote_numeric_pair
-            '"3"': ask_price_quote_numeric_pair
-            '"4"': ask_price_quote_numeric_pair
-            '"5"': ask_price_quote_numeric_pair
-            '"6"': ask_price_quote_numeric_pair
-            '"7"': ask_price_quote_numeric_pair
-            '"8"': ask_price_quote_numeric_pair
-            '"9"': ask_price_quote_numeric_pair
-            _: ask_price_quote_unknown_fraction_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -772,97 +355,9 @@ types:
         type: u1
         enum: bid_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
-  bid_price_quote_negative_whole_pair:
-    seq:
-      - id: raw_bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_quote_negative_ten_pair:
-    seq:
-      - id: raw_bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_quote_negative_hundred_pair:
-    seq:
-      - id: raw_bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_quote_negative_thousand_pair:
-    seq:
-      - id: raw_bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_quote_negative_ten_thousand_pair:
-    seq:
-      - id: raw_bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_quote_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_quote_negative_million_pair:
-    seq:
-      - id: raw_bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
   bid_price_quote_numeric_pair:
     seq:
       - id: bid_price_quote_numeric
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_quote_unknown_fraction_pair:
-    seq:
-      - id: raw_bid_price_quote_text
         type: str
         size: 6
         encoding: ASCII
@@ -882,97 +377,9 @@ types:
         type: u1
         enum: ask_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
-  ask_price_quote_negative_whole_pair:
-    seq:
-      - id: raw_ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_quote_negative_ten_pair:
-    seq:
-      - id: raw_ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_quote_negative_hundred_pair:
-    seq:
-      - id: raw_ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_quote_negative_thousand_pair:
-    seq:
-      - id: raw_ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_quote_negative_ten_thousand_pair:
-    seq:
-      - id: raw_ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_quote_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_quote_negative_million_pair:
-    seq:
-      - id: raw_ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
   ask_price_quote_numeric_pair:
     seq:
       - id: ask_price_quote_numeric
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_quote_unknown_fraction_pair:
-    seq:
-      - id: raw_ask_price_quote_text
         type: str
         size: 6
         encoding: ASCII
@@ -1005,23 +412,7 @@ types:
           cases:
             '"000OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
-            '"A"': bid_price_quote_negative_whole_pair
-            '"B"': bid_price_quote_negative_ten_pair
-            '"C"': bid_price_quote_negative_hundred_pair
-            '"D"': bid_price_quote_negative_thousand_pair
-            '"E"': bid_price_quote_negative_ten_thousand_pair
-            '"F"': bid_price_quote_negative_hundred_thousand_pair
-            '"G"': bid_price_quote_negative_million_pair
-            '"1"': bid_price_quote_numeric_pair
-            '"2"': bid_price_quote_numeric_pair
-            '"3"': bid_price_quote_numeric_pair
-            '"4"': bid_price_quote_numeric_pair
-            '"5"': bid_price_quote_numeric_pair
-            '"6"': bid_price_quote_numeric_pair
-            '"7"': bid_price_quote_numeric_pair
-            '"8"': bid_price_quote_numeric_pair
-            '"9"': bid_price_quote_numeric_pair
-            _: bid_price_quote_unknown_fraction_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
@@ -1037,23 +428,7 @@ types:
           cases:
             '"000OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
-            '"A"': ask_price_quote_negative_whole_pair
-            '"B"': ask_price_quote_negative_ten_pair
-            '"C"': ask_price_quote_negative_hundred_pair
-            '"D"': ask_price_quote_negative_thousand_pair
-            '"E"': ask_price_quote_negative_ten_thousand_pair
-            '"F"': ask_price_quote_negative_hundred_thousand_pair
-            '"G"': ask_price_quote_negative_million_pair
-            '"1"': ask_price_quote_numeric_pair
-            '"2"': ask_price_quote_numeric_pair
-            '"3"': ask_price_quote_numeric_pair
-            '"4"': ask_price_quote_numeric_pair
-            '"5"': ask_price_quote_numeric_pair
-            '"6"': ask_price_quote_numeric_pair
-            '"7"': ask_price_quote_numeric_pair
-            '"8"': ask_price_quote_numeric_pair
-            '"9"': ask_price_quote_numeric_pair
-            _: ask_price_quote_unknown_fraction_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -1172,23 +547,7 @@ types:
           cases:
             '"000OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
-            '"A"': bid_price_quote_negative_whole_pair
-            '"B"': bid_price_quote_negative_ten_pair
-            '"C"': bid_price_quote_negative_hundred_pair
-            '"D"': bid_price_quote_negative_thousand_pair
-            '"E"': bid_price_quote_negative_ten_thousand_pair
-            '"F"': bid_price_quote_negative_hundred_thousand_pair
-            '"G"': bid_price_quote_negative_million_pair
-            '"1"': bid_price_quote_numeric_pair
-            '"2"': bid_price_quote_numeric_pair
-            '"3"': bid_price_quote_numeric_pair
-            '"4"': bid_price_quote_numeric_pair
-            '"5"': bid_price_quote_numeric_pair
-            '"6"': bid_price_quote_numeric_pair
-            '"7"': bid_price_quote_numeric_pair
-            '"8"': bid_price_quote_numeric_pair
-            '"9"': bid_price_quote_numeric_pair
-            _: bid_price_quote_unknown_fraction_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
@@ -1205,23 +564,7 @@ types:
           cases:
             '"000OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
-            '"A"': ask_price_quote_negative_whole_pair
-            '"B"': ask_price_quote_negative_ten_pair
-            '"C"': ask_price_quote_negative_hundred_pair
-            '"D"': ask_price_quote_negative_thousand_pair
-            '"E"': ask_price_quote_negative_ten_thousand_pair
-            '"F"': ask_price_quote_negative_hundred_thousand_pair
-            '"G"': ask_price_quote_negative_million_pair
-            '"1"': ask_price_quote_numeric_pair
-            '"2"': ask_price_quote_numeric_pair
-            '"3"': ask_price_quote_numeric_pair
-            '"4"': ask_price_quote_numeric_pair
-            '"5"': ask_price_quote_numeric_pair
-            '"6"': ask_price_quote_numeric_pair
-            '"7"': ask_price_quote_numeric_pair
-            '"8"': ask_price_quote_numeric_pair
-            '"9"': ask_price_quote_numeric_pair
-            _: ask_price_quote_unknown_fraction_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -1287,23 +630,7 @@ types:
           cases:
             '"000OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
-            '"A"': bid_price_quote_negative_whole_pair
-            '"B"': bid_price_quote_negative_ten_pair
-            '"C"': bid_price_quote_negative_hundred_pair
-            '"D"': bid_price_quote_negative_thousand_pair
-            '"E"': bid_price_quote_negative_ten_thousand_pair
-            '"F"': bid_price_quote_negative_hundred_thousand_pair
-            '"G"': bid_price_quote_negative_million_pair
-            '"1"': bid_price_quote_numeric_pair
-            '"2"': bid_price_quote_numeric_pair
-            '"3"': bid_price_quote_numeric_pair
-            '"4"': bid_price_quote_numeric_pair
-            '"5"': bid_price_quote_numeric_pair
-            '"6"': bid_price_quote_numeric_pair
-            '"7"': bid_price_quote_numeric_pair
-            '"8"': bid_price_quote_numeric_pair
-            '"9"': bid_price_quote_numeric_pair
-            _: bid_price_quote_unknown_fraction_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
@@ -1324,23 +651,7 @@ types:
           cases:
             '"000OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
-            '"A"': ask_price_quote_negative_whole_pair
-            '"B"': ask_price_quote_negative_ten_pair
-            '"C"': ask_price_quote_negative_hundred_pair
-            '"D"': ask_price_quote_negative_thousand_pair
-            '"E"': ask_price_quote_negative_ten_thousand_pair
-            '"F"': ask_price_quote_negative_hundred_thousand_pair
-            '"G"': ask_price_quote_negative_million_pair
-            '"1"': ask_price_quote_numeric_pair
-            '"2"': ask_price_quote_numeric_pair
-            '"3"': ask_price_quote_numeric_pair
-            '"4"': ask_price_quote_numeric_pair
-            '"5"': ask_price_quote_numeric_pair
-            '"6"': ask_price_quote_numeric_pair
-            '"7"': ask_price_quote_numeric_pair
-            '"8"': ask_price_quote_numeric_pair
-            '"9"': ask_price_quote_numeric_pair
-            _: ask_price_quote_unknown_fraction_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -1376,28 +687,15 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Number of contracts for the trade'
-      - id: trade_price_fraction_pair
-        type:
-          switch-on: peek_trade_price_fraction_indicator
-          cases:
-            'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
-            'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
-            'trade_price_fraction_indicator::negative_hundred': trade_price_negative_hundred_pair
-            'trade_price_fraction_indicator::negative_thousand': trade_price_negative_thousand_pair
-            'trade_price_fraction_indicator::negative_ten_thousand': trade_price_negative_ten_thousand_pair
-            'trade_price_fraction_indicator::negative_hundred_thousand': trade_price_negative_hundred_thousand_pair
-            'trade_price_fraction_indicator::negative_million': trade_price_negative_million_pair
-            'trade_price_fraction_indicator::whole': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred': trade_price_numeric_pair
-            'trade_price_fraction_indicator::thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten_thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred_thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten_million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred_million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::billion': trade_price_numeric_pair
-            _: trade_price_unknown_fraction_pair
+      - id: trade_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Price at which the transaction took place'
+      - id: trade_price_fraction_indicator
+        type: u1
+        enum: trade_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: opra_trade_marker
         type: str
         size: 1
@@ -1416,11 +714,6 @@ types:
         type: u1
         enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
-    instances:
-      peek_trade_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: trade_price_fraction_indicator
   complex_order_trade_cancellation_message:
     seq:
       - id: exchange_id
@@ -1444,28 +737,15 @@ types:
         size: 1
         encoding: ASCII
         doc: 'For Trade Price field (sign)'
-      - id: trade_price_fraction_pair
-        type:
-          switch-on: peek_trade_price_fraction_indicator
-          cases:
-            'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
-            'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
-            'trade_price_fraction_indicator::negative_hundred': trade_price_negative_hundred_pair
-            'trade_price_fraction_indicator::negative_thousand': trade_price_negative_thousand_pair
-            'trade_price_fraction_indicator::negative_ten_thousand': trade_price_negative_ten_thousand_pair
-            'trade_price_fraction_indicator::negative_hundred_thousand': trade_price_negative_hundred_thousand_pair
-            'trade_price_fraction_indicator::negative_million': trade_price_negative_million_pair
-            'trade_price_fraction_indicator::whole': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred': trade_price_numeric_pair
-            'trade_price_fraction_indicator::thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten_thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred_thousand': trade_price_numeric_pair
-            'trade_price_fraction_indicator::million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::ten_million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::hundred_million': trade_price_numeric_pair
-            'trade_price_fraction_indicator::billion': trade_price_numeric_pair
-            _: trade_price_unknown_fraction_pair
+      - id: trade_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Price at which the transaction took place'
+      - id: trade_price_fraction_indicator
+        type: u1
+        enum: trade_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: opra_trade_marker
         type: str
         size: 1
@@ -1481,11 +761,6 @@ types:
         type: u1
         enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
-    instances:
-      peek_trade_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: trade_price_fraction_indicator
   option_instrument_keys_message:
     seq:
       - id: exchange_id
@@ -1510,73 +785,31 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Minimum authorized number of contract per order'
-      - id: maximum_threshold_price_fraction_pair
-        type:
-          switch-on: peek_maximum_threshold_price_fraction_indicator
-          cases:
-            'maximum_threshold_price_fraction_indicator::negative_whole': maximum_threshold_price_negative_whole_pair
-            'maximum_threshold_price_fraction_indicator::negative_ten': maximum_threshold_price_negative_ten_pair
-            'maximum_threshold_price_fraction_indicator::negative_hundred': maximum_threshold_price_negative_hundred_pair
-            'maximum_threshold_price_fraction_indicator::negative_thousand': maximum_threshold_price_negative_thousand_pair
-            'maximum_threshold_price_fraction_indicator::negative_ten_thousand': maximum_threshold_price_negative_ten_thousand_pair
-            'maximum_threshold_price_fraction_indicator::negative_hundred_thousand': maximum_threshold_price_negative_hundred_thousand_pair
-            'maximum_threshold_price_fraction_indicator::negative_million': maximum_threshold_price_negative_million_pair
-            'maximum_threshold_price_fraction_indicator::whole': maximum_threshold_price_numeric_pair
-            'maximum_threshold_price_fraction_indicator::ten': maximum_threshold_price_numeric_pair
-            'maximum_threshold_price_fraction_indicator::hundred': maximum_threshold_price_numeric_pair
-            'maximum_threshold_price_fraction_indicator::thousand': maximum_threshold_price_numeric_pair
-            'maximum_threshold_price_fraction_indicator::ten_thousand': maximum_threshold_price_numeric_pair
-            'maximum_threshold_price_fraction_indicator::hundred_thousand': maximum_threshold_price_numeric_pair
-            'maximum_threshold_price_fraction_indicator::million': maximum_threshold_price_numeric_pair
-            'maximum_threshold_price_fraction_indicator::ten_million': maximum_threshold_price_numeric_pair
-            'maximum_threshold_price_fraction_indicator::hundred_million': maximum_threshold_price_numeric_pair
-            'maximum_threshold_price_fraction_indicator::billion': maximum_threshold_price_numeric_pair
-            _: maximum_threshold_price_unknown_fraction_pair
-      - id: minimum_threshold_price_fraction_pair
-        type:
-          switch-on: peek_minimum_threshold_price_fraction_indicator
-          cases:
-            'minimum_threshold_price_fraction_indicator::negative_whole': minimum_threshold_price_negative_whole_pair
-            'minimum_threshold_price_fraction_indicator::negative_ten': minimum_threshold_price_negative_ten_pair
-            'minimum_threshold_price_fraction_indicator::negative_hundred': minimum_threshold_price_negative_hundred_pair
-            'minimum_threshold_price_fraction_indicator::negative_thousand': minimum_threshold_price_negative_thousand_pair
-            'minimum_threshold_price_fraction_indicator::negative_ten_thousand': minimum_threshold_price_negative_ten_thousand_pair
-            'minimum_threshold_price_fraction_indicator::negative_hundred_thousand': minimum_threshold_price_negative_hundred_thousand_pair
-            'minimum_threshold_price_fraction_indicator::negative_million': minimum_threshold_price_negative_million_pair
-            'minimum_threshold_price_fraction_indicator::whole': minimum_threshold_price_numeric_pair
-            'minimum_threshold_price_fraction_indicator::ten': minimum_threshold_price_numeric_pair
-            'minimum_threshold_price_fraction_indicator::hundred': minimum_threshold_price_numeric_pair
-            'minimum_threshold_price_fraction_indicator::thousand': minimum_threshold_price_numeric_pair
-            'minimum_threshold_price_fraction_indicator::ten_thousand': minimum_threshold_price_numeric_pair
-            'minimum_threshold_price_fraction_indicator::hundred_thousand': minimum_threshold_price_numeric_pair
-            'minimum_threshold_price_fraction_indicator::million': minimum_threshold_price_numeric_pair
-            'minimum_threshold_price_fraction_indicator::ten_million': minimum_threshold_price_numeric_pair
-            'minimum_threshold_price_fraction_indicator::hundred_million': minimum_threshold_price_numeric_pair
-            'minimum_threshold_price_fraction_indicator::billion': minimum_threshold_price_numeric_pair
-            _: minimum_threshold_price_unknown_fraction_pair
+      - id: maximum_threshold_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Maximum threshold price authorized for an option contract'
+      - id: maximum_threshold_price_fraction_indicator
+        type: u1
+        enum: maximum_threshold_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+      - id: minimum_threshold_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Minimum threshold price authorized for an option contract'
+      - id: minimum_threshold_price_fraction_indicator
+        type: u1
+        enum: minimum_threshold_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment_fraction_pair
         type:
           switch-on: peek_raw_tick_increment
           cases:
             '"0000T1"': tick_increment_tick_table_pair
             '"2"': tick_increment_tick_table_pair
-            '"A"': tick_increment_negative_whole_pair
-            '"B"': tick_increment_negative_ten_pair
-            '"C"': tick_increment_negative_hundred_pair
-            '"D"': tick_increment_negative_thousand_pair
-            '"E"': tick_increment_negative_ten_thousand_pair
-            '"F"': tick_increment_negative_hundred_thousand_pair
-            '"G"': tick_increment_negative_million_pair
-            '"0"': tick_increment_numeric_pair
-            '"1"': tick_increment_numeric_pair
-            '"3"': tick_increment_numeric_pair
-            '"4"': tick_increment_numeric_pair
-            '"5"': tick_increment_numeric_pair
-            '"6"': tick_increment_numeric_pair
-            '"7"': tick_increment_numeric_pair
-            '"8"': tick_increment_numeric_pair
-            '"9"': tick_increment_numeric_pair
-            _: tick_increment_unknown_fraction_pair
+            _: tick_increment_numeric_pair
       - id: option_type
         type: u1
         enum: option_type
@@ -1608,217 +841,11 @@ types:
         pad-right: 0x20
         doc: 'Symbol root for the underlying security'
     instances:
-      peek_maximum_threshold_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: maximum_threshold_price_fraction_indicator
-      peek_minimum_threshold_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: minimum_threshold_price_fraction_indicator
       peek_raw_tick_increment:
         pos: _io.pos
         type: str
         size: 6
         encoding: ASCII
-  maximum_threshold_price_negative_whole_pair:
-    seq:
-      - id: raw_maximum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: maximum_threshold_price_fraction_indicator
-        type: u1
-        enum: maximum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  maximum_threshold_price_negative_ten_pair:
-    seq:
-      - id: raw_maximum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: maximum_threshold_price_fraction_indicator
-        type: u1
-        enum: maximum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  maximum_threshold_price_negative_hundred_pair:
-    seq:
-      - id: raw_maximum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: maximum_threshold_price_fraction_indicator
-        type: u1
-        enum: maximum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  maximum_threshold_price_negative_thousand_pair:
-    seq:
-      - id: raw_maximum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: maximum_threshold_price_fraction_indicator
-        type: u1
-        enum: maximum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  maximum_threshold_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_maximum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: maximum_threshold_price_fraction_indicator
-        type: u1
-        enum: maximum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  maximum_threshold_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_maximum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: maximum_threshold_price_fraction_indicator
-        type: u1
-        enum: maximum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  maximum_threshold_price_negative_million_pair:
-    seq:
-      - id: raw_maximum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: maximum_threshold_price_fraction_indicator
-        type: u1
-        enum: maximum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  maximum_threshold_price_numeric_pair:
-    seq:
-      - id: maximum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: maximum_threshold_price_fraction_indicator
-        type: u1
-        enum: maximum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  maximum_threshold_price_unknown_fraction_pair:
-    seq:
-      - id: raw_maximum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: maximum_threshold_price_fraction_indicator
-        type: u1
-        enum: maximum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  minimum_threshold_price_negative_whole_pair:
-    seq:
-      - id: raw_minimum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: minimum_threshold_price_fraction_indicator
-        type: u1
-        enum: minimum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  minimum_threshold_price_negative_ten_pair:
-    seq:
-      - id: raw_minimum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: minimum_threshold_price_fraction_indicator
-        type: u1
-        enum: minimum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  minimum_threshold_price_negative_hundred_pair:
-    seq:
-      - id: raw_minimum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: minimum_threshold_price_fraction_indicator
-        type: u1
-        enum: minimum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  minimum_threshold_price_negative_thousand_pair:
-    seq:
-      - id: raw_minimum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: minimum_threshold_price_fraction_indicator
-        type: u1
-        enum: minimum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  minimum_threshold_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_minimum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: minimum_threshold_price_fraction_indicator
-        type: u1
-        enum: minimum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  minimum_threshold_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_minimum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: minimum_threshold_price_fraction_indicator
-        type: u1
-        enum: minimum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  minimum_threshold_price_negative_million_pair:
-    seq:
-      - id: raw_minimum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: minimum_threshold_price_fraction_indicator
-        type: u1
-        enum: minimum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  minimum_threshold_price_numeric_pair:
-    seq:
-      - id: minimum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: minimum_threshold_price_fraction_indicator
-        type: u1
-        enum: minimum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  minimum_threshold_price_unknown_fraction_pair:
-    seq:
-      - id: raw_minimum_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: minimum_threshold_price_fraction_indicator
-        type: u1
-        enum: minimum_threshold_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
   tick_increment_tick_table_pair:
     seq:
       - id: raw_tick_increment
@@ -1830,97 +857,9 @@ types:
         type: u1
         enum: tick_increment_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
-  tick_increment_negative_whole_pair:
-    seq:
-      - id: numeric_tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  tick_increment_negative_ten_pair:
-    seq:
-      - id: numeric_tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  tick_increment_negative_hundred_pair:
-    seq:
-      - id: numeric_tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  tick_increment_negative_thousand_pair:
-    seq:
-      - id: numeric_tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  tick_increment_negative_ten_thousand_pair:
-    seq:
-      - id: numeric_tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  tick_increment_negative_hundred_thousand_pair:
-    seq:
-      - id: numeric_tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  tick_increment_negative_million_pair:
-    seq:
-      - id: numeric_tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
   tick_increment_numeric_pair:
     seq:
       - id: tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  tick_increment_unknown_fraction_pair:
-    seq:
-      - id: raw_tick_increment
         type: str
         size: 6
         encoding: ASCII
@@ -1991,77 +930,35 @@ types:
         type: u1
         enum: max_threshold_price_sign
         doc: '+ or - sign'
-      - id: max_threshold_price_fraction_pair
-        type:
-          switch-on: peek_max_threshold_price_fraction_indicator
-          cases:
-            'max_threshold_price_fraction_indicator::negative_whole': max_threshold_price_negative_whole_pair
-            'max_threshold_price_fraction_indicator::negative_ten': max_threshold_price_negative_ten_pair
-            'max_threshold_price_fraction_indicator::negative_hundred': max_threshold_price_negative_hundred_pair
-            'max_threshold_price_fraction_indicator::negative_thousand': max_threshold_price_negative_thousand_pair
-            'max_threshold_price_fraction_indicator::negative_ten_thousand': max_threshold_price_negative_ten_thousand_pair
-            'max_threshold_price_fraction_indicator::negative_hundred_thousand': max_threshold_price_negative_hundred_thousand_pair
-            'max_threshold_price_fraction_indicator::negative_million': max_threshold_price_negative_million_pair
-            'max_threshold_price_fraction_indicator::whole': max_threshold_price_numeric_pair
-            'max_threshold_price_fraction_indicator::ten': max_threshold_price_numeric_pair
-            'max_threshold_price_fraction_indicator::hundred': max_threshold_price_numeric_pair
-            'max_threshold_price_fraction_indicator::thousand': max_threshold_price_numeric_pair
-            'max_threshold_price_fraction_indicator::ten_thousand': max_threshold_price_numeric_pair
-            'max_threshold_price_fraction_indicator::hundred_thousand': max_threshold_price_numeric_pair
-            'max_threshold_price_fraction_indicator::million': max_threshold_price_numeric_pair
-            'max_threshold_price_fraction_indicator::ten_million': max_threshold_price_numeric_pair
-            'max_threshold_price_fraction_indicator::hundred_million': max_threshold_price_numeric_pair
-            'max_threshold_price_fraction_indicator::billion': max_threshold_price_numeric_pair
-            _: max_threshold_price_unknown_fraction_pair
+      - id: max_threshold_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Maximum threshold price authorized for an option contract'
+      - id: max_threshold_price_fraction_indicator
+        type: u1
+        enum: max_threshold_price_fraction_indicator
+        doc: 'Number of decimal places or fraction positions'
       - id: min_threshold_price_sign
         type: u1
         enum: min_threshold_price_sign
         doc: '+ or - sign'
-      - id: min_threshold_price_fraction_pair
-        type:
-          switch-on: peek_min_threshold_price_fraction_indicator
-          cases:
-            'min_threshold_price_fraction_indicator::negative_whole': min_threshold_price_negative_whole_pair
-            'min_threshold_price_fraction_indicator::negative_ten': min_threshold_price_negative_ten_pair
-            'min_threshold_price_fraction_indicator::negative_hundred': min_threshold_price_negative_hundred_pair
-            'min_threshold_price_fraction_indicator::negative_thousand': min_threshold_price_negative_thousand_pair
-            'min_threshold_price_fraction_indicator::negative_ten_thousand': min_threshold_price_negative_ten_thousand_pair
-            'min_threshold_price_fraction_indicator::negative_hundred_thousand': min_threshold_price_negative_hundred_thousand_pair
-            'min_threshold_price_fraction_indicator::negative_million': min_threshold_price_negative_million_pair
-            'min_threshold_price_fraction_indicator::whole': min_threshold_price_numeric_pair
-            'min_threshold_price_fraction_indicator::ten': min_threshold_price_numeric_pair
-            'min_threshold_price_fraction_indicator::hundred': min_threshold_price_numeric_pair
-            'min_threshold_price_fraction_indicator::thousand': min_threshold_price_numeric_pair
-            'min_threshold_price_fraction_indicator::ten_thousand': min_threshold_price_numeric_pair
-            'min_threshold_price_fraction_indicator::hundred_thousand': min_threshold_price_numeric_pair
-            'min_threshold_price_fraction_indicator::million': min_threshold_price_numeric_pair
-            'min_threshold_price_fraction_indicator::ten_million': min_threshold_price_numeric_pair
-            'min_threshold_price_fraction_indicator::hundred_million': min_threshold_price_numeric_pair
-            'min_threshold_price_fraction_indicator::billion': min_threshold_price_numeric_pair
-            _: min_threshold_price_unknown_fraction_pair
+      - id: min_threshold_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Minimum threshold price authorized for an option contract'
+      - id: min_threshold_price_fraction_indicator
+        type: u1
+        enum: min_threshold_price_fraction_indicator
+        doc: 'Number of decimal places or fraction positions'
       - id: tick_increment_fraction_pair
         type:
           switch-on: peek_raw_tick_increment
           cases:
             '"0000T1"': tick_increment_tick_table_pair
             '"2"': tick_increment_tick_table_pair
-            '"A"': tick_increment_negative_whole_pair
-            '"B"': tick_increment_negative_ten_pair
-            '"C"': tick_increment_negative_hundred_pair
-            '"D"': tick_increment_negative_thousand_pair
-            '"E"': tick_increment_negative_ten_thousand_pair
-            '"F"': tick_increment_negative_hundred_thousand_pair
-            '"G"': tick_increment_negative_million_pair
-            '"0"': tick_increment_numeric_pair
-            '"1"': tick_increment_numeric_pair
-            '"3"': tick_increment_numeric_pair
-            '"4"': tick_increment_numeric_pair
-            '"5"': tick_increment_numeric_pair
-            '"6"': tick_increment_numeric_pair
-            '"7"': tick_increment_numeric_pair
-            '"8"': tick_increment_numeric_pair
-            '"9"': tick_increment_numeric_pair
-            _: tick_increment_unknown_fraction_pair
+            _: tick_increment_numeric_pair
       - id: filler_2
         size: 2
       - id: group
@@ -2095,217 +992,11 @@ types:
         repeat-expr: num_instrument_leg.to_i
         doc: 'Instrument Leg Repeating Group'
     instances:
-      peek_max_threshold_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: max_threshold_price_fraction_indicator
-      peek_min_threshold_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: min_threshold_price_fraction_indicator
       peek_raw_tick_increment:
         pos: _io.pos
         type: str
         size: 6
         encoding: ASCII
-  max_threshold_price_negative_whole_pair:
-    seq:
-      - id: raw_max_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: max_threshold_price_fraction_indicator
-        type: u1
-        enum: max_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  max_threshold_price_negative_ten_pair:
-    seq:
-      - id: raw_max_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: max_threshold_price_fraction_indicator
-        type: u1
-        enum: max_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  max_threshold_price_negative_hundred_pair:
-    seq:
-      - id: raw_max_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: max_threshold_price_fraction_indicator
-        type: u1
-        enum: max_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  max_threshold_price_negative_thousand_pair:
-    seq:
-      - id: raw_max_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: max_threshold_price_fraction_indicator
-        type: u1
-        enum: max_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  max_threshold_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_max_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: max_threshold_price_fraction_indicator
-        type: u1
-        enum: max_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  max_threshold_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_max_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: max_threshold_price_fraction_indicator
-        type: u1
-        enum: max_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  max_threshold_price_negative_million_pair:
-    seq:
-      - id: raw_max_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: max_threshold_price_fraction_indicator
-        type: u1
-        enum: max_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  max_threshold_price_numeric_pair:
-    seq:
-      - id: max_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: max_threshold_price_fraction_indicator
-        type: u1
-        enum: max_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  max_threshold_price_unknown_fraction_pair:
-    seq:
-      - id: raw_max_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Maximum threshold price authorized for an option contract'
-      - id: max_threshold_price_fraction_indicator
-        type: u1
-        enum: max_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  min_threshold_price_negative_whole_pair:
-    seq:
-      - id: raw_min_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: min_threshold_price_fraction_indicator
-        type: u1
-        enum: min_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  min_threshold_price_negative_ten_pair:
-    seq:
-      - id: raw_min_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: min_threshold_price_fraction_indicator
-        type: u1
-        enum: min_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  min_threshold_price_negative_hundred_pair:
-    seq:
-      - id: raw_min_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: min_threshold_price_fraction_indicator
-        type: u1
-        enum: min_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  min_threshold_price_negative_thousand_pair:
-    seq:
-      - id: raw_min_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: min_threshold_price_fraction_indicator
-        type: u1
-        enum: min_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  min_threshold_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_min_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: min_threshold_price_fraction_indicator
-        type: u1
-        enum: min_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  min_threshold_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_min_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: min_threshold_price_fraction_indicator
-        type: u1
-        enum: min_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  min_threshold_price_negative_million_pair:
-    seq:
-      - id: raw_min_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: min_threshold_price_fraction_indicator
-        type: u1
-        enum: min_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  min_threshold_price_numeric_pair:
-    seq:
-      - id: min_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: min_threshold_price_fraction_indicator
-        type: u1
-        enum: min_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  min_threshold_price_unknown_fraction_pair:
-    seq:
-      - id: raw_min_threshold_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Minimum threshold price authorized for an option contract'
-      - id: min_threshold_price_fraction_indicator
-        type: u1
-        enum: min_threshold_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
   instrument_leg:
     seq:
       - id: leg_ratio_sign
@@ -2332,82 +1023,43 @@ types:
         doc: 'Q by default'
       - id: instrument_description
         type: instrument_description
-      - id: bid_price_fraction_pair
-        type:
-          switch-on: peek_bid_price_fraction_indicator
-          cases:
-            'bid_price_fraction_indicator::negative_whole': bid_price_negative_whole_pair
-            'bid_price_fraction_indicator::negative_ten': bid_price_negative_ten_pair
-            'bid_price_fraction_indicator::negative_hundred': bid_price_negative_hundred_pair
-            'bid_price_fraction_indicator::negative_thousand': bid_price_negative_thousand_pair
-            'bid_price_fraction_indicator::negative_ten_thousand': bid_price_negative_ten_thousand_pair
-            'bid_price_fraction_indicator::negative_hundred_thousand': bid_price_negative_hundred_thousand_pair
-            'bid_price_fraction_indicator::negative_million': bid_price_negative_million_pair
-            'bid_price_fraction_indicator::whole': bid_price_numeric_pair
-            'bid_price_fraction_indicator::ten': bid_price_numeric_pair
-            'bid_price_fraction_indicator::hundred': bid_price_numeric_pair
-            'bid_price_fraction_indicator::thousand': bid_price_numeric_pair
-            'bid_price_fraction_indicator::ten_thousand': bid_price_numeric_pair
-            'bid_price_fraction_indicator::hundred_thousand': bid_price_numeric_pair
-            'bid_price_fraction_indicator::million': bid_price_numeric_pair
-            'bid_price_fraction_indicator::ten_million': bid_price_numeric_pair
-            'bid_price_fraction_indicator::hundred_million': bid_price_numeric_pair
-            'bid_price_fraction_indicator::billion': bid_price_numeric_pair
-            _: bid_price_unknown_fraction_pair
+      - id: bid_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the option series'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
         doc: 'Number of option contracts represented by the Bid Price'
-      - id: ask_price_fraction_pair
-        type:
-          switch-on: peek_ask_price_fraction_indicator
-          cases:
-            'ask_price_fraction_indicator::negative_whole': ask_price_negative_whole_pair
-            'ask_price_fraction_indicator::negative_ten': ask_price_negative_ten_pair
-            'ask_price_fraction_indicator::negative_hundred': ask_price_negative_hundred_pair
-            'ask_price_fraction_indicator::negative_thousand': ask_price_negative_thousand_pair
-            'ask_price_fraction_indicator::negative_ten_thousand': ask_price_negative_ten_thousand_pair
-            'ask_price_fraction_indicator::negative_hundred_thousand': ask_price_negative_hundred_thousand_pair
-            'ask_price_fraction_indicator::negative_million': ask_price_negative_million_pair
-            'ask_price_fraction_indicator::whole': ask_price_numeric_pair
-            'ask_price_fraction_indicator::ten': ask_price_numeric_pair
-            'ask_price_fraction_indicator::hundred': ask_price_numeric_pair
-            'ask_price_fraction_indicator::thousand': ask_price_numeric_pair
-            'ask_price_fraction_indicator::ten_thousand': ask_price_numeric_pair
-            'ask_price_fraction_indicator::hundred_thousand': ask_price_numeric_pair
-            'ask_price_fraction_indicator::million': ask_price_numeric_pair
-            'ask_price_fraction_indicator::ten_million': ask_price_numeric_pair
-            'ask_price_fraction_indicator::hundred_million': ask_price_numeric_pair
-            'ask_price_fraction_indicator::billion': ask_price_numeric_pair
-            _: ask_price_unknown_fraction_pair
+      - id: ask_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask price for the option series'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
         size: 5
         encoding: ASCII
         doc: 'Number of option contracts represented by the Ask Price'
-      - id: last_price_fraction_pair
-        type:
-          switch-on: peek_last_price_fraction_indicator
-          cases:
-            'last_price_fraction_indicator::negative_whole': last_price_negative_whole_pair
-            'last_price_fraction_indicator::negative_ten': last_price_negative_ten_pair
-            'last_price_fraction_indicator::negative_hundred': last_price_negative_hundred_pair
-            'last_price_fraction_indicator::negative_thousand': last_price_negative_thousand_pair
-            'last_price_fraction_indicator::negative_ten_thousand': last_price_negative_ten_thousand_pair
-            'last_price_fraction_indicator::negative_hundred_thousand': last_price_negative_hundred_thousand_pair
-            'last_price_fraction_indicator::negative_million': last_price_negative_million_pair
-            'last_price_fraction_indicator::whole': last_price_numeric_pair
-            'last_price_fraction_indicator::ten': last_price_numeric_pair
-            'last_price_fraction_indicator::hundred': last_price_numeric_pair
-            'last_price_fraction_indicator::thousand': last_price_numeric_pair
-            'last_price_fraction_indicator::ten_thousand': last_price_numeric_pair
-            'last_price_fraction_indicator::hundred_thousand': last_price_numeric_pair
-            'last_price_fraction_indicator::million': last_price_numeric_pair
-            'last_price_fraction_indicator::ten_million': last_price_numeric_pair
-            'last_price_fraction_indicator::hundred_million': last_price_numeric_pair
-            'last_price_fraction_indicator::billion': last_price_numeric_pair
-            _: last_price_unknown_fraction_pair
+      - id: last_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Closing or most recent trade price'
+      - id: last_price_fraction_indicator
+        type: u1
+        enum: last_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: filler_7
         size: 7
         doc: 'Filler'
@@ -2424,533 +1076,15 @@ types:
         type: u1
         enum: net_change_sign
         doc: 'For the net change field'
-      - id: net_change_fraction_pair
-        type:
-          switch-on: peek_net_change_fraction_indicator
-          cases:
-            'net_change_fraction_indicator::negative_whole': net_change_negative_whole_pair
-            'net_change_fraction_indicator::negative_ten': net_change_negative_ten_pair
-            'net_change_fraction_indicator::negative_hundred': net_change_negative_hundred_pair
-            'net_change_fraction_indicator::negative_thousand': net_change_negative_thousand_pair
-            'net_change_fraction_indicator::negative_ten_thousand': net_change_negative_ten_thousand_pair
-            'net_change_fraction_indicator::negative_hundred_thousand': net_change_negative_hundred_thousand_pair
-            'net_change_fraction_indicator::negative_million': net_change_negative_million_pair
-            'net_change_fraction_indicator::whole': net_change_numeric_pair
-            'net_change_fraction_indicator::ten': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred': net_change_numeric_pair
-            'net_change_fraction_indicator::thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::ten_thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred_thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::million': net_change_numeric_pair
-            'net_change_fraction_indicator::ten_million': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred_million': net_change_numeric_pair
-            'net_change_fraction_indicator::billion': net_change_numeric_pair
-            _: net_change_unknown_fraction_pair
-      - id: open_price_fraction_pair
-        type:
-          switch-on: peek_open_price_fraction_indicator
-          cases:
-            'open_price_fraction_indicator::negative_whole': open_price_negative_whole_pair
-            'open_price_fraction_indicator::negative_ten': open_price_negative_ten_pair
-            'open_price_fraction_indicator::negative_hundred': open_price_negative_hundred_pair
-            'open_price_fraction_indicator::negative_thousand': open_price_negative_thousand_pair
-            'open_price_fraction_indicator::negative_ten_thousand': open_price_negative_ten_thousand_pair
-            'open_price_fraction_indicator::negative_hundred_thousand': open_price_negative_hundred_thousand_pair
-            'open_price_fraction_indicator::negative_million': open_price_negative_million_pair
-            'open_price_fraction_indicator::whole': open_price_numeric_pair
-            'open_price_fraction_indicator::ten': open_price_numeric_pair
-            'open_price_fraction_indicator::hundred': open_price_numeric_pair
-            'open_price_fraction_indicator::thousand': open_price_numeric_pair
-            'open_price_fraction_indicator::ten_thousand': open_price_numeric_pair
-            'open_price_fraction_indicator::hundred_thousand': open_price_numeric_pair
-            'open_price_fraction_indicator::million': open_price_numeric_pair
-            'open_price_fraction_indicator::ten_million': open_price_numeric_pair
-            'open_price_fraction_indicator::hundred_million': open_price_numeric_pair
-            'open_price_fraction_indicator::billion': open_price_numeric_pair
-            _: open_price_unknown_fraction_pair
-      - id: high_price_fraction_pair
-        type:
-          switch-on: peek_high_price_fraction_indicator
-          cases:
-            'high_price_fraction_indicator::negative_whole': high_price_negative_whole_pair
-            'high_price_fraction_indicator::negative_ten': high_price_negative_ten_pair
-            'high_price_fraction_indicator::negative_hundred': high_price_negative_hundred_pair
-            'high_price_fraction_indicator::negative_thousand': high_price_negative_thousand_pair
-            'high_price_fraction_indicator::negative_ten_thousand': high_price_negative_ten_thousand_pair
-            'high_price_fraction_indicator::negative_hundred_thousand': high_price_negative_hundred_thousand_pair
-            'high_price_fraction_indicator::negative_million': high_price_negative_million_pair
-            'high_price_fraction_indicator::whole': high_price_numeric_pair
-            'high_price_fraction_indicator::ten': high_price_numeric_pair
-            'high_price_fraction_indicator::hundred': high_price_numeric_pair
-            'high_price_fraction_indicator::thousand': high_price_numeric_pair
-            'high_price_fraction_indicator::ten_thousand': high_price_numeric_pair
-            'high_price_fraction_indicator::hundred_thousand': high_price_numeric_pair
-            'high_price_fraction_indicator::million': high_price_numeric_pair
-            'high_price_fraction_indicator::ten_million': high_price_numeric_pair
-            'high_price_fraction_indicator::hundred_million': high_price_numeric_pair
-            'high_price_fraction_indicator::billion': high_price_numeric_pair
-            _: high_price_unknown_fraction_pair
-      - id: low_price_fraction_pair
-        type:
-          switch-on: peek_low_price_fraction_indicator
-          cases:
-            'low_price_fraction_indicator::negative_whole': low_price_negative_whole_pair
-            'low_price_fraction_indicator::negative_ten': low_price_negative_ten_pair
-            'low_price_fraction_indicator::negative_hundred': low_price_negative_hundred_pair
-            'low_price_fraction_indicator::negative_thousand': low_price_negative_thousand_pair
-            'low_price_fraction_indicator::negative_ten_thousand': low_price_negative_ten_thousand_pair
-            'low_price_fraction_indicator::negative_hundred_thousand': low_price_negative_hundred_thousand_pair
-            'low_price_fraction_indicator::negative_million': low_price_negative_million_pair
-            'low_price_fraction_indicator::whole': low_price_numeric_pair
-            'low_price_fraction_indicator::ten': low_price_numeric_pair
-            'low_price_fraction_indicator::hundred': low_price_numeric_pair
-            'low_price_fraction_indicator::thousand': low_price_numeric_pair
-            'low_price_fraction_indicator::ten_thousand': low_price_numeric_pair
-            'low_price_fraction_indicator::hundred_thousand': low_price_numeric_pair
-            'low_price_fraction_indicator::million': low_price_numeric_pair
-            'low_price_fraction_indicator::ten_million': low_price_numeric_pair
-            'low_price_fraction_indicator::hundred_million': low_price_numeric_pair
-            'low_price_fraction_indicator::billion': low_price_numeric_pair
-            _: low_price_unknown_fraction_pair
-      - id: option_marker
-        type: option_marker
-      - id: underlying_symbol
+      - id: net_change
         type: str
-        size: 10
+        size: 6
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Symbol root for the underlying security'
-      - id: reference_price_fraction_pair
-        type:
-          switch-on: peek_reference_price_fraction_indicator
-          cases:
-            'reference_price_fraction_indicator::negative_whole': reference_price_negative_whole_pair
-            'reference_price_fraction_indicator::negative_ten': reference_price_negative_ten_pair
-            'reference_price_fraction_indicator::negative_hundred': reference_price_negative_hundred_pair
-            'reference_price_fraction_indicator::negative_thousand': reference_price_negative_thousand_pair
-            'reference_price_fraction_indicator::negative_ten_thousand': reference_price_negative_ten_thousand_pair
-            'reference_price_fraction_indicator::negative_hundred_thousand': reference_price_negative_hundred_thousand_pair
-            'reference_price_fraction_indicator::negative_million': reference_price_negative_million_pair
-            'reference_price_fraction_indicator::whole': reference_price_numeric_pair
-            'reference_price_fraction_indicator::ten': reference_price_numeric_pair
-            'reference_price_fraction_indicator::hundred': reference_price_numeric_pair
-            'reference_price_fraction_indicator::thousand': reference_price_numeric_pair
-            'reference_price_fraction_indicator::ten_thousand': reference_price_numeric_pair
-            'reference_price_fraction_indicator::hundred_thousand': reference_price_numeric_pair
-            'reference_price_fraction_indicator::million': reference_price_numeric_pair
-            'reference_price_fraction_indicator::ten_million': reference_price_numeric_pair
-            'reference_price_fraction_indicator::hundred_million': reference_price_numeric_pair
-            'reference_price_fraction_indicator::billion': reference_price_numeric_pair
-            _: reference_price_unknown_fraction_pair
-    instances:
-      peek_bid_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: bid_price_fraction_indicator
-      peek_ask_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: ask_price_fraction_indicator
-      peek_last_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: last_price_fraction_indicator
-      peek_net_change_fraction_indicator:
-        pos: _io.pos + 6
+        doc: 'Net change equals last trade price minus previous close'
+      - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
-      peek_open_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: open_price_fraction_indicator
-      peek_high_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: high_price_fraction_indicator
-      peek_low_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: low_price_fraction_indicator
-      peek_reference_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: reference_price_fraction_indicator
-  bid_price_negative_whole_pair:
-    seq:
-      - id: raw_bid_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_negative_ten_pair:
-    seq:
-      - id: raw_bid_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_negative_hundred_pair:
-    seq:
-      - id: raw_bid_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_negative_thousand_pair:
-    seq:
-      - id: raw_bid_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_bid_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_bid_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_negative_million_pair:
-    seq:
-      - id: raw_bid_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_numeric_pair:
-    seq:
-      - id: bid_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_unknown_fraction_pair:
-    seq:
-      - id: raw_bid_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_negative_whole_pair:
-    seq:
-      - id: raw_ask_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_negative_ten_pair:
-    seq:
-      - id: raw_ask_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_negative_hundred_pair:
-    seq:
-      - id: raw_ask_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_negative_thousand_pair:
-    seq:
-      - id: raw_ask_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_ask_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_ask_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_negative_million_pair:
-    seq:
-      - id: raw_ask_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_numeric_pair:
-    seq:
-      - id: ask_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_unknown_fraction_pair:
-    seq:
-      - id: raw_ask_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  last_price_negative_whole_pair:
-    seq:
-      - id: raw_last_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Closing or most recent trade price'
-      - id: last_price_fraction_indicator
-        type: u1
-        enum: last_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  last_price_negative_ten_pair:
-    seq:
-      - id: raw_last_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Closing or most recent trade price'
-      - id: last_price_fraction_indicator
-        type: u1
-        enum: last_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  last_price_negative_hundred_pair:
-    seq:
-      - id: raw_last_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Closing or most recent trade price'
-      - id: last_price_fraction_indicator
-        type: u1
-        enum: last_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  last_price_negative_thousand_pair:
-    seq:
-      - id: raw_last_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Closing or most recent trade price'
-      - id: last_price_fraction_indicator
-        type: u1
-        enum: last_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  last_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_last_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Closing or most recent trade price'
-      - id: last_price_fraction_indicator
-        type: u1
-        enum: last_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  last_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_last_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Closing or most recent trade price'
-      - id: last_price_fraction_indicator
-        type: u1
-        enum: last_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  last_price_negative_million_pair:
-    seq:
-      - id: raw_last_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Closing or most recent trade price'
-      - id: last_price_fraction_indicator
-        type: u1
-        enum: last_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  last_price_numeric_pair:
-    seq:
-      - id: last_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Closing or most recent trade price'
-      - id: last_price_fraction_indicator
-        type: u1
-        enum: last_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  last_price_unknown_fraction_pair:
-    seq:
-      - id: raw_last_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Closing or most recent trade price'
-      - id: last_price_fraction_indicator
-        type: u1
-        enum: last_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  open_price_negative_whole_pair:
-    seq:
-      - id: raw_open_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price of the first trade of the day'
-      - id: open_price_fraction_indicator
-        type: u1
-        enum: open_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  open_price_negative_ten_pair:
-    seq:
-      - id: raw_open_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price of the first trade of the day'
-      - id: open_price_fraction_indicator
-        type: u1
-        enum: open_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  open_price_negative_hundred_pair:
-    seq:
-      - id: raw_open_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price of the first trade of the day'
-      - id: open_price_fraction_indicator
-        type: u1
-        enum: open_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  open_price_negative_thousand_pair:
-    seq:
-      - id: raw_open_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price of the first trade of the day'
-      - id: open_price_fraction_indicator
-        type: u1
-        enum: open_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  open_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_open_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price of the first trade of the day'
-      - id: open_price_fraction_indicator
-        type: u1
-        enum: open_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  open_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_open_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price of the first trade of the day'
-      - id: open_price_fraction_indicator
-        type: u1
-        enum: open_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  open_price_negative_million_pair:
-    seq:
-      - id: raw_open_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price of the first trade of the day'
-      - id: open_price_fraction_indicator
-        type: u1
-        enum: open_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  open_price_numeric_pair:
-    seq:
+        doc: 'Fraction indicator for the net change price'
       - id: open_price
         type: str
         size: 6
@@ -2960,96 +1094,6 @@ types:
         type: u1
         enum: open_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
-  open_price_unknown_fraction_pair:
-    seq:
-      - id: raw_open_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Price of the first trade of the day'
-      - id: open_price_fraction_indicator
-        type: u1
-        enum: open_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  high_price_negative_whole_pair:
-    seq:
-      - id: raw_high_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Highest trade price of the day or current high price if sent after a cancellation'
-      - id: high_price_fraction_indicator
-        type: u1
-        enum: high_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  high_price_negative_ten_pair:
-    seq:
-      - id: raw_high_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Highest trade price of the day or current high price if sent after a cancellation'
-      - id: high_price_fraction_indicator
-        type: u1
-        enum: high_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  high_price_negative_hundred_pair:
-    seq:
-      - id: raw_high_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Highest trade price of the day or current high price if sent after a cancellation'
-      - id: high_price_fraction_indicator
-        type: u1
-        enum: high_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  high_price_negative_thousand_pair:
-    seq:
-      - id: raw_high_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Highest trade price of the day or current high price if sent after a cancellation'
-      - id: high_price_fraction_indicator
-        type: u1
-        enum: high_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  high_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_high_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Highest trade price of the day or current high price if sent after a cancellation'
-      - id: high_price_fraction_indicator
-        type: u1
-        enum: high_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  high_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_high_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Highest trade price of the day or current high price if sent after a cancellation'
-      - id: high_price_fraction_indicator
-        type: u1
-        enum: high_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  high_price_negative_million_pair:
-    seq:
-      - id: raw_high_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Highest trade price of the day or current high price if sent after a cancellation'
-      - id: high_price_fraction_indicator
-        type: u1
-        enum: high_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  high_price_numeric_pair:
-    seq:
       - id: high_price
         type: str
         size: 6
@@ -3059,96 +1103,6 @@ types:
         type: u1
         enum: high_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
-  high_price_unknown_fraction_pair:
-    seq:
-      - id: raw_high_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Highest trade price of the day or current high price if sent after a cancellation'
-      - id: high_price_fraction_indicator
-        type: u1
-        enum: high_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  low_price_negative_whole_pair:
-    seq:
-      - id: raw_low_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
-      - id: low_price_fraction_indicator
-        type: u1
-        enum: low_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  low_price_negative_ten_pair:
-    seq:
-      - id: raw_low_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
-      - id: low_price_fraction_indicator
-        type: u1
-        enum: low_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  low_price_negative_hundred_pair:
-    seq:
-      - id: raw_low_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
-      - id: low_price_fraction_indicator
-        type: u1
-        enum: low_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  low_price_negative_thousand_pair:
-    seq:
-      - id: raw_low_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
-      - id: low_price_fraction_indicator
-        type: u1
-        enum: low_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  low_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_low_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
-      - id: low_price_fraction_indicator
-        type: u1
-        enum: low_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  low_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_low_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
-      - id: low_price_fraction_indicator
-        type: u1
-        enum: low_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  low_price_negative_million_pair:
-    seq:
-      - id: raw_low_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
-      - id: low_price_fraction_indicator
-        type: u1
-        enum: low_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  low_price_numeric_pair:
-    seq:
       - id: low_price
         type: str
         size: 6
@@ -3158,108 +1112,15 @@ types:
         type: u1
         enum: low_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
-  low_price_unknown_fraction_pair:
-    seq:
-      - id: raw_low_price
+      - id: option_marker
+        type: option_marker
+      - id: underlying_symbol
         type: str
-        size: 6
+        size: 10
         encoding: ASCII
-        doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
-      - id: low_price_fraction_indicator
-        type: u1
-        enum: low_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  reference_price_negative_whole_pair:
-    seq:
-      - id: raw_reference_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Reference Price of the Option'
-      - id: reference_price_fraction_indicator
-        type: u1
-        enum: reference_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  reference_price_negative_ten_pair:
-    seq:
-      - id: raw_reference_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Reference Price of the Option'
-      - id: reference_price_fraction_indicator
-        type: u1
-        enum: reference_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  reference_price_negative_hundred_pair:
-    seq:
-      - id: raw_reference_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Reference Price of the Option'
-      - id: reference_price_fraction_indicator
-        type: u1
-        enum: reference_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  reference_price_negative_thousand_pair:
-    seq:
-      - id: raw_reference_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Reference Price of the Option'
-      - id: reference_price_fraction_indicator
-        type: u1
-        enum: reference_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  reference_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_reference_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Reference Price of the Option'
-      - id: reference_price_fraction_indicator
-        type: u1
-        enum: reference_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  reference_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_reference_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Reference Price of the Option'
-      - id: reference_price_fraction_indicator
-        type: u1
-        enum: reference_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  reference_price_negative_million_pair:
-    seq:
-      - id: raw_reference_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Reference Price of the Option'
-      - id: reference_price_fraction_indicator
-        type: u1
-        enum: reference_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  reference_price_numeric_pair:
-    seq:
+        pad-right: 0x20
+        doc: 'Symbol root for the underlying security'
       - id: reference_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Reference Price of the Option'
-      - id: reference_price_fraction_indicator
-        type: u1
-        enum: reference_price_fraction_indicator
-        doc: 'Number of decimal places or fraction positions'
-  reference_price_unknown_fraction_pair:
-    seq:
-      - id: raw_reference_price
         type: str
         size: 6
         encoding: ASCII
@@ -3286,28 +1147,15 @@ types:
         size: 1
         encoding: ASCII
         doc: 'For Bid Price field'
-      - id: bid_price_fraction_pair
-        type:
-          switch-on: peek_bid_price_fraction_indicator
-          cases:
-            'bid_price_fraction_indicator::negative_whole': bid_price_negative_whole_pair
-            'bid_price_fraction_indicator::negative_ten': bid_price_negative_ten_pair
-            'bid_price_fraction_indicator::negative_hundred': bid_price_negative_hundred_pair
-            'bid_price_fraction_indicator::negative_thousand': bid_price_negative_thousand_pair
-            'bid_price_fraction_indicator::negative_ten_thousand': bid_price_negative_ten_thousand_pair
-            'bid_price_fraction_indicator::negative_hundred_thousand': bid_price_negative_hundred_thousand_pair
-            'bid_price_fraction_indicator::negative_million': bid_price_negative_million_pair
-            'bid_price_fraction_indicator::whole': bid_price_numeric_pair
-            'bid_price_fraction_indicator::ten': bid_price_numeric_pair
-            'bid_price_fraction_indicator::hundred': bid_price_numeric_pair
-            'bid_price_fraction_indicator::thousand': bid_price_numeric_pair
-            'bid_price_fraction_indicator::ten_thousand': bid_price_numeric_pair
-            'bid_price_fraction_indicator::hundred_thousand': bid_price_numeric_pair
-            'bid_price_fraction_indicator::million': bid_price_numeric_pair
-            'bid_price_fraction_indicator::ten_million': bid_price_numeric_pair
-            'bid_price_fraction_indicator::hundred_million': bid_price_numeric_pair
-            'bid_price_fraction_indicator::billion': bid_price_numeric_pair
-            _: bid_price_unknown_fraction_pair
+      - id: bid_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the option series'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
         size: 5
@@ -3317,28 +1165,15 @@ types:
         type: u1
         enum: ask_price_sign
         doc: 'For Ask Price field'
-      - id: ask_price_fraction_pair
-        type:
-          switch-on: peek_ask_price_fraction_indicator
-          cases:
-            'ask_price_fraction_indicator::negative_whole': ask_price_negative_whole_pair
-            'ask_price_fraction_indicator::negative_ten': ask_price_negative_ten_pair
-            'ask_price_fraction_indicator::negative_hundred': ask_price_negative_hundred_pair
-            'ask_price_fraction_indicator::negative_thousand': ask_price_negative_thousand_pair
-            'ask_price_fraction_indicator::negative_ten_thousand': ask_price_negative_ten_thousand_pair
-            'ask_price_fraction_indicator::negative_hundred_thousand': ask_price_negative_hundred_thousand_pair
-            'ask_price_fraction_indicator::negative_million': ask_price_negative_million_pair
-            'ask_price_fraction_indicator::whole': ask_price_numeric_pair
-            'ask_price_fraction_indicator::ten': ask_price_numeric_pair
-            'ask_price_fraction_indicator::hundred': ask_price_numeric_pair
-            'ask_price_fraction_indicator::thousand': ask_price_numeric_pair
-            'ask_price_fraction_indicator::ten_thousand': ask_price_numeric_pair
-            'ask_price_fraction_indicator::hundred_thousand': ask_price_numeric_pair
-            'ask_price_fraction_indicator::million': ask_price_numeric_pair
-            'ask_price_fraction_indicator::ten_million': ask_price_numeric_pair
-            'ask_price_fraction_indicator::hundred_million': ask_price_numeric_pair
-            'ask_price_fraction_indicator::billion': ask_price_numeric_pair
-            _: ask_price_unknown_fraction_pair
+      - id: ask_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask price for the option series'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
         size: 5
@@ -3349,166 +1184,72 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Sign the Last Price'
-      - id: last_price_fraction_pair
-        type:
-          switch-on: peek_last_price_fraction_indicator
-          cases:
-            'last_price_fraction_indicator::negative_whole': last_price_negative_whole_pair
-            'last_price_fraction_indicator::negative_ten': last_price_negative_ten_pair
-            'last_price_fraction_indicator::negative_hundred': last_price_negative_hundred_pair
-            'last_price_fraction_indicator::negative_thousand': last_price_negative_thousand_pair
-            'last_price_fraction_indicator::negative_ten_thousand': last_price_negative_ten_thousand_pair
-            'last_price_fraction_indicator::negative_hundred_thousand': last_price_negative_hundred_thousand_pair
-            'last_price_fraction_indicator::negative_million': last_price_negative_million_pair
-            'last_price_fraction_indicator::whole': last_price_numeric_pair
-            'last_price_fraction_indicator::ten': last_price_numeric_pair
-            'last_price_fraction_indicator::hundred': last_price_numeric_pair
-            'last_price_fraction_indicator::thousand': last_price_numeric_pair
-            'last_price_fraction_indicator::ten_thousand': last_price_numeric_pair
-            'last_price_fraction_indicator::hundred_thousand': last_price_numeric_pair
-            'last_price_fraction_indicator::million': last_price_numeric_pair
-            'last_price_fraction_indicator::ten_million': last_price_numeric_pair
-            'last_price_fraction_indicator::hundred_million': last_price_numeric_pair
-            'last_price_fraction_indicator::billion': last_price_numeric_pair
-            _: last_price_unknown_fraction_pair
+      - id: last_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Closing or most recent trade price'
+      - id: last_price_fraction_indicator
+        type: u1
+        enum: last_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: open_price_sign
         type: u1
         enum: open_price_sign
         doc: '+ or - sign'
-      - id: open_price_fraction_pair
-        type:
-          switch-on: peek_open_price_fraction_indicator
-          cases:
-            'open_price_fraction_indicator::negative_whole': open_price_negative_whole_pair
-            'open_price_fraction_indicator::negative_ten': open_price_negative_ten_pair
-            'open_price_fraction_indicator::negative_hundred': open_price_negative_hundred_pair
-            'open_price_fraction_indicator::negative_thousand': open_price_negative_thousand_pair
-            'open_price_fraction_indicator::negative_ten_thousand': open_price_negative_ten_thousand_pair
-            'open_price_fraction_indicator::negative_hundred_thousand': open_price_negative_hundred_thousand_pair
-            'open_price_fraction_indicator::negative_million': open_price_negative_million_pair
-            'open_price_fraction_indicator::whole': open_price_numeric_pair
-            'open_price_fraction_indicator::ten': open_price_numeric_pair
-            'open_price_fraction_indicator::hundred': open_price_numeric_pair
-            'open_price_fraction_indicator::thousand': open_price_numeric_pair
-            'open_price_fraction_indicator::ten_thousand': open_price_numeric_pair
-            'open_price_fraction_indicator::hundred_thousand': open_price_numeric_pair
-            'open_price_fraction_indicator::million': open_price_numeric_pair
-            'open_price_fraction_indicator::ten_million': open_price_numeric_pair
-            'open_price_fraction_indicator::hundred_million': open_price_numeric_pair
-            'open_price_fraction_indicator::billion': open_price_numeric_pair
-            _: open_price_unknown_fraction_pair
+      - id: open_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Price of the first trade of the day'
+      - id: open_price_fraction_indicator
+        type: u1
+        enum: open_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: high_price_sign
         type: u1
         enum: high_price_sign
         doc: '+ or - sign'
-      - id: high_price_fraction_pair
-        type:
-          switch-on: peek_high_price_fraction_indicator
-          cases:
-            'high_price_fraction_indicator::negative_whole': high_price_negative_whole_pair
-            'high_price_fraction_indicator::negative_ten': high_price_negative_ten_pair
-            'high_price_fraction_indicator::negative_hundred': high_price_negative_hundred_pair
-            'high_price_fraction_indicator::negative_thousand': high_price_negative_thousand_pair
-            'high_price_fraction_indicator::negative_ten_thousand': high_price_negative_ten_thousand_pair
-            'high_price_fraction_indicator::negative_hundred_thousand': high_price_negative_hundred_thousand_pair
-            'high_price_fraction_indicator::negative_million': high_price_negative_million_pair
-            'high_price_fraction_indicator::whole': high_price_numeric_pair
-            'high_price_fraction_indicator::ten': high_price_numeric_pair
-            'high_price_fraction_indicator::hundred': high_price_numeric_pair
-            'high_price_fraction_indicator::thousand': high_price_numeric_pair
-            'high_price_fraction_indicator::ten_thousand': high_price_numeric_pair
-            'high_price_fraction_indicator::hundred_thousand': high_price_numeric_pair
-            'high_price_fraction_indicator::million': high_price_numeric_pair
-            'high_price_fraction_indicator::ten_million': high_price_numeric_pair
-            'high_price_fraction_indicator::hundred_million': high_price_numeric_pair
-            'high_price_fraction_indicator::billion': high_price_numeric_pair
-            _: high_price_unknown_fraction_pair
+      - id: high_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Highest trade price of the day or current high price if sent after a cancellation'
+      - id: high_price_fraction_indicator
+        type: u1
+        enum: high_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: low_price_sign
         type: u1
         enum: low_price_sign
         doc: '+ or - sign'
-      - id: low_price_fraction_pair
-        type:
-          switch-on: peek_low_price_fraction_indicator
-          cases:
-            'low_price_fraction_indicator::negative_whole': low_price_negative_whole_pair
-            'low_price_fraction_indicator::negative_ten': low_price_negative_ten_pair
-            'low_price_fraction_indicator::negative_hundred': low_price_negative_hundred_pair
-            'low_price_fraction_indicator::negative_thousand': low_price_negative_thousand_pair
-            'low_price_fraction_indicator::negative_ten_thousand': low_price_negative_ten_thousand_pair
-            'low_price_fraction_indicator::negative_hundred_thousand': low_price_negative_hundred_thousand_pair
-            'low_price_fraction_indicator::negative_million': low_price_negative_million_pair
-            'low_price_fraction_indicator::whole': low_price_numeric_pair
-            'low_price_fraction_indicator::ten': low_price_numeric_pair
-            'low_price_fraction_indicator::hundred': low_price_numeric_pair
-            'low_price_fraction_indicator::thousand': low_price_numeric_pair
-            'low_price_fraction_indicator::ten_thousand': low_price_numeric_pair
-            'low_price_fraction_indicator::hundred_thousand': low_price_numeric_pair
-            'low_price_fraction_indicator::million': low_price_numeric_pair
-            'low_price_fraction_indicator::ten_million': low_price_numeric_pair
-            'low_price_fraction_indicator::hundred_million': low_price_numeric_pair
-            'low_price_fraction_indicator::billion': low_price_numeric_pair
-            _: low_price_unknown_fraction_pair
+      - id: low_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
+      - id: low_price_fraction_indicator
+        type: u1
+        enum: low_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
         type: u1
         enum: net_change_sign
         doc: 'For the net change field'
-      - id: net_change_fraction_pair
-        type:
-          switch-on: peek_net_change_fraction_indicator
-          cases:
-            'net_change_fraction_indicator::negative_whole': net_change_negative_whole_pair
-            'net_change_fraction_indicator::negative_ten': net_change_negative_ten_pair
-            'net_change_fraction_indicator::negative_hundred': net_change_negative_hundred_pair
-            'net_change_fraction_indicator::negative_thousand': net_change_negative_thousand_pair
-            'net_change_fraction_indicator::negative_ten_thousand': net_change_negative_ten_thousand_pair
-            'net_change_fraction_indicator::negative_hundred_thousand': net_change_negative_hundred_thousand_pair
-            'net_change_fraction_indicator::negative_million': net_change_negative_million_pair
-            'net_change_fraction_indicator::whole': net_change_numeric_pair
-            'net_change_fraction_indicator::ten': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred': net_change_numeric_pair
-            'net_change_fraction_indicator::thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::ten_thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred_thousand': net_change_numeric_pair
-            'net_change_fraction_indicator::million': net_change_numeric_pair
-            'net_change_fraction_indicator::ten_million': net_change_numeric_pair
-            'net_change_fraction_indicator::hundred_million': net_change_numeric_pair
-            'net_change_fraction_indicator::billion': net_change_numeric_pair
-            _: net_change_unknown_fraction_pair
+      - id: net_change
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Net change equals last trade price minus previous close'
+      - id: net_change_fraction_indicator
+        type: u1
+        enum: net_change_fraction_indicator
+        doc: 'Fraction indicator for the net change price'
       - id: volume
         type: str
         size: 8
         encoding: ASCII
         doc: 'Number of contracts for the trade'
-    instances:
-      peek_bid_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: bid_price_fraction_indicator
-      peek_ask_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: ask_price_fraction_indicator
-      peek_last_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: last_price_fraction_indicator
-      peek_open_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: open_price_fraction_indicator
-      peek_high_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: high_price_fraction_indicator
-      peek_low_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: low_price_fraction_indicator
-      peek_net_change_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: net_change_fraction_indicator
   beginning_of_options_summary_message:
     seq:
       - id: exchange_id
@@ -3545,28 +1286,15 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Indicates the number of an Improvement Phase. Sequential number unique per Instrument and per trading day'
-      - id: initial_order_price_fraction_pair
-        type:
-          switch-on: peek_initial_order_price_fraction_indicator
-          cases:
-            'initial_order_price_fraction_indicator::negative_whole': initial_order_price_negative_whole_pair
-            'initial_order_price_fraction_indicator::negative_ten': initial_order_price_negative_ten_pair
-            'initial_order_price_fraction_indicator::negative_hundred': initial_order_price_negative_hundred_pair
-            'initial_order_price_fraction_indicator::negative_thousand': initial_order_price_negative_thousand_pair
-            'initial_order_price_fraction_indicator::negative_ten_thousand': initial_order_price_negative_ten_thousand_pair
-            'initial_order_price_fraction_indicator::negative_hundred_thousand': initial_order_price_negative_hundred_thousand_pair
-            'initial_order_price_fraction_indicator::negative_million': initial_order_price_negative_million_pair
-            'initial_order_price_fraction_indicator::whole': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::ten': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::hundred': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::thousand': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::ten_thousand': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::hundred_thousand': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::million': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::ten_million': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::hundred_million': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::billion': initial_order_price_numeric_pair
-            _: initial_order_price_unknown_fraction_pair
+      - id: initial_order_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Indicates the price of the Initial Order'
+      - id: initial_order_price_fraction_indicator
+        type: u1
+        enum: initial_order_price_fraction_indicator
+        doc: 'Fraction Indicator Code'
       - id: initial_order_quantity
         type: str
         size: 8
@@ -3601,110 +1329,6 @@ types:
       - id: filler_1
         size: 1
         doc: 'Filler'
-    instances:
-      peek_initial_order_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: initial_order_price_fraction_indicator
-  initial_order_price_negative_whole_pair:
-    seq:
-      - id: raw_initial_order_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Indicates the price of the Initial Order'
-      - id: initial_order_price_fraction_indicator
-        type: u1
-        enum: initial_order_price_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  initial_order_price_negative_ten_pair:
-    seq:
-      - id: raw_initial_order_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Indicates the price of the Initial Order'
-      - id: initial_order_price_fraction_indicator
-        type: u1
-        enum: initial_order_price_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  initial_order_price_negative_hundred_pair:
-    seq:
-      - id: raw_initial_order_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Indicates the price of the Initial Order'
-      - id: initial_order_price_fraction_indicator
-        type: u1
-        enum: initial_order_price_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  initial_order_price_negative_thousand_pair:
-    seq:
-      - id: raw_initial_order_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Indicates the price of the Initial Order'
-      - id: initial_order_price_fraction_indicator
-        type: u1
-        enum: initial_order_price_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  initial_order_price_negative_ten_thousand_pair:
-    seq:
-      - id: raw_initial_order_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Indicates the price of the Initial Order'
-      - id: initial_order_price_fraction_indicator
-        type: u1
-        enum: initial_order_price_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  initial_order_price_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_initial_order_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Indicates the price of the Initial Order'
-      - id: initial_order_price_fraction_indicator
-        type: u1
-        enum: initial_order_price_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  initial_order_price_negative_million_pair:
-    seq:
-      - id: raw_initial_order_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Indicates the price of the Initial Order'
-      - id: initial_order_price_fraction_indicator
-        type: u1
-        enum: initial_order_price_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  initial_order_price_numeric_pair:
-    seq:
-      - id: initial_order_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Indicates the price of the Initial Order'
-      - id: initial_order_price_fraction_indicator
-        type: u1
-        enum: initial_order_price_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  initial_order_price_unknown_fraction_pair:
-    seq:
-      - id: raw_initial_order_price
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Indicates the price of the Initial Order'
-      - id: initial_order_price_fraction_indicator
-        type: u1
-        enum: initial_order_price_fraction_indicator
-        doc: 'Fraction Indicator Code'
   start_of_auction_on_complex_order_message:
     seq:
       - id: exchange_id
@@ -3727,28 +1351,15 @@ types:
         type: u1
         enum: initial_order_price_sign
         doc: '+ or - sign'
-      - id: initial_order_price_fraction_pair
-        type:
-          switch-on: peek_initial_order_price_fraction_indicator
-          cases:
-            'initial_order_price_fraction_indicator::negative_whole': initial_order_price_negative_whole_pair
-            'initial_order_price_fraction_indicator::negative_ten': initial_order_price_negative_ten_pair
-            'initial_order_price_fraction_indicator::negative_hundred': initial_order_price_negative_hundred_pair
-            'initial_order_price_fraction_indicator::negative_thousand': initial_order_price_negative_thousand_pair
-            'initial_order_price_fraction_indicator::negative_ten_thousand': initial_order_price_negative_ten_thousand_pair
-            'initial_order_price_fraction_indicator::negative_hundred_thousand': initial_order_price_negative_hundred_thousand_pair
-            'initial_order_price_fraction_indicator::negative_million': initial_order_price_negative_million_pair
-            'initial_order_price_fraction_indicator::whole': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::ten': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::hundred': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::thousand': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::ten_thousand': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::hundred_thousand': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::million': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::ten_million': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::hundred_million': initial_order_price_numeric_pair
-            'initial_order_price_fraction_indicator::billion': initial_order_price_numeric_pair
-            _: initial_order_price_unknown_fraction_pair
+      - id: initial_order_price
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Indicates the price of the Initial Order'
+      - id: initial_order_price_fraction_indicator
+        type: u1
+        enum: initial_order_price_fraction_indicator
+        doc: 'Fraction Indicator Code'
       - id: initial_order_quantity
         type: str
         size: 8
@@ -3780,11 +1391,6 @@ types:
         type: u1
         enum: auction_type
         doc: 'Indicating the auction type'
-    instances:
-      peek_initial_order_price_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: initial_order_price_fraction_indicator
   start_of_exposition_on_option_message:
     seq:
       - id: exchange_id
@@ -3802,28 +1408,15 @@ types:
         type: u1
         enum: type_of_order
         doc: 'Type of limit entered'
-      - id: limit_entered_for_an_order_fraction_pair
-        type:
-          switch-on: peek_limit_fraction_indicator
-          cases:
-            'limit_fraction_indicator::negative_whole': limit_entered_for_an_order_negative_whole_pair
-            'limit_fraction_indicator::negative_ten': limit_entered_for_an_order_negative_ten_pair
-            'limit_fraction_indicator::negative_hundred': limit_entered_for_an_order_negative_hundred_pair
-            'limit_fraction_indicator::negative_thousand': limit_entered_for_an_order_negative_thousand_pair
-            'limit_fraction_indicator::negative_ten_thousand': limit_entered_for_an_order_negative_ten_thousand_pair
-            'limit_fraction_indicator::negative_hundred_thousand': limit_entered_for_an_order_negative_hundred_thousand_pair
-            'limit_fraction_indicator::negative_million': limit_entered_for_an_order_negative_million_pair
-            'limit_fraction_indicator::whole': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::ten': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::hundred': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::thousand': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::ten_thousand': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::hundred_thousand': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::million': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::ten_million': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::hundred_million': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::billion': limit_entered_for_an_order_numeric_pair
-            _: limit_entered_for_an_order_unknown_fraction_pair
+      - id: limit_entered_for_an_order
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
+      - id: limit_fraction_indicator
+        type: u1
+        enum: limit_fraction_indicator
+        doc: 'Fraction Indicator Code'
       - id: order_quantity
         type: str
         size: 8
@@ -3861,110 +1454,6 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Indicates the CMTA'
-    instances:
-      peek_limit_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: limit_fraction_indicator
-  limit_entered_for_an_order_negative_whole_pair:
-    seq:
-      - id: raw_limit_entered_for_an_order
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
-      - id: limit_fraction_indicator
-        type: u1
-        enum: limit_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  limit_entered_for_an_order_negative_ten_pair:
-    seq:
-      - id: raw_limit_entered_for_an_order
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
-      - id: limit_fraction_indicator
-        type: u1
-        enum: limit_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  limit_entered_for_an_order_negative_hundred_pair:
-    seq:
-      - id: raw_limit_entered_for_an_order
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
-      - id: limit_fraction_indicator
-        type: u1
-        enum: limit_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  limit_entered_for_an_order_negative_thousand_pair:
-    seq:
-      - id: raw_limit_entered_for_an_order
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
-      - id: limit_fraction_indicator
-        type: u1
-        enum: limit_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  limit_entered_for_an_order_negative_ten_thousand_pair:
-    seq:
-      - id: raw_limit_entered_for_an_order
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
-      - id: limit_fraction_indicator
-        type: u1
-        enum: limit_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  limit_entered_for_an_order_negative_hundred_thousand_pair:
-    seq:
-      - id: raw_limit_entered_for_an_order
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
-      - id: limit_fraction_indicator
-        type: u1
-        enum: limit_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  limit_entered_for_an_order_negative_million_pair:
-    seq:
-      - id: raw_limit_entered_for_an_order
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
-      - id: limit_fraction_indicator
-        type: u1
-        enum: limit_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  limit_entered_for_an_order_numeric_pair:
-    seq:
-      - id: limit_entered_for_an_order
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
-      - id: limit_fraction_indicator
-        type: u1
-        enum: limit_fraction_indicator
-        doc: 'Fraction Indicator Code'
-  limit_entered_for_an_order_unknown_fraction_pair:
-    seq:
-      - id: raw_limit_entered_for_an_order
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
-      - id: limit_fraction_indicator
-        type: u1
-        enum: limit_fraction_indicator
-        doc: 'Fraction Indicator Code'
   start_of_exposition_on_complex_order_message:
     seq:
       - id: exchange_id
@@ -3990,28 +1479,15 @@ types:
         type: u1
         enum: limit_entered_for_an_order_sign
         doc: '+ or - sign'
-      - id: limit_entered_for_an_order_fraction_pair
-        type:
-          switch-on: peek_limit_fraction_indicator
-          cases:
-            'limit_fraction_indicator::negative_whole': limit_entered_for_an_order_negative_whole_pair
-            'limit_fraction_indicator::negative_ten': limit_entered_for_an_order_negative_ten_pair
-            'limit_fraction_indicator::negative_hundred': limit_entered_for_an_order_negative_hundred_pair
-            'limit_fraction_indicator::negative_thousand': limit_entered_for_an_order_negative_thousand_pair
-            'limit_fraction_indicator::negative_ten_thousand': limit_entered_for_an_order_negative_ten_thousand_pair
-            'limit_fraction_indicator::negative_hundred_thousand': limit_entered_for_an_order_negative_hundred_thousand_pair
-            'limit_fraction_indicator::negative_million': limit_entered_for_an_order_negative_million_pair
-            'limit_fraction_indicator::whole': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::ten': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::hundred': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::thousand': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::ten_thousand': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::hundred_thousand': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::million': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::ten_million': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::hundred_million': limit_entered_for_an_order_numeric_pair
-            'limit_fraction_indicator::billion': limit_entered_for_an_order_numeric_pair
-            _: limit_entered_for_an_order_unknown_fraction_pair
+      - id: limit_entered_for_an_order
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
+      - id: limit_fraction_indicator
+        type: u1
+        enum: limit_fraction_indicator
+        doc: 'Fraction Indicator Code'
       - id: order_quantity
         type: str
         size: 8
@@ -4049,11 +1525,6 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Indicates the CMTA'
-    instances:
-      peek_limit_fraction_indicator:
-        pos: _io.pos + 6
-        type: u1
-        enum: limit_fraction_indicator
   end_of_auction_or_exposition_on_option_message:
     seq:
       - id: exchange_id

@@ -39,16 +39,16 @@ doc: 'TMX Group Montreal Exchange Sola Tcp Retransmission Hsvf v1.13.3'
 doc-ref: https://www.tmxwebstore.com/products/mx-market-data
 
 seq:
-  - id: client_frame
-    type: client_frame_struct
+  - id: client_sola_frame
+    type: client_sola_frame_struct
     terminator: 3
     repeat: eos
     doc: 'One Hsvf record, from STX through ETX'
 
 types:
-  client_frame_struct:
+  client_sola_frame_struct:
     seq:
-      - id: hsvf_stx
+      - id: sola_message_start
         type: u1
         doc: 'Start of Hsvf message'
       - id: client_message_header
@@ -61,7 +61,7 @@ types:
           cases:
             '"LI"': login_message
             '"RT"': retransmission_request_message
-      - id: hsvf_etx
+      - id: sola_message_end
         type: u1
         doc: 'End of Hsvf message'
   client_message_header:

@@ -39,19 +39,19 @@ doc: 'TMX Group Montreal Exchange Sola Multicast Hsvf v1.12.2'
 doc-ref: https://www.tmxwebstore.com/products/mx-market-data
 
 seq:
-  - id: packet
-    type: packet_struct
+  - id: sola_frame
+    type: sola_frame_struct
     repeat: eos
-    doc: 'Hsvf Udp Packet'
+    doc: 'One Hsvf record, from STX through ETX'
 
 types:
-  packet_struct:
+  sola_frame_struct:
     seq:
-      - id: hsvf_stx
+      - id: sola_message_start
         type: u1
         doc: 'Start of Hsvf message'
       - id: message_header
-        type: message_header_struct
+        type: message_header
         doc: 'Hsvf Udp Market Data Packet Header'
       - id: message_body
         type:
@@ -102,10 +102,10 @@ types:
             '"TT"': tick_table_message
             '"U"': end_of_transmission_message
             '"V"': circuit_assurance_message
-      - id: hsvf_etx
+      - id: sola_message_end
         type: u1
         doc: 'End of Hsvf message'
-  message_header_struct:
+  message_header:
     seq:
       - id: sequence_number
         type: str
