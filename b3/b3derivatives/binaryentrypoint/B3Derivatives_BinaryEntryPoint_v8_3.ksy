@@ -1867,8 +1867,8 @@ types:
         type: u2
         doc: 'daysToSettlement'
       - id: block_extension
-        size: _parent.message_header.block_length - 107
-        doc: 'Bytes the stated block holds beyond the 107 this version reads'
+        size: _parent.message_header.block_length - 108
+        doc: 'Bytes the stated block holds beyond the 108 this version reads'
       - id: sides_groups
         type: sides_groups
         doc: 'noSides Block'
@@ -1895,9 +1895,9 @@ types:
       - id: market_segment_id_optional
         type: u1
         doc: 'marketSegmentID'
-      - id: padding
+      - id: padding_char_2
         type: str
-        size: 1
+        size: 2
         encoding: ASCII
         doc: 'padding'
   sides_groups:
@@ -2005,8 +2005,8 @@ types:
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
       - id: block_extension
-        size: _parent.message_header.block_length - 122
-        doc: 'Bytes the stated block holds beyond the 122 this version reads'
+        size: _parent.message_header.block_length - 123
+        doc: 'Bytes the stated block holds beyond the 123 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -2079,8 +2079,8 @@ types:
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
       - id: block_extension
-        size: _parent.message_header.block_length - 108
-        doc: 'Bytes the stated block holds beyond the 108 this version reads'
+        size: _parent.message_header.block_length - 109
+        doc: 'Bytes the stated block holds beyond the 109 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -2120,8 +2120,8 @@ types:
         encoding: ASCII
         doc: 'executingTrader'
       - id: block_extension
-        size: _parent.message_header.block_length - 67
-        doc: 'Bytes the stated block holds beyond the 67 this version reads'
+        size: _parent.message_header.block_length - 68
+        doc: 'Bytes the stated block holds beyond the 68 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -2186,8 +2186,8 @@ types:
         type: u2_nullable
         doc: 'daysToSettlement. Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 110
-        doc: 'Bytes the stated block holds beyond the 110 this version reads'
+        size: _parent.message_header.block_length - 111
+        doc: 'Bytes the stated block holds beyond the 111 this version reads'
       - id: sides_groups
         type: sides_groups
         doc: 'noSides Block'

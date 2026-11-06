@@ -1713,8 +1713,8 @@ types:
         type: u2
         doc: 'daysToSettlement'
       - id: block_extension
-        size: _parent.message_header.block_length - 99
-        doc: 'Bytes the stated block holds beyond the 99 this version reads'
+        size: _parent.message_header.block_length - 100
+        doc: 'Bytes the stated block holds beyond the 100 this version reads'
       - id: sides_groups
         type: sides_groups
         doc: 'noSides Block'
@@ -1744,9 +1744,9 @@ types:
       - id: market_segment_id_optional
         type: u1
         doc: 'marketSegmentID'
-      - id: padding
+      - id: padding_char_2
         type: str
-        size: 1
+        size: 2
         encoding: ASCII
         doc: 'padding'
   sides_groups:
@@ -1854,8 +1854,8 @@ types:
         type: u2_nullable
         doc: 'daysToSettlement. Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 110
-        doc: 'Bytes the stated block holds beyond the 110 this version reads'
+        size: _parent.message_header.block_length - 111
+        doc: 'Bytes the stated block holds beyond the 111 this version reads'
       - id: quote_req_id
         type: quote_req_id
         doc: 'quoteReqID data struct'
@@ -1925,8 +1925,8 @@ types:
         type: u2
         doc: 'daysToSettlement'
       - id: block_extension
-        size: _parent.message_header.block_length - 96
-        doc: 'Bytes the stated block holds beyond the 96 this version reads'
+        size: _parent.message_header.block_length - 97
+        doc: 'Bytes the stated block holds beyond the 97 this version reads'
       - id: quote_req_id
         type: quote_req_id
         doc: 'quoteReqID data struct'
@@ -1966,8 +1966,8 @@ types:
         encoding: ASCII
         doc: 'executingTrader'
       - id: block_extension
-        size: _parent.message_header.block_length - 59
-        doc: 'Bytes the stated block holds beyond the 59 this version reads'
+        size: _parent.message_header.block_length - 60
+        doc: 'Bytes the stated block holds beyond the 60 this version reads'
       - id: quote_req_id
         type: quote_req_id
         doc: 'quoteReqID data struct'
@@ -2032,8 +2032,8 @@ types:
         type: u2_nullable
         doc: 'daysToSettlement. Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 102
-        doc: 'Bytes the stated block holds beyond the 102 this version reads'
+        size: _parent.message_header.block_length - 103
+        doc: 'Bytes the stated block holds beyond the 103 this version reads'
       - id: sides_groups
         type: sides_groups
         doc: 'noSides Block'

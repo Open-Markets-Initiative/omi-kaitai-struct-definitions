@@ -293,25 +293,29 @@ types:
         doc: 'Q by default'
       - id: instrument_description
         type: instrument_description
-      - id: bid_price_quote_fraction_pair
-        type:
-          switch-on: peek_bid_price_quote_opening
-          cases:
-            '"000OUV"': bid_price_quote_opening_pair
-            '"0"': bid_price_quote_opening_pair
-            _: bid_price_quote_numeric_pair
+      - id: bid_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the option series'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
         doc: 'Number of option contracts represented by the Bid Price'
-      - id: ask_price_quote_fraction_pair
-        type:
-          switch-on: peek_ask_price_quote_opening
-          cases:
-            '"000OUV"': ask_price_quote_opening_pair
-            '"0"': ask_price_quote_opening_pair
-            _: ask_price_quote_numeric_pair
+      - id: ask_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask price for the option series'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
         size: 5
@@ -334,61 +338,6 @@ types:
         size: 5
         encoding: ASCII
         doc: 'Number of option contracts represented by Public Customer orders on the ask side'
-    instances:
-      peek_bid_price_quote_opening:
-        pos: _io.pos
-        type: str
-        size: 6
-        encoding: ASCII
-      peek_ask_price_quote_opening:
-        pos: _io.pos
-        type: str
-        size: 6
-        encoding: ASCII
-  bid_price_quote_opening_pair:
-    seq:
-      - id: bid_price_quote_opening
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  bid_price_quote_numeric_pair:
-    seq:
-      - id: bid_price_quote_numeric
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_quote_opening_pair:
-    seq:
-      - id: ask_price_quote_opening
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  ask_price_quote_numeric_pair:
-    seq:
-      - id: ask_price_quote_numeric
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
   complex_order_quote_message:
     seq:
       - id: exchange_id
@@ -407,13 +356,15 @@ types:
         size: 1
         encoding: ASCII
         doc: 'For Bid Price field'
-      - id: bid_price_quote_fraction_pair
-        type:
-          switch-on: peek_bid_price_quote_opening
-          cases:
-            '"000OUV"': bid_price_quote_opening_pair
-            '"0"': bid_price_quote_opening_pair
-            _: bid_price_quote_numeric_pair
+      - id: bid_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the option series'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
         size: 5
@@ -423,13 +374,15 @@ types:
         type: u1
         enum: ask_price_sign
         doc: 'For Ask Price field'
-      - id: ask_price_quote_fraction_pair
-        type:
-          switch-on: peek_ask_price_quote_opening
-          cases:
-            '"000OUV"': ask_price_quote_opening_pair
-            '"0"': ask_price_quote_opening_pair
-            _: ask_price_quote_numeric_pair
+      - id: ask_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask price for the option series'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
         size: 5
@@ -449,17 +402,6 @@ types:
         size: 5
         encoding: ASCII
         doc: 'Number of option contracts represented by Public Customer orders on the ask side'
-    instances:
-      peek_bid_price_quote_opening:
-        pos: _io.pos
-        type: str
-        size: 6
-        encoding: ASCII
-      peek_ask_price_quote_opening:
-        pos: _io.pos
-        type: str
-        size: 6
-        encoding: ASCII
   group_opening_time_message:
     seq:
       - id: exchange_id
@@ -542,13 +484,15 @@ types:
         type: u1
         enum: level_of_market_depth
         doc: 'Level of market depth'
-      - id: bid_price_quote_fraction_pair
-        type:
-          switch-on: peek_bid_price_quote_opening
-          cases:
-            '"000OUV"': bid_price_quote_opening_pair
-            '"0"': bid_price_quote_opening_pair
-            _: bid_price_quote_numeric_pair
+      - id: bid_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the option series'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
         size: 5
@@ -559,13 +503,15 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Number of bid orders, present at a given moment, in the order book'
-      - id: ask_price_quote_fraction_pair
-        type:
-          switch-on: peek_ask_price_quote_opening
-          cases:
-            '"000OUV"': ask_price_quote_opening_pair
-            '"0"': ask_price_quote_opening_pair
-            _: ask_price_quote_numeric_pair
+      - id: ask_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask price for the option series'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
         size: 5
@@ -576,17 +522,6 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Number of Ask Orders, present at a given moment, in the order book'
-    instances:
-      peek_bid_price_quote_opening:
-        pos: _io.pos
-        type: str
-        size: 6
-        encoding: ASCII
-      peek_ask_price_quote_opening:
-        pos: _io.pos
-        type: str
-        size: 6
-        encoding: ASCII
   complex_order_market_depth_message:
     seq:
       - id: exchange_id
@@ -625,13 +560,15 @@ types:
         size: 1
         encoding: ASCII
         doc: 'For Bid Price field'
-      - id: bid_price_quote_fraction_pair
-        type:
-          switch-on: peek_bid_price_quote_opening
-          cases:
-            '"000OUV"': bid_price_quote_opening_pair
-            '"0"': bid_price_quote_opening_pair
-            _: bid_price_quote_numeric_pair
+      - id: bid_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the option series'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
         size: 5
@@ -646,13 +583,15 @@ types:
         type: u1
         enum: ask_price_sign
         doc: 'For Ask Price field'
-      - id: ask_price_quote_fraction_pair
-        type:
-          switch-on: peek_ask_price_quote_opening
-          cases:
-            '"000OUV"': ask_price_quote_opening_pair
-            '"0"': ask_price_quote_opening_pair
-            _: ask_price_quote_numeric_pair
+      - id: ask_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask price for the option series'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
         size: 5
@@ -663,17 +602,6 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Number of Ask Orders, present at a given moment, in the order book'
-    instances:
-      peek_bid_price_quote_opening:
-        pos: _io.pos
-        type: str
-        size: 6
-        encoding: ASCII
-      peek_ask_price_quote_opening:
-        pos: _io.pos
-        type: str
-        size: 6
-        encoding: ASCII
   option_trade_cancellation_message:
     seq:
       - id: exchange_id
@@ -804,13 +732,15 @@ types:
         type: u1
         enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
-      - id: tick_increment_fraction_pair
-        type:
-          switch-on: peek_raw_tick_increment
-          cases:
-            '"0000T1"': tick_increment_tick_table_pair
-            '"2"': tick_increment_tick_table_pair
-            _: tick_increment_numeric_pair
+      - id: tick_increment
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Precision with which the price of an order limit can be expressed'
+      - id: tick_increment_fraction_indicator
+        type: u1
+        enum: tick_increment_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: option_type
         type: u1
         enum: option_type
@@ -841,34 +771,6 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol root for the underlying security'
-    instances:
-      peek_raw_tick_increment:
-        pos: _io.pos
-        type: str
-        size: 6
-        encoding: ASCII
-  tick_increment_tick_table_pair:
-    seq:
-      - id: raw_tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
-  tick_increment_numeric_pair:
-    seq:
-      - id: tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
   market_flow_indicator:
     seq:
       - id: type_of_instrument
@@ -953,13 +855,15 @@ types:
         type: u1
         enum: min_threshold_price_fraction_indicator
         doc: 'Number of decimal places or fraction positions'
-      - id: tick_increment_fraction_pair
-        type:
-          switch-on: peek_raw_tick_increment
-          cases:
-            '"0000T1"': tick_increment_tick_table_pair
-            '"2"': tick_increment_tick_table_pair
-            _: tick_increment_numeric_pair
+      - id: tick_increment
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Precision with which the price of an order limit can be expressed'
+      - id: tick_increment_fraction_indicator
+        type: u1
+        enum: tick_increment_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
       - id: filler_2
         size: 2
       - id: group
@@ -992,12 +896,6 @@ types:
         repeat: expr
         repeat-expr: num_instrument_leg.to_i
         doc: 'Instrument Leg Repeating Group'
-    instances:
-      peek_raw_tick_increment:
-        pos: _io.pos
-        type: str
-        size: 6
-        encoding: ASCII
   instrument_leg:
     seq:
       - id: leg_ratio_sign
