@@ -1050,7 +1050,7 @@ enums:
       id: 'control'
       doc: 'Control Category Source May Be Either Participant Or Cts Processor'
     0x49:
-      id: 'index'
+      id: 'indices'
       doc: 'Index Category Index Messages Provide Index Value Information For A Security'
     0x4d:
       id: 'market_status'

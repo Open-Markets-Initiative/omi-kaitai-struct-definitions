@@ -416,8 +416,8 @@ types:
         type:
           switch-on: indices_message_type
           cases:
-            'indices_message_type::indices': index_message
-            'indices_message_type::bid_and_offer_index': bid_and_offer_index_message
+            'indices_message_type::index_message': index_message
+            'indices_message_type::bid_and_offer_index_message': bid_and_offer_index_message
   index_message:
     seq:
       - id: participant_id
@@ -2846,11 +2846,11 @@ enums:
       doc: 'End Of Day'
   indices_message_type:
     0x49:
-      id: 'indices'
-      doc: 'Indices'
+      id: 'index_message'
+      doc: 'Index Message'
     0x51:
-      id: 'bid_and_offer_index'
-      doc: 'Bid And Offer Index'
+      id: 'bid_and_offer_index_message'
+      doc: 'Bid And Offer Index Message'
   market_status_message_type:
     0x4b:
       id: 'market_wide_circuit_breaker_decline_level_status'

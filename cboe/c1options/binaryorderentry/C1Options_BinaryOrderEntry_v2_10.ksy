@@ -358,6 +358,11 @@ types:
         type: u1
         enum: attributed_quote
         if: number_of_new_order_bitfields >= 5 and new_order_bitfield_5.new_order_bitfield_5_attributed_quote
+      - id: ext_exec_inst
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_new_order_bitfields >= 5 and new_order_bitfield_5.new_order_bitfield_5_ext_exec_inst
       - id: display_range
         type: u4
         if: number_of_new_order_bitfields >= 6 and new_order_bitfield_6.new_order_bitfield_6_display_range

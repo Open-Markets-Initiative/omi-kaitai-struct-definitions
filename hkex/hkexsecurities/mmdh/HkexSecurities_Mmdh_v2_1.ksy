@@ -264,38 +264,38 @@ types:
         enum: index_status
         doc: 'Index status. Can be blank if not defined by third party index compilers'
       - id: index_time
-        type: s8
-        doc: 'Publisher timestamp. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: s8_nullable
+        doc: 'Publisher timestamp. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nullable, No Value = -9223372036854775808'
       - id: index_value
-        type: decimal_s8_4
-        doc: 'Current value of the index. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Current value of the index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: net_chg_prev_day
-        type: decimal_s8_4
-        doc: 'Net change of IndexValue from the previous close, as provided in index source. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Net change of IndexValue from the previous close, as provided in index source. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: high_value
-        type: decimal_s8_4
-        doc: 'Highest value for an index. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Highest value for an index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: low_value
-        type: decimal_s8_4
-        doc: 'Lowest value for an index. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Lowest value for an index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: eas_value
-        type: decimal_s8_2
-        doc: 'Estimated Average Settlement Value. 2 implied decimal places. Implied decimal with scale 1e-2'
+        type: decimal_s8_2_nullable
+        doc: 'Estimated Average Settlement Value. 2 implied decimal places. Implied decimal with scale 1e-2. Nullable, No Value = -9223372036854775808'
       - id: index_turnover
-        type: decimal_s8_4
-        doc: 'Current turnover of underlying constituents. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Current turnover of underlying constituents. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: opening_value
-        type: decimal_s8_4
-        doc: 'First value for an index. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'First value for an index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: closing_value
-        type: decimal_s8_4
-        doc: 'Last value for an index. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Last value for an index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: previous_ses_close
-        type: decimal_s8_4
-        doc: 'Previous session closing value (previous day for CSI, CES, S&P; previous session for HSI and TR). 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Previous session closing value (previous day for CSI, CES, S&P; previous session for HSI and TR). 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: index_volume
-        type: s8
-        doc: 'Index volume of underlying constituents. Only applicable for CSI and CES'
+        type: s8_nullable
+        doc: 'Index volume of underlying constituents. Only applicable for CSI and CES. Nullable, No Value = -9223372036854775808'
       - id: net_chg_prev_day_pct
         type: decimal_s4_4
         doc: 'Percentage change of IndexValue from the previous close. 4 implied decimal places. Implied decimal with scale 1e-4'
@@ -729,8 +729,8 @@ types:
         size: 2
         doc: 'Padding'
       - id: currency_rate
-        type: u4
-        doc: 'Rate, expressed in HKD for one foreign currency unit. 4 decimals implied'
+        type: decimal_u4_4
+        doc: 'Rate, expressed in HKD for one foreign currency unit. 4 decimals implied. Implied decimal with scale 1e-4'
   reference_price_message:
     seq:
       - id: security_code
@@ -935,8 +935,8 @@ types:
         pad-right: 0x20
         doc: 'Trading Direction'
       - id: daily_quota_balance
-        type: s8
-        doc: 'Northbound Daily Quota Balance (DQB) value for specified Stock Connect Program. DQB in Renminbi (RMB). NULL when DQB is above/equal 30% of the daily quota; actual value when below 30%; 0 when quota is used up'
+        type: s8_nullable
+        doc: 'Northbound Daily Quota Balance (DQB) value for specified Stock Connect Program. DQB in Renminbi (RMB). NULL when DQB is above/equal 30% of the daily quota; actual value when below 30%; 0 when quota is used up. Nullable, No Value = -9223372036854775808'
       - id: daily_quota_balance_time
         type: u8
         doc: 'Time of DailyQuotaBalance. Nanoseconds since Unix epoch UTC, precision to the nearest second'
@@ -955,14 +955,14 @@ types:
         pad-right: 0x20
         doc: 'Trading Direction'
       - id: buy_turnover
-        type: s8
-        doc: 'Total turnover of Buy trades from Southbound trading, rounded down to integer. HKD for Southbound; Null for Northbound'
+        type: s8_nullable
+        doc: 'Total turnover of Buy trades from Southbound trading, rounded down to integer. HKD for Southbound; Null for Northbound. Nullable, No Value = -9223372036854775808'
       - id: sell_turnover
-        type: s8
-        doc: 'Total turnover of Sell trades from Southbound trading, rounded down to integer. HKD for Southbound; Null for Northbound'
+        type: s8_nullable
+        doc: 'Total turnover of Sell trades from Southbound trading, rounded down to integer. HKD for Southbound; Null for Northbound. Nullable, No Value = -9223372036854775808'
       - id: buy_sell_turnover
-        type: s8
-        doc: 'Sum of BuyTurnover and SellTurnover, rounded down to integer. RMB for Northbound, HKD for Southbound'
+        type: s8_nullable
+        doc: 'Sum of BuyTurnover and SellTurnover, rounded down to integer. RMB for Northbound, HKD for Southbound. Nullable, No Value = -9223372036854775808'
   trade_ticker_message:
     seq:
       - id: security_code
@@ -1055,6 +1055,13 @@ types:
     instances:
       real:
         value: mantissa / 1000.0
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -1062,6 +1069,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  decimal_s8_4_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_4
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
   decimal_s8_2:
     seq:
       - id: mantissa
@@ -1069,6 +1083,13 @@ types:
     instances:
       real:
         value: mantissa / 100.0
+  decimal_s8_2_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_2
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
   decimal_s4_4:
     seq:
       - id: mantissa
@@ -1083,6 +1104,13 @@ types:
     instances:
       real:
         value: mantissa / 1000.0
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
   decimal_s8_3:
     seq:
       - id: mantissa

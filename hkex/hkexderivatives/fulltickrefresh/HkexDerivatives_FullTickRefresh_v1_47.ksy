@@ -58,6 +58,7 @@ types:
         doc: 'Number of messages included in the packet'
       - id: compression_mode
         type: u1
+        enum: compression_mode
         doc: 'Indicates if compression is applied on messages in the packet'
       - id: seq_num
         type: u4
@@ -111,8 +112,8 @@ types:
         type: u4
         doc: 'Order book ID'
       - id: calculated_opening_price
-        type: s4
-        doc: 'Calculated Opening Price'
+        type: s4_nullable
+        doc: 'Calculated Opening Price. Nullable, No Value = -2147483648'
       - id: filler_4
         size: 4
         doc: 'Padding'
@@ -163,8 +164,8 @@ types:
         type: u8
         doc: 'Unique identifier per series'
       - id: price
-        type: s4
-        doc: 'Price'
+        type: s4_nullable
+        doc: 'Price. Nullable, No Value = -2147483648'
       - id: order_quantity
         type: u4
         doc: 'Number of contracts'
@@ -242,8 +243,8 @@ types:
         type: u8
         doc: 'Unique identifier per series'
       - id: price
-        type: s4
-        doc: 'Price'
+        type: s4_nullable
+        doc: 'Price. Nullable, No Value = -2147483648'
       - id: order_quantity
         type: u4
         doc: 'Number of contracts'
@@ -571,6 +572,7 @@ types:
         doc: 'Market Code'
       - id: instrument
         type: u1
+        enum: instrument
         doc: 'Instrument Group'
       - id: orderbook_id
         type: u4
@@ -661,8 +663,22 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == -2147483648
 
 enums:
+  compression_mode:
+    0:
+      id: 'no_compression_applied'
+      doc: 'No compression applied on messages in the packet'
+    1:
+      id: 'compression_applied'
+      doc: 'Compression applied on messages in the packet'
   msg_type:
     364:
       id: 'calculated_opening_price_message'
@@ -720,7 +736,7 @@ enums:
     0x59:
       id: 'complete'
       doc: 'Complete'
-    0x4d:
+    0x4e:
       id: 'not_complete'
       doc: 'Not Complete'
   info_type:
@@ -836,23 +852,23 @@ enums:
       doc: 'True'
   market:
     1:
-      id: 'cesc_index_futures_and_options'
-      doc: 'Cesc Index Futures And Options'
+      id: 'cesc_index_futures_options'
+      doc: 'Cesc Index Futures Options'
     2:
-      id: 'stock_futures_in_omd_d_partition_1'
-      doc: 'Stock Futures In Omd D Partition 1'
+      id: 'stock_futures'
+      doc: 'Stock Futures'
     3:
       id: 'three_year_exchange_fund_note_futures'
       doc: 'Three Year Exchange Fund Note Futures'
     16:
-      id: 'mini_hang_seng_index_futures_and_options'
-      doc: 'Mini Hang Seng Index Futures And Options'
+      id: 'mini_hang_seng_index_futures_options'
+      doc: 'Mini Hang Seng Index Futures Options'
     18:
-      id: 'weekly_stock_options_in_omd_d_partition_1'
-      doc: 'Weekly Stock Options In Omd D Partition 1'
+      id: 'weekly_stock_options'
+      doc: 'Weekly Stock Options'
     20:
-      id: 'stock_options_in_omd_d_partition_1'
-      doc: 'Stock Options In Omd D Partition 1'
+      id: 'stock_options'
+      doc: 'Stock Options'
     24:
       id: 'hibor'
       doc: 'Hibor'
@@ -863,8 +879,8 @@ enums:
       id: 'physically_settled_options_on_futures_contracts_on_hang_seng_index_futures'
       doc: 'Physically Settled Options On Futures Contracts On Hang Seng Index Futures'
     34:
-      id: 'hang_seng_index_futures_and_options'
-      doc: 'Hang Seng Index Futures And Options'
+      id: 'hang_seng_index_futures_options'
+      doc: 'Hang Seng Index Futures Options'
     35:
       id: 'flexible_hang_seng_index_options'
       doc: 'Flexible Hang Seng Index Options'
@@ -872,8 +888,8 @@ enums:
       id: 'flexible_hang_seng_china_enterprises_index_options'
       doc: 'Flexible Hang Seng China Enterprises Index Options'
     38:
-      id: 'hang_seng_china_enterprises_index_futures_and_options'
-      doc: 'Hang Seng China Enterprises Index Futures And Options'
+      id: 'hang_seng_china_enterprises_index_futures_options'
+      doc: 'Hang Seng China Enterprises Index Futures Options'
     39:
       id: 'weekly_hang_seng_index_options'
       doc: 'Weekly Hang Seng Index Options'
@@ -887,8 +903,8 @@ enums:
       id: 'sector_index_futures'
       doc: 'Sector Index Futures'
     70:
-      id: 'renminbi_currency_futures_and_options'
-      doc: 'Renminbi Currency Futures And Options'
+      id: 'renminbi_currency_futures_options'
+      doc: 'Renminbi Currency Futures Options'
     80:
       id: 'hang_seng_biotech_index_futures'
       doc: 'Hang Seng Biotech Index Futures'
@@ -899,74 +915,74 @@ enums:
       id: 'weekly_hang_seng_tech_index_options'
       doc: 'Weekly Hang Seng Tech Index Options'
     86:
-      id: 'hang_seng_tech_index_futures_and_options'
-      doc: 'Hang Seng Tech Index Futures And Options'
+      id: 'hang_seng_tech_index_futures_options_hang_seng_index_hang_seng_china_enterprises_index_gross_net_total_return_index_futures'
+      doc: 'Hang Seng Tech Index Futures Options Hang Seng Index Hang Seng China Enterprises Index Gross Net Total Return Index Futures'
     87:
-      id: 'hang_seng_index_and_hang_seng_china_enterprises_index_gross_and_net_total_return_index_futures'
-      doc: 'Hang Seng Index And Hang Seng China Enterprises Index Gross And Net Total Return Index Futures'
-    93:
       id: 'weekly_hang_seng_china_enterprises_index_options'
       doc: 'Weekly Hang Seng China Enterprises Index Options'
-    96:
+    93:
       id: 'ibovespa_index_futures'
       doc: 'Ibovespa Index Futures'
-    99:
+    96:
       id: 'sp_bse_sensex_index_futures'
       doc: 'Sp Bse Sensex Index Futures'
+    99:
+      id: 'ftsejse_top_40_index_futures'
+      doc: 'Ftsejse Top 40 Index Futures'
     102:
-      id: 'ftse_and_jse_top_40_index_futures'
-      doc: 'Ftse And Jse Top 40 Index Futures'
-    108:
       id: 'micex_index_futures'
       doc: 'Micex Index Futures'
-    111:
+    108:
       id: 'msci_ax_j_futures_ntr'
       doc: 'Msci Ax J Futures Ntr'
-    112:
+    111:
       id: 'physically_settled_usd_silver_futures'
       doc: 'Physically Settled Usd Silver Futures'
-    115:
+    112:
       id: 'physically_settled_cnh_silver_futures'
       doc: 'Physically Settled Cnh Silver Futures'
-    116:
+    115:
       id: 'physically_settled_cnh_gold_futures'
       doc: 'Physically Settled Cnh Gold Futures'
-    117:
+    116:
       id: 'physically_settled_usd_gold_futures'
       doc: 'Physically Settled Usd Gold Futures'
-    118:
-      id: 'mof_t_bond_futures'
+    117:
+      id: 'china_5_year_government_bond_futures'
       doc: 'Mof T Bond Futures'
-    120:
+    118:
       id: 'usd_base_and_ferrous_futures'
       doc: 'Usd Base And Ferrous Futures'
-    122:
+    120:
       id: 'cnh_london_metal_mini_futures'
       doc: 'Cnh London Metal Mini Futures'
-    125:
+    122:
       id: 'cash_settled_rmb_currency_futures'
       doc: 'Cash Settled Rmb Currency Futures'
+    125:
+      id: 'cash_settled_cnhusd_futures'
+      doc: 'Cash Settled Cnhusd Futures'
     153:
       id: 'msci_china_a_50_connect_index_futures'
       doc: 'Msci China A 50 Connect Index Futures'
     160:
-      id: 'msci_jpy_index_futures_price_and_ntr'
-      doc: 'Msci Jpy Index Futures Price And Ntr'
+      id: 'msci_jpy_index_futures_price_ntr'
+      doc: 'Msci Jpy Index Futures Price Ntr'
     161:
       id: 'msci_usd_index_futures_ntr'
       doc: 'Msci Usd Index Futures Ntr'
     163:
-      id: 'msci_usd_index_futures_and_options_price_1'
-      doc: 'Msci Usd Index Futures And Options Price 1'
+      id: 'msci_usd_index_futures_options_price_market_163'
+      doc: 'Msci Usd Index Futures Options Price Market 163'
     164:
-      id: 'msci_usd_index_futures_and_options_price_2'
-      doc: 'Msci Usd Index Futures And Options Price 2'
+      id: 'msci_usd_index_futures_options_price_market_164'
+      doc: 'Msci Usd Index Futures Options Price Market 164'
     166:
-      id: 'msci_usd_index_futures_and_options_price_3'
-      doc: 'Msci Usd Index Futures And Options Price 3'
+      id: 'msci_usd_index_futures_options_price_market_166'
+      doc: 'Msci Usd Index Futures Options Price Market 166'
     168:
-      id: 'msci_usd_index_futures_and_options_price_4'
-      doc: 'Msci Usd Index Futures And Options Price 4'
+      id: 'msci_usd_index_futures_options_price_market_168'
+      doc: 'Msci Usd Index Futures Options Price Market 168'
     170:
       id: 'msci_sgd_index_futures_price'
       doc: 'Msci Sgd Index Futures Price'
@@ -1238,9 +1254,6 @@ enums:
     0x43:
       id: 'opposite'
       doc: 'Opposite'
-    0x32:
-      id: 'net_value'
-      doc: 'Net Value'
   state_level:
     1:
       id: 'market'
@@ -1260,7 +1273,116 @@ enums:
     99:
       id: 'end_of_business_day'
       doc: 'End Of Business Day'
+  instrument:
+    0:
+      id: 'if_not_available'
+      doc: 'If Not Available'
+    4:
+      id: 'futures'
+      doc: 'Futures'
+    6:
+      id: 'call_american_style'
+      doc: 'Call (American style)'
+    7:
+      id: 'put_american_style'
+      doc: 'Put (American style)'
+    22:
+      id: 'call_european_style'
+      doc: 'Call (European style)'
+    23:
+      id: 'put_european_style'
+      doc: 'Put (European style)'
+    170:
+      id: 'options_straddle'
+      doc: 'Options Straddle'
+    171:
+      id: 'options_strangle'
+      doc: 'Options Strangle'
+    172:
+      id: 'standard_combo_series_for_stock_options_market_som_synthetic_futures'
+      doc: 'Standard Combo Series for Stock Options Market (SOM) – Synthetic Futures'
+    201:
+      id: 'time_spread_level_01'
+      doc: 'Time Spread (level = 01)'
+    202:
+      id: 'time_spread_level_02'
+      doc: 'Time Spread (level = 02)'
+    203:
+      id: 'time_spread_level_03'
+      doc: 'Time Spread (level = 03)'
+    204:
+      id: 'time_spread_level_04'
+      doc: 'Time Spread (level = 04)'
+    205:
+      id: 'time_spread_level_05'
+      doc: 'Time Spread (level = 05)'
+    206:
+      id: 'time_spread_level_06'
+      doc: 'Time Spread (level = 06)'
+    207:
+      id: 'time_spread_level_07'
+      doc: 'Time Spread (level = 07)'
+    208:
+      id: 'time_spread_level_08'
+      doc: 'Time Spread (level = 08)'
+    209:
+      id: 'time_spread_level_09'
+      doc: 'Time Spread (level = 09)'
+    210:
+      id: 'time_spread_level_10'
+      doc: 'Time Spread (level = 10)'
+    211:
+      id: 'time_spread_level_11'
+      doc: 'Time Spread (level = 11)'
+    212:
+      id: 'time_spread_level_12'
+      doc: 'Time Spread (level = 12)'
+    213:
+      id: 'time_spread_level_13'
+      doc: 'Time Spread (level = 13)'
+    214:
+      id: 'time_spread_level_14'
+      doc: 'Time Spread (level = 14)'
+    215:
+      id: 'time_spread_level_15'
+      doc: 'Time Spread (level = 15)'
+    216:
+      id: 'time_spread_level_16'
+      doc: 'Time Spread (level = 16)'
+    217:
+      id: 'time_spread_level_17'
+      doc: 'Time Spread (level = 17)'
+    218:
+      id: 'time_spread_level_18'
+      doc: 'Time Spread (level = 18)'
+    219:
+      id: 'time_spread_level_19'
+      doc: 'Time Spread (level = 19)'
+    220:
+      id: 'time_spread_level_20'
+      doc: 'Time Spread (level = 20)'
+    221:
+      id: 'time_spread_level_21'
+      doc: 'Time Spread (level = 21)'
+    222:
+      id: 'time_spread_level_22'
+      doc: 'Time Spread (level = 22)'
+    223:
+      id: 'time_spread_level_23'
+      doc: 'Time Spread (level = 23)'
+    250:
+      id: 'tailor_made_combination'
+      doc: 'Tailor-made combination'
+    254:
+      id: 'exchange_rate'
+      doc: 'Exchange Rate'
+    255:
+      id: 'payment_currency'
+      doc: 'Payment Currency'
   state:
+    0:
+      id: 'end_of_the_current_state_if_not_available'
+      doc: 'End of the Current State for StateLevel 4; If Not Available for StateLevel 1, 2 or 3.'
     1:
       id: 'open_allocation'
       doc: 'Open Allocation'

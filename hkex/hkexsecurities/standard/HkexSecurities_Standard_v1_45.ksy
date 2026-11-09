@@ -625,8 +625,8 @@ types:
         size: 2
         doc: 'Padding'
       - id: currency_rate
-        type: u4
-        doc: 'Rate, expressed in HKD for one foreign currency unit. 4 decimals implied'
+        type: decimal_u4_4
+        doc: 'Rate, expressed in HKD for one foreign currency unit. 4 decimals implied. Implied decimal with scale 1e-4'
   reference_price_message:
     seq:
       - id: security_code
@@ -846,6 +846,13 @@ types:
     instances:
       real:
         value: mantissa / 1000.0
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
   decimal_s8_3:
     seq:
       - id: mantissa

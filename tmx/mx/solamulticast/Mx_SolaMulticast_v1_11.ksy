@@ -1707,7 +1707,7 @@ types:
         type:
           switch-on: peek_bid_price_quote_opening
           cases:
-            '"OUV"': bid_price_quote_opening_pair
+            '"000OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
             '"A"': bid_price_quote_numeric_negative_whole_pair
             '"B"': bid_price_quote_numeric_negative_ten_pair
@@ -1726,7 +1726,7 @@ types:
         type:
           switch-on: peek_ask_price_quote_opening
           cases:
-            '"OUV"': ask_price_quote_opening_pair
+            '"000OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
             '"A"': ask_price_quote_numeric_negative_whole_pair
             '"B"': ask_price_quote_numeric_negative_ten_pair
@@ -2007,7 +2007,7 @@ types:
         type:
           switch-on: peek_bid_price_quote_opening
           cases:
-            '"OUV"': bid_price_quote_opening_pair
+            '"000OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
             '"A"': bid_price_quote_numeric_negative_whole_pair
             '"B"': bid_price_quote_numeric_negative_ten_pair
@@ -2026,7 +2026,7 @@ types:
         type:
           switch-on: peek_ask_price_quote_opening
           cases:
-            '"OUV"': ask_price_quote_opening_pair
+            '"000OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
             '"A"': ask_price_quote_numeric_negative_whole_pair
             '"B"': ask_price_quote_numeric_negative_ten_pair
@@ -2093,7 +2093,7 @@ types:
         type:
           switch-on: peek_bid_price_quote_opening
           cases:
-            '"OUV"': bid_price_quote_futures_quote_message_opening_pair
+            '"000OUV"': bid_price_quote_futures_quote_message_opening_pair
             '"0"': bid_price_quote_futures_quote_message_opening_pair
             '"A"': bid_price_quote_numeric_bid_price_quote_futures_quote_message_numeric_pair_negative_whole_pair
             '"B"': bid_price_quote_numeric_bid_price_quote_futures_quote_message_numeric_pair_negative_ten_pair
@@ -2112,7 +2112,7 @@ types:
         type:
           switch-on: peek_ask_price_quote_opening
           cases:
-            '"OUV"': ask_price_quote_futures_quote_message_opening_pair
+            '"000OUV"': ask_price_quote_futures_quote_message_opening_pair
             '"0"': ask_price_quote_futures_quote_message_opening_pair
             '"A"': ask_price_quote_numeric_ask_price_quote_futures_quote_message_numeric_pair_negative_whole_pair
             '"B"': ask_price_quote_numeric_ask_price_quote_futures_quote_message_numeric_pair_negative_ten_pair
@@ -2360,7 +2360,7 @@ types:
         type:
           switch-on: peek_bid_price_quote_opening
           cases:
-            '"OUV"': bid_price_quote_strategy_quote_message_opening_pair
+            '"000OUV"': bid_price_quote_strategy_quote_message_opening_pair
             '"0"': bid_price_quote_strategy_quote_message_opening_pair
             '"A"': bid_price_quote_numeric_bid_price_quote_strategy_quote_message_numeric_pair_negative_whole_pair
             '"B"': bid_price_quote_numeric_bid_price_quote_strategy_quote_message_numeric_pair_negative_ten_pair
@@ -2383,7 +2383,7 @@ types:
         type:
           switch-on: peek_ask_price_quote_opening
           cases:
-            '"OUV"': ask_price_quote_strategy_quote_message_opening_pair
+            '"000OUV"': ask_price_quote_strategy_quote_message_opening_pair
             '"0"': ask_price_quote_strategy_quote_message_opening_pair
             '"A"': ask_price_quote_numeric_ask_price_quote_strategy_quote_message_numeric_pair_negative_whole_pair
             '"B"': ask_price_quote_numeric_ask_price_quote_strategy_quote_message_numeric_pair_negative_ten_pair
@@ -2657,7 +2657,7 @@ types:
         type:
           switch-on: peek_bid_price_quote_opening
           cases:
-            '"OUV"': bid_price_quote_futures_quote_message_opening_pair
+            '"000OUV"': bid_price_quote_futures_quote_message_opening_pair
             '"0"': bid_price_quote_futures_quote_message_opening_pair
             '"A"': bid_price_quote_numeric_bid_price_quote_futures_quote_message_numeric_pair_negative_whole_pair
             '"B"': bid_price_quote_numeric_bid_price_quote_futures_quote_message_numeric_pair_negative_ten_pair
@@ -2676,7 +2676,7 @@ types:
         type:
           switch-on: peek_ask_price_quote_opening
           cases:
-            '"OUV"': ask_price_quote_strategy_quote_message_opening_pair
+            '"000OUV"': ask_price_quote_strategy_quote_message_opening_pair
             '"0"': ask_price_quote_strategy_quote_message_opening_pair
             '"A"': ask_price_quote_numeric_ask_price_quote_strategy_quote_message_numeric_pair_negative_whole_pair
             '"B"': ask_price_quote_numeric_ask_price_quote_strategy_quote_message_numeric_pair_negative_ten_pair
@@ -2780,7 +2780,7 @@ types:
         type:
           switch-on: peek_bid_price_quote_opening
           cases:
-            '"OUV"': bid_price_quote_opening_pair
+            '"000OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
             '"A"': bid_price_quote_numeric_negative_whole_pair
             '"B"': bid_price_quote_numeric_negative_ten_pair
@@ -2804,7 +2804,7 @@ types:
         type:
           switch-on: peek_ask_price_quote_opening
           cases:
-            '"OUV"': ask_price_quote_opening_pair
+            '"000OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
             '"A"': ask_price_quote_numeric_negative_whole_pair
             '"B"': ask_price_quote_numeric_negative_ten_pair
@@ -2906,7 +2906,7 @@ types:
         type:
           switch-on: peek_bid_price_quote_opening
           cases:
-            '"OUV"': bid_price_quote_opening_pair
+            '"000OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
             '"A"': bid_price_quote_numeric_negative_whole_pair
             '"B"': bid_price_quote_numeric_negative_ten_pair
@@ -2930,7 +2930,7 @@ types:
         type:
           switch-on: peek_ask_price_quote_opening
           cases:
-            '"OUV"': ask_price_quote_opening_pair
+            '"000OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
             '"A"': ask_price_quote_numeric_negative_whole_pair
             '"B"': ask_price_quote_numeric_negative_ten_pair
@@ -3011,7 +3011,7 @@ types:
         type:
           switch-on: peek_bid_price_quote_opening
           cases:
-            '"OUV"': bid_price_quote_futures_market_depth_trading_instrument_opening_pair
+            '"000OUV"': bid_price_quote_futures_market_depth_trading_instrument_opening_pair
             '"0"': bid_price_quote_futures_market_depth_trading_instrument_opening_pair
             '"A"': bid_price_quote_numeric_bid_price_quote_futures_market_depth_trading_instrument_numeric_pair_negative_whole_pair
             '"B"': bid_price_quote_numeric_bid_price_quote_futures_market_depth_trading_instrument_numeric_pair_negative_ten_pair
@@ -3035,7 +3035,7 @@ types:
         type:
           switch-on: peek_ask_price_futures_depth_opening
           cases:
-            '"OUV"': ask_price_futures_depth_futures_market_depth_trading_instrument_opening_pair
+            '"000OUV"': ask_price_futures_depth_futures_market_depth_trading_instrument_opening_pair
             '"0"': ask_price_futures_depth_futures_market_depth_trading_instrument_opening_pair
             '"A"': ask_price_futures_depth_numeric_negative_whole_pair
             '"B"': ask_price_futures_depth_numeric_negative_ten_pair
@@ -3304,7 +3304,7 @@ types:
         type:
           switch-on: peek_bid_price_quote_opening
           cases:
-            '"OUV"': bid_price_quote_opening_pair
+            '"000OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
             '"A"': bid_price_quote_numeric_negative_whole_pair
             '"B"': bid_price_quote_numeric_negative_ten_pair
@@ -3332,7 +3332,7 @@ types:
         type:
           switch-on: peek_ask_price_quote_opening
           cases:
-            '"OUV"': ask_price_quote_opening_pair
+            '"000OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
             '"A"': ask_price_quote_numeric_negative_whole_pair
             '"B"': ask_price_quote_numeric_negative_ten_pair
@@ -3434,7 +3434,7 @@ types:
         type:
           switch-on: peek_bid_price_quote_opening
           cases:
-            '"OUV"': bid_price_quote_opening_pair
+            '"000OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
             '"A"': bid_price_quote_numeric_negative_whole_pair
             '"B"': bid_price_quote_numeric_negative_ten_pair
@@ -3458,7 +3458,7 @@ types:
         type:
           switch-on: peek_ask_price_quote_opening
           cases:
-            '"OUV"': ask_price_quote_opening_pair
+            '"000OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
             '"A"': ask_price_quote_numeric_negative_whole_pair
             '"B"': ask_price_quote_numeric_negative_ten_pair

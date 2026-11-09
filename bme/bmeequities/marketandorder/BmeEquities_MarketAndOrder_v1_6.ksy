@@ -7,7 +7,7 @@
 #   Encoding: BMEGate Binary Interface
 #   Version: 1.6
 #   Date: 06/13/2025
-#   Specification: BMEGate binary protocol B1.6.pdf
+#   Specification: MEFF BMEGate Binary Protocol (B1.6).pdf
 #
 # Script:
 #   Generator: 1.0.0.0

@@ -121,11 +121,11 @@ types:
         type:
           switch-on: administrative_message_type
           cases:
-            'administrative_message_type::start_of_end_of_day_message': start_of_end_of_day_message
-            'administrative_message_type::end_of_end_of_day_message': end_of_end_of_day_message
-            'administrative_message_type::start_of_start_of_day_message': start_of_start_of_day_message
-            'administrative_message_type::end_of_start_of_day_message': end_of_start_of_day_message
-  start_of_end_of_day_message:
+            'administrative_message_type::start_of_end_of_day_summary_message': start_of_end_of_day_summary_message
+            'administrative_message_type::end_of_end_of_day_summary_message': end_of_end_of_day_summary_message
+            'administrative_message_type::start_of_start_of_day_summary_message': start_of_start_of_day_summary_message
+            'administrative_message_type::end_of_start_of_day_summary_message': end_of_start_of_day_summary_message
+  start_of_end_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
@@ -151,7 +151,7 @@ types:
       - id: nanoseconds
         type: nanosecond_offset
         doc: 'Nanosecond portion of the time. Nanoseconds since Second epoch'
-  end_of_end_of_day_message:
+  end_of_end_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
@@ -169,7 +169,7 @@ types:
       - id: participant_reference_number
         type: s8
         doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
-  start_of_start_of_day_message:
+  start_of_start_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
@@ -187,7 +187,7 @@ types:
       - id: participant_reference_number
         type: s8
         doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
-  end_of_start_of_day_message:
+  end_of_start_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
@@ -2382,17 +2382,17 @@ enums:
       doc: 'Trade Messages'
   administrative_message_type:
     0x41:
-      id: 'start_of_end_of_day_message'
-      doc: 'Start Of End Of Day Message'
+      id: 'start_of_end_of_day_summary_message'
+      doc: 'Start Of End Of Day Summary Message'
     0x42:
-      id: 'end_of_end_of_day_message'
-      doc: 'End Of End Of Day Message'
+      id: 'end_of_end_of_day_summary_message'
+      doc: 'End Of End Of Day Summary Message'
     0x43:
-      id: 'start_of_start_of_day_message'
-      doc: 'Start Of Start Of Day Message'
+      id: 'start_of_start_of_day_summary_message'
+      doc: 'Start Of Start Of Day Summary Message'
     0x44:
-      id: 'end_of_start_of_day_message'
-      doc: 'End Of Start Of Day Message'
+      id: 'end_of_start_of_day_summary_message'
+      doc: 'End Of Start Of Day Summary Message'
   participant_id:
     0x41:
       id: 'nyse_american'

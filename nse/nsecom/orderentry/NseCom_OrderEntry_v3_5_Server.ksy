@@ -202,8 +202,8 @@ types:
         type: s2
         doc: 'VolumeFreezePercent'
       - id: snap_quote_time
-        type: second_timestamp
-        doc: 'This field contains the snap quote time. Seconds since Dos epoch'
+        type: s2
+        doc: 'This field contains the snap quote time'
       - id: reserved_2
         size: 2
         doc: 'Reserved field'
@@ -329,8 +329,8 @@ types:
         type: s2
         doc: 'VolumeFreezePercent'
       - id: snap_quote_time
-        type: second_timestamp
-        doc: 'This field contains the snap quote time. Seconds since Dos epoch'
+        type: s2
+        doc: 'This field contains the snap quote time'
       - id: reserved_2
         size: 2
         doc: 'Reserved field'
@@ -8493,17 +8493,6 @@ types:
     instances:
       unix_seconds:
         value: time + 315532800
-      hour:
-        value: time / 3600 % 24
-      minute:
-        value: time / 60 % 60
-      second:
-        value: time % 60
-  second_timestamp:
-    seq:
-      - id: time
-        type: s2
-    instances:
       hour:
         value: time / 3600 % 24
       minute:

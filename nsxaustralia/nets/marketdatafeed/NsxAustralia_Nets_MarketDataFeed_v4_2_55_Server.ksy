@@ -134,7 +134,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: group
         type: str
         size: 20
@@ -167,7 +167,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: tick_size_table_id
         type: u4
         doc: 'Price Tick Size Table identifier, to be looked up from Orderbook Directory [R] messages'
@@ -181,7 +181,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: tick_size_table_id
         type: u4
         doc: 'Price Tick Size Table identifier, to be looked up from Orderbook Directory [R] messages'
@@ -195,7 +195,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: orderbook
         type: u4
         doc: 'Identifies the Orderbook for which this event applies. Set to 0 if not at Orderbook level'
@@ -279,7 +279,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: orderbook
         type: u4
         doc: 'Identifies the Orderbook for which this event applies. Set to 0 if not at Orderbook level'
@@ -295,7 +295,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: orderbook
         type: u4
         doc: 'Identifies the Orderbook for which this event applies. Set to 0 if not at Orderbook level'
@@ -314,7 +314,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: firm_id
         type: u4
         doc: 'Unique firm identifier'
@@ -328,7 +328,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: order_number
         type: u8
         doc: 'The day unique reference number assigned to the new order'
@@ -352,7 +352,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: order_number
         type: u8
         doc: 'The day unique reference number assigned to the new order'
@@ -373,7 +373,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: order_number
         type: u8
         doc: 'The day unique reference number assigned to the new order'
@@ -394,7 +394,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: match_number
         type: u8
         doc: 'The day unique match identifier'
@@ -406,7 +406,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: order_number
         type: u8
         doc: 'The day unique reference number assigned to the new order'
@@ -414,7 +414,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: original_order_number
         type: u8
         doc: 'The original order number of the order being replaced'
@@ -431,7 +431,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: theoretical_opening_quantity
         type: u8
         doc: 'Total quantity eligible for matching at current theoretical opening price'
@@ -461,7 +461,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: executed_quantity
         type: u8
         doc: 'The quantity executed'
@@ -496,7 +496,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: orderbook
         type: u4
         doc: 'Identifies the Orderbook for which this event applies. Set to 0 if not at Orderbook level'
@@ -528,7 +528,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: index_orderbook
         type: u4
         doc: 'Unique orderbook identifier for the index'
@@ -542,7 +542,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Nanosecond epoch'
+        doc: 'Nanoseconds since last ITCH Timestamp "T" message. Nanoseconds since Field epoch'
       - id: index_orderbook
         type: u4
         doc: 'Unique orderbook identifier for the index'

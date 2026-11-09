@@ -60,6 +60,7 @@ types:
         doc: 'Number of messages included in the packet'
       - id: compression_mode
         type: u1
+        enum: compression_mode
         doc: 'Indicates if compression is applied on messages in the packet'
       - id: seq_num
         type: u4
@@ -138,8 +139,8 @@ types:
         type: u4
         doc: 'Aggregated implied quantity at this Price Level'
       - id: price
-        type: s8
-        doc: 'Traded Price. Decimal places determined from Class Definition field DecimalInPrice. Null means N/A'
+        type: s8_nullable
+        doc: 'Traded Price. Decimal places determined from Class Definition field DecimalInPrice. Null means N/A. Nullable, No Value = -9223372036854775808'
       - id: number_of_orders
         type: u2
         doc: 'Number of orders'
@@ -163,8 +164,8 @@ types:
         type: u4
         doc: 'Uniquely identifies a series'
       - id: calculated_opening_price
-        type: s8
-        doc: 'Calculated Opening Price'
+        type: s8_nullable
+        doc: 'Calculated Opening Price. Nullable, No Value = -9223372036854775808'
       - id: filler_4
         size: 4
         doc: 'Padding'
@@ -188,8 +189,8 @@ types:
         type: u4
         doc: 'Uniquely identifies a series'
       - id: implied_volatility
-        type: u4
-        doc: 'Implied Volatility'
+        type: decimal_u4_4
+        doc: 'Implied Volatility. 4 implied decimal places. Implied decimal with scale 1e-4'
   market_alert_message:
     seq:
       - id: alert_id
@@ -235,14 +236,14 @@ types:
         type: u4
         doc: 'Uniquely identifies a series'
       - id: settlement_price
-        type: s8
-        doc: '‘DecimalInPremium’'
+        type: s8_nullable
+        doc: '‘DecimalInPrice’. Nullable, No Value = -9223372036854775808'
       - id: gross_oi
-        type: s4
-        doc: 'If DayIndicator = 1,'
+        type: s4_nullable
+        doc: 'If DayIndicator = 1,. Nullable, No Value = -2147483648'
       - id: net_oi
-        type: s4
-        doc: 'If DayIndicator =1,'
+        type: s4_nullable
+        doc: 'If DayIndicator =1,. Nullable, No Value = -2147483648'
   quote_request:
     seq:
       - id: orderbook_id
@@ -335,9 +336,11 @@ types:
         doc: 'Exchange Identifier'
       - id: market
         type: u2
+        enum: market
         doc: 'Market Code'
       - id: instrument_group
         type: u2
+        enum: instrument_group
         doc: 'Instrument Group'
       - id: modifier
         type: u1
@@ -408,9 +411,11 @@ types:
         doc: 'Exchange Identifier'
       - id: market
         type: u2
+        enum: market
         doc: 'Market Code'
       - id: instrument_group
         type: u2
+        enum: instrument_group
         doc: 'Instrument Group'
       - id: modifier
         type: u1
@@ -447,13 +452,12 @@ types:
         type: u1
         doc: 'Number of implicit decimals in Price fields and Tick Size'
       - id: financial_product
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: financial_product
         doc: 'Financial Product'
       - id: put_or_call
         type: u1
+        enum: put_or_call
         doc: 'Identifies whether the series is a put or call type'
       - id: contract_size
         type: u4
@@ -515,9 +519,11 @@ types:
         doc: 'A short-cut key of the Instrument Class'
       - id: market
         type: u2
+        enum: market
         doc: 'Market Code'
       - id: instrument_group
         type: u2
+        enum: instrument_group
         doc: 'Instrument Group'
       - id: commodity_code
         type: u4
@@ -551,9 +557,11 @@ types:
         doc: 'Next planned time'
       - id: trading_session
         type: u1
+        enum: trading_session
         doc: 'Business Trading State'
       - id: state
         type: u2
+        enum: state
         doc: 'Numeric identification of the State Type'
       - id: filler_2
         size: 2
@@ -595,11 +603,11 @@ types:
         type: u4
         doc: 'Uniquely identifies a series'
       - id: cooling_off_start_time
-        type: u8
-        doc: 'Time when the cooling off period starts (UTC timestamp)'
+        type: nanosecond_timestamp
+        doc: 'Time when the cooling off period starts (UTC timestamp). Nanoseconds since Unix epoch'
       - id: cooling_off_end_time
-        type: u8
-        doc: 'Time when the cooling off period ends (UTC timestamp)'
+        type: nanosecond_timestamp
+        doc: 'Time when the cooling off period ends (UTC timestamp). Nanoseconds since Unix epoch'
       - id: vcm_reference_price
         type: s8
         doc: 'Reference Price'
@@ -619,9 +627,11 @@ types:
         doc: 'A short-cut key of the Instrument Class'
       - id: market
         type: u2
+        enum: market
         doc: 'Market Code'
       - id: instrument_group
         type: u2
+        enum: instrument_group
         doc: 'Instrument Group'
       - id: modifier
         type: u1
@@ -645,8 +655,8 @@ types:
         type: u8
         doc: 'Order ID. 0 if not available'
       - id: price
-        type: s8
-        doc: 'Traded Price. Decimal places determined from Class Definition field DecimalInPrice. Null means N/A'
+        type: s8_nullable
+        doc: 'Traded Price. Decimal places determined from Class Definition field DecimalInPrice. Null means N/A. Nullable, No Value = -9223372036854775808'
       - id: trade_id
         type: u8
         doc: 'Unique trade identification'
@@ -687,8 +697,8 @@ types:
         type: u8
         doc: 'Unique trade identification'
       - id: price
-        type: s8
-        doc: 'Traded Price. Decimal places determined from Class Definition field DecimalInPrice. Null means N/A'
+        type: s8_nullable
+        doc: 'Traded Price. Decimal places determined from Class Definition field DecimalInPrice. Null means N/A. Nullable, No Value = -9223372036854775808'
       - id: quantity
         type: u4
         doc: 'The quantity being matched in this execution'
@@ -708,21 +718,21 @@ types:
         type: u4
         doc: 'Uniquely identifies a series'
       - id: last_price
-        type: s8
-        doc: 'Last Traded Price'
+        type: s8_nullable
+        doc: 'Last Traded Price. Nullable, No Value = -9223372036854775808'
       - id: session
         type: u1
         enum: session
         doc: 'Session indicator used to distinguish between the T and T+1 sessions'
       - id: open_price
-        type: s8
-        doc: 'Price of the first committed'
+        type: s8_nullable
+        doc: 'Price of the first committed. Nullable, No Value = -9223372036854775808'
       - id: high_price
-        type: s8
-        doc: 'Highest price of normal trades in'
+        type: s8_nullable
+        doc: 'Highest price of normal trades in. Nullable, No Value = -9223372036854775808'
       - id: low_price
-        type: s8
-        doc: 'Lowest price of normal trades in'
+        type: s8_nullable
+        doc: 'Lowest price of normal trades in. Nullable, No Value = -9223372036854775808'
       - id: trade_report_volume
         type: u8
         doc: 'Total volume of reported trades for the respective Session'
@@ -745,8 +755,36 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == -2147483648
 
 enums:
+  compression_mode:
+    0:
+      id: 'no_compression_applied'
+      doc: 'No compression applied on messages in the packet'
+    1:
+      id: 'compression_applied'
+      doc: 'Compression applied on messages in the packet'
   msg_type:
     353:
       id: 'aggregate_order_book_update_message'
@@ -921,6 +959,236 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
+  market:
+    1:
+      id: 'cesc_index_futures_options'
+      doc: 'CESC Index Futures / Options'
+    2:
+      id: 'stock_futures_market_2'
+      doc: 'Stock Futures'
+    16:
+      id: 'mini_hang_seng_index_futures_options'
+      doc: 'Mini Hang Seng Index Futures / Options'
+    18:
+      id: 'weekly_stock_options_market_18'
+      doc: 'Weekly Stock Options'
+    20:
+      id: 'stock_options_market_20'
+      doc: 'Stock Options'
+    24:
+      id: 'hibor'
+      doc: 'HIBOR'
+    27:
+      id: 'dividend_futures'
+      doc: 'Dividend Futures'
+    32:
+      id: 'physically_settled_options_on_futures_contracts_on_hang_seng_index_futures'
+      doc: 'Physically Settled Options on Futures Contracts on Hang Seng Index Futures'
+    34:
+      id: 'hang_seng_index_futures_options'
+      doc: 'Hang Seng Index Futures / Options'
+    35:
+      id: 'flexible_hang_seng_index_options'
+      doc: 'Flexible Hang Seng Index Options'
+    37:
+      id: 'flexible_hang_seng_china_enterprises_index_options'
+      doc: 'Flexible Hang Seng China Enterprises Index Options'
+    38:
+      id: 'hang_seng_china_enterprises_index_futures_options'
+      doc: 'Hang Seng China Enterprises Index Futures / Options'
+    39:
+      id: 'weekly_hang_seng_index_options'
+      doc: 'Weekly Hang Seng Index Options'
+    40:
+      id: 'physically_settled_options_on_futures_contracts_on_hang_seng_china_enterprises_index_futures'
+      doc: 'Physically Settled Options on Futures Contracts on Hang Seng China Enterprises Index Futures'
+    51:
+      id: 'hsi_volatility_index_futures'
+      doc: 'HSI Volatility Index Futures'
+    60:
+      id: 'sector_index_futures'
+      doc: 'Sector Index Futures'
+    70:
+      id: 'renminbi_currency_futures_options'
+      doc: 'Renminbi Currency Futures / Options'
+    80:
+      id: 'hang_seng_biotech_index_futures'
+      doc: 'Hang Seng Biotech Index Futures'
+    83:
+      id: 'physically_settled_options_on_futures_contracts_on_hang_seng_tech_index_futures_options'
+      doc: 'Physically Settled Options on Futures Contracts on Hang Seng TECH Index Futures Options'
+    84:
+      id: 'weekly_hang_seng_tech_index_options'
+      doc: 'Weekly Hang Seng TECH Index Options'
+    86:
+      id: 'hang_seng_tech_index_futures_options_hang_seng_index_hang_seng_china_enterprises_index_gross_net_total_return_index_futures'
+      doc: 'Hang Seng TECH Index Futures & Options & Hang Seng Index / Hang Seng China Enterprises Index (Gross / Net Total Return Index) Futures'
+    87:
+      id: 'weekly_hang_seng_china_enterprises_index_options'
+      doc: 'Weekly Hang Seng China Enterprises Index Options'
+    108:
+      id: 'msci_ax_j_futures_ntr'
+      doc: 'MSCI AxJ Futures (NTR)'
+    111:
+      id: 'physically_settled_usd_silver_futures'
+      doc: 'Physically settled USD Silver Futures'
+    112:
+      id: 'physically_settled_cnh_silver_futures'
+      doc: 'Physically settled CNH Silver Futures'
+    115:
+      id: 'physically_settled_cnh_gold_futures'
+      doc: 'Physically Settled CNH Gold Futures'
+    116:
+      id: 'physically_settled_usd_gold_futures'
+      doc: 'Physically Settled USD Gold Futures'
+    117:
+      id: 'china_5_year_government_bond_futures'
+      doc: '5-Year China Government Bond Futures'
+    118:
+      id: 'usd_base_and_ferrous_futures'
+      doc: 'USD Base and Ferrous Futures'
+    120:
+      id: 'cnh_london_metal_mini_futures'
+      doc: 'CNH London Metal Mini Futures'
+    122:
+      id: 'cash_settled_rmb_currency_futures'
+      doc: 'Cash-Settled RMB Currency Futures'
+    125:
+      id: 'cash_settled_cnhusd_futures'
+      doc: 'Cash-Settled CNHUSD Futures'
+    141:
+      id: 'stock_futures_market_141'
+      doc: 'Stock Futures'
+    143:
+      id: 'stock_options_market_143'
+      doc: 'Stock Options'
+    145:
+      id: 'weekly_stock_options_market_145'
+      doc: 'Weekly Stock Options'
+    153:
+      id: 'msci_china_a_50_connect_index_futures'
+      doc: 'MSCI China A 50 Connect Index Futures'
+    161:
+      id: 'msci_usd_index_futures_ntr'
+      doc: 'MSCI USD Index Futures (NTR)'
+    163:
+      id: 'msci_usd_index_futures_options_price_market_163'
+      doc: 'MSCI USD Index Futures & Options (Price)'
+    164:
+      id: 'msci_usd_index_futures_options_price_market_164'
+      doc: 'MSCI USD Index Futures & Options (Price)'
+    166:
+      id: 'msci_usd_index_futures_options_price_market_166'
+      doc: 'MSCI USD Index Futures & Options (Price)'
+    168:
+      id: 'msci_usd_index_futures_options_price_market_168'
+      doc: 'MSCI USD Index Futures & Options (Price)'
+    170:
+      id: 'msci_sgd_index_futures_price'
+      doc: 'MSCI SGD Index Futures (Price)'
+  instrument_group:
+    4:
+      id: 'futures'
+      doc: 'Futures'
+    6:
+      id: 'call_american_style'
+      doc: 'Call (American style)'
+    7:
+      id: 'put_american_style'
+      doc: 'Put (American style)'
+    22:
+      id: 'call_european_style'
+      doc: 'Call (European style)'
+    23:
+      id: 'put_european_style'
+      doc: 'Put (European style)'
+    170:
+      id: 'options_straddle'
+      doc: 'Options Straddle'
+    171:
+      id: 'options_strangle'
+      doc: 'Options Strangle'
+    172:
+      id: 'standard_combination_instrument_for_stock_options_market_som_synthetic_futures'
+      doc: 'Standard Combination Instrument for Stock Options Market (SOM) – Synthetic Futures'
+    201:
+      id: 'time_spread_level_01'
+      doc: 'Time Spread (level = 01)'
+    202:
+      id: 'time_spread_level_02'
+      doc: 'Time Spread (level = 02)'
+    203:
+      id: 'time_spread_level_03'
+      doc: 'Time Spread (level = 03)'
+    204:
+      id: 'time_spread_level_04'
+      doc: 'Time Spread (level = 04)'
+    205:
+      id: 'time_spread_level_05'
+      doc: 'Time Spread (level = 05)'
+    206:
+      id: 'time_spread_level_06'
+      doc: 'Time Spread (level = 06)'
+    207:
+      id: 'time_spread_level_07'
+      doc: 'Time Spread (level = 07)'
+    208:
+      id: 'time_spread_level_08'
+      doc: 'Time Spread (level = 08)'
+    209:
+      id: 'time_spread_level_09'
+      doc: 'Time Spread (level = 09)'
+    210:
+      id: 'time_spread_level_10'
+      doc: 'Time Spread (level = 10)'
+    211:
+      id: 'time_spread_level_11'
+      doc: 'Time Spread (level = 11)'
+    212:
+      id: 'time_spread_level_12'
+      doc: 'Time Spread (level = 12)'
+    213:
+      id: 'time_spread_level_13'
+      doc: 'Time Spread (level = 13)'
+    214:
+      id: 'time_spread_level_14'
+      doc: 'Time Spread (level = 14)'
+    215:
+      id: 'time_spread_level_15'
+      doc: 'Time Spread (level = 15)'
+    216:
+      id: 'time_spread_level_16'
+      doc: 'Time Spread (level = 16)'
+    217:
+      id: 'time_spread_level_17'
+      doc: 'Time Spread (level = 17)'
+    218:
+      id: 'time_spread_level_18'
+      doc: 'Time Spread (level = 18)'
+    219:
+      id: 'time_spread_level_19'
+      doc: 'Time Spread (level = 19)'
+    220:
+      id: 'time_spread_level_20'
+      doc: 'Time Spread (level = 20)'
+    221:
+      id: 'time_spread_level_21'
+      doc: 'Time Spread (level = 21)'
+    222:
+      id: 'time_spread_level_22'
+      doc: 'Time Spread (level = 22)'
+    223:
+      id: 'time_spread_level_23'
+      doc: 'Time Spread (level = 23)'
+    250:
+      id: 'tailor_made_combination'
+      doc: 'Tailor-made combination'
+    254:
+      id: 'exchange_rate'
+      doc: 'Exchange Rate'
+    255:
+      id: 'payment_currency'
+      doc: 'Payment Currency'
   tradable:
     1:
       id: 'yes_field'
@@ -938,6 +1206,44 @@ enums:
     4:
       id: 'delisted'
       doc: 'Delisted'
+  financial_product:
+    0x4f:
+      id: 'options'
+      doc: 'Options'
+    0x46:
+      id: 'forward'
+      doc: 'Forward'
+    0x55:
+      id: 'futures'
+      doc: 'Futures'
+    0x41:
+      id: 'fra'
+      doc: 'Fra'
+    0x43:
+      id: 'cash'
+      doc: 'Cash'
+    0x50:
+      id: 'payment'
+      doc: 'Payment'
+    0x45:
+      id: 'exchange_rate'
+      doc: 'Exchange Rate'
+    0x53:
+      id: 'interest_rate_swap'
+      doc: 'Interest Rate Swap'
+    0x20:
+      id: 'not_available'
+      doc: 'Not Available'
+  put_or_call:
+    0:
+      id: 'undefined'
+      doc: 'Undefined'
+    1:
+      id: 'call'
+      doc: 'Call'
+    2:
+      id: 'put'
+      doc: 'Put'
   vcm_flag:
     0:
       id: 'not_applicable'
@@ -968,6 +1274,71 @@ enums:
     0x63:
       id: 'combo_class'
       doc: 'Combo Class'
+  trading_session:
+    1:
+      id: 'day'
+      doc: 'Day'
+    2:
+      id: 'morning'
+      doc: 'Morning'
+    3:
+      id: 'afternoon'
+      doc: 'Afternoon'
+    4:
+      id: 'after_hours'
+      doc: 'After Hours'
+  state:
+    1:
+      id: 'sod'
+      doc: 'START OF DAY'
+    2:
+      id: 'intervention'
+      doc: 'MARKET PAUSE'
+    3:
+      id: 'dayend'
+      doc: 'END OF DAY'
+    11:
+      id: 'aht_pre_mkt_act'
+      doc: 'AHT PRE-MARKET ACTIVITIES'
+    12:
+      id: 'pre_mkt_act'
+      doc: 'PRE-MARKET ACTIVITIES'
+    13:
+      id: 'preopen'
+      doc: 'PREOPEN SESSION'
+    14:
+      id: 'preopenalloc'
+      doc: 'PREOPEN ALLOCATION SESSION'
+    15:
+      id: 'openalloc'
+      doc: 'OPEN ALLOCATION SESSION'
+    16:
+      id: 'uncross'
+      doc: 'ORDER MATCHING FOR PRE-MARKET OPENING PERIOD'
+    17:
+      id: 'blk_trade_only'
+      doc: 'BLOCK TRADE ONLY'
+    18:
+      id: 'open'
+      doc: 'MARKET OPEN'
+    19:
+      id: 'open_dpl_vcm_am'
+      doc: 'MARKET OPEN'
+    20:
+      id: 'open_dpl_vcm'
+      doc: 'MARKET OPEN'
+    21:
+      id: 'aht_open'
+      doc: 'AHT MARKET OPEN'
+    22:
+      id: 'aht_open_pl'
+      doc: 'AHT MARKET OPEN'
+    23:
+      id: 'close'
+      doc: 'MARKET CLOSED'
+    24:
+      id: 'pause'
+      doc: 'MARKET PAUSE'
   suspension_indicator:
     1:
       id: 'not_suspended'

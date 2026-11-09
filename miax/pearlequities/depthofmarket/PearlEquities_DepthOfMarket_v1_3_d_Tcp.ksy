@@ -63,6 +63,7 @@ types:
             'esesm_packet_type::retransmission_request': retransmission_request
             'esesm_packet_type::logout_request': logout_request
             'esesm_packet_type::goodbye_packet': goodbye_packet
+            'esesm_packet_type::trading_session_update': trading_session_update
             'esesm_packet_type::test_packet': test_packet
   esesm_packet_header:
     seq:
@@ -134,24 +135,41 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'issued by MIAX Futures Exchange during initial setup'
+        doc: 'ID issued by MIAX during initial setup'
       - id: application_protocol
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
         doc: 'Miax Application Protocol'
-      - id: requested_trading_session_id
-        type: u1
-        doc: 'Specifies the session the client would like to log into, or zero to log into the currently active session'
-      - id: requested_sequence_number
-        type: u8
-        doc: 'Specifies client requested sequence number'
-  login_response:
-    seq:
-      - id: number_of_matching_engines
+      - id: num_requested_matching_engine
         type: u1
         doc: 'Count of all Matching Engines for the exchange'
+      - id: requested_matching_engine
+        type: requested_matching_engine
+        repeat: expr
+        repeat-expr: num_requested_matching_engine
+        doc: 'The trading session and sequence number the client asks of one matching engine, repeated once for each the login request counts'
+  requested_matching_engine:
+    seq:
+      - id: requested_trading_session_id
+        type: u1
+        doc: 'Specifies the Matching Engine trading session the client would like to log into, or zero to log into the currently active trading session'
+      - id: requested_sequence_number
+        type: u8
+        doc: 'Specifies client requested sequence number for the Matching Engine'
+  login_response:
+    seq:
+      - id: num_login_matching_engine
+        type: u1
+        doc: 'Count of all Matching Engines for the exchange'
+      - id: login_matching_engine
+        type: login_matching_engine
+        repeat: expr
+        repeat-expr: num_login_matching_engine
+        doc: 'The login status, trading session and highest sequence number of one matching engine, repeated once for each the login response counts'
+  login_matching_engine:
+    seq:
       - id: login_status
         type: u1
         enum: login_status
@@ -161,12 +179,12 @@ types:
         doc: 'The current trading session ID of the corresponding Matching Engine'
       - id: highest_sequence_number
         type: u8
-        doc: 'the highest sequence number that the server currently has for the client'
+        doc: 'The highest sequence number the server currently has for the client from the Matching Engine'
   synchronization_complete:
     seq:
-      - id: number_of_matching_engines
+      - id: matching_engine_id
         type: u1
-        doc: 'Count of all Matching Engines for the exchange'
+        doc: 'Matching Engine that originated the packet'
   retransmission_request:
     seq:
       - id: start_sequence_number
@@ -188,15 +206,23 @@ types:
         doc: 'Free form human readable text'
   goodbye_packet:
     seq:
-      - id: logout_reason
+      - id: goodbye_reason
         type: u1
-        enum: logout_reason
-        doc: 'Logout Request Reason'
+        enum: goodbye_reason
+        doc: 'GoodBye Packet Reason'
       - id: logout_text
         type: str
         size: _parent.esesm_packet_header.esesm_packet_length - 2
         encoding: ASCII
         doc: 'Free form human readable text'
+  trading_session_update:
+    seq:
+      - id: matching_engine_id
+        type: u1
+        doc: 'Matching Engine that originated the packet'
+      - id: trading_session_id
+        type: u1
+        doc: 'The current trading session ID of the corresponding Matching Engine'
   test_packet:
     seq:
       - id: test_text
@@ -401,7 +427,7 @@ enums:
       doc: 'ESesM Logout Request'
     0x47:
       id: 'goodbye_packet'
-      doc: 'ESesM Logout Request'
+      doc: 'ESesM GoodBye Packet'
     0x75:
       id: 'trading_session_update'
       doc: 'ESesM Trading Session Update'
@@ -444,31 +470,44 @@ enums:
     0x53:
       id: 'invalid_trading_session_requested'
       doc: 'Invalid trading session requested for the Matching Engine'
+    0x4e:
+      id: 'invalid_start_sequence_number_requested'
+      doc: 'Invalid start sequence number requested for the Matching Engine'
     0x55:
       id: 'no_active_trading_session_exists'
       doc: 'No active trading session exists for the Matching Engine, Matching Engine unavailable'
     0x58:
       id: 'rejected'
       doc: 'Invalid Username/Computer ID combination'
-    0x4e:
-      id: 'invalid_start_sequence_number_requested'
-      doc: 'Invalid start sequence number requested'
     0x49:
       id: 'incompatible_session_protocol_version'
       doc: 'Incompatible Session protocol version'
     0x41:
       id: 'incompatible_application_protocol_version'
-      doc: 'Incompatible application protocol version'
+      doc: 'Incompatible Application protocol version'
+    0x43:
+      id: 'invalid_number_of_matching_engines_specified_in_login_request'
+      doc: 'Invalid Number of Matching Engines specified in Login Request'
     0x4c:
       id: 'request_rejected_because_client_already_logged_in'
       doc: 'Request rejected because client already logged in'
   logout_reason:
     0x20:
       id: 'graceful_logout'
-      doc: 'Graceful Logout'
+      doc: 'Graceful Logout (Done for now)'
     0x42:
       id: 'bad_packet'
-      doc: 'Bad SesM packet'
+      doc: 'Bad ESesM Packet'
+    0x4c:
+      id: 'timed_out'
+      doc: 'Timed out waiting for Login Packet'
+    0x41:
+      id: 'application_terminating_connection'
+      doc: 'Application terminating connection'
+  goodbye_reason:
+    0x42:
+      id: 'bad_packet'
+      doc: 'Bad ESesM Packet'
     0x4c:
       id: 'timed_out'
       doc: 'Timed out waiting for Login Packet'

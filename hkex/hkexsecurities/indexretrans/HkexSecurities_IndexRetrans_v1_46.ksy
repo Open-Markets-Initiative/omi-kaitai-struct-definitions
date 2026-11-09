@@ -140,38 +140,38 @@ types:
         enum: index_status
         doc: 'Index status. Can be blank if not defined by third party index compilers'
       - id: index_time
-        type: s8
-        doc: 'Publisher timestamp. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: s8_nullable
+        doc: 'Publisher timestamp. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nullable, No Value = -9223372036854775808'
       - id: index_value
-        type: decimal_s8_4
-        doc: 'Current value of the index. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Current value of the index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: net_chg_prev_day
-        type: decimal_s8_4
-        doc: 'Net change of IndexValue from the previous close, as provided in index source. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Net change of IndexValue from the previous close, as provided in index source. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: high_value
-        type: decimal_s8_4
-        doc: 'Highest value for an index. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Highest value for an index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: low_value
-        type: decimal_s8_4
-        doc: 'Lowest value for an index. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Lowest value for an index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: eas_value
-        type: decimal_s8_2
-        doc: 'Estimated Average Settlement Value. 2 implied decimal places. Implied decimal with scale 1e-2'
+        type: decimal_s8_2_nullable
+        doc: 'Estimated Average Settlement Value. 2 implied decimal places. Implied decimal with scale 1e-2. Nullable, No Value = -9223372036854775808'
       - id: index_turnover
-        type: decimal_s8_4
-        doc: 'Current turnover of underlying constituents. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Current turnover of underlying constituents. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: opening_value
-        type: decimal_s8_4
-        doc: 'First value for an index. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'First value for an index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: closing_value
-        type: decimal_s8_4
-        doc: 'Last value for an index. 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Last value for an index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: previous_ses_close
-        type: decimal_s8_4
-        doc: 'Previous session closing value (previous day for CSI, CES, S&P; previous session for HSI and TR). 4 implied decimal places. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'Previous session closing value (previous day for CSI, CES, S&P; previous session for HSI and TR). 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: index_volume
-        type: s8
-        doc: 'Index volume of underlying constituents. Only applicable for CSI and CES'
+        type: s8_nullable
+        doc: 'Index volume of underlying constituents. Only applicable for CSI and CES. Nullable, No Value = -9223372036854775808'
       - id: net_chg_prev_day_pct
         type: decimal_s4_4
         doc: 'Percentage change of IndexValue from the previous close. 4 implied decimal places. Implied decimal with scale 1e-4'
@@ -248,6 +248,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -255,6 +262,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  decimal_s8_4_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_4
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
   decimal_s8_2:
     seq:
       - id: mantissa
@@ -262,6 +276,13 @@ types:
     instances:
       real:
         value: mantissa / 100.0
+  decimal_s8_2_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_2
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
   decimal_s4_4:
     seq:
       - id: mantissa

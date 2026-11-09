@@ -485,7 +485,7 @@ enums:
       doc: 'ESesM Logout Request'
     0x47:
       id: 'goodbye_packet'
-      doc: 'ESesM Logout Request'
+      doc: 'ESesM GoodBye Packet'
     0x75:
       id: 'trading_session_update'
       doc: 'ESesM Trading Session Update'
@@ -528,31 +528,44 @@ enums:
     0x53:
       id: 'invalid_trading_session_requested'
       doc: 'Invalid trading session requested for the Matching Engine'
+    0x4e:
+      id: 'invalid_start_sequence_number_requested'
+      doc: 'Invalid start sequence number requested for the Matching Engine'
     0x55:
       id: 'no_active_trading_session_exists'
       doc: 'No active trading session exists for the Matching Engine, Matching Engine unavailable'
     0x58:
       id: 'rejected'
       doc: 'Invalid Username/Computer ID combination'
-    0x4e:
-      id: 'invalid_start_sequence_number_requested'
-      doc: 'Invalid start sequence number requested'
     0x49:
       id: 'incompatible_session_protocol_version'
       doc: 'Incompatible Session protocol version'
     0x41:
       id: 'incompatible_application_protocol_version'
-      doc: 'Incompatible application protocol version'
+      doc: 'Incompatible Application protocol version'
+    0x43:
+      id: 'invalid_number_of_matching_engines_specified_in_login_request'
+      doc: 'Invalid Number of Matching Engines specified in Login Request'
     0x4c:
       id: 'request_rejected_because_client_already_logged_in'
       doc: 'Request rejected because client already logged in'
   logout_reason:
     0x20:
       id: 'graceful_logout'
-      doc: 'Graceful Logout'
+      doc: 'Graceful Logout (Done for now)'
     0x42:
       id: 'bad_packet'
-      doc: 'Bad SesM packet'
+      doc: 'Bad ESesM Packet'
+    0x4c:
+      id: 'timed_out'
+      doc: 'Timed out waiting for Login Packet'
+    0x41:
+      id: 'application_terminating_connection'
+      doc: 'Application terminating connection'
+  goodbye_reason:
+    0x42:
+      id: 'bad_packet'
+      doc: 'Bad ESesM Packet'
     0x4c:
       id: 'timed_out'
       doc: 'Timed out waiting for Login Packet'

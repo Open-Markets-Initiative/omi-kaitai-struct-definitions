@@ -131,7 +131,9 @@ types:
         type: u4
         doc: 'Calendar ID'
       - id: weekdays
-        size: 7
+        type: u1
+        repeat: expr
+        repeat-expr: 7
         doc: 'Boolean array of weekdays (Monday to Sunday) open or closed for trading; true – weekday open for trading, false – weekday closed for trading'
   calendar_exception:
     seq:
