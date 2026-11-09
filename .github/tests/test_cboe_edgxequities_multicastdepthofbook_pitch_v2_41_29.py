@@ -52,6 +52,11 @@ class CboeEdgxequitiesMulticastdepthofbookPitchV24129Tests(unittest.TestCase):
             parsed = CboeEdgxequitiesMulticastdepthofbookPitchV24129.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_reducesizelongmessage(self):
+        for payload in payloads.of("omi-data-packets/Cboe/EdgxEquities.MulticastDepthOfBook.Pitch.v2.41.29/ReduceSizeLongMessage.pcap"):
+            parsed = CboeEdgxequitiesMulticastdepthofbookPitchV24129.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_reducesizeshortmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/EdgxEquities.MulticastDepthOfBook.Pitch.v2.41.29/ReduceSizeShortMessage.pcap"):
             parsed = CboeEdgxequitiesMulticastdepthofbookPitchV24129.from_bytes(payload)

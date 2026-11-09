@@ -19,6 +19,13 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_cancelordermessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/CancelOrderMessage.2014.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_cancelrejectedmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/CancelRejectedMessage.pcap"):
             if payloads.partial(payload, 2, 2, "little", 2):
@@ -33,6 +40,13 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_clientheartbeatmessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/ClientHeartbeatMessage.2014.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_loginrequestmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/LoginRequestMessage.pcap"):
             if payloads.partial(payload, 2, 2, "little", 2):
@@ -40,8 +54,22 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_loginrequestmessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/LoginRequestMessage.2014.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_loginresponsemessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/LoginResponseMessage.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_loginresponsemessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/LoginResponseMessage.2014.pcap"):
             if payloads.partial(payload, 2, 2, "little", 2):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
@@ -82,6 +110,13 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_modifyordermessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/ModifyOrderMessage.2014.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_newordermessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/NewOrderMessage.pcap"):
             if payloads.partial(payload, 2, 2, "little", 2):
@@ -103,8 +138,22 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_orderacknowledgmentmessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderAcknowledgmentMessage.2014.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_ordercancelledmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderCancelledMessage.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_ordercancelledmessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderCancelledMessage.2014.pcap"):
             if payloads.partial(payload, 2, 2, "little", 2):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
@@ -117,6 +166,13 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_orderexecutionmessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderExecutionMessage.2014.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_ordermodifiedmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderModifiedMessage.pcap"):
             if payloads.partial(payload, 2, 2, "little", 2):
@@ -124,8 +180,22 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_ordermodifiedmessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderModifiedMessage.2014.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_orderrejectedmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderRejectedMessage.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_orderrejectedmessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderRejectedMessage.2014.pcap"):
             if payloads.partial(payload, 2, 2, "little", 2):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
@@ -159,8 +229,22 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_replaycompletemessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/ReplayCompleteMessage.2014.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_serverheartbeatmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/ServerHeartbeatMessage.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_serverheartbeatmessage2014(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/ServerHeartbeatMessage.2014.pcap"):
             if payloads.partial(payload, 2, 2, "little", 2):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)

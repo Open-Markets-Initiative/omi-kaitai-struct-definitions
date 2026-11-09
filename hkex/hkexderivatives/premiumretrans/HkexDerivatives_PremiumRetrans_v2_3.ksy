@@ -44,10 +44,10 @@ seq:
   - id: packet_header
     type: packet_header_struct
     doc: 'Omd packet header (byte-identical to the Udp form; SeqNum and SendTime set to 0 on Tcp per §3.5)'
-  - id: message
-    type: message_struct
-    repeat: expr
-    repeat-expr: packet_header.msg_count
+  - id: message_buffer
+    type: message_buffer_struct
+    size-eos: true
+    doc: 'The packet''s message area: the messages it counts, or one ZliB block holding them'
 
 types:
   packet_header_struct:
@@ -67,7 +67,13 @@ types:
       - id: send_time
         type: nanosecond_timestamp
         doc: 'Send time field — set to 0 on Tcp retrans per §3.5. Nanoseconds since Unix epoch'
-  message_struct:
+  message_buffer_struct:
+    seq:
+      - id: message
+        type: message
+        repeat: expr
+        repeat-expr: _root.packet_header.msg_count
+  message:
     seq:
       - id: msg_header
         type: msg_header

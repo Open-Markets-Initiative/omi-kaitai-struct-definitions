@@ -143,15 +143,15 @@ types:
         doc: 'Specifies client requested sequence number'
   login_response:
     seq:
-      - id: num_matching_engine_status
+      - id: num_login_matching_engine
         type: u1
         doc: 'Count of all Matching Engines for the exchange'
-      - id: matching_engine_status
-        type: matching_engine_status
+      - id: login_matching_engine
+        type: login_matching_engine
         repeat: expr
-        repeat-expr: num_matching_engine_status
+        repeat-expr: num_login_matching_engine
         doc: 'The login status, trading session and highest sequence number of one matching engine, repeated once for each the login response counts'
-  matching_engine_status:
+  login_matching_engine:
     seq:
       - id: login_status
         type: u1

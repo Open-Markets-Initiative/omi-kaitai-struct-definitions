@@ -677,7 +677,7 @@ types:
         type: s4
         doc: 'The Bid Index Value represents the value of the index’s calculation formula using the current bid values of the component securities'
       - id: offer_index_value
-        type: s4
+        type: s8
         doc: 'The Offer Index Value represents the value of the index’s calculation formula using the current Offer values of the component securities'
   nanosecond_timestamp:
     seq:

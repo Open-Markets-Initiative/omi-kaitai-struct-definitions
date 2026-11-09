@@ -158,19 +158,19 @@ types:
         type: u4
         doc: 'Monotonically increasing message sequence number at the channel level'
       - id: market_open
-        type: u8
-        doc: 'Market open time in milliseconds since UTC epoch'
+        type: millisecond_timestamp
+        doc: 'Market open time in milliseconds since UTC epoch. Milliseconds since Unix epoch'
       - id: market_close
-        type: u8
-        doc: 'Anticipated market close time in milliseconds since UTC epoch'
+        type: millisecond_timestamp
+        doc: 'Anticipated market close time in milliseconds since UTC epoch. Milliseconds since Unix epoch'
   market_close_message:
     seq:
       - id: channel_seq_num
         type: u4
         doc: 'Monotonically increasing message sequence number at the channel level'
       - id: market_close_time_milli
-        type: u8
-        doc: 'Market close time in milliseconds since UTC epoch midnight'
+        type: millisecond_timestamp
+        doc: 'Market close time in milliseconds since UTC epoch midnight. Milliseconds since Unix epoch'
       - id: market_msg_ct
         type: u4
         doc: 'Total day message count'
