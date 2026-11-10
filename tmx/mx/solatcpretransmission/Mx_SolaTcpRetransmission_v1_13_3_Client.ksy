@@ -7,7 +7,7 @@
 #   Encoding: High Speed Vendor Feed
 #   Version: 1.13.3
 #   Date: 10/5/2022
-#   Specification: MX SOLA HSVF Multicast Specifications Guide (1.13.3).pdf
+#   Specification: MX SOLA HSVF Multicast Specifications Guide (2022-10-05).pdf
 #
 # Script:
 #   Generator: 1.0.0.0

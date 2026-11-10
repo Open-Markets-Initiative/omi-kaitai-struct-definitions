@@ -7,7 +7,7 @@
 #   Encoding: Bjse Binary Market Data Feed
 #   Version: 1.1
 #   Date: 12/31/2025
-#   Specification: Trade Interface Specification Binary V1.1 (2025-12-31).pdf
+#   Specification: 20251231194558_3eigny7no7.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

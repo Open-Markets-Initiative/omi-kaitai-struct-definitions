@@ -7,7 +7,7 @@
 #   Encoding: Bjse Binary Market Data Feed
 #   Version: 1.1
 #   Date: 12/31/2025
-#   Specification: Multicast Market Data Distribution Protocol V1.0 (2025-08-12).pdf
+#   Specification: 20250812182320_fau0f6i7bk.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

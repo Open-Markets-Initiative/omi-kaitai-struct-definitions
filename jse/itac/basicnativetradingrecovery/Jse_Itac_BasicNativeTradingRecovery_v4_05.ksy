@@ -7,7 +7,7 @@
 #   Encoding: Native Trading Gateway Interface
 #   Version: 4.05
 #   Date: 5/28/2024
-#   Specification: JSE Volume 01E - Basic Native Trading Gateway (4.05).pdf
+#   Specification: JSE Volume 01E - Basic Native Trading Gateway (2024-05-28).pdf
 #
 # Script:
 #   Generator: 1.0.0.0

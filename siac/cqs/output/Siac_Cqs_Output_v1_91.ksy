@@ -127,7 +127,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -178,7 +178,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -196,7 +196,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -214,7 +214,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -232,7 +232,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -250,7 +250,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -268,7 +268,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -286,7 +286,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -304,7 +304,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -322,7 +322,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -352,7 +352,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -382,7 +382,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -421,7 +421,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -479,7 +479,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -675,7 +675,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -735,7 +735,7 @@ types:
         doc: 'Participant or Processor that generated the message'
       - id: participant_timestamp
         type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Provided = 0'
       - id: message_id
         type: u1
         doc: 'The Message ID identifies the individual message within the block beginning with number one'
@@ -909,6 +909,13 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   decimal_s8_6:
     seq:
       - id: mantissa
