@@ -1256,10 +1256,7 @@ types:
         pad-right: 0x20
         doc: 'Treasury Bond Future short name'
       - id: date_ascii_str_8
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Start date'
       - id: underlying_isin_code
         type: str

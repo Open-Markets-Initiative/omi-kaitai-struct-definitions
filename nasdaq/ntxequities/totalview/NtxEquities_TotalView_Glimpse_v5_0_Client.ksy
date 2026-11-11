@@ -36,7 +36,9 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas TX TotalView Itch Glimpse v5.0'
-doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
+doc-ref:
+  - http://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
+  - https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/BXGLIMPSESpecification.pdf
 
 seq:
   - id: client_soup_bin_tcp_packet

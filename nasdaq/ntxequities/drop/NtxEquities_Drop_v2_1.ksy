@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq BxEquities Drop AsciiDrop v2.1
+# Kaitai struct definition for: Nasdaq NtxEquities Drop AsciiDrop v2.1
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_bxequities_drop_asciidrop_v2_1
-  title: Nasdaq BxEquities Drop AsciiDrop v2.1
+  id: nasdaq_ntxequities_drop_asciidrop_v2_1
+  title: Nasdaq NtxEquities Drop AsciiDrop v2.1
   license: MIT-0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq BX Drop AsciiDrop v2.1'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas Drop AsciiDrop v2.1'
 doc-ref: https://www.nasdaqtrader.com/content/technicalsupport/specifications/tradingproducts/NQBX_DROP2.1.pdf
 
 seq:

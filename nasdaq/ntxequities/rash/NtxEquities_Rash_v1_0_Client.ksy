@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq BxEquities Rash AsciiRash v1.0
+# Kaitai struct definition for: Nasdaq NtxEquities Rash AsciiRash v1.0
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_bxequities_rash_asciirash_v1_0_client
-  title: Nasdaq BxEquities Rash AsciiRash v1.0
+  id: nasdaq_ntxequities_rash_asciirash_v1_0_client
+  title: Nasdaq NtxEquities Rash AsciiRash v1.0
   license: MIT-0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq BX Rash AsciiRash v1.0'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas Rash AsciiRash v1.0'
 doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=TradingSpecs
 
 seq:
