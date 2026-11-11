@@ -428,5 +428,5 @@
 [Eurex.T7.Xti.Fbe.v9.1.Client.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/eurex/t7/xti/Eurex_T7_Xti_v9_1_Client.ksy "Eurex T7 Xti Fbe v9.1 Kaitai Struct Definition"
 [Eurex.T7.Xti.Fbe.v9.1.Url]: https://www.eurex.com/ex-en/technology/t7 "Eurex Exchange 9.1 Url"
 [Eurex.T7.Xti.Fbe.v9.1.Xml]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Eurex/Specifications/9.1/Eurex.T7.Xti.Fbe.v9.1.xml "Eurex Exchange 9.1 Xml"
-[Eurex.T7.Xti.Fbe.v9.1.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Eurex/Specifications/9.1/Eurex.T7.Xti.Fbe.v9.1.2026.07.17.pdf "Eurex Exchange 9.1 Pdf"
+[Eurex.T7.Xti.Fbe.v9.1.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Eurex/Specifications/9.1/Eurex.T7.Xti.Fbe.v9.1.pdf "Eurex Exchange 9.1 Pdf"
 [Eurex.T7.Xti.Fbe.v9.1.Server.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/eurex/t7/xti/Eurex_T7_Xti_v9_1_Server.ksy "Eurex T7 Xti Fbe v9.1 Kaitai Struct Definition"

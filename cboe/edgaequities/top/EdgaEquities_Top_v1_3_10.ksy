@@ -126,10 +126,8 @@ types:
   expanded_spin_message:
     seq:
       - id: timestamp
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Time of top of book update; milliseconds since midnight, Eastern time'
+        type: millisecond_ascii_timestamp
+        doc: 'Time of top of book update; milliseconds since midnight, Eastern time. Milliseconds since Midnight epoch'
       - id: symbol_extended
         type: str
         size: 8
@@ -157,10 +155,8 @@ types:
         encoding: ASCII
         doc: 'Ask quantity; 0 if no offers'
       - id: last_trade_time
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Time of last trade; milliseconds since midnight, Eastern time'
+        type: millisecond_ascii_timestamp
+        doc: 'Time of last trade; milliseconds since midnight, Eastern time. Milliseconds since Midnight epoch'
       - id: last_trade_price_short
         type: str
         size: 10
@@ -199,10 +195,8 @@ types:
   extended_spin_message:
     seq:
       - id: timestamp
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Time of top of book update; milliseconds since midnight, Eastern time'
+        type: millisecond_ascii_timestamp
+        doc: 'Time of top of book update; milliseconds since midnight, Eastern time. Milliseconds since Midnight epoch'
       - id: symbol_extended
         type: str
         size: 8
@@ -230,10 +224,8 @@ types:
         encoding: ASCII
         doc: 'Ask quantity; 0 if no offers'
       - id: last_trade_time
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Time of last trade; milliseconds since midnight, Eastern time'
+        type: millisecond_ascii_timestamp
+        doc: 'Time of last trade; milliseconds since midnight, Eastern time. Milliseconds since Midnight epoch'
       - id: last_trade_price_long
         type: str
         size: 14
@@ -647,6 +639,21 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reserved'
+  millisecond_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600000 % 24
+      minute:
+        value: text.to_i / 60000 % 60
+      second:
+        value: text.to_i / 1000 % 60
+      millisecond:
+        value: text.to_i % 1000
 
 enums:
   message_type:

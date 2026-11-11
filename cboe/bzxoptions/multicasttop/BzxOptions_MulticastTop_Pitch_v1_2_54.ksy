@@ -380,9 +380,9 @@ types:
         doc: 'Reserved'
   end_of_session_message:
     seq:
-      - id: timestamp
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
   second_timestamp:
     seq:
       - id: time

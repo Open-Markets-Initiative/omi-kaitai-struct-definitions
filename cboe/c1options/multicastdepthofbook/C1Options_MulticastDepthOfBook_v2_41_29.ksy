@@ -673,8 +673,8 @@ types:
         pad-right: 0x20
         doc: 'Optionally specified. If specified the Executing Broker of firm attributed to this quote'
       - id: auction_end_offset
-        type: u4
-        doc: 'Nanosecond offset from last timestamp'
+        type: nanosecond_timestamp
+        doc: 'Nanosecond offset from last timestamp. Nanoseconds since Field epoch'
       - id: client_id
         type: str
         size: 4
@@ -796,6 +796,19 @@ types:
     instances:
       real:
         value: mantissa / 10.0
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:

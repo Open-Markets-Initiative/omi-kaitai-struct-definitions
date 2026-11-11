@@ -503,8 +503,10 @@ types:
       peek_order_status_container:
         pos: _io.pos
         type: u1
-      peek_order_status:
+      peek_order_status_bits:
         value: (peek_order_status_container >> 5) & 7
+      peek_order_status:
+        value: peek_order_status_bits
         enum: order_status
   status_cancel_reason:
     meta:
@@ -577,8 +579,10 @@ types:
       peek_order_status_container:
         pos: _io.pos
         type: u1
-      peek_order_status:
+      peek_order_status_bits:
         value: (peek_order_status_container >> 5) & 7
+      peek_order_status:
+        value: peek_order_status_bits
         enum: order_status
   order_modify_response_message:
     seq:
@@ -610,8 +614,10 @@ types:
       peek_order_status_container:
         pos: _io.pos
         type: u1
-      peek_order_status:
+      peek_order_status_bits:
         value: (peek_order_status_container >> 5) & 7
+      peek_order_status:
+        value: peek_order_status_bits
         enum: order_status
   status_modification_reason:
     meta:

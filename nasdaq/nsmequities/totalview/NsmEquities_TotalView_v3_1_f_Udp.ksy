@@ -7,7 +7,7 @@
 #   Encoding: Ascii Itch
 #   Version: 3.1.f
 #   Date: 07/08/2009
-#   Specification: Nasdaq TotalView ITCH (2009-07-08).pdf
+#   Specification: Nasdaq TotalView ITCH.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -104,7 +104,7 @@ types:
   seconds_message:
     seq:
       - id: second
-        type: second_timestamp
+        type: second_ascii_timestamp
         doc: 'Number of seconds since midnight. Seconds since Midnight epoch'
   milliseconds_message:
     seq:
@@ -497,17 +497,19 @@ types:
         type: u1
         enum: price_variation_indicator
         doc: 'This field indicates the absolute value of the percentage of deviation of the Near Indicative Clearing Price to the nearest Current Reference Price'
-  second_timestamp:
+  second_ascii_timestamp:
     seq:
-      - id: time
-        type: b40
+      - id: text
+        type: str
+        size: 5
+        encoding: ASCII
     instances:
       hour:
-        value: time.as<s8> / 3600 % 24
+        value: text.to_i / 3600 % 24
       minute:
-        value: time.as<s8> / 60 % 60
+        value: text.to_i / 60 % 60
       second:
-        value: time.as<s8> % 60
+        value: text.to_i % 60
   millisecond_ascii_timestamp:
     seq:
       - id: text

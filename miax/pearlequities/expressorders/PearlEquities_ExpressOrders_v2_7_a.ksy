@@ -7,7 +7,7 @@
 #   Encoding: Miax Express Orders
 #   Version: 2.7.a
 #   Date: 7/15/2025
-#   Specification: miax express orders meo (2025-07-19).pdf
+#   Specification: miax express orders meo.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

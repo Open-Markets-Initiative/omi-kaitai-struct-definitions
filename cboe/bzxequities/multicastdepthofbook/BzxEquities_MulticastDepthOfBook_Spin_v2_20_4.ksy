@@ -478,9 +478,9 @@ types:
         doc: 'BATS generated day-unique execution identifier of this execution. Execution Id is also referenced in the'
   end_of_session_message:
     seq:
-      - id: timestamp
-        type: u4
-        doc: 'Nanosecond offset from last'
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last. Nanoseconds since Second epoch'
   symbol_mapping_message:
     seq:
       - id: feed_symbol

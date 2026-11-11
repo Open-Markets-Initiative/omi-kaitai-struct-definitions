@@ -367,9 +367,7 @@ types:
         encoding: ASCII
         doc: 'Cusip or Isin for the bond. Null unless the client requested the data and holds a licence'
       - id: auction_time
-        type: str
-        size: 4
-        encoding: ASCII
+        type: hhmm_ascii_time
         doc: 'Projected auction time, formatted hhmm'
   system_event_message:
     seq:
@@ -405,6 +403,17 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Not used'
+  hhmm_ascii_time:
+    seq:
+      - id: text
+        type: str
+        size: 4
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.substring(0, 2).to_i
+      minute:
+        value: text.substring(2, 4).to_i
 
 enums:
   message_type:

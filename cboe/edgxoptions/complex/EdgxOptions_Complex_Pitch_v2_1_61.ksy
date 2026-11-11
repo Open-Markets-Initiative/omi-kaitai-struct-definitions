@@ -504,8 +504,8 @@ types:
         pad-right: 0x20
         doc: 'Optionally specified. If specified the Executing Broker of firm attributed to this quote. Space filled otherwise'
       - id: auction_end_offset
-        type: u4
-        doc: 'Nanosecond offset from last timestamp'
+        type: nanosecond_timestamp
+        doc: 'Nanosecond offset from last timestamp. Nanoseconds since Field epoch'
       - id: client_id
         type: str
         size: 4
@@ -630,9 +630,9 @@ types:
         doc: 'Instrument quantity added to the complex book (may be less than the number entered)'
   end_of_session_message:
     seq:
-      - id: timestamp
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
   second_timestamp:
     seq:
       - id: time
@@ -669,6 +669,19 @@ types:
     instances:
       real:
         value: mantissa / 100.0
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_u8_4:
     seq:
       - id: mantissa

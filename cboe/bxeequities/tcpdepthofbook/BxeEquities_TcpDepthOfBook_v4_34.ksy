@@ -383,10 +383,8 @@ types:
         pad-right: 0x20
         doc: 'Date the trade occurred, YYYYMMDD'
       - id: trade_time
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Milliseconds since midnight London time on Trade Date'
+        type: millisecond_ascii_timestamp
+        doc: 'Milliseconds since midnight London time on Trade Date. Milliseconds since Midnight epoch'
       - id: execution_venue
         type: str
         size: 4
@@ -441,10 +439,8 @@ types:
         pad-right: 0x20
         doc: 'Date the trade occurred, YYYYMMDD'
       - id: trade_time
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Milliseconds since midnight London time on Trade Date'
+        type: millisecond_ascii_timestamp
+        doc: 'Milliseconds since midnight London time on Trade Date. Milliseconds since Midnight epoch'
       - id: execution_venue
         type: str
         size: 4
@@ -626,6 +622,21 @@ types:
       millisecond:
         value: text.to_i / 1000 % 1000
       microsecond:
+        value: text.to_i % 1000
+  millisecond_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600000 % 24
+      minute:
+        value: text.to_i / 60000 % 60
+      second:
+        value: text.to_i / 1000 % 60
+      millisecond:
         value: text.to_i % 1000
 
 enums:

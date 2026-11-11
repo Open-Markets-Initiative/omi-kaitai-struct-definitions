@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Match View AsciiItch v1.1'
-doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs
+doc-ref:
+  - https://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs
+  - http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs_USEquities
 
 seq:
   - id: packet_header

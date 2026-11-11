@@ -313,6 +313,12 @@ types:
         type: u1
         enum: liquidity_flag
         doc: 'Liquidity flag the order would have received'
+      - id: aiq_strategy
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'AIQ strategy used on the cancelled order'
   executed_message:
     seq:
       - id: timestamp

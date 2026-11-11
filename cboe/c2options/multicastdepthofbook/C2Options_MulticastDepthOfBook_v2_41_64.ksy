@@ -478,9 +478,9 @@ types:
         doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
   ox_end_of_session:
     seq:
-      - id: timestamp
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
   ox_symbol_mapping_message:
     seq:
       - id: feed_symbol
@@ -653,8 +653,8 @@ types:
         pad-right: 0x20
         doc: 'Optionally specified. If specified the Executing Firm ID of firm attributed to this quote. Space filled otherwise'
       - id: auction_end_offset
-        type: u4
-        doc: 'Nanosecond offset from last timestamp'
+        type: nanosecond_timestamp
+        doc: 'Nanosecond offset from last timestamp. Nanoseconds since Field epoch'
       - id: client_id
         type: str
         size: 4
@@ -776,6 +776,19 @@ types:
     instances:
       real:
         value: mantissa / 10.0
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:

@@ -105,8 +105,8 @@ types:
   system_event_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: event_code
         type: u1
         enum: event_code
@@ -114,8 +114,8 @@ types:
   symbol_directory_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument''s symbol'
@@ -171,8 +171,8 @@ types:
   symbol_status_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument''s symbol'
@@ -224,8 +224,8 @@ types:
   add_order_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -276,8 +276,8 @@ types:
   add_attributed_order_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -328,8 +328,8 @@ types:
   order_deleted_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -355,8 +355,8 @@ types:
   order_modified_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -388,8 +388,8 @@ types:
   order_book_clear_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument''s symbol'
@@ -421,8 +421,8 @@ types:
   order_executed_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -435,8 +435,8 @@ types:
   order_executed_with_price_size_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -459,8 +459,8 @@ types:
   trade_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: executed_quantity
         type: u4
         doc: 'Quantity executed'
@@ -505,8 +505,8 @@ types:
   auction_trade_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: quantity
         type: u4
         doc: 'Displayed quantity of the order'
@@ -535,8 +535,8 @@ types:
   auction_info_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: paired_quantity
         type: u4
         doc: 'Quantity that will be matched at the indicative price'
@@ -565,8 +565,8 @@ types:
   statistics_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument''s symbol'
@@ -599,8 +599,8 @@ types:
   top_of_book_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument''s symbol'
@@ -627,6 +627,17 @@ types:
         value: time / 60 % 60
       second:
         value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
   u1_nullable:
     seq:
       - id: value

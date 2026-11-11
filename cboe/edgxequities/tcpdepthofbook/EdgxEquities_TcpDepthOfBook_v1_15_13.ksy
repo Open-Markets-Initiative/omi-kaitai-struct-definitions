@@ -7,7 +7,7 @@
 #   Encoding: Ascii Pitch
 #   Version: 1.15.13
 #   Date: 04/21/2025
-#   Specification: Cboe_US_Equities_TCP_PITCH_Specification.pdf
+#   Specification: Unknown
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -120,10 +120,8 @@ types:
   sequenced_message_header:
     seq:
       - id: timestamp
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Timestamp'
+        type: millisecond_ascii_timestamp
+        doc: 'Timestamp. Milliseconds since Midnight epoch'
       - id: sequenced_message_type
         type: u1
         enum: sequenced_message_type
@@ -576,6 +574,21 @@ types:
       - id: unsequenced_message
         size-eos: true
         doc: 'Raw unsequenced message bytes'
+  millisecond_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600000 % 24
+      minute:
+        value: text.to_i / 60000 % 60
+      second:
+        value: text.to_i / 1000 % 60
+      millisecond:
+        value: text.to_i % 1000
 
 enums:
   packet_type:

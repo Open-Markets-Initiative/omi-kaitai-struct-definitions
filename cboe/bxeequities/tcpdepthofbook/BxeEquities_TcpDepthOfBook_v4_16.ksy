@@ -425,10 +425,8 @@ types:
         pad-right: 0x20
         doc: 'Date on which the trade occurred, in the form YYYYMMDD'
       - id: trade_time
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Time at which the trade occurred, encoded as the number of milliseconds since midnight, on the day represented by Trade date, London time'
+        type: millisecond_ascii_timestamp
+        doc: 'Time at which the trade occurred, encoded as the number of milliseconds since midnight, on the day represented by Trade date, London time. Milliseconds since Midnight epoch'
       - id: execution_venue
         type: str
         size: 4
@@ -483,10 +481,8 @@ types:
         pad-right: 0x20
         doc: 'Date on which the trade occurred, in the form YYYYMMDD'
       - id: trade_time
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Time at which the trade occurred, encoded as the number of milliseconds since midnight, on the day represented by Trade date, London time'
+        type: millisecond_ascii_timestamp
+        doc: 'Time at which the trade occurred, encoded as the number of milliseconds since midnight, on the day represented by Trade date, London time. Milliseconds since Midnight epoch'
       - id: execution_venue
         type: str
         size: 4

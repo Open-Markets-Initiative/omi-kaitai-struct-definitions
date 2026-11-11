@@ -7,7 +7,7 @@
 #   Encoding: Ascii Itch
 #   Version: 3.2
 #   Date: 06/12/2014
-#   Specification: Nasdaq TotalView ITCH (2014-06-12).pdf
+#   Specification: Nasdaq TotalView ITCH.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -132,7 +132,7 @@ types:
   seconds_message:
     seq:
       - id: second
-        type: second_timestamp
+        type: second_ascii_timestamp
         doc: 'Number of seconds since midnight. Seconds since Midnight epoch'
   milliseconds_message:
     seq:
@@ -533,17 +533,19 @@ types:
         type: u1
         enum: interest_flag
         doc: 'Retail interest indication'
-  second_timestamp:
+  second_ascii_timestamp:
     seq:
-      - id: time
-        type: b40
+      - id: text
+        type: str
+        size: 5
+        encoding: ASCII
     instances:
       hour:
-        value: time.as<s8> / 3600 % 24
+        value: text.to_i / 3600 % 24
       minute:
-        value: time.as<s8> / 60 % 60
+        value: text.to_i / 60 % 60
       second:
-        value: time.as<s8> % 60
+        value: text.to_i % 60
   millisecond_ascii_timestamp:
     seq:
       - id: text

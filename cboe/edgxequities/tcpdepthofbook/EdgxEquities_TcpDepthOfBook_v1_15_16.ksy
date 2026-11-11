@@ -121,10 +121,8 @@ types:
   sequenced_message_header:
     seq:
       - id: timestamp
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Timestamp'
+        type: millisecond_ascii_timestamp
+        doc: 'Timestamp. Milliseconds since Midnight epoch'
       - id: sequenced_message_type
         type: u1
         enum: sequenced_message_type
@@ -293,10 +291,8 @@ types:
         encoding: ASCII
         doc: 'Midnight Eastern Time reference time for subsequent Timestamp values, expressed as number of whole seconds since the Epoch (Midnight January 1, 1970 UTC)'
       - id: time
-        type: str
-        size: 10
-        encoding: ASCII
-        doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds'
+        type: second_ascii_timestamp
+        doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. Seconds since Midnight epoch'
       - id: trade_date
         type: str
         size: 8
@@ -594,6 +590,34 @@ types:
       - id: unsequenced_message
         size-eos: true
         doc: 'Raw unsequenced message bytes'
+  millisecond_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600000 % 24
+      minute:
+        value: text.to_i / 60000 % 60
+      second:
+        value: text.to_i / 1000 % 60
+      millisecond:
+        value: text.to_i % 1000
+  second_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 10
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600 % 24
+      minute:
+        value: text.to_i / 60 % 60
+      second:
+        value: text.to_i % 60
 
 enums:
   packet_type:
