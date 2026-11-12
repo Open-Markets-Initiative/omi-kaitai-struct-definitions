@@ -271,13 +271,13 @@ types:
   time_message:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Number of seconds since midnight, in local server time rather than Utc'
+        type: second_timestamp
+        doc: 'Number of seconds since midnight, in local server time rather than Utc. Seconds since Midnight epoch'
   system_event_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: event_code
         type: u1
         enum: event_code
@@ -285,8 +285,8 @@ types:
   symbol_directory_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument the request relates to. Contains only spaces if it does not relate to an instrument and the Segment field is populated'
@@ -328,9 +328,7 @@ types:
         type: s8
         doc: 'Previous close price of the instrument'
       - id: expiration_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'Date the instrument expires or matures. Contains only spaces if the instrument is not a derivative or fixed income instrument'
       - id: underlying
         type: str
@@ -352,9 +350,7 @@ types:
         pad-right: 0x20
         doc: 'Issuer of the instrument. Contains all spaces if the instrument is not a fixed income instrument'
       - id: issue_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'Date the instrument was issued. Contains all spaces if the instrument is not a fixed income instrument'
       - id: coupon
         type: s8
@@ -419,8 +415,8 @@ types:
   symbol_status_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument the request relates to. Contains only spaces if it does not relate to an instrument and the Segment field is populated'
@@ -466,8 +462,8 @@ types:
   add_order_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -518,8 +514,8 @@ types:
   add_attributed_order_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -564,16 +560,16 @@ types:
   order_deleted_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
   order_modified_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -599,8 +595,8 @@ types:
   order_book_clear_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument the request relates to. Contains only spaces if it does not relate to an instrument and the Segment field is populated'
@@ -615,8 +611,8 @@ types:
   order_executed_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -644,8 +640,8 @@ types:
   order_executed_with_price_size_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -683,8 +679,8 @@ types:
   trade_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: executed_quantity
         type: u4
         doc: 'Quantity executed'
@@ -762,8 +758,8 @@ types:
   auction_trade_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: quantity
         type: u4
         doc: 'Displayed quantity of the order'
@@ -816,8 +812,8 @@ types:
   off_book_trade_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: executed_quantity
         type: u4
         doc: 'Quantity executed'
@@ -848,9 +844,7 @@ types:
         encoding: ASCII
         doc: 'Time the off book trade was agreed between the firms, in local server time'
       - id: trade_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'Date the off book trade was agreed between the firms'
       - id: last_opt_px
         type: s8
@@ -870,8 +864,8 @@ types:
   recovery_trade_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: executed_quantity
         type: u4
         doc: 'Quantity executed'
@@ -906,9 +900,7 @@ types:
         encoding: ASCII
         doc: 'Time the off book trade was agreed between the firms, in local server time'
       - id: trade_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'Date the off book trade was agreed between the firms'
       - id: action_type
         type: u1
@@ -964,8 +956,8 @@ types:
   auction_info_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: paired_quantity
         type: u4
         doc: 'Quantity that will be matched at the indicative price'
@@ -995,8 +987,8 @@ types:
   statistics_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument the request relates to. Contains only spaces if it does not relate to an instrument and the Segment field is populated'
@@ -1024,8 +1016,8 @@ types:
   extended_statistics_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument the request relates to. Contains only spaces if it does not relate to an instrument and the Segment field is populated'
@@ -1087,8 +1079,8 @@ types:
   news_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: time
         type: str
         size: 8
@@ -1125,8 +1117,8 @@ types:
   top_of_book_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument the request relates to. Contains only spaces if it does not relate to an instrument and the Segment field is populated'
@@ -1162,8 +1154,8 @@ types:
   indicative_quote_info_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since the last Time message'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since the last Time message. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument the request relates to. Contains only spaces if it does not relate to an instrument and the Segment field is populated'
@@ -1179,6 +1171,41 @@ types:
       - id: indicative_offer_price
         type: s8
         doc: 'Indicative price of the quotes on the sell side for the request for quote'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
   decimal_s8_4:
     seq:
       - id: mantissa

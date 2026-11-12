@@ -7835,7 +7835,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The password should be of exact eight characters in length.The password should be alphanumeric i.e password should contain 1 upper case letter,1 lower case letter,1 numeral and 1 special character from the list @#$%&*/\. Note: The trader sh'
+        doc: 'The password should be of exact eight characters in length.The password should be alphanumeric i.e password should contain 1 upper case letter,1 lower case letter,1 numeral and 1 special character from the list @#$%&* /\. Note: The trader sh'
       - id: second_reserved_8
         size: 8
         doc: 'Reserved field'
@@ -7968,7 +7968,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The password should be of exact eight characters in length.The password should be alphanumeric i.e password should contain 1 upper case letter,1 lower case letter,1 numeral and 1 special character from the list @#$%&*/\. Note: The trader sh'
+        doc: 'The password should be of exact eight characters in length.The password should be alphanumeric i.e password should contain 1 upper case letter,1 lower case letter,1 numeral and 1 special character from the list @#$%&* /\. Note: The trader sh'
       - id: second_reserved_8
         size: 8
         doc: 'Reserved field'

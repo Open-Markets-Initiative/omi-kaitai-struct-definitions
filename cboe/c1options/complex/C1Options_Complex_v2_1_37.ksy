@@ -113,9 +113,9 @@ types:
       - id: midnight_reference
         type: second_timestamp
         doc: 'Midnight Eastern Time reference time for subsequent Time messages, expressed as number of whole seconds since the Epoch (Midnight January 1, 1970 UTC). Seconds since Unix epoch'
-      - id: time_reference
-        type: u4
-        doc: 'Number of whole seconds from midnight Eastern time'
+      - id: time
+        type: second_timestamp
+        doc: 'Number of whole seconds from midnight Eastern Time. Seconds since Midnight epoch'
       - id: time_offset
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'

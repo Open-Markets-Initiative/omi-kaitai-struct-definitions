@@ -191,35 +191,35 @@ types:
   time_reference_message:
     seq:
       - id: midnight_reference
-        type: u4
-        doc: 'Midnight Eastern Time reference time for subsequent Time messages, expressed as number of whole seconds since the Epoch (Midnight January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'Midnight Eastern Time reference time for subsequent Time messages, expressed as number of whole seconds since the Epoch (Midnight January 1, 1970 UTC). Seconds since Unix epoch'
       - id: time
-        type: u4
-        doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. On Daylight Saving Time transition days, Time reflects wall clock seconds and does not adjust for the UTC offset change. On a DST spring-forward day, the maximum value will be 82,799 (23 hours). On a DST fall-back day, values between 3,600 and 7,199 will appear twice. Recipients requiring unambiguous absolute timestamps should use Epoch Time (where available) or Midnight Reference in the Time Reference message'
+        type: second_timestamp
+        doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. On Daylight Saving Time transition days, Time reflects wall clock seconds and does not adjust for the UTC offset change. On a DST spring-forward day, the maximum value will be 82,799 (23 hours). On a DST fall-back day, values between 3,600 and 7,199 will appear twice. Recipients requiring unambiguous absolute timestamps should use Epoch Time (where available) or Midnight Reference in the Time Reference message. Seconds since Midnight epoch'
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: u4
         doc: 'Current Trade Date'
   time_message:
     seq:
       - id: time
-        type: u4
-        doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. On Daylight Saving Time transition days, Time reflects wall clock seconds and does not adjust for the UTC offset change. On a DST spring-forward day, the maximum value will be 82,799 (23 hours). On a DST fall-back day, values between 3,600 and 7,199 will appear twice. Recipients requiring unambiguous absolute timestamps should use Epoch Time (where available) or Midnight Reference in the Time Reference message'
+        type: second_timestamp
+        doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. On Daylight Saving Time transition days, Time reflects wall clock seconds and does not adjust for the UTC offset change. On a DST spring-forward day, the maximum value will be 82,799 (23 hours). On a DST fall-back day, values between 3,600 and 7,199 will appear twice. Recipients requiring unambiguous absolute timestamps should use Epoch Time (where available) or Midnight Reference in the Time Reference message. Seconds since Midnight epoch'
       - id: epoch_time
         type: u4
         doc: 'C1 Options Only and effective 11/02/26 for BZX/EDGX Equities. Number of whole seconds since the Epoch (midnight January 1, 1970 UTC)'
   unit_clear_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
   add_order_long_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -258,8 +258,8 @@ types:
   add_order_short_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -285,8 +285,8 @@ types:
   add_order_expanded_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -322,8 +322,8 @@ types:
   order_executed_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -336,8 +336,8 @@ types:
   order_executed_at_price_size_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -356,8 +356,8 @@ types:
   reduce_size_long_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -367,8 +367,8 @@ types:
   reduce_size_short_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -378,8 +378,8 @@ types:
   modify_order_long_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -408,8 +408,8 @@ types:
   modify_order_short_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -425,16 +425,16 @@ types:
   delete_order_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
   trade_long_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -460,8 +460,8 @@ types:
   trade_short_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -487,8 +487,8 @@ types:
   trade_expanded_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -514,21 +514,21 @@ types:
   trade_break_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: execution_id
         type: u8
         doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
   end_of_session_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
   trading_status_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: symbol_long
         type: str
         size: 8
@@ -558,8 +558,8 @@ types:
   auction_update_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: stock_symbol
         type: str
         size: 8
@@ -588,8 +588,8 @@ types:
   auction_summary_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: stock_symbol
         type: str
         size: 8
@@ -609,8 +609,8 @@ types:
   retail_price_improvement_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: symbol_long
         type: str
         size: 8
@@ -621,6 +621,28 @@ types:
         type: u1
         enum: retail_price_improvement
         doc: 'B = Buy Side RPI, S = Sell Side RPI, A = Buy and Sell RPI, N = No RPI'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
   decimal_u8_4:
     seq:
       - id: mantissa

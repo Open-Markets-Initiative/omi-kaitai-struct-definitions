@@ -1,0 +1,3357 @@
+# ---------------------------------------------------------------------
+# Kaitai struct definition for: Bmv BmvMarketData Replay Intra v1.1
+#
+# Protocol:
+#   Organization: Bolsa Mexicana de Valores
+#   Protocol: Bmv Market Data Replay
+#   Encoding: INTRA Multicast
+#   Version: 1.1
+#   Date: Unknown
+#   Specification: Connection_Appendix_6.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: MIT No Attribution
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The protocol compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
+# ---------------------------------------------------------------------
+
+meta:
+  id: bmv_bmvmarketdata_replay_intra_v1_1_tcp
+  title: Bmv BmvMarketData Replay Intra v1.1
+  license: MIT-0
+  endian: be
+
+doc: 'Bolsa Mexicana de Valores Bolsa Mexicana de Valores Market Data Bmv Market Data Replay Intra v1.1'
+doc-ref: https://www.bmv.com.mx/es/productos-de-informacion/market-data
+
+seq:
+  - id: tcp_unit
+    type: tcp_unit_struct
+    repeat: eos
+    doc: 'One INTRA Multicast Header and its message blocks'
+
+types:
+  tcp_unit_struct:
+    seq:
+      - id: intra_multicast_header
+        type: intra_multicast_header
+        doc: 'BMV INTRA Multicast Header'
+      - id: message_block
+        type: message_block
+        repeat: expr
+        repeat-expr: intra_multicast_header.total_messages
+        doc: 'BMV INTRA Multicast message block'
+  intra_multicast_header:
+    seq:
+      - id: length
+        type: s2
+        doc: 'Packet length, including header and all attached messages'
+      - id: total_messages
+        type: s1
+        doc: 'Number of messages after the header'
+      - id: market_data_group
+        type: s1
+        enum: market_data_group
+        doc: 'See Market Data Groups Catalog'
+      - id: session
+        type: s1
+        doc: 'Current session identifier'
+      - id: sequence_number
+        type: s4
+        doc: 'Sequence number on to which the snapshot synchronizes with respect to the online channel'
+      - id: datetime
+        type: millisecond_timestamp
+        doc: 'Date and time the packet is created. Milliseconds since Unix epoch'
+  message_block:
+    seq:
+      - id: message_header
+        type: message_header
+        doc: 'Message length and message type'
+      - id: payload
+        size: message_header.message_length + 2 - 3
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::login_response_message': login_response_message
+            'message_type::replay_response_message': replay_response_message
+            'message_type::snapshot_response_message': snapshot_response_message
+            'message_type::snapshot_complete_message': snapshot_complete_message
+            'message_type::events_system_message': events_system_message
+            'message_type::trade_cancellation_message': trade_cancellation_message
+            'message_type::status_changes_message': status_changes_message
+            'message_type::weighted_average_price_settlement_prices_message': weighted_average_price_settlement_prices_message
+            'message_type::capital_trades_message': capital_trades_message
+            'message_type::probable_allocation_price_message': probable_allocation_price_message
+            'message_type::continuous_auctions_beginning_message': continuous_auctions_beginning_message
+            'message_type::middle_price_existing_quotes_message': middle_price_existing_quotes_message
+            'message_type::registry_operations_message': registry_operations_message
+            'message_type::mutual_fund_trades_message': mutual_fund_trades_message
+            'message_type::tradability_message': tradability_message
+            'message_type::virtual_trades_message': virtual_trades_message
+            'message_type::order_addition_message': order_addition_message
+            'message_type::execution_of_orders_message': execution_of_orders_message
+            'message_type::order_cancellation_message': order_cancellation_message
+            'message_type::order_change_message': order_change_message
+            'message_type::depth_message': depth_message
+            'message_type::best_offer_message': best_offer_message
+            'message_type::public_offerings_message': public_offerings_message
+            'message_type::open_interest_message': open_interest_message
+            'message_type::derivatives_market_trades_message': derivatives_market_trades_message
+            'message_type::statistics_of_instruments_message': statistics_of_instruments_message
+            'message_type::general_indices_message': general_indices_message
+            'message_type::indices_components_message': indices_components_message
+            'message_type::inav_message': inav_message
+            'message_type::dollar_buy_sell_message': dollar_buy_sell_message
+            'message_type::short_sales_balances_per_instrument_message': short_sales_balances_per_instrument_message
+            'message_type::capital_market_multiples_message': capital_market_multiples_message
+            'message_type::benchmark_message': benchmark_message
+            'message_type::capitalization_rules_message': capitalization_rules_message
+            'message_type::closing_price_origin_message': closing_price_origin_message
+            'message_type::mutual_funds_trades_message': mutual_funds_trades_message
+            'message_type::opening_of_continuous_auctions_message': opening_of_continuous_auctions_message
+            'message_type::existence_of_bids_at_mid_price_message': existence_of_bids_at_mid_price_message
+            'message_type::catalogue_of_debt_and_metals_instruments_message': catalogue_of_debt_and_metals_instruments_message
+            'message_type::catalog_sent_for_instruments_belonging_to_mutual_funds_message': catalog_sent_for_instruments_belonging_to_mutual_funds_message
+            'message_type::weighted_average_price_message': weighted_average_price_message
+            'message_type::system_events_message': system_events_message
+            'message_type::reference_price_message': reference_price_message
+            'message_type::changes_in_status_message': changes_in_status_message
+            'message_type::catalog_for_instruments_belonging_to_the_capital_warrants_market_message': catalog_for_instruments_belonging_to_the_capital_warrants_market_message
+            'message_type::catalog_sent_for_instruments_belonging_to_capital_tracs_message': catalog_sent_for_instruments_belonging_to_capital_tracs_message
+            'message_type::consolidated_inav_message': consolidated_inav_message
+            'message_type::catalog_for_instruments_belonging_to_the_local_and_global_stock_market_message': catalog_for_instruments_belonging_to_the_local_and_global_stock_market_message
+            'message_type::probable_price_of_allocation_message': probable_price_of_allocation_message
+            'message_type::relation_between_bmvbiva_instruments_message': relation_between_bmvbiva_instruments_message
+            'message_type::equities_market_trades_message': equities_market_trades_message
+            'message_type::consolidated_trade_cancellation_message': consolidated_trade_cancellation_message
+            'message_type::pricevolume_indicator_message': pricevolume_indicator_message
+            'message_type::consolidated_execution_of_orders_message': consolidated_execution_of_orders_message
+            'message_type::registration_of_order_message': registration_of_order_message
+            'message_type::cancellations_of_orders_message': cancellations_of_orders_message
+            'message_type::last_quote_message': last_quote_message
+  message_header:
+    seq:
+      - id: message_length
+        type: s2
+        doc: 'Indicates message length contained in this message block'
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Code identifying the message'
+  login_response_message:
+    seq:
+      - id: login_response_status
+        type: u1
+        enum: login_response_status
+        doc: 'Login status (Document label: Status)'
+  replay_response_message:
+    seq:
+      - id: market_data_group
+        type: s1
+        enum: market_data_group
+        doc: 'See Market Data Groups Catalog'
+      - id: first_message
+        type: s4
+        doc: 'Sequence number of the first message intended to recover'
+      - id: quantity
+        type: s2
+        doc: 'Quantity of requested messages'
+      - id: replay_response_status
+        type: u1
+        enum: replay_response_status
+        doc: 'Replay status (Document label: Status)'
+  snapshot_response_message:
+    seq:
+      - id: quantity_of_messages
+        type: s4
+        doc: 'Number of messages to be transmitted for the request, including instrument status and Snapshot complete messages; zero for a request not accepted'
+      - id: snapshot_response_status
+        type: u1
+        enum: snapshot_response_status
+        doc: 'Snapshot status (Document label: Status)'
+      - id: snapshot_type
+        type: s1
+        enum: snapshot_type
+        doc: 'See Snapshot Type Catalog'
+  snapshot_complete_message:
+    seq:
+      - id: sequence_number
+        type: s4
+        doc: 'Sequence number on to which the snapshot synchronizes with respect to the online channel'
+      - id: market_data_group
+        type: s1
+        enum: market_data_group
+        doc: 'See Market Data Groups Catalog'
+      - id: snapshot_type
+        type: s1
+        enum: snapshot_type
+        doc: 'See Snapshot Type Catalog'
+  events_system_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: event_code
+        type: u1
+        enum: event_code
+        doc: 'See the table of System Event Codes Catalog on the Connections and Appendix document'
+      - id: market
+        type: u1
+        enum: market
+        doc: 'See the table of Markets Catalog (only used when there is an official recess) on the Connections and Appendix document'
+      - id: sending_time
+        type: millisecond_timestamp
+        doc: 'Recess’s official sending time. Only used when official recess has occurred. Milliseconds since Unix epoch'
+      - id: ending_time
+        type: millisecond_timestamp
+        doc: 'Recess official ending time. Only used when an official recess or automatic recess occurred. Milliseconds since Unix epoch'
+  trade_cancellation_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: trade_number
+        type: s4
+        doc: 'Stamp number by instrument'
+  status_changes_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: instrument_status
+        type: u1
+        enum: instrument_status
+        doc: 'See the table of Instrument Status Catalog on the Connections and Appendix document'
+  weighted_average_price_settlement_prices_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: weighted_average_price
+        type: decimal_s8_8
+        doc: 'Average price instrument. Implied decimal with scale 1e-8'
+      - id: volatility
+        type: decimal_s8_8
+        doc: 'Volatility instrument. Implied decimal with scale 1e-8'
+  capital_trades_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: trade_time
+        type: millisecond_timestamp
+        doc: 'Time the operation was carried out. Milliseconds since Unix epoch'
+      - id: volume_int_324
+        type: s4
+        doc: 'Traded stocks'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Operation price. Implied decimal with scale 1e-8'
+      - id: concertation_type
+        type: u1
+        enum: concertation_type
+        doc: 'See the table of Concertation Type Catalog on the Connections and Appendix document'
+      - id: trade_number
+        type: s4
+        doc: 'Stamp number by instrument'
+      - id: price_setter
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'For value equal to 1, be taken as true; otherwise, false'
+      - id: operation_type
+        type: u1
+        enum: operation_type
+        doc: 'See the table of Type of Operation Catalog on the Connections and Appendix document'
+      - id: amount
+        type: decimal_s8_8
+        doc: 'Amount. Implied decimal with scale 1e-8'
+      - id: buy_alpha_5
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Buyers’ brokerage house short key'
+      - id: sell_alpha_5
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Seller’s brokerage house short key'
+      - id: settlement
+        type: u1
+        enum: settlement
+        doc: 'See the table of Settlement Type Catalog on the Connections and Appendix document'
+      - id: auction_indicator
+        type: u1
+        enum: auction_indicator
+        doc: '"P" – Opening Auction "S" – Other Auctions " " – Continuous Market "N" – Not Applicable'
+  probable_allocation_price_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: probable_allocation_price
+        type: decimal_s8_8
+        doc: 'Probable allocation price. Implied decimal with scale 1e-8'
+      - id: volume_int_324
+        type: s4
+        doc: 'Traded stocks'
+  continuous_auctions_beginning_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: beginning_time_of_auction
+        type: millisecond_timestamp
+        doc: 'Time at which auction begins. Milliseconds since Unix epoch'
+      - id: end_auction_time
+        type: millisecond_timestamp
+        doc: 'Time at which auction ends. Milliseconds since Unix epoch'
+  middle_price_existing_quotes_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: existing_postures
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'For value equal to "1", True (there are postures), otherwise False (there are no postures)'
+  registry_operations_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: offer_type
+        type: u1
+        enum: offer_type
+        doc: 'See the Public Offerings Catalog on the Connections and Appendix document'
+      - id: income
+        type: u1
+        enum: income
+        doc: 'V-Variable income F-Fixed Income W-Warrants'
+      - id: value_type
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Value type'
+      - id: issuer
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Issuers code'
+      - id: series
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Series code'
+      - id: maximum_volume
+        type: s8
+        doc: 'Maximum Volume'
+      - id: registered_volume
+        type: s8
+        doc: 'Registered Volume'
+      - id: price_rate
+        type: decimal_s8_8
+        doc: 'Operation registry price. Implied decimal with scale 1e-8'
+      - id: settlement_date
+        type: millisecond_timestamp
+        doc: 'Settlement date. Milliseconds since Unix epoch'
+      - id: firm
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Managing Brokerage Firm'
+      - id: movement
+        type: u1
+        enum: movement
+        doc: 'A-Registry operation U-Operation authorization C-Placement operation B-Delete operation'
+  mutual_fund_trades_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: trade_date
+        type: millisecond_timestamp
+        doc: 'Date operation was carried out. Milliseconds since Unix epoch'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Operation price. Implied decimal with scale 1e-8'
+      - id: book_value
+        type: decimal_s8_8
+        doc: 'Book value by stock. Implied decimal with scale 1e-8'
+      - id: number_of_sales_transactions
+        type: s4
+        doc: 'Number of sales transactions'
+      - id: sales_volume
+        type: s8
+        doc: 'Sales volume'
+      - id: number_of_buy_transactions
+        type: s4
+        doc: 'Number of buy transactions'
+      - id: buy_volume
+        type: s8
+        doc: 'Buy volume'
+  tradability_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: number_of_operations
+        type: s4
+        doc: 'Number of operations'
+      - id: volume_int_648
+        type: s8
+        doc: 'Traded volume'
+      - id: amount
+        type: decimal_s8_8
+        doc: 'Amount. Implied decimal with scale 1e-8'
+      - id: opening_price
+        type: decimal_s8_8
+        doc: 'Opening price. Implied decimal with scale 1e-8'
+      - id: maximum
+        type: decimal_s8_8
+        doc: 'Maximum price. Implied decimal with scale 1e-8'
+      - id: minimum
+        type: decimal_s8_8
+        doc: 'Minimum price. Implied decimal with scale 1e-8'
+      - id: average
+        type: decimal_s8_8
+        doc: 'Average price of the day. Implied decimal with scale 1e-8'
+      - id: last
+        type: decimal_s8_8
+        doc: 'Last time price. Implied decimal with scale 1e-8'
+  virtual_trades_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: virtual_trades_status
+        type: u1
+        enum: virtual_trades_status
+        doc: 'A-Addition B-Deletion (Document label: Status)'
+      - id: operation_type
+        type: u1
+        enum: operation_type
+        doc: 'See the table of Type of Operation Catalog on the Connections and Appendix document'
+      - id: number
+        type: s4
+        doc: 'Virtual trade number'
+      - id: volume_int_324
+        type: s4
+        doc: 'Traded stocks'
+      - id: concertation
+        type: u1
+        enum: concertation
+        doc: 'See the table of Concertation Type Catalog on the Connections and Appendix document'
+      - id: buy_alpha_5
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Buyers’ brokerage house short key'
+      - id: sell_alpha_5
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Seller’s brokerage house short key'
+  order_addition_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: date_and_time
+        type: millisecond_timestamp
+        doc: 'Date and time for the addition of order. Milliseconds since Unix epoch'
+      - id: number
+        type: s4
+        doc: 'Virtual trade number'
+      - id: direction
+        type: u1
+        enum: direction
+        doc: 'C - Buy V - Sell'
+      - id: volume_int_324
+        type: s4
+        doc: 'Traded stocks'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Operation price. Implied decimal with scale 1e-8'
+      - id: participant
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Short key of participant'
+  execution_of_orders_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: date
+        type: millisecond_timestamp
+        doc: 'Date for the addition of order. Milliseconds since Unix epoch'
+      - id: number
+        type: s4
+        doc: 'Virtual trade number'
+      - id: volume_int_324
+        type: s4
+        doc: 'Traded stocks'
+      - id: trade_number
+        type: s4
+        doc: 'Stamp number by instrument'
+      - id: execution_price
+        type: decimal_s8_8
+        doc: 'Price with which the trade was made. Implied decimal with scale 1e-8'
+  order_cancellation_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: date
+        type: millisecond_timestamp
+        doc: 'Date for the addition of order. Milliseconds since Unix epoch'
+      - id: number
+        type: s4
+        doc: 'Virtual trade number'
+  order_change_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: original_date
+        type: millisecond_timestamp
+        doc: 'Date and time when the order was registered. Milliseconds since Unix epoch'
+      - id: original_number
+        type: s4
+        doc: 'Number originally allocated to the order'
+      - id: new_date
+        type: millisecond_timestamp
+        doc: 'New Date and time when the order was registered (Document label: Original date). Milliseconds since Unix epoch'
+      - id: new_number
+        type: s4
+        doc: 'Number allocated to the new order'
+      - id: direction
+        type: u1
+        enum: direction
+        doc: 'C - Buy V - Sell'
+      - id: volume_int_324
+        type: s4
+        doc: 'Traded stocks'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Operation price. Implied decimal with scale 1e-8'
+  depth_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: side
+        type: s1
+        enum: side
+        doc: 'O - Buy, 1 - Sell'
+      - id: num_price_level
+        type: s1
+        doc: 'Number of buy or sale levels to be sent'
+      - id: price_level
+        type: price_level
+        repeat: expr
+        repeat-expr: num_price_level
+        doc: 'One price level of the Depth message'
+  price_level:
+    seq:
+      - id: price
+        type: decimal_s8_8
+        doc: 'Operation price. Implied decimal with scale 1e-8'
+      - id: number_of_orders
+        type: s2
+        doc: 'Level number of orders (Document label: Number of orders-1)'
+      - id: volume_int_324
+        type: s4
+        doc: 'Traded stocks'
+  best_offer_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: volume_int_324
+        type: s4
+        doc: 'Traded stocks'
+      - id: price_rate
+        type: decimal_s8_8
+        doc: 'Operation registry price. Implied decimal with scale 1e-8'
+      - id: offer_direction
+        type: u1
+        enum: offer_direction
+        doc: 'C-Buy V-Sell'
+      - id: operation_type
+        type: u1
+        enum: operation_type
+        doc: 'See the table of Type of Operation Catalog on the Connections and Appendix document'
+  public_offerings_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: number
+        type: s4
+        doc: 'Virtual trade number'
+      - id: volume_int_648
+        type: s8
+        doc: 'Traded volume'
+      - id: discount_rate_or_price
+        type: decimal_s8_8
+        doc: 'Discount rate or price. Implied decimal with scale 1e-8'
+      - id: rate_of_return
+        type: decimal_s4_4
+        doc: 'Rate of return. Implied decimal with scale 1e-4'
+      - id: term_days
+        type: s2
+        doc: 'Term Days'
+      - id: currency_type
+        type: u1
+        enum: currency_type
+        doc: 'N – Mexican currency D-Dollar'
+      - id: settlement
+        type: u1
+        enum: settlement
+        doc: 'See the table of Settlement Type Catalog on the Connections and Appendix document'
+      - id: buy_alpha_5
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Buyers’ brokerage house short key'
+      - id: sell_alpha_5
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Seller’s brokerage house short key'
+      - id: placement_date
+        type: millisecond_timestamp
+        doc: 'Placement date. Milliseconds since Unix epoch'
+      - id: issue_date
+        type: millisecond_timestamp
+        doc: 'Issue date. Milliseconds since Unix epoch'
+      - id: maturity_date
+        type: millisecond_timestamp
+        doc: 'Maturity date. Milliseconds since Unix epoch'
+  open_interest_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: open_interest
+        type: decimal_s4_4
+        doc: 'Open interest. Implied decimal with scale 1e-4'
+  derivatives_market_trades_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: trade_time
+        type: millisecond_timestamp
+        doc: 'Time the operation was carried out. Milliseconds since Unix epoch'
+      - id: volume_int_324
+        type: s4
+        doc: 'Traded stocks'
+      - id: price_rate
+        type: decimal_s8_8
+        doc: 'Operation registry price. Implied decimal with scale 1e-8'
+      - id: concertation_type
+        type: u1
+        enum: concertation_type
+        doc: 'See the table of Concertation Type Catalog on the Connections and Appendix document'
+      - id: trade_number
+        type: s4
+        doc: 'Stamp number by instrument'
+      - id: operation_type
+        type: u1
+        enum: operation_type
+        doc: 'See the table of Type of Operation Catalog on the Connections and Appendix document'
+      - id: amount
+        type: decimal_s8_8
+        doc: 'Amount. Implied decimal with scale 1e-8'
+      - id: parent_trade_number
+        type: s4
+        doc: 'Will only contain a value if and only if is about a strategy leg'
+      - id: leg_type
+        type: u1
+        enum: leg_type
+        doc: 'L-Long leg C-Short leg X-Forwards chain leg P-Indicates if its parent strategy ""-Fact not generated from a strategy'
+  statistics_of_instruments_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: previous_settlement_price
+        type: decimal_s8_8
+        doc: 'Last day settlement price. Implied decimal with scale 1e-8'
+      - id: opening_price
+        type: decimal_s8_8
+        doc: 'Opening price. Implied decimal with scale 1e-8'
+      - id: max_price_of_the_day
+        type: decimal_s8_8
+        doc: 'Max price recorded on the day. Implied decimal with scale 1e-8'
+      - id: lower_price_of_the_day
+        type: decimal_s8_8
+        doc: 'Lower price recorded on the day. Implied decimal with scale 1e-8'
+      - id: last_price_of_the_day
+        type: decimal_s8_8
+        doc: 'Last price recorded on the day. Implied decimal with scale 1e-8'
+  general_indices_message:
+    seq:
+      - id: component
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Component'
+      - id: sector
+        type: s1
+        doc: 'See Industry Classification on the Connections and Appendix document'
+      - id: indices_hour
+        type: millisecond_timestamp
+        doc: 'Time Indices was calculated. Milliseconds since Unix epoch'
+      - id: volume_int_648
+        type: s8
+        doc: 'Traded volume'
+      - id: indices_price_44
+        type: decimal_s4_4
+        doc: 'Indices value. Implied decimal with scale 1e-4'
+      - id: variation
+        type: decimal_s4_4
+        doc: 'Variation points. Implied decimal with scale 1e-4'
+      - id: percentage
+        type: decimal_s4_4
+        doc: 'Percentage points. Implied decimal with scale 1e-4'
+      - id: trend
+        type: u1
+        enum: trend
+        doc: 'See Trend Catalog on the Connections and Appendix document'
+      - id: indices_status
+        type: u1
+        enum: indices_status
+        doc: 'See Indices Status Catalog on the Connections and Appendix document'
+  indices_components_message:
+    seq:
+      - id: date
+        type: millisecond_timestamp
+        doc: 'Date for the addition of order. Milliseconds since Unix epoch'
+      - id: component
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Component'
+      - id: sector
+        type: s1
+        doc: 'See Industry Classification on the Connections and Appendix document'
+      - id: type_field
+        type: u1
+        enum: type_field
+        doc: 'See Equity’s Indices Components Catalog on the Connections and Appendix document'
+      - id: issuer
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Issuers code'
+      - id: series
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Series code'
+      - id: indices_stocks
+        type: s8
+        doc: 'Number of stocks of the issuer that making up the component'
+      - id: last_price
+        type: decimal_s8_8
+        doc: 'Last price. Implied decimal with scale 1e-8'
+      - id: closing_price
+        type: decimal_s8_8
+        doc: 'Closing price. Implied decimal with scale 1e-8'
+      - id: influence
+        type: decimal_s8_8
+        doc: 'Issuer weight inside the Indices. Implied decimal with scale 1e-8'
+  inav_message:
+    seq:
+      - id: trac_number
+        type: s4
+        doc: 'Unique code during TRACs life'
+      - id: theoretical_current_price
+        type: decimal_s8_8
+        doc: 'Tracs'' last theoretical price. Implied decimal with scale 1e-8'
+  dollar_buy_sell_message:
+    seq:
+      - id: posture_date
+        type: millisecond_timestamp
+        doc: 'Posture Date. Milliseconds since Unix epoch'
+      - id: currency
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Currency'
+      - id: dollar_side
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Side (Document label: Side)'
+      - id: buy_precio_88
+        type: decimal_s8_8
+        doc: 'Buy. Implied decimal with scale 1e-8'
+      - id: sell_precio_88
+        type: decimal_s8_8
+        doc: 'Sell. Implied decimal with scale 1e-8'
+      - id: last_deal
+        type: decimal_s8_8
+        doc: 'Last Deal. Implied decimal with scale 1e-8'
+  short_sales_balances_per_instrument_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: date
+        type: millisecond_timestamp
+        doc: 'Date for the addition of order. Milliseconds since Unix epoch'
+      - id: previous_balance
+        type: s8
+        doc: 'Previous Balance'
+      - id: amount_traded
+        type: s8
+        doc: 'Amount Traded'
+      - id: buybacks
+        type: s8
+        doc: 'Buybacks'
+      - id: current_balance
+        type: s8
+        doc: 'Current Balance'
+  capital_market_multiples_message:
+    seq:
+      - id: instrument_id
+        type: s4
+        doc: 'Instrument identifier to which request is related; zeros when not related to any instrument'
+      - id: multiple_type
+        type: u1
+        enum: multiple_type
+        doc: '"E"=Multiple of market by transmitter, "S"=Multiple of market by sector'
+      - id: registry_number
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Registries sent number'
+      - id: sector
+        type: s1
+        doc: 'See Industry Classification on the Connections and Appendix document'
+      - id: subsector
+        type: s1
+        doc: 'Subsector'
+      - id: business_line
+        type: s1
+        doc: 'Business Line'
+      - id: sub_line
+        type: s1
+        doc: 'Sub-Line'
+      - id: pflepa_multiple
+        type: decimal_s8_8
+        doc: 'P/FLEPA Multiple. Implied decimal with scale 1e-8'
+      - id: pfepa_multiple
+        type: decimal_s8_8
+        doc: 'P/FEPA Multiple. Implied decimal with scale 1e-8'
+      - id: ve_uaiida_multiple
+        type: decimal_s8_8
+        doc: 'VE-UAIIDA Multiple. Implied decimal with scale 1e-8'
+      - id: p_u
+        type: decimal_s8_8
+        doc: 'P U. Implied decimal with scale 1e-8'
+      - id: p_vl
+        type: decimal_s8_8
+        doc: 'P VL. Implied decimal with scale 1e-8'
+      - id: f_1_p_unoc
+        type: decimal_s8_8
+        doc: 'F1_P_UNOC. Implied decimal with scale 1e-8'
+      - id: f_2_p_unoc
+        type: decimal_s8_8
+        doc: 'F2_P_UNOC. Implied decimal with scale 1e-8'
+      - id: f_1_p_ue
+        type: decimal_s8_8
+        doc: 'F1_P_UE. Implied decimal with scale 1e-8'
+      - id: f_2_p_ue
+        type: decimal_s8_8
+        doc: 'F2_P_UE. Implied decimal with scale 1e-8'
+      - id: f_1_ve_uaiida
+        type: decimal_s8_8
+        doc: 'F1_VE_UAIIDA. Implied decimal with scale 1e-8'
+      - id: f_2_ve_uaiida
+        type: decimal_s8_8
+        doc: 'F2_VE_UAIIDA. Implied decimal with scale 1e-8'
+      - id: f_1_p_u
+        type: decimal_s8_8
+        doc: 'F1_P_U. Implied decimal with scale 1e-8'
+      - id: f_2_p_u
+        type: decimal_s8_8
+        doc: 'F2_P_U. Implied decimal with scale 1e-8'
+      - id: f_1_p_vl
+        type: decimal_s8_8
+        doc: 'F1_P_VL. Implied decimal with scale 1e-8'
+      - id: f_2_p_vl
+        type: decimal_s8_8
+        doc: 'F2_P_VL. Implied decimal with scale 1e-8'
+  benchmark_message:
+    seq:
+      - id: benchmark_name
+        type: str
+        size: 40
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Benchmark Name'
+      - id: benchmark_date
+        type: millisecond_timestamp
+        doc: 'Benchmark Date. Milliseconds since Unix epoch'
+      - id: outstanding
+        type: s8
+        doc: 'Sum of outstanding shares of all groups up to calculation date'
+      - id: integer_amount
+        type: s8
+        doc: 'Integer amount of Circulation field'
+      - id: decimal_amount
+        type: s4
+        doc: 'Decimal amount of Circulation field'
+      - id: indices_precio_88
+        type: decimal_s8_8
+        doc: 'Benchmark value at calculation date. Implied decimal with scale 1e-8'
+      - id: indices_24
+        type: decimal_s8_8
+        doc: 'Benchmark value 24 hours at calculation date. Implied decimal with scale 1e-8'
+      - id: rebalance
+        type: u1
+        enum: rebalance
+        doc: '"R" if benchmark was rebalanced in this calculation date, "N" otherwise'
+      - id: daily_performance
+        type: decimal_s8_8
+        doc: 'Daily Performance. Implied decimal with scale 1e-8'
+      - id: annual_performance
+        type: decimal_s8_8
+        doc: 'Annual Performance. Implied decimal with scale 1e-8'
+      - id: monthly_performance
+        type: decimal_s8_8
+        doc: 'Monthly Performance. Implied decimal with scale 1e-8'
+      - id: last_12_months_performance
+        type: decimal_s8_8
+        doc: 'Last 12 Months Performance. Implied decimal with scale 1e-8'
+      - id: field_24_hours_daily_performance
+        type: decimal_s8_8
+        doc: '24 Hours Daily Performance. Implied decimal with scale 1e-8'
+      - id: field_24_hours_annual_performance
+        type: decimal_s8_8
+        doc: '24 Hours Annual Performance. Implied decimal with scale 1e-8'
+      - id: field_24_hours_monthly_performance
+        type: decimal_s8_8
+        doc: '24 Hours Monthly Performance. Implied decimal with scale 1e-8'
+      - id: last_12_months_24_hours_performance
+        type: decimal_s8_8
+        doc: 'Last 12 Months 24 Hours Performance. Implied decimal with scale 1e-8'
+  capitalization_rules_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: date_indicators
+        type: millisecond_timestamp
+        doc: 'Date indicators. Milliseconds since Unix epoch'
+      - id: bursatility_indices
+        type: decimal_s4_4
+        doc: 'Bursatility Indices. Implied decimal with scale 1e-4'
+      - id: bursatility_indices_sign
+        type: u1
+        enum: bursatility_indices_sign
+        doc: 'Bursatility Indices Sign: " " - Positive, "_" - Negative'
+      - id: beta_coefficient
+        type: decimal_s8_8
+        doc: 'Beta Coefficient. Implied decimal with scale 1e-8'
+      - id: beta_coefficient_sign
+        type: u1
+        enum: beta_coefficient_sign
+        doc: 'Beta Coefficient Sign: " " - Positive, "_" - Negative'
+      - id: correlation_coefficient
+        type: decimal_s8_8
+        doc: 'Correlation Coefficient. Implied decimal with scale 1e-8'
+      - id: correlation_coefficient_sign
+        type: u1
+        enum: correlation_coefficient_sign
+        doc: 'Correlation Coefficient Sign: " " - Positive, "_" - Negative'
+      - id: delta_difference
+        type: decimal_s4_4
+        doc: 'Delta Difference. Implied decimal with scale 1e-4'
+  closing_price_origin_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin_price
+        type: decimal_s8_8
+        doc: 'Origin price. Implied decimal with scale 1e-8'
+      - id: sending
+        type: u1
+        enum: sending
+        doc: 'A: Preopening C: After closing'
+  mutual_funds_trades_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: date_of_the_trade
+        type: millisecond_timestamp
+        doc: 'Date when the trade was made. Milliseconds since Unix epoch'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Operation price. Implied decimal with scale 1e-8'
+      - id: book_value
+        type: decimal_s8_8
+        doc: 'Book value by stock. Implied decimal with scale 1e-8'
+      - id: number_of_sales_trades
+        type: s4
+        doc: 'Number of sales trades'
+      - id: sales_volume
+        type: s8
+        doc: 'Sales volume'
+      - id: number_of_purchase_trades
+        type: s4
+        doc: 'Number of purchase trades'
+      - id: purchase_volume
+        type: s8
+        doc: 'Purchase volume'
+  opening_of_continuous_auctions_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: auction_session_startup_time
+        type: millisecond_timestamp
+        doc: 'Time when the auction session opens. Milliseconds since Unix epoch'
+      - id: auction_session_end_time
+        type: millisecond_timestamp
+        doc: 'Time when the auction session ends. Milliseconds since Unix epoch'
+  existence_of_bids_at_mid_price_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: bids_existing
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'If the value is "1", it will be construed as true (there are bids), in any other case it will be false (there are no bids)'
+  catalogue_of_debt_and_metals_instruments_message:
+    seq:
+      - id: number_of_the_instrument
+        type: s4
+        doc: 'Sole code throughout the life of the instrument'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: type_of_value
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the Type Value'
+      - id: issuing_company
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the issuing Company'
+      - id: issuance
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the issuance'
+      - id: date_of_issuance
+        type: millisecond_timestamp
+        doc: 'Date of issuance and placement. Milliseconds since Unix epoch'
+      - id: date_of_maturity
+        type: millisecond_timestamp
+        doc: 'Date of maturity. Milliseconds since Unix epoch'
+      - id: price_rate_of_reference
+        type: decimal_s8_8
+        doc: 'Last reference price or rate. Implied decimal with scale 1e-8'
+      - id: date_of_reference
+        type: millisecond_timestamp
+        doc: 'Last reference date. Milliseconds since Unix epoch'
+      - id: reference
+        type: u1
+        enum: reference
+        doc: 'N – Prior, “ ” – W/O Price, V – Adjusted Nominal Value'
+      - id: term_days
+        type: s2
+        doc: 'Term Days'
+      - id: coupon_period
+        type: s2
+        doc: 'Coupon number in effect or period number'
+      - id: isin
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'ISIN Code of the instrument'
+      - id: market
+        type: u1
+        enum: market
+        doc: 'See the table of Markets Catalog (only used when there is an official recess) on the Connections and Appendix document'
+      - id: current_nominal_value
+        type: decimal_s8_8
+        doc: 'Current nominal value. Implied decimal with scale 1e-8'
+      - id: original_nominal_value
+        type: decimal_s8_8
+        doc: 'Original nominal value. Implied decimal with scale 1e-8'
+      - id: outstanding_shares
+        type: s8
+        doc: 'Outstanding Shares'
+      - id: amount_placed
+        type: s8
+        doc: 'Amount Placed'
+      - id: trades_rate_price
+        type: u1
+        enum: trades_rate_price
+        doc: 'T - Rate P - Price " "- By default'
+  catalog_sent_for_instruments_belonging_to_mutual_funds_message:
+    seq:
+      - id: number_of_the_instrument
+        type: s4
+        doc: 'Sole code throughout the life of the instrument'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: type_of_value
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the Type Value'
+      - id: issuing_company
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the issuing Company'
+      - id: series
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Series code'
+      - id: sector
+        type: s1
+        doc: 'See Industry Classification on the Connections and Appendix document'
+      - id: subsector
+        type: s1
+        doc: 'Subsector'
+      - id: industry
+        type: s1
+        doc: 'See Industry Classification on the Connections and Appendix document'
+      - id: sub_industry
+        type: s1
+        doc: 'See Industry Classification on the Connections and Appendix document'
+      - id: trading_company
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the trading company of the investment fund'
+      - id: reference_price
+        type: decimal_s8_8
+        doc: 'Last reference price or rate. Implied decimal with scale 1e-8'
+      - id: reference_date
+        type: millisecond_timestamp
+        doc: 'Last reference date. Milliseconds since Unix epoch'
+      - id: reference
+        type: u1
+        enum: reference
+        doc: 'N – Prior, “ ” – W/O Price, V – Adjusted Nominal Value'
+      - id: isin
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'ISIN Code of the instrument'
+      - id: rating
+        type: str
+        size: 15
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Rating'
+  weighted_average_price_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: weighted_average_price
+        type: decimal_s8_8
+        doc: 'Average price instrument. Implied decimal with scale 1e-8'
+      - id: volatility
+        type: decimal_s8_8
+        doc: 'Volatility instrument. Implied decimal with scale 1e-8'
+  system_events_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: code_of_event
+        type: u1
+        enum: code_of_event
+        doc: 'See Catalogue of Codes of System Event on the Connections and Appendix document'
+      - id: market
+        type: u1
+        enum: market
+        doc: 'See the table of Markets Catalog (only used when there is an official recess) on the Connections and Appendix document'
+      - id: send_time
+        type: millisecond_timestamp
+        doc: 'Send time of administrative recess. Used only in case of administrative recess notices. Milliseconds since Unix epoch'
+      - id: end_time
+        type: millisecond_timestamp
+        doc: 'End time of administrative recess. Used only in case of administrative recess notices and in the case of an automatic resource. Milliseconds since Unix epoch'
+      - id: group
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Group identifier. If blank, it applies at system level'
+  reference_price_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Operation price. Implied decimal with scale 1e-8'
+      - id: price_type
+        type: u1
+        enum: price_type
+        doc: 'Type of Price sent. See Catalogue of types of price on the Connections and Appendix document'
+  changes_in_status_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: status
+        type: u1
+        enum: status
+        doc: 'New status of the instrument. See Catalogue of status changes. on the Connections and Appendix document'
+      - id: reason
+        type: u1
+        enum: reason
+        doc: 'Reason for the change of status. See Catalogue of reasons. on the Connections and Appendix document'
+  catalog_for_instruments_belonging_to_the_capital_warrants_market_message:
+    seq:
+      - id: number_of_the_instrument
+        type: s4
+        doc: 'Sole code throughout the life of the instrument'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: type_of_value
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the Type Value'
+      - id: issuing_company
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the issuing Company'
+      - id: series
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Series code'
+      - id: type_of_warrant
+        type: u1
+        enum: type_of_warrant
+        doc: '"C"- Purchase "V"- Sale'
+      - id: date_of_maturity
+        type: millisecond_timestamp
+        doc: 'Date of maturity. Milliseconds since Unix epoch'
+      - id: price_of_exercise
+        type: decimal_s8_8
+        doc: 'Price to exercise the Warrant. Implied decimal with scale 1e-8'
+      - id: reference_price
+        type: decimal_s8_8
+        doc: 'Last reference price or rate. Implied decimal with scale 1e-8'
+      - id: reference_date
+        type: millisecond_timestamp
+        doc: 'Last reference date. Milliseconds since Unix epoch'
+      - id: reference
+        type: u1
+        enum: reference
+        doc: 'N – Prior, “ ” – W/O Price, V – Adjusted Nominal Value'
+      - id: isin
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'ISIN Code of the instrument'
+  catalog_sent_for_instruments_belonging_to_capital_tracs_message:
+    seq:
+      - id: number_of_the_trac
+        type: s4
+        doc: 'Sole code throughout the life of the instrument'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: name_of_the_trac
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Identifies the name of the Trac'
+      - id: underlying_issuing_company
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the issuing company of the underlying value'
+      - id: underlying_series
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the series of the underlying value'
+      - id: securities
+        type: decimal_s8_8
+        doc: 'Number of Securities of the underlying value. Implied decimal with scale 1e-8'
+      - id: excluded_securities
+        type: decimal_s8_8
+        doc: 'Number of securities excluded from the underlying value. Implied decimal with scale 1e-8'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Operation price. Implied decimal with scale 1e-8'
+      - id: component_in_cash
+        type: decimal_s8_8
+        doc: 'Cash component per unit. Implied decimal with scale 1e-8'
+      - id: excluded_value
+        type: decimal_s8_8
+        doc: 'Estimated value of excluded assets by unit. Implied decimal with scale 1e-8'
+      - id: number_of_certificates
+        type: s8
+        doc: 'Estimated value of the excluded assets per unit (Document label: Excluded Value)'
+      - id: theoretical_price
+        type: decimal_s8_8
+        doc: 'Theoretical Price. Implied decimal with scale 1e-8'
+  consolidated_inav_message:
+    seq:
+      - id: number_of_the_trac
+        type: s4
+        doc: 'Sole code throughout the life of the instrument'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: current_theoretical_price
+        type: decimal_s8_8
+        doc: 'Last theoretical price of the Trac. Implied decimal with scale 1e-8'
+  catalog_for_instruments_belonging_to_the_local_and_global_stock_market_message:
+    seq:
+      - id: mse_instrument_number
+        type: s4
+        doc: 'Unique code during instruments life'
+      - id: value_of_type
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the Type of Value'
+      - id: issuing_company
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Code of the issuing Company'
+      - id: series
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Series code'
+      - id: last_price
+        type: decimal_s8_8
+        doc: 'Last price. Implied decimal with scale 1e-8'
+      - id: ppp_weighted_average_price
+        type: decimal_s8_8
+        doc: 'Weighted average price. Implied decimal with scale 1e-8'
+      - id: reference_date
+        type: millisecond_timestamp
+        doc: 'Last reference date. Milliseconds since Unix epoch'
+      - id: reference
+        type: u1
+        enum: reference
+        doc: 'N – Prior, “ ” – W/O Price, V – Adjusted Nominal Value'
+      - id: coupon_in_effect
+        type: s2
+        doc: 'Coupon number in effect'
+      - id: marketability
+        type: u1
+        enum: marketability
+        doc: 'See Marketability Catalog on the Connections and Appendix document'
+      - id: numerical_marketability
+        type: decimal_s4_4
+        doc: 'Refer to the BMV Marketability Indices Methodology. Implied decimal with scale 1e-4'
+      - id: isin
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'ISIN Code of the instrument'
+      - id: market
+        type: u1
+        enum: market
+        doc: 'See the table of Markets Catalog (only used when there is an official recess) on the Connections and Appendix document'
+      - id: registered_values
+        type: s8
+        doc: 'Outstanding shares'
+      - id: exchange
+        type: u1
+        enum: exchange
+        doc: 'Exchange where the value was listed. M-BMV I-BIVA (Document label: Registered Values)'
+  probable_price_of_allocation_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: probable_price_of_allocation
+        type: decimal_s8_8
+        doc: 'Probable price of allocation. Implied decimal with scale 1e-8'
+      - id: volume_int_648
+        type: s8
+        doc: 'Traded volume'
+  relation_between_bmvbiva_instruments_message:
+    seq:
+      - id: number_of_the_bmv_instrument
+        type: s4
+        doc: 'Sole code throughout the life of the instrument at BMV'
+      - id: biva_instrument
+        type: s4
+        doc: 'Code of the instrument at BIVA'
+      - id: type_of_trading
+        type: u1
+        enum: type_of_trading
+        doc: 'See Catalogue of Type of BIVA operations on the Connections and Appendix document'
+  equities_market_trades_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: time_of_the_trade
+        type: millisecond_timestamp
+        doc: 'Time when the transaction took place. Milliseconds since Unix epoch'
+      - id: volume_int_648
+        type: s8
+        doc: 'Traded volume'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Operation price. Implied decimal with scale 1e-8'
+      - id: type_of_agreement
+        type: u1
+        enum: type_of_agreement
+        doc: 'See Catalogue of Type of Agreement on the Connections and Appendix document'
+      - id: consecutive_number_of_the_trade
+        type: s8
+        doc: 'Numbering stamp per instrument'
+      - id: sets_price
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'If the Value is 1, it will be construed as true, in any other case it will be false'
+      - id: type_of_trading
+        type: u1
+        enum: type_of_trading
+        doc: 'See Catalogue of Type of BIVA operations on the Connections and Appendix document'
+      - id: amount
+        type: decimal_s8_8
+        doc: 'Amount. Implied decimal with scale 1e-8'
+      - id: purchases
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Short code of the Purchasing Exchange (BMV and BIVA)'
+      - id: sells
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Short code of the Selling Exchange (BMV and BIVA)'
+      - id: settlement
+        type: u1
+        enum: settlement
+        doc: 'See the table of Settlement Type Catalog on the Connections and Appendix document'
+      - id: auction_indicator
+        type: u1
+        enum: auction_indicator
+        doc: '"P" – Opening Auction "S" – Other Auctions " " – Continuous Market "N" – Not Applicable'
+      - id: indicator
+        type: u1
+        enum: indicator
+        doc: 'Denotes if the execution must be reflected for the volume calculations: "N" – No, "Y" – Yes In the case of the BMV this field does not apply and will be sent blank'
+  consolidated_trade_cancellation_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: consecutive_number_of_the_trade
+        type: s8
+        doc: 'Numbering stamp per instrument'
+  pricevolume_indicator_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: probable_price_of_allotment
+        type: decimal_s8_8
+        doc: 'Probable price of allotment. Implied decimal with scale 1e-8'
+      - id: volume_int_648
+        type: s8
+        doc: 'Traded volume'
+      - id: best_selling_price
+        type: decimal_s8_8
+        doc: 'Best current selling price. Implied decimal with scale 1e-8'
+      - id: best_purchasing_price
+        type: decimal_s8_8
+        doc: 'Best current Purchasing price. Implied decimal with scale 1e-8'
+      - id: type_of_cross_trading
+        type: u1
+        enum: type_of_cross_trading
+        doc: 'O – Pre-opening, I – Intraday auction'
+  consolidated_execution_of_orders_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: date
+        type: millisecond_timestamp
+        doc: 'Date for the addition of order. Milliseconds since Unix epoch'
+      - id: consecutive_number
+        type: s8
+        doc: 'Consecutive Number Assigned to the order when it is recorded'
+      - id: volume_int_648
+        type: s8
+        doc: 'Traded volume'
+      - id: consecutive_number_of_the_trade
+        type: s8
+        doc: 'Numbering stamp per instrument'
+      - id: execution_price
+        type: decimal_s8_8
+        doc: 'Price with which the trade was made. Implied decimal with scale 1e-8'
+      - id: indicator
+        type: u1
+        enum: indicator
+        doc: 'Denotes if the execution must be reflected for the volume calculations: "N" – No, "Y" – Yes In the case of the BMV this field does not apply and will be sent blank'
+      - id: sets_price
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'If the Value is 1, it will be construed as true, in any other case it will be false'
+      - id: participant
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Short key of participant'
+  registration_of_order_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: date_and_time
+        type: millisecond_timestamp
+        doc: 'Date and time for the addition of order. Milliseconds since Unix epoch'
+      - id: consecutive_number
+        type: s8
+        doc: 'Consecutive Number Assigned to the order when it is recorded'
+      - id: direction
+        type: u1
+        enum: direction
+        doc: 'C - Buy V - Sell'
+      - id: volume_int_648
+        type: s8
+        doc: 'Traded volume'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Operation price. Implied decimal with scale 1e-8'
+      - id: participant
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Short key of participant'
+  cancellations_of_orders_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: date
+        type: millisecond_timestamp
+        doc: 'Date for the addition of order. Milliseconds since Unix epoch'
+      - id: consecutive_number
+        type: s8
+        doc: 'Consecutive Number Assigned to the order when it is recorded'
+  last_quote_message:
+    seq:
+      - id: instrument_number
+        type: s4
+        doc: 'Always zero'
+      - id: origin
+        type: u1
+        enum: origin
+        doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
+      - id: volume_int_648
+        type: s8
+        doc: 'Traded volume'
+      - id: price_rate
+        type: decimal_s8_8
+        doc: 'Operation registry price. Implied decimal with scale 1e-8'
+      - id: direction_of_the_bid
+        type: u1
+        enum: direction_of_the_bid
+        doc: 'C- Purchase V-Sale'
+      - id: type_of_trading
+        type: u1
+        enum: type_of_trading
+        doc: 'See Catalogue of Type of BIVA operations on the Connections and Appendix document'
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
+
+enums:
+  market_data_group:
+    1:
+      id: 'indepth_local_market'
+      doc: 'in-depth local market'
+    2:
+      id: 'indepth_global_market'
+      doc: 'in-depth global market'
+    3:
+      id: 'twenty_price_levels_of_local_market'
+      doc: '20 price levels of local market'
+    4:
+      id: 'twenty_price_levels_of_global_market'
+      doc: '20 price levels of global market'
+    5:
+      id: 'best_offers_of_local_market'
+      doc: 'Best offers of local market'
+    6:
+      id: 'best_offers_of_global_market'
+      doc: 'Best offers of global market'
+    7:
+      id: 'ten_price_levels_of_derivative_futures'
+      doc: '10 price levels of derivative futures'
+    8:
+      id: 'ten_price_levels_of_derivative_options'
+      doc: '10 price levels of derivative options'
+    9:
+      id: 'best_offers_for_derivative_futures'
+      doc: 'Best offers for derivative futures'
+    10:
+      id: 'best_offers_for_derivative_options'
+      doc: 'Best offers for derivative options'
+    11:
+      id: 'money_market'
+      doc: 'Money market'
+    12:
+      id: 'indices_components'
+      doc: 'Indices Components'
+    13:
+      id: 'level_of_indices'
+      doc: 'Level of Indices'
+    14:
+      id: 'levels_of_inavs'
+      doc: 'Levels of INAV''s'
+    15:
+      id: 'indepth_local_and_global_market'
+      doc: 'In-depth local and global market'
+    16:
+      id: 'twenty_price_levels_of_local_and_global_market'
+      doc: '20 price levels of local and global market'
+    17:
+      id: 'best_offers_of_local_and_global_market_with_money_market'
+      doc: 'Best offers of local and global market with Money market'
+    18:
+      id: 'twenty_price_levels_of_local_and_global_market_indices_components_level_of_indices_and_levels_of_inavs'
+      doc: '20 price levels of local and global Market, Indices components, level of Indices and levels of INAV''s'
+    19:
+      id: 'ten_price_levels_of_derivate_futures_and_derivative_options'
+      doc: '10 price levels of derivate futures and derivative options'
+    20:
+      id: 'best_offers_for_derivative_futures_and_derivative_options'
+      doc: 'Best offers for derivative futures and derivative options'
+    21:
+      id: 'added_value_with_benchmark'
+      doc: 'Added Value with Benchmark'
+    22:
+      id: 'added_value_with_capitalization_rules'
+      doc: 'Added Value with Capitalization Rules'
+    23:
+      id: 'indices_levels_with_delay'
+      doc: 'Indices Levels with delay'
+    24:
+      id: 'local_and_global_market_with_money_market_best_positions_with_delay'
+      doc: 'Local and Global market with Money market best positions with delay'
+    25:
+      id: 'equities_market_trades_consolidated_feed'
+      doc: 'Equities market trades, Consolidated Feed'
+    26:
+      id: 'best_bid_of_the_equities_market_consolidated_feed'
+      doc: 'Best bid of the equities market, Consolidated Feed'
+    27:
+      id: 'full_depth_consolidated_feed'
+      doc: 'Full depth, Consolidated Feed'
+    28:
+      id: 'closing_price_origin'
+      doc: 'Closing price origin'
+    29:
+      id: 'analytics_price_and_market_depth'
+      doc: 'Analytics Price and Market Depth'
+    32:
+      id: 'analytics_market_quality'
+      doc: 'Analytics Market Quality'
+    33:
+      id: 'analytics_spead_performance'
+      doc: 'Analytics Spead Performance'
+    34:
+      id: 'analytics_negotiation'
+      doc: 'Analytics Negotiation'
+    40:
+      id: 'channel_zero_catalogs'
+      doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x26:
+      id: 'login_response_message'
+      doc: 'Answers a login request.'
+    0x2a:
+      id: 'replay_response_message'
+      doc: 'Answers a replay request; the replayed messages follow an accepted one.'
+    0x2b:
+      id: 'snapshot_response_message'
+      doc: 'Answers a snapshot request.'
+    0x3f:
+      id: 'snapshot_complete_message'
+      doc: 'Ends a snapshot with the sequence number it synchronizes with on the online channel.'
+    0x53:
+      id: 'events_system_message'
+      doc: 'The system of events message is used to inform that an event has occurred, which needs to be of public domain.'
+    0x48:
+      id: 'trade_cancellation_message'
+      doc: 'This message is sent when a transaction is cancelled from the BMV system.'
+    0x34:
+      id: 'status_changes_message'
+      doc: 'All instruments are in a certain status before and during trading session.'
+    0x4d:
+      id: 'weighted_average_price_settlement_prices_message'
+      doc: 'For equities market, this message will be sent for each operation containing weighted average price per instrument generated within WAP calculation period (last 20 minutes of trading).'
+    0x50:
+      id: 'capital_trades_message'
+      doc: 'Contains information on any BMV accepted transaction.'
+    0x32:
+      id: 'probable_allocation_price_message'
+      doc: 'Sent during any auction type (Opening, Continuous, Volatility and Intraday) and only on instruments where there is already a virtual match or pre-allocation.'
+    0x33:
+      id: 'continuous_auctions_beginning_message'
+      doc: 'Sent at the moment one of the Continuous, Volatility or SIC auctions is generated.'
+    0x35:
+      id: 'middle_price_existing_quotes_message'
+      doc: 'Generated when an instrument enters a posture in the hidden electronic Middle Price book.'
+    0x5a:
+      id: 'registry_operations_message'
+      doc: 'Sent whenever there is a debt or capital instrument placement.'
+    0x59:
+      id: 'mutual_fund_trades_message'
+      doc: 'Contains any mutual funds operation realized.'
+    0x45:
+      id: 'tradability_message'
+      doc: 'Message sent every half hour during trading session, informing general tradability by instrument.'
+    0x56:
+      id: 'virtual_trades_message'
+      doc: 'When an operation has been pre-assigned to the at closing and average day Price electronic books, a virtual trade message is sent, where also notifying of this operation.'
+    0x41:
+      id: 'order_addition_message'
+      doc: 'The moment an order is being accepted by the BMV central system; this message is diffused to the corresponding media.'
+    0x43:
+      id: 'execution_of_orders_message'
+      doc: 'The message is disseminated at the time there is a matching or closing in BMV’s electronic system.'
+    0x44:
+      id: 'order_cancellation_message'
+      doc: 'This message fully eliminates the order from the trading floor.'
+    0x46:
+      id: 'order_change_message'
+      doc: 'Message sent when the order changes one of its data, the system allocates to it a new priority in the electronic book, the order to be replaced is identified with the original Instrument, Date and Number, the new allocation of priority in the electronic book appears in the New Date and Number fields.'
+    0x31:
+      id: 'depth_message'
+      doc: 'Market depth: up to 20 best buy or sale price levels (10 on the derivatives groups 7, 8 and 19), as many as Purchase or sale levels.'
+    0x4f:
+      id: 'best_offer_message'
+      doc: 'Message sent by instrument when best offer changes in the electronic book.'
+    0x42:
+      id: 'public_offerings_message'
+      doc: 'Trade from a Public offering.'
+    0x49:
+      id: 'open_interest_message'
+      doc: 'Open Interest'
+    0x51:
+      id: 'derivatives_market_trades_message'
+      doc: 'Contains information on any MexDer accepted transaction.'
+    0x52:
+      id: 'statistics_of_instruments_message'
+      doc: 'Update message from derivatives statistics sent each time there is an update on the trading floor at any level price.'
+    0x55:
+      id: 'general_indices_message'
+      doc: 'Information about the MSE Indices.'
+    0x57:
+      id: 'indices_components_message'
+      doc: 'Indices components obtained during the day.'
+    0x47:
+      id: 'inav_message'
+      doc: 'TRACS dissemination during continuous market trading hours.'
+    0x72:
+      id: 'dollar_buy_sell_message'
+      doc: 'Dollar Buy/Sell'
+    0x73:
+      id: 'short_sales_balances_per_instrument_message'
+      doc: 'Short sales balances per instrument'
+    0x74:
+      id: 'capital_market_multiples_message'
+      doc: 'Capital Market Multiples'
+    0x78:
+      id: 'benchmark_message'
+      doc: 'Benchmark'
+    0x7a:
+      id: 'capitalization_rules_message'
+      doc: 'Capitalization Rules'
+    0x7e:
+      id: 'closing_price_origin_message'
+      doc: 'Closing price origin'
+    0x28:
+      id: 'mutual_funds_trades_message'
+      doc: 'Any transaction made in mutual funds is reported.'
+    0x29:
+      id: 'opening_of_continuous_auctions_message'
+      doc: 'The message is sent when one of the ongoing, volatility or SIC bidding sessions is generated.'
+    0x2c:
+      id: 'existence_of_bids_at_mid_price_message'
+      doc: 'This message is generated when an instrument enters a bid in the hidden electronic book At Mean Price.'
+    0x2e:
+      id: 'catalogue_of_debt_and_metals_instruments_message'
+      doc: 'Catalogue sent for instruments pertaining to the Local Fixed rate, Global Fixed rate and metals markets.'
+    0x30:
+      id: 'catalog_sent_for_instruments_belonging_to_mutual_funds_message'
+      doc: 'Catalogue sent for instrument pertaining to the investment companies.'
+    0x36:
+      id: 'weighted_average_price_message'
+      doc: 'This message will have the weighted average price (WAP) per instrument and is sent for each transaction generated within the calculation period of the WAP (last 20 minutes of the trading session); when there are no more trades in this period, the message is sent with the Weighted Average Price in zeros.'
+    0x37:
+      id: 'system_events_message'
+      doc: 'The system events message is used to inform that an event has taken place, which needs to be disclosed to the public for its attention.'
+    0x38:
+      id: 'reference_price_message'
+      doc: 'This message is sent to define the reference price of an instrument.'
+    0x39:
+      id: 'changes_in_status_message'
+      doc: 'This message is sent when there has been a change in the status of the instruments.'
+    0x54:
+      id: 'catalog_for_instruments_belonging_to_the_capital_warrants_market_message'
+      doc: 'Catalogue for instruments pertaining to the Equities Warrants market.'
+    0x5b:
+      id: 'catalog_sent_for_instruments_belonging_to_capital_tracs_message'
+      doc: 'Catalogue sent for instruments pertaining to the equities TRACS.'
+    0x5d:
+      id: 'consolidated_inav_message'
+      doc: 'Disclosure of the TRACS during the trading hours of the ongoing market.'
+    0x68:
+      id: 'catalog_for_instruments_belonging_to_the_local_and_global_stock_market_message'
+      doc: 'Catalog of instruments from the local and global stock markets.'
+    0x69:
+      id: 'probable_price_of_allocation_message'
+      doc: 'The message is sent during any type of bidding (Opening, Ongoing, Volatility and Intraday) and only in the instruments where there already is a virtual term matching or pre-allotment.'
+    0x6a:
+      id: 'relation_between_bmvbiva_instruments_message'
+      doc: 'Relation between identifiers of instruments between BIVA and BMV.'
+    0x70:
+      id: 'equities_market_trades_message'
+      doc: 'Informs about any transaction which was accepted at the BMV or BIVA.'
+    0x71:
+      id: 'consolidated_trade_cancellation_message'
+      doc: 'This message in sent when a transaction is cancelled from BMV or BIVA system.'
+    0x5c:
+      id: 'pricevolume_indicator_message'
+      doc: 'Price/volume indicator for the messages coming from BIVA.'
+    0x6b:
+      id: 'consolidated_execution_of_orders_message'
+      doc: 'The message is published when there is a term matching or closing in the electronic system of the BMV or BIVA.'
+    0x6e:
+      id: 'registration_of_order_message'
+      doc: 'When the order is accepted by the central system of the BMV or BIVA, this message is sent to the appropriate media.'
+    0x75:
+      id: 'cancellations_of_orders_message'
+      doc: 'This message deletes the trading floor order.'
+    0x6d:
+      id: 'last_quote_message'
+      doc: 'Message sent by instrument when the best bid is modified in the electronic book by the Origin Exchange; denotes the side that is modified, the sale or the purchase.'
+  login_response_status:
+    0x41:
+      id: 'accepted_session'
+      doc: 'Accepted Session'
+    0x42:
+      id: 'invalid_market_data_group'
+      doc: 'Invalid Market Data Group'
+    0x43:
+      id: 'login_on_another_channel'
+      doc: 'Login On Another Channel'
+    0x44:
+      id: 'unavailable_service'
+      doc: 'Unavailable Service'
+  replay_response_status:
+    0x41:
+      id: 'accepted_request'
+      doc: 'Accepted Request'
+    0x42:
+      id: 'invalid_market_data_group'
+      doc: 'Invalid Market Data Group'
+    0x44:
+      id: 'unavailable_service'
+      doc: 'Unavailable Service'
+    0x45:
+      id: 'not_logged_in'
+      doc: 'Not Logged In'
+    0x46:
+      id: 'surpass_requests_limit'
+      doc: 'Surpass Requests Limit'
+    0x47:
+      id: 'out_of_range'
+      doc: 'Out Of Range'
+    0x4a:
+      id: 'first_invalid_message'
+      doc: 'First Invalid Message'
+    0x4b:
+      id: 'invalid_quantity'
+      doc: 'Invalid Quantity'
+  snapshot_response_status:
+    0x41:
+      id: 'accepted_request'
+      doc: 'Accepted Request'
+    0x42:
+      id: 'invalid_market_data_group'
+      doc: 'Invalid Market Data Group'
+    0x44:
+      id: 'unavailable_service'
+      doc: 'Unavailable Service'
+    0x45:
+      id: 'not_logged_in'
+      doc: 'Not Logged In'
+    0x46:
+      id: 'surpass_requests_limit'
+      doc: 'Surpass Requests Limit'
+    0x48:
+      id: 'invalid_snapshot_type'
+      doc: 'Invalid Snapshot Type'
+    0x49:
+      id: 'invalid_identifier_instrument'
+      doc: 'Invalid Identifier Instrument'
+    0x4c:
+      id: 'market_data_combination_unavailable_snapshot_type'
+      doc: 'Market Data Combination Unavailable Snapshot Type'
+    0x4d:
+      id: 'empty_information_from_requested_instrument'
+      doc: 'Empty Information From Requested Instrument'
+    0x53:
+      id: 'invalid_sample'
+      doc: 'Invalid Sample'
+  snapshot_type:
+    1:
+      id: 'full_depth'
+      doc: 'Full Depth'
+    2:
+      id: 'price_levels'
+      doc: 'Price Levels'
+    3:
+      id: 'best_offers'
+      doc: 'Best Offers'
+    4:
+      id: 'trades'
+      doc: 'Trades'
+    5:
+      id: 'full_depth_tradability_and_trades'
+      doc: 'Full Depth Tradability And Trades'
+    6:
+      id: 'price_levels_tradability_and_trades'
+      doc: 'Price Levels Tradability And Trades'
+    7:
+      id: 'best_offers_and_trades'
+      doc: 'Best Offers And Trades'
+    8:
+      id: 'full_depth_tradability_and_price_setter_trade'
+      doc: 'Full Depth Tradability And Price Setter Trade'
+    9:
+      id: 'price_levels_tradability_and_price_setter_trade'
+      doc: 'Price Levels Tradability And Price Setter Trade'
+    10:
+      id: 'best_offers_and_price_setter_trade'
+      doc: 'Best Offers And Price Setter Trade'
+    11:
+      id: 'general_indices'
+      doc: 'General Indices'
+    12:
+      id: 'price_levels_best_offers_and_tradability'
+      doc: 'Price Levels Best Offers And Tradability'
+    13:
+      id: 'instruments_catalog_consolidated_feed'
+      doc: 'Instruments Catalog Consolidated Feed'
+    14:
+      id: 'trades_consolidated_feed'
+      doc: 'Trades Consolidated Feed'
+    15:
+      id: 'best_offers_consolidated_feed'
+      doc: 'Best Offers Consolidated Feed'
+    16:
+      id: 'full_depth_consolidated_feed'
+      doc: 'Full Depth Consolidated Feed'
+    17:
+      id: 'best_offers_and_trades_consolidated_feed'
+      doc: 'Best Offers And Trades Consolidated Feed'
+    18:
+      id: 'full_depth_and_trades_consolidated_feed'
+      doc: 'Full Depth And Trades Consolidated Feed'
+    19:
+      id: 'agile_snapshot'
+      doc: 'Agile Snapshot'
+    20:
+      id: 'latest_trades'
+      doc: 'Latest Trades'
+  event_code:
+    0x41:
+      id: 'start_of_system_hours'
+      doc: 'Start Of System Hours'
+    0x42:
+      id: 'cancelation_of_offers'
+      doc: 'Cancelation Of Offers'
+    0x43:
+      id: 'start_of_opening_auction'
+      doc: 'Start Of Opening Auction'
+    0x44:
+      id: 'start_of_continuous_market'
+      doc: 'Start Of Continuous Market'
+    0x45:
+      id: 'start_of_wap_period'
+      doc: 'Start Of Wap Period'
+    0x46:
+      id: 'continuous_market_ends'
+      doc: 'Continuous Market Ends'
+    0x47:
+      id: 'start_of_after_closing_phase'
+      doc: 'Start Of After Closing Phase'
+    0x48:
+      id: 'it_ends_after_closing'
+      doc: 'It Ends After Closing'
+    0x4a:
+      id: 'transmission_of_final_prices_ends'
+      doc: 'Transmission Of Final Prices Ends'
+    0x4b:
+      id: 'end_of_system_hours'
+      doc: 'End Of System Hours'
+    0x4d:
+      id: 'start_of_administrative_recess'
+      doc: 'Start Of Administrative Recess'
+    0x4e:
+      id: 'end_of_administrative_recess'
+      doc: 'End Of Administrative Recess'
+    0x4f:
+      id: 'start_dvmamx_markets'
+      doc: 'Start Dvmamx Markets'
+    0x50:
+      id: 'end_of_dvma_markets'
+      doc: 'End Of Dvma Markets'
+    0x51:
+      id: 'end_of_mx_markets'
+      doc: 'End Of Mx Markets'
+    0x52:
+      id: 'start_of_opc_modality'
+      doc: 'Start Of Opc Modality'
+    0x53:
+      id: 'end_of_opc_modality'
+      doc: 'End Of Opc Modality'
+    0x54:
+      id: 'start_of_settlement_auction'
+      doc: 'Start Of Settlement Auction'
+    0x55:
+      id: 'end_of_settlement_auction'
+      doc: 'End Of Settlement Auction'
+    0x56:
+      id: 'final_register_of_settlement_prices'
+      doc: 'Final Register Of Settlement Prices'
+    0x57:
+      id: 'open_interest'
+      doc: 'Open Interest'
+  market:
+    0x4c:
+      id: 'local'
+      doc: 'Local'
+    0x47:
+      id: 'global_field'
+      doc: 'Global (Foreign Instruments)'
+    0x44:
+      id: 'local_debt'
+      doc: 'Local Debt'
+    0x46:
+      id: 'global_debt'
+      doc: 'Global Debt'
+    0x45:
+      id: 'money'
+      doc: 'Money'
+    0x4d:
+      id: 'dollar_option_market'
+      doc: 'Dollar option market (MA)'
+    0x58:
+      id: 'stock_market'
+      doc: 'Stock Market (MX)'
+    0x56:
+      id: 'forex_and_rates_market'
+      doc: 'FOREX and rates Market (DV)'
+    0x4a:
+      id: 'fixed_income'
+      doc: 'Fixed Income'
+    0x42:
+      id: 'variable_income'
+      doc: 'Variable Income'
+    0x54:
+      id: 'metals'
+      doc: 'Metals'
+    0x49:
+      id: 'mutual_funds'
+      doc: 'Mutual Funds'
+    0x57:
+      id: 'warrants'
+      doc: 'Warrants'
+    0x20:
+      id: 'all_markets'
+      doc: 'Empty/Blank'
+  instrument_status:
+    0x43:
+      id: 'cancellation_of_offers'
+      doc: 'Cancellation Of Offers'
+    0x41:
+      id: 'opening_auction'
+      doc: 'Opening Auction'
+    0x50:
+      id: 'pre_opening'
+      doc: 'Pre Opening'
+    0x45:
+      id: 'being_allocated'
+      doc: 'Being Allocated'
+    0x47:
+      id: 'auction_allocated'
+      doc: 'Auction Allocated'
+    0x54:
+      id: 'auction_ended'
+      doc: 'Auction Ended'
+    0x4e:
+      id: 'continuous_trading'
+      doc: 'Continuous Trading'
+    0x4b:
+      id: 'breaking_auction_parameters'
+      doc: 'Breaking Auction Parameters'
+    0x4d:
+      id: 'continuous_auction_due_to_stop_operating_more_than_20_working_days'
+      doc: 'Continuous Auction Due To Stop Operating More Than 20 Working Days'
+    0x55:
+      id: 'cleaving_auction'
+      doc: 'Cleaving Auction'
+    0x4f:
+      id: 'suspended_series'
+      doc: 'Suspended Series'
+    0x56:
+      id: 'suspended_quotation'
+      doc: 'Suspended Quotation'
+    0x4c:
+      id: 'auction_for_breach'
+      doc: 'Auction For Breach'
+    0x49:
+      id: 'withdrawal_of_orders_on_continuous_auction'
+      doc: 'Withdrawal Of Orders On Continuous Auction'
+    0x42:
+      id: 'withdrawal_of_order_on_intraday_auction'
+      doc: 'Withdrawal Of Order On Intraday Auction'
+    0x57:
+      id: 'news_pending'
+      doc: 'News Pending'
+    0x58:
+      id: 'settlement_auction'
+      doc: 'Settlement Auction'
+    0x59:
+      id: 'extraordinary_settlement_auction'
+      doc: 'Extraordinary Settlement Auction'
+    0x52:
+      id: 'auction_total_of_ck_des'
+      doc: 'Auction Total Of Ck Des'
+  concertation_type:
+    0x43:
+      id: 'crossing_operation'
+      doc: 'Crossing Operation'
+    0x4f:
+      id: 'order_closing'
+      doc: 'Order Closing'
+    0x48:
+      id: 'operation_at_closing_price'
+      doc: 'Operation At Closing Price'
+    0x44:
+      id: 'operation_after_closing'
+      doc: 'Operation After Closing'
+    0x4d:
+      id: 'operation_at_medium_price'
+      doc: 'Operation At Medium Price'
+    0x50:
+      id: 'operation_at_average_price_for_the_day'
+      doc: 'Operation At Average Price For The Day'
+    0x58:
+      id: 'block_operations_by_exception'
+      doc: 'Block Operations By Exception'
+    0x76:
+      id: 'vwap_operations_by_exception'
+      doc: 'Vwap Operations By Exception'
+    0x77:
+      id: 'twap_operations_by_exception'
+      doc: 'Twap Operations By Exception'
+    0x25:
+      id: 'basket_trading'
+      doc: 'Basket Trading'
+    0x78:
+      id: 'otc_recent_operations'
+      doc: 'Otc Recent Operations'
+    0x79:
+      id: 'otc_agreed_operations'
+      doc: 'Otc Agreed Operations'
+    0x41:
+      id: 'buy_auto_entry'
+      doc: 'Buy Auto Entry'
+    0x42:
+      id: 'sell_auto_entry'
+      doc: 'Sell Auto Entry'
+    0x45:
+      id: 'block_trade'
+      doc: 'Block Trade'
+    0x46:
+      id: 'leg_of_blocktrade_for_chain_of_forwards'
+      doc: 'Leg Of Blocktrade For Chain Of Forwards'
+    0x47:
+      id: 'leg_of_chain_of_forwards'
+      doc: 'Leg Of Chain Of Forwards'
+    0x4a:
+      id: 'leg_of_crossing_of_foreign_currency_strategy'
+      doc: 'Leg Of Crossing Of Foreign Currency Strategy'
+    0x4b:
+      id: 'sell_leg_auto_entry_of_foreign_currency_strategy'
+      doc: 'Sell Leg Auto Entry Of Foreign Currency Strategy'
+    0x4c:
+      id: 'buy_leg_auto_entry_of_foreign_currency_strategy'
+      doc: 'Buy Leg Auto Entry Of Foreign Currency Strategy'
+    0x4e:
+      id: 'leg_of_foreign_currency_strategy'
+      doc: 'Leg Of Foreign Currency Strategy'
+    0x51:
+      id: 'leg_of_foreign_currency_strategy_x51'
+      doc: 'Leg Of Foreign Currency Strategy'
+    0x52:
+      id: 'leg_of_crossing_of_chain_of_forwards'
+      doc: 'Leg Of Crossing Of Chain Of Forwards'
+    0x53:
+      id: 'sell_leg_auto_entry_of_chain_of_forwards'
+      doc: 'Sell Leg Auto Entry Of Chain Of Forwards'
+    0x54:
+      id: 'buy_leg_auto_entry_of_chain_of_forwards'
+      doc: 'Buy Leg Auto Entry Of Chain Of Forwards'
+    0x55:
+      id: 'leg_of_auction_of_chain_of_forwards'
+      doc: 'Leg Of Auction Of Chain Of Forwards'
+    0x56:
+      id: 'leg_of_round_of_chain_of_forwards'
+      doc: 'Leg Of Round Of Chain Of Forwards'
+    0x57:
+      id: 'chains_of_forwards'
+      doc: 'Chains Of Forwards'
+    0x59:
+      id: 'leg_of_rollover_crossing'
+      doc: 'Leg Of Rollover Crossing'
+    0x5a:
+      id: 'sell_leg_auto_entry_of_rollover'
+      doc: 'Sell Leg Auto Entry Of Rollover'
+    0x61:
+      id: 'buy_leg_auto_entry_of_rollover'
+      doc: 'Buy Leg Auto Entry Of Rollover'
+    0x62:
+      id: 'leg_of_round_of_rollover'
+      doc: 'Leg Of Round Of Rollover'
+    0x63:
+      id: 'depth_of_round_of_chain_of_forwards'
+      doc: 'Depth Of Round Of Chain Of Forwards'
+    0x64:
+      id: 'trading_of_chain_of_forwards'
+      doc: 'Trading Of Chain Of Forwards'
+    0x65:
+      id: 'depth_of_round'
+      doc: 'Depth Of Round'
+    0x66:
+      id: 'round_of_chain_of_forwards'
+      doc: 'Round Of Chain Of Forwards'
+    0x67:
+      id: 'rollover_sentra'
+      doc: 'Rollover Sentra'
+    0x68:
+      id: 'type_round'
+      doc: 'Type Round'
+    0x69:
+      id: 'auctions'
+      doc: 'Auctions'
+    0x6a:
+      id: 'leg_of_block_trade_of_rollover'
+      doc: 'Leg Of Block Trade Of Rollover'
+    0x6b:
+      id: 'leg_of_block_trade_of_foreign_currency_strategy'
+      doc: 'Leg Of Block Trade Of Foreign Currency Strategy'
+    0x6c:
+      id: 'block_trade_of_foreign_currency_strategy'
+      doc: 'Block Trade Of Foreign Currency Strategy'
+    0x6d:
+      id: 'block_trade_of_chain_of_forwards'
+      doc: 'Block Trade Of Chain Of Forwards'
+    0x6e:
+      id: 'blocktrade_of_rollover'
+      doc: 'Blocktrade Of Rollover'
+    0x6f:
+      id: 'crossing_of_chain_of_forwards'
+      doc: 'Crossing Of Chain Of Forwards'
+    0x70:
+      id: 'sell_auto_entry_of_chain_of_forwards'
+      doc: 'Sell Auto Entry Of Chain Of Forwards'
+    0x71:
+      id: 'buy_auto_entry_of_chain_of_forwards'
+      doc: 'Buy Auto Entry Of Chain Of Forwards'
+    0x72:
+      id: 'swap_block_trade'
+      doc: 'Swap Block Trade'
+    0x73:
+      id: 'swap_block_trade_with_continuous_coupon'
+      doc: 'Swap Block Trade With Continuous Coupon'
+    0x74:
+      id: 'block_trade_of_unwind'
+      doc: 'Block Trade Of Unwind'
+    0x75:
+      id: 'block_trade_of_substitution'
+      doc: 'Block Trade Of Substitution'
+    0x7a:
+      id: 'voice_over'
+      doc: 'Voice Over'
+    0x23:
+      id: 'firm_order'
+      doc: 'Firm Order'
+    0x49:
+      id: 'ipo_cross'
+      doc: 'Ipo Cross'
+    0x2b:
+      id: 'unintentional_self_cross'
+      doc: 'Unintentional Self Cross'
+    0x26:
+      id: 'without_concertation'
+      doc: 'Without Concertation'
+    0x28:
+      id: 'inav_to_closing_price_trading'
+      doc: 'Inav To Closing Price Trading'
+    0x29:
+      id: 'inav_after_closing'
+      doc: 'Inav After Closing'
+  operation_type:
+    0x43:
+      id: 'cash'
+      doc: 'Cash'
+    0x4f:
+      id: 'public_offering'
+      doc: 'Public Offering'
+    0x52:
+      id: 'registration_operation'
+      doc: 'Registration Operation'
+    0x41:
+      id: 'overallocation'
+      doc: 'Overallocation'
+    0x53:
+      id: 'reciprocal_subscription'
+      doc: 'Reciprocal Subscription'
+    0x46:
+      id: 'public_buy_offering'
+      doc: 'Public Buy Offering'
+    0x48:
+      id: 'trades_at_closing'
+      doc: 'Trades At Closing'
+    0x4d:
+      id: 'medium_price'
+      doc: 'Medium Price'
+    0x58:
+      id: 'operation_by_exception'
+      doc: 'Operation By Exception'
+    0x50:
+      id: 'average_for_the_day'
+      doc: 'Average For The Day'
+    0x44:
+      id: 'after_closing'
+      doc: 'After Closing'
+    0x4e:
+      id: 'inav_trading'
+      doc: 'Inav Trading'
+  settlement:
+    0x4d:
+      id: 'same_day'
+      doc: 'Same Day'
+    0x32:
+      id: 'twenty_four_hours'
+      doc: '24 hours'
+    0x34:
+      id: 'forty_eight_hours'
+      doc: '48 hours'
+    0x37:
+      id: 'seventy_two_hours'
+      doc: '72 hours'
+    0x39:
+      id: 'ninety_six_hours'
+      doc: '96 hours'
+    0x31:
+      id: 'one_hundred_twenty_hours'
+      doc: '120 hours'
+  auction_indicator:
+    0x50:
+      id: 'opening_auction'
+      doc: 'Opening Auction'
+    0x53:
+      id: 'other_auctions'
+      doc: 'Other Auctions'
+    0x20:
+      id: 'continuous_market'
+      doc: 'Continuous Market'
+    0x4e:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
+  offer_type:
+    0x50:
+      id: 'public_offering'
+      doc: 'Public Offering'
+    0x52:
+      id: 'registration_operation'
+      doc: 'Registration Operation'
+    0x43:
+      id: 'buy_public_offering'
+      doc: 'Buy Public Offering'
+    0x41:
+      id: 'overallocation'
+      doc: 'Overallocation'
+    0x53:
+      id: 'reciprocal_subscription'
+      doc: 'Reciprocal Subscription'
+  income:
+    0x56:
+      id: 'variable_income'
+      doc: 'Variable Income'
+    0x46:
+      id: 'fixed_income'
+      doc: 'Fixed Income'
+    0x57:
+      id: 'warrants'
+      doc: 'Warrants'
+  movement:
+    0x41:
+      id: 'registry_operation'
+      doc: 'Registry Operation'
+    0x55:
+      id: 'operation_authorization'
+      doc: 'Operation Authorization'
+    0x43:
+      id: 'placement_operation'
+      doc: 'Placement Operation'
+    0x42:
+      id: 'delete_operation'
+      doc: 'Delete Operation'
+  virtual_trades_status:
+    0x41:
+      id: 'addition'
+      doc: 'Addition'
+    0x42:
+      id: 'deletion'
+      doc: 'Deletion'
+  concertation:
+    0x43:
+      id: 'crossing_operation'
+      doc: 'Crossing Operation'
+    0x4f:
+      id: 'order_closing'
+      doc: 'Order Closing'
+    0x48:
+      id: 'operation_at_closing_price'
+      doc: 'Operation At Closing Price'
+    0x44:
+      id: 'operation_after_closing'
+      doc: 'Operation After Closing'
+    0x4d:
+      id: 'operation_at_medium_price'
+      doc: 'Operation At Medium Price'
+    0x50:
+      id: 'operation_at_average_price_for_the_day'
+      doc: 'Operation At Average Price For The Day'
+    0x58:
+      id: 'block_operations_by_exception'
+      doc: 'Block Operations By Exception'
+    0x76:
+      id: 'vwap_operations_by_exception'
+      doc: 'Vwap Operations By Exception'
+    0x77:
+      id: 'twap_operations_by_exception'
+      doc: 'Twap Operations By Exception'
+    0x25:
+      id: 'basket_trading'
+      doc: 'Basket Trading'
+    0x78:
+      id: 'otc_recent_operations'
+      doc: 'Otc Recent Operations'
+    0x79:
+      id: 'otc_agreed_operations'
+      doc: 'Otc Agreed Operations'
+    0x41:
+      id: 'buy_auto_entry'
+      doc: 'Buy Auto Entry'
+    0x42:
+      id: 'sell_auto_entry'
+      doc: 'Sell Auto Entry'
+    0x45:
+      id: 'block_trade'
+      doc: 'Block Trade'
+    0x46:
+      id: 'leg_of_blocktrade_for_chain_of_forwards'
+      doc: 'Leg Of Blocktrade For Chain Of Forwards'
+    0x47:
+      id: 'leg_of_chain_of_forwards'
+      doc: 'Leg Of Chain Of Forwards'
+    0x4a:
+      id: 'leg_of_crossing_of_foreign_currency_strategy'
+      doc: 'Leg Of Crossing Of Foreign Currency Strategy'
+    0x4b:
+      id: 'sell_leg_auto_entry_of_foreign_currency_strategy'
+      doc: 'Sell Leg Auto Entry Of Foreign Currency Strategy'
+    0x4c:
+      id: 'buy_leg_auto_entry_of_foreign_currency_strategy'
+      doc: 'Buy Leg Auto Entry Of Foreign Currency Strategy'
+    0x4e:
+      id: 'leg_of_foreign_currency_strategy'
+      doc: 'Leg Of Foreign Currency Strategy'
+    0x51:
+      id: 'leg_of_foreign_currency_strategy_x51'
+      doc: 'Leg Of Foreign Currency Strategy'
+    0x52:
+      id: 'leg_of_crossing_of_chain_of_forwards'
+      doc: 'Leg Of Crossing Of Chain Of Forwards'
+    0x53:
+      id: 'sell_leg_auto_entry_of_chain_of_forwards'
+      doc: 'Sell Leg Auto Entry Of Chain Of Forwards'
+    0x54:
+      id: 'buy_leg_auto_entry_of_chain_of_forwards'
+      doc: 'Buy Leg Auto Entry Of Chain Of Forwards'
+    0x55:
+      id: 'leg_of_auction_of_chain_of_forwards'
+      doc: 'Leg Of Auction Of Chain Of Forwards'
+    0x56:
+      id: 'leg_of_round_of_chain_of_forwards'
+      doc: 'Leg Of Round Of Chain Of Forwards'
+    0x57:
+      id: 'chains_of_forwards'
+      doc: 'Chains Of Forwards'
+    0x59:
+      id: 'leg_of_rollover_crossing'
+      doc: 'Leg Of Rollover Crossing'
+    0x5a:
+      id: 'sell_leg_auto_entry_of_rollover'
+      doc: 'Sell Leg Auto Entry Of Rollover'
+    0x61:
+      id: 'buy_leg_auto_entry_of_rollover'
+      doc: 'Buy Leg Auto Entry Of Rollover'
+    0x62:
+      id: 'leg_of_round_of_rollover'
+      doc: 'Leg Of Round Of Rollover'
+    0x63:
+      id: 'depth_of_round_of_chain_of_forwards'
+      doc: 'Depth Of Round Of Chain Of Forwards'
+    0x64:
+      id: 'trading_of_chain_of_forwards'
+      doc: 'Trading Of Chain Of Forwards'
+    0x65:
+      id: 'depth_of_round'
+      doc: 'Depth Of Round'
+    0x66:
+      id: 'round_of_chain_of_forwards'
+      doc: 'Round Of Chain Of Forwards'
+    0x67:
+      id: 'rollover_sentra'
+      doc: 'Rollover Sentra'
+    0x68:
+      id: 'type_round'
+      doc: 'Type Round'
+    0x69:
+      id: 'auctions'
+      doc: 'Auctions'
+    0x6a:
+      id: 'leg_of_block_trade_of_rollover'
+      doc: 'Leg Of Block Trade Of Rollover'
+    0x6b:
+      id: 'leg_of_block_trade_of_foreign_currency_strategy'
+      doc: 'Leg Of Block Trade Of Foreign Currency Strategy'
+    0x6c:
+      id: 'block_trade_of_foreign_currency_strategy'
+      doc: 'Block Trade Of Foreign Currency Strategy'
+    0x6d:
+      id: 'block_trade_of_chain_of_forwards'
+      doc: 'Block Trade Of Chain Of Forwards'
+    0x6e:
+      id: 'blocktrade_of_rollover'
+      doc: 'Blocktrade Of Rollover'
+    0x6f:
+      id: 'crossing_of_chain_of_forwards'
+      doc: 'Crossing Of Chain Of Forwards'
+    0x70:
+      id: 'sell_auto_entry_of_chain_of_forwards'
+      doc: 'Sell Auto Entry Of Chain Of Forwards'
+    0x71:
+      id: 'buy_auto_entry_of_chain_of_forwards'
+      doc: 'Buy Auto Entry Of Chain Of Forwards'
+    0x72:
+      id: 'swap_block_trade'
+      doc: 'Swap Block Trade'
+    0x73:
+      id: 'swap_block_trade_with_continuous_coupon'
+      doc: 'Swap Block Trade With Continuous Coupon'
+    0x74:
+      id: 'block_trade_of_unwind'
+      doc: 'Block Trade Of Unwind'
+    0x75:
+      id: 'block_trade_of_substitution'
+      doc: 'Block Trade Of Substitution'
+    0x7a:
+      id: 'voice_over'
+      doc: 'Voice Over'
+    0x23:
+      id: 'firm_order'
+      doc: 'Firm Order'
+    0x49:
+      id: 'ipo_cross'
+      doc: 'Ipo Cross'
+    0x2b:
+      id: 'unintentional_self_cross'
+      doc: 'Unintentional Self Cross'
+    0x26:
+      id: 'without_concertation'
+      doc: 'Without Concertation'
+    0x28:
+      id: 'inav_to_closing_price_trading'
+      doc: 'Inav To Closing Price Trading'
+    0x29:
+      id: 'inav_after_closing'
+      doc: 'Inav After Closing'
+  direction:
+    0x43:
+      id: 'buy'
+      doc: 'Buy'
+    0x56:
+      id: 'sell'
+      doc: 'Sell'
+  side:
+    0:
+      id: 'buy'
+      doc: 'O - Buy (the document prints the letter O)'
+    1:
+      id: 'sell'
+      doc: 'Sell'
+  offer_direction:
+    0x43:
+      id: 'buy'
+      doc: 'Buy'
+    0x56:
+      id: 'sell'
+      doc: 'Sell'
+  currency_type:
+    0x4e:
+      id: 'mexican_currency'
+      doc: 'Mexican Currency'
+    0x44:
+      id: 'dollar'
+      doc: 'Dollar'
+  leg_type:
+    0x4c:
+      id: 'long_leg'
+      doc: 'Long Leg'
+    0x43:
+      id: 'short_leg'
+      doc: 'Short Leg'
+    0x58:
+      id: 'forwards_chain_leg'
+      doc: 'Forwards Chain Leg'
+    0x50:
+      id: 'parent_strategy'
+      doc: 'Indicates if its parent strategy'
+    0x20:
+      id: 'not_generated_from_a_strategy'
+      doc: '"" - Fact not generated from a strategy'
+  trend:
+    0x41:
+      id: 'increase'
+      doc: 'Increase'
+    0x42:
+      id: 'decrease'
+      doc: 'Decrease'
+    0x53:
+      id: 'without_change'
+      doc: 'Without Change'
+    0x20:
+      id: 'without_operation'
+      doc: 'Without Operation'
+  indices_status:
+    0x41:
+      id: 'previous'
+      doc: 'Previous'
+    0x50:
+      id: 'preliminary'
+      doc: 'Preliminary'
+    0x43:
+      id: 'preliminary_figures'
+      doc: 'Preliminary Figures'
+    0x44:
+      id: 'final_field'
+      doc: 'Final'
+  type_field:
+    0x45:
+      id: 'equity'
+      doc: 'Equity'
+    0x53:
+      id: 'strategy'
+      doc: 'Strategy'
+    0x47:
+      id: 'spbmvesg'
+      doc: 'Spbmvesg'
+  multiple_type:
+    0x45:
+      id: 'multiple_of_market_by_transmitter'
+      doc: 'Multiple Of Market By Transmitter'
+    0x53:
+      id: 'multiple_of_market_by_sector'
+      doc: 'Multiple Of Market By Sector'
+  rebalance:
+    0x52:
+      id: 'rebalanced'
+      doc: 'Rebalanced'
+    0x4e:
+      id: 'not_rebalanced'
+      doc: 'Not Rebalanced'
+  bursatility_indices_sign:
+    0x20:
+      id: 'positive'
+      doc: 'Positive'
+    0x5f:
+      id: 'negative'
+      doc: 'Negative'
+  beta_coefficient_sign:
+    0x20:
+      id: 'positive'
+      doc: 'Positive'
+    0x5f:
+      id: 'negative'
+      doc: 'Negative'
+  correlation_coefficient_sign:
+    0x20:
+      id: 'positive'
+      doc: 'Positive'
+    0x5f:
+      id: 'negative'
+      doc: 'Negative'
+  sending:
+    0x41:
+      id: 'preopening'
+      doc: 'Preopening'
+    0x43:
+      id: 'after_closing'
+      doc: 'After Closing'
+  origin:
+    0x4d:
+      id: 'bmv'
+      doc: 'Bmv'
+    0x49:
+      id: 'biva'
+      doc: 'Biva'
+    0x41:
+      id: 'both'
+      doc: 'Snapshot consolidated Feed request only'
+  reference:
+    0x4e:
+      id: 'previous'
+      doc: 'N - Prior'
+    0x4a:
+      id: 'adjusted'
+      doc: 'Adjusted'
+    0x56:
+      id: 'adjusted_nominal_value'
+      doc: 'Adjusted Nominal Value'
+    0x20:
+      id: 'without_price'
+      doc: 'Without Price'
+  trades_rate_price:
+    0x54:
+      id: 'rate'
+      doc: 'Rate'
+    0x50:
+      id: 'price'
+      doc: 'Price'
+    0x20:
+      id: 'by_default'
+      doc: 'By Default'
+  code_of_event:
+    0x41:
+      id: 'start_of_system_hours'
+      doc: 'Start Of System Hours'
+    0x42:
+      id: 'cancelation_of_offers'
+      doc: 'Cancelation Of Offers'
+    0x43:
+      id: 'start_of_opening_auction'
+      doc: 'Start Of Opening Auction'
+    0x44:
+      id: 'start_of_continuous_market'
+      doc: 'Start Of Continuous Market'
+    0x45:
+      id: 'start_of_wap_period'
+      doc: 'Start Of Wap Period'
+    0x46:
+      id: 'continuous_market_ends'
+      doc: 'Continuous Market Ends'
+    0x47:
+      id: 'start_of_after_closing_phase'
+      doc: 'Start Of After Closing Phase'
+    0x48:
+      id: 'it_ends_after_closing'
+      doc: 'It Ends After Closing'
+    0x4a:
+      id: 'transmission_of_final_prices_ends'
+      doc: 'Transmission Of Final Prices Ends'
+    0x4b:
+      id: 'end_of_system_hours'
+      doc: 'End Of System Hours'
+    0x4d:
+      id: 'start_of_administrative_recess'
+      doc: 'Start Of Administrative Recess'
+    0x4e:
+      id: 'end_of_administrative_recess'
+      doc: 'End Of Administrative Recess'
+    0x4f:
+      id: 'start_dvmamx_markets'
+      doc: 'Start Dvmamx Markets'
+    0x50:
+      id: 'end_of_dvma_markets'
+      doc: 'End Of Dvma Markets'
+    0x51:
+      id: 'end_of_mx_markets'
+      doc: 'End Of Mx Markets'
+    0x52:
+      id: 'start_of_opc_modality'
+      doc: 'Start Of Opc Modality'
+    0x53:
+      id: 'end_of_opc_modality'
+      doc: 'End Of Opc Modality'
+    0x54:
+      id: 'start_of_settlement_auction'
+      doc: 'Start Of Settlement Auction'
+    0x55:
+      id: 'end_of_settlement_auction'
+      doc: 'End Of Settlement Auction'
+    0x56:
+      id: 'final_register_of_settlement_prices'
+      doc: 'Final Register Of Settlement Prices'
+    0x57:
+      id: 'open_interest'
+      doc: 'Open Interest'
+  price_type:
+    0x52:
+      id: 'reference'
+      doc: 'Reference'
+    0x43:
+      id: 'closing_price'
+      doc: 'Closing Price'
+    0x49:
+      id: 'inav'
+      doc: 'INAV (for ITCH INDEX only)'
+    0x56:
+      id: 'volume_weighted_average_price'
+      doc: 'Volume Weighted Average Price'
+  status:
+    0x43:
+      id: 'bids_cancellation'
+      doc: 'Bids Cancellation'
+    0x41:
+      id: 'opening_bidding_session'
+      doc: 'Opening Bidding Session'
+    0x50:
+      id: 'pre_opening'
+      doc: 'Pre Opening'
+    0x45:
+      id: 'in_allotment'
+      doc: 'In Allotment'
+    0x47:
+      id: 'assigned_bidding_session'
+      doc: 'Assigned Bidding Session'
+    0x54:
+      id: 'ended_bidding_session'
+      doc: 'BMV: Ended Bidding Session; BIVA: Active instrument'
+    0x4e:
+      id: 'ongoing_trading'
+      doc: 'Ongoing Trading'
+    0x4b:
+      id: 'bidding_session_due_to_parameters_breaking'
+      doc: 'Bidding Session Due To Parameters Breaking'
+    0x4d:
+      id: 'ongoing_bidding_session_due_to_operations_ceasing_for_more_than_20_business_days'
+      doc: 'Ongoing Bidding Session Due To Operations Ceasing For More Than 20 Business Days'
+    0x55:
+      id: 'demerger_bidding_session'
+      doc: 'Demerger (Spin Off) Bidding Session'
+    0x4f:
+      id: 'suspended_series'
+      doc: 'Suspended Series'
+    0x56:
+      id: 'suspended_listing'
+      doc: 'BMV: Suspended Listing; BIVA: Suspended instrument'
+    0x4c:
+      id: 'bidding_session_due_to_breach'
+      doc: 'Bidding Session Due To Breach'
+    0x49:
+      id: 'withdrawal_of_orders_in_an_ongoing_bidding_session'
+      doc: 'Withdrawal Of Orders In An Ongoing Bidding Session'
+    0x42:
+      id: 'withdrawal_of_orders_in_intraday_bidding_session'
+      doc: 'Withdrawal Of Orders In Intraday Bidding Session'
+    0x57:
+      id: 'awaiting_news'
+      doc: 'Awaitng News'
+    0x58:
+      id: 'settlement_bidding_session'
+      doc: 'Settlement Bidding Session'
+    0x59:
+      id: 'extraordinary_settlement_bidding_session'
+      doc: 'Extraordinary Settlement Bidding Session'
+    0x52:
+      id: 'ckdes_total_bidding_session'
+      doc: 'Ckdes Total Bidding Session'
+  reason:
+    0x4e:
+      id: 'normal_operation'
+      doc: 'Normal Operation'
+    0x48:
+      id: 'volatility_bidding_session'
+      doc: 'Volatility Bidding Session'
+    0x41:
+      id: 'startup_of_the_volatility_bidding_session'
+      doc: 'Startup Of The Volatility Bidding Session'
+    0x42:
+      id: 'end_of_the_volatility_bidding_session'
+      doc: 'End Of The Volatility Bidding Session'
+    0x51:
+      id: 'awaiting_news'
+      doc: 'Awaiting News'
+    0x53:
+      id: 'static_price_band_breach'
+      doc: 'Static Price Band Breach'
+    0x4d:
+      id: 'suspension_due_to_markets_surveillance'
+      doc: 'Suspension Due To Markets Surveillance'
+    0x4f:
+      id: 'suspension_from_the_market_of_origin'
+      doc: 'Suspension From The Market Of Origin'
+    0x43:
+      id: 'without_compliance'
+      doc: 'Without Compliance'
+    0x49:
+      id: 'startup_of_the_interest_notice'
+      doc: 'Startup Of The Interest Notice'
+  type_of_warrant:
+    0x43:
+      id: 'purchase'
+      doc: 'Purchase'
+    0x56:
+      id: 'sale'
+      doc: 'Sale'
+  marketability:
+    0x41:
+      id: 'high'
+      doc: 'High'
+    0x4d:
+      id: 'medium'
+      doc: 'Medium'
+    0x42:
+      id: 'low'
+      doc: 'Low'
+    0x4e:
+      id: 'minimum'
+      doc: 'Minimum'
+    0x52:
+      id: 'recent_quotation'
+      doc: 'Recent Quotation'
+    0x20:
+      id: 'null_or_inapplicable'
+      doc: 'Null Or Inapplicable'
+  exchange:
+    0x4d:
+      id: 'bmv'
+      doc: 'Bmv'
+    0x49:
+      id: 'biva'
+      doc: 'Biva'
+  type_of_trading:
+    0x45:
+      id: 'continuous_electronic_trading'
+      doc: 'Continuous Electronic Trading'
+    0x43:
+      id: 'market_on_close'
+      doc: 'Market on close (MOC)'
+    0x42:
+      id: 'block_trading'
+      doc: 'Block Trading'
+    0x44:
+      id: 'debt_trading'
+      doc: 'Debt Trading'
+    0x57:
+      id: 'warrants_trading'
+      doc: 'Warrants Trading'
+  type_of_agreement:
+    0x43:
+      id: 'crossing_operation'
+      doc: 'Crossing Operation'
+    0x4f:
+      id: 'order_closing'
+      doc: 'Order Closing'
+    0x48:
+      id: 'operation_at_closing_price'
+      doc: 'Operation At Closing Price'
+    0x44:
+      id: 'operation_after_closing'
+      doc: 'Operation After Closing'
+    0x4d:
+      id: 'operation_at_medium_price'
+      doc: 'Operation At Medium Price'
+    0x50:
+      id: 'operation_at_average_price_for_the_day'
+      doc: 'Operation At Average Price For The Day'
+    0x58:
+      id: 'block_operations_by_exception'
+      doc: 'Block Operations By Exception'
+    0x76:
+      id: 'vwap_operations_by_exception'
+      doc: 'Vwap Operations By Exception'
+    0x77:
+      id: 'twap_operations_by_exception'
+      doc: 'Twap Operations By Exception'
+    0x25:
+      id: 'basket_trading'
+      doc: 'Basket Trading'
+    0x78:
+      id: 'otc_recent_operations'
+      doc: 'Otc Recent Operations'
+    0x79:
+      id: 'otc_agreed_operations'
+      doc: 'Otc Agreed Operations'
+    0x41:
+      id: 'buy_auto_entry'
+      doc: 'Buy Auto Entry'
+    0x42:
+      id: 'sell_auto_entry'
+      doc: 'Sell Auto Entry'
+    0x45:
+      id: 'block_trade'
+      doc: 'Block Trade'
+    0x46:
+      id: 'leg_of_blocktrade_for_chain_of_forwards'
+      doc: 'Leg Of Blocktrade For Chain Of Forwards'
+    0x47:
+      id: 'leg_of_chain_of_forwards'
+      doc: 'Leg Of Chain Of Forwards'
+    0x4a:
+      id: 'leg_of_crossing_of_foreign_currency_strategy'
+      doc: 'Leg Of Crossing Of Foreign Currency Strategy'
+    0x4b:
+      id: 'sell_leg_auto_entry_of_foreign_currency_strategy'
+      doc: 'Sell Leg Auto Entry Of Foreign Currency Strategy'
+    0x4c:
+      id: 'buy_leg_auto_entry_of_foreign_currency_strategy'
+      doc: 'Buy Leg Auto Entry Of Foreign Currency Strategy'
+    0x4e:
+      id: 'leg_of_foreign_currency_strategy'
+      doc: 'Leg Of Foreign Currency Strategy'
+    0x51:
+      id: 'leg_of_foreign_currency_strategy_x51'
+      doc: 'Leg Of Foreign Currency Strategy'
+    0x52:
+      id: 'leg_of_crossing_of_chain_of_forwards'
+      doc: 'Leg Of Crossing Of Chain Of Forwards'
+    0x53:
+      id: 'sell_leg_auto_entry_of_chain_of_forwards'
+      doc: 'Sell Leg Auto Entry Of Chain Of Forwards'
+    0x54:
+      id: 'buy_leg_auto_entry_of_chain_of_forwards'
+      doc: 'Buy Leg Auto Entry Of Chain Of Forwards'
+    0x55:
+      id: 'leg_of_auction_of_chain_of_forwards'
+      doc: 'Leg Of Auction Of Chain Of Forwards'
+    0x56:
+      id: 'leg_of_round_of_chain_of_forwards'
+      doc: 'Leg Of Round Of Chain Of Forwards'
+    0x57:
+      id: 'chains_of_forwards'
+      doc: 'Chains Of Forwards'
+    0x59:
+      id: 'leg_of_rollover_crossing'
+      doc: 'Leg Of Rollover Crossing'
+    0x5a:
+      id: 'sell_leg_auto_entry_of_rollover'
+      doc: 'Sell Leg Auto Entry Of Rollover'
+    0x61:
+      id: 'buy_leg_auto_entry_of_rollover'
+      doc: 'Buy Leg Auto Entry Of Rollover'
+    0x62:
+      id: 'leg_of_round_of_rollover'
+      doc: 'Leg Of Round Of Rollover'
+    0x63:
+      id: 'depth_of_round_of_chain_of_forwards'
+      doc: 'Depth Of Round Of Chain Of Forwards'
+    0x64:
+      id: 'trading_of_chain_of_forwards'
+      doc: 'Trading Of Chain Of Forwards'
+    0x65:
+      id: 'depth_of_round'
+      doc: 'Depth Of Round'
+    0x66:
+      id: 'round_of_chain_of_forwards'
+      doc: 'Round Of Chain Of Forwards'
+    0x67:
+      id: 'rollover_sentra'
+      doc: 'Rollover Sentra'
+    0x68:
+      id: 'type_round'
+      doc: 'Type Round'
+    0x69:
+      id: 'auctions'
+      doc: 'Auctions'
+    0x6a:
+      id: 'leg_of_block_trade_of_rollover'
+      doc: 'Leg Of Block Trade Of Rollover'
+    0x6b:
+      id: 'leg_of_block_trade_of_foreign_currency_strategy'
+      doc: 'Leg Of Block Trade Of Foreign Currency Strategy'
+    0x6c:
+      id: 'block_trade_of_foreign_currency_strategy'
+      doc: 'Block Trade Of Foreign Currency Strategy'
+    0x6d:
+      id: 'block_trade_of_chain_of_forwards'
+      doc: 'Block Trade Of Chain Of Forwards'
+    0x6e:
+      id: 'blocktrade_of_rollover'
+      doc: 'Blocktrade Of Rollover'
+    0x6f:
+      id: 'crossing_of_chain_of_forwards'
+      doc: 'Crossing Of Chain Of Forwards'
+    0x70:
+      id: 'sell_auto_entry_of_chain_of_forwards'
+      doc: 'Sell Auto Entry Of Chain Of Forwards'
+    0x71:
+      id: 'buy_auto_entry_of_chain_of_forwards'
+      doc: 'Buy Auto Entry Of Chain Of Forwards'
+    0x72:
+      id: 'swap_block_trade'
+      doc: 'Swap Block Trade'
+    0x73:
+      id: 'swap_block_trade_with_continuous_coupon'
+      doc: 'Swap Block Trade With Continuous Coupon'
+    0x74:
+      id: 'block_trade_of_unwind'
+      doc: 'Block Trade Of Unwind'
+    0x75:
+      id: 'block_trade_of_substitution'
+      doc: 'Block Trade Of Substitution'
+    0x7a:
+      id: 'voice_over'
+      doc: 'Voice Over'
+    0x23:
+      id: 'firm_order'
+      doc: 'Firm Order'
+    0x49:
+      id: 'ipo_cross'
+      doc: 'Ipo Cross'
+    0x2b:
+      id: 'unintentional_self_cross'
+      doc: 'Unintentional Self Cross'
+    0x26:
+      id: 'without_concertation'
+      doc: 'Without Concertation'
+    0x28:
+      id: 'inav_to_closing_price_trading'
+      doc: 'Inav To Closing Price Trading'
+    0x29:
+      id: 'inav_after_closing'
+      doc: 'Inav After Closing'
+  indicator:
+    0x4e:
+      id: 'no_field'
+      doc: 'No'
+    0x59:
+      id: 'yes_field'
+      doc: 'Yes'
+  type_of_cross_trading:
+    0x4f:
+      id: 'pre_opening'
+      doc: 'Pre Opening'
+    0x49:
+      id: 'intraday_auction'
+      doc: 'Intraday Auction'
+  direction_of_the_bid:
+    0x43:
+      id: 'purchase'
+      doc: 'Purchase'
+    0x56:
+      id: 'sale'
+      doc: 'Sale'
+  client_message_type:
+    0x21:
+      id: 'login_message'
+      doc: 'Logs the consumer in to the replay or snapshot channel.'
+    0x23:
+      id: 'replay_request_message'
+      doc: 'Requests the replay of messages already published on a multicast group.'
+    0x24:
+      id: 'snapshot_request_message'
+      doc: 'Requests a snapshot of a multicast group.'
+    0x2d:
+      id: 'snapshot_indices_request_message'
+      doc: 'Requests a snapshot of an index.'
+    0x5f:
+      id: 'snapshot_consolidated_feed_request_message'
+      doc: 'Requests a snapshot of a Consolidated Feed group.'
+

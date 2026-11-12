@@ -264,11 +264,11 @@ types:
   transact_time:
     seq:
       - id: transact_time_seconds
-        type: u4
-        doc: 'Seconds elapsed since midnight UTC of 1 January 1970, the first four bytes of Transact Time'
+        type: second_timestamp
+        doc: 'Seconds elapsed since midnight UTC of 1 January 1970, the first four bytes of Transact Time. Seconds since Unix epoch'
       - id: transact_time_nanoseconds
-        type: u4
-        doc: 'Nanoseconds elapsed since the second, the last four bytes of Transact Time. The document names them microseconds and states accuracy up to nanoseconds, the last three digits being zero'
+        type: nanosecond_offset
+        doc: 'Nanoseconds elapsed since the second, the last four bytes of Transact Time. The document names them microseconds and states accuracy up to nanoseconds, the last three digits being zero. Nanoseconds since Second epoch'
   indicator_flags:
     meta:
       bit-endian: le
@@ -371,7 +371,7 @@ types:
         type: str
         size: 24
         encoding: ASCII
-        doc: 'Time the announcement was published'
+        doc: 'Time the announcement was published which will be specified in UTC and in the YYYYMMDD-HH:MM:SS.uuuuuu format'
       - id: urgency
         type: u1
         enum: urgency
@@ -450,6 +450,28 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
 
 enums:
   message_type:

@@ -152,8 +152,8 @@ types:
   trading_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Nanoseconds since epoch'
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 6
@@ -180,8 +180,8 @@ types:
   add_order_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Nanoseconds since epoch'
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -204,6 +204,19 @@ types:
       - id: reserved_1
         type: u1
         doc: 'Reserved (undefined)'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_u8_4:
     seq:
       - id: mantissa

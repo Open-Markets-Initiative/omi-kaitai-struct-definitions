@@ -174,8 +174,8 @@ types:
   time_message:
     seq:
       - id: time
-        type: u4
-        doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day'
+        type: second_timestamp
+        doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day. Seconds since Midnight epoch'
       - id: epoch_time
         type: u4
         doc: 'Number of whole seconds since the Epoch (midnight January 1, 1970 UTC)'
@@ -206,8 +206,8 @@ types:
   flex_instrument_definition_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: feed_symbol
         type: str
         size: 6
@@ -303,8 +303,8 @@ types:
   complex_flex_instrument_definition_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: complex_instrument_id
         type: str
         size: 6
@@ -358,8 +358,8 @@ types:
   trading_status_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: symbol
         type: str
         size: 6
@@ -383,6 +383,28 @@ types:
       - id: second_reserved_1
         size: 1
         doc: 'Reserved'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
 
 enums:
   message_type:

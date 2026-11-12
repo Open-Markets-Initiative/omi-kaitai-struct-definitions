@@ -175,8 +175,8 @@ types:
   time_message:
     seq:
       - id: time
-        type: u4
-        doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds'
+        type: second_timestamp
+        doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. Seconds since Midnight epoch'
   symbol_mapping_message:
     seq:
       - id: feed_symbol
@@ -204,8 +204,8 @@ types:
   complex_instrument_definition_expanded_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: complex_instrument_id
         type: str
         size: 6
@@ -250,8 +250,8 @@ types:
   add_order_long_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -277,8 +277,8 @@ types:
   add_order_short_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
@@ -304,8 +304,8 @@ types:
   trading_status_message:
     seq:
       - id: time_offset
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: complex_symbol_id
         type: str
         size: 6
@@ -329,6 +329,28 @@ types:
       - id: second_reserved_1
         size: 1
         doc: 'Reserved'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
   decimal_s8_4:
     seq:
       - id: mantissa

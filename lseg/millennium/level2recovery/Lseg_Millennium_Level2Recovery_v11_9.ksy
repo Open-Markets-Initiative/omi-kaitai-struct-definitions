@@ -83,6 +83,7 @@ types:
             'message_type::snapshot_request_message': snapshot_request_message
             'message_type::snapshot_response_message': snapshot_response_message
             'message_type::snapshot_complete_message': snapshot_complete_message
+            'message_type::time_message': time_message
             'message_type::symbol_status_message': symbol_status_message
             'message_type::add_order_message': add_order_message
             'message_type::add_attributed_order_message': add_attributed_order_message
@@ -174,11 +175,16 @@ types:
       - id: unused_1
         type: b1
         doc: 'Unused'
+  time_message:
+    seq:
+      - id: seconds
+        type: second_timestamp
+        doc: 'Number of seconds since midnight. Midnight will be in terms of the local time for the server (i.e. not UTC). Seconds since Midnight epoch'
   symbol_status_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last Time message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last Time message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: instrument_id
         type: u4
         doc: 'Instrument the request relates to. The field should contain only zeros if it does not relate to an instrument'
@@ -230,8 +236,8 @@ types:
   add_order_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last Time message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last Time message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -282,8 +288,8 @@ types:
   add_attributed_order_message:
     seq:
       - id: nanosecond
-        type: u4
-        doc: 'Nanoseconds since last Time message, accurate to the nearest microsecond'
+        type: nanosecond_offset
+        doc: 'Nanoseconds since last Time message, accurate to the nearest microsecond. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
         doc: 'Unique identifier of the order'
@@ -331,6 +337,28 @@ types:
       - id: unused_2
         type: b2
         doc: 'Unused'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
 
 enums:
   message_type:
@@ -352,6 +380,9 @@ enums:
     0x05:
       id: 'logout_request_message'
       doc: 'Used by the client to log out of the recovery channel.'
+    0x54:
+      id: 'time_message'
+      doc: 'Sent by the server for every second for which at least one application message is generated.'
     0x48:
       id: 'symbol_status_message'
       doc: 'Indicates the trading session (pre-opening, regular trading, etc.) that currently applies to an instrument.'

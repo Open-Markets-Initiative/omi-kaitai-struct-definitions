@@ -417,9 +417,9 @@ types:
         doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
   end_of_session:
     seq:
-      - id: last_timestamp
-        type: u4
-        doc: 'Nanosecond offset from last unit timestamp'
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
   trading_status_message:
     seq:
       - id: time_offset
