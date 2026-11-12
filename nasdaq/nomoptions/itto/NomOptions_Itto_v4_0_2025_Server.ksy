@@ -319,14 +319,14 @@ types:
         type: u4
         doc: 'Option ID assigned daily, valid for trading day'
       - id: bid
-        type: u4
-        doc: 'The display bid price of the new quote'
+        type: decimal_u4_4
+        doc: 'The display bid price of the new quote. Implied decimal with scale 1e-4'
       - id: bid_size_long
         type: u4
         doc: 'The bid contracts of the new quote'
       - id: ask
-        type: u4
-        doc: 'The display ask price of the new quote'
+        type: decimal_u4_4
+        doc: 'The display ask price of the new quote. Implied decimal with scale 1e-4'
       - id: ask_size_long
         type: u4
         doc: 'The ask contracts of the new quote'

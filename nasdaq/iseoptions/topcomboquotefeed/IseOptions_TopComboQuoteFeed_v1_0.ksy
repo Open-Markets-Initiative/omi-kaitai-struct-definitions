@@ -343,14 +343,14 @@ types:
         type: u4
         doc: 'Total traded quantity'
       - id: high
-        type: u8
-        doc: 'High price for the day'
+        type: decimal_s8_8
+        doc: 'High price for the day. Implied decimal with scale 1e-8'
       - id: low
-        type: u8
-        doc: 'Low price for the day'
+        type: decimal_s8_8
+        doc: 'Low price for the day. Implied decimal with scale 1e-8'
       - id: first
-        type: u8
-        doc: 'Opening price for the day'
+        type: decimal_s8_8
+        doc: 'Opening price for the day. Implied decimal with scale 1e-8'
       - id: trade_condition
         type: str
         size: 1

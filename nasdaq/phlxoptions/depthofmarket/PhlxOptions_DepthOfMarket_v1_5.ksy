@@ -297,14 +297,14 @@ types:
         type: u4
         doc: 'Option ID assigned daily, valid for trading day'
       - id: bid
-        type: u4
-        doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits'
+        type: decimal_u4_4
+        doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: bid_size
         type: u4
         doc: 'The bid contracts of the new quote'
       - id: ask
-        type: u4
-        doc: 'NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits. The display ask price of the new quote'
+        type: decimal_u4_4
+        doc: 'NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits. The display ask price of the new quote. Implied decimal with scale 1e-4'
       - id: ask_size
         type: u4
         doc: 'The ask contracts of the new quote'
@@ -506,14 +506,14 @@ types:
         type: u4
         doc: 'The ask reference number delta associated with the new quote'
       - id: bid
-        type: u4
-        doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits'
+        type: decimal_u4_4
+        doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: bid_size
         type: u4
         doc: 'The bid contracts of the new quote'
       - id: ask
-        type: u4
-        doc: 'NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits. The display ask price of the new quote'
+        type: decimal_u4_4
+        doc: 'NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits. The display ask price of the new quote. Implied decimal with scale 1e-4'
       - id: ask_size
         type: u4
         doc: 'The ask contracts of the new quote'
