@@ -477,9 +477,9 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'ISIN Code'
-      - id: index_business_date
+      - id: business_date
         type: yyyymmdd_ascii_date
-        doc: 'Business date for the index calculation in YYYYMMDD format'
+        doc: 'Business Date'
       - id: calculation_time
         type: hhmmss_ascii_time
         doc: 'Calculation Time (HHMMSS)'

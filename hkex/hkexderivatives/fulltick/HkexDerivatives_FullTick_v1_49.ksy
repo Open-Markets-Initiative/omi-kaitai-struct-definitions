@@ -554,10 +554,7 @@ types:
         size: 1
         doc: 'Padding'
       - id: effective_exp_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'The effective expiration date is the'
       - id: date_time_last_trading
         type: nanosecond_timestamp

@@ -149,8 +149,8 @@ types:
         type: u8
         doc: 'mDSeqNum'
       - id: session_trading_day
-        type: u2
-        doc: 'sessionTradingDay'
+        type: epoch_date
+        doc: 'sessionTradingDay. Days since Unix epoch'
       - id: block_extension
         size: _parent.message_header.block_length - 10
         doc: 'Bytes the stated block holds beyond the 10 this version reads'
@@ -160,8 +160,8 @@ types:
         type: u8
         doc: 'mDSeqNum'
       - id: session_trading_day
-        type: u2
-        doc: 'sessionTradingDay'
+        type: epoch_date
+        doc: 'sessionTradingDay. Days since Unix epoch'
       - id: block_extension
         size: _parent.message_header.block_length - 10
         doc: 'Bytes the stated block holds beyond the 10 this version reads'
@@ -551,11 +551,11 @@ types:
         type: u1_nullable
         doc: 'messagePriceNotation. Nullable, No Value = 255'
       - id: settlement_date
-        type: u2_nullable
-        doc: 'settlementDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'settlementDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: repo_settlement_date
-        type: u2_nullable
-        doc: 'repoSettlementDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'repoSettlementDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: trade_unique_identifier
         type: str_16_nullable
         doc: 'tradeUniqueIdentifier. Nullable, No Value = 0'
@@ -756,8 +756,8 @@ types:
   timetables_group:
     seq:
       - id: phase_time
-        type: hhmmss_time
-        doc: 'phaseTime'
+        type: hhmmss_time_nullable
+        doc: 'phaseTime. Nullable, No Value = 18446744073709551615'
       - id: phase_id
         type: u1
         enum: phase_id
@@ -839,8 +839,8 @@ types:
         encoding: ASCII
         doc: 'cFI'
       - id: instrument_event_date
-        type: u2
-        doc: 'instrumentEventDate'
+        type: epoch_date
+        doc: 'instrumentEventDate. Days since Unix epoch'
       - id: strike_price
         type: s8_nullable
         doc: 'strikePrice. Nullable, No Value = -9223372036854775808'
@@ -854,8 +854,8 @@ types:
         type: u4_nullable
         doc: 'darkMinQuantity. Nullable, No Value = 4294967295'
       - id: date_of_last_trade
-        type: u2_nullable
-        doc: 'dateOfLastTrade. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'dateOfLastTrade. Days since Unix epoch. Nullable, No Value = 65535'
       - id: depositary_list
         type: str_20_nullable
         doc: 'depositaryList. Nullable, No Value = 0'
@@ -863,8 +863,8 @@ types:
         type: str_5_nullable
         doc: 'mainDepositary. Nullable, No Value = 0'
       - id: first_settlement_date
-        type: u2_nullable
-        doc: 'firstSettlementDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'firstSettlementDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: guarantee_indicator
         type: u1_nullable
         doc: 'guaranteeIndicator. Nullable, No Value = 255'
@@ -1154,8 +1154,8 @@ types:
         type: s8
         doc: 'closingReferenceLevel'
       - id: closing_reference_time
-        type: u8
-        doc: 'closingReferenceTime'
+        type: nanosecond_timestamp
+        doc: 'closingReferenceTime. Nanoseconds since Unix epoch'
       - id: prct_varfrom_prev_close
         type: s8
         doc: 'prctVarfromPrevClose'
@@ -1175,8 +1175,8 @@ types:
         type: s8_nullable
         doc: 'liquidationLevel. Nullable, No Value = -9223372036854775808'
       - id: liquidation_time
-        type: u8_nullable
-        doc: 'liquidationTime. Nullable, No Value = 18446744073709551615'
+        type: nanosecond_timestamp_nullable
+        doc: 'liquidationTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: block_extension
         size: _parent.message_header.block_length - 126
         doc: 'Bytes the stated block holds beyond the 126 this version reads'
@@ -1272,8 +1272,8 @@ types:
         type: u2
         doc: 'partitionID'
       - id: contract_event_date
-        type: u2_nullable
-        doc: 'contractEventDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'contractEventDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: exchange_code
         type: u1
         enum: exchange_code
@@ -1331,8 +1331,8 @@ types:
         type: str_12_nullable
         doc: 'underlyingISINCode. Nullable, No Value = 0'
       - id: underlying_expiry
-        type: u4_nullable
-        doc: 'underlyingExpiry. Nullable, No Value = 4294967295'
+        type: epoch_date_nullable
+        doc: 'underlyingExpiry. Days since Unix epoch. Nullable, No Value = 4294967295'
       - id: order_type_rules
         type: order_type_rules
         doc: 'OrderTypeRules_set bit set'
@@ -1652,8 +1652,8 @@ types:
         type: u4
         doc: 'contractSymbolIndex'
       - id: instrument_event_date
-        type: u2
-        doc: 'instrumentEventDate'
+        type: epoch_date
+        doc: 'instrumentEventDate. Days since Unix epoch'
       - id: isin_code
         type: str
         size: 12
@@ -1674,8 +1674,8 @@ types:
         type: s8_nullable
         doc: 'strikePrice. Nullable, No Value = -9223372036854775808'
       - id: last_trading_date
-        type: u2_nullable
-        doc: 'lastTradingDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'lastTradingDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: days_to_expiry
         type: u2_nullable
         doc: 'daysToExpiry. Nullable, No Value = 65535'
@@ -2165,8 +2165,8 @@ types:
         type: str_3_nullable
         doc: 'currency. Nullable, No Value = 0'
       - id: date_of_initial_listing
-        type: u2_nullable
-        doc: 'dateOfInitialListing. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'dateOfInitialListing. Days since Unix epoch. Nullable, No Value = 65535'
       - id: share_amount_in_issue
         type: s8_nullable
         doc: 'shareAmountInIssue. Nullable, No Value = -9223372036854775808'
@@ -2200,17 +2200,17 @@ types:
         type: str_3_nullable
         doc: 'dividendCurrency. Nullable, No Value = 0'
       - id: dividend_record_date
-        type: u2_nullable
-        doc: 'dividendRecordDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'dividendRecordDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: dividend_rate
         type: u8_nullable
         doc: 'dividendRate. Nullable, No Value = 18446744073709551615'
       - id: ex_dividend_date
-        type: u2_nullable
-        doc: 'exDividendDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'exDividendDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: dividend_payment_date
-        type: u2_nullable
-        doc: 'dividendPaymentDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'dividendPaymentDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: tax_description_attaching_to_a_dividend
         type: u1
         enum: tax_description_attaching_to_a_dividend
@@ -2222,8 +2222,8 @@ types:
         type: s8_nullable
         doc: 'grossDividendInEuros. Nullable, No Value = -9223372036854775808'
       - id: issue_date
-        type: u2_nullable
-        doc: 'issueDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'issueDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: issuing_country
         type: str_3_nullable
         doc: 'issuingCountry. Nullable, No Value = 0'
@@ -2278,8 +2278,8 @@ types:
   interest_payment_date_rep_group:
     seq:
       - id: interest_payment_date
-        type: u2_nullable
-        doc: 'interestPaymentDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'interestPaymentDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.group_size_encoding.block_length_short - 2
         doc: 'Bytes the stated block holds beyond the 2 this version reads'
@@ -2303,8 +2303,8 @@ types:
         type: nanosecond_timestamp
         doc: 'eventTime. Nanoseconds since Unix epoch'
       - id: bid_offer_date_time
-        type: u8_nullable
-        doc: 'bidOfferDateTime. Nullable, No Value = 18446744073709551615'
+        type: nanosecond_timestamp_nullable
+        doc: 'bidOfferDateTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: mmt_modification_indicator
         type: str
         size: 4
@@ -2362,8 +2362,8 @@ types:
         type: u4
         doc: 'symbolIndex'
       - id: bid_offer_date_time
-        type: u8_nullable
-        doc: 'bidOfferDateTime. Nullable, No Value = 18446744073709551615'
+        type: nanosecond_timestamp_nullable
+        doc: 'bidOfferDateTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: mifid_transaction_id
         type: str
         size: 52
@@ -2416,8 +2416,8 @@ types:
         type: u8_nullable
         doc: 'lastMDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: snapshot_time
-        type: u8
-        doc: 'snapshotTime'
+        type: nanosecond_timestamp
+        doc: 'snapshotTime. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.message_header.block_length - 16
         doc: 'Bytes the stated block holds beyond the 16 this version reads'
@@ -2427,8 +2427,8 @@ types:
         type: u8_nullable
         doc: 'lastMDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: snapshot_time
-        type: u8
-        doc: 'snapshotTime'
+        type: nanosecond_timestamp
+        doc: 'snapshotTime. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.message_header.block_length - 16
         doc: 'Bytes the stated block holds beyond the 16 this version reads'
@@ -2445,6 +2445,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  epoch_date:
+    seq:
+      - id: days
+        type: u2
+    instances:
+      unix_seconds:
+        value: days * 86400
   u8_nullable:
     seq:
       - id: value
@@ -2566,6 +2573,13 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  epoch_date_nullable:
+    seq:
+      - id: value
+        type: epoch_date
+    instances:
+      is_null:
+        value: value.days == 65535
   str_16_nullable:
     seq:
       - id: value
@@ -2586,6 +2600,13 @@ types:
         value: time / 100 % 100
       second:
         value: time % 100
+  hhmmss_time_nullable:
+    seq:
+      - id: value
+        type: hhmmss_time
+    instances:
+      is_null:
+        value: value.time == -1
   str_102_nullable:
     seq:
       - id: value

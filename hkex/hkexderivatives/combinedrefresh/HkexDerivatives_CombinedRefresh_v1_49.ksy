@@ -533,10 +533,7 @@ types:
         type: s4
         doc: 'In general, it is the price at which a'
       - id: expiration_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Expiry date of the series'
       - id: decimal_in_strike_price
         type: u2
@@ -610,10 +607,7 @@ types:
         size: 1
         doc: 'Padding'
       - id: effective_exp_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'The effective expiration date is the'
       - id: date_time_last_trading
         type: nanosecond_timestamp
@@ -836,6 +830,19 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
 
 enums:
   compression_mode:

@@ -461,9 +461,9 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'ISIN Code'
-      - id: index_business_date
+      - id: business_date
         type: yyyymmdd_ascii_date
-        doc: 'Business date for the index calculation in YYYYMMDD format'
+        doc: 'Business Date'
       - id: calculation_time
         type: hhmmss_ascii_time
         doc: 'Calculation Time (HHMMSS)'
@@ -2974,10 +2974,7 @@ types:
         encoding: ASCII
         doc: '- Total number of instruments per each Information Category'
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: isin_code
         type: str
@@ -3699,10 +3696,7 @@ types:
         type: str_8_nullable
         doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: market_participant_number
         type: str
@@ -5105,10 +5099,7 @@ types:
         encoding: ASCII
         doc: '- Total number of instruments per each Information Category'
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: isin_code
         type: str
@@ -5307,10 +5298,7 @@ types:
         encoding: ASCII
         doc: '- Total number of instruments per each Information Category'
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: isin_code
         type: str
@@ -5542,10 +5530,7 @@ types:
         type: str_8_nullable
         doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: repo_classification_code
         type: str
