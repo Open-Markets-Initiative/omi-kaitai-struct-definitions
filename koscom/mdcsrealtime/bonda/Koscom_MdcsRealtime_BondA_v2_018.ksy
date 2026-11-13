@@ -209,12 +209,9 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'ISIN Code'
-      - id: calculation_time
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Calculation Time'
+      - id: calculation_time_short
+        type: hhmmss_ascii_time
+        doc: 'Index calculation time. During market hours: HHMMSS (time:min:sec). End of the regular session: final calculation timestamp'
       - id: index
         type: str
         size: 9
@@ -229,16 +226,16 @@ types:
         size: 9
         encoding: ASCII
         doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places)'
-      - id: accumulated_trading_volume
+      - id: accumulated_trading_volume_short
         type: str
-        size: 15
+        size: 12
         encoding: ASCII
-        doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+        doc: 'Accumulated trading volume of the index constituents (12 ASCII digits). Unit: 1,000 shares'
+      - id: accumulated_trading_value_short
         type: str
-        size: 22
+        size: 12
         encoding: ASCII
-        doc: 'Accumulated trading value Trading value=trading amount*trading price'
+        doc: 'Accumulated trading value of the index constituents (12 ASCII digits). Unit: Million KRW'
       - id: filler_4
         size: 4
         doc: 'Reserved filler. Always 4 ASCII space characters'
@@ -260,12 +257,9 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'ISIN Code'
-      - id: calculation_time
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Calculation Time'
+      - id: calculation_time_short
+        type: hhmmss_ascii_time
+        doc: 'Index calculation time. During market hours: HHMMSS (time:min:sec). End of the regular session: final calculation timestamp'
       - id: index
         type: str
         size: 9
@@ -280,16 +274,16 @@ types:
         size: 9
         encoding: ASCII
         doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places)'
-      - id: accumulated_trading_volume
+      - id: accumulated_trading_volume_short
         type: str
-        size: 15
+        size: 12
         encoding: ASCII
-        doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+        doc: 'Accumulated trading volume of the index constituents (12 ASCII digits). Unit: 1,000 shares'
+      - id: accumulated_trading_value_short
         type: str
-        size: 22
+        size: 12
         encoding: ASCII
-        doc: 'Accumulated trading value Trading value=trading amount*trading price'
+        doc: 'Accumulated trading value of the index constituents (12 ASCII digits). Unit: Million KRW'
       - id: filler_4
         size: 4
         doc: 'Reserved filler. Always 4 ASCII space characters'
@@ -317,12 +311,9 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Business Date'
-      - id: calculation_time
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Calculation Time'
+      - id: calculation_time_short
+        type: hhmmss_ascii_time
+        doc: 'Index calculation time. During market hours: HHMMSS (time:min:sec). End of the regular session: final calculation timestamp'
       - id: index
         type: str
         size: 9
@@ -415,12 +406,9 @@ types:
         size: 16
         encoding: ASCII
         doc: 'Average yield across the index constituents (16 ASCII digits with 6 implied decimal places). Unit: percent'
-      - id: transmission_time
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Transmission Time'
+      - id: transmission_time_short
+        type: hhmmssmm_ascii_time
+        doc: 'Transmission time in HHMMSSMM format (8 ASCII digits)'
       - id: end_keyword
         type: u1
         enum: end_keyword
@@ -1206,12 +1194,12 @@ types:
         size: 13
         encoding: ASCII
         doc: 'A yield of Today''s low price'
-      - id: accumulated_trading_volume
+      - id: accumulated_trading_volume_long
         type: str
         size: 15
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -1308,12 +1296,12 @@ types:
         size: 13
         encoding: ASCII
         doc: 'A yield of Today''s low price'
-      - id: accumulated_trading_volume
+      - id: accumulated_trading_volume_long
         type: str
         size: 15
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -1507,7 +1495,7 @@ types:
         size: 6
         encoding: ASCII
         doc: 'A designated number for each issue on a daily basis - Market(Information Product) : KOSPI(Securities A, Securities C), KOSDAQ(Securities B), KONEX(Securities B), Derivatives(DRV A), Spot Gold(Commodit'
-      - id: accumulated_trading_volume
+      - id: accumulated_trading_volume_long
         type: str
         size: 15
         encoding: ASCII
@@ -2171,12 +2159,12 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Bid Closing Date'
-      - id: accumulated_trading_volume
+      - id: accumulated_trading_volume_long
         type: str
         size: 15
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -2199,7 +2187,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Transmission Date'
-      - id: calculation_time
+      - id: calculation_time_long
         type: str
         size: 9
         encoding: ASCII
@@ -2228,7 +2216,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Transmission Date'
-      - id: calculation_time
+      - id: calculation_time_long
         type: str
         size: 9
         encoding: ASCII
@@ -2426,7 +2414,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Transmission Date'
-      - id: transmission_time
+      - id: transmission_time_long
         type: str
         size: 9
         encoding: ASCII
@@ -2724,12 +2712,12 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'ISIN'
-      - id: issue_name
+      - id: issue_name_short
         type: str
-        size: 80
+        size: 60
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Issue Name'
+        doc: 'ISSUE Name'
       - id: equity_linked_bond_exercise_price
         type: str
         size: 11
@@ -3014,7 +3002,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Transmission Date'
-      - id: issue_name
+      - id: issue_name_long
         type: str
         size: 80
         encoding: ASCII
@@ -4102,12 +4090,12 @@ types:
         size: 13
         encoding: ASCII
         doc: 'A yield of Today''s low price'
-      - id: accumulated_trading_volume
+      - id: accumulated_trading_volume_long
         type: str
         size: 15
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -4541,12 +4529,12 @@ types:
         size: 11
         encoding: ASCII
         doc: 'Category_Todays Low'
-      - id: accumulated_trading_volume
+      - id: accumulated_trading_volume_long
         type: str
         size: 15
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -5096,6 +5084,19 @@ types:
         value: text.substring(0, 2).to_i
       minute:
         value: text.substring(2, 4).to_i
+  hhmmss_ascii_time:
+    seq:
+      - id: text
+        type: str
+        size: 6
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.substring(0, 2).to_i
+      minute:
+        value: text.substring(2, 4).to_i
+      second:
+        value: text.substring(4, 6).to_i
   yyyymmdd_ascii_date:
     seq:
       - id: text
@@ -5109,7 +5110,7 @@ types:
         value: text.substring(4, 6).to_i
       day:
         value: text.substring(6, 8).to_i
-  hhmmss_ascii_time:
+  hhmmssmm_ascii_time:
     seq:
       - id: text
         type: str
@@ -5122,6 +5123,8 @@ types:
         value: text.substring(2, 4).to_i
       second:
         value: text.substring(4, 6).to_i
+      hundredth:
+        value: text.substring(6, 8).to_i
   str_8_nullable:
     seq:
       - id: value

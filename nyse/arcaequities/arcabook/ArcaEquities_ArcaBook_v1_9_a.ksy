@@ -102,8 +102,8 @@ types:
   add_order_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH)'
+        type: nanosecond_offset
+        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH). Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'This field identifies the numerical representation of the symbol'
@@ -134,8 +134,8 @@ types:
   attributed_add_order_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH)'
+        type: nanosecond_offset
+        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH). Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'This field identifies the numerical representation of the symbol'
@@ -172,8 +172,8 @@ types:
   modify_order_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH)'
+        type: nanosecond_offset
+        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH). Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'This field identifies the numerical representation of the symbol'
@@ -203,8 +203,8 @@ types:
   delete_order_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH)'
+        type: nanosecond_offset
+        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH). Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'This field identifies the numerical representation of the symbol'
@@ -228,8 +228,8 @@ types:
   execution_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH)'
+        type: nanosecond_offset
+        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH). Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'This field identifies the numerical representation of the symbol'
@@ -258,11 +258,11 @@ types:
   add_order_refresh_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'This field specifies the time when the msg was generated in the order book. The number represents the number of seconds in UTC time (EPOCH)'
+        type: second_timestamp
+        doc: 'This field specifies the time when the msg was generated in the order book. The number represents the number of seconds in UTC time (EPOCH). Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH)'
+        type: nanosecond_offset
+        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH). Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'This field identifies the numerical representation of the symbol'
@@ -293,11 +293,11 @@ types:
   attributed_add_order_refresh_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'This field specifies the time when the msg was generated in the order book. The number represents the number of seconds in UTC time (EPOCH)'
+        type: second_timestamp
+        doc: 'This field specifies the time when the msg was generated in the order book. The number represents the number of seconds in UTC time (EPOCH). Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH)'
+        type: nanosecond_offset
+        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH). Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'This field identifies the numerical representation of the symbol'
@@ -334,11 +334,11 @@ types:
   imbalance_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'This field specifies the time when the msg was generated in the order book. The number represents the number of seconds in UTC time (EPOCH)'
+        type: second_timestamp
+        doc: 'This field specifies the time when the msg was generated in the order book. The number represents the number of seconds in UTC time (EPOCH). Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH)'
+        type: nanosecond_offset
+        doc: 'This field represents the nanosecond offset from the time reference second in UTC time (EPOCH). Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'This field identifies the numerical representation of the symbol'

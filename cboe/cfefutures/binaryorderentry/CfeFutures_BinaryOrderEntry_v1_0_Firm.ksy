@@ -72,7 +72,7 @@ types:
         type: u1
         doc: 'The matching unit which created this message. Matching units in BOE correspond to matching units on Multicast PITCH'
       - id: reserved_field
-        type: u1
+        size: 1
         doc: 'Reserved header field'
       - id: sequence_number
         type: u4

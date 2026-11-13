@@ -125,11 +125,11 @@ types:
   sequence_number_reset_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: product_id
         type: u1
         doc: 'The unique ID for this NYSE feed listed in the feed’s client specification'
@@ -145,8 +145,8 @@ types:
         size: 4
         doc: 'Reserved for future use'
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
   symbol_index_mapping_message:
     seq:
       - id: symbol_index
@@ -303,11 +303,11 @@ types:
   symbol_clear_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
@@ -317,11 +317,11 @@ types:
   security_status_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
@@ -446,11 +446,11 @@ types:
   options_status_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -472,8 +472,8 @@ types:
   options_add_order_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -509,8 +509,8 @@ types:
   options_modify_order_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -540,8 +540,8 @@ types:
   options_delete_order_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -571,8 +571,8 @@ types:
   options_replace_order_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -605,8 +605,8 @@ types:
   options_imbalance_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -661,8 +661,8 @@ types:
   options_add_order_refresh_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -698,8 +698,8 @@ types:
   options_series_rfq_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -737,8 +737,8 @@ types:
   options_non_displayed_trade_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -773,8 +773,8 @@ types:
   options_cross_trade_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -797,8 +797,8 @@ types:
   options_trade_cancel_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'
@@ -811,8 +811,8 @@ types:
   options_outright_series_summary_message:
     seq:
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: series_index
         type: u4
         doc: 'The unique ID of this series for all products within this market'

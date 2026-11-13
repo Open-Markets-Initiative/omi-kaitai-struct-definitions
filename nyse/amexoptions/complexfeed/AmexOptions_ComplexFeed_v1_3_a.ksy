@@ -104,11 +104,11 @@ types:
   complex_quote_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: complex_index
         type: u4
         doc: 'The unique ID of the symbol in the Complex Index msg'
@@ -146,11 +146,11 @@ types:
   complex_trade_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: complex_index
         type: u4
         doc: 'The unique ID of the symbol in the Complex Index msg'
@@ -181,8 +181,8 @@ types:
   complex_crossing_rfq_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_ns
         type: u4
         doc: 'The nanosecond offset from the SourceTime'
@@ -208,8 +208,8 @@ types:
   complex_cube_rfq_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_ns
         type: u4
         doc: 'The nanosecond offset from the SourceTime'
@@ -235,11 +235,11 @@ types:
   complex_status_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: complex_index
         type: u4
         doc: 'The unique ID of the symbol in the Complex Index msg'
@@ -261,11 +261,11 @@ types:
   refresh_complex_quote_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: complex_index
         type: u4
         doc: 'The unique ID of the symbol in the Complex Index msg'
@@ -303,11 +303,11 @@ types:
   refresh_complex_trade_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: complex_index
         type: u4
         doc: 'The unique ID of the symbol in the Complex Index msg'
@@ -399,11 +399,11 @@ types:
   sequence_number_reset_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the SourceTime. Nanoseconds since Second epoch'
       - id: product_id
         type: u1
         doc: 'The unique ID for this NYSE feed listed in the feed’s client specification'

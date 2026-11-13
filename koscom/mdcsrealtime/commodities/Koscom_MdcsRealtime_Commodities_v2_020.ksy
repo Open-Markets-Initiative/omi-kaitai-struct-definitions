@@ -135,11 +135,11 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_short
         type: str
-        size: 22
+        size: 12
         encoding: ASCII
-        doc: 'Accumulated trading value Trading value=trading amount*trading price'
+        doc: 'Accumulated trading value of the index constituents (12 ASCII digits). Unit: Million KRW'
       - id: filler_4
         size: 4
         doc: 'Reserved filler. Always 4 ASCII space characters'
@@ -183,11 +183,11 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_short
         type: str
-        size: 22
+        size: 12
         encoding: ASCII
-        doc: 'Accumulated trading value Trading value=trading amount*trading price'
+        doc: 'Accumulated trading value of the index constituents (12 ASCII digits). Unit: Million KRW'
       - id: filler_4
         size: 4
         doc: 'Reserved filler. Always 4 ASCII space characters'
@@ -232,12 +232,12 @@ types:
         size: 9
         encoding: ASCII
         doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places)'
-      - id: currency_code
+      - id: currency_code_short
         type: str
-        size: 6
+        size: 3
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Provided only in case of "USDKRW" - GOLDKRWGR'
+        doc: 'ISO 4217 currency code of the index value'
       - id: filler_4
         size: 4
         doc: 'Reserved filler. Always 4 ASCII space characters'
@@ -991,12 +991,11 @@ types:
         size: 10
         encoding: ASCII
         doc: 'Trading volume'
-      - id: opening_price
+      - id: opening_price_long
         type: str
-        size: 9
+        size: 11
         encoding: ASCII
-        pad-right: 0x20
-        doc: '999999V999 ex) : " 1209855"'
+        doc: 'The first price that a security traded upon the opening of the regular session'
       - id: todays_high
         type: str
         size: 11
@@ -1017,7 +1016,7 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -1076,12 +1075,11 @@ types:
         size: 10
         encoding: ASCII
         doc: 'Trading volume'
-      - id: opening_price
+      - id: opening_price_long
         type: str
-        size: 9
+        size: 11
         encoding: ASCII
-        pad-right: 0x20
-        doc: '999999V999 ex) : " 1209855"'
+        doc: 'The first price that a security traded upon the opening of the regular session'
       - id: todays_high
         type: str
         size: 11
@@ -1102,7 +1100,7 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -1838,12 +1836,11 @@ types:
         size: 11
         encoding: ASCII
         doc: 'The last traded price at the current page'
-      - id: opening_price
+      - id: opening_price_long
         type: str
-        size: 9
+        size: 11
         encoding: ASCII
-        pad-right: 0x20
-        doc: '999999V999 ex) : " 1209855"'
+        doc: 'The first price that a security traded upon the opening of the regular session'
       - id: todays_high
         type: str
         size: 11
@@ -1859,7 +1856,7 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -2427,12 +2424,11 @@ types:
         size: 10
         encoding: ASCII
         doc: 'Trading volume'
-      - id: opening_price
+      - id: opening_price_long
         type: str
-        size: 9
+        size: 11
         encoding: ASCII
-        pad-right: 0x20
-        doc: '999999V999 ex) : " 1209855"'
+        doc: 'The first price that a security traded upon the opening of the regular session'
       - id: todays_high
         type: str
         size: 11
@@ -2453,7 +2449,7 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -2507,12 +2503,11 @@ types:
         size: 10
         encoding: ASCII
         doc: 'Trading volume'
-      - id: opening_price
+      - id: opening_price_long
         type: str
-        size: 9
+        size: 11
         encoding: ASCII
-        pad-right: 0x20
-        doc: '999999V999 ex) : " 1209855"'
+        doc: 'The first price that a security traded upon the opening of the regular session'
       - id: todays_high
         type: str
         size: 11
@@ -2533,7 +2528,7 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -2864,12 +2859,11 @@ types:
         size: 11
         encoding: ASCII
         doc: 'The last traded price at the current page'
-      - id: opening_price
+      - id: opening_price_long
         type: str
-        size: 9
+        size: 11
         encoding: ASCII
-        pad-right: 0x20
-        doc: '999999V999 ex) : " 1209855"'
+        doc: 'The first price that a security traded upon the opening of the regular session'
       - id: todays_high
         type: str
         size: 11
@@ -2885,7 +2879,7 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -3064,7 +3058,7 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: accumulated_trading_value_long
         type: str
         size: 22
         encoding: ASCII
@@ -3497,7 +3491,7 @@ types:
       - id: trading_time
         type: hhmmss_ascii_time
         doc: 'HHMMSS'
-      - id: opening_price
+      - id: opening_price_short
         type: str
         size: 9
         encoding: ASCII
@@ -3515,11 +3509,12 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: '999999V999 ex) : " 1209855"'
-      - id: closing_price
+      - id: closing_price_short
         type: str
-        size: 11
+        size: 9
         encoding: ASCII
-        doc: 'Closing price on the day''s regular session'
+        pad-right: 0x20
+        doc: 'Average Price of Bid/Ask Quote 999999V999 ex) : " 1209855"'
       - id: change_from_previous_day_sign
         type: str
         size: 1
@@ -3550,7 +3545,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: '999999V999 ex) : " 1209855"'
-      - id: currency_code
+      - id: currency_code_long
         type: str
         size: 6
         encoding: ASCII
@@ -3646,7 +3641,7 @@ types:
         size: 6
         encoding: ASCII
         doc: 'A designated number for each issue on a daily basis - Market(Information Product) : KOSPI(Securities A, Securities C), KOSDAQ(Securities B), KONEX(Securities B), Derivatives(DRV A), Spot Gold(Commodit'
-      - id: closing_price
+      - id: closing_price_long
         type: str
         size: 11
         encoding: ASCII
@@ -3858,7 +3853,7 @@ types:
         size: 6
         encoding: ASCII
         doc: 'A designated number for each issue on a daily basis - Market(Information Product) : KOSPI(Securities A, Securities C), KOSDAQ(Securities B), KONEX(Securities B), Derivatives(DRV A), Spot Gold(Commodit'
-      - id: closing_price
+      - id: closing_price_long
         type: str
         size: 11
         encoding: ASCII

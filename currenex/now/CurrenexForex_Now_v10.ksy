@@ -80,8 +80,8 @@ types:
         type: u4
         doc: 'Directional session based sequence number'
       - id: timestamp
-        type: s8
-        doc: 'Epoch microseconds of WAMR calc'
+        type: u4
+        doc: 'Time in milliseconds since midnight GMT'
       - id: message_type
         type: u1
         enum: message_type
@@ -322,7 +322,7 @@ types:
       - id: conf_factor_25
         type: conf_factor_25
         doc: '25th percentile confidence factor'
-      - id: timestamp
+      - id: calculation_timestamp
         type: s8
         doc: 'Epoch microseconds of WAMR calc'
   conf_factor_75:

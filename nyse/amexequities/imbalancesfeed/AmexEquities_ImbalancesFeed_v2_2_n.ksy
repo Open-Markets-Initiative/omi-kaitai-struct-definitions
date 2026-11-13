@@ -112,11 +112,11 @@ types:
   sequence_number_reset_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the Source Time'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the Source Time. Nanoseconds since Second epoch'
       - id: product_id
         type: u1
         doc: 'The unique ID for this NYSE feed listed in the feed''s client specification'
@@ -132,8 +132,8 @@ types:
         type: u4
         doc: 'The sequence number of this message in the set of all messages for this symbol'
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
   symbol_index_mapping_message:
     seq:
       - id: symbol_index
@@ -194,11 +194,11 @@ types:
   symbol_clear_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the Source Time'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the Source Time. Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'The ID of the symbol in the Symbol Index msg'
@@ -208,11 +208,11 @@ types:
   security_status_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the Source Time'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the Source Time. Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'The ID of the symbol in the Symbol Index msg'
@@ -384,11 +384,11 @@ types:
   imbalance_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the Source Time'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the Source Time. Nanoseconds since Second epoch'
       - id: symbol_index
         type: u4
         doc: 'The ID of the symbol in the Symbol Index msg'

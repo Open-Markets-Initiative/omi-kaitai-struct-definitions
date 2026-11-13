@@ -56,8 +56,8 @@ types:
         type: u2
         doc: 'Length of entire block of messages. Includes this header and Message Count messages to follow'
       - id: message_count
-        type: s8
-        doc: 'Number of Trade and Trade Break messages which will be contained in this spin'
+        type: u1
+        doc: 'Number of messages to follow this header'
       - id: unit
         type: u1
         doc: 'Unit that applies to messages included in this header'
@@ -203,7 +203,7 @@ types:
       - id: sequence
         type: u4
         doc: 'Spin is available which is current through this sequence number'
-      - id: message_count
+      - id: trade_replay_message_count
         type: u8
         doc: 'Number of Trade and Trade Break messages which will be contained in this spin'
       - id: trade_replay_response_status

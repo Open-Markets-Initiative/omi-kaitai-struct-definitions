@@ -330,11 +330,11 @@ types:
         size: 9
         encoding: ASCII
         doc: 'Trading price'
-      - id: trading_volume
+      - id: trading_volume_short
         type: str
-        size: 12
+        size: 10
         encoding: ASCII
-        doc: 'Accumulated trading volume (12 ASCII digits). Unit: 1,000 shares'
+        doc: 'Trading volume for each issue'
       - id: trading_time
         type: str
         size: 6
@@ -775,7 +775,7 @@ types:
         size: 9
         encoding: ASCII
         doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
-      - id: trading_volume
+      - id: trading_volume_long
         type: str
         size: 12
         encoding: ASCII
@@ -823,7 +823,7 @@ types:
         size: 9
         encoding: ASCII
         doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
-      - id: trading_volume
+      - id: trading_volume_long
         type: str
         size: 12
         encoding: ASCII
@@ -871,7 +871,7 @@ types:
         size: 9
         encoding: ASCII
         doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
-      - id: trading_volume
+      - id: trading_volume_long
         type: str
         size: 12
         encoding: ASCII
@@ -919,7 +919,7 @@ types:
         size: 9
         encoding: ASCII
         doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
-      - id: trading_volume
+      - id: trading_volume_long
         type: str
         size: 12
         encoding: ASCII
