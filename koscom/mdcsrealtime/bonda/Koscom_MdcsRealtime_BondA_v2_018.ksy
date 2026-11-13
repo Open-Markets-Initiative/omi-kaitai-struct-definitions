@@ -306,10 +306,7 @@ types:
         pad-right: 0x20
         doc: 'ISIN Code'
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: calculation_time_short
         type: hhmmss_ascii_time
@@ -1537,10 +1534,7 @@ types:
         encoding: ASCII
         doc: '- Total number of instruments per each Information Category'
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: isin_code
         type: str
@@ -1739,10 +1733,7 @@ types:
         encoding: ASCII
         doc: '- Total number of instruments per each Information Category'
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: isin_code
         type: str
@@ -1974,10 +1965,7 @@ types:
         type: str_8_nullable
         doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: repo_classification_code
         type: str
@@ -2104,10 +2092,7 @@ types:
         type: str_8_nullable
         doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: baby_bonds_type_code
         type: str

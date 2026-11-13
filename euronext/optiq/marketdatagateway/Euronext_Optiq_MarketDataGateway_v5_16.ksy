@@ -747,8 +747,8 @@ types:
   timetables_group:
     seq:
       - id: phase_time
-        type: nanosecond_timestamp
-        doc: 'phaseTime. Nanoseconds since Unix epoch'
+        type: hhmmss_time
+        doc: 'phaseTime'
       - id: phase_id
         type: u1
         enum: phase_id
@@ -2551,6 +2551,17 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  hhmmss_time:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 10000 % 100
+      minute:
+        value: time / 100 % 100
+      second:
+        value: time % 100
   str_102_nullable:
     seq:
       - id: value

@@ -167,7 +167,7 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'Explicit strike price. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -242,8 +242,8 @@ types:
         type: u4
         doc: 'Option ID assigned daily, valid for trading day'
       - id: price_short
-        type: decimal_u2_4
-        doc: 'The display price of the new order being added to the book. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-4'
+        type: decimal_u2_2
+        doc: 'The display price of the new order being added to the book. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: volume_short
         type: u2
         doc: 'The total number of contracts of the new order being added to the book'
@@ -266,7 +266,7 @@ types:
         type: u4
         doc: 'Option ID assigned daily, valid for trading day'
       - id: price_long
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -289,14 +289,14 @@ types:
         type: u4
         doc: 'Option ID assigned daily, valid for trading day'
       - id: bid_price_short
-        type: decimal_u2_4
-        doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-4'
+        type: decimal_u2_2
+        doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'The bid contracts of the new quote'
       - id: ask_price_short
-        type: decimal_u2_4
-        doc: 'The display ask price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-4'
+        type: decimal_u2_2
+        doc: 'The display ask price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
         doc: 'The ask contracts of the new quote'
@@ -371,7 +371,7 @@ types:
         enum: printable
         doc: 'Indicates if the execution should be reflected on time and sale displays and volume calculations'
       - id: price_long
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -405,8 +405,8 @@ types:
         type: u8
         doc: 'The new reference number associated with the new order'
       - id: price_short
-        type: decimal_u2_4
-        doc: 'The display price of the new order being added to the book. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-4'
+        type: decimal_u2_2
+        doc: 'The display price of the new order being added to the book. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: volume_short
         type: u2
         doc: 'The total number of contracts of the new order being added to the book'
@@ -425,7 +425,7 @@ types:
         type: u8
         doc: 'The new reference number associated with the new order'
       - id: price_long
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -456,7 +456,7 @@ types:
         type: u1
         enum: change_reason
       - id: price_long
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -482,14 +482,14 @@ types:
         type: u8
         doc: 'The ask reference number associated with the new quote'
       - id: bid_price_short
-        type: decimal_u2_4
-        doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-4'
+        type: decimal_u2_2
+        doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'The bid contracts of the new quote'
       - id: ask_price_short
-        type: decimal_u2_4
-        doc: 'The display ask price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-4'
+        type: decimal_u2_2
+        doc: 'The display ask price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
         doc: 'The ask contracts of the new quote'
@@ -514,13 +514,13 @@ types:
         type: u8
         doc: 'The ask reference number associated with the new quote'
       - id: bid_price_long
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The display bid price of the replaced quote. Implied decimal with scale 1e-4'
       - id: bid_size_long
         type: u4
         doc: 'The bid contracts of the new quote'
       - id: ask_price_long
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The display ask price of the replaced quote. Implied decimal with scale 1e-4'
       - id: ask_size_long
         type: u4
@@ -561,7 +561,7 @@ types:
         type: u4
         doc: 'Execution Id. Identifies the component of an execution. Unique for a given day. The match number is also referenced in the Trade Break Message'
       - id: price_long
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -588,7 +588,7 @@ types:
         enum: cross_type
         doc: 'The NASDAQ auction session for which the message is being generated'
       - id: price_long
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -633,7 +633,7 @@ types:
         type: u4
         doc: 'Option ID assigned daily, valid for trading day'
       - id: imbalance_price
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The imbalance price. 0 for Price Improvement (PRISM) Auction. Implied decimal with scale 1e-4'
       - id: imbalance_volume
         type: u4
@@ -658,17 +658,24 @@ types:
         value: time.as<s8> / 1000000000 % 60
       millisecond:
         value: time.as<s8> / 1000000 % 1000
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
   decimal_u4_4:
     seq:
       - id: mantissa
         type: u4
-    instances:
-      real:
-        value: mantissa / 10000.0
-  decimal_u2_4:
-    seq:
-      - id: mantissa
-        type: u2
     instances:
       real:
         value: mantissa / 10000.0

@@ -210,10 +210,7 @@ types:
         pad-right: 0x20
         doc: 'ISIN Code'
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: calculation_time
         type: hhmmss_ascii_time
@@ -3176,10 +3173,7 @@ types:
         encoding: ASCII
         doc: '- Total number of instruments per each Information Category'
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: isin_code
         type: str
@@ -3326,10 +3320,7 @@ types:
         encoding: ASCII
         doc: '- Total number of instruments per each Information Category'
       - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Business Date'
       - id: isin_code
         type: str
