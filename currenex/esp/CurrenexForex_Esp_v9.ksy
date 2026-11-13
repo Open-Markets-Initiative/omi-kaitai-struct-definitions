@@ -198,14 +198,14 @@ types:
         enum: side
         doc: 'Side'
       - id: max_amount
-        type: s8
-        doc: 'The maximum amount being offered at this Price'
+        type: decimal_s8_2
+        doc: 'The maximum amount being offered at this Price. Implied decimal with scale 1e-2'
       - id: min_amount
-        type: s8
-        doc: 'The minimum amount being offered at this Price'
+        type: decimal_s8_2
+        doc: 'The minimum amount being offered at this Price. Implied decimal with scale 1e-2'
       - id: price
-        type: s4
-        doc: 'Price rate'
+        type: decimal_s4_5
+        doc: 'Price rate. Implied decimal with scale 1e-5'
       - id: attributed
         type: u1
         enum: attributed
@@ -230,8 +230,8 @@ types:
         type: s2
         doc: 'Numeric identifier for currency pair identified by the instrument id'
       - id: rate
-        type: s4
-        doc: 'Trade execution rate'
+        type: decimal_s4_5
+        doc: 'Trade execution rate. Implied decimal with scale 1e-5'
       - id: ticker_type
         type: u1
         enum: ticker_type
@@ -255,6 +255,20 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Free form reject reason text'
+  decimal_s8_2:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100.0
+  decimal_s4_5:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100000.0
 
 enums:
   message_type:

@@ -534,20 +534,14 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62 symbol'
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: trading_status
         type: u1
         enum: trading_status
         doc: 'Trading Status Values'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   end_of_session_message:
     seq:

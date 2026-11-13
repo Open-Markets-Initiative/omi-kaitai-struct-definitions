@@ -161,9 +161,7 @@ types:
         type: u2
         doc: 'Round-lot size for a symbol can consist of 1, 10, 40 or 100 shares'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled, reserved for future use'
       - id: luld_tier
         type: u1
@@ -197,19 +195,13 @@ types:
         enum: instrument_type
         doc: 'Identifies the instrument type relevant to the quote'
       - id: second_reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled, reserved for future use'
       - id: third_reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled, reserved for future use'
       - id: fourth_reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled, reserved for future use'
   market_wide_circuit_breaker_decline_level_status_snapshot_message:
     seq:
@@ -227,9 +219,7 @@ types:
         type: decimal_s8_6
         doc: 'Identifies the daily established drop level value, Level 3 = 20% of Previous Close S&P 500 Value. Implied decimal with scale 1e-6'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled, reserved for future use'
   consolidated_snapshot_message:
     seq:
@@ -330,9 +320,7 @@ types:
         enum: halt_reason
         doc: 'Denotes the reason for the Trading Halt'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled, reserved for future use'
   participant_snapshot_message:
     seq:

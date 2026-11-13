@@ -526,7 +526,7 @@ types:
         doc: 'CUBE auction identifier for GTX responses; zero if not used'
       - id: optional_order_add_on
         type: optional_order_add_on
-        if: _parent.seq_msg_header.seq_msg_length != 100
+        if: _parent.seq_msg_header.seq_msg_length == 184
         doc: 'OptionalOrderAddOn'
   bitfield_order_instructions:
     meta:
@@ -1032,7 +1032,7 @@ types:
         doc: 'Sender’s open/close position'
       - id: optional_order_add_on
         type: optional_order_add_on
-        if: _parent.seq_msg_header.seq_msg_length != 100
+        if: _parent.seq_msg_header.seq_msg_length == 183
         doc: 'OptionalOrderAddOn'
   trade_bust_correct_message:
     seq:

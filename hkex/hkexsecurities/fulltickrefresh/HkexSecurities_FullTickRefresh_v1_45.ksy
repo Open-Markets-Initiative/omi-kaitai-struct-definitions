@@ -495,11 +495,11 @@ types:
         size: 4
         doc: 'Padding'
       - id: start_date_time
-        type: u8
-        doc: 'Start time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available'
+        type: nanosecond_timestamp
+        doc: 'Start time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available. Nanoseconds since Unix epoch'
       - id: end_date_time
-        type: u8
-        doc: 'End time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available'
+        type: nanosecond_timestamp
+        doc: 'End time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available. Nanoseconds since Unix epoch'
   security_status_message:
     seq:
       - id: security_code
@@ -518,11 +518,11 @@ types:
         type: u4
         doc: 'Uniquely identifies a security available for trading. 5 digit security codes with possible values 1 to 99999'
       - id: cooling_off_start_time
-        type: u8
-        doc: 'Time when the cooling off period starts. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Time when the cooling off period starts. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
       - id: cooling_off_end_time
-        type: u8
-        doc: 'Time when the cooling off period ends. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Time when the cooling off period ends. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
       - id: vcm_reference_price
         type: decimal_s4_3
         doc: 'Reference Price for the cooling off period. 3 implied decimal places. Implied decimal with scale 1e-3'

@@ -686,8 +686,8 @@ types:
         type: u4
         doc: 'The quantity being matched in this execution'
       - id: trade_time
-        type: u8
-        doc: 'Date and time of the trade. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond'
+        type: nanosecond_timestamp
+        doc: 'Date and time of the trade. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Nanoseconds since Unix epoch'
   trade_amendment_message:
     seq:
       - id: orderbook_id
@@ -703,8 +703,8 @@ types:
         type: u4
         doc: 'The quantity being matched in this execution'
       - id: amendment_execution_time
-        type: u8
-        doc: 'Date and time of the trade amendment execution. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond'
+        type: nanosecond_timestamp
+        doc: 'Date and time of the trade amendment execution. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Nanoseconds since Unix epoch'
       - id: trade_state
         type: u1
         enum: trade_state

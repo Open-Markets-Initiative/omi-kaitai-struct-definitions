@@ -80,8 +80,8 @@ types:
         type:
           switch-on: message_header.message_type
           cases:
-            83: events_system_message
-            85: general_indices_message
+            'message_type::events_system_message': events_system_message
+            'message_type::general_indices_message': general_indices_message
   message_header:
     seq:
       - id: message_length
@@ -89,6 +89,7 @@ types:
         doc: 'Indicates message length contained in this message block'
       - id: message_type
         type: u1
+        enum: message_type
         doc: 'Code identifying the message'
   events_system_message:
     seq:
@@ -265,6 +266,13 @@ enums:
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x53:
+      id: 'events_system_message'
+      doc: 'The system of events message is used to inform that an event has occurred, which needs to be of public domain.'
+    0x55:
+      id: 'general_indices_message'
+      doc: 'Information about the MSE Indices.'
   event_code:
     0x41:
       id: 'start_of_system_hours'

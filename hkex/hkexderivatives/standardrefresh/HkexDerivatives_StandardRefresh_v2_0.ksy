@@ -393,8 +393,8 @@ types:
         type: u4
         doc: 'Last trading date of the instrument'
       - id: last_trading_time
-        type: u8
-        doc: 'The last trading time of the instrument'
+        type: nanosecond_timestamp
+        doc: 'The last trading time of the instrument. Nanoseconds since Unix epoch'
       - id: strike_price
         type: s8
         doc: 'Price at which a specific options instrument can be exercised'
@@ -405,8 +405,8 @@ types:
         type: u4
         doc: 'The first trading date'
       - id: first_trading_time
-        type: u8
-        doc: 'The first trading time (UTC timestamp)'
+        type: nanosecond_timestamp
+        doc: 'The first trading time (UTC timestamp). Nanoseconds since Unix epoch'
       - id: filler_3
         size: 3
         doc: 'Padding'

@@ -420,14 +420,14 @@ types:
         size: 3
         doc: 'Padding'
       - id: date_time_last_trading
-        type: u8
-        doc: 'The last trading time of the instrument in UTC timestamp (nanoseconds since 1970)'
+        type: nanosecond_timestamp
+        doc: 'The last trading time of the instrument in UTC timestamp (nanoseconds since 1970). Nanoseconds since Unix epoch'
       - id: effective_last_trading_date
         type: u4
         doc: 'Sets the effective last trading date'
       - id: date_time_first_trading
-        type: u8
-        doc: 'The first trading time of the instrument in UTC timestamp (nanoseconds since 1970)'
+        type: nanosecond_timestamp
+        doc: 'The first trading time of the instrument in UTC timestamp (nanoseconds since 1970). Nanoseconds since Unix epoch'
       - id: instrument_status_code
         type: u1
         enum: instrument_status_code

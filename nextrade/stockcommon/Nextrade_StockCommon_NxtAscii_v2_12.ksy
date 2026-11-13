@@ -1128,10 +1128,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated Bid Trading Value'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler Value'
       - id: end_keyword
         type: str

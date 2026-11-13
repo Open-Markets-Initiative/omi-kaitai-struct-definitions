@@ -424,7 +424,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Give-up for the stock leg'
-      - id: reserved_1_2
+      - id: second_reserved_1
         size: 1
         doc: 'This instruction is reserved and will only be accepted when blank space is provided'
   order_accepted_short_form_message:

@@ -146,10 +146,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value of the index constituents (12 ASCII digits). Unit: Million KRW'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
         type: u1
@@ -197,10 +194,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value of the index constituents (12 ASCII digits). Unit: Million KRW'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
         type: u1
@@ -247,10 +241,7 @@ types:
         pad-right: 0x20
         doc: 'ISO 4217 currency code of the index value'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
         type: u1
@@ -650,10 +641,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated Bid Trading Volume'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1

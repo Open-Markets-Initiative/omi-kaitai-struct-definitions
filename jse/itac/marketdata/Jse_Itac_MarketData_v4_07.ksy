@@ -325,8 +325,8 @@ types:
         pad-right: 0x20
         doc: 'Segment the request relates to. Contains only spaces if it does not relate to a segment'
       - id: previous_close_price
-        type: s8
-        doc: 'Previous close price of the instrument'
+        type: decimal_s8_8
+        doc: 'Previous close price of the instrument. Implied decimal with scale 1e-8'
       - id: expiration_date
         type: yyyymmdd_ascii_date
         doc: 'Date the instrument expires or matures. Contains only spaces if the instrument is not a derivative or fixed income instrument'
@@ -337,8 +337,8 @@ types:
         pad-right: 0x20
         doc: 'Symbol of the underlying instrument. Contains only spaces if the instrument is not a derivative'
       - id: strike_price
-        type: s8
-        doc: 'Strike price of an option. Zero if the instrument is not an option'
+        type: decimal_s8_8
+        doc: 'Strike price of an option. Zero if the instrument is not an option. Implied decimal with scale 1e-8'
       - id: option_type
         type: u1
         enum: option_type
@@ -353,8 +353,8 @@ types:
         type: yyyymmdd_ascii_date
         doc: 'Date the instrument was issued. Contains all spaces if the instrument is not a fixed income instrument'
       - id: coupon
-        type: s8
-        doc: 'Rate of interest applied to the face value, as a percentage where 0.05 represents five percent. Zero if the instrument is not a fixed income instrument'
+        type: decimal_s8_8
+        doc: 'Rate of interest applied to the face value, as a percentage where 0.05 represents five percent. Zero if the instrument is not a fixed income instrument. Implied decimal with scale 1e-8'
       - id: symbol_directory_flags
         type: symbol_directory_flags
         doc: 'Instrument level flags carried on the Symbol Directory message'
@@ -382,9 +382,9 @@ types:
         if: _parent.message_header.message_length > 332
         doc: 'Symbol of the leg 2 instrument. Contains only spaces if the instrument is not multi legged. Derivative market data groups only'
       - id: contract_multiplier
-        type: s8
+        type: decimal_s8_8
         if: _parent.message_header.message_length > 332
-        doc: 'Multiplier of the instrument. Zero if the instrument has no contract multiplier. Derivative market data groups only'
+        doc: 'Multiplier of the instrument. Zero if the instrument has no contract multiplier. Derivative market data groups only. Implied decimal with scale 1e-8'
       - id: settlement_method
         type: u1
         enum: settlement_method
@@ -484,8 +484,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: add_order_flags
         type: add_order_flags
         doc: 'Order level flags carried on the Add Order message'
@@ -530,8 +530,8 @@ types:
         type: u4
         doc: 'Instrument the request relates to. Contains only spaces if it does not relate to an instrument and the Segment field is populated'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: attribution
         type: str
         size: 11
@@ -577,8 +577,8 @@ types:
         type: u4
         doc: 'New displayed quantity of the order'
       - id: new_price
-        type: s8
-        doc: 'New limit price of the order'
+        type: decimal_s8_8
+        doc: 'New limit price of the order. Implied decimal with scale 1e-8'
       - id: order_modified_flags
         type: order_modified_flags
         doc: 'Whether the modified order retained its priority'
@@ -623,14 +623,14 @@ types:
         type: u8
         doc: 'Unique identifier of the trade'
       - id: last_opt_px
-        type: s8
-        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: volatility
-        type: s8
-        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: underlying_reference_price
-        type: s8
-        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: venue_of_execution
         type: str
         size: 4
@@ -659,17 +659,17 @@ types:
         enum: printable
         doc: 'Whether the execution should be included in trade statistics'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: last_opt_px
-        type: s8
-        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: volatility
-        type: s8
-        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: underlying_reference_price
-        type: s8
-        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: venue_of_execution
         type: str
         size: 4
@@ -694,8 +694,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: trade_id
         type: u8
         doc: 'Unique identifier of the trade'
@@ -713,14 +713,14 @@ types:
         pad-right: 0x20
         doc: 'Type of request for quote trade. Applicable only when Sub Book is negotiated trades'
       - id: last_opt_px
-        type: s8
-        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: volatility
-        type: s8
-        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: underlying_reference_price
-        type: s8
-        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: venue_of_execution
         type: str
         size: 4
@@ -773,8 +773,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: trade_id
         type: u8
         doc: 'Unique identifier of the trade'
@@ -783,14 +783,14 @@ types:
         enum: auction_type
         doc: 'Type of auction that produced the trade'
       - id: last_opt_px
-        type: s8
-        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: volatility
-        type: s8
-        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: underlying_reference_price
-        type: s8
-        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: pt_cancellation_flag
         type: str
         size: 4
@@ -827,8 +827,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: trade_id
         type: u8
         doc: 'Unique identifier of the trade'
@@ -847,14 +847,14 @@ types:
         type: yyyymmdd_ascii_date
         doc: 'Date the off book trade was agreed between the firms'
       - id: last_opt_px
-        type: s8
-        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: volatility
-        type: s8
-        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: underlying_reference_price
-        type: s8
-        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: pt_cancellation_flag
         type: str
         size: 4
@@ -879,8 +879,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: trade_id
         type: u8
         doc: 'Unique identifier of the trade'
@@ -914,14 +914,14 @@ types:
         type: recovery_trade_flags
         doc: 'Trade level flags carried on the Recovery Trade message'
       - id: last_opt_px
-        type: s8
-        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted price of the executed volatility of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: volatility
-        type: s8
-        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: underlying_reference_price
-        type: s8
-        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Underlying reference price related to the converted value calculated upon an options instrument trade execution. Blank for equity instruments. Implied decimal with scale 1e-8'
       - id: venue_of_execution
         type: str
         size: 4
@@ -978,8 +978,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: auction_type
         type: u1
         enum: auction_type
@@ -1003,8 +1003,8 @@ types:
         enum: statistic_type
         doc: 'Whether the price is an opening or a closing price'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: open_close_indicator
         type: u1
         enum: open_close_indicator
@@ -1022,14 +1022,14 @@ types:
         type: u4
         doc: 'Instrument the request relates to. Contains only spaces if it does not relate to an instrument and the Segment field is populated'
       - id: high_price
-        type: s8
-        doc: 'High price of the instrument'
+        type: decimal_s8_8
+        doc: 'High price of the instrument. Implied decimal with scale 1e-8'
       - id: low_price
-        type: s8
-        doc: 'Low price of the instrument'
+        type: decimal_s8_8
+        doc: 'Low price of the instrument. Implied decimal with scale 1e-8'
       - id: vwap
-        type: s8
-        doc: 'Volume weighted average price of the instrument'
+        type: decimal_s8_8
+        doc: 'Volume weighted average price of the instrument. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
         doc: 'Volume of the instrument'
@@ -1053,29 +1053,29 @@ types:
         type: decimal_s8_4
         doc: 'Notional exposure updated by the delta of the option based on trade executions, carrying four implied decimal places rather than eight. Implied decimal with scale 1e-4'
       - id: open_interest
-        type: s8
-        doc: 'Open interest of the specified instrument'
+        type: decimal_s8_8
+        doc: 'Open interest of the specified instrument. Implied decimal with scale 1e-8'
       - id: theoretical_price
-        type: s8
-        doc: 'Theoretical price of the options trade'
+        type: decimal_s8_8
+        doc: 'Theoretical price of the options trade. Implied decimal with scale 1e-8'
       - id: delta
-        type: s8
-        doc: 'Delta value of the options trade'
+        type: decimal_s8_8
+        doc: 'Delta value of the options trade. Implied decimal with scale 1e-8'
       - id: gamma
-        type: s8
-        doc: 'Gamma value of the options trade'
+        type: decimal_s8_8
+        doc: 'Gamma value of the options trade. Implied decimal with scale 1e-8'
       - id: vega
-        type: s8
-        doc: 'Vega value of the options trade'
+        type: decimal_s8_8
+        doc: 'Vega value of the options trade. Implied decimal with scale 1e-8'
       - id: theta
-        type: s8
-        doc: 'Theta value of the options trade'
+        type: decimal_s8_8
+        doc: 'Theta value of the options trade. Implied decimal with scale 1e-8'
       - id: rho
-        type: s8
-        doc: 'Rho value of the options trade'
+        type: decimal_s8_8
+        doc: 'Rho value of the options trade. Implied decimal with scale 1e-8'
       - id: volatility
-        type: s8
-        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments'
+        type: decimal_s8_8
+        doc: 'Converted volatility of the executed price of the options instrument. Blank for equity instruments. Implied decimal with scale 1e-8'
   news_message:
     seq:
       - id: nanosecond
@@ -1137,8 +1137,8 @@ types:
         enum: side
         doc: 'Whether the order is a buy or a sell'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: quantity
         type: u4
         doc: 'Displayed quantity of the order'
@@ -1166,11 +1166,11 @@ types:
         pad-right: 0x20
         doc: 'Unique identifier assigned to each request for quote in the system'
       - id: indicative_bid_price
-        type: s8
-        doc: 'Indicative price of the quotes on the buy side for the request for quote'
+        type: decimal_s8_8
+        doc: 'Indicative price of the quotes on the buy side for the request for quote. Implied decimal with scale 1e-8'
       - id: indicative_offer_price
-        type: s8
-        doc: 'Indicative price of the quotes on the sell side for the request for quote'
+        type: decimal_s8_8
+        doc: 'Indicative price of the quotes on the sell side for the request for quote. Implied decimal with scale 1e-8'
   second_timestamp:
     seq:
       - id: time
@@ -1193,6 +1193,13 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
   yyyymmdd_ascii_date:
     seq:
       - id: text

@@ -191,10 +191,7 @@ types:
         enum: trading_state
         doc: 'Indicates the current trading state for the stock. Allowable values:'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: reason_code
         type: str

@@ -168,7 +168,7 @@ types:
         type: u8
         doc: 'IEX Generated Identifier. Trade ID is also'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved bytes'
   sale_condition_flags:
     meta:
@@ -213,7 +213,7 @@ types:
         type: u8
         doc: 'IEX Generated Identifier. Trade ID is also'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved bytes'
   nanosecond_timestamp:
     seq:

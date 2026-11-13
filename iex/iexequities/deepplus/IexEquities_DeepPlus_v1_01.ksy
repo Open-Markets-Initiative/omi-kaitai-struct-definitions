@@ -310,9 +310,7 @@ types:
   order_delete_message:
     seq:
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved for future use'
       - id: timestamp
         type: nanosecond_timestamp
@@ -423,9 +421,7 @@ types:
   clear_book_message:
     seq:
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved for future use'
       - id: timestamp
         type: nanosecond_timestamp

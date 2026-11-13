@@ -528,16 +528,10 @@ types:
         enum: reg_sho_action
         doc: '0 = No price test in effect, 1 = Reg SHO price test restriction in effect'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: second_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   auction_update_message:
     seq:

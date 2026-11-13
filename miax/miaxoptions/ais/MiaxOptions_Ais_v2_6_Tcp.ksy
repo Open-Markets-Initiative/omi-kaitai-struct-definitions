@@ -113,7 +113,7 @@ types:
         doc: 'Original sequence number from the live feed'
       - id: application_message
         type: application_message
-        size: _parent._parent.sesm_packet_header.sesm_packet_length - 12
+        size: _parent._parent.sesm_packet_header.sesm_packet_length - 10
   application_message:
     seq:
       - id: message_type
@@ -121,7 +121,7 @@ types:
         enum: message_type
         doc: 'Code identifying this message type'
       - id: data
-        size: _parent._parent._parent.sesm_packet_header.sesm_packet_length - 12 - 1
+        size: _parent._parent._parent.sesm_packet_header.sesm_packet_length - 10 - 1
         type:
           switch-on: message_type
           cases:

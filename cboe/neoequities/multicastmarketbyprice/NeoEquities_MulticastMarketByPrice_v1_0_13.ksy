@@ -93,7 +93,7 @@ types:
   unit_clear_message:
     seq:
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved (undefined)'
   instrument_directory_message:
     seq:
@@ -250,7 +250,7 @@ types:
         type: u4
         doc: 'The date the order would settle'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved (undefined)'
   trade_flags:
     meta:
@@ -357,12 +357,12 @@ types:
         type: decimal_u8_4
         doc: 'The price of the trade. Implied decimal with scale 1e-4'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved (undefined)'
   end_of_session_message:
     seq:
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved (undefined)'
   nanosecond_timestamp:
     seq:

@@ -164,9 +164,7 @@ types:
         type: u2
         doc: 'Round-lot size for a symbol can consist of 1, 10, 40 or 100 shares'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled. Field is reserved for future use'
       - id: luld_tier
         type: u1
@@ -201,20 +199,13 @@ types:
         enum: instrument_type
         doc: 'Identifies the instrument type relevant to the quote'
       - id: second_reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled. Field is reserved for future use'
       - id: third_reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled. Field is reserved for future use'
       - id: reserved_128
-        type: str
         size: 128
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Space-filled. Field is reserved for future use'
   timestamp_1:
     seq:
@@ -407,9 +398,7 @@ types:
         type: decimal_s8_6
         doc: 'Identifies the daily established drop level value associated with Level 3 = 20% of Previous Close S&P 500 Value. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled. Field is reserved for future use'
   market_wide_circuit_breaker_status_message:
     seq:
@@ -434,9 +423,7 @@ types:
         enum: market_wide_circuit_breaker_level_indicator
         doc: 'Identifies the threshold level that was breached'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled. Field is reserved for future use'
   quote_message:
     seq:
@@ -505,10 +492,7 @@ types:
         enum: financial_status_indicator
         doc: 'Identifies the financial status of the security'
       - id: reserved_62
-        type: str
         size: 62
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Space-filled. Field is reserved for future use'
   long_quote_message:
     seq:

@@ -66,6 +66,7 @@ types:
         type: str
         size: 16
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Pillar Username'
       - id: status
         type: u1
@@ -143,7 +144,7 @@ types:
         type: seq_msg_id
         doc: 'Pillar Stream Sequenced Message Identifier'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: '4 bytes reserved for future use'
       - id: timestamp
         type: nanosecond_timestamp

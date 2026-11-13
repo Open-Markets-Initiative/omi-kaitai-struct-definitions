@@ -485,7 +485,7 @@ types:
         type: decimal_s8_6
         doc: 'Decline Level 20% of Previous Close. Implied decimal with scale 1e-6'
       - id: reserved
-        type: u1
+        size: 1
         doc: 'Field is reserved for future use'
   market_wide_circuit_breaker_status_message:
     seq:
@@ -510,7 +510,7 @@ types:
         enum: market_wide_circuit_breaker_level_indicator
         doc: 'Identifies the threshold level that was breached'
       - id: reserved
-        type: u1
+        size: 1
         doc: 'Field is reserved for future use'
   approximate_adjusted_volume_market_center_message:
     seq:

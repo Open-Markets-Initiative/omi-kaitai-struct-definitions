@@ -274,16 +274,16 @@ types:
         type: decimal_s4_5
         doc: 'Trade rate. Implied decimal with scale 1e-5'
       - id: amount
-        type: s8
-        doc: 'Aggregated amount at this level'
+        type: decimal_s8_2
+        doc: 'Aggregated amount at this level. Implied decimal with scale 1e-2'
   offer:
     seq:
       - id: rate
         type: decimal_s4_5
         doc: 'Trade rate. Implied decimal with scale 1e-5'
       - id: amount
-        type: s8
-        doc: 'Aggregated amount at this level'
+        type: decimal_s8_2
+        doc: 'Aggregated amount at this level. Implied decimal with scale 1e-2'
   paid_given_message:
     seq:
       - id: instrument_index
@@ -382,6 +382,13 @@ types:
     instances:
       real:
         value: mantissa / 100000.0
+  decimal_s8_2:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100.0
   decimal_s4_6:
     seq:
       - id: mantissa

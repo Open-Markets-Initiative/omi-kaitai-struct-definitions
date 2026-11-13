@@ -101,10 +101,7 @@ types:
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   cboe_market_status_message:
     seq:
@@ -112,10 +109,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Timestamp of when the Market Status changed, encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: market_status
         type: u1
@@ -180,10 +174,7 @@ types:
   short_update_adap_block:
     seq:
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: side
         type: str
@@ -200,10 +191,7 @@ types:
   long_update_adap_block:
     seq:
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: side
         type: str
@@ -229,10 +217,7 @@ types:
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: retail_price_improvement
         type: u1
@@ -250,10 +235,7 @@ types:
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: execution_id
         type: u8
@@ -268,7 +250,7 @@ types:
         type: u8
         doc: 'Cumulative number of shares traded today'
       - id: reserved_8
-        type: u8
+        size: 8
         doc: 'Reserved'
       - id: trade_flags
         type: trade_flags
@@ -298,10 +280,7 @@ types:
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: execution_id
         type: u8
@@ -310,7 +289,7 @@ types:
         type: u8
         doc: 'Cumulative number of shares traded today'
       - id: reserved_8
-        type: u8
+        size: 8
         doc: 'Reserved'
       - id: trade_break_flags
         type: trade_break_flags
@@ -334,10 +313,7 @@ types:
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: halt_status
         type: str

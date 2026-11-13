@@ -504,10 +504,7 @@ types:
         enum: status
         doc: 'C = Closed Q = Queuing O = Opening/Re-opening Auction T = Trading S = Suspension H = Halted'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   auction_summary_message:
     seq:

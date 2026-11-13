@@ -403,16 +403,13 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: index_accumulated_trading_value
         type: str
-        size: 22
+        size: 12
         encoding: ASCII
-        doc: 'Accumulated trading value of treasury stock'
+        doc: 'Accumulated trading value of the index constituents (12 ASCII digits). Unit: Million KRW'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -454,16 +451,13 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: index_accumulated_trading_value
         type: str
-        size: 22
+        size: 12
         encoding: ASCII
-        doc: 'Accumulated trading value of treasury stock'
+        doc: 'Accumulated trading value of the index constituents (12 ASCII digits). Unit: Million KRW'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -483,12 +477,9 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'ISIN Code'
-      - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Business Date'
+      - id: index_business_date
+        type: yyyymmdd_ascii_date
+        doc: 'Business date for the index calculation in YYYYMMDD format'
       - id: calculation_time
         type: hhmmss_ascii_time
         doc: 'Calculation Time (HHMMSS)'
@@ -513,10 +504,7 @@ types:
         pad-right: 0x20
         doc: 'ISO 4217 currency code of the index value'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -709,7 +697,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: calculating_date
         type: yyyymmdd_ascii_date
         doc: 'Calculation date in YYYYMMDD format'
@@ -876,7 +864,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -903,206 +891,11 @@ types:
       - id: processing_time_of_trading_system
         type: hhmmssuuuuuu_ascii_time
         doc: 'HHMMSSuuuuuu'
-      - id: ask_level_1_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The best ask'
-      - id: bid_level_1_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The best bid'
-      - id: ask_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The best ask volume'
-      - id: bid_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The best bid volume'
-      - id: ask_level_2_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The second highest ask price'
-      - id: bid_level_2_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The second lowest bid price'
-      - id: ask_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The second highest ask volume'
-      - id: bid_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The second lowest bid volume'
-      - id: ask_level_3_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The third highest ask price'
-      - id: bid_level_3_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The third lowest bid price'
-      - id: ask_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The third highest ask volume'
-      - id: bid_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The third lowest bid volume'
-      - id: ask_level_4_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fourth highest ask price'
-      - id: bid_level_4_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fourth lowest bid price'
-      - id: ask_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fourth highest ask volume'
-      - id: bid_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fourth lowest bid volume'
-      - id: ask_level_5_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fifth highest ask price'
-      - id: bid_level_5_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fifth lowest bid price'
-      - id: ask_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fifth highest ask volume'
-      - id: bid_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fifth lowest bid volume'
-      - id: ask_level_6_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The sixth highest ask price'
-      - id: bid_level_6_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The sixth lowest bid price'
-      - id: ask_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The sixth highest ask volume'
-      - id: bid_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The sixth lowest bid volume'
-      - id: ask_level_7_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The seventh highest ask price'
-      - id: bid_level_7_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The seventh lowest bid price'
-      - id: ask_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The seventh highest ask volume'
-      - id: bid_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The seventh lowest bid volume'
-      - id: ask_level_8_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The eighth highest ask price'
-      - id: bid_level_8_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The eighth lowest bid price'
-      - id: ask_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The eighth highest ask volume'
-      - id: bid_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The eighth lowest bid volume'
-      - id: ask_level_9_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The ninth highest ask price'
-      - id: bid_level_9_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The ninth lowest bid price'
-      - id: ask_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The ninth highest ask volume'
-      - id: bid_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The ninth lowest bid volume'
-      - id: ask_level_10_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The tenth highest ask price'
-      - id: bid_level_10_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The tenth lowest bid price'
-      - id: ask_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The tenth highest ask volume'
-      - id: bid_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The tenth lowest bid volume'
+      - id: ten_levels
+        type: ten_levels
+        repeat: expr
+        repeat-expr: 10
+        doc: 'One of the book''s best 10 levels: price and volume of each side; an empty level has volume 0'
       - id: total_ask_volume
         type: str
         size: 12
@@ -1142,11 +935,33 @@ types:
         type: u1
         enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
+  ten_levels:
+    seq:
+      - id: ask_price
+        type: str
+        size: 11
+        encoding: ASCII
+        doc: 'The best ask'
+      - id: bid_price
+        type: str
+        size: 11
+        encoding: ASCII
+        doc: 'The best bid'
+      - id: ask_volume
+        type: str
+        size: 12
+        encoding: ASCII
+        doc: 'The best ask volume'
+      - id: bid_volume
+        type: str
+        size: 12
+        encoding: ASCII
+        doc: 'The best bid volume'
   securities_quote_mm_lp_included_message:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -1173,306 +988,11 @@ types:
       - id: processing_time_of_trading_system
         type: hhmmssuuuuuu_ascii_time
         doc: 'HHMMSSuuuuuu'
-      - id: ask_level_1_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The best ask'
-      - id: bid_level_1_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The best bid'
-      - id: ask_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The best ask volume'
-      - id: bid_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The best bid volume'
-      - id: lp_ask_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The best ask volume'
-      - id: lp_bid_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The best bid volume'
-      - id: ask_level_2_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The second highest ask price'
-      - id: bid_level_2_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The second lowest bid price'
-      - id: ask_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The second highest ask volume'
-      - id: bid_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The second lowest bid volume'
-      - id: lp_ask_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The second highest ask volume'
-      - id: lp_bid_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The second lowest bid volume'
-      - id: ask_level_3_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The third highest ask price'
-      - id: bid_level_3_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The third lowest bid price'
-      - id: ask_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The third highest ask volume'
-      - id: bid_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The third lowest bid volume'
-      - id: lp_ask_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The third highest ask volume'
-      - id: lp_bid_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The third lowest bid volume'
-      - id: ask_level_4_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fourth highest ask price'
-      - id: bid_level_4_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fourth lowest bid price'
-      - id: ask_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fourth highest ask volume'
-      - id: bid_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fourth lowest bid volume'
-      - id: lp_ask_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The fourth highest ask volume'
-      - id: lp_bid_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The fourth lowest bid volume'
-      - id: ask_level_5_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fifth highest ask price'
-      - id: bid_level_5_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fifth lowest bid price'
-      - id: ask_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fifth highest ask volume'
-      - id: bid_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fifth lowest bid volume'
-      - id: lp_ask_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The fifth highest ask volume'
-      - id: lp_bid_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The fifth lowest bid volume'
-      - id: ask_level_6_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The sixth highest ask price'
-      - id: bid_level_6_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The sixth lowest bid price'
-      - id: ask_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The sixth highest ask volume'
-      - id: bid_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The sixth lowest bid volume'
-      - id: lp_ask_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The sixth highest ask volume'
-      - id: lp_bid_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The sixth lowest bid volume'
-      - id: ask_level_7_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The seventh highest ask price'
-      - id: bid_level_7_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The seventh lowest bid price'
-      - id: ask_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The seventh highest ask volume'
-      - id: bid_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The seventh lowest bid volume'
-      - id: lp_ask_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The seventh highest ask volume'
-      - id: lp_bid_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The seventh lowest bid volume'
-      - id: ask_level_8_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The eighth highest ask price'
-      - id: bid_level_8_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The eighth lowest bid price'
-      - id: ask_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The eighth highest ask volume'
-      - id: bid_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The eighth lowest bid volume'
-      - id: lp_ask_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The eighth highest ask volume'
-      - id: lp_bid_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The eighth lowest bid volume'
-      - id: ask_level_9_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The ninth highest ask price'
-      - id: bid_level_9_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The ninth lowest bid price'
-      - id: ask_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The ninth highest ask volume'
-      - id: bid_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The ninth lowest bid volume'
-      - id: lp_ask_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The ninth highest ask volume'
-      - id: lp_bid_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The ninth lowest bid volume'
-      - id: ask_level_10_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The tenth highest ask price'
-      - id: bid_level_10_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The tenth lowest bid price'
-      - id: ask_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The tenth highest ask volume'
-      - id: bid_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The tenth lowest bid volume'
-      - id: lp_ask_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The tenth highest ask volume'
-      - id: lp_bid_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The tenth lowest bid volume'
+      - id: ten_levels_with_lp
+        type: ten_levels_with_lp
+        repeat: expr
+        repeat-expr: 10
+        doc: 'One of the book''s best 10 levels: price and volume of each side (and the LP part of each volume); an empty level has volume 0'
       - id: total_ask_volume
         type: str
         size: 12
@@ -1512,6 +1032,38 @@ types:
         type: u1
         enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
+  ten_levels_with_lp:
+    seq:
+      - id: ask_price
+        type: str
+        size: 11
+        encoding: ASCII
+        doc: 'The best ask'
+      - id: bid_price
+        type: str
+        size: 11
+        encoding: ASCII
+        doc: 'The best bid'
+      - id: ask_volume
+        type: str
+        size: 12
+        encoding: ASCII
+        doc: 'The best ask volume'
+      - id: bid_volume
+        type: str
+        size: 12
+        encoding: ASCII
+        doc: 'The best bid volume'
+      - id: lp_ask_volume
+        type: str
+        size: 12
+        encoding: ASCII
+        doc: 'LP_The best ask volume'
+      - id: lp_bid_volume
+        type: str
+        size: 12
+        encoding: ASCII
+        doc: 'LP_The best bid volume'
   securities_snapshot_mm_lp_excluded_message:
     seq:
       - id: board_id
@@ -1592,206 +1144,11 @@ types:
         type: u1
         enum: final_ask_bid_type_code
         doc: 'Ask/Bid Type Code space: order filled with single price 0: N/A 1: ASK 2: BID'
-      - id: ask_level_1_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The best ask'
-      - id: bid_level_1_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The best bid'
-      - id: ask_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The best ask volume'
-      - id: bid_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The best bid volume'
-      - id: ask_level_2_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The second highest ask price'
-      - id: bid_level_2_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The second lowest bid price'
-      - id: ask_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The second highest ask volume'
-      - id: bid_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The second lowest bid volume'
-      - id: ask_level_3_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The third highest ask price'
-      - id: bid_level_3_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The third lowest bid price'
-      - id: ask_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The third highest ask volume'
-      - id: bid_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The third lowest bid volume'
-      - id: ask_level_4_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fourth highest ask price'
-      - id: bid_level_4_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fourth lowest bid price'
-      - id: ask_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fourth highest ask volume'
-      - id: bid_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fourth lowest bid volume'
-      - id: ask_level_5_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fifth highest ask price'
-      - id: bid_level_5_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fifth lowest bid price'
-      - id: ask_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fifth highest ask volume'
-      - id: bid_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fifth lowest bid volume'
-      - id: ask_level_6_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The sixth highest ask price'
-      - id: bid_level_6_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The sixth lowest bid price'
-      - id: ask_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The sixth highest ask volume'
-      - id: bid_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The sixth lowest bid volume'
-      - id: ask_level_7_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The seventh highest ask price'
-      - id: bid_level_7_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The seventh lowest bid price'
-      - id: ask_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The seventh highest ask volume'
-      - id: bid_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The seventh lowest bid volume'
-      - id: ask_level_8_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The eighth highest ask price'
-      - id: bid_level_8_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The eighth lowest bid price'
-      - id: ask_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The eighth highest ask volume'
-      - id: bid_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The eighth lowest bid volume'
-      - id: ask_level_9_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The ninth highest ask price'
-      - id: bid_level_9_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The ninth lowest bid price'
-      - id: ask_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The ninth highest ask volume'
-      - id: bid_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The ninth lowest bid volume'
-      - id: ask_level_10_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The tenth highest ask price'
-      - id: bid_level_10_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The tenth lowest bid price'
-      - id: ask_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The tenth highest ask volume'
-      - id: bid_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The tenth lowest bid volume'
+      - id: ten_levels
+        type: ten_levels
+        repeat: expr
+        repeat-expr: 10
+        doc: 'One of the book''s best 10 levels: price and volume of each side; an empty level has volume 0'
       - id: total_ask_volume
         type: str
         size: 12
@@ -1920,306 +1277,11 @@ types:
         type: u1
         enum: final_ask_bid_type_code
         doc: 'Ask/Bid Type Code space: order filled with single price 0: N/A 1: ASK 2: BID'
-      - id: ask_level_1_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The best ask'
-      - id: bid_level_1_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The best bid'
-      - id: ask_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The best ask volume'
-      - id: bid_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The best bid volume'
-      - id: lp_ask_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The best ask volume'
-      - id: lp_bid_level_1_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The best bid volume'
-      - id: ask_level_2_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The second highest ask price'
-      - id: bid_level_2_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The second lowest bid price'
-      - id: ask_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The second highest ask volume'
-      - id: bid_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The second lowest bid volume'
-      - id: lp_ask_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The second highest ask volume'
-      - id: lp_bid_level_2_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The second lowest bid volume'
-      - id: ask_level_3_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The third highest ask price'
-      - id: bid_level_3_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The third lowest bid price'
-      - id: ask_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The third highest ask volume'
-      - id: bid_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The third lowest bid volume'
-      - id: lp_ask_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The third highest ask volume'
-      - id: lp_bid_level_3_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The third lowest bid volume'
-      - id: ask_level_4_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fourth highest ask price'
-      - id: bid_level_4_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fourth lowest bid price'
-      - id: ask_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fourth highest ask volume'
-      - id: bid_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fourth lowest bid volume'
-      - id: lp_ask_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The fourth highest ask volume'
-      - id: lp_bid_level_4_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The fourth lowest bid volume'
-      - id: ask_level_5_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fifth highest ask price'
-      - id: bid_level_5_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The fifth lowest bid price'
-      - id: ask_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fifth highest ask volume'
-      - id: bid_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The fifth lowest bid volume'
-      - id: lp_ask_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The fifth highest ask volume'
-      - id: lp_bid_level_5_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The fifth lowest bid volume'
-      - id: ask_level_6_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The sixth highest ask price'
-      - id: bid_level_6_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The sixth lowest bid price'
-      - id: ask_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The sixth highest ask volume'
-      - id: bid_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The sixth lowest bid volume'
-      - id: lp_ask_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The sixth highest ask volume'
-      - id: lp_bid_level_6_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The sixth lowest bid volume'
-      - id: ask_level_7_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The seventh highest ask price'
-      - id: bid_level_7_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The seventh lowest bid price'
-      - id: ask_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The seventh highest ask volume'
-      - id: bid_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The seventh lowest bid volume'
-      - id: lp_ask_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The seventh highest ask volume'
-      - id: lp_bid_level_7_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The seventh lowest bid volume'
-      - id: ask_level_8_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The eighth highest ask price'
-      - id: bid_level_8_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The eighth lowest bid price'
-      - id: ask_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The eighth highest ask volume'
-      - id: bid_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The eighth lowest bid volume'
-      - id: lp_ask_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The eighth highest ask volume'
-      - id: lp_bid_level_8_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The eighth lowest bid volume'
-      - id: ask_level_9_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The ninth highest ask price'
-      - id: bid_level_9_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The ninth lowest bid price'
-      - id: ask_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The ninth highest ask volume'
-      - id: bid_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The ninth lowest bid volume'
-      - id: lp_ask_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The ninth highest ask volume'
-      - id: lp_bid_level_9_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The ninth lowest bid volume'
-      - id: ask_level_10_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The tenth highest ask price'
-      - id: bid_level_10_price
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The tenth lowest bid price'
-      - id: ask_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The tenth highest ask volume'
-      - id: bid_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'The tenth lowest bid volume'
-      - id: lp_ask_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The tenth highest ask volume'
-      - id: lp_bid_level_10_volume
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'LP_The tenth lowest bid volume'
+      - id: ten_levels_with_lp
+        type: ten_levels_with_lp
+        repeat: expr
+        repeat-expr: 10
+        doc: 'One of the book''s best 10 levels: price and volume of each side (and the LP part of each volume); an empty level has volume 0'
       - id: total_ask_volume
         type: str
         size: 12
@@ -2284,7 +1346,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -2417,7 +1479,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -2475,7 +1537,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -2516,7 +1578,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -2543,14 +1605,10 @@ types:
         type: str_1_nullable
         doc: '1: Closing price 2: Quotation 3: No Trades 4: Quotation of an Issue of which base price is settled with a today''s single price. Nullable, No Value ='
       - id: filler_11
-        type: str
         size: 11
-        encoding: ASCII
         doc: 'Upper Limit Price on the Single Price Trade in the Off-Hours Session'
       - id: second_filler_11
-        type: str
         size: 11
-        encoding: ASCII
         doc: 'Upper Limit Price on the Single Price Trade in the Off-Hours Session'
       - id: closing_price_weighted_stock_price_average
         type: str
@@ -2674,7 +1732,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -2706,7 +1764,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -2778,7 +1836,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -2999,7 +2057,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: total_number_of_instruments_of_the_contract
         type: str
         size: 6
@@ -3612,7 +2670,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -3633,7 +2691,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -3646,6 +2704,18 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'A number given to each market participants. If a participant is a member of more than two exchanges, different numbers to be given by exchanges'
+      - id: board_id
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The Board ID refers to each Board in which an issue is traded under different trading schedules and rules. Individual issue can be traded on more than two Boards under each Board''s schedule and with d'
+      - id: market_making_liquidity_provider_type_code
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the contract is classified as market making or liquidity provision M: Market making L: Liquidity provider'
       - id: lp_start_date
         type: str
         size: 8
@@ -3717,7 +2787,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: business_date
         type: str
         size: 8
@@ -3756,7 +2826,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -3838,7 +2908,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -3917,10 +2987,7 @@ types:
         pad-right: 0x20
         doc: 'Market Capitalization Type Code KOSPI(0: N/A, 1: Large, 2: Medium, 3: Small) KOSDAQ(0: N/A, 1: Large, 2: Medium, 3: Small)'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: index_classification_level_1
         type: str
@@ -4025,10 +3092,7 @@ types:
         pad-right: 0x20
         doc: 'Y/N (whether an issue is a constituent of Korea Value-up Index)'
       - id: filler_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler 8'
       - id: end_keyword
         type: u1
@@ -4038,7 +3102,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: index_id
         type: str
         size: 6
@@ -4051,10 +3115,7 @@ types:
         encoding: ASCII
         doc: 'The dividend yield is a ratio that how much dividends an investor would receive relative to the amounts of investment'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -4104,10 +3165,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated Bid Trading Volume'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -4282,7 +3340,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -4320,7 +3378,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -4526,10 +3584,7 @@ types:
         encoding: ASCII
         doc: 'An amount of ELW that LP accounts hold'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -4539,7 +3594,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -4640,7 +3695,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -4694,7 +3749,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: index_calculation_institution_type_code
         type: str
         size: 2
@@ -4750,10 +3805,7 @@ types:
         pad-right: 0x20
         doc: 'Index ID comprising of 6 digits'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -4763,7 +3815,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -4801,7 +3853,7 @@ types:
         doc: 'ISIN Code'
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: transmission_date
         type: str
         size: 8
@@ -4838,21 +3890,18 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Index ID comprising of 6 digits'
-      - id: todays_high
+      - id: underlying_todays_high
         type: str
         size: 11
         encoding: ASCII
         doc: 'The highest price at which an issue traded during the course of the trading day. Also, the record high of a year refers to the highest price of a year'
-      - id: todays_low
+      - id: underlying_todays_low
         type: str
         size: 11
         encoding: ASCII
         doc: 'The lowest price or index at which an issue traded during the course of a day, week, month or year'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -6091,6 +5140,12 @@ types:
         doc: 'End of text sentinel (0xFF)'
   securities_current_movement_message:
     seq:
+      - id: board_id
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The Board ID refers to each Board in which an issue is traded under different trading schedules and rules. Individual issue can be traded on more than two Boards under each Board''s schedule and with d'
       - id: total_number_of_issues
         type: str
         size: 5
@@ -6149,7 +5204,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -6193,7 +5248,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: board_id
         type: str
         size: 2
@@ -6228,7 +5283,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: total_number_of_instruments_of_the_contract
         type: str
         size: 6
@@ -6430,7 +5485,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: total_number_of_instruments_of_the_contract
         type: str
         size: 6
@@ -6478,7 +5533,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -6517,7 +5572,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -6649,7 +5704,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -6670,7 +5725,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: business_date
         type: str
         size: 8
@@ -6697,7 +5752,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: isin_code
         type: str
         size: 12
@@ -6767,7 +5822,7 @@ types:
     seq:
       - id: message_sequence_number
         type: str_8_nullable
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value = . Nullable, Unsequenced ='
       - id: retail_bond_type_code
         type: str
         size: 2
@@ -6856,7 +5911,7 @@ types:
       text:
         value: value.to_s("ASCII")
       is_null:
-        value: text == "        "
+        value: text == "        " or text == "        "
   hhmmssuuuuuu_ascii_time:
     seq:
       - id: text

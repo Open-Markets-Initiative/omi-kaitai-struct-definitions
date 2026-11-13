@@ -311,10 +311,7 @@ types:
         pad-right: 0x20
         doc: 'Left justified, space-filled. Contains the alphabetic range for the last symbol'
       - id: reserved_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use (TBD)'
   test_message:
     seq:
@@ -349,10 +346,7 @@ types:
         type: u1
         doc: 'Number of manual or automatic extensions the applicable auction has received. Optional set to zero'
       - id: reserved_62
-        type: str
         size: 62
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use (TBD)'
   short_quote_message:
     seq:
@@ -375,10 +369,7 @@ types:
         type: u2
         doc: 'Offer size (Short form)'
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use (TBD)'
   long_quote_message:
     seq:

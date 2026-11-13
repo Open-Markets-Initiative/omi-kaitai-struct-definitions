@@ -99,7 +99,7 @@ types:
   unit_clear_message:
     seq:
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved (undefined)'
   instrument_directory_message:
     seq:
@@ -250,7 +250,7 @@ types:
         type: u4
         doc: 'The date the order would settle'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved (undefined)'
   reduce_size_message:
     seq:
@@ -298,7 +298,7 @@ types:
         type: decimal_u8_4
         doc: 'The display price of the order. Implied decimal with scale 1e-4'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved (undefined)'
   order_executed_message:
     seq:
@@ -385,7 +385,7 @@ types:
         type: u4
         doc: 'The date the order would settle'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved (undefined)'
   trade_flags:
     meta:
@@ -505,7 +505,7 @@ types:
         type: decimal_u8_4
         doc: 'For the Closing Call: Price at which the Closing Call Book would match using only eligible auction orders. Not used for the Opening Call and reopening call. Implied decimal with scale 1e-4'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved (undefined)'
   auction_summary_message:
     seq:
@@ -533,12 +533,12 @@ types:
         type: u4
         doc: 'Cumulative number of shares executed during the auction'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved (undefined)'
   end_of_session_message:
     seq:
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved (undefined)'
   nanosecond_timestamp:
     seq:

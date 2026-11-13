@@ -537,10 +537,7 @@ types:
   stock_trading_action_message:
     seq:
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use; space filled in the initial release'
       - id: issue_symbol
         type: str

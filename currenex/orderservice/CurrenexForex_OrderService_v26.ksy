@@ -172,17 +172,17 @@ types:
         enum: side
         doc: 'B=Buy,S=Sell'
       - id: order_amt
-        type: s8
-        doc: 'Order amount (scaled)'
+        type: decimal_s8_2
+        doc: 'Order amount (scaled). Implied decimal with scale 1e-2'
       - id: min_amt
-        type: s8
-        doc: 'Minimum fill amount'
+        type: decimal_s8_2
+        doc: 'Minimum fill amount. Implied decimal with scale 1e-2'
       - id: price
-        type: s4
-        doc: 'Limit price (scaled)'
+        type: decimal_s4_5
+        doc: 'Limit price (scaled). Implied decimal with scale 1e-5'
       - id: show_amt
-        type: s8
-        doc: 'Displayed iceberg amount'
+        type: decimal_s8_2
+        doc: 'Displayed iceberg amount. Implied decimal with scale 1e-2'
       - id: expire_type
         type: u1
         enum: expire_type
@@ -233,11 +233,11 @@ types:
         type: s4
         doc: 'Original client order ID'
       - id: order_amt
-        type: s8
-        doc: 'Order amount (scaled)'
+        type: decimal_s8_2
+        doc: 'Order amount (scaled). Implied decimal with scale 1e-2'
       - id: price
-        type: s4
-        doc: 'Limit price (scaled)'
+        type: decimal_s4_5
+        doc: 'Limit price (scaled). Implied decimal with scale 1e-5'
       - id: instrument_index
         type: s2
         doc: 'Numeric instrument identifier'
@@ -288,11 +288,11 @@ types:
         enum: side
         doc: 'B=Buy,S=Sell'
       - id: fill_amt
-        type: s8
-        doc: 'Filled amount'
+        type: decimal_s8_2
+        doc: 'Filled amount. Implied decimal with scale 1e-2'
       - id: fill_rate
-        type: s4
-        doc: 'Filled rate'
+        type: decimal_s4_5
+        doc: 'Filled rate. Implied decimal with scale 1e-5'
       - id: exec_broker
         type: str
         size: 4
@@ -319,8 +319,8 @@ types:
         type: s8
         doc: 'Transaction timestamp ms'
       - id: leaves_amt
-        type: s8
-        doc: 'Remaining amount'
+        type: decimal_s8_2
+        doc: 'Remaining amount. Implied decimal with scale 1e-2'
       - id: aggressor_flag
         type: u1
         enum: aggressor_flag
@@ -337,11 +337,11 @@ types:
         type: s4
         doc: 'Link between pending fill and trade'
       - id: fill_amt
-        type: s8
-        doc: 'Filled amount'
+        type: decimal_s8_2
+        doc: 'Filled amount. Implied decimal with scale 1e-2'
       - id: fill_rate
-        type: s4
-        doc: 'Filled rate'
+        type: decimal_s4_5
+        doc: 'Filled rate. Implied decimal with scale 1e-5'
       - id: aggressor_flag
         type: u1
         enum: aggressor_flag
@@ -379,8 +379,8 @@ types:
         type: s8
         doc: 'Transaction timestamp ms'
       - id: leaves_amt
-        type: s8
-        doc: 'Remaining amount'
+        type: decimal_s8_2
+        doc: 'Remaining amount. Implied decimal with scale 1e-2'
       - id: aggressor_flag
         type: u1
         enum: aggressor_flag
@@ -399,6 +399,20 @@ types:
         type: u1
         enum: reason_code
         doc: 'Reason Code'
+  decimal_s8_2:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100.0
+  decimal_s4_5:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100000.0
 
 enums:
   message_type:

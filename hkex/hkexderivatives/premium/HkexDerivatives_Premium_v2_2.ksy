@@ -431,14 +431,14 @@ types:
         size: 3
         doc: 'Padding'
       - id: date_time_last_trading
-        type: u8
-        doc: 'The last trading time of the instrument in UTC timestamp (nanoseconds since 1970)'
+        type: nanosecond_timestamp
+        doc: 'The last trading time of the instrument in UTC timestamp (nanoseconds since 1970). Nanoseconds since Unix epoch'
       - id: effective_last_trading_date
         type: u4
         doc: 'Sets the effective last trading date'
       - id: date_time_first_trading
-        type: u8
-        doc: 'The first trading time of the instrument in UTC timestamp (nanoseconds since 1970)'
+        type: nanosecond_timestamp
+        doc: 'The first trading time of the instrument in UTC timestamp (nanoseconds since 1970). Nanoseconds since Unix epoch'
       - id: instrument_status_code
         type: u1
         enum: instrument_status_code
@@ -680,8 +680,8 @@ types:
         type: u4
         doc: 'The quantity being matched in this execution'
       - id: trade_time
-        type: u8
-        doc: 'Date and time of the trade. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond'
+        type: nanosecond_timestamp
+        doc: 'Date and time of the trade. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Nanoseconds since Unix epoch'
   trade_amendment_message:
     seq:
       - id: orderbook_id
@@ -697,8 +697,8 @@ types:
         type: u4
         doc: 'The quantity being matched in this execution'
       - id: amendment_execution_time
-        type: u8
-        doc: 'Date and time of the trade amendment execution. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond'
+        type: nanosecond_timestamp
+        doc: 'Date and time of the trade amendment execution. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Nanoseconds since Unix epoch'
       - id: trade_state
         type: u1
         enum: trade_state

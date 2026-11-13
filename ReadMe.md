@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 1,729 | 3,687,213 |
+| 1,735 | 3,707,528 |
 
 ## Testing
 
@@ -674,9 +674,9 @@ Enjoy.
 [Nasdaq.NasdaqCanada.Chixmmd]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NasdaqCanada/Chixmmd.md "CHIXMMD Multicast Market Data"
 [Nasdaq.NasdaqCanada.OrderEntry]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NasdaqCanada/OrderEntry.md "Nasdaq Canada Order Entry"
 [Nasdaq.NfxFutures.MarketData]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NfxFutures/MarketData.md "Genium INET Auxiliary Market Data"
-[Nasdaq.NomOptions.Bono]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NomOptions/Bono.md "Nom Binary Order Entry"
+[Nasdaq.NomOptions.Bono]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NomOptions/Bono.md "Best Of Nasdaq Options"
 [Nasdaq.NomOptions.Cti]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NomOptions/Cti.md "Clearing Trade Interface"
-[Nasdaq.NomOptions.Itto]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NomOptions/Itto.md "Nom Itto Top Order Market Data"
+[Nasdaq.NomOptions.Itto]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NomOptions/Itto.md "Itch to Trade Options"
 [Nasdaq.NomOptions.Otto]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NomOptions/Otto.md "Ouch to Trade Options"
 [Nasdaq.NomOptions.Quoting]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NomOptions/Quoting.md "Specialized Quote Interface"
 [Nasdaq.NordicDerivatives.DepthOfBook]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NordicDerivatives/DepthOfBook.md "Genium INET Depth Of Book"
@@ -710,6 +710,7 @@ Enjoy.
 [Nasdaq.NtxEquities.TotalView]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NtxEquities/TotalView.md "TX TotalView Itch"
 [Nasdaq.NtxOptions.Cti]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NtxOptions/Cti.md "Clearing Trade Interface"
 [Nasdaq.NtxOptions.DepthOfMarket]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NtxOptions/DepthOfMarket.md "Depth Of Market"
+[Nasdaq.NtxOptions.Otto]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NtxOptions/Otto.md "Ouch to Trade Options"
 [Nasdaq.NtxOptions.Quoting]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NtxOptions/Quoting.md "Specialized Quote Interface"
 [Nasdaq.NtxOptions.TopOfMarket]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NtxOptions/TopOfMarket.md "Top Of Market"
 [Nasdaq.NtxOptions.TradeFeed]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Nasdaq/Protocols/NtxOptions/TradeFeed.md "Trade Feed"

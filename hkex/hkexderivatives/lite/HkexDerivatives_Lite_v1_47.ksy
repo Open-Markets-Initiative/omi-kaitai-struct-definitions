@@ -505,11 +505,11 @@ types:
         pad-right: 0x20
         doc: 'The effective expiration date is the'
       - id: date_time_last_trading
-        type: s8
-        doc: 'The last trading date/time of the'
+        type: nanosecond_timestamp
+        doc: 'The last trading date/time of the Series in UTC timestamp (nanoseconds since 1970), precision to the nearest second. 0 = Not Applicable. Nanoseconds since Unix epoch'
       - id: date_time_first_trading
-        type: s8
-        doc: 'The first trading date/time of the'
+        type: nanosecond_timestamp
+        doc: 'The first trading date/time of the Series in UTC timestamp (nanoseconds since 1970), precision to the nearest second. 0 = Not Applicable. Nanoseconds since Unix epoch'
   combination_definition_message:
     seq:
       - id: combo_orderbook_id

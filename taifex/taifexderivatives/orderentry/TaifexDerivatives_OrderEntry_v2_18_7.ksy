@@ -126,9 +126,9 @@ types:
         doc: 'One thousandth of a second, the millisecond fraction of the second carried beside it. Milliseconds since Second epoch'
   wake_up_call_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: start_in_bound_num
         type: u4
@@ -141,9 +141,9 @@ types:
         doc: 'Version, indicating the message version, with 1 denoting the use of the new FLEX message'
   logon_notice_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: append_no
         type: u2
@@ -164,9 +164,9 @@ types:
       - id: sub_hdr
         type: sub_hdr
         doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
-      - id: status_code_uint_162
+      - id: wide_status_code
         type: u2
-        enum: status_code_uint_162
+        enum: wide_status_code
         doc: 'Status code, referring to the Error Message Table'
       - id: part_id
         type: u1
@@ -192,9 +192,9 @@ types:
         doc: 'Nanosecond-level timing details for the msg_time field in the hdr, of which currently only data at the microsecond level is available. Nanoseconds since Second epoch'
   request_logon_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: append_no
         type: u2
@@ -224,9 +224,9 @@ types:
         doc: 'Reject order second on an order line, and the reply data per second in units of 100 on a TMPCM or TMPDC session'
   resend_report_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: is_eof
         type: u1
@@ -240,15 +240,15 @@ types:
         doc: 'Data, containing all messages between request_start_seq+1 and end_out_bound_num'
   resend_report_confirmed_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
   activate_application_system_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: heart_bt_int
         type: u1
@@ -258,33 +258,33 @@ types:
         doc: 'Maximum flow per second, informing the futures commission merchant of the limit of input per second in this session'
   activate_application_system_confirmed_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
   logout_confirmed_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
   confirm_connection_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
   connection_confirmed_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
   trade_session_status_request_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: trade_req_id
         type: u2
@@ -298,9 +298,9 @@ types:
         doc: 'Status subscription type'
   trade_session_status_report_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: trade_req_id
         type: u2
@@ -394,9 +394,9 @@ types:
       - id: pseq_2
         type: u2
         doc: 'Second leg product ID, where 0 means a single order'
-      - id: leg_side_uint_822
+      - id: both_leg_sides
         type: u1
-        enum: leg_side_uint_822
+        enum: both_leg_sides
         repeat: expr
         repeat-expr: 2
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
@@ -409,7 +409,7 @@ types:
         doc: 'Make up field length'
   symbol_text:
     seq:
-      - id: symbol_char_2020
+      - id: symbol
         type: str
         size: 20
         encoding: ASCII
@@ -496,9 +496,9 @@ types:
       - id: pseq_2
         type: u2
         doc: 'Second leg product ID, where 0 means a single order'
-      - id: leg_side_uint_822
+      - id: both_leg_sides
         type: u1
-        enum: leg_side_uint_822
+        enum: both_leg_sides
         repeat: expr
         repeat-expr: 2
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
@@ -511,16 +511,16 @@ types:
         doc: 'Make up field length'
   long_symbol_text:
     seq:
-      - id: symbol_char_4040
+      - id: long_symbol
         type: str
         size: 40
         encoding: ASCII
         doc: 'Text product ID'
   order_status_report_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: exec_type
         type: u1
@@ -603,9 +603,9 @@ types:
       - id: before_qty
         type: u2
         doc: 'Remaining order quantity before match'
-      - id: leg_side_uint_822
+      - id: both_leg_sides
         type: u1
-        enum: leg_side_uint_822
+        enum: both_leg_sides
         repeat: expr
         repeat-expr: 2
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
@@ -614,7 +614,7 @@ types:
         repeat: expr
         repeat-expr: 2
         doc: 'Execution price for both legs'
-      - id: leg_qty_uint_1624
+      - id: both_leg_qtys
         type: u2
         repeat: expr
         repeat-expr: 2
@@ -641,7 +641,7 @@ types:
         doc: 'Source of new order data, distinguishing the protocol the order was placed over'
   org_trans_time_msg_time:
     seq:
-      - id: epoch_s_int_324
+      - id: msg_time_epoch_s
         type: second_timestamp
         doc: 'Seconds since the epoch, the number of seconds from 1970/01/01 0:0 UTC. Seconds since Unix epoch'
       - id: ms
@@ -649,7 +649,7 @@ types:
         doc: 'One thousandth of a second. Milliseconds since Second epoch'
   transact_time_msg_time:
     seq:
-      - id: epoch_s_int_324
+      - id: msg_time_epoch_s
         type: second_timestamp
         doc: 'Seconds since the epoch, the number of seconds from 1970/01/01 0:0 UTC. Seconds since Unix epoch'
       - id: ms
@@ -657,9 +657,9 @@ types:
         doc: 'One thousandth of a second. Milliseconds since Second epoch'
   order_status_report_long_format_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: exec_type
         type: u1
@@ -742,9 +742,9 @@ types:
       - id: before_qty
         type: u2
         doc: 'Remaining order quantity before match'
-      - id: leg_side_uint_822
+      - id: both_leg_sides
         type: u1
-        enum: leg_side_uint_822
+        enum: both_leg_sides
         repeat: expr
         repeat-expr: 2
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
@@ -753,7 +753,7 @@ types:
         repeat: expr
         repeat-expr: 2
         doc: 'Execution price for both legs'
-      - id: leg_qty_uint_1624
+      - id: both_leg_qtys
         type: u2
         repeat: expr
         repeat-expr: 2
@@ -780,9 +780,9 @@ types:
         doc: 'Source of new order data, distinguishing the protocol the order was placed over'
   error_report_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: exec_type
         type: u1
@@ -877,9 +877,9 @@ types:
         doc: 'Market data source, a Vendor Code for a vendor and 999 for the futures commission merchant'
   price_inquiry_reply_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: order_no
         type: str
@@ -904,9 +904,9 @@ types:
             'symbol_type::text_product_id': symbol_text
   price_inquiry_reply_long_format_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: order_no
         type: str
@@ -1075,9 +1075,9 @@ types:
         doc: 'Market data source, a Vendor Code for a vendor and 999 for the futures commission merchant'
   condensed_version_order_status_report_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: exec_type
         type: u1
@@ -1118,7 +1118,7 @@ types:
         repeat: expr
         repeat-expr: 2
         doc: 'Execution price for both legs'
-      - id: leg_qty_uint_1624
+      - id: both_leg_qtys
         type: u2
         repeat: expr
         repeat-expr: 2
@@ -1141,9 +1141,9 @@ types:
         doc: 'Order price, an integer whose number of decimal digits is the Decimal_Locator of the product definition file'
   execution_report_including_head_office_and_branch_offices_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: exec_type
         type: u1
@@ -1226,9 +1226,9 @@ types:
       - id: before_qty
         type: u2
         doc: 'Remaining order quantity before match'
-      - id: leg_side_uint_822
+      - id: both_leg_sides
         type: u1
-        enum: leg_side_uint_822
+        enum: both_leg_sides
         repeat: expr
         repeat-expr: 2
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
@@ -1237,7 +1237,7 @@ types:
         repeat: expr
         repeat-expr: 2
         doc: 'Execution price for both legs'
-      - id: leg_qty_uint_1624
+      - id: both_leg_qtys
         type: u2
         repeat: expr
         repeat-expr: 2
@@ -1285,9 +1285,9 @@ types:
         doc: 'Bulletin data, of variable length, defined per file by the definition of the data field in R13'
   bulletin_report_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: fcm_req_id
         type: u4
@@ -1309,7 +1309,7 @@ types:
         doc: 'Bulletin information, of variable length, which carries the original R13 data content where the R13 message has errors'
   bulletin_time_msg_time:
     seq:
-      - id: epoch_s_int_324
+      - id: msg_time_epoch_s
         type: second_timestamp
         doc: 'Seconds since the epoch, the number of seconds from 1970/01/01 0:0 UTC. Seconds since Unix epoch'
       - id: ms
@@ -1324,9 +1324,9 @@ types:
         doc: 'Data, of variable length, defined per FUNCTION-TYPE and FUNCTION-CODE by the definition of the data field in R17'
   system_notification_message:
     seq:
-      - id: status_code_uint_81
+      - id: status_code
         type: u1
-        enum: status_code_uint_81
+        enum: status_code
         doc: 'Status code, referring to the Error Message Tables'
       - id: data_char_hdr_msg_length_151
         type: str
@@ -1433,11 +1433,11 @@ types:
       - id: leg_sym_symbol_num_x
         type: leg_sym_symbol_num_x
         doc: 'FLEX Numeric Single Product Serial number, naming a FLEX product by the serial number of the XP08 product and time flow group definition file'
-      - id: leg_side_uint_81
+      - id: leg_side
         type: u1
-        enum: leg_side_uint_81
+        enum: leg_side
         doc: 'Buy/sell code for one leg'
-      - id: leg_qty_uint_162
+      - id: leg_qty
         type: u2
         doc: 'Quantity for one leg'
   leg_sym_symbol_num_x:
@@ -1464,11 +1464,11 @@ types:
       - id: leg_sym_symbol_txt_x
         type: leg_sym_symbol_txt_x
         doc: 'FLEX Textual Single Product Symbol, naming a FLEX product by the product symbol of the XP08 product and time flow group definition file'
-      - id: leg_side_uint_81
+      - id: leg_side
         type: u1
-        enum: leg_side_uint_81
+        enum: leg_side
         doc: 'Buy/sell code for one leg'
-      - id: leg_qty_uint_162
+      - id: leg_qty
         type: u2
         doc: 'Quantity for one leg'
   leg_sym_symbol_txt_x:
@@ -1655,9 +1655,9 @@ types:
       - id: no_leg
         type: u1
         doc: 'Number of legs, which is 1 for a single-leg product and by which the content of the NoLeg related block is modified'
-      - id: status_code_uint_162
+      - id: wide_status_code
         type: u2
-        enum: status_code_uint_162
+        enum: wide_status_code
         doc: 'Status code, referring to the Error Message Table'
       - id: exec_type
         type: u1
@@ -1765,7 +1765,7 @@ types:
         doc: 'Reserved'
   org_trans_time_msg_time_x:
     seq:
-      - id: epoch_s_uint_324
+      - id: msg_time_x_epoch_s
         type: second_timestamp
         doc: 'Seconds since the epoch, the number of seconds from 1970/01/01 0:0 UTC. Seconds since Unix epoch'
       - id: nanosecond
@@ -1773,7 +1773,7 @@ types:
         doc: 'One billionth of a second. Nanoseconds since Second epoch'
   transact_time_msg_time_x:
     seq:
-      - id: epoch_s_uint_324
+      - id: msg_time_x_epoch_s
         type: second_timestamp
         doc: 'Seconds since the epoch, the number of seconds from 1970/01/01 0:0 UTC. Seconds since Unix epoch'
       - id: nanosecond
@@ -1791,9 +1791,9 @@ types:
       - id: ori_message_type
         type: u1
         doc: 'Original message code, the code of the message this error reports on'
-      - id: status_code_uint_162
+      - id: wide_status_code
         type: u2
-        enum: status_code_uint_162
+        enum: wide_status_code
         doc: 'Status code, referring to the Error Message Table'
       - id: exec_type
         type: u1
@@ -1834,9 +1834,9 @@ types:
         type: u1
         enum: part_id
         doc: 'Partition ID, referring to Section 3.6'
-      - id: status_code_uint_162
+      - id: wide_status_code
         type: u2
-        enum: status_code_uint_162
+        enum: wide_status_code
         doc: 'Status code, referring to the Error Message Table'
       - id: order_no
         type: str
@@ -1865,9 +1865,9 @@ types:
       - id: sub_hdr
         type: sub_hdr
         doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
-      - id: status_code_uint_162
+      - id: wide_status_code
         type: u2
-        enum: status_code_uint_162
+        enum: wide_status_code
         doc: 'Status code, referring to the Error Message Table'
       - id: part_id
         type: u1
@@ -1895,9 +1895,9 @@ types:
       - id: security_req_id
         type: u4
         doc: 'Unique ID of a Security Definition Request'
-      - id: status_code_uint_162
+      - id: wide_status_code
         type: u2
-        enum: status_code_uint_162
+        enum: wide_status_code
         doc: 'Status code, referring to the Error Message Table'
   flex_bulletin_request_message:
     seq:
@@ -1925,9 +1925,9 @@ types:
       - id: sub_hdr
         type: sub_hdr
         doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
-      - id: status_code_uint_162
+      - id: wide_status_code
         type: u2
-        enum: status_code_uint_162
+        enum: wide_status_code
         doc: 'Status code, referring to the Error Message Table'
       - id: fcm_req_id
         type: u4
@@ -1949,7 +1949,7 @@ types:
         doc: 'Bulletin information, of variable length, which carries the original RX13 data content where the RX13 message has errors'
   bulletin_time_msg_time_x:
     seq:
-      - id: epoch_s_uint_324
+      - id: msg_time_x_epoch_s
         type: second_timestamp
         doc: 'Seconds since the epoch, the number of seconds from 1970/01/01 0:0 UTC. Seconds since Unix epoch'
       - id: nanosecond
@@ -2146,7 +2146,7 @@ enums:
     214:
       id: 'flex_bulletin_report_message'
       doc: 'FLEX bulletin news and file ready notice, which Taifex sends to report a FLEX bulletin or to notify the futures commission merchant that a FLEX file is ready.'
-  status_code_uint_81:
+  status_code:
     0:
       id: 'succeed'
       doc: 'Succeed'
@@ -2191,7 +2191,7 @@ enums:
       doc: 'Branch No Error'
     14:
       id: 'investor_account_error'
-      doc: '1. Investor Acct No. error 2. The investor account is not opened in NBT.'
+      doc: '1 Investor Acct No Error 2 The Investor Account Is Not Opened In Nbt'
     15:
       id: 'investor_id_code_error'
       doc: 'Investor Id Code Error'
@@ -2547,7 +2547,7 @@ enums:
     255:
       id: 'unexpected_error_record'
       doc: 'Unexpected Error Record'
-  status_code_uint_162:
+  wide_status_code:
     0:
       id: 'succeed'
       doc: 'Succeed'
@@ -2592,7 +2592,7 @@ enums:
       doc: 'Branch No Error'
     14:
       id: 'investor_account_error'
-      doc: '1. Investor Acct No. error 2. The investor account is not opened in NBT.'
+      doc: '1 Investor Acct No Error 2 The Investor Account Is Not Opened In Nbt'
     15:
       id: 'investor_id_code_error'
       doc: 'Investor Id Code Error'
@@ -3050,7 +3050,7 @@ enums:
     4:
       id: 'text_product_id_long_format'
       doc: 'Text Product Id Long Format'
-  leg_side_uint_822:
+  both_leg_sides:
     0:
       id: 'single_order'
       doc: 'Single Order'
@@ -3195,7 +3195,7 @@ enums:
     0:
       id: 'file_request'
       doc: 'File Request'
-  leg_side_uint_81:
+  leg_side:
     0:
       id: 'single_order'
       doc: 'Single Order'

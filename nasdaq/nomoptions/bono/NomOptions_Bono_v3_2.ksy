@@ -3,7 +3,7 @@
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Protocol: Nom Binary Order Entry
+#   Protocol: Best Of Nasdaq Options
 #   Encoding: Itch
 #   Version: 3.2
 #   Date: 11/02/2017
@@ -35,7 +35,7 @@ meta:
   license: MIT-0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Options Market Nom Binary Order Entry Itch v3.2'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Options Market Best Of Nasdaq Options Itch v3.2'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs#options_q
 
 seq:

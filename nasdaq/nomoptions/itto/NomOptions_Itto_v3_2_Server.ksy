@@ -3,7 +3,7 @@
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Protocol: Nom Itto Top Order Market Data
+#   Protocol: Itch to Trade Options
 #   Encoding: Itch
 #   Version: 3.2
 #   Date: 11/02/2017
@@ -35,7 +35,7 @@ meta:
   license: MIT-0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Options Market Nom Itto Top Order Market Data Itch v3.2'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Options Market Itch to Trade Options Itch v3.2'
 
 seq:
   - id: server_soup_bin_tcp_packet

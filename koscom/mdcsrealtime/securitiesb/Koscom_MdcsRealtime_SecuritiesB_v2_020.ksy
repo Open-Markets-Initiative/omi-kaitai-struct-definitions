@@ -397,16 +397,13 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: index_accumulated_trading_value
         type: str
-        size: 22
+        size: 12
         encoding: ASCII
-        doc: 'Accumulated trading value Trading value=trading amount*trading price'
+        doc: 'Accumulated trading value of the index constituents (12 ASCII digits). Unit: Million KRW'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -448,16 +445,13 @@ types:
         size: 12
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
-      - id: accumulated_trading_value
+      - id: index_accumulated_trading_value
         type: str
-        size: 22
+        size: 12
         encoding: ASCII
-        doc: 'Accumulated trading value Trading value=trading amount*trading price'
+        doc: 'Accumulated trading value of the index constituents (12 ASCII digits). Unit: Million KRW'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -477,12 +471,9 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'ISIN Code'
-      - id: business_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Business Date'
+      - id: index_business_date
+        type: yyyymmdd_ascii_date
+        doc: 'Business date for the index calculation in YYYYMMDD format'
       - id: calculation_time
         type: hhmmss_ascii_time
         doc: 'Calculation Time (HHMMSS)'
@@ -507,10 +498,7 @@ types:
         pad-right: 0x20
         doc: 'ISO 4217 currency code of the index value'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -2537,14 +2525,10 @@ types:
         type: str_1_nullable
         doc: '1: Closing price 2: Quotation 3: No Trades 4: Quotation of an Issue of which base price is settled with a today''s single price. Nullable, No Value ='
       - id: filler_11
-        type: str
         size: 11
-        encoding: ASCII
         doc: 'Upper Limit Price on the Single Price Trade in the Off-Hours Session'
       - id: second_filler_11
-        type: str
         size: 11
-        encoding: ASCII
         doc: 'Upper Limit Price on the Single Price Trade in the Off-Hours Session'
       - id: closing_price_weighted_stock_price_average
         type: str
@@ -3640,6 +3624,18 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'A number given to each market participants. If a participant is a member of more than two exchanges, different numbers to be given by exchanges'
+      - id: board_id
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The Board ID refers to each Board in which an issue is traded under different trading schedules and rules. Individual issue can be traded on more than two Boards under each Board''s schedule and with d'
+      - id: market_making_lp_type_code
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the contract is classified as market making or liquidity provision M: Market making L: Liquidity provision'
       - id: lp_start_date
         type: str
         size: 8
@@ -3911,10 +3907,7 @@ types:
         pad-right: 0x20
         doc: 'Market Capitalization Type Code KOSPI(0: N/A, 1: Large, 2: Medium, 3: Small) KOSDAQ(0: N/A, 1: Large, 2: Medium, 3: Small)'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: index_classification_level_1
         type: str
@@ -4019,10 +4012,7 @@ types:
         pad-right: 0x20
         doc: 'Y/N (whether an issue is a constituent of Korea Value-up Index)'
       - id: filler_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler 8'
       - id: end_keyword
         type: u1
@@ -4045,10 +4035,7 @@ types:
         encoding: ASCII
         doc: 'The dividend yield is a ratio that how much dividends an investor would receive relative to the amounts of investment'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -4098,10 +4085,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated Bid Trading Volume'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -4520,10 +4504,7 @@ types:
         encoding: ASCII
         doc: 'An amount of ELW that LP accounts hold'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -4744,10 +4725,7 @@ types:
         pad-right: 0x20
         doc: 'Index ID comprising of 6 digits'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -4832,21 +4810,18 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Index ID comprising of 6 digits'
-      - id: todays_high
+      - id: underlying_todays_high
         type: str
         size: 11
         encoding: ASCII
         doc: 'The highest price at which an issue traded during the course of the trading day. Also, the record high of a year refers to the highest price of a year'
-      - id: todays_low
+      - id: underlying_todays_low
         type: str
         size: 11
         encoding: ASCII
         doc: 'The lowest price or index at which an issue traded during the course of a day, week, month or year'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -5349,6 +5324,12 @@ types:
         doc: 'End of text sentinel (0xFF)'
   securities_current_movement_message:
     seq:
+      - id: board_id
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The Board ID refers to each Board in which an issue is traded under different trading schedules and rules. Individual issue can be traded on more than two Boards under each Board''s schedule and with d'
       - id: total_number_of_issues
         type: str
         size: 5

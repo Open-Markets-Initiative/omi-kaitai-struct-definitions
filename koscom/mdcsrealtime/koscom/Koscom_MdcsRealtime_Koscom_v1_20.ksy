@@ -116,10 +116,7 @@ types:
         enum: quotation_category
         doc: '0:Weighted Avg Price,1:Quotation,2:No Trade'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -149,10 +146,7 @@ types:
         pad-right: 0x20
         doc: 'Reason'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
         type: u1
@@ -194,9 +188,7 @@ types:
         type: str_9_nullable
         doc: 'Unit: KRW (in case that data type is not 01, then "0"). Nullable, No Value = 0'
       - id: filler_10
-        type: str
         size: 10
-        encoding: ASCII
         doc: 'SPACE 2026.08.10 changed'
       - id: end_keyword
         type: u1
@@ -309,10 +301,7 @@ types:
         pad-right: 0x20
         doc: 'SPACE'
       - id: filler_33
-        type: str
         size: 33
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -438,10 +427,7 @@ types:
         encoding: ASCII
         doc: 'Trading price compare remaining quantity of bid'
       - id: filler_40
-        type: str
         size: 40
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -587,10 +573,7 @@ types:
         encoding: ASCII
         doc: 'Unit:Thousand KRW'
       - id: filler_11
-        type: str
         size: 11
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -649,10 +632,7 @@ types:
         encoding: ASCII
         doc: 'Bid Trading Value'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -758,10 +738,7 @@ types:
         pad-right: 0x20
         doc: '2:T+0(On one day), 3:T+1(Next day), 4:T+2, ~ 32:T+30'
       - id: filler_11
-        type: str
         size: 11
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -809,10 +786,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value (12 ASCII digits). Unit: 1,000,000 KRW'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -860,10 +834,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value (12 ASCII digits). Unit: 1,000,000 KRW'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -911,10 +882,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value (12 ASCII digits). Unit: 1,000,000 KRW'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -962,10 +930,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value (12 ASCII digits). Unit: 1,000,000 KRW'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -974,10 +939,7 @@ types:
   mkf_bond_index_message:
     seq:
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: index_id
         type: str
@@ -1040,10 +1002,7 @@ types:
         encoding: ASCII
         doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
         type: u1
@@ -1052,10 +1011,7 @@ types:
   kis_bond_index_message:
     seq:
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: index_id
         type: str
@@ -1120,10 +1076,7 @@ types:
         encoding: ASCII
         doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
         type: u1
@@ -1132,10 +1085,7 @@ types:
   kebi_bond_index_message:
     seq:
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: index_id
         type: str
@@ -1198,10 +1148,7 @@ types:
         encoding: ASCII
         doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
         type: u1
@@ -1210,10 +1157,7 @@ types:
   kabi_bond_index_message:
     seq:
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: index_id
         type: str
@@ -1274,10 +1218,7 @@ types:
         type: str_6_nullable
         doc: 'Average forward YTM. Unit: percent. Not calculated; set to ''0''. Implied decimal with scale 1e-3. Nullable, No Value = 0'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
         type: u1
@@ -1286,10 +1227,7 @@ types:
   nicepni_bond_index_message:
     seq:
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: index_id
         type: str
@@ -1352,10 +1290,7 @@ types:
         encoding: ASCII
         doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
         type: u1
@@ -1383,10 +1318,7 @@ types:
         encoding: ASCII
         doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: filler_28
-        type: str
         size: 28
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -1414,10 +1346,7 @@ types:
         encoding: ASCII
         doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: filler_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -1445,10 +1374,7 @@ types:
         encoding: ASCII
         doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: filler_28
-        type: str
         size: 28
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -1487,10 +1413,7 @@ types:
         encoding: ASCII
         doc: '9(7)V9(2), Unit:%. Implied decimal with scale 1e-2'
       - id: filler_7
-        type: str
         size: 7
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -1529,10 +1452,7 @@ types:
         encoding: ASCII
         doc: '9(7)V9(2), Unit:%. Implied decimal with scale 1e-2'
       - id: filler_7
-        type: str
         size: 7
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -1602,10 +1522,7 @@ types:
         encoding: ASCII
         doc: 'Appraised Value'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -1649,10 +1566,7 @@ types:
         pad-right: 0x20
         doc: 'Operator Abbreviated Name (English)'
       - id: filler_5
-        type: str
         size: 5
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -1672,9 +1586,7 @@ types:
         encoding: ASCII
         doc: 'Transmission seq. number'
       - id: filler_10
-        type: str
         size: 10
-        encoding: ASCII
         doc: 'SPACE 2026.08.10 changed'
       - id: etf_flow_net_asset_total_amount
         type: str
@@ -1753,10 +1665,7 @@ types:
         encoding: ASCII
         doc: 'Information Category 03S: Fund unit, 05S: TU unit'
       - id: filler_46
-        type: str
         size: 46
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -1827,10 +1736,7 @@ types:
         encoding: ASCII
         doc: '99999V99 Unit:%. Implied decimal with scale 1e-2'
       - id: filler_38
-        type: str
         size: 38
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -1881,10 +1787,7 @@ types:
         encoding: ASCII
         doc: 'Composition ratio within Indices 99999V99 Unit:%. Implied decimal with scale 1e-2'
       - id: filler_60
-        type: str
         size: 60
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -1972,10 +1875,7 @@ types:
         encoding: ASCII
         doc: '9(8)V9(2) "0" for Standard ELW. Implied decimal with scale 1e-2'
       - id: filler_6
-        type: str
         size: 6
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -2003,10 +1903,7 @@ types:
         encoding: ASCII
         doc: '9(7)V9(2). Implied decimal with scale 1e-2'
       - id: filler_28
-        type: str
         size: 28
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -2040,10 +1937,7 @@ types:
         encoding: ASCII
         doc: '9(7)V9(2), Unit:%. Implied decimal with scale 1e-2'
       - id: filler_56
-        type: str
         size: 56
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1
@@ -2069,10 +1963,7 @@ types:
         encoding: ASCII
         doc: 'Available stock-lending quantity (10 ASCII digits). Workbook field name: 대주가능수량'
       - id: filler_19
-        type: str
         size: 19
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
         type: u1

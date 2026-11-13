@@ -214,8 +214,8 @@ types:
         size: 4
         doc: 'Padding'
       - id: release_time
-        type: u8
-        doc: 'Release time of the news. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Release time of the news. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
       - id: filler_2
         size: 2
         doc: 'Padding'
@@ -697,11 +697,11 @@ types:
         size: 4
         doc: 'Padding'
       - id: start_date_time
-        type: u8
-        doc: 'Start time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available'
+        type: nanosecond_timestamp
+        doc: 'Start time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available. Nanoseconds since Unix epoch'
       - id: end_date_time
-        type: u8
-        doc: 'End time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available'
+        type: nanosecond_timestamp
+        doc: 'End time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available. Nanoseconds since Unix epoch'
   security_status_message:
     seq:
       - id: security_code
@@ -736,8 +736,8 @@ types:
         size: 2
         doc: 'Padding'
       - id: trade_time
-        type: u8
-        doc: 'Time of trade. Nanoseconds since Unix epoch UTC. Precision to microsecond'
+        type: nanosecond_timestamp
+        doc: 'Time of trade. Nanoseconds since Unix epoch UTC. Precision to microsecond. Nanoseconds since Unix epoch'
   trade_cancel_message:
     seq:
       - id: security_code
@@ -752,11 +752,11 @@ types:
         type: u4
         doc: 'Uniquely identifies a security available for trading'
       - id: cooling_off_start_time
-        type: u8
-        doc: 'Time when the cooling off period starts. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Time when the cooling off period starts. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
       - id: cooling_off_end_time
-        type: u8
-        doc: 'Time when the cooling off period ends. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Time when the cooling off period ends. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
       - id: vcm_reference_price
         type: decimal_s4_3
         doc: 'Reference Price for the cooling off period. 3 implied decimal places. Implied decimal with scale 1e-3'

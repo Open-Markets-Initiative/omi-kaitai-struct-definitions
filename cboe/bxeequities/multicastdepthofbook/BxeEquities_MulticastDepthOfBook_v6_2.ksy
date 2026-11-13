@@ -510,10 +510,7 @@ types:
         enum: status
         doc: 'T = Trading R = Off-Book Reporting C = Closed S = Suspension N = No Reference Price V = Volatility Interruption O = Opening Auction E = Closing Auction H = Halt M = Market Order Imbalance Extension P = Price Monitoring Extension'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   statistics_message:
     seq:
@@ -564,7 +561,7 @@ types:
         type: u8
         doc: 'Price at which the auction would match if executed at the time of the message'
       - id: reserved_8
-        type: u8
+        size: 8
   auction_summary_message:
     seq:
       - id: time_offset

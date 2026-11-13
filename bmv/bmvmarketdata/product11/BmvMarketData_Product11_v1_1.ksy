@@ -80,11 +80,11 @@ types:
         type:
           switch-on: message_header.message_type
           cases:
-            83: events_system_message
-            72: trade_cancellation_message
-            80: capital_trades_message
-            90: registry_operations_message
-            66: public_offerings_message
+            'message_type::events_system_message': events_system_message
+            'message_type::trade_cancellation_message': trade_cancellation_message
+            'message_type::capital_trades_message': capital_trades_message
+            'message_type::registry_operations_message': registry_operations_message
+            'message_type::public_offerings_message': public_offerings_message
   message_header:
     seq:
       - id: message_length
@@ -92,6 +92,7 @@ types:
         doc: 'Indicates message length contained in this message block'
       - id: message_type
         type: u1
+        enum: message_type
         doc: 'Code identifying the message'
   events_system_message:
     seq:
@@ -405,6 +406,22 @@ enums:
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x53:
+      id: 'events_system_message'
+      doc: 'The system of events message is used to inform that an event has occurred, which needs to be of public domain.'
+    0x48:
+      id: 'trade_cancellation_message'
+      doc: 'This message is sent when a transaction is cancelled from the BMV system.'
+    0x50:
+      id: 'capital_trades_message'
+      doc: 'Contains information on any BMV accepted transaction.'
+    0x5a:
+      id: 'registry_operations_message'
+      doc: 'Sent whenever there is a debt or capital instrument placement.'
+    0x42:
+      id: 'public_offerings_message'
+      doc: 'Trade from a Public offering.'
   event_code:
     0x41:
       id: 'start_of_system_hours'

@@ -141,7 +141,7 @@ types:
         type: u4
         doc: 'RoundLot'
       - id: reserved
-        type: u1
+        size: 1
         doc: 'Reserved'
       - id: is_test_symbol
         type: u1

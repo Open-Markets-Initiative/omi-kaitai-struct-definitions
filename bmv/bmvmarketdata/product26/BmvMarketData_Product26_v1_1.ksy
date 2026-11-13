@@ -80,24 +80,24 @@ types:
         type:
           switch-on: message_header.message_type
           cases:
-            40: mutual_funds_trades_message
-            41: opening_of_continuous_auctions_message
-            44: existence_of_bids_at_mid_price_message
-            46: catalogue_of_debt_and_metals_instruments_message
-            48: catalog_sent_for_instruments_belonging_to_mutual_funds_message
-            54: weighted_average_price_message
-            55: system_events_message
-            56: reference_price_message
-            57: changes_in_status_message
-            84: catalog_for_instruments_belonging_to_the_capital_warrants_market_message
-            91: catalog_sent_for_instruments_belonging_to_capital_tracs_message
-            93: consolidated_inav_message
-            104: catalog_for_instruments_belonging_to_the_local_and_global_stock_market_message
-            105: probable_price_of_allocation_message
-            106: relation_between_bmvbiva_instruments_message
-            112: equities_market_trades_message
-            113: consolidated_trade_cancellation_message
-            109: last_quote_message
+            'message_type::mutual_funds_trades_message': mutual_funds_trades_message
+            'message_type::opening_of_continuous_auctions_message': opening_of_continuous_auctions_message
+            'message_type::existence_of_bids_at_mid_price_message': existence_of_bids_at_mid_price_message
+            'message_type::catalogue_of_debt_and_metals_instruments_message': catalogue_of_debt_and_metals_instruments_message
+            'message_type::catalog_sent_for_instruments_belonging_to_mutual_funds_message': catalog_sent_for_instruments_belonging_to_mutual_funds_message
+            'message_type::weighted_average_price_message': weighted_average_price_message
+            'message_type::system_events_message': system_events_message
+            'message_type::reference_price_message': reference_price_message
+            'message_type::changes_in_status_message': changes_in_status_message
+            'message_type::catalog_for_instruments_belonging_to_the_capital_warrants_market_message': catalog_for_instruments_belonging_to_the_capital_warrants_market_message
+            'message_type::catalog_sent_for_instruments_belonging_to_capital_tracs_message': catalog_sent_for_instruments_belonging_to_capital_tracs_message
+            'message_type::consolidated_inav_message': consolidated_inav_message
+            'message_type::catalog_for_instruments_belonging_to_the_local_and_global_stock_market_message': catalog_for_instruments_belonging_to_the_local_and_global_stock_market_message
+            'message_type::probable_price_of_allocation_message': probable_price_of_allocation_message
+            'message_type::relation_between_bmvbiva_instruments_message': relation_between_bmvbiva_instruments_message
+            'message_type::equities_market_trades_message': equities_market_trades_message
+            'message_type::consolidated_trade_cancellation_message': consolidated_trade_cancellation_message
+            'message_type::last_quote_message': last_quote_message
   message_header:
     seq:
       - id: message_length
@@ -105,6 +105,7 @@ types:
         doc: 'Indicates message length contained in this message block'
       - id: message_type
         type: u1
+        enum: message_type
         doc: 'Code identifying the message'
   mutual_funds_trades_message:
     seq:
@@ -814,6 +815,61 @@ enums:
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x28:
+      id: 'mutual_funds_trades_message'
+      doc: 'Any transaction made in mutual funds is reported.'
+    0x29:
+      id: 'opening_of_continuous_auctions_message'
+      doc: 'The message is sent when one of the ongoing, volatility or SIC bidding sessions is generated.'
+    0x2c:
+      id: 'existence_of_bids_at_mid_price_message'
+      doc: 'This message is generated when an instrument enters a bid in the hidden electronic book At Mean Price.'
+    0x2e:
+      id: 'catalogue_of_debt_and_metals_instruments_message'
+      doc: 'Catalogue sent for instruments pertaining to the Local Fixed rate, Global Fixed rate and metals markets.'
+    0x30:
+      id: 'catalog_sent_for_instruments_belonging_to_mutual_funds_message'
+      doc: 'Catalogue sent for instrument pertaining to the investment companies.'
+    0x36:
+      id: 'weighted_average_price_message'
+      doc: 'This message will have the weighted average price (WAP) per instrument and is sent for each transaction generated within the calculation period of the WAP (last 20 minutes of the trading session); when there are no more trades in this period, the message is sent with the Weighted Average Price in zeros.'
+    0x37:
+      id: 'system_events_message'
+      doc: 'The system events message is used to inform that an event has taken place, which needs to be disclosed to the public for its attention.'
+    0x38:
+      id: 'reference_price_message'
+      doc: 'This message is sent to define the reference price of an instrument.'
+    0x39:
+      id: 'changes_in_status_message'
+      doc: 'This message is sent when there has been a change in the status of the instruments.'
+    0x54:
+      id: 'catalog_for_instruments_belonging_to_the_capital_warrants_market_message'
+      doc: 'Catalogue for instruments pertaining to the Equities Warrants market.'
+    0x5b:
+      id: 'catalog_sent_for_instruments_belonging_to_capital_tracs_message'
+      doc: 'Catalogue sent for instruments pertaining to the equities TRACS.'
+    0x5d:
+      id: 'consolidated_inav_message'
+      doc: 'Disclosure of the TRACS during the trading hours of the ongoing market.'
+    0x68:
+      id: 'catalog_for_instruments_belonging_to_the_local_and_global_stock_market_message'
+      doc: 'Catalog of instruments from the local and global stock markets.'
+    0x69:
+      id: 'probable_price_of_allocation_message'
+      doc: 'The message is sent during any type of bidding (Opening, Ongoing, Volatility and Intraday) and only in the instruments where there already is a virtual term matching or pre-allotment.'
+    0x6a:
+      id: 'relation_between_bmvbiva_instruments_message'
+      doc: 'Relation between identifiers of instruments between BIVA and BMV.'
+    0x70:
+      id: 'equities_market_trades_message'
+      doc: 'Informs about any transaction which was accepted at the BMV or BIVA.'
+    0x71:
+      id: 'consolidated_trade_cancellation_message'
+      doc: 'This message in sent when a transaction is cancelled from BMV or BIVA system.'
+    0x6d:
+      id: 'last_quote_message'
+      doc: 'Message sent by instrument when the best bid is modified in the electronic book by the Origin Exchange; denotes the side that is modified, the sale or the purchase.'
   origin:
     0x4d:
       id: 'bmv'

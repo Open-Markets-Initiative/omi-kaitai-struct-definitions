@@ -80,10 +80,10 @@ types:
         type:
           switch-on: message_header.message_type
           cases:
-            39: big_picture_message
-            58: benchmark_trade_message
-            47: hour_tracker_message
-            125: message_ratio_message
+            'message_type::big_picture_message': big_picture_message
+            'message_type::benchmark_trade_message': benchmark_trade_message
+            'message_type::hour_tracker_message': hour_tracker_message
+            'message_type::message_ratio_message': message_ratio_message
   message_header:
     seq:
       - id: message_length
@@ -91,6 +91,7 @@ types:
         doc: 'Indicates message length contained in this message block'
       - id: message_type
         type: u1
+        enum: message_type
         doc: 'Code identifying the message'
   big_picture_message:
     seq:
@@ -372,6 +373,19 @@ enums:
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x27:
+      id: 'big_picture_message'
+      doc: 'Market share summary of the stock exchanges.'
+    0x3a:
+      id: 'benchmark_trade_message'
+      doc: 'Trading statistics by trade.'
+    0x2f:
+      id: 'hour_tracker_message'
+      doc: 'Trading performance evolution per hour.'
+    0x7d:
+      id: 'message_ratio_message'
+      doc: 'Message to trade ratio conversion.'
   origin:
     0x4d:
       id: 'bmv'

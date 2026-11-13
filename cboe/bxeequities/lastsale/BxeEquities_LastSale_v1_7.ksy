@@ -118,7 +118,6 @@ types:
         type: str
         size: 27
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Date and time the trade occurred'
       - id: symbol
         type: str
@@ -152,7 +151,6 @@ types:
         type: str
         size: 27
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Date and time the trade was published'
       - id: trade_id
         type: str
@@ -231,7 +229,6 @@ types:
         type: str
         size: 27
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Date and time the trade occurred'
       - id: symbol
         type: str
@@ -288,7 +285,6 @@ types:
         type: str
         size: 27
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Date and time the trade was published'
       - id: trade_id
         type: str

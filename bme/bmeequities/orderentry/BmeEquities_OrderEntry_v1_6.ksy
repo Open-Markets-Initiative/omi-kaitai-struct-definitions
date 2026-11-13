@@ -3591,6 +3591,24 @@ enums:
     9:
       id: 'valencia_and_madrid'
       doc: 'Valencia And Madrid'
+    0xa:
+      id: 'bilbao_and_madrid'
+      doc: 'Bilbao And Madrid'
+    0xb:
+      id: 'valencia_bilbao_and_madrid'
+      doc: 'Valencia Bilbao And Madrid'
+    0xc:
+      id: 'barcelona_and_madrid'
+      doc: 'Barcelona And Madrid'
+    0xd:
+      id: 'valencia_barcelona_and_madrid'
+      doc: 'Valencia Barcelona And Madrid'
+    0xe:
+      id: 'bilbao_barcelona_and_madrid'
+      doc: 'Bilbao Barcelona And Madrid'
+    0xf:
+      id: 'valencia_bilbao_barcelona_and_madrid'
+      doc: 'Valencia Bilbao Barcelona And Madrid'
   net_asset_value_indicator:
     0:
       id: 'false_field'

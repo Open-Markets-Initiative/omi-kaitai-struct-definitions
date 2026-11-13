@@ -80,10 +80,10 @@ types:
         type:
           switch-on: message_header.message_type
           cases:
-            39: big_picture_message
-            61: effective_spread_message
-            123: spread_quality_message
-            59: spread_message
+            'message_type::big_picture_message': big_picture_message
+            'message_type::effective_spread_message': effective_spread_message
+            'message_type::spread_quality_message': spread_quality_message
+            'message_type::spread_message': spread_message
   message_header:
     seq:
       - id: message_length
@@ -91,6 +91,7 @@ types:
         doc: 'Indicates message length contained in this message block'
       - id: message_type
         type: u1
+        enum: message_type
         doc: 'Code identifying the message'
   big_picture_message:
     seq:
@@ -363,6 +364,19 @@ enums:
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x27:
+      id: 'big_picture_message'
+      doc: 'Market share summary of the stock exchanges.'
+    0x3d:
+      id: 'effective_spread_message'
+      doc: 'Transaction cost analysis benchmark.'
+    0x7b:
+      id: 'spread_quality_message'
+      doc: 'Quality of the quoted spread throughout the session.'
+    0x3b:
+      id: 'spread_message'
+      doc: 'Evolution of the simple spread throughout the session.'
   origin:
     0x4d:
       id: 'bmv'

@@ -267,7 +267,7 @@ types:
         doc: 'CUBE auction identifier for GTX responses; zero if not used'
       - id: optional_order_add_on
         type: optional_order_add_on
-        if: _parent.seq_msg_header.seq_msg_length != 100
+        if: _parent.seq_msg_header.seq_msg_length == 147
         doc: 'OptionalOrderAddOn'
   bitfield_order_instructions:
     meta:

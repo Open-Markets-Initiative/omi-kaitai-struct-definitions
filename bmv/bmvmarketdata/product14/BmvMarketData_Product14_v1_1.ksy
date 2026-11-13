@@ -80,8 +80,8 @@ types:
         type:
           switch-on: message_header.message_type
           cases:
-            83: events_system_message
-            71: inav_message
+            'message_type::events_system_message': events_system_message
+            'message_type::inav_message': inav_message
   message_header:
     seq:
       - id: message_length
@@ -89,6 +89,7 @@ types:
         doc: 'Indicates message length contained in this message block'
       - id: message_type
         type: u1
+        enum: message_type
         doc: 'Code identifying the message'
   events_system_message:
     seq:
@@ -239,6 +240,13 @@ enums:
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x53:
+      id: 'events_system_message'
+      doc: 'The system of events message is used to inform that an event has occurred, which needs to be of public domain.'
+    0x47:
+      id: 'inav_message'
+      doc: 'TRACS dissemination during continuous market trading hours.'
   event_code:
     0x41:
       id: 'start_of_system_hours'

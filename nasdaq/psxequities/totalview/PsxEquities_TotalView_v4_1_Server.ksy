@@ -225,10 +225,7 @@ types:
         enum: trading_state
         doc: 'Indicates the trading state for the issue at the time of the GLIMPSE transmission'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: reason
         type: str

@@ -258,8 +258,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: add_order_flags
         type: add_order_flags
         doc: 'Add Order Flags'
@@ -310,8 +310,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: attribution
         type: str
         size: 11
@@ -359,6 +359,13 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   message_type:

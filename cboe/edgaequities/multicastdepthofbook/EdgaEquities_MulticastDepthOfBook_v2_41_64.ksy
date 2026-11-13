@@ -441,16 +441,10 @@ types:
         enum: reg_sho_action
         doc: 'Reg SHO Action Values'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: second_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   eq_auction_update_message:
     seq:

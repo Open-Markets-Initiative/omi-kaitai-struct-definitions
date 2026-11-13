@@ -639,10 +639,7 @@ types:
         type: u1
         doc: 'Number of manual or automatic extensions the applicable auction has received. Optional set to zero'
       - id: reserved_62
-        type: str
         size: 62
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use (TBD)'
   trade_correction_message:
     seq:
@@ -906,10 +903,7 @@ types:
         type: u2
         doc: 'Total number of shares traded in a single transaction for an individual security (short form)'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use (TBD)'
   fractional_short_trade_message:
     seq:
@@ -935,10 +929,7 @@ types:
         type: decimal_u4_6
         doc: 'Total number of shares (represented in fraction) traded in a single transaction (short form). Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use (TBD)'
   trade_cancel_error_message:
     seq:

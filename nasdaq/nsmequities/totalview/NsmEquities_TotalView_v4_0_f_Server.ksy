@@ -179,10 +179,7 @@ types:
         type: u1
         enum: trading_state
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: reason
         type: str

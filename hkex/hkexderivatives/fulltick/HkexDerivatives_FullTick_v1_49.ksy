@@ -480,10 +480,7 @@ types:
         type: s4
         doc: 'In general, it is the price at which a'
       - id: expiration_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Expiry date of the series'
       - id: decimal_in_strike_price
         type: u2
@@ -563,11 +560,11 @@ types:
         pad-right: 0x20
         doc: 'The effective expiration date is the'
       - id: date_time_last_trading
-        type: s8
-        doc: 'The last trading date/time of the'
+        type: nanosecond_timestamp
+        doc: 'The last trading date/time of the Series in UTC timestamp (nanoseconds since 1970), precision to the nearest second. 0 = Not Applicable. Nanoseconds since Unix epoch'
       - id: date_time_first_trading
-        type: s8
-        doc: 'The first trading date/time of the'
+        type: nanosecond_timestamp
+        doc: 'The first trading date/time of the Series in UTC timestamp (nanoseconds since 1970), precision to the nearest second. 0 = Not Applicable. Nanoseconds since Unix epoch'
   combination_definition_message:
     seq:
       - id: combo_orderbook_id
@@ -718,8 +715,8 @@ types:
         type: u8
         doc: 'Shows the quantity available at Calculated Opening Price'
       - id: trade_time
-        type: u8
-        doc: 'Date and time of the last'
+        type: nanosecond_timestamp
+        doc: 'Date and time of the last. Nanoseconds since Unix epoch'
   deal_type:
     meta:
       bit-endian: le
@@ -783,8 +780,8 @@ types:
         type: u8
         doc: 'Shows the quantity available at Calculated Opening Price'
       - id: trade_time
-        type: u8
-        doc: 'Date and time of the last'
+        type: nanosecond_timestamp
+        doc: 'Date and time of the last. Nanoseconds since Unix epoch'
       - id: trade_state
         type: u1
         enum: trade_state
@@ -812,6 +809,19 @@ types:
     instances:
       is_null:
         value: value == -2147483648
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
 
 enums:
   compression_mode:

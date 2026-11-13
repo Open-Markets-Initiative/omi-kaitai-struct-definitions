@@ -80,11 +80,11 @@ types:
         type:
           switch-on: message_header.message_type
           cases:
-            83: events_system_message
-            114: dollar_buy_sell_message
-            115: short_sales_balances_per_instrument_message
-            116: capital_market_multiples_message
-            122: capitalization_rules_message
+            'message_type::events_system_message': events_system_message
+            'message_type::dollar_buy_sell_message': dollar_buy_sell_message
+            'message_type::short_sales_balances_per_instrument_message': short_sales_balances_per_instrument_message
+            'message_type::capital_market_multiples_message': capital_market_multiples_message
+            'message_type::capitalization_rules_message': capitalization_rules_message
   message_header:
     seq:
       - id: message_length
@@ -92,6 +92,7 @@ types:
         doc: 'Indicates message length contained in this message block'
       - id: message_type
         type: u1
+        enum: message_type
         doc: 'Code identifying the message'
   events_system_message:
     seq:
@@ -391,6 +392,22 @@ enums:
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x53:
+      id: 'events_system_message'
+      doc: 'The system of events message is used to inform that an event has occurred, which needs to be of public domain.'
+    0x72:
+      id: 'dollar_buy_sell_message'
+      doc: 'Dollar Buy/Sell'
+    0x73:
+      id: 'short_sales_balances_per_instrument_message'
+      doc: 'Short sales balances per instrument'
+    0x74:
+      id: 'capital_market_multiples_message'
+      doc: 'Capital Market Multiples'
+    0x7a:
+      id: 'capitalization_rules_message'
+      doc: 'Capitalization Rules'
   event_code:
     0x41:
       id: 'start_of_system_hours'

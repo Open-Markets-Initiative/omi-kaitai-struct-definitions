@@ -80,21 +80,21 @@ types:
         type:
           switch-on: message_header.message_type
           cases:
-            83: events_system_message
-            72: trade_cancellation_message
-            52: status_changes_message
-            77: weighted_average_price_settlement_prices_message
-            80: capital_trades_message
-            50: probable_allocation_price_message
-            51: continuous_auctions_beginning_message
-            53: middle_price_existing_quotes_message
-            89: mutual_fund_trades_message
-            69: tradability_message
-            86: virtual_trades_message
-            65: order_addition_message
-            67: execution_of_orders_message
-            68: order_cancellation_message
-            70: order_change_message
+            'message_type::events_system_message': events_system_message
+            'message_type::trade_cancellation_message': trade_cancellation_message
+            'message_type::status_changes_message': status_changes_message
+            'message_type::weighted_average_price_settlement_prices_message': weighted_average_price_settlement_prices_message
+            'message_type::capital_trades_message': capital_trades_message
+            'message_type::probable_allocation_price_message': probable_allocation_price_message
+            'message_type::continuous_auctions_beginning_message': continuous_auctions_beginning_message
+            'message_type::middle_price_existing_quotes_message': middle_price_existing_quotes_message
+            'message_type::mutual_fund_trades_message': mutual_fund_trades_message
+            'message_type::tradability_message': tradability_message
+            'message_type::virtual_trades_message': virtual_trades_message
+            'message_type::order_addition_message': order_addition_message
+            'message_type::execution_of_orders_message': execution_of_orders_message
+            'message_type::order_cancellation_message': order_cancellation_message
+            'message_type::order_change_message': order_change_message
   message_header:
     seq:
       - id: message_length
@@ -102,6 +102,7 @@ types:
         doc: 'Indicates message length contained in this message block'
       - id: message_type
         type: u1
+        enum: message_type
         doc: 'Code identifying the message'
   events_system_message:
     seq:
@@ -534,6 +535,52 @@ enums:
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x53:
+      id: 'events_system_message'
+      doc: 'The system of events message is used to inform that an event has occurred, which needs to be of public domain.'
+    0x48:
+      id: 'trade_cancellation_message'
+      doc: 'This message is sent when a transaction is cancelled from the BMV system.'
+    0x34:
+      id: 'status_changes_message'
+      doc: 'All instruments are in a certain status before and during trading session.'
+    0x4d:
+      id: 'weighted_average_price_settlement_prices_message'
+      doc: 'For equities market, this message will be sent for each operation containing weighted average price per instrument generated within WAP calculation period (last 20 minutes of trading).'
+    0x50:
+      id: 'capital_trades_message'
+      doc: 'Contains information on any BMV accepted transaction.'
+    0x32:
+      id: 'probable_allocation_price_message'
+      doc: 'Sent during any auction type (Opening, Continuous, Volatility and Intraday) and only on instruments where there is already a virtual match or pre-allocation.'
+    0x33:
+      id: 'continuous_auctions_beginning_message'
+      doc: 'Sent at the moment one of the Continuous, Volatility or SIC auctions is generated.'
+    0x35:
+      id: 'middle_price_existing_quotes_message'
+      doc: 'Generated when an instrument enters a posture in the hidden electronic Middle Price book.'
+    0x59:
+      id: 'mutual_fund_trades_message'
+      doc: 'Contains any mutual funds operation realized.'
+    0x45:
+      id: 'tradability_message'
+      doc: 'Message sent every half hour during trading session, informing general tradability by instrument.'
+    0x56:
+      id: 'virtual_trades_message'
+      doc: 'When an operation has been pre-assigned to the at closing and average day Price electronic books, a virtual trade message is sent, where also notifying of this operation.'
+    0x41:
+      id: 'order_addition_message'
+      doc: 'The moment an order is being accepted by the BMV central system; this message is diffused to the corresponding media.'
+    0x43:
+      id: 'execution_of_orders_message'
+      doc: 'The message is disseminated at the time there is a matching or closing in BMV’s electronic system.'
+    0x44:
+      id: 'order_cancellation_message'
+      doc: 'This message fully eliminates the order from the trading floor.'
+    0x46:
+      id: 'order_change_message'
+      doc: 'Message sent when the order changes one of its data, the system allocates to it a new priority in the electronic book, the order to be replaced is identified with the original Instrument, Date and Number, the new allocation of priority in the electronic book appears in the New Date and Number fields.'
   event_code:
     0x41:
       id: 'start_of_system_hours'

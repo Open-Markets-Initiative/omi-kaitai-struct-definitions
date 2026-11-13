@@ -505,10 +505,7 @@ types:
         enum: status
         doc: 'Trading Status'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   fast_status_message:
     seq:

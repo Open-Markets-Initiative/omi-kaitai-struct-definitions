@@ -286,20 +286,13 @@ types:
         enum: instrument_type
         doc: 'Identifies the instrument type relevant to the trade'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled. Field is reserved for future use'
       - id: second_reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled. Field is reserved for future use'
       - id: reserved_128
-        type: str
         size: 128
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Space-filled. Field is reserved for future use'
   control_message:
     seq:
@@ -519,9 +512,7 @@ types:
         type: decimal_s8_6
         doc: 'Identifies the daily established drop level value. Level 3 = 20% of Previous Close S&P 500 Value. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled. Field is reserved for future use'
   market_wide_circuit_breaker_status_message:
     seq:
@@ -546,9 +537,7 @@ types:
         enum: market_wide_circuit_breaker_level_indicator
         doc: 'Identifies the threshold level that was breached'
       - id: reserved
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Space-filled. Field is reserved for future use'
   approximate_adjusted_volume_market_center_message:
     seq:
@@ -1548,10 +1537,7 @@ types:
         enum: financial_status_indicator
         doc: 'Identifies the financial status of the security'
       - id: reserved_62
-        type: str
         size: 62
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Space-filled. Field is reserved for future use'
   trade_correction_message:
     seq:
@@ -2974,6 +2960,9 @@ enums:
     0x46:
       id: 'inter_market_sweep_order'
       doc: 'Inter Market Sweep Order'
+    0x4f:
+      id: 'market_center_opening_trade'
+      doc: 'Market Center Opening Trade'
     0x34:
       id: 'derivatively_priced'
       doc: 'Derivatively Priced'
@@ -2999,9 +2988,6 @@ enums:
     0x4c:
       id: 'sold_last_late_reporting'
       doc: 'Sold Last Late Reporting'
-    0x4f:
-      id: 'market_center_opening_trade'
-      doc: 'Market Center Opening Trade'
     0x54:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'

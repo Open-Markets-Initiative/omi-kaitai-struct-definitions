@@ -50,33 +50,31 @@ seq:
   - id: block_pad_byte
     type: u1
     if: _io.pos % 2 != 0
-    doc: 'Cta Block Pad Byte'
+    doc: 'Block Pad Byte'
 
 types:
   block_header_struct:
     seq:
       - id: version
         type: u1
-        doc: 'CQS binary protocol version'
+        doc: 'Designates The Cqs Binary Version'
       - id: block_size
         type: u2
-        doc: 'Indicate size in bytes of the entire transmission bloc'
+        doc: 'Size In Bytes Of Entire Transmission Block'
       - id: block_sequence_number
         type: u4
-        doc: 'All transmission blocks are assigned a sequential Block Sequence Number'
+        doc: 'Packet Sequence Number'
       - id: messages_in_block
         type: u1
-        doc: 'The number of messages contained in the transmission block'
-      - id: delivery_flag
+        doc: 'The Number Of Messages Contained In The Block Data Of The Transmission Block'
+      - id: deliveryflag
         type: u1
-        enum: delivery_flag
-        doc: 'Delivery Flag field in the Block Header is used to identify all messages associated with a specific Snapshot request'
-      - id: last_seq_num
-        type: str
-        size: 1
-        encoding: ASCII
+        enum: deliveryflag
+        doc: 'Used to identify all messages associated with a specific Snapshot request'
+      - id: lastseqnum
+        type: u4
         doc: 'It indicates the as-of Message Sequence Number for the Symbol published on the Production Output line'
-      - id: tot_pub_seq_rollover
+      - id: totpubseqrollover
         type: u1
         doc: 'Indicates the number of times the sequence number has previously rolled over for the Real-Time Output line on which the symbol resides'
       - id: sip_block_timestamp
@@ -84,7 +82,7 @@ types:
         doc: 'Sip Block Timestamp. Nanoseconds since Unix epoch'
       - id: block_checksum
         type: u2
-        doc: 'Lower 2 bytes of the 4 byte sum of all the bytes in the block, excluding this Block Checksum field'
+        doc: 'Lower 16 Bits Of The 32 Bit Sum Of All Bytes In The Block Excluding The Block Checksum Field'
   sip_block_timestamp:
     seq:
       - id: seconds
@@ -145,7 +143,7 @@ types:
         type: decimal_s8_6
         doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 20%. Implied decimal with scale 1e-6'
       - id: reserved
-        type: u1
+        size: 1
         doc: 'Field is reserved for future use'
   consolidated_snapshot_message:
     seq:
@@ -410,7 +408,7 @@ types:
         value: mantissa / 1000000.0
 
 enums:
-  delivery_flag:
+  deliveryflag:
     1:
       id: 'first_block'
       doc: 'First Block of Snapshot sequence'

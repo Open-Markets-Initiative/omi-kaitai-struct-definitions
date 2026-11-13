@@ -239,7 +239,7 @@ types:
         type: u1
         enum: stock_capacity
         doc: '"(space) = Not Applicable'
-      - id: reserved_1_2
+      - id: second_reserved_1
         size: 1
         doc: 'This instruction is reserved and will only be accepted when blank space is provided'
   new_order_short_form_message:

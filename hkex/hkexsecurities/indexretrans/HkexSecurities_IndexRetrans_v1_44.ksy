@@ -138,8 +138,8 @@ types:
         enum: index_status
         doc: 'Index status. Can be blank if not defined by third party index compilers'
       - id: index_time
-        type: s8_nullable
-        doc: 'Publisher timestamp. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nullable, No Value = -9223372036854775808'
+        type: nanosecond_timestamp_nullable
+        doc: 'Publisher timestamp. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
       - id: index_value
         type: decimal_s8_4_nullable
         doc: 'Current value of the index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
@@ -246,13 +246,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  s8_nullable:
+  nanosecond_timestamp_nullable:
     seq:
       - id: value
-        type: s8
+        type: nanosecond_timestamp
     instances:
       is_null:
-        value: value == -9223372036854775808
+        value: value.time == -9223372036854775808
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -281,6 +281,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
   decimal_s4_4:
     seq:
       - id: mantissa

@@ -2518,7 +2518,7 @@ types:
         type: u1
         enum: md_req_rej_reason
         doc: 'Market Data Request Reject reason code'
-      - id: text
+      - id: session_text
         type: str
         size: 100
         encoding: ASCII

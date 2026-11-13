@@ -517,8 +517,8 @@ types:
         type: u4
         doc: 'Last trading date of the instrument'
       - id: last_trading_time
-        type: u8
-        doc: 'The last trading time of the instrument'
+        type: nanosecond_timestamp
+        doc: 'The last trading time of the instrument. Nanoseconds since Unix epoch'
       - id: strike_price
         type: s8
         doc: 'Price at which a specific options instrument can be exercised'
@@ -529,8 +529,8 @@ types:
         type: u4
         doc: 'The first trading date'
       - id: first_trading_time
-        type: u8
-        doc: 'The first trading time (UTC timestamp)'
+        type: nanosecond_timestamp
+        doc: 'The first trading time (UTC timestamp). Nanoseconds since Unix epoch'
       - id: filler_3
         size: 3
         doc: 'Padding'
@@ -727,8 +727,8 @@ types:
         type: u4
         doc: 'Number of contracts'
       - id: trade_time
-        type: u8
-        doc: 'Date and time of the last'
+        type: nanosecond_timestamp
+        doc: 'Date and time of the last. Nanoseconds since Unix epoch'
   trade_amendment_message:
     seq:
       - id: orderbook_id
@@ -744,8 +744,8 @@ types:
         type: u4
         doc: 'Number of contracts'
       - id: amendment_execution_time
-        type: u8
-        doc: 'Date and time of the trade amendment execution'
+        type: nanosecond_timestamp
+        doc: 'Date and time of the trade amendment execution. Nanoseconds since Unix epoch'
       - id: trade_state
         type: u1
         enum: trade_state

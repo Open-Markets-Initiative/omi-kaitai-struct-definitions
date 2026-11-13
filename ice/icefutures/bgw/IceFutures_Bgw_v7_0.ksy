@@ -168,8 +168,8 @@ types:
         type: s4
         doc: 'clientID'
       - id: heart_beat_interval
-        type: u2
-        doc: 'heartBeatInterval'
+        type: u2_nullable
+        doc: 'heartBeatInterval. Nullable, No Value = 65535'
       - id: application_name
         type: str
         size: 30
@@ -191,10 +191,8 @@ types:
         encoding: ASCII
         doc: 'rawData'
       - id: ip_session_token
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'ipSessionToken'
+        type: str_50_nullable
+        doc: 'ipSessionToken. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 236
         doc: 'Bytes the stated block holds beyond the 236 this version reads'
@@ -206,20 +204,17 @@ types:
         encoding: ASCII
         doc: 'userID'
       - id: heart_beat_interval
-        type: u2
-        doc: 'heartBeatInterval'
+        type: u2_nullable
+        doc: 'heartBeatInterval. Nullable, No Value = 65535'
       - id: severity_level
-        type: u1
-        enum: severity_level
-        doc: 'severityLevel'
+        type: u1_nullable
+        doc: 'severityLevel. Nullable, No Value = 255'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 127
         doc: 'Bytes the stated block holds beyond the 127 this version reads'
@@ -241,13 +236,11 @@ types:
         encoding: ASCII
         doc: 'userID'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 124
         doc: 'Bytes the stated block holds beyond the 124 this version reads'
@@ -257,22 +250,19 @@ types:
         type: u4
         doc: 'refSequenceId'
       - id: severity_level
-        type: u1
-        enum: severity_level
-        doc: 'severityLevel'
+        type: u1_nullable
+        doc: 'severityLevel. Nullable, No Value = 255'
       - id: supported_schema_version
         type: str
         size: 20
         encoding: ASCII
         doc: 'supportedSchemaVersion'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 129
         doc: 'Bytes the stated block holds beyond the 129 this version reads'
@@ -284,8 +274,8 @@ types:
         encoding: ASCII
         doc: 'userID'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: block_extension
         size: _parent.message_header.block_length - 24
         doc: 'Bytes the stated block holds beyond the 24 this version reads'
@@ -313,7 +303,7 @@ types:
       - id: security_response_id
         type: s4
         doc: 'securityResponseID'
-      - id: market_type_i_d_int_32
+      - id: market_type_id
         type: s4
         doc: 'marketTypeID'
       - id: no_rpts
@@ -322,27 +312,27 @@ types:
       - id: list_seq_no
         type: s4
         doc: 'listSeqNo'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
       - id: underlying_strategy_symbol
         type: s4
         doc: 'underlyingStrategySymbol'
       - id: maturity_date
-        type: u2
-        doc: 'maturityDate'
+        type: u2_nullable
+        doc: 'maturityDate. Nullable, No Value = 0'
       - id: security_trading_status
         type: u1
         enum: security_trading_status
         doc: 'securityTradingStatus'
-      - id: security_sub_type_int_16
+      - id: security_sub_type
         type: s2
         doc: 'securitySubType'
       - id: exchange_silo
         type: u1
         enum: exchange_silo
         doc: 'exchangeSilo'
-      - id: transact_time_utc_timestamp
+      - id: transact_time
         type: u8
         doc: 'transactTime'
       - id: leg_deals_suppressed
@@ -367,50 +357,45 @@ types:
       - id: num_of_decimal_qty
         type: s1
         doc: 'numOfDecimalQty'
-      - id: product_i_d_int_32
+      - id: product_id
         type: s4
         doc: 'productID'
       - id: base_num_lots
-        type: s4
-        doc: 'baseNumLots'
+        type: s4_nullable
+        doc: 'baseNumLots. Nullable, No Value = -2147483648'
       - id: denominator
         type: s4
         doc: 'denominator'
       - id: implied_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'impliedType'
-      - id: off_exchange_increment_price_decimal_9_null
-        type: s8
-        doc: 'offExchangeIncrementPrice'
-      - id: off_exchange_increment_qty_decimal_9_null
-        type: s8
-        doc: 'offExchangeIncrementQty'
+        type: str_1_nullable
+        doc: 'impliedType. Nullable, No Value = 0'
+      - id: off_exchange_increment_price_optional
+        type: s8_nullable
+        doc: 'offExchangeIncrementPrice. Nullable, No Value = -9223372036854775808'
+      - id: off_exchange_increment_qty_optional
+        type: s8_nullable
+        doc: 'offExchangeIncrementQty. Nullable, No Value = -9223372036854775808'
       - id: num_of_decimal_strike_price
-        type: s1
-        doc: 'numOfDecimalStrikePrice'
-      - id: num_of_cycles_int_16_null
-        type: s2
-        doc: 'numOfCycles'
-      - id: lot_size_multiplier_decimal_9_null
-        type: s8
-        doc: 'lotSizeMultiplier'
+        type: s1_nullable
+        doc: 'numOfDecimalStrikePrice. Nullable, No Value = -128'
+      - id: num_of_cycles_optional
+        type: s2_nullable
+        doc: 'numOfCycles. Nullable, No Value = -32768'
+      - id: lot_size_multiplier_optional
+        type: s8_nullable
+        doc: 'lotSizeMultiplier. Nullable, No Value = -9223372036854775808'
       - id: block_only
-        type: u1
-        enum: block_only
-        doc: 'blockOnly'
+        type: u1_nullable
+        doc: 'blockOnly. Nullable, No Value = 255'
       - id: flex_allowed
-        type: u1
-        enum: flex_allowed
-        doc: 'flexAllowed'
+        type: u1_nullable
+        doc: 'flexAllowed. Nullable, No Value = 255'
       - id: gt_allowed
+        type: u1_nullable
+        doc: 'gtAllowed. Nullable, No Value = 255'
+      - id: mifid_regulated_market
         type: u1
-        enum: gt_allowed
-        doc: 'gtAllowed'
-      - id: mifid_regulated_market_boolean_enum
-        type: u1
-        enum: mifid_regulated_market_boolean_enum
+        enum: mifid_regulated_market
         doc: 'mifidRegulatedMarket'
       - id: strip_type
         type: s2
@@ -419,12 +404,11 @@ types:
         type: s4
         doc: 'hubID'
       - id: override_block_min
+        type: u1_nullable
+        doc: 'overrideBlockMin. Nullable, No Value = 255'
+      - id: test_market_indicator
         type: u1
-        enum: override_block_min
-        doc: 'overrideBlockMin'
-      - id: test_market_indicator_boolean_enum
-        type: u1
-        enum: test_market_indicator_boolean_enum
+        enum: test_market_indicator
         doc: 'testMarketIndicator'
       - id: screen_tick_value
         type: s8
@@ -505,10 +489,8 @@ types:
         enum: block_details_block_type
         doc: 'blockDetailsBlockType'
       - id: block_details_trade_type
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'blockDetailsTradeType'
+        type: str_3_nullable
+        doc: 'blockDetailsTradeType. Nullable, No Value = 0'
       - id: block_details_min_qty
         type: s8
         doc: 'blockDetailsMinQty'
@@ -528,15 +510,11 @@ types:
   security_definition_report_strategy_message_no_security_alt_i_d_group:
     seq:
       - id: security_alt_id
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'ISIN of equity related market if securityAltIDSource is 4 or as required by MiFID if securityAltIDSource is U4'
+        type: str_30_nullable
+        doc: 'ISIN of equity related market if securityAltIDSource is 4 or as required by MiFID if securityAltIDSource is U4. Nullable, No Value = 0'
       - id: security_alt_id_source
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'securityAltIDSource'
+        type: str_3_nullable
+        doc: 'securityAltIDSource. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.group_size_encoding.block_length - 33
         doc: 'Bytes the stated block holds beyond the 33 this version reads'
@@ -552,7 +530,7 @@ types:
         doc: 'noLegs'
   security_definition_report_strategy_message_no_legs_group:
     seq:
-      - id: leg_symbol_int_32
+      - id: leg_symbol
         type: s4
         doc: 'legSymbol'
       - id: leg_security_type
@@ -560,22 +538,22 @@ types:
         enum: leg_security_type
         doc: 'legSecurityType'
       - id: leg_security_sub_type
-        type: s2
-        doc: 'legSecuritySubType'
+        type: s2_nullable
+        doc: 'legSecuritySubType. Nullable, No Value = -32768'
       - id: leg_side
         type: u1
         enum: leg_side
         doc: 'legSide'
       - id: leg_price
-        type: s8
-        doc: 'Required if legSecurityType is FUT'
+        type: s8_nullable
+        doc: 'Required if legSecurityType is FUT. Nullable, No Value = -9223372036854775808'
       - id: leg_option_delta
-        type: s4
-        doc: 'Required if legSecurityType is FUT or CS'
-      - id: leg_ratio_qty_denominator_int_16
+        type: s4_nullable
+        doc: 'Required if legSecurityType is FUT or CS. Nullable, No Value = -2147483648'
+      - id: leg_ratio_qty_denominator
         type: s2
         doc: 'legRatioQtyDenominator'
-      - id: leg_ratio_qty_numerator_int_16
+      - id: leg_ratio_qty_numerator
         type: s2
         doc: 'legRatioQtyNumerator'
       - id: leg_ratio_price_denominator
@@ -707,10 +685,10 @@ types:
       - id: security_response_id
         type: s4
         doc: 'securityResponseID'
-      - id: market_type_i_d_int_32
+      - id: market_type_id
         type: s4
         doc: 'marketTypeID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
       - id: exchange_silo
@@ -723,7 +701,7 @@ types:
       - id: list_seq_no
         type: s4
         doc: 'listSeqNo'
-      - id: underlying_symbol_int_32
+      - id: underlying_symbol
         type: s4
         doc: 'underlyingSymbol'
       - id: cfi_code
@@ -731,48 +709,44 @@ types:
         size: 12
         encoding: ASCII
         doc: 'cfiCode'
-      - id: security_sub_type_int_16_null
-        type: s2
-        doc: 'securitySubType'
+      - id: security_sub_type_optional
+        type: s2_nullable
+        doc: 'securitySubType. Nullable, No Value = -32768'
       - id: maturity_date
-        type: u2
-        doc: 'maturityDate'
+        type: u2_nullable
+        doc: 'maturityDate. Nullable, No Value = 0'
       - id: screen_last_trade_date
-        type: u2
-        doc: 'screenLastTradeDate'
+        type: u2_nullable
+        doc: 'screenLastTradeDate. Nullable, No Value = 0'
       - id: contract_multiplier
         type: s4
         doc: 'contractMultiplier'
       - id: start_date
-        type: u2
-        doc: 'startDate'
+        type: u2_nullable
+        doc: 'startDate. Nullable, No Value = 0'
       - id: end_date
-        type: u2
-        doc: 'endDate'
+        type: u2_nullable
+        doc: 'endDate. Nullable, No Value = 0'
       - id: put_or_call
-        type: u1
-        enum: put_or_call
-        doc: 'putOrCall'
+        type: u1_nullable
+        doc: 'putOrCall. Nullable, No Value = 255'
       - id: strike_price
-        type: s8
-        doc: 'strikePrice'
+        type: s8_nullable
+        doc: 'strikePrice. Nullable, No Value = -9223372036854775808'
       - id: security_trading_status
         type: u1
         enum: security_trading_status
         doc: 'securityTradingStatus'
       - id: currency
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'currency'
+        type: str_12_nullable
+        doc: 'currency. Nullable, No Value = 0'
       - id: settl_method
         type: u1
         enum: settl_method
         doc: 'settlMethod'
       - id: strike_exercise_style
-        type: u1
-        enum: strike_exercise_style
-        doc: 'strikeExerciseStyle'
+        type: u1_nullable
+        doc: 'strikeExerciseStyle. Nullable, No Value = 255'
       - id: increment_qty
         type: s8
         doc: 'incrementQty'
@@ -785,10 +759,10 @@ types:
       - id: max_price
         type: s8
         doc: 'maxPrice'
-      - id: off_exchange_increment_price_decimal_9
+      - id: off_exchange_increment_price
         type: s8
         doc: 'offExchangeIncrementPrice'
-      - id: off_exchange_increment_qty_decimal_9
+      - id: off_exchange_increment_qty
         type: s8
         doc: 'offExchangeIncrementQty'
       - id: screen_tick_value
@@ -815,12 +789,12 @@ types:
         encoding: ASCII
         doc: 'granularity'
       - id: base_num_lots
-        type: s4
-        doc: 'baseNumLots'
+        type: s4_nullable
+        doc: 'baseNumLots. Nullable, No Value = -2147483648'
       - id: tick_value
         type: s8
         doc: 'tickValue'
-      - id: product_i_d_int_32
+      - id: product_id
         type: s4
         doc: 'productID'
       - id: clearable
@@ -828,19 +802,17 @@ types:
         enum: clearable
         doc: 'clearable'
       - id: hedge_product_id
-        type: s4
-        doc: 'hedgeProductID'
+        type: s4_nullable
+        doc: 'hedgeProductID. Nullable, No Value = -2147483648'
       - id: hedge_market_id
-        type: s4
-        doc: 'hedgeMarketID'
+        type: s4_nullable
+        doc: 'hedgeMarketID. Nullable, No Value = -2147483648'
       - id: hedge_only
-        type: u1
-        enum: hedge_only
-        doc: 'hedgeOnly'
+        type: u1_nullable
+        doc: 'hedgeOnly. Nullable, No Value = 255'
       - id: is_dividend_adjusted
-        type: u1
-        enum: is_dividend_adjusted
-        doc: 'isDividendAdjusted'
+        type: u1_nullable
+        doc: 'isDividendAdjusted. Nullable, No Value = 255'
       - id: denominator
         type: s4
         doc: 'denominator'
@@ -848,17 +820,15 @@ types:
         type: s4
         doc: 'initialMargin'
       - id: implied_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'impliedType'
+        type: str_1_nullable
+        doc: 'impliedType. Nullable, No Value = 0'
       - id: num_of_decimal_strike_price
-        type: s1
-        doc: 'numOfDecimalStrikePrice'
-      - id: num_of_cycles_int_16
+        type: s1_nullable
+        doc: 'numOfDecimalStrikePrice. Nullable, No Value = -128'
+      - id: num_of_cycles
         type: s2
         doc: 'numOfCycles'
-      - id: lot_size_multiplier_decimal_9
+      - id: lot_size_multiplier
         type: s8
         doc: 'lotSizeMultiplier'
       - id: strip_type
@@ -868,51 +838,41 @@ types:
         type: s4
         doc: 'stripID'
       - id: block_only
-        type: u1
-        enum: block_only
-        doc: 'blockOnly'
+        type: u1_nullable
+        doc: 'blockOnly. Nullable, No Value = 255'
       - id: flex_allowed
-        type: u1
-        enum: flex_allowed
-        doc: 'flexAllowed'
+        type: u1_nullable
+        doc: 'flexAllowed. Nullable, No Value = 255'
       - id: gt_allowed
-        type: u1
-        enum: gt_allowed
-        doc: 'gtAllowed'
+        type: u1_nullable
+        doc: 'gtAllowed. Nullable, No Value = 255'
       - id: aon_allowed
-        type: u1
-        enum: aon_allowed
-        doc: 'aonAllowed'
-      - id: mifid_regulated_market_boolean_enum_null
-        type: u1
-        enum: mifid_regulated_market_boolean_enum_null
-        doc: 'mifidRegulatedMarket'
+        type: u1_nullable
+        doc: 'aonAllowed. Nullable, No Value = 255'
+      - id: mifid_regulated_market_optional
+        type: u1_nullable
+        doc: 'mifidRegulatedMarket. Nullable, No Value = 255'
       - id: flex_strike_allowed
-        type: u1
-        enum: flex_strike_allowed
-        doc: 'flexStrikeAllowed'
+        type: u1_nullable
+        doc: 'flexStrikeAllowed. Nullable, No Value = 255'
       - id: hub_id
         type: s4
         doc: 'hubID'
       - id: override_block_min
-        type: u1
-        enum: override_block_min
-        doc: 'overrideBlockMin'
-      - id: test_market_indicator_boolean_enum_null
-        type: u1
-        enum: test_market_indicator_boolean_enum_null
-        doc: 'testMarketIndicator'
+        type: u1_nullable
+        doc: 'overrideBlockMin. Nullable, No Value = 255'
+      - id: test_market_indicator_optional
+        type: u1_nullable
+        doc: 'testMarketIndicator. Nullable, No Value = 255'
       - id: ref_sprd_product_id
-        type: s4
-        doc: 'refSprdProductID'
+        type: s4_nullable
+        doc: 'refSprdProductID. Nullable, No Value = -2147483648'
       - id: market_transparency_type
-        type: u1
-        enum: market_transparency_type
-        doc: 'marketTransparencyType'
+        type: u1_nullable
+        doc: 'marketTransparencyType. Nullable, No Value = 255'
       - id: non_commoditized_market
-        type: u1
-        enum: non_commoditized_market
-        doc: 'nonCommoditizedMarket'
+        type: u1_nullable
+        doc: 'nonCommoditizedMarket. Nullable, No Value = 255'
       - id: block_extension
         size: _parent.message_header.block_length - 237
         doc: 'Bytes the stated block holds beyond the 237 this version reads'
@@ -975,10 +935,8 @@ types:
         enum: block_details_block_type
         doc: 'blockDetailsBlockType'
       - id: block_details_trade_type
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'blockDetailsTradeType'
+        type: str_3_nullable
+        doc: 'blockDetailsTradeType. Nullable, No Value = 0'
       - id: block_details_min_qty
         type: s8
         doc: 'blockDetailsMinQty'
@@ -998,15 +956,11 @@ types:
   security_definition_report_message_no_security_alt_i_d_group:
     seq:
       - id: security_alt_id
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'ISIN of equity related market if securityAltIDSource is 4 or as required by MiFID if securityAltIDSource is U4'
+        type: str_30_nullable
+        doc: 'ISIN of equity related market if securityAltIDSource is 4 or as required by MiFID if securityAltIDSource is U4. Nullable, No Value = 0'
       - id: security_alt_id_source
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'securityAltIDSource'
+        type: str_3_nullable
+        doc: 'securityAltIDSource. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.group_size_encoding.block_length - 33
         doc: 'Bytes the stated block holds beyond the 33 this version reads'
@@ -1032,21 +986,18 @@ types:
         type: u1
         enum: security_request_type
         doc: 'securityRequestType'
-      - id: market_type_i_d_int_32
+      - id: market_type_id
         type: s4
         doc: 'marketTypeID'
-      - id: security_type_security_type_enum_null
-        type: u1
-        enum: security_type_security_type_enum_null
-        doc: 'securityType'
+      - id: security_type_optional
+        type: u1_nullable
+        doc: 'securityType. Nullable, No Value = 255'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 115
         doc: 'Bytes the stated block holds beyond the 115 this version reads'
@@ -1059,7 +1010,7 @@ types:
         type: u1
         enum: security_request_type
         doc: 'securityRequestType'
-      - id: market_type_i_d_int_32
+      - id: market_type_id
         type: s4
         doc: 'marketTypeID'
       - id: block_extension
@@ -1077,7 +1028,7 @@ types:
       - id: security_response_id
         type: s4
         doc: 'securityResponseID'
-      - id: market_type_i_d_int_32
+      - id: market_type_id
         type: s4
         doc: 'marketTypeID'
       - id: no_rpts
@@ -1086,62 +1037,50 @@ types:
       - id: list_seq_no
         type: s4
         doc: 'listSeqNo'
-      - id: product_i_d_int_32
+      - id: product_id
         type: s4
         doc: 'productID'
       - id: product_type
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'productType'
-      - id: mifid_regulated_market_boolean_enum
+        type: str_12_nullable
+        doc: 'productType. Nullable, No Value = 0'
+      - id: mifid_regulated_market
         type: u1
-        enum: mifid_regulated_market_boolean_enum
+        enum: mifid_regulated_market
         doc: 'mifidRegulatedMarket'
-      - id: test_market_indicator_boolean_enum
+      - id: test_market_indicator
         type: u1
-        enum: test_market_indicator_boolean_enum
+        enum: test_market_indicator
         doc: 'testMarketIndicator'
       - id: stops_allowed
-        type: u1
-        enum: stops_allowed
-        doc: 'stopsAllowed'
+        type: u1_nullable
+        doc: 'stopsAllowed. Nullable, No Value = 255'
       - id: options_allowed
-        type: u1
-        enum: options_allowed
-        doc: 'optionsAllowed'
+        type: u1_nullable
+        doc: 'optionsAllowed. Nullable, No Value = 255'
       - id: uds_options_allowed
-        type: u1
-        enum: uds_options_allowed
-        doc: 'udsOptionsAllowed'
+        type: u1_nullable
+        doc: 'udsOptionsAllowed. Nullable, No Value = 255'
       - id: uds_futures_allowed
-        type: u1
-        enum: uds_futures_allowed
-        doc: 'udsFuturesAllowed'
+        type: u1_nullable
+        doc: 'udsFuturesAllowed. Nullable, No Value = 255'
       - id: mass_quotes_allowed
-        type: u1
-        enum: mass_quotes_allowed
-        doc: 'massQuotesAllowed'
+        type: u1_nullable
+        doc: 'massQuotesAllowed. Nullable, No Value = 255'
       - id: rfq_futures_allowed
-        type: u1
-        enum: rfq_futures_allowed
-        doc: 'rfqFuturesAllowed'
+        type: u1_nullable
+        doc: 'rfqFuturesAllowed. Nullable, No Value = 255'
       - id: rfq_options_allowed
-        type: u1
-        enum: rfq_options_allowed
-        doc: 'rfqOptionsAllowed'
+        type: u1_nullable
+        doc: 'rfqOptionsAllowed. Nullable, No Value = 255'
       - id: crossing_order_futures_allowed
-        type: u1
-        enum: crossing_order_futures_allowed
-        doc: 'crossingOrderFuturesAllowed'
+        type: u1_nullable
+        doc: 'crossingOrderFuturesAllowed. Nullable, No Value = 255'
       - id: crossing_order_options_allowed
-        type: u1
-        enum: crossing_order_options_allowed
-        doc: 'crossingOrderOptionsAllowed'
+        type: u1_nullable
+        doc: 'crossingOrderOptionsAllowed. Nullable, No Value = 255'
       - id: self_block_allowed
-        type: u1
-        enum: self_block_allowed
-        doc: 'selfBlockAllowed'
+        type: u1_nullable
+        doc: 'selfBlockAllowed. Nullable, No Value = 255'
       - id: block_extension
         size: _parent.message_header.block_length - 49
         doc: 'Bytes the stated block holds beyond the 49 this version reads'
@@ -1215,13 +1154,11 @@ types:
   ip_report_message:
     seq:
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 104
         doc: 'Bytes the stated block holds beyond the 104 this version reads'
@@ -1246,22 +1183,17 @@ types:
         encoding: ASCII
         doc: 'userID'
       - id: success
-        type: u1
-        enum: success
-        doc: 'success'
+        type: u1_nullable
+        doc: 'success. Nullable, No Value = 255'
       - id: ip_address
-        type: str
-        size: 15
-        encoding: ASCII
-        doc: 'ipAddress'
+        type: str_15_nullable
+        doc: 'ipAddress. Nullable, No Value = 0'
       - id: port
-        type: s2
-        doc: 'port'
+        type: s2_nullable
+        doc: 'port. Nullable, No Value = -32768'
       - id: ip_session_token
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'ipSessionToken'
+        type: str_50_nullable
+        doc: 'ipSessionToken. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.group_size_encoding.block_length - 88
         doc: 'Bytes the stated block holds beyond the 88 this version reads'
@@ -1273,33 +1205,29 @@ types:
         encoding: ASCII
         doc: 'originatorUserID'
       - id: direct_electronic_access
-        type: u1
-        enum: direct_electronic_access
-        doc: 'directElectronicAccess'
+        type: u1_nullable
+        doc: 'directElectronicAccess. Nullable, No Value = 255'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'tradingCapacity'
+        type: u1_nullable
+        doc: 'tradingCapacity. Nullable, No Value = 255'
       - id: liquidity_provision
-        type: u1
-        enum: liquidity_provision
-        doc: 'liquidityProvision'
+        type: u1_nullable
+        doc: 'liquidityProvision. Nullable, No Value = 255'
       - id: commodity_deriv_indicator
-        type: u1
-        enum: commodity_deriv_indicator
-        doc: 'commodityDerivIndicator'
+        type: u1_nullable
+        doc: 'commodityDerivIndicator. Nullable, No Value = 255'
       - id: investment_decision
-        type: s8
-        doc: 'investmentDecision'
+        type: s8_nullable
+        doc: 'investmentDecision. Nullable, No Value = -9223372036854775808'
       - id: execution_decision
-        type: s8
-        doc: 'executionDecision'
+        type: s8_nullable
+        doc: 'executionDecision. Nullable, No Value = -9223372036854775808'
       - id: client_id_code
-        type: s8
-        doc: 'clientIDCode'
+        type: s8_nullable
+        doc: 'clientIDCode. Nullable, No Value = -9223372036854775808'
       - id: mifid_id
-        type: s8
-        doc: 'mifidID'
+        type: s8_nullable
+        doc: 'mifidID. Nullable, No Value = -9223372036854775808'
       - id: raw_data
         type: str
         size: 50
@@ -1319,13 +1247,11 @@ types:
         type: s4
         doc: 'clientID'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 128
         doc: 'Bytes the stated block holds beyond the 128 this version reads'
@@ -1347,152 +1273,136 @@ types:
         encoding: ASCII
         doc: 'originatorUserID'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 124
         doc: 'Bytes the stated block holds beyond the 124 this version reads'
   new_order_request_message:
     seq:
-      - id: price_decimal_9_null
-        type: s8
-        doc: 'price'
-      - id: order_qty_decimal_9
+      - id: price_optional
+        type: s8_nullable
+        doc: 'price. Nullable, No Value = -9223372036854775808'
+      - id: order_qty
         type: s8
         doc: 'orderQty'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
-      - id: time_in_force_time_in_force_enum
+      - id: time_in_force
         type: u1
-        enum: time_in_force_time_in_force_enum
+        enum: time_in_force
         doc: 'timeInForce'
-      - id: side_side_enum
+      - id: side
         type: u1
-        enum: side_side_enum
+        enum: side
         doc: 'side'
       - id: originator_user_id
         type: str
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
-      - id: ord_type_order_type_enum
+      - id: ord_type
         type: u1
-        enum: ord_type_order_type_enum
+        enum: ord_type
         doc: 'ordType'
       - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'manualOrderIndicator'
+        type: u1_nullable
+        doc: 'manualOrderIndicator. Nullable, No Value = 255'
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
       - id: max_show
-        type: s8
-        doc: 'maxShow'
+        type: s8_nullable
+        doc: 'maxShow. Nullable, No Value = -9223372036854775808'
       - id: stop_px
-        type: s8
-        doc: 'stopPx'
+        type: s8_nullable
+        doc: 'stopPx. Nullable, No Value = -9223372036854775808'
       - id: give_up_clearing_firm
-        type: s4
-        doc: 'giveUpClearingFirm'
-      - id: clearing_firm_int_32
+        type: s4_nullable
+        doc: 'giveUpClearingFirm. Nullable, No Value = -2147483648'
+      - id: clearing_firm
         type: s4
         doc: 'clearingFirm'
       - id: self_match_prevention_id
-        type: s8
-        doc: 'selfMatchPreventionID'
+        type: s8_nullable
+        doc: 'selfMatchPreventionID. Nullable, No Value = -9223372036854775808'
       - id: expire_date
-        type: u2
-        doc: 'expireDate'
+        type: u2_nullable
+        doc: 'expireDate. Nullable, No Value = 0'
       - id: self_match_prevention_instruction
         type: u1
         enum: self_match_prevention_instruction
-        doc: 'selfMatchPreventionInstruction'
+        doc: 'selfMatchPreventionInstruction. Nullable, No Value = 0'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'execInst'
+        doc: 'execInst. Nullable, No Value = 0'
       - id: direct_electronic_access
-        type: u1
-        enum: direct_electronic_access
-        doc: 'directElectronicAccess'
+        type: u1_nullable
+        doc: 'directElectronicAccess. Nullable, No Value = 255'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'tradingCapacity'
+        type: u1_nullable
+        doc: 'tradingCapacity. Nullable, No Value = 255'
       - id: liquidity_provision
-        type: u1
-        enum: liquidity_provision
-        doc: 'liquidityProvision'
+        type: u1_nullable
+        doc: 'liquidityProvision. Nullable, No Value = 255'
       - id: commodity_deriv_indicator
-        type: u1
-        enum: commodity_deriv_indicator
-        doc: 'commodityDerivIndicator'
+        type: u1_nullable
+        doc: 'commodityDerivIndicator. Nullable, No Value = 255'
       - id: investment_decision
-        type: s8
-        doc: 'investmentDecision'
+        type: s8_nullable
+        doc: 'investmentDecision. Nullable, No Value = -9223372036854775808'
       - id: execution_decision
-        type: s8
-        doc: 'executionDecision'
+        type: s8_nullable
+        doc: 'executionDecision. Nullable, No Value = -9223372036854775808'
       - id: client_id_code
-        type: s8
-        doc: 'clientIDCode'
+        type: s8_nullable
+        doc: 'clientIDCode. Nullable, No Value = -9223372036854775808'
       - id: mifid_id
-        type: s8
-        doc: 'mifidID'
+        type: s8_nullable
+        doc: 'mifidID. Nullable, No Value = -9223372036854775808'
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
-        doc: 'custOrderHandlingInst'
+        doc: 'custOrderHandlingInst. Nullable, No Value = 0'
       - id: position_effect
         type: u1
         enum: position_effect
-        doc: 'positionEffect'
+        doc: 'positionEffect. Nullable, No Value = 0'
       - id: alloc_handl_inst
         type: u1
         enum: alloc_handl_inst
-        doc: 'allocHandlInst'
+        doc: 'allocHandlInst. Nullable, No Value = 0'
       - id: price_type
-        type: u1
-        enum: price_type
-        doc: 'priceType'
-      - id: clearing_account_string_14
+        type: u1_nullable
+        doc: 'priceType. Nullable, No Value = 255'
+      - id: clearing_account
         type: str
         size: 14
         encoding: ASCII
         doc: 'clearingAccount'
       - id: customer_account_ref_id
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'customerAccountRefID'
+        type: str_12_nullable
+        doc: 'customerAccountRefID. Nullable, No Value = 0'
       - id: memo
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'memo'
+        type: str_30_nullable
+        doc: 'memo. Nullable, No Value = 0'
       - id: allocation_account
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'allocationAccount'
+        type: str_20_nullable
+        doc: 'allocationAccount. Nullable, No Value = 0'
       - id: on_behalf_of_comp_id
-        type: str
-        size: 41
-        encoding: ASCII
-        doc: 'onBehalfOfCompId'
-      - id: on_behalf_of_sub_i_d_string_41
+        type: str_41_nullable
+        doc: 'onBehalfOfCompId. Nullable, No Value = 0'
+      - id: on_behalf_of_sub_id
         type: str
         size: 41
         encoding: ASCII
         doc: 'onBehalfOfSubID'
-      - id: on_behalf_of_location_i_d_string_41
+      - id: on_behalf_of_location_id
         type: str
         size: 41
         encoding: ASCII
@@ -1502,135 +1412,121 @@ types:
         doc: 'Bytes the stated block holds beyond the 327 this version reads'
   cancel_replace_request_message:
     seq:
-      - id: price_decimal_9_null
-        type: s8
-        doc: 'price'
-      - id: order_qty_decimal_9
+      - id: price_optional
+        type: s8_nullable
+        doc: 'price. Nullable, No Value = -9223372036854775808'
+      - id: order_qty
         type: s8
         doc: 'orderQty'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
-      - id: time_in_force_time_in_force_enum
+      - id: time_in_force
         type: u1
-        enum: time_in_force_time_in_force_enum
+        enum: time_in_force
         doc: 'timeInForce'
-      - id: side_side_enum
+      - id: side
         type: u1
-        enum: side_side_enum
+        enum: side
         doc: 'side'
       - id: originator_user_id
         type: str
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
-      - id: ord_type_order_type_enum
+      - id: ord_type
         type: u1
-        enum: ord_type_order_type_enum
+        enum: ord_type
         doc: 'ordType'
       - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'manualOrderIndicator'
+        type: u1_nullable
+        doc: 'manualOrderIndicator. Nullable, No Value = 255'
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
-      - id: orig_cl_ord_i_d_int_64
+      - id: orig_cl_ord_id
         type: s8
         doc: 'origClOrdID'
       - id: max_show
-        type: s8
-        doc: 'maxShow'
+        type: s8_nullable
+        doc: 'maxShow. Nullable, No Value = -9223372036854775808'
       - id: stop_px
-        type: s8
-        doc: 'stopPx'
+        type: s8_nullable
+        doc: 'stopPx. Nullable, No Value = -9223372036854775808'
       - id: give_up_clearing_firm
-        type: s4
-        doc: 'giveUpClearingFirm'
-      - id: clearing_firm_int_32
+        type: s4_nullable
+        doc: 'giveUpClearingFirm. Nullable, No Value = -2147483648'
+      - id: clearing_firm
         type: s4
         doc: 'clearingFirm'
       - id: self_match_prevention_id
-        type: s8
-        doc: 'selfMatchPreventionID'
+        type: s8_nullable
+        doc: 'selfMatchPreventionID. Nullable, No Value = -9223372036854775808'
       - id: expire_date
-        type: u2
-        doc: 'expireDate'
+        type: u2_nullable
+        doc: 'expireDate. Nullable, No Value = 0'
       - id: self_match_prevention_instruction
         type: u1
         enum: self_match_prevention_instruction
-        doc: 'selfMatchPreventionInstruction'
+        doc: 'selfMatchPreventionInstruction. Nullable, No Value = 0'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'execInst'
+        doc: 'execInst. Nullable, No Value = 0'
       - id: direct_electronic_access
-        type: u1
-        enum: direct_electronic_access
-        doc: 'directElectronicAccess'
+        type: u1_nullable
+        doc: 'directElectronicAccess. Nullable, No Value = 255'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'tradingCapacity'
+        type: u1_nullable
+        doc: 'tradingCapacity. Nullable, No Value = 255'
       - id: liquidity_provision
-        type: u1
-        enum: liquidity_provision
-        doc: 'liquidityProvision'
+        type: u1_nullable
+        doc: 'liquidityProvision. Nullable, No Value = 255'
       - id: commodity_deriv_indicator
-        type: u1
-        enum: commodity_deriv_indicator
-        doc: 'commodityDerivIndicator'
+        type: u1_nullable
+        doc: 'commodityDerivIndicator. Nullable, No Value = 255'
       - id: investment_decision
-        type: s8
-        doc: 'investmentDecision'
+        type: s8_nullable
+        doc: 'investmentDecision. Nullable, No Value = -9223372036854775808'
       - id: execution_decision
-        type: s8
-        doc: 'executionDecision'
+        type: s8_nullable
+        doc: 'executionDecision. Nullable, No Value = -9223372036854775808'
       - id: client_id_code
-        type: s8
-        doc: 'clientIDCode'
+        type: s8_nullable
+        doc: 'clientIDCode. Nullable, No Value = -9223372036854775808'
       - id: mifid_id
-        type: s8
-        doc: 'mifidID'
+        type: s8_nullable
+        doc: 'mifidID. Nullable, No Value = -9223372036854775808'
       - id: alloc_handl_inst
         type: u1
         enum: alloc_handl_inst
-        doc: 'allocHandlInst'
+        doc: 'allocHandlInst. Nullable, No Value = 0'
       - id: price_type
-        type: u1
-        enum: price_type
-        doc: 'priceType'
-      - id: clearing_account_string_14
+        type: u1_nullable
+        doc: 'priceType. Nullable, No Value = 255'
+      - id: clearing_account
         type: str
         size: 14
         encoding: ASCII
         doc: 'clearingAccount'
       - id: customer_account_ref_id
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'customerAccountRefID'
+        type: str_12_nullable
+        doc: 'customerAccountRefID. Nullable, No Value = 0'
       - id: memo
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'memo'
+        type: str_30_nullable
+        doc: 'memo. Nullable, No Value = 0'
       - id: allocation_account
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'allocationAccount'
+        type: str_20_nullable
+        doc: 'allocationAccount. Nullable, No Value = 0'
       - id: on_behalf_of_comp_id
-        type: str
-        size: 41
-        encoding: ASCII
-        doc: 'onBehalfOfCompId'
-      - id: on_behalf_of_sub_i_d_string_41
+        type: str_41_nullable
+        doc: 'onBehalfOfCompId. Nullable, No Value = 0'
+      - id: on_behalf_of_sub_id
         type: str
         size: 41
         encoding: ASCII
         doc: 'onBehalfOfSubID'
-      - id: on_behalf_of_location_i_d_string_41
+      - id: on_behalf_of_location_id
         type: str
         size: 41
         encoding: ASCII
@@ -1640,7 +1536,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 333 this version reads'
   cancel_request_message:
     seq:
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
       - id: originator_user_id
@@ -1651,12 +1547,12 @@ types:
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
-      - id: orig_cl_ord_i_d_int_64
+      - id: orig_cl_ord_id
         type: s8
         doc: 'origClOrdID'
-      - id: side_side_enum
+      - id: side
         type: u1
-        enum: side_side_enum
+        enum: side
         doc: 'side'
       - id: block_extension
         size: _parent.message_header.block_length - 41
@@ -1668,38 +1564,33 @@ types:
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
-      - id: side_side_enum_null
-        type: u1
-        enum: side_side_enum_null
-        doc: 'side'
-      - id: order_qty_decimal_9_null
-        type: s8
-        doc: 'orderQty'
+      - id: side_optional
+        type: u1_nullable
+        doc: 'side. Nullable, No Value = 255'
+      - id: order_qty_optional
+        type: s8_nullable
+        doc: 'orderQty. Nullable, No Value = -9223372036854775808'
       - id: rfq_req_id
         type: s8
         doc: 'rfqReqID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
-      - id: clearing_firm_int_32_null
-        type: s4
-        doc: 'clearingFirm'
-      - id: clearing_account_string_14_null
-        type: str
-        size: 14
-        encoding: ASCII
-        doc: 'clearingAccount'
+      - id: clearing_firm_optional
+        type: s4_nullable
+        doc: 'clearingFirm. Nullable, No Value = -2147483648'
+      - id: clearing_account_optional
+        type: str_14_nullable
+        doc: 'clearingAccount. Nullable, No Value = 0'
       - id: on_behalf_of_comp_id
-        type: str
-        size: 41
-        encoding: ASCII
-        doc: 'onBehalfOfCompId'
-      - id: on_behalf_of_sub_i_d_string_41
+        type: str_41_nullable
+        doc: 'onBehalfOfCompId. Nullable, No Value = 0'
+      - id: on_behalf_of_sub_id
         type: str
         size: 41
         encoding: ASCII
         doc: 'onBehalfOfSubID'
-      - id: on_behalf_of_location_i_d_string_41
+      - id: on_behalf_of_location_id
         type: str
         size: 41
         encoding: ASCII
@@ -1709,13 +1600,13 @@ types:
         doc: 'Bytes the stated block holds beyond the 182 this version reads'
   new_order_cross_request_message:
     seq:
-      - id: price_decimal_9
+      - id: price
         type: s8
         doc: 'price'
-      - id: order_qty_decimal_9
+      - id: order_qty
         type: s8
         doc: 'orderQty'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
       - id: originator_user_id
@@ -1723,55 +1614,47 @@ types:
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
-      - id: ord_type_order_type_enum
+      - id: ord_type
         type: u1
-        enum: ord_type_order_type_enum
+        enum: ord_type
         doc: 'ordType'
-      - id: cross_i_d_int_64
+      - id: cross_id
         type: s8
         doc: 'crossID'
-      - id: cross_type_cross_type_enum
+      - id: cross_type
         type: u1
-        enum: cross_type_cross_type_enum
+        enum: cross_type
         doc: 'crossType'
       - id: trade_type
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'tradeType'
+        type: str_3_nullable
+        doc: 'tradeType. Nullable, No Value = 0'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'execInst'
+        doc: 'execInst. Nullable, No Value = 0'
       - id: price_type
-        type: u1
-        enum: price_type
-        doc: 'priceType'
+        type: u1_nullable
+        doc: 'priceType. Nullable, No Value = 255'
       - id: bypass_mqr
-        type: u1
-        enum: bypass_mqr
-        doc: 'bypassMQR'
+        type: u1_nullable
+        doc: 'bypassMQR. Nullable, No Value = 255'
       - id: hedge_only
-        type: u1
-        enum: hedge_only
-        doc: 'hedgeOnly'
+        type: u1_nullable
+        doc: 'hedgeOnly. Nullable, No Value = 255'
       - id: benchmark_price
-        type: s8
-        doc: 'benchmarkPrice'
+        type: s8_nullable
+        doc: 'benchmarkPrice. Nullable, No Value = -9223372036854775808'
       - id: bench_mark_price_type
+        type: u1_nullable
+        doc: 'benchMarkPriceType. Nullable, No Value = 255'
+      - id: time_in_force
         type: u1
-        enum: bench_mark_price_type
-        doc: 'benchMarkPriceType'
-      - id: time_in_force_time_in_force_enum
-        type: u1
-        enum: time_in_force_time_in_force_enum
+        enum: time_in_force
         doc: 'timeInForce'
       - id: transact_details
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'transactDetails'
-      - id: transact_time_utc_timestamp
+        type: str_100_nullable
+        doc: 'transactDetails. Nullable, No Value = 0'
+      - id: transact_time
         type: u8
         doc: 'transactTime'
       - id: block_extension
@@ -1795,101 +1678,88 @@ types:
         doc: 'noSides'
   new_order_cross_request_message_no_sides_group:
     seq:
-      - id: side_side_enum
+      - id: side
         type: u1
-        enum: side_side_enum
+        enum: side
         doc: 'side'
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
       - id: give_up_clearing_firm
-        type: s4
-        doc: 'giveUpClearingFirm'
-      - id: clearing_firm_int_32
+        type: s4_nullable
+        doc: 'giveUpClearingFirm. Nullable, No Value = -2147483648'
+      - id: clearing_firm
         type: s4
         doc: 'clearingFirm'
       - id: direct_electronic_access
-        type: u1
-        enum: direct_electronic_access
-        doc: 'directElectronicAccess'
+        type: u1_nullable
+        doc: 'directElectronicAccess. Nullable, No Value = 255'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'tradingCapacity'
+        type: u1_nullable
+        doc: 'tradingCapacity. Nullable, No Value = 255'
       - id: liquidity_provision
-        type: u1
-        enum: liquidity_provision
-        doc: 'liquidityProvision'
+        type: u1_nullable
+        doc: 'liquidityProvision. Nullable, No Value = 255'
       - id: commodity_deriv_indicator
-        type: u1
-        enum: commodity_deriv_indicator
-        doc: 'commodityDerivIndicator'
+        type: u1_nullable
+        doc: 'commodityDerivIndicator. Nullable, No Value = 255'
       - id: investment_decision
-        type: s8
-        doc: 'investmentDecision'
+        type: s8_nullable
+        doc: 'investmentDecision. Nullable, No Value = -9223372036854775808'
       - id: execution_decision
-        type: s8
-        doc: 'executionDecision'
+        type: s8_nullable
+        doc: 'executionDecision. Nullable, No Value = -9223372036854775808'
       - id: client_id_code
-        type: s8
-        doc: 'clientIDCode'
+        type: s8_nullable
+        doc: 'clientIDCode. Nullable, No Value = -9223372036854775808'
       - id: mifid_id
-        type: s8
-        doc: 'mifidID'
+        type: s8_nullable
+        doc: 'mifidID. Nullable, No Value = -9223372036854775808'
       - id: self_match_prevention_id
-        type: s8
-        doc: 'selfMatchPreventionID'
+        type: s8_nullable
+        doc: 'selfMatchPreventionID. Nullable, No Value = -9223372036854775808'
       - id: self_match_prevention_instruction
         type: u1
         enum: self_match_prevention_instruction
-        doc: 'selfMatchPreventionInstruction'
+        doc: 'selfMatchPreventionInstruction. Nullable, No Value = 0'
       - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'manualOrderIndicator'
+        type: u1_nullable
+        doc: 'manualOrderIndicator. Nullable, No Value = 255'
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
-        doc: 'custOrderHandlingInst'
+        doc: 'custOrderHandlingInst. Nullable, No Value = 0'
       - id: position_effect
         type: u1
         enum: position_effect
-        doc: 'positionEffect'
+        doc: 'positionEffect. Nullable, No Value = 0'
       - id: alloc_handl_inst
         type: u1
         enum: alloc_handl_inst
-        doc: 'allocHandlInst'
-      - id: clearing_account_string_14
+        doc: 'allocHandlInst. Nullable, No Value = 0'
+      - id: clearing_account
         type: str
         size: 14
         encoding: ASCII
         doc: 'clearingAccount'
       - id: customer_account_ref_id
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'customerAccountRefID'
+        type: str_12_nullable
+        doc: 'customerAccountRefID. Nullable, No Value = 0'
       - id: memo
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'memo'
+        type: str_30_nullable
+        doc: 'memo. Nullable, No Value = 0'
       - id: allocation_account
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'allocationAccount'
+        type: str_20_nullable
+        doc: 'allocationAccount. Nullable, No Value = 0'
       - id: on_behalf_of_comp_id
-        type: str
-        size: 41
-        encoding: ASCII
-        doc: 'onBehalfOfCompId'
-      - id: on_behalf_of_sub_i_d_string_41
+        type: str_41_nullable
+        doc: 'onBehalfOfCompId. Nullable, No Value = 0'
+      - id: on_behalf_of_sub_id
         type: str
         size: 41
         encoding: ASCII
         doc: 'onBehalfOfSubID'
-      - id: on_behalf_of_location_i_d_string_41
+      - id: on_behalf_of_location_id
         type: str
         size: 41
         encoding: ASCII
@@ -1909,35 +1779,31 @@ types:
         doc: 'noLegs'
   new_order_cross_request_message_no_legs_group:
     seq:
-      - id: leg_symbol_int_32_null
-        type: s4
-        doc: 'legSymbol'
+      - id: leg_symbol_optional
+        type: s4_nullable
+        doc: 'legSymbol. Nullable, No Value = -2147483648'
       - id: leg_security_id_source
-        type: s1
-        doc: 'legSecurityIDSource'
+        type: s1_nullable
+        doc: 'legSecurityIDSource. Nullable, No Value = -128'
       - id: leg_opt_attribute
-        type: s4
-        doc: 'legOptAttribute'
+        type: s4_nullable
+        doc: 'legOptAttribute. Nullable, No Value = -2147483648'
       - id: leg_qty
-        type: s8
-        doc: 'legQty'
+        type: s8_nullable
+        doc: 'legQty. Nullable, No Value = -9223372036854775808'
       - id: leg_price
-        type: s8
-        doc: 'Required if legSecurityType is FUT'
+        type: s8_nullable
+        doc: 'Required if legSecurityType is FUT. Nullable, No Value = -9223372036854775808'
       - id: leg_security_type
         type: u1
         enum: leg_security_type
         doc: 'legSecurityType'
       - id: leg_memo_field
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'legMemoField'
+        type: str_12_nullable
+        doc: 'legMemoField. Nullable, No Value = 0'
       - id: leg_security_id
-        type: str
-        size: 75
-        encoding: ASCII
-        doc: 'legSecurityID'
+        type: str_75_nullable
+        doc: 'legSecurityID. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.group_size_encoding.block_length - 113
         doc: 'Bytes the stated block holds beyond the 113 this version reads'
@@ -1948,39 +1814,34 @@ types:
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
-      - id: ord_type_order_type_enum_null
-        type: u1
-        enum: ord_type_order_type_enum_null
-        doc: 'ordType'
-      - id: side_side_enum_null
-        type: u1
-        enum: side_side_enum_null
-        doc: 'side'
-      - id: symbol_int_32_null
-        type: s4
-        doc: 'symbol'
+      - id: ord_type_optional
+        type: u1_nullable
+        doc: 'ordType. Nullable, No Value = 255'
+      - id: side_optional
+        type: u1_nullable
+        doc: 'side. Nullable, No Value = 255'
+      - id: symbol_optional
+        type: s4_nullable
+        doc: 'symbol. Nullable, No Value = -2147483648'
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
-      - id: market_type_i_d_int_32_null
-        type: s4
-        doc: 'marketTypeID'
-      - id: price_decimal_9_null
-        type: s8
-        doc: 'price'
+      - id: market_type_i_d_optional
+        type: s4_nullable
+        doc: 'marketTypeID. Nullable, No Value = -2147483648'
+      - id: price_optional
+        type: s8_nullable
+        doc: 'price. Nullable, No Value = -9223372036854775808'
       - id: mass_cancel_request_type
         type: u1
         enum: mass_cancel_request_type
         doc: 'massCancelRequestType'
-      - id: time_in_force_time_in_force_enum_null
-        type: u1
-        enum: time_in_force_time_in_force_enum_null
-        doc: 'timeInForce'
-      - id: on_behalf_of_sub_i_d_string_41_null
-        type: str
-        size: 41
-        encoding: ASCII
-        doc: 'onBehalfOfSubID'
+      - id: time_in_force_optional
+        type: u1_nullable
+        doc: 'timeInForce. Nullable, No Value = 255'
+      - id: on_behalf_of_sub_i_d_optional
+        type: str_41_nullable
+        doc: 'onBehalfOfSubID. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 89
         doc: 'Bytes the stated block holds beyond the 89 this version reads'
@@ -1990,49 +1851,44 @@ types:
         type: s8
         doc: 'quoteID'
       - id: risk_protection_reset
-        type: u1
-        enum: risk_protection_reset
-        doc: 'riskProtectionReset'
+        type: u1_nullable
+        doc: 'riskProtectionReset. Nullable, No Value = 255'
       - id: self_match_prevention_id
-        type: s8
-        doc: 'selfMatchPreventionID'
+        type: s8_nullable
+        doc: 'selfMatchPreventionID. Nullable, No Value = -9223372036854775808'
       - id: self_match_prevention_instruction
         type: u1
         enum: self_match_prevention_instruction
-        doc: 'selfMatchPreventionInstruction'
+        doc: 'selfMatchPreventionInstruction. Nullable, No Value = 0'
       - id: originator_user_id
         type: str
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
       - id: direct_electronic_access
-        type: u1
-        enum: direct_electronic_access
-        doc: 'directElectronicAccess'
+        type: u1_nullable
+        doc: 'directElectronicAccess. Nullable, No Value = 255'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'tradingCapacity'
+        type: u1_nullable
+        doc: 'tradingCapacity. Nullable, No Value = 255'
       - id: liquidity_provision
-        type: u1
-        enum: liquidity_provision
-        doc: 'liquidityProvision'
+        type: u1_nullable
+        doc: 'liquidityProvision. Nullable, No Value = 255'
       - id: commodity_deriv_indicator
-        type: u1
-        enum: commodity_deriv_indicator
-        doc: 'commodityDerivIndicator'
+        type: u1_nullable
+        doc: 'commodityDerivIndicator. Nullable, No Value = 255'
       - id: investment_decision
-        type: s8
-        doc: 'investmentDecision'
+        type: s8_nullable
+        doc: 'investmentDecision. Nullable, No Value = -9223372036854775808'
       - id: execution_decision
-        type: s8
-        doc: 'executionDecision'
+        type: s8_nullable
+        doc: 'executionDecision. Nullable, No Value = -9223372036854775808'
       - id: client_id_code
-        type: s8
-        doc: 'clientIDCode'
+        type: s8_nullable
+        doc: 'clientIDCode. Nullable, No Value = -9223372036854775808'
       - id: mifid_id
-        type: s8
-        doc: 'mifidID'
+        type: s8_nullable
+        doc: 'mifidID. Nullable, No Value = -9223372036854775808'
       - id: block_extension
         size: _parent.message_header.block_length - 74
         doc: 'Bytes the stated block holds beyond the 74 this version reads'
@@ -2054,13 +1910,13 @@ types:
       - id: quote_set_id
         type: s4
         doc: 'quoteSetID'
-      - id: underlying_symbol_int_32
+      - id: underlying_symbol
         type: s4
         doc: 'underlyingSymbol'
       - id: quote_entry_id
         type: s4
         doc: 'quoteEntryID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
       - id: bid_px
@@ -2110,15 +1966,15 @@ types:
         doc: 'noQuoteEntries'
   quote_cancel_request_message_no_quote_entries_group:
     seq:
-      - id: underlying_symbol_int_32_null
-        type: s4
-        doc: 'underlyingSymbol'
+      - id: underlying_symbol_optional
+        type: s4_nullable
+        doc: 'underlyingSymbol. Nullable, No Value = -2147483648'
       - id: underlying_security_id
-        type: s4
-        doc: 'underlyingSecurityID'
+        type: s4_nullable
+        doc: 'underlyingSecurityID. Nullable, No Value = -2147483648'
       - id: underlying_product
-        type: s4
-        doc: 'underlyingProduct'
+        type: s4_nullable
+        doc: 'underlyingProduct. Nullable, No Value = -2147483648'
       - id: block_extension
         size: _parent.group_size_encoding.block_length - 12
         doc: 'Bytes the stated block holds beyond the 12 this version reads'
@@ -2131,24 +1987,24 @@ types:
         type: u1
         enum: security_request_type
         doc: 'securityRequestType'
-      - id: market_type_i_d_int_32
+      - id: market_type_id
         type: s4
         doc: 'marketTypeID'
-      - id: security_sub_type_int_16_null
-        type: s2
-        doc: 'securitySubType'
-      - id: product_i_d_int_32_null
-        type: s4
-        doc: 'productID'
+      - id: security_sub_type_optional
+        type: s2_nullable
+        doc: 'securitySubType. Nullable, No Value = -32768'
+      - id: product_i_d_optional
+        type: s4_nullable
+        doc: 'productID. Nullable, No Value = -2147483648'
       - id: start_date
-        type: u2
-        doc: 'startDate'
+        type: u2_nullable
+        doc: 'startDate. Nullable, No Value = 0'
       - id: end_date
-        type: u2
-        doc: 'endDate'
-      - id: security_type_security_type_enum
+        type: u2_nullable
+        doc: 'endDate. Nullable, No Value = 0'
+      - id: security_type
         type: u1
-        enum: security_type_security_type_enum
+        enum: security_type
         doc: 'securityType'
       - id: block_extension
         size: _parent.message_header.block_length - 20
@@ -2168,7 +2024,7 @@ types:
         doc: 'noLegs'
   security_definition_request_create_strategy_message_no_legs_group:
     seq:
-      - id: leg_symbol_int_32
+      - id: leg_symbol
         type: s4
         doc: 'legSymbol'
       - id: leg_security_type
@@ -2179,18 +2035,18 @@ types:
         type: u1
         enum: leg_side
         doc: 'legSide'
-      - id: leg_ratio_qty_denominator_int_16_null
-        type: s2
-        doc: 'Required if legSecurityType is OPT or FUT'
-      - id: leg_ratio_qty_numerator_int_16_null
-        type: s2
-        doc: 'Required if legSecurityType is OPT or FUT'
+      - id: leg_ratio_qty_denominator_optional
+        type: s2_nullable
+        doc: 'Required if legSecurityType is OPT or FUT. Nullable, No Value = -32768'
+      - id: leg_ratio_qty_numerator_optional
+        type: s2_nullable
+        doc: 'Required if legSecurityType is OPT or FUT. Nullable, No Value = -32768'
       - id: leg_price
-        type: s8
-        doc: 'Required if legSecurityType is FUT'
+        type: s8_nullable
+        doc: 'Required if legSecurityType is FUT. Nullable, No Value = -9223372036854775808'
       - id: leg_option_delta
-        type: s4
-        doc: 'Required if legSecurityType is FUT or CS'
+        type: s4_nullable
+        doc: 'Required if legSecurityType is FUT or CS. Nullable, No Value = -2147483648'
       - id: block_extension
         size: _parent.group_size_encoding.block_length - 22
         doc: 'Bytes the stated block holds beyond the 22 this version reads'
@@ -2203,25 +2059,25 @@ types:
         type: u1
         enum: security_request_type
         doc: 'securityRequestType'
-      - id: market_type_i_d_int_32
+      - id: market_type_id
         type: s4
         doc: 'marketTypeID'
-      - id: security_type_security_type_enum
+      - id: security_type
         type: u1
-        enum: security_type_security_type_enum
+        enum: security_type
         doc: 'securityType'
       - id: maturity_date
-        type: u2
-        doc: 'maturityDate'
-      - id: product_i_d_int_32_null
-        type: s4
-        doc: 'productID'
-      - id: symbol_int_32_null
-        type: s4
-        doc: 'symbol'
+        type: u2_nullable
+        doc: 'maturityDate. Nullable, No Value = 0'
+      - id: product_i_d_optional
+        type: s4_nullable
+        doc: 'productID. Nullable, No Value = -2147483648'
+      - id: symbol_optional
+        type: s4_nullable
+        doc: 'symbol. Nullable, No Value = -2147483648'
       - id: strike_price
-        type: s8
-        doc: 'strikePrice'
+        type: s8_nullable
+        doc: 'strikePrice. Nullable, No Value = -9223372036854775808'
       - id: block_extension
         size: _parent.message_header.block_length - 28
         doc: 'Bytes the stated block holds beyond the 28 this version reads'
@@ -2238,16 +2094,16 @@ types:
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
-      - id: ord_type_order_type_enum
+      - id: ord_type
         type: u1
-        enum: ord_type_order_type_enum
+        enum: ord_type
         doc: 'ordType'
-      - id: side_side_enum
+      - id: side
         type: u1
-        enum: side_side_enum
+        enum: side
         doc: 'side'
       - id: orig_order_id
         type: orig_order_id
@@ -2255,24 +2111,21 @@ types:
       - id: leaves_qty
         type: s8
         doc: 'leavesQty'
-      - id: price_decimal_9_null
-        type: s8
-        doc: 'price'
-      - id: me_acceptance_time_utc_timestamp
+      - id: price_optional
+        type: s8_nullable
+        doc: 'price. Nullable, No Value = -9223372036854775808'
+      - id: me_acceptance_time
         type: u8
         doc: 'meAcceptanceTime'
       - id: time_priority
         type: u8
         doc: 'timePriority'
       - id: order_status
-        type: u1
-        enum: order_status
-        doc: 'orderStatus'
+        type: u1_nullable
+        doc: 'orderStatus. Nullable, No Value = 255'
       - id: memo
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'memo'
+        type: str_30_nullable
+        doc: 'memo. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 133
         doc: 'Bytes the stated block holds beyond the 133 this version reads'
@@ -2308,33 +2161,33 @@ types:
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
-      - id: ord_type_order_type_enum
+      - id: ord_type
         type: u1
-        enum: ord_type_order_type_enum
+        enum: ord_type
         doc: 'ordType'
-      - id: side_side_enum
+      - id: side
         type: u1
-        enum: side_side_enum
+        enum: side
         doc: 'side'
       - id: orig_order_id
         type: orig_order_id
         doc: 'ExecutionReport_NewMessage'
-      - id: orig_cl_ord_i_d_int_64_null
-        type: s8
-        doc: 'origClOrdID'
+      - id: orig_cl_ord_i_d_optional
+        type: s8_nullable
+        doc: 'origClOrdID. Nullable, No Value = -9223372036854775808'
       - id: leaves_qty
         type: s8
         doc: 'leavesQty'
       - id: cum_qty
         type: s8
         doc: 'cumQty'
-      - id: price_decimal_9_null
-        type: s8
-        doc: 'price'
-      - id: me_acceptance_time_utc_timestamp
+      - id: price_optional
+        type: s8_nullable
+        doc: 'price. Nullable, No Value = -9223372036854775808'
+      - id: me_acceptance_time
         type: u8
         doc: 'meAcceptanceTime'
       - id: time_priority
@@ -2345,25 +2198,20 @@ types:
         enum: exec_type
         doc: 'execType'
       - id: order_status
-        type: u1
-        enum: order_status
-        doc: 'orderStatus'
+        type: u1_nullable
+        doc: 'orderStatus. Nullable, No Value = 255'
       - id: order_state
-        type: u1
-        enum: order_state
-        doc: 'orderState'
+        type: u1_nullable
+        doc: 'orderState. Nullable, No Value = 255'
       - id: exec_restatement_reason
-        type: u1
-        enum: exec_restatement_reason
-        doc: 'execRestatementReason'
+        type: u1_nullable
+        doc: 'execRestatementReason. Nullable, No Value = 255'
       - id: order_modification_flags
         type: order_modification_flags
         doc: 'OrderFlags bit set'
       - id: memo
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'memo'
+        type: str_30_nullable
+        doc: 'memo. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 153
         doc: 'Bytes the stated block holds beyond the 153 this version reads'
@@ -2408,41 +2256,38 @@ types:
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
-      - id: ord_type_order_type_enum
+      - id: ord_type
         type: u1
-        enum: ord_type_order_type_enum
+        enum: ord_type
         doc: 'ordType'
-      - id: side_side_enum
+      - id: side
         type: u1
-        enum: side_side_enum
+        enum: side
         doc: 'side'
       - id: orig_order_id
         type: orig_order_id
         doc: 'ExecutionReport_NewMessage'
-      - id: orig_cl_ord_i_d_int_64_null
-        type: s8
-        doc: 'origClOrdID'
-      - id: me_acceptance_time_utc_timestamp
+      - id: orig_cl_ord_i_d_optional
+        type: s8_nullable
+        doc: 'origClOrdID. Nullable, No Value = -9223372036854775808'
+      - id: me_acceptance_time
         type: u8
         doc: 'meAcceptanceTime'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: cancel_reason
-        type: u1
-        enum: cancel_reason
-        doc: 'cancelReason'
-      - id: cross_i_d_int_64_null
-        type: s8
-        doc: 'crossID'
+        type: u1_nullable
+        doc: 'cancelReason. Nullable, No Value = 255'
+      - id: cross_i_d_optional
+        type: s8_nullable
+        doc: 'crossID. Nullable, No Value = -9223372036854775808'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 199
         doc: 'Bytes the stated block holds beyond the 199 this version reads'
@@ -2459,48 +2304,41 @@ types:
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
-      - id: ord_type_order_type_enum_null
+      - id: ord_type_optional
+        type: u1_nullable
+        doc: 'ordType. Nullable, No Value = 255'
+      - id: side
         type: u1
-        enum: ord_type_order_type_enum_null
-        doc: 'ordType'
-      - id: side_side_enum
-        type: u1
-        enum: side_side_enum
+        enum: side
         doc: 'side'
       - id: orig_order_id
         type: orig_order_id
         doc: 'ExecutionReport_NewMessage'
-      - id: orig_cl_ord_i_d_int_64_null
-        type: s8
-        doc: 'origClOrdID'
+      - id: orig_cl_ord_i_d_optional
+        type: s8_nullable
+        doc: 'origClOrdID. Nullable, No Value = -9223372036854775808'
       - id: order_status
-        type: u1
-        enum: order_status
-        doc: 'orderStatus'
+        type: u1_nullable
+        doc: 'orderStatus. Nullable, No Value = 255'
       - id: reject_response_to
         type: u1
         enum: reject_response_to
         doc: 'rejectResponseTo'
       - id: reject_reason
-        type: u1
-        enum: reject_reason
-        doc: 'rejectReason'
+        type: u1_nullable
+        doc: 'rejectReason. Nullable, No Value = 255'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: memo
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'memo'
+        type: str_30_nullable
+        doc: 'memo. Nullable, No Value = 0'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 215
         doc: 'Bytes the stated block holds beyond the 215 this version reads'
@@ -2517,149 +2355,128 @@ types:
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
-      - id: ord_type_order_type_enum
+      - id: ord_type
         type: u1
-        enum: ord_type_order_type_enum
+        enum: ord_type
         doc: 'ordType'
-      - id: side_side_enum
+      - id: side
         type: u1
-        enum: side_side_enum
+        enum: side
         doc: 'side'
       - id: orig_order_id
         type: orig_order_id
         doc: 'ExecutionReport_NewMessage'
       - id: max_show
-        type: s8
-        doc: 'maxShow'
+        type: s8_nullable
+        doc: 'maxShow. Nullable, No Value = -9223372036854775808'
       - id: leaves_qty
         type: s8
         doc: 'leavesQty'
       - id: cum_qty
         type: s8
         doc: 'cumQty'
-      - id: price_decimal_9_null
-        type: s8
-        doc: 'price'
+      - id: price_optional
+        type: s8_nullable
+        doc: 'price. Nullable, No Value = -9223372036854775808'
       - id: stop_px
-        type: s8
-        doc: 'stopPx'
+        type: s8_nullable
+        doc: 'stopPx. Nullable, No Value = -9223372036854775808'
       - id: expire_date
-        type: u2
-        doc: 'expireDate'
+        type: u2_nullable
+        doc: 'expireDate. Nullable, No Value = 0'
       - id: time_priority
         type: u8
         doc: 'timePriority'
-      - id: time_in_force_time_in_force_enum
+      - id: time_in_force
         type: u1
-        enum: time_in_force_time_in_force_enum
+        enum: time_in_force
         doc: 'timeInForce'
       - id: order_status
-        type: u1
-        enum: order_status
-        doc: 'orderStatus'
+        type: u1_nullable
+        doc: 'orderStatus. Nullable, No Value = 255'
       - id: order_state
-        type: u1
-        enum: order_state
-        doc: 'orderState'
+        type: u1_nullable
+        doc: 'orderState. Nullable, No Value = 255'
       - id: give_up_clearing_firm
-        type: s4
-        doc: 'giveUpClearingFirm'
-      - id: clearing_firm_int_32_null
-        type: s4
-        doc: 'clearingFirm'
+        type: s4_nullable
+        doc: 'giveUpClearingFirm. Nullable, No Value = -2147483648'
+      - id: clearing_firm_optional
+        type: s4_nullable
+        doc: 'clearingFirm. Nullable, No Value = -2147483648'
       - id: direct_electronic_access
-        type: u1
-        enum: direct_electronic_access
-        doc: 'directElectronicAccess'
+        type: u1_nullable
+        doc: 'directElectronicAccess. Nullable, No Value = 255'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'tradingCapacity'
+        type: u1_nullable
+        doc: 'tradingCapacity. Nullable, No Value = 255'
       - id: liquidity_provision
-        type: u1
-        enum: liquidity_provision
-        doc: 'liquidityProvision'
+        type: u1_nullable
+        doc: 'liquidityProvision. Nullable, No Value = 255'
       - id: commodity_deriv_indicator
-        type: u1
-        enum: commodity_deriv_indicator
-        doc: 'commodityDerivIndicator'
+        type: u1_nullable
+        doc: 'commodityDerivIndicator. Nullable, No Value = 255'
       - id: investment_decision
-        type: s8
-        doc: 'investmentDecision'
+        type: s8_nullable
+        doc: 'investmentDecision. Nullable, No Value = -9223372036854775808'
       - id: execution_decision
-        type: s8
-        doc: 'executionDecision'
+        type: s8_nullable
+        doc: 'executionDecision. Nullable, No Value = -9223372036854775808'
       - id: client_id_code
-        type: s8
-        doc: 'clientIDCode'
+        type: s8_nullable
+        doc: 'clientIDCode. Nullable, No Value = -9223372036854775808'
       - id: mifid_id
-        type: s8
-        doc: 'mifidID'
+        type: s8_nullable
+        doc: 'mifidID. Nullable, No Value = -9223372036854775808'
       - id: self_match_prevention_id
-        type: s8
-        doc: 'selfMatchPreventionID'
+        type: s8_nullable
+        doc: 'selfMatchPreventionID. Nullable, No Value = -9223372036854775808'
       - id: self_match_prevention_instruction
         type: u1
         enum: self_match_prevention_instruction
-        doc: 'selfMatchPreventionInstruction'
+        doc: 'selfMatchPreventionInstruction. Nullable, No Value = 0'
       - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'manualOrderIndicator'
+        type: u1_nullable
+        doc: 'manualOrderIndicator. Nullable, No Value = 255'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'execInst'
+        doc: 'execInst. Nullable, No Value = 0'
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
-        doc: 'custOrderHandlingInst'
+        doc: 'custOrderHandlingInst. Nullable, No Value = 0'
       - id: position_effect
         type: u1
         enum: position_effect
-        doc: 'positionEffect'
+        doc: 'positionEffect. Nullable, No Value = 0'
       - id: alloc_handl_inst
         type: u1
         enum: alloc_handl_inst
-        doc: 'allocHandlInst'
-      - id: clearing_account_string_14_null
-        type: str
-        size: 14
-        encoding: ASCII
-        doc: 'clearingAccount'
+        doc: 'allocHandlInst. Nullable, No Value = 0'
+      - id: clearing_account_optional
+        type: str_14_nullable
+        doc: 'clearingAccount. Nullable, No Value = 0'
       - id: customer_account_ref_id
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'customerAccountRefID'
+        type: str_12_nullable
+        doc: 'customerAccountRefID. Nullable, No Value = 0'
       - id: memo
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'memo'
+        type: str_30_nullable
+        doc: 'memo. Nullable, No Value = 0'
       - id: allocation_account
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'allocationAccount'
+        type: str_20_nullable
+        doc: 'allocationAccount. Nullable, No Value = 0'
       - id: on_behalf_of_comp_id
-        type: str
-        size: 41
-        encoding: ASCII
-        doc: 'onBehalfOfCompId'
-      - id: on_behalf_of_sub_i_d_string_41_null
-        type: str
-        size: 41
-        encoding: ASCII
-        doc: 'onBehalfOfSubID'
-      - id: on_behalf_of_location_i_d_string_41_null
-        type: str
-        size: 41
-        encoding: ASCII
-        doc: 'onBehalfOfLocationID'
+        type: str_41_nullable
+        doc: 'onBehalfOfCompId. Nullable, No Value = 0'
+      - id: on_behalf_of_sub_i_d_optional
+        type: str_41_nullable
+        doc: 'onBehalfOfSubID. Nullable, No Value = 0'
+      - id: on_behalf_of_location_i_d_optional
+        type: str_41_nullable
+        doc: 'onBehalfOfLocationID. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 380
         doc: 'Bytes the stated block holds beyond the 380 this version reads'
@@ -2676,16 +2493,16 @@ types:
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
-      - id: ord_type_order_type_enum
+      - id: ord_type
         type: u1
-        enum: ord_type_order_type_enum
+        enum: ord_type
         doc: 'ordType'
-      - id: side_side_enum
+      - id: side
         type: u1
-        enum: side_side_enum
+        enum: side
         doc: 'side'
       - id: order_id
         type: s8
@@ -2700,17 +2517,17 @@ types:
         type: s8
         doc: 'cumQty'
       - id: last_px
-        type: s8
-        doc: 'lastPx'
+        type: s8_nullable
+        doc: 'lastPx. Nullable, No Value = -9223372036854775808'
       - id: last_shares
         type: s8
         doc: 'lastShares'
-      - id: transact_time_utc_timestamp
+      - id: transact_time
         type: u8
         doc: 'transactTime'
       - id: num_of_lots
-        type: s8
-        doc: 'numOfLots'
+        type: s8_nullable
+        doc: 'numOfLots. Nullable, No Value = -9223372036854775808'
       - id: exec_type
         type: u1
         enum: exec_type
@@ -2718,56 +2535,49 @@ types:
       - id: trade_flags
         type: trade_flags
         doc: 'TradeFlags bit set'
-      - id: clearing_firm_int_32_null
-        type: s4
-        doc: 'clearingFirm'
-      - id: clearing_account_string_14_null
-        type: str
-        size: 14
-        encoding: ASCII
-        doc: 'clearingAccount'
+      - id: clearing_firm_optional
+        type: s4_nullable
+        doc: 'clearingFirm. Nullable, No Value = -2147483648'
+      - id: clearing_account_optional
+        type: str_14_nullable
+        doc: 'clearingAccount. Nullable, No Value = 0'
       - id: memo
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'memo'
+        type: str_30_nullable
+        doc: 'memo. Nullable, No Value = 0'
       - id: exec_ref_id
-        type: s8
-        doc: 'execRefID'
+        type: s8_nullable
+        doc: 'execRefID. Nullable, No Value = -9223372036854775808'
       - id: no_leg_executions
-        type: s2
-        doc: 'noLegExecutions'
+        type: s2_nullable
+        doc: 'noLegExecutions. Nullable, No Value = -32768'
       - id: secondary_exec_id
-        type: s8
-        doc: 'secondaryExecID'
+        type: s8_nullable
+        doc: 'secondaryExecID. Nullable, No Value = -9223372036854775808'
       - id: link_exec_id
-        type: s8
-        doc: 'linkExecID'
+        type: s8_nullable
+        doc: 'linkExecID. Nullable, No Value = -9223372036854775808'
       - id: last_par_px
-        type: s8
-        doc: 'lastParPx'
+        type: s8_nullable
+        doc: 'lastParPx. Nullable, No Value = -9223372036854775808'
       - id: delivery_start_date
-        type: u8
-        doc: 'deliveryStartDate'
+        type: u8_nullable
+        doc: 'deliveryStartDate. Nullable, No Value = 0'
       - id: delivery_end_date
-        type: u8
-        doc: 'deliveryEndDate'
-      - id: cross_i_d_int_64_null
-        type: s8
-        doc: 'crossID'
-      - id: cross_type_cross_type_enum_null
+        type: u8_nullable
+        doc: 'deliveryEndDate. Nullable, No Value = 0'
+      - id: cross_i_d_optional
+        type: s8_nullable
+        doc: 'crossID. Nullable, No Value = -9223372036854775808'
+      - id: cross_type_optional
         type: u1
-        enum: cross_type_cross_type_enum_null
-        doc: 'crossType'
+        enum: cross_type_optional
+        doc: 'crossType. Nullable, No Value = 0'
       - id: waiver_indicator
-        type: u1
-        enum: waiver_indicator
-        doc: 'waiverIndicator'
+        type: u1_nullable
+        doc: 'waiverIndicator. Nullable, No Value = 255'
       - id: trade_type
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'tradeType'
+        type: str_3_nullable
+        doc: 'tradeType. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 227
         doc: 'Bytes the stated block holds beyond the 227 this version reads'
@@ -2806,11 +2616,10 @@ types:
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
-      - id: side_side_enum_null
-        type: u1
-        enum: side_side_enum_null
-        doc: 'side'
-      - id: symbol_int_32
+      - id: side_optional
+        type: u1_nullable
+        doc: 'side. Nullable, No Value = 255'
+      - id: symbol
         type: s4
         doc: 'symbol'
       - id: rfq_req_id
@@ -2819,20 +2628,19 @@ types:
       - id: rfq_system_id
         type: s8
         doc: 'rfqSystemID'
-      - id: transact_time_utc_timestamp
+      - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: order_qty_decimal_9_null
-        type: s8
-        doc: 'orderQty'
+      - id: order_qty_optional
+        type: s8_nullable
+        doc: 'orderQty. Nullable, No Value = -9223372036854775808'
       - id: quote_ack_status
         type: u2
         enum: quote_ack_status
         doc: 'quoteAckStatus'
       - id: quote_reject_reason
-        type: u1
-        enum: quote_reject_reason
-        doc: 'quoteRejectReason'
+        type: u1_nullable
+        doc: 'quoteRejectReason. Nullable, No Value = 255'
       - id: block_extension
         size: _parent.message_header.block_length - 60
         doc: 'Bytes the stated block holds beyond the 60 this version reads'
@@ -2843,13 +2651,13 @@ types:
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
-      - id: cross_i_d_int_64
+      - id: cross_id
         type: s8
         doc: 'crossID'
-      - id: transact_time_utc_timestamp
+      - id: transact_time
         type: u8
         doc: 'transactTime'
       - id: rfc_status
@@ -2857,13 +2665,11 @@ types:
         enum: rfc_status
         doc: 'rfcStatus'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 145
         doc: 'Bytes the stated block holds beyond the 145 this version reads'
@@ -2874,18 +2680,18 @@ types:
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
-      - id: symbol_int_32_null
-        type: s4
-        doc: 'symbol'
+      - id: symbol_optional
+        type: s4_nullable
+        doc: 'symbol. Nullable, No Value = -2147483648'
       - id: cl_ord_id
         type: s8
         doc: 'clOrdID'
-      - id: transact_time_utc_timestamp
+      - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: market_type_i_d_int_32_null
-        type: s4
-        doc: 'marketTypeID'
+      - id: market_type_i_d_optional
+        type: s4_nullable
+        doc: 'marketTypeID. Nullable, No Value = -2147483648'
       - id: mass_cancel_request_type
         type: u1
         enum: mass_cancel_request_type
@@ -2895,17 +2701,14 @@ types:
         enum: mass_cancel_response
         doc: 'massCancelResponse'
       - id: mass_cancel_reject_reason
-        type: u1
-        enum: mass_cancel_reject_reason
-        doc: 'massCancelRejectReason'
+        type: u1_nullable
+        doc: 'massCancelRejectReason. Nullable, No Value = 255'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 151
         doc: 'Bytes the stated block holds beyond the 151 this version reads'
@@ -2920,31 +2723,27 @@ types:
         encoding: ASCII
         doc: 'originatorUserID'
       - id: risk_protection_reset
-        type: u1
-        enum: risk_protection_reset
-        doc: 'riskProtectionReset'
+        type: u1_nullable
+        doc: 'riskProtectionReset. Nullable, No Value = 255'
       - id: quote_ack_status
         type: u2
         enum: quote_ack_status
         doc: 'quoteAckStatus'
       - id: quote_reject_reason
-        type: u1
-        enum: quote_reject_reason
-        doc: 'quoteRejectReason'
-      - id: transact_time_utc_timestamp_null
-        type: u8
-        doc: 'transactTime'
-      - id: me_acceptance_time_utc_timestamp_null
-        type: u8
-        doc: 'meAcceptanceTime'
+        type: u1_nullable
+        doc: 'quoteRejectReason. Nullable, No Value = 255'
+      - id: transact_time_optional
+        type: u8_nullable
+        doc: 'transactTime. Nullable, No Value = 0'
+      - id: me_acceptance_time_optional
+        type: u8_nullable
+        doc: 'meAcceptanceTime. Nullable, No Value = 0'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 152
         doc: 'Bytes the stated block holds beyond the 152 this version reads'
@@ -2966,27 +2765,24 @@ types:
       - id: quote_set_id
         type: s4
         doc: 'quoteSetID'
-      - id: underlying_symbol_int_32
+      - id: underlying_symbol
         type: s4
         doc: 'underlyingSymbol'
       - id: quote_entry_id
         type: s4
         doc: 'quoteEntryID'
-      - id: symbol_int_32
+      - id: symbol
         type: s4
         doc: 'symbol'
       - id: quote_entry_reject_reason
-        type: u1
-        enum: quote_entry_reject_reason
-        doc: 'quoteEntryRejectReason'
+        type: u1_nullable
+        doc: 'quoteEntryRejectReason. Nullable, No Value = 255'
       - id: quote_entry_exchange_code
-        type: s4
-        doc: 'quoteEntryExchangeCode'
+        type: s4_nullable
+        doc: 'quoteEntryExchangeCode. Nullable, No Value = -2147483648'
       - id: quote_entry_reject_reason_text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'quoteEntryRejectReasonText'
+        type: str_100_nullable
+        doc: 'quoteEntryRejectReasonText. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.group_size_encoding.block_length - 121
         doc: 'Bytes the stated block holds beyond the 121 this version reads'
@@ -3014,13 +2810,11 @@ types:
         enum: status
         doc: 'status'
       - id: exchange_code
-        type: s4
-        doc: 'exchangeCode'
+        type: s4_nullable
+        doc: 'exchangeCode. Nullable, No Value = -2147483648'
       - id: text
-        type: str
-        size: 100
-        encoding: ASCII
-        doc: 'text'
+        type: str_100_nullable
+        doc: 'text. Nullable, No Value = 0'
       - id: block_extension
         size: _parent.message_header.block_length - 113
         doc: 'Bytes the stated block holds beyond the 113 this version reads'
@@ -3030,9 +2824,8 @@ types:
         type: u4
         doc: 'newSeqNo'
       - id: gap_fill_flag
-        type: u1
-        enum: gap_fill_flag
-        doc: 'gapFillFlag'
+        type: u1_nullable
+        doc: 'gapFillFlag. Nullable, No Value = 255'
       - id: block_extension
         size: _parent.message_header.block_length - 5
         doc: 'Bytes the stated block holds beyond the 5 this version reads'
@@ -3049,6 +2842,154 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
+  str_50_nullable:
+    seq:
+      - id: value
+        size: 50
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == -2147483648
+  str_100_nullable:
+    seq:
+      - id: value
+        size: 100
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_1_nullable:
+    seq:
+      - id: value
+        size: 1
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "0"
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
+  s1_nullable:
+    seq:
+      - id: value
+        type: s1
+    instances:
+      is_null:
+        value: value == -128
+  s2_nullable:
+    seq:
+      - id: value
+        type: s2
+    instances:
+      is_null:
+        value: value == -32768
+  str_3_nullable:
+    seq:
+      - id: value
+        size: 3
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_30_nullable:
+    seq:
+      - id: value
+        size: 30
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_15_nullable:
+    seq:
+      - id: value
+        size: 15
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_20_nullable:
+    seq:
+      - id: value
+        size: 20
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_41_nullable:
+    seq:
+      - id: value
+        size: 41
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_14_nullable:
+    seq:
+      - id: value
+        size: 14
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_75_nullable:
+    seq:
+      - id: value
+        size: 75
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 0
 
 enums:
   template_id:
@@ -3267,7 +3208,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-  mifid_regulated_market_boolean_enum:
+  mifid_regulated_market:
     0:
       id: 'false_field'
       doc: 'False'
@@ -3281,7 +3222,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-  test_market_indicator_boolean_enum:
+  test_market_indicator:
     0:
       id: 'false_field'
       doc: 'False'
@@ -3373,7 +3314,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-  mifid_regulated_market_boolean_enum_null:
+  mifid_regulated_market_optional:
     0:
       id: 'false_field'
       doc: 'False'
@@ -3387,7 +3328,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-  test_market_indicator_boolean_enum_null:
+  test_market_indicator_optional:
     0:
       id: 'false_field'
       doc: 'False'
@@ -3430,7 +3371,7 @@ enums:
     104:
       id: 'request_list_of_products'
       doc: 'RequestListOfProducts'
-  security_type_security_type_enum_null:
+  security_type_optional:
     1:
       id: 'fut'
       doc: 'FUT'
@@ -3551,7 +3492,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-  time_in_force_time_in_force_enum:
+  time_in_force:
     0:
       id: 'day'
       doc: 'Day'
@@ -3567,14 +3508,14 @@ enums:
     6:
       id: 'gtd'
       doc: 'GTD'
-  side_side_enum:
+  side:
     1:
       id: 'buy'
       doc: 'Buy'
     2:
       id: 'sell'
       doc: 'Sell'
-  ord_type_order_type_enum:
+  ord_type:
     1:
       id: 'market'
       doc: 'Market'
@@ -3666,14 +3607,14 @@ enums:
     103:
       id: 'npv_differential'
       doc: 'NPVDifferential'
-  side_side_enum_null:
+  side_optional:
     1:
       id: 'buy'
       doc: 'Buy'
     2:
       id: 'sell'
       doc: 'Sell'
-  cross_type_cross_type_enum:
+  cross_type:
     0x31:
       id: 'aon'
       doc: 'AON'
@@ -3691,7 +3632,7 @@ enums:
     3:
       id: 'fixed_amount'
       doc: 'FixedAmount'
-  ord_type_order_type_enum_null:
+  ord_type_optional:
     1:
       id: 'market'
       doc: 'Market'
@@ -3711,7 +3652,7 @@ enums:
     10:
       id: 'cancel_all_for_trader'
       doc: 'CancelAllForTrader'
-  time_in_force_time_in_force_enum_null:
+  time_in_force_optional:
     0:
       id: 'day'
       doc: 'Day'
@@ -3744,7 +3685,7 @@ enums:
     5:
       id: 'cancel_by_product_id'
       doc: 'CancelByProductID'
-  security_type_security_type_enum:
+  security_type:
     1:
       id: 'fut'
       doc: 'FUT'
@@ -3899,7 +3840,7 @@ enums:
     12:
       id: 'risk_protection_active'
       doc: 'RiskProtectionActive'
-  cross_type_cross_type_enum_null:
+  cross_type_optional:
     0x31:
       id: 'aon'
       doc: 'AON'

@@ -188,12 +188,12 @@ types:
     seq:
       - id: text
         type: str
-        size: 100
+        size: 180
         encoding: ASCII
-        doc: 'Reject reason details'
+        doc: 'Free format text string. May include logout confirmation or reason for logout'
       - id: block_extension
-        size: _parent._parent.message_header.simple_binary_header.block_length - 100
-        doc: 'Bytes the stated block holds beyond the 100 this version reads'
+        size: _parent._parent.message_header.simple_binary_header.block_length - 180
+        doc: 'Bytes the stated block holds beyond the 180 this version reads'
   md_instrument_definition_future:
     seq:
       - id: match_event_indicator
@@ -1779,7 +1779,7 @@ types:
         type: u1
         enum: md_req_rej_reason
         doc: 'Market Data Request Reject reason code'
-      - id: text
+      - id: session_text
         type: str
         size: 100
         encoding: ASCII

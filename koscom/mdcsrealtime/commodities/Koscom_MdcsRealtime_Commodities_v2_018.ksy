@@ -141,10 +141,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value Trading value=trading amount*trading price'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
         type: u1
@@ -192,10 +189,7 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value Trading value=trading amount*trading price'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
         type: u1
@@ -245,10 +239,7 @@ types:
         pad-right: 0x20
         doc: 'Provided only in case of "USDKRW" - GOLDKRWGR'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
         type: u1
@@ -3664,14 +3655,10 @@ types:
         type: str_1_nullable
         doc: '1: Closing price 2: Quotation 3: No Trades 4: Quotation of an Issue of which base price is settled with a today''s single price. Nullable, No Value ='
       - id: filler_11
-        type: str
         size: 11
-        encoding: ASCII
         doc: 'Upper Limit Price on the Single Price Trade in the Off-Hours Session'
       - id: second_filler_11
-        type: str
         size: 11
-        encoding: ASCII
         doc: 'Upper Limit Price on the Single Price Trade in the Off-Hours Session'
       - id: closing_price_weighted_stock_price_average
         type: str
@@ -3880,14 +3867,10 @@ types:
         type: str_1_nullable
         doc: '1: Closing price 2: Quotation 3: No Trades 4: Quotation of an Issue of which base price is settled with a today''s single price. Nullable, No Value ='
       - id: filler_11
-        type: str
         size: 11
-        encoding: ASCII
         doc: 'Upper Limit Price on the Single Price Trade in the Off-Hours Session'
       - id: second_filler_11
-        type: str
         size: 11
-        encoding: ASCII
         doc: 'Upper Limit Price on the Single Price Trade in the Off-Hours Session'
       - id: closing_price_weighted_stock_price_average
         type: str

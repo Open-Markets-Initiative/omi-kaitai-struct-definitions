@@ -80,11 +80,11 @@ types:
         type:
           switch-on: message_header.message_type
           cases:
-            109: last_quote_message
-            58: benchmark_trade_message
-            64: price_leaderboard_message
-            60: trading_sniper_message
-            94: depth_at_best_prices_message
+            'message_type::last_quote_message': last_quote_message
+            'message_type::benchmark_trade_message': benchmark_trade_message
+            'message_type::price_leaderboard_message': price_leaderboard_message
+            'message_type::trading_sniper_message': trading_sniper_message
+            'message_type::depth_at_best_prices_message': depth_at_best_prices_message
   message_header:
     seq:
       - id: message_length
@@ -92,6 +92,7 @@ types:
         doc: 'Indicates message length contained in this message block'
       - id: message_type
         type: u1
+        enum: message_type
         doc: 'Code identifying the message'
   last_quote_message:
     seq:
@@ -399,6 +400,22 @@ enums:
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x6d:
+      id: 'last_quote_message'
+      doc: 'Message sent by instrument when the best bid is modified in the electronic book by the Origin Exchange; denotes the side that is modified, the sale or the purchase.'
+    0x3a:
+      id: 'benchmark_trade_message'
+      doc: 'Trading statistics by trade.'
+    0x40:
+      id: 'price_leaderboard_message'
+      doc: 'Measures time proportion that a stock Exchange maintains the best bid and (or) ask throughout the session.'
+    0x3c:
+      id: 'trading_sniper_message'
+      doc: 'Quotes composition analysis, full and first ten depth levels'
+    0x5e:
+      id: 'depth_at_best_prices_message'
+      doc: 'Identify the deepest quotes depth for the national best bid and offer.'
   origin:
     0x4d:
       id: 'bmv'

@@ -89,7 +89,7 @@ types:
   unit_clear_message:
     seq:
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved (undefined)'
   trading_status_message:
     seq:
@@ -152,7 +152,7 @@ types:
         type: trade_flags
         doc: 'Trade flags'
       - id: reserved_2
-        type: u2
+        size: 2
         doc: 'Reserved (undefined)'
   trade_flags:
     meta:
@@ -170,7 +170,7 @@ types:
   end_of_session_message:
     seq:
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved (undefined)'
   nanosecond_timestamp:
     seq:

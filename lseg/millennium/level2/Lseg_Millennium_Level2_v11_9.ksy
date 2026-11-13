@@ -166,8 +166,8 @@ types:
         size: 4
         doc: 'Reserved field'
       - id: previous_close_price
-        type: s8
-        doc: 'Previous Close Price of instrument'
+        type: decimal_s8_8
+        doc: 'Previous Close Price of instrument. Implied decimal with scale 1e-8'
   symbol_status_message:
     seq:
       - id: nanosecond
@@ -246,8 +246,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: add_order_flags
         type: add_order_flags
         doc: 'Add Order Flags'
@@ -298,8 +298,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: attribution
         type: str
         size: 11
@@ -364,8 +364,8 @@ types:
         type: u4
         doc: 'New displayed quantity of the order'
       - id: new_price
-        type: s8
-        doc: 'New limit price of the order'
+        type: decimal_s8_8
+        doc: 'New limit price of the order. Implied decimal with scale 1e-8'
       - id: order_modified_flags
         type: order_modified_flags
         doc: 'Order Modified Flags'
@@ -454,8 +454,8 @@ types:
         enum: printable
         doc: 'Printable'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
   trade_message:
     seq:
       - id: nanosecond
@@ -474,8 +474,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: trade_match_id
         type: u8
         doc: 'Unique identifier of the trade'
@@ -520,8 +520,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: trade_match_id
         type: u8
         doc: 'Unique identifier of the trade'
@@ -556,8 +556,8 @@ types:
         size: 1
         doc: 'Reserved field'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: auction_type
         type: u1
         enum: auction_type
@@ -581,8 +581,8 @@ types:
         enum: statistic_type
         doc: 'Statistic Type'
       - id: price
-        type: s8
-        doc: 'Limit price of the order'
+        type: decimal_s8_8
+        doc: 'Limit price of the order. Implied decimal with scale 1e-8'
       - id: open_close_price_indicator
         type: u1
         enum: open_close_price_indicator
@@ -605,14 +605,14 @@ types:
         type: u4
         doc: 'Instrument''s symbol'
       - id: buy_limit_price
-        type: s8
-        doc: 'Best bid price. Will contain zero if there are no visible limit orders on the buy side'
+        type: decimal_s8_8
+        doc: 'Best bid price. Will contain zero if there are no visible limit orders on the buy side. Implied decimal with scale 1e-8'
       - id: buy_limit_size
         type: u4
         doc: 'Cumulative visible size at best bid price. Will contain zero if there are no visible limit orders on the buy side'
       - id: sell_limit_price
-        type: s8
-        doc: 'Best offer price. Will contain zero if there are no visible limit orders on the sell side'
+        type: decimal_s8_8
+        doc: 'Best offer price. Will contain zero if there are no visible limit orders on the sell side. Implied decimal with scale 1e-8'
       - id: sell_limit_size
         type: u4
         doc: 'Cumulative visible size at best offer price. Will contain zero if there are no visible limit orders on the sell side'
@@ -638,6 +638,13 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
   u1_nullable:
     seq:
       - id: value

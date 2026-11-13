@@ -298,7 +298,7 @@ types:
         type: decimal_s8_6
         doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 20%. Implied decimal with scale 1e-6'
       - id: reserved
-        type: u1
+        size: 1
         doc: 'Field is reserved for future use'
   market_wide_circuit_breaker_status_message:
     seq:
@@ -323,7 +323,7 @@ types:
         enum: mwcb_level_indicator
         doc: 'Identifies the threshold level that was breached'
       - id: reserved
-        type: u1
+        size: 1
         doc: 'Field is reserved for future use'
   quote_message:
     seq:

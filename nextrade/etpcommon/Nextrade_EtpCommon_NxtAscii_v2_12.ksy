@@ -1372,10 +1372,7 @@ types:
         pad-right: 0x20
         doc: 'Index ID comprising of 6 digits'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: end_keyword
         type: str

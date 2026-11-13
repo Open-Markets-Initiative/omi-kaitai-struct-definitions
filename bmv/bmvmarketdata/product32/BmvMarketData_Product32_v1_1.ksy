@@ -80,10 +80,10 @@ types:
         type:
           switch-on: message_header.message_type
           cases:
-            61: effective_spread_message
-            123: spread_quality_message
-            64: price_leaderboard_message
-            124: quotes_quality_message
+            'message_type::effective_spread_message': effective_spread_message
+            'message_type::spread_quality_message': spread_quality_message
+            'message_type::price_leaderboard_message': price_leaderboard_message
+            'message_type::quotes_quality_message': quotes_quality_message
   message_header:
     seq:
       - id: message_length
@@ -91,6 +91,7 @@ types:
         doc: 'Indicates message length contained in this message block'
       - id: message_type
         type: u1
+        enum: message_type
         doc: 'Code identifying the message'
   effective_spread_message:
     seq:
@@ -353,6 +354,19 @@ enums:
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
+  message_type:
+    0x3d:
+      id: 'effective_spread_message'
+      doc: 'Transaction cost analysis benchmark.'
+    0x7b:
+      id: 'spread_quality_message'
+      doc: 'Quality of the quoted spread throughout the session.'
+    0x40:
+      id: 'price_leaderboard_message'
+      doc: 'Measures time proportion that a stock Exchange maintains the best bid and (or) ask throughout the session.'
+    0x7c:
+      id: 'quotes_quality_message'
+      doc: 'Time proportion in which an Exchange maintains quotes on both sides, bid and ask.'
   origin:
     0x4d:
       id: 'bmv'
