@@ -564,8 +564,8 @@ types:
         type: nanosecond_timestamp
         doc: 'The last trading date/time of the Series in UTC timestamp (nanoseconds since 1970), precision to the nearest second. 0 = Not Applicable. Nanoseconds since Unix epoch'
       - id: date_time_first_trading
-        type: nanosecond_timestamp
-        doc: 'The first trading date/time of the Series in UTC timestamp (nanoseconds since 1970), precision to the nearest second. 0 = Not Applicable. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The first trading date/time of the Series in UTC timestamp (nanoseconds since 1970), precision to the nearest second. 0 = Not Applicable. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
   combination_definition_message:
     seq:
       - id: combo_orderbook_id
@@ -871,6 +871,13 @@ types:
         value: text.substring(4, 6).to_i
       day:
         value: text.substring(6, 8).to_i
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
 
 enums:
   compression_mode:

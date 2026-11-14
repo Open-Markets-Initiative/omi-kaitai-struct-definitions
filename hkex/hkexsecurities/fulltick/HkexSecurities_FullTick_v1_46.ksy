@@ -325,11 +325,11 @@ types:
         size: 1
         doc: 'Padding'
       - id: listing_date
-        type: u4
-        doc: 'Date of security listing. YYYYMMDD. Value is 19000101 for unknown listing date'
+        type: yyyymmdd_date_nullable
+        doc: 'Date of security listing. YYYYMMDD. Value is 19000101 for unknown listing date. Nullable, Unknown = 19000101'
       - id: delisting_date
-        type: u4
-        doc: 'Date of security delisting. YYYYMMDD. Value is 0 if no date exists'
+        type: yyyymmdd_date_nullable
+        doc: 'Date of security delisting. YYYYMMDD. Value is 0 if no date exists. Nullable, No Date = 0'
       - id: free_text
         type: str
         size: 38
@@ -378,7 +378,7 @@ types:
         pad-right: 0x20
         doc: 'Currency code of Face Value'
       - id: bond_maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Date of maturity of a bond security. YYYYMMDD'
       - id: investor_type
         type: u1
@@ -397,7 +397,7 @@ types:
         type: decimal_s4_3
         doc: 'Upper strike price of the security if it has lower and upper strike prices. 3 implied decimal places. Value is 0 if the security has only one strike price. Implied decimal with scale 1e-3'
       - id: warrant_maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Date of maturity of a bond security. YYYYMMDD'
       - id: call_put_flag
         type: u1
@@ -550,11 +550,11 @@ types:
         size: 4
         doc: 'Padding'
       - id: start_date_time
-        type: u8
-        doc: 'Start time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available'
+        type: nanosecond_timestamp_nullable
+        doc: 'Start time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available. Nanoseconds since Unix epoch. Nullable, Not Available = 0'
       - id: end_date_time
-        type: u8
-        doc: 'End time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available'
+        type: nanosecond_timestamp_nullable
+        doc: 'End time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available. Nanoseconds since Unix epoch. Nullable, Not Available = 0'
   security_status_message:
     seq:
       - id: security_code
@@ -589,8 +589,8 @@ types:
         size: 2
         doc: 'Padding'
       - id: trade_time
-        type: u8
-        doc: 'Time of trade. Nanoseconds since Unix epoch UTC. Precision to microsecond'
+        type: nanosecond_timestamp
+        doc: 'Time of trade. Nanoseconds since Unix epoch UTC. Precision to microsecond. Nanoseconds since Unix epoch'
   trade_cancel_message:
     seq:
       - id: security_code
@@ -605,11 +605,11 @@ types:
         type: u4
         doc: 'Uniquely identifies a security available for trading. 5 digit security codes with possible values 1 to 99999'
       - id: cooling_off_start_time
-        type: u8
-        doc: 'Time when the cooling off period starts. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Time when the cooling off period starts. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
       - id: cooling_off_end_time
-        type: u8
-        doc: 'Time when the cooling off period ends. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Time when the cooling off period ends. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
       - id: vcm_reference_price
         type: decimal_s4_3
         doc: 'Reference Price for the cooling off period. 3 implied decimal places. Implied decimal with scale 1e-3'
@@ -639,6 +639,24 @@ types:
     instances:
       real:
         value: mantissa / 1000.0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
+  yyyymmdd_date_nullable:
+    seq:
+      - id: value
+        type: yyyymmdd_date
+    instances:
+      is_null:
+        value: value.packed == 19000101
   decimal_u4_3:
     seq:
       - id: mantissa
@@ -653,6 +671,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
 
 enums:
   msg_type:

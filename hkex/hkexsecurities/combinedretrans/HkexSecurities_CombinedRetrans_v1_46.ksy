@@ -332,8 +332,8 @@ types:
         enum: index_status
         doc: 'Index status. Can be blank if not defined by third party index compilers'
       - id: index_time
-        type: s8_nullable
-        doc: 'Publisher timestamp. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nullable, No Value = -9223372036854775808'
+        type: nanosecond_timestamp_nullable
+        doc: 'Publisher timestamp. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
       - id: index_value
         type: decimal_s8_4_nullable
         doc: 'Current value of the index. 4 implied decimal places. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
@@ -440,8 +440,8 @@ types:
         size: 4
         doc: 'Padding'
       - id: release_time
-        type: u8
-        doc: 'Release time of the news. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Release time of the news. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
       - id: filler_2
         size: 2
         doc: 'Padding'
@@ -641,11 +641,11 @@ types:
         size: 1
         doc: 'Padding'
       - id: listing_date
-        type: u4
-        doc: 'Date of security listing. YYYYMMDD. Value is 19000101 for unknown listing date'
+        type: yyyymmdd_date_nullable
+        doc: 'Date of security listing. YYYYMMDD. Value is 19000101 for unknown listing date. Nullable, Unknown = 19000101'
       - id: delisting_date
-        type: u4
-        doc: 'Date of security delisting. YYYYMMDD. Value is 0 if no date exists'
+        type: yyyymmdd_date_nullable
+        doc: 'Date of security delisting. YYYYMMDD. Value is 0 if no date exists. Nullable, No Date = 0'
       - id: free_text
         type: str
         size: 38
@@ -694,7 +694,7 @@ types:
         pad-right: 0x20
         doc: 'Currency code of Face Value'
       - id: bond_maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Date of maturity of a bond security. YYYYMMDD'
       - id: investor_type
         type: u1
@@ -713,7 +713,7 @@ types:
         type: decimal_s4_3
         doc: 'Upper strike price of the security if it has lower and upper strike prices. 3 implied decimal places. Value is 0 if the security has only one strike price. Implied decimal with scale 1e-3'
       - id: warrant_maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Date of maturity of a bond security. YYYYMMDD'
       - id: call_put_flag
         type: u1
@@ -971,11 +971,11 @@ types:
         size: 4
         doc: 'Padding'
       - id: start_date_time
-        type: u8
-        doc: 'Start time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available'
+        type: nanosecond_timestamp_nullable
+        doc: 'Start time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available. Nanoseconds since Unix epoch. Nullable, Not Available = 0'
       - id: end_date_time
-        type: u8
-        doc: 'End time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available'
+        type: nanosecond_timestamp_nullable
+        doc: 'End time of the trading status. Nanoseconds since Unix epoch UTC, precision to the nearest second. 0 if no time is available. Nanoseconds since Unix epoch. Nullable, Not Available = 0'
   security_status_message:
     seq:
       - id: security_code
@@ -1006,8 +1006,8 @@ types:
         type: s8_nullable
         doc: 'Northbound Daily Quota Balance (DQB) value for specified Stock Connect Program. DQB in Renminbi (RMB). NULL when DQB is above/equal 30% of the daily quota; actual value when below 30%; 0 when quota is used up. Nullable, No Value = -9223372036854775808'
       - id: daily_quota_balance_time
-        type: u8
-        doc: 'Time of DailyQuotaBalance. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Time of DailyQuotaBalance. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
   stock_connect_market_turnover_message:
     seq:
       - id: stock_connect_market
@@ -1053,8 +1053,8 @@ types:
         size: 2
         doc: 'Padding'
       - id: trade_time
-        type: u8
-        doc: 'Time of trade. Nanoseconds since Unix epoch UTC. Precision to microsecond'
+        type: nanosecond_timestamp
+        doc: 'Time of trade. Nanoseconds since Unix epoch UTC. Precision to microsecond. Nanoseconds since Unix epoch'
   trade_cancel_message:
     seq:
       - id: security_code
@@ -1078,8 +1078,8 @@ types:
         type: u8
         doc: 'IEV'
       - id: trade_time
-        type: u8
-        doc: 'Time of trade. Nanoseconds since Unix epoch UTC. Precision to microsecond'
+        type: nanosecond_timestamp
+        doc: 'Time of trade. Nanoseconds since Unix epoch UTC. Precision to microsecond. Nanoseconds since Unix epoch'
       - id: trd_type
         type: s2
         enum: trd_type
@@ -1097,11 +1097,11 @@ types:
         type: u4
         doc: 'Uniquely identifies a security available for trading'
       - id: cooling_off_start_time
-        type: u8
-        doc: 'Time when the cooling off period starts. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Time when the cooling off period starts. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
       - id: cooling_off_end_time
-        type: u8
-        doc: 'Time when the cooling off period ends. Nanoseconds since Unix epoch UTC, precision to the nearest second'
+        type: nanosecond_timestamp
+        doc: 'Time when the cooling off period ends. Nanoseconds since Unix epoch UTC, precision to the nearest second. Nanoseconds since Unix epoch'
       - id: vcm_reference_price
         type: decimal_s4_3
         doc: 'Reference Price for the cooling off period. 3 implied decimal places. Implied decimal with scale 1e-3'
@@ -1155,13 +1155,13 @@ types:
     instances:
       real:
         value: mantissa / 1000.0
-  s8_nullable:
+  nanosecond_timestamp_nullable:
     seq:
       - id: value
-        type: s8
+        type: nanosecond_timestamp
     instances:
       is_null:
-        value: value == -9223372036854775808
+        value: value.time == -9223372036854775808
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -1190,6 +1190,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
   decimal_s4_4:
     seq:
       - id: mantissa
@@ -1197,6 +1204,24 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
+  yyyymmdd_date_nullable:
+    seq:
+      - id: value
+        type: yyyymmdd_date
+    instances:
+      is_null:
+        value: value.packed == 19000101
   decimal_u4_3:
     seq:
       - id: mantissa

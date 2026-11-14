@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 1,739 | 3,707,575 |
+| 1,740 | 3,708,717 |
 
 ## Testing
 
@@ -319,6 +319,7 @@ Enjoy.
 [Cboe.C1Options.ComplexOptionsFutures]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Cboe/Protocols/C1Options/ComplexOptionsFutures.md "Complex Options Futures"
 [Cboe.C1Options.ComplexTop]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Cboe/Protocols/C1Options/ComplexTop.md "Complex Top"
 [Cboe.C1Options.Flex]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Cboe/Protocols/C1Options/Flex.md "Flex"
+[Cboe.C1Options.Index]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Cboe/Protocols/C1Options/Index.md "Streaming Market Index"
 [Cboe.C1Options.MarketDataFeed]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Cboe/Protocols/C1Options/MarketDataFeed.md "Market Data Feed"
 [Cboe.C1Options.MarketLevel2]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Cboe/Protocols/C1Options/MarketLevel2.md "Market Level 2 Feed"
 [Cboe.C1Options.MulticastDepthOfBook]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Cboe/Protocols/C1Options/MulticastDepthOfBook.md "Multicast Depth Of Book"

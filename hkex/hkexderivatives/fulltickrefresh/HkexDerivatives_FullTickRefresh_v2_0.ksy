@@ -380,7 +380,7 @@ types:
         type: u4
         doc: 'Numerical identifier of the Underlying'
       - id: last_trading_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Last trading date of the instrument'
       - id: last_trading_time
         type: nanosecond_timestamp
@@ -389,11 +389,11 @@ types:
         type: s8
         doc: 'Price at which a specific options instrument can be exercised'
       - id: effective_last_trading_date
-        type: u4
-        doc: 'Sets the effective last trading date'
+        type: yyyymmdd_date_nullable
+        doc: 'Sets the effective last trading date. Nullable, Not Available = 0'
       - id: first_trading_date
-        type: u4
-        doc: 'The first trading date'
+        type: yyyymmdd_date_nullable
+        doc: 'The first trading date. Nullable, Not Available = 0'
       - id: first_trading_time
         type: nanosecond_timestamp
         doc: 'The first trading time (UTC timestamp). Nanoseconds since Unix epoch'
@@ -584,6 +584,24 @@ types:
     instances:
       is_null:
         value: value == -2147483648
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
+  yyyymmdd_date_nullable:
+    seq:
+      - id: value
+        type: yyyymmdd_date
+    instances:
+      is_null:
+        value: value.packed == 0
 
 enums:
   compression_mode:
