@@ -192,7 +192,7 @@ types:
         doc: 'Minimum tick size'
       - id: last_trading_date
         type: u4
-        doc: 'Last Trading Date and Time. Applicable to Contract Types “F” only, zero otherwise. Note where the time is defined, it is local time AEST or ADST depending if the expiry date is during AEST or ADST'
+        doc: 'Last Trading Date and Time. Applicable to Contract Types “F” only, zero otherwise. Note where the time is defined, it is local time AEST or ADST depending if the expiry date is during AEST or ADST. Seconds since Unix epoch'
       - id: prior_day_settlement
         type: decimal_s4_2
         doc: 'Prior Day Settlement price. Implied decimal with scale 1e-2'
@@ -323,7 +323,7 @@ types:
         doc: 'Minimum tick size for the Strike Price'
       - id: last_trading_date
         type: u4
-        doc: 'Last Trading Date and Time. Applicable to Contract Types “F” only, zero otherwise. Note where the time is defined, it is local time AEST or ADST depending if the expiry date is during AEST or ADST'
+        doc: 'Last Trading Date and Time. Applicable to Contract Types “F” only, zero otherwise. Note where the time is defined, it is local time AEST or ADST depending if the expiry date is during AEST or ADST. Seconds since Unix epoch'
       - id: prior_day_settlement
         type: decimal_s4_2
         doc: 'Prior Day Settlement price. Implied decimal with scale 1e-2'

@@ -106,8 +106,8 @@ types:
   cboe_market_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp of when the Market Status changed, encoded as the number of nanoseconds since midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of when the Market Status changed, encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: reserved_1
         size: 1
         doc: 'Reserved'
@@ -202,8 +202,8 @@ types:
   rpi_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp of when the Market Status changed, encoded as the number of nanoseconds since midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of when the Market Status changed, encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: symbol
         type: str
         size: 8
@@ -220,8 +220,8 @@ types:
   trade_message:
     seq:
       - id: transaction_time
-        type: u8
-        doc: 'The time the trade occurred, encoded as the number of nanoseconds since midnight'
+        type: nanosecond_timestamp
+        doc: 'The time the trade occurred, encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: symbol
         type: str
         size: 8
@@ -265,8 +265,8 @@ types:
   trade_break_message:
     seq:
       - id: transaction_time
-        type: u8
-        doc: 'The time the trade occurred, encoded as the number of nanoseconds since midnight'
+        type: nanosecond_timestamp
+        doc: 'The time the trade occurred, encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: symbol
         type: str
         size: 8
@@ -291,8 +291,8 @@ types:
   trading_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp of when the Market Status changed, encoded as the number of nanoseconds since midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of when the Market Status changed, encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: symbol
         type: str
         size: 8
@@ -312,6 +312,19 @@ types:
         type: u1
         enum: reg_sho_action
         doc: 'Reg SHO Action'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_u4_4:
     seq:
       - id: mantissa

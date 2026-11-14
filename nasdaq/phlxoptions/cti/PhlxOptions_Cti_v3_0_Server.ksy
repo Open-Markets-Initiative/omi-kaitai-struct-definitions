@@ -118,8 +118,8 @@ types:
   system_event_message:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400)'
+        type: second_timestamp
+        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400). Seconds since Midnight epoch'
       - id: nanoseconds
         type: u4
         doc: 'Nanoseconds portion of timestamp (0 to 999999999)'
@@ -133,8 +133,8 @@ types:
   options_directory_message:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400)'
+        type: second_timestamp
+        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400). Seconds since Midnight epoch'
       - id: nanoseconds
         type: u4
         doc: 'Nanoseconds portion of timestamp (0 to 999999999)'
@@ -202,8 +202,8 @@ types:
   complex_order_strategy_message:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400)'
+        type: second_timestamp
+        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400). Seconds since Midnight epoch'
       - id: nanoseconds
         type: u4
         doc: 'Nanoseconds portion of timestamp (0 to 999999999)'
@@ -279,8 +279,8 @@ types:
   security_trading_action_message:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400)'
+        type: second_timestamp
+        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400). Seconds since Midnight epoch'
       - id: nanoseconds
         type: u4
         doc: 'Nanoseconds portion of timestamp (0 to 999999999)'
@@ -313,8 +313,8 @@ types:
   complex_trading_action_message:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400)'
+        type: second_timestamp
+        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400). Seconds since Midnight epoch'
       - id: nanoseconds
         type: u4
         doc: 'Nanoseconds portion of timestamp (0 to 999999999)'
@@ -331,8 +331,8 @@ types:
   trade_message:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400)'
+        type: second_timestamp
+        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400). Seconds since Midnight epoch'
       - id: nanoseconds
         type: u4
         doc: 'Nanoseconds portion of timestamp (0 to 999999999)'
@@ -675,8 +675,8 @@ types:
   cancel_trade_message:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400)'
+        type: second_timestamp
+        doc: 'Seconds portion of timestamp: whole seconds after midnight US Eastern Time (0 to 86400). Seconds since Midnight epoch'
       - id: nanoseconds
         type: u4
         doc: 'Nanoseconds portion of timestamp (0 to 999999999)'
@@ -731,6 +731,17 @@ types:
       - id: reserved_8
         size: 8
         doc: 'Reserved for future use'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
   decimal_u4_4:
     seq:
       - id: mantissa

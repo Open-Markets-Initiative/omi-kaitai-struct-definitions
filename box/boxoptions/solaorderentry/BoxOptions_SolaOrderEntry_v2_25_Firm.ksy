@@ -117,9 +117,7 @@ types:
         type: str_4_nullable
         doc: 'Identifies current session ID If set to blank spaces, this means the Participant wants to connect to the current session ID. Nullable, No Value = 0'
       - id: time_hhmmss
-        type: str
-        size: 6
-        encoding: ASCII
+        type: hhmmss_ascii_time
         doc: 'HHMMSS'
       - id: exchange_message_id
         type: str_6_nullable
@@ -959,6 +957,19 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: text == "0"
+  hhmmss_ascii_time:
+    seq:
+      - id: text
+        type: str
+        size: 6
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.substring(0, 2).to_i
+      minute:
+        value: text.substring(2, 4).to_i
+      second:
+        value: text.substring(4, 6).to_i
   str_6_nullable:
     seq:
       - id: value

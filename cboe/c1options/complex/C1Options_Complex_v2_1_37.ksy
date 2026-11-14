@@ -120,7 +120,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
   time_message:
     seq:
@@ -128,8 +128,8 @@ types:
         type: second_timestamp
         doc: 'Number of whole seconds from midnight Eastern Time. Seconds since Midnight epoch'
       - id: epoch_time
-        type: u4
-        doc: 'Number of whole seconds since the Epoch Time'
+        type: second_timestamp
+        doc: 'Number of whole seconds since the Epoch Time. Seconds since Unix epoch'
   unit_clear_message:
     seq:
       - id: time_offset
@@ -670,6 +670,17 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
   decimal_s8_4:
     seq:
       - id: mantissa

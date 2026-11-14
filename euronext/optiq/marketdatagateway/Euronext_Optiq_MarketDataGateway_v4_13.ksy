@@ -869,7 +869,7 @@ types:
         type: u8_nullable
         doc: 'lotSize. Nullable, No Value = 18446744073709551615'
       - id: maturity_date_optional
-        type: str_8_nullable
+        type: yyyymmdd_ascii_date
         doc: 'maturityDate. Nullable, No Value = 0'
       - id: maximum_decimals_in_quantity
         type: u1_nullable
@@ -1175,9 +1175,7 @@ types:
         enum: exchange_code
         doc: 'exchangeCode'
       - id: maturity_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'maturityDate'
       - id: strategy_code
         type: u1
@@ -1633,9 +1631,7 @@ types:
         type: str_6_nullable
         doc: 'cFI. Nullable, No Value = 0'
       - id: maturity_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'maturityDate'
       - id: lot_size
         type: u8
@@ -1939,10 +1935,10 @@ types:
         type: u1_nullable
         doc: 'exerStyle. Nullable, No Value = 255'
       - id: maturity_date_optional
-        type: str_8_nullable
+        type: yyyymmdd_ascii_date
         doc: 'maturityDate. Nullable, No Value = 0'
       - id: expiry_date
-        type: str_8_nullable
+        type: yyyymmdd_ascii_date
         doc: 'expiryDate. Nullable, No Value = 0'
       - id: settlement_method
         type: str_1_nullable
@@ -2152,7 +2148,7 @@ types:
         type: s8_nullable
         doc: 'coupon. Nullable, No Value = -9223372036854775808'
       - id: maturity_date_optional
-        type: str_8_nullable
+        type: yyyymmdd_ascii_date
         doc: 'maturityDate. Nullable, No Value = 0'
       - id: closing_price
         type: s8_nullable
@@ -2592,19 +2588,32 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
-  str_8_nullable:
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
+  str_2_nullable:
     seq:
       - id: value
-        size: 8
+        size: 2
     instances:
       text:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
-  str_2_nullable:
+  str_8_nullable:
     seq:
       - id: value
-        size: 2
+        size: 8
     instances:
       text:
         value: value.to_s("ASCII")

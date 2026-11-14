@@ -124,8 +124,8 @@ types:
   system_event_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: event_code
         type: u1
         enum: event_code
@@ -133,8 +133,8 @@ types:
   accepted_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -194,8 +194,8 @@ types:
   replaced_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: replacement_order_token
         type: str
         size: 14
@@ -261,8 +261,8 @@ types:
   canceled_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -279,8 +279,8 @@ types:
   aiq_cancelled_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -307,8 +307,8 @@ types:
   executed_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -331,8 +331,8 @@ types:
   broken_trade_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -349,8 +349,8 @@ types:
   executed_with_reference_price_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -380,8 +380,8 @@ types:
   trade_correction_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -408,8 +408,8 @@ types:
   rejected_order_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -423,8 +423,8 @@ types:
   cancel_pending_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -434,8 +434,8 @@ types:
   cancel_reject_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -445,8 +445,8 @@ types:
   order_priority_update_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -465,8 +465,8 @@ types:
   order_modified_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
@@ -482,14 +482,27 @@ types:
   sequenced_trade_now_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp – reflected as the number of nanoseconds past midnight'
+        type: nanosecond_timestamp
+        doc: 'Timestamp – reflected as the number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: order_token
         type: str
         size: 14
         encoding: ASCII
         pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_u4_4:
     seq:
       - id: mantissa

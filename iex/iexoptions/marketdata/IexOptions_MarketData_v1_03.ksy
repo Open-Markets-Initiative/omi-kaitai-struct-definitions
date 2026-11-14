@@ -102,8 +102,8 @@ types:
   underlying_ref_data_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: underlying_id
         type: u4
         doc: 'underlyingId'
@@ -131,8 +131,8 @@ types:
   symbol_mapping_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -152,9 +152,7 @@ types:
         type: u4
         doc: 'underlyingId'
       - id: maturity_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'maturityDate'
       - id: option_type
         type: s1
@@ -173,8 +171,8 @@ types:
   instrument_clear_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -184,8 +182,8 @@ types:
   trading_status_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -199,8 +197,8 @@ types:
   options_auction_summary_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -220,8 +218,8 @@ types:
   options_auction_width_update_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: underlying_id
         type: u4
         doc: 'underlyingId'
@@ -234,8 +232,8 @@ types:
   liquidity_event_notification_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -274,8 +272,8 @@ types:
   liquidity_event_execution_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -297,8 +295,8 @@ types:
   liquidity_event_cancel_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -311,8 +309,8 @@ types:
   add_order_non_customer_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -335,8 +333,8 @@ types:
   add_order_customer_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -363,8 +361,8 @@ types:
   modify_order_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -387,8 +385,8 @@ types:
   delete_order_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -401,8 +399,8 @@ types:
   order_execution_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -432,8 +430,8 @@ types:
   deep_trade_break_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -446,8 +444,8 @@ types:
   quote_update_no_customer_interest_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -473,8 +471,8 @@ types:
   quote_update_customer_interest_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -506,8 +504,8 @@ types:
   trade_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -531,8 +529,8 @@ types:
   trade_correction_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -559,8 +557,8 @@ types:
   tops_trade_break_message:
     seq:
       - id: time
-        type: u8
-        doc: 'time'
+        type: nanosecond_timestamp
+        doc: 'time. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -708,6 +706,32 @@ types:
       - id: block_extension
         size: _parent.message_header.block_length - 20
         doc: 'Bytes the stated block holds beyond the 20 this version reads'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
   decimal_s8_8:
     seq:
       - id: mantissa

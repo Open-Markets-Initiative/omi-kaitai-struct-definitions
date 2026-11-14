@@ -220,8 +220,8 @@ types:
         type: s4
         doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
       - id: source_time
-        type: s4
-        doc: 'The time the event occurred in the matching engine, in milliseconds since midnight'
+        type: millisecond_timestamp
+        doc: 'The time the event occurred in the matching engine, in milliseconds since midnight. Milliseconds since Midnight epoch'
       - id: source_time_micro_secs
         type: s2
         doc: 'The number of microseconds that have elapsed within the millisecond published in the SourceTime field'
@@ -297,8 +297,8 @@ types:
         type: s4
         doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
       - id: source_time
-        type: s4
-        doc: 'The time the event occurred in the matching engine, in milliseconds since midnight'
+        type: millisecond_timestamp
+        doc: 'The time the event occurred in the matching engine, in milliseconds since midnight. Milliseconds since Midnight epoch'
       - id: source_time_micro_secs
         type: s2
         doc: 'The number of microseconds that have elapsed within the millisecond published in the SourceTime field'
@@ -354,6 +354,19 @@ types:
       - id: link_id_3
         type: s4
         doc: 'Unused. Ignore any content'
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
 
 enums:
   message_type:

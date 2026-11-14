@@ -258,8 +258,8 @@ types:
         type: u8
         doc: 'Message ID. Binary data type: any combination of bits'
       - id: sent_timestamp
-        type: u8
-        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT'
+        type: nanosecond_timestamp
+        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT. Nanoseconds since Unix epoch'
       - id: num_simple_quotes
         type: u2
         doc: 'Number of quotes in the message (1 to 200)'
@@ -301,8 +301,8 @@ types:
         type: u8
         doc: 'Message ID. Binary data type: any combination of bits'
       - id: sent_timestamp
-        type: u8
-        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT'
+        type: nanosecond_timestamp
+        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT. Nanoseconds since Unix epoch'
       - id: num_simple_quotes
         type: u2
         doc: 'Number of quotes in the message (1 to 200)'
@@ -323,8 +323,8 @@ types:
         type: u8
         doc: 'Message ID. Binary data type: any combination of bits'
       - id: sent_timestamp
-        type: u8
-        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT'
+        type: nanosecond_timestamp
+        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT. Nanoseconds since Unix epoch'
       - id: num_simple_quotes_long_form
         type: u2
         doc: 'Number of quotes in the message (1 to 200)'
@@ -369,8 +369,8 @@ types:
         type: u8
         doc: 'Message ID. Binary data type: any combination of bits'
       - id: sent_timestamp
-        type: u8
-        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT'
+        type: nanosecond_timestamp
+        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT. Nanoseconds since Unix epoch'
       - id: num_simple_quotes_long_form
         type: u2
         doc: 'Number of quotes in the message (1 to 200)'
@@ -391,8 +391,8 @@ types:
         type: u8
         doc: 'Message ID. Binary data type: any combination of bits'
       - id: sent_timestamp
-        type: u8
-        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT'
+        type: nanosecond_timestamp
+        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT. Nanoseconds since Unix epoch'
       - id: num_complex_quotes
         type: u2
         doc: 'Number of quotes in the message (1 to 200)'
@@ -444,8 +444,8 @@ types:
         type: u8
         doc: 'Message ID. Binary data type: any combination of bits'
       - id: sent_timestamp
-        type: u8
-        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT'
+        type: nanosecond_timestamp
+        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT. Nanoseconds since Unix epoch'
       - id: num_complex_quotes
         type: u2
         doc: 'Number of quotes in the message (1 to 200)'
@@ -466,8 +466,8 @@ types:
         type: u8
         doc: 'Message ID. Binary data type: any combination of bits'
       - id: sent_timestamp
-        type: u8
-        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT'
+        type: nanosecond_timestamp
+        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT. Nanoseconds since Unix epoch'
       - id: underlying_symbol
         type: str
         size: 13
@@ -592,6 +592,19 @@ types:
       - id: reserved_4
         size: 4
         doc: 'Reserved for future enhancements'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_s4_4:
     seq:
       - id: mantissa

@@ -177,8 +177,8 @@ types:
         encoding: ASCII
         doc: 'priceAsset'
       - id: expiry_time
-        type: s8_nullable
-        doc: 'expiryTime. Nullable, No Value = -9223372036854775808'
+        type: nanosecond_timestamp_nullable
+        doc: 'expiryTime. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
       - id: strike_price
         type: decimal_s8_9_nullable
         doc: 'strikePrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
@@ -515,8 +515,8 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: incremental_timestamp
-        type: s8
-        doc: 'incrementalTimestamp'
+        type: nanosecond_timestamp
+        doc: 'incrementalTimestamp. Nanoseconds since Unix epoch'
       - id: incremental_seq_num
         type: s8
         doc: 'incrementalSeqNum'
@@ -526,8 +526,8 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: timestamp
-        type: s8
-        doc: 'timestamp'
+        type: nanosecond_timestamp
+        doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: increment_seq_num
         type: s8
         doc: 'incrementSeqNum'
@@ -578,13 +578,6 @@ types:
     instances:
       is_null:
         value: value.time == 0
-  s8_nullable:
-    seq:
-      - id: value
-        type: s8
-    instances:
-      is_null:
-        value: value == -9223372036854775808
   decimal_s8_9:
     seq:
       - id: mantissa
@@ -599,6 +592,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
 
 enums:
   template_id:

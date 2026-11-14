@@ -114,8 +114,8 @@ types:
   order_accepted_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u8
-        doc: 'UNIX time (number of nanoseconds since 1970-01-01 00:00:00 UTC)'
+        type: nanosecond_timestamp
+        doc: 'UNIX time (number of nanoseconds since 1970-01-01 00:00:00 UTC). Nanoseconds since Unix epoch'
       - id: order_token
         type: str
         size: 14
@@ -226,8 +226,8 @@ types:
   order_rejected_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u8
-        doc: 'UNIX time (number of nanoseconds since 1970-01-01 00:00:00 UTC)'
+        type: nanosecond_timestamp
+        doc: 'UNIX time (number of nanoseconds since 1970-01-01 00:00:00 UTC). Nanoseconds since Unix epoch'
       - id: order_token
         type: str
         size: 14
@@ -240,8 +240,8 @@ types:
   order_replaced_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u8
-        doc: 'UNIX time (number of nanoseconds since 1970-01-01 00:00:00 UTC)'
+        type: nanosecond_timestamp
+        doc: 'UNIX time (number of nanoseconds since 1970-01-01 00:00:00 UTC). Nanoseconds since Unix epoch'
       - id: replacement_order_token
         type: str
         size: 14
@@ -324,8 +324,8 @@ types:
   order_cancelled_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u8
-        doc: 'UNIX time (number of nanoseconds since 1970-01-01 00:00:00 UTC)'
+        type: nanosecond_timestamp
+        doc: 'UNIX time (number of nanoseconds since 1970-01-01 00:00:00 UTC). Nanoseconds since Unix epoch'
       - id: order_token
         type: str
         size: 14
@@ -349,8 +349,8 @@ types:
   order_executed_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u8
-        doc: 'UNIX time (number of nanoseconds since 1970-01-01 00:00:00 UTC)'
+        type: nanosecond_timestamp
+        doc: 'UNIX time (number of nanoseconds since 1970-01-01 00:00:00 UTC). Nanoseconds since Unix epoch'
       - id: order_token
         type: str
         size: 14
@@ -387,6 +387,19 @@ types:
       - id: passive_aggressive_indicator
         type: b1
         doc: 'Last Traded Price'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_s4_2:
     seq:
       - id: mantissa

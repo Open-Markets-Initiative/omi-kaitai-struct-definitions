@@ -190,8 +190,8 @@ types:
         type: u1_nullable
         doc: 'Defines the type of peg. Nullable, No Value = 255'
       - id: expire_time
-        type: u8_nullable
-        doc: 'The expiration time of a GoodForTime TimeInForce order. Expiration time must be at least a 1 millisecond in the future. If omitted, expiration time will be set to the end of the MEMX post-market trading session. Specified in UTC timestamp since unix epoch in nanoseconds. Nullable, No Value = 18446744073709551615'
+        type: nanosecond_timestamp_nullable
+        doc: 'The expiration time of a GoodForTime TimeInForce order. Expiration time must be at least a 1 millisecond in the future. If omitted, expiration time will be set to the end of the MEMX post-market trading session. Specified in UTC timestamp since unix epoch in nanoseconds. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: min_qty
         type: u4_nullable
         doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
@@ -372,13 +372,26 @@ types:
     instances:
       is_null:
         value: value == 255
-  u8_nullable:
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
     seq:
       - id: value
-        type: u8
+        type: nanosecond_timestamp
     instances:
       is_null:
-        value: value == 18446744073709551615
+        value: value.time == -1
   u4_nullable:
     seq:
       - id: value
@@ -402,6 +415,13 @@ types:
     instances:
       is_null:
         value: value == 65535
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
 
 enums:
   message_type:

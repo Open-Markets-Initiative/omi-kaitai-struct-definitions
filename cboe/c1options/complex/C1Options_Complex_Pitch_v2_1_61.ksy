@@ -121,7 +121,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
   time_message:
     seq:
@@ -129,8 +129,8 @@ types:
         type: second_timestamp
         doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. On Daylight Saving Time transition days, Time reflects wall clock seconds and does not adjust for the UTC offset change. Seconds since Midnight epoch'
       - id: epoch_time
-        type: u4
-        doc: 'C1 Options Only. Number of whole seconds since the Epoch (midnight January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'C1 Options Only. Number of whole seconds since the Epoch (midnight January 1, 1970 UTC). Seconds since Unix epoch'
   unit_clear_message:
     seq:
       - id: time_offset
@@ -725,6 +725,17 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
   decimal_s8_4:
     seq:
       - id: mantissa

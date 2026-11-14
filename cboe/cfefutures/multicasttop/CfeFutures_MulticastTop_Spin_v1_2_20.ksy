@@ -168,7 +168,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
   time_message:
     seq:
@@ -176,8 +176,8 @@ types:
         type: second_timestamp
         doc: 'Number of whole seconds from midnight Central Time. Seconds since Midnight epoch'
       - id: epoch_time
-        type: u4
-        doc: 'Number of whole seconds since the Epoch (Midnight January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'Number of whole seconds since the Epoch (Midnight January 1, 1970 UTC). Seconds since Unix epoch'
   futures_instrument_definition_message:
     seq:
       - id: time_offset
@@ -414,7 +414,7 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62 symbol'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
       - id: settlement_price
         type: decimal_u8_4
@@ -437,7 +437,7 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62 symbol'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
       - id: open_interest
         type: u4
@@ -510,6 +510,17 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
   decimal_u8_4:
     seq:
       - id: mantissa

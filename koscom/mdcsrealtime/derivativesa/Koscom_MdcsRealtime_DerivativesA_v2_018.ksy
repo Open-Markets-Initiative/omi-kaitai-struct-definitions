@@ -2545,10 +2545,7 @@ types:
   derivatives_investor_activities_message:
     seq:
       - id: date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'A date of creation of data'
       - id: calculation_time_activities
         type: hhmmss_ascii_time
@@ -2641,10 +2638,7 @@ types:
         pad-right: 0x20
         doc: 'Open Interest Type Code M0: Morning data M1: Real-time data M2: Confirmed data'
       - id: trading_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Trading date'
       - id: open_interest
         type: str
@@ -2773,10 +2767,7 @@ types:
         encoding: ASCII
         doc: 'A designated number for each issue on a daily basis - Market(Information Product) : KOSPI(Securities A, Securities C), KOSDAQ(Securities B), KONEX(Securities B), Derivatives(DRV A), Spot Gold(Commodit'
       - id: calculating_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Calculating Date'
       - id: calculation_time_sensitivity
         type: str
@@ -2867,10 +2858,7 @@ types:
   daily_disclosed_rfr_message:
     seq:
       - id: base_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Risk Free Reference rate Base Date'
       - id: disclosure_type
         type: str

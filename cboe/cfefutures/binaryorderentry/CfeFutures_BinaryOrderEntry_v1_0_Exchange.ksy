@@ -195,7 +195,7 @@ types:
       - id: prevent_match
         type: prevent_match
       - id: maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: open_close
         type: u1
@@ -417,7 +417,7 @@ types:
         encoding: ASCII
         doc: 'EFID that will clear the trade'
       - id: maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: fee_code
         type: str
@@ -425,7 +425,7 @@ types:
         encoding: ASCII
         doc: 'Indicates fee associated with an execution'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Business date of the execution'
       - id: clearing_size
         type: u4
@@ -610,7 +610,7 @@ types:
         enum: capacity
         doc: 'Capacity'
       - id: maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: open_close
         type: u1
@@ -650,7 +650,7 @@ types:
         encoding: ASCII
         doc: 'Simple Instruments can be specified by providing the mapped symbol format in the Symbol field or by providing the product name (e'
       - id: maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: last_shares
         type: u4
@@ -664,7 +664,7 @@ types:
         encoding: ASCII
         doc: 'Indicates fee associated with an execution'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Business date of the execution'
       - id: clearing_price
         type: decimal_s8_4
@@ -712,7 +712,7 @@ types:
         encoding: ASCII
         doc: 'Simple Instruments can be specified by providing the mapped symbol format in the Symbol field or by providing the product name (e'
       - id: maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: last_shares
         type: u4
@@ -726,7 +726,7 @@ types:
         encoding: ASCII
         doc: 'Indicates fee associated with an execution'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Business date of the execution'
       - id: clearing_price
         type: decimal_s8_4
@@ -992,6 +992,17 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
 
 enums:
   firm_message_type:

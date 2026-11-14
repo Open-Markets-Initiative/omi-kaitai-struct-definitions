@@ -234,8 +234,8 @@ types:
         type: u1_nullable
         doc: 'PegPriceType. Nullable, No Value = 255'
       - id: expire_time
-        type: u8_nullable
-        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
+        type: nanosecond_timestamp_nullable
+        doc: 'ExpireTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: min_qty
         type: u4_nullable
         doc: 'MinQty. Nullable, No Value = 4294967295'
@@ -369,8 +369,8 @@ types:
         type: u1_nullable
         doc: 'PegPriceType. Nullable, No Value = 255'
       - id: expire_time
-        type: u8_nullable
-        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
+        type: nanosecond_timestamp_nullable
+        doc: 'ExpireTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: min_qty
         type: u4_nullable
         doc: 'MinQty. Nullable, No Value = 4294967295'
@@ -415,8 +415,8 @@ types:
         type: u4
         doc: 'CumQty'
       - id: transact_time
-        type: u8
-        doc: 'TransactTime'
+        type: nanosecond_timestamp
+        doc: 'TransactTime. Nanoseconds since Unix epoch'
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
@@ -500,8 +500,8 @@ types:
         type: u4
         doc: 'CumQty'
       - id: transact_time
-        type: u8
-        doc: 'TransactTime'
+        type: nanosecond_timestamp
+        doc: 'TransactTime. Nanoseconds since Unix epoch'
       - id: last_liquidity_ind
         type: u1
         enum: last_liquidity_ind
@@ -634,8 +634,8 @@ types:
         type: u1_nullable
         doc: 'CancelReason. Nullable, No Value = 255'
       - id: transact_time
-        type: u8
-        doc: 'TransactTime'
+        type: nanosecond_timestamp
+        doc: 'TransactTime. Nanoseconds since Unix epoch'
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
@@ -779,8 +779,8 @@ types:
         type: u4
         doc: 'CumQty'
       - id: transact_time
-        type: u8
-        doc: 'TransactTime'
+        type: nanosecond_timestamp
+        doc: 'TransactTime. Nanoseconds since Unix epoch'
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
@@ -919,8 +919,8 @@ types:
         enum: exec_restatement_reason
         doc: 'ExecRestatementReason'
       - id: transact_time
-        type: u8
-        doc: 'TransactTime'
+        type: nanosecond_timestamp
+        doc: 'TransactTime. Nanoseconds since Unix epoch'
       - id: extended_restatement_reason
         type: u1_nullable
         doc: 'ExtendedRestatementReason. Nullable, No Value = 255'
@@ -1044,13 +1044,13 @@ types:
     instances:
       is_null:
         value: value == 255
-  u8_nullable:
+  nanosecond_timestamp_nullable:
     seq:
       - id: value
-        type: u8
+        type: nanosecond_timestamp
     instances:
       is_null:
-        value: value == 18446744073709551615
+        value: value.time == -1
   u4_nullable:
     seq:
       - id: value

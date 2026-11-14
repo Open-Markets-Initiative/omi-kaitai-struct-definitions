@@ -89,8 +89,8 @@ types:
   md_incremental_refresh_btec:
     seq:
       - id: trade_date
-        type: u2_nullable
-        doc: 'Trade Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Trade Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Event processing time (UTC), sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
@@ -144,8 +144,8 @@ types:
         encoding: ASCII
         doc: 'Contract symbol, name'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Instrument Maturity Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Instrument Maturity Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: security_alt_id
         type: str
         size: 12
@@ -205,13 +205,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  u2_nullable:
+  epoch_date:
     seq:
-      - id: value
+      - id: days
         type: u2
     instances:
+      unix_seconds:
+        value: days * 86400
+  epoch_date_nullable:
+    seq:
+      - id: value
+        type: epoch_date
+    instances:
       is_null:
-        value: value == 65535
+        value: value.days == 65535
   u4_nullable:
     seq:
       - id: value

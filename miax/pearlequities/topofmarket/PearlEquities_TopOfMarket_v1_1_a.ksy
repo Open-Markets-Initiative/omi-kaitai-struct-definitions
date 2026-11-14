@@ -69,7 +69,7 @@ types:
         doc: 'protocol packet type'
       - id: session_number
         type: u1
-        doc: 'protocol packet type'
+        doc: 'The Session this packet was generated from'
   application_message:
     seq:
       - id: message_type
@@ -399,16 +399,16 @@ enums:
       doc: 'Cboe Bzx Exchange'
   system_status:
     0x53:
-      id: 'start'
+      id: 'start_of_system_hours'
       doc: 'Start Of System Hours'
     0x43:
-      id: 'end'
+      id: 'end_of_system_hours'
       doc: 'End Of System Hours'
     0x31:
-      id: 'start_x31'
+      id: 'start_of_test_session'
       doc: 'Start Of Test Session Sent Before Tests'
     0x32:
-      id: 'end_x32'
+      id: 'end_of_test_session'
       doc: 'End Of Test Session'
   trading_status:
     1:

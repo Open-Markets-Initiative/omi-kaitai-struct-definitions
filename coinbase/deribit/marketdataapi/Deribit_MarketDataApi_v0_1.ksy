@@ -197,8 +197,8 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'creationTime. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
       - id: expiry_time
-        type: s8_nullable
-        doc: 'expiryTime. Nullable, No Value = -9223372036854775808'
+        type: nanosecond_timestamp_nullable
+        doc: 'expiryTime. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
       - id: logical_expiry
         type: logical_expiry
         doc: 'InstrumentMessage'
@@ -471,8 +471,8 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: incremental_timestamp
-        type: s8
-        doc: 'incrementalTimestamp'
+        type: nanosecond_timestamp
+        doc: 'incrementalTimestamp. Nanoseconds since Unix epoch'
       - id: incremental_seq_num
         type: s8
         doc: 'incrementalSeqNum'
@@ -482,8 +482,8 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: timestamp
-        type: s8
-        doc: 'timestamp'
+        type: nanosecond_timestamp
+        doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: increment_seq_num
         type: s8
         doc: 'incrementSeqNum'

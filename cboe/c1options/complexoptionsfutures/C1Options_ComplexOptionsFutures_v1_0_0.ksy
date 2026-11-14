@@ -114,8 +114,8 @@ types:
         type: second_timestamp
         doc: 'Number of whole seconds from midnight Eastern Time. Seconds since Midnight epoch'
       - id: epoch_time
-        type: u4
-        doc: 'Number of whole seconds since the Epoch (midnight January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'Number of whole seconds since the Epoch (midnight January 1, 1970 UTC). Seconds since Unix epoch'
   unit_clear_message:
     seq:
       - id: time_offset

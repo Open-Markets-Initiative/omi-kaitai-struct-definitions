@@ -1146,10 +1146,7 @@ types:
         encoding: ASCII
         doc: 'Trading volume'
       - id: trading_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Trading date'
       - id: trading_value
         type: str
@@ -1248,10 +1245,7 @@ types:
         encoding: ASCII
         doc: 'Trading volume'
       - id: trading_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Trading date'
       - id: trading_value
         type: str
@@ -2133,10 +2127,7 @@ types:
         pad-right: 0x20
         doc: 'ISIN Code'
       - id: trading_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Trading date'
       - id: bid_closing_date
         type: str
@@ -4030,10 +4021,7 @@ types:
         encoding: ASCII
         doc: 'Trading volume'
       - id: trading_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Trading date'
       - id: trading_value
         type: str
@@ -4452,10 +4440,7 @@ types:
         encoding: ASCII
         doc: 'Trading volume'
       - id: trading_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Trading date'
       - id: trading_value
         type: str

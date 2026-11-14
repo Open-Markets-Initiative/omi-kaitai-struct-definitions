@@ -419,10 +419,7 @@ types:
         encoding: ASCII
         doc: 'Cboe generated identifier of this trade. This identifier is guaranteed to be unique for at least 7 calendar days'
       - id: trade_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Date on which the trade occurred, in the form YYYYMMDD'
       - id: trade_time
         type: millisecond_ascii_timestamp
@@ -475,10 +472,7 @@ types:
         encoding: ASCII
         doc: 'Cboe generated identifier of this trade. This identifier is guaranteed to be unique for at least 7 calendar days'
       - id: trade_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Date on which the trade occurred, in the form YYYYMMDD'
       - id: trade_time
         type: millisecond_ascii_timestamp
@@ -663,6 +657,19 @@ types:
         value: text.to_i / 1000 % 60
       millisecond:
         value: text.to_i % 1000
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
 
 enums:
   packet_type:

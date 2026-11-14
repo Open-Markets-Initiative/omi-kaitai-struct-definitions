@@ -344,8 +344,8 @@ types:
         type: u4
         doc: 'Unique ID assigned by MIAX Futures Onyx for'
       - id: anticipated_opening_price
-        type: decimal_s8_9
-        doc: 'Anticipated Opening Price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Anticipated Opening Price. Implied decimal with scale 1e-9. Nullable, No Opening Price = 999999999999999999'
       - id: opening_match_quantity
         type: u4
         doc: 'Opening Matched Quantity'
@@ -355,8 +355,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Trade Date'
+        type: epoch_date
+        doc: 'Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'Unique ID assigned by MIAX Futures Onyx for'
@@ -377,8 +377,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Trade Date'
+        type: epoch_date
+        doc: 'Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'Unique ID assigned by MIAX Futures Onyx for'
@@ -391,8 +391,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Trade Date'
+        type: epoch_date
+        doc: 'Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'Unique ID assigned by MIAX Futures Onyx for'
@@ -479,8 +479,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Trade Date'
+        type: epoch_date
+        doc: 'Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'Unique ID assigned by MIAX Futures Onyx for'
@@ -512,8 +512,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Trade Date'
+        type: epoch_date
+        doc: 'Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'Unique ID assigned by MIAX Futures Onyx for'
@@ -549,6 +549,20 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == 999999999999999999
+  epoch_date:
+    seq:
+      - id: days
+        type: u2
+    instances:
+      unix_seconds:
+        value: days * 86400
 
 enums:
   packet_type:

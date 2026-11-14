@@ -653,8 +653,8 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in Nasdaq execution system'
       - id: ipo_quotation_release_time
-        type: u4
-        doc: 'Denotes the IPO release time, in seconds since midnight, for quotation to the nearest second'
+        type: second_timestamp
+        doc: 'Denotes the IPO release time, in seconds since midnight, for quotation to the nearest second. Seconds since Midnight epoch'
       - id: ipo_quotation_release_qualifier
         type: u1
         enum: ipo_quotation_release_qualifier
@@ -712,6 +712,17 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
 
 enums:
   message_type:

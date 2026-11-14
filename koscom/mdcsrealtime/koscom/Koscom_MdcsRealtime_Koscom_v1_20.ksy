@@ -336,10 +336,7 @@ types:
         encoding: ASCII
         doc: 'Trading volume for each issue'
       - id: trading_time
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: hhmmss_ascii_time
         doc: 'Trading time'
       - id: ask_quote_number
         type: str

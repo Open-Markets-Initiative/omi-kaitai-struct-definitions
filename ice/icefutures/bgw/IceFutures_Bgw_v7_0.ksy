@@ -319,8 +319,8 @@ types:
         type: s4
         doc: 'underlyingStrategySymbol'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'maturityDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'maturityDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: security_trading_status
         type: u1
         enum: security_trading_status
@@ -333,8 +333,8 @@ types:
         enum: exchange_silo
         doc: 'exchangeSilo'
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: leg_deals_suppressed
         type: u1
         enum: leg_deals_suppressed
@@ -713,20 +713,20 @@ types:
         type: s2_nullable
         doc: 'securitySubType. Nullable, No Value = -32768'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'maturityDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'maturityDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: screen_last_trade_date
-        type: u2_nullable
-        doc: 'screenLastTradeDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'screenLastTradeDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: contract_multiplier
         type: s4
         doc: 'contractMultiplier'
       - id: start_date
-        type: u2_nullable
-        doc: 'startDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'startDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: end_date
-        type: u2_nullable
-        doc: 'endDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'endDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: put_or_call
         type: u1_nullable
         doc: 'putOrCall. Nullable, No Value = 255'
@@ -1331,8 +1331,8 @@ types:
         type: s8_nullable
         doc: 'selfMatchPreventionID. Nullable, No Value = -9223372036854775808'
       - id: expire_date
-        type: u2_nullable
-        doc: 'expireDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: self_match_prevention_instruction
         type: u1
         enum: self_match_prevention_instruction
@@ -1463,8 +1463,8 @@ types:
         type: s8_nullable
         doc: 'selfMatchPreventionID. Nullable, No Value = -9223372036854775808'
       - id: expire_date
-        type: u2_nullable
-        doc: 'expireDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: self_match_prevention_instruction
         type: u1
         enum: self_match_prevention_instruction
@@ -1655,8 +1655,8 @@ types:
         type: str_100_nullable
         doc: 'transactDetails. Nullable, No Value = 0'
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.message_header.block_length - 175
         doc: 'Bytes the stated block holds beyond the 175 this version reads'
@@ -1997,11 +1997,11 @@ types:
         type: s4_nullable
         doc: 'productID. Nullable, No Value = -2147483648'
       - id: start_date
-        type: u2_nullable
-        doc: 'startDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'startDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: end_date
-        type: u2_nullable
-        doc: 'endDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'endDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: security_type
         type: u1
         enum: security_type
@@ -2067,8 +2067,8 @@ types:
         enum: security_type
         doc: 'securityType'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'maturityDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'maturityDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: product_i_d_optional
         type: s4_nullable
         doc: 'productID. Nullable, No Value = -2147483648'
@@ -2115,11 +2115,11 @@ types:
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
       - id: me_acceptance_time
-        type: u8
-        doc: 'meAcceptanceTime'
+        type: nanosecond_timestamp
+        doc: 'meAcceptanceTime. Nanoseconds since Unix epoch'
       - id: time_priority
-        type: u8
-        doc: 'timePriority'
+        type: nanosecond_timestamp
+        doc: 'timePriority. Nanoseconds since Unix epoch'
       - id: order_status
         type: u1_nullable
         doc: 'orderStatus. Nullable, No Value = 255'
@@ -2138,8 +2138,8 @@ types:
         type: s4
         doc: 'systemSequenceID'
       - id: transact_time_utc_timestamp
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
   orig_order_id:
     seq:
       - id: original_system_id
@@ -2188,11 +2188,11 @@ types:
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
       - id: me_acceptance_time
-        type: u8
-        doc: 'meAcceptanceTime'
+        type: nanosecond_timestamp
+        doc: 'meAcceptanceTime. Nanoseconds since Unix epoch'
       - id: time_priority
-        type: u8
-        doc: 'timePriority'
+        type: nanosecond_timestamp
+        doc: 'timePriority. Nanoseconds since Unix epoch'
       - id: exec_type
         type: u1
         enum: exec_type
@@ -2274,8 +2274,8 @@ types:
         type: s8_nullable
         doc: 'origClOrdID. Nullable, No Value = -9223372036854775808'
       - id: me_acceptance_time
-        type: u8
-        doc: 'meAcceptanceTime'
+        type: nanosecond_timestamp
+        doc: 'meAcceptanceTime. Nanoseconds since Unix epoch'
       - id: exchange_code
         type: s4_nullable
         doc: 'exchangeCode. Nullable, No Value = -2147483648'
@@ -2385,11 +2385,11 @@ types:
         type: s8_nullable
         doc: 'stopPx. Nullable, No Value = -9223372036854775808'
       - id: expire_date
-        type: u2_nullable
-        doc: 'expireDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: time_priority
-        type: u8
-        doc: 'timePriority'
+        type: nanosecond_timestamp
+        doc: 'timePriority. Nanoseconds since Unix epoch'
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -2523,8 +2523,8 @@ types:
         type: s8
         doc: 'lastShares'
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: num_of_lots
         type: s8_nullable
         doc: 'numOfLots. Nullable, No Value = -9223372036854775808'
@@ -2560,11 +2560,11 @@ types:
         type: s8_nullable
         doc: 'lastParPx. Nullable, No Value = -9223372036854775808'
       - id: delivery_start_date
-        type: u8_nullable
-        doc: 'deliveryStartDate. Nullable, No Value = 0'
+        type: nanosecond_timestamp_nullable
+        doc: 'deliveryStartDate. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: delivery_end_date
-        type: u8_nullable
-        doc: 'deliveryEndDate. Nullable, No Value = 0'
+        type: nanosecond_timestamp_nullable
+        doc: 'deliveryEndDate. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: cross_i_d_optional
         type: s8_nullable
         doc: 'crossID. Nullable, No Value = -9223372036854775808'
@@ -2629,8 +2629,8 @@ types:
         type: s8
         doc: 'rfqSystemID'
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: order_qty_optional
         type: s8_nullable
         doc: 'orderQty. Nullable, No Value = -9223372036854775808'
@@ -2658,8 +2658,8 @@ types:
         type: s8
         doc: 'crossID'
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: rfc_status
         type: u1
         enum: rfc_status
@@ -2687,8 +2687,8 @@ types:
         type: s8
         doc: 'clOrdID'
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: market_type_i_d_optional
         type: s4_nullable
         doc: 'marketTypeID. Nullable, No Value = -2147483648'
@@ -2733,11 +2733,11 @@ types:
         type: u1_nullable
         doc: 'quoteRejectReason. Nullable, No Value = 255'
       - id: transact_time_optional
-        type: u8_nullable
-        doc: 'transactTime. Nullable, No Value = 0'
+        type: nanosecond_timestamp_nullable
+        doc: 'transactTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: me_acceptance_time_optional
-        type: u8_nullable
-        doc: 'meAcceptanceTime. Nullable, No Value = 0'
+        type: nanosecond_timestamp_nullable
+        doc: 'meAcceptanceTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: exchange_code
         type: s4_nullable
         doc: 'exchangeCode. Nullable, No Value = -2147483648'
@@ -2881,6 +2881,20 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  epoch_date:
+    seq:
+      - id: days
+        type: u2
+    instances:
+      unix_seconds:
+        value: days * 86400
+  epoch_date_nullable:
+    seq:
+      - id: value
+        type: epoch_date
+    instances:
+      is_null:
+        value: value.days == 0
   str_1_nullable:
     seq:
       - id: value
@@ -2983,13 +2997,13 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
-  u8_nullable:
+  nanosecond_timestamp_nullable:
     seq:
       - id: value
-        type: u8
+        type: nanosecond_timestamp
     instances:
       is_null:
-        value: value == 0
+        value: value.time == 0
 
 enums:
   template_id:

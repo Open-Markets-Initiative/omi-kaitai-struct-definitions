@@ -69,7 +69,7 @@ types:
         doc: 'protocol packet type'
       - id: session_number
         type: u1
-        doc: 'protocol packet type'
+        doc: 'The Session this packet was generated from'
   application_message:
     seq:
       - id: message_type
@@ -119,10 +119,7 @@ types:
         pad-right: 0x20
         doc: 'Option Security Symbol'
       - id: expiration_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Expiration date of the option in YYYYMMDD format'
       - id: strike_price
         type: decimal_u4_4
@@ -438,11 +435,11 @@ types:
         enum: event_reason
         doc: 'Event Reason value'
       - id: expected_event_time_seconds
-        type: u4
-        doc: 'Seconds portion of the expected time of the event. Always use in conjunction with the Nano-seconds part field'
+        type: second_timestamp_nullable
+        doc: 'Seconds portion of the expected time of the event. Always use in conjunction with the Nano-seconds part field. Seconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: expected_event_time_nano_seconds
-        type: u4
-        doc: 'Nano-seconds portion of the expected time of the event. Specifies number of nano-seconds since the seconds specified in “Expected Event Time Seconds” field'
+        type: nanosecond_offset
+        doc: 'Nano-seconds portion of the expected time of the event. Specifies number of nano-seconds since the seconds specified in “Expected Event Time Seconds” field. Nanoseconds since Second epoch'
   second_timestamp:
     seq:
       - id: time
@@ -465,6 +462,19 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
   decimal_u4_4:
     seq:
       - id: mantissa
@@ -486,6 +496,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  second_timestamp_nullable:
+    seq:
+      - id: value
+        type: second_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
 
 enums:
   packet_type:

@@ -194,29 +194,29 @@ types:
         type: u4
         doc: 'The Contract Date will be assigned to each Simple Instrument'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity Date is the expiration date of a Simple Instrument'
+        type: epoch_date
+        doc: 'Maturity Date is the expiration date of a Simple Instrument. Days since Unix epoch'
       - id: valuation_date
-        type: u2
-        doc: 'The date that the Final Settlement Price will be calculated for purposes of Simple Instrument expiration'
+        type: epoch_date
+        doc: 'The date that the Final Settlement Price will be calculated for purposes of Simple Instrument expiration. Days since Unix epoch'
       - id: first_trade_date
-        type: u2
-        doc: 'First Trade Date will be the Trading Date that the Simple Instrument is initially made available for Trading on MIAX Futures Onyx'
+        type: epoch_date
+        doc: 'First Trade Date will be the Trading Date that the Simple Instrument is initially made available for Trading on MIAX Futures Onyx. Days since Unix epoch'
       - id: last_trade_date
-        type: u2
-        doc: 'Last Trade Date will be the Maturity Date of the Simple Instrument'
+        type: epoch_date
+        doc: 'Last Trade Date will be the Maturity Date of the Simple Instrument. Days since Unix epoch'
       - id: first_notice_date
-        type: u2
-        doc: 'Last business date of the month preceding the month of the Maturity Date of the Simple Instrument'
+        type: epoch_date
+        doc: 'Last business date of the month preceding the month of the Maturity Date of the Simple Instrument. Days since Unix epoch'
       - id: last_notice_date
-        type: u2
-        doc: 'Last Notice Date will be the business day preceding the Last Delivery Date of the Simple Instrument'
+        type: epoch_date
+        doc: 'Last Notice Date will be the business day preceding the Last Delivery Date of the Simple Instrument. Days since Unix epoch'
       - id: first_delivery_date
-        type: u2
-        doc: 'First Delivery Date will be the first business day of the month of the Maturity Date of the Simple Instrument'
+        type: epoch_date
+        doc: 'First Delivery Date will be the first business day of the month of the Maturity Date of the Simple Instrument. Days since Unix epoch'
       - id: last_delivery_date
-        type: u2
-        doc: 'Last Delivery Date will be the seventh business day following the Last Trading Date of the Simple Instrument'
+        type: epoch_date
+        doc: 'Last Delivery Date will be the seventh business day following the Last Trading Date of the Simple Instrument. Days since Unix epoch'
       - id: option_strike_price
         type: decimal_s8_9_nullable
         doc: 'NULL when Instrument Type not equal to. Implied decimal with scale 1e-9. Nullable, Not An Option = 999999999999999999'
@@ -319,8 +319,8 @@ types:
         type: u1
         enum: listing_status
       - id: first_trade_date
-        type: u2
-        doc: 'First Trade Date will be the Trading Date that the Simple Instrument is initially made available for Trading on MIAX Futures Onyx'
+        type: epoch_date
+        doc: 'First Trade Date will be the Trading Date that the Simple Instrument is initially made available for Trading on MIAX Futures Onyx. Days since Unix epoch'
       - id: reserved_64
         size: 64
         doc: 'Reserved for future use'
@@ -341,8 +341,8 @@ types:
         type: s4
         doc: 'Leg ratio for the specified instrument Positive indicates Buy Negative indicates Sell'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity Date is the expiration date of a Simple Instrument'
+        type: epoch_date
+        doc: 'Maturity Date is the expiration date of a Simple Instrument. Days since Unix epoch'
       - id: reserved_32
         size: 32
         doc: 'Currently reserved for future use'
@@ -445,8 +445,8 @@ types:
         size: 4
         doc: 'Previously was Maturity Month-Year field; replaced by the Maturity Date field below'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity Date is the expiration date of a Simple Instrument'
+        type: epoch_date
+        doc: 'Maturity Date is the expiration date of a Simple Instrument. Days since Unix epoch'
       - id: reserved_6
         size: 6
         doc: 'Reserved for future use'
@@ -507,8 +507,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Business Trade Date'
+        type: epoch_date
+        doc: 'Business Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'Unique numeric ID assigned by MIAX Futures Onyx for a Simple instrument and is permanent for the life of a Simple instrument'
@@ -539,8 +539,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Business Trade Date'
+        type: epoch_date
+        doc: 'Business Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'Unique numeric ID assigned by MIAX Futures Onyx for a Simple instrument and is permanent for the life of a Simple instrument'
@@ -706,6 +706,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == 999999999999999999
+  epoch_date:
+    seq:
+      - id: days
+        type: u2
+    instances:
+      unix_seconds:
+        value: days * 86400
 
 enums:
   sesm_packet_type:
@@ -882,17 +889,17 @@ enums:
       doc: 'Inactive'
   system_status:
     0x53:
-      id: 'start_of'
-      doc: 'Start Of'
+      id: 'start_of_system_hours'
+      doc: 'Start Of System Hours'
     0x43:
-      id: 'end_of'
-      doc: 'End Of'
+      id: 'end_of_system_hours'
+      doc: 'End Of System Hours'
     0x31:
-      id: 'start_of_x31'
-      doc: 'Start Of'
+      id: 'start_of_test_session'
+      doc: 'Start Of Test Session'
     0x32:
-      id: 'end_of_x32'
-      doc: 'End Of'
+      id: 'end_of_test_session'
+      doc: 'End Of Test Session'
   trade_type:
     0x4f:
       id: 'outright'

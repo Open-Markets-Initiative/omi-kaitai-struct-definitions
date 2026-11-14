@@ -248,8 +248,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: mtp_group_id
         type: u2_nullable
         doc: 'Unique identifier of custom match-trade prevention group. Nullable, No Value = 65535'
@@ -346,8 +346,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: mtp_group_id
         type: u2_nullable
         doc: 'Unique identifier of custom match-trade prevention group. Nullable, No Value = 65535'
@@ -414,8 +414,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.sbe_header.block_length - 83
         doc: 'Bytes the stated block holds beyond the 83 this version reads'
@@ -509,8 +509,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: last_liquidity_ind
         type: u1
         enum: last_liquidity_ind
@@ -627,8 +627,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: orig_list_seq_no
         type: u1
         doc: 'Original list sequence number MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 62 When the client has requested ExecutionRequest_Canceled messages as a result of a mass cancel request the cancels will be reported back to customers as Unsolicited cancel i.e. the ClOrdIDandOrigClOrdIDfields will contain the canceled order identifier. 5.2.1.8 ExecutionReport_PendingReplace The ExecutionReport_PendingReplace message is a response to OrderCancelReplaceRequest request indicating the request has been received by the exchange and is in the process of being handled. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 18'
@@ -745,8 +745,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: orig_list_seq_no
         type: u1
         doc: 'Original list sequence number MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 62 When the client has requested ExecutionRequest_Canceled messages as a result of a mass cancel request the cancels will be reported back to customers as Unsolicited cancel i.e. the ClOrdIDandOrigClOrdIDfields will contain the canceled order identifier. 5.2.1.8 ExecutionReport_PendingReplace The ExecutionReport_PendingReplace message is a response to OrderCancelReplaceRequest request indicating the request has been received by the exchange and is in the process of being handled. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 18'
@@ -891,8 +891,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.sbe_header.block_length - 85
         doc: 'Bytes the stated block holds beyond the 85 this version reads'
@@ -998,8 +998,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.sbe_header.block_length - 40
         doc: 'Bytes the stated block holds beyond the 40 this version reads'
@@ -1259,8 +1259,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.sbe_header.block_length - 50
         doc: 'Bytes the stated block holds beyond the 50 this version reads'

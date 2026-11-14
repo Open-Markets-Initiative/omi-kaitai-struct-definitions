@@ -117,8 +117,8 @@ types:
   instrument_directory_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -148,8 +148,8 @@ types:
   reg_sho_restriction_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -163,8 +163,8 @@ types:
   security_trading_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -182,8 +182,8 @@ types:
   trading_session_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: trading_session
         type: u1
         enum: trading_session
@@ -194,8 +194,8 @@ types:
   trade_report_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -230,8 +230,8 @@ types:
   trade_cancel_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -266,8 +266,8 @@ types:
   trade_correct_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -321,6 +321,19 @@ types:
       - id: block_extension
         size: _parent.sbe_header.block_length - 50
         doc: 'Bytes the stated block holds beyond the 50 this version reads'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_s8_6:
     seq:
       - id: mantissa

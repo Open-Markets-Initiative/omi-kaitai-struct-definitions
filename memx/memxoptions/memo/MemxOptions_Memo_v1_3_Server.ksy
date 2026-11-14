@@ -246,8 +246,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: mtp_group_id
         type: u2_nullable
         doc: 'Unique identifier of custom match-trade prevention group. Nullable, No Value = 65535'
@@ -344,8 +344,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: mtp_group_id
         type: u2_nullable
         doc: 'Unique identifier of custom match-trade prevention group. Nullable, No Value = 65535'
@@ -412,8 +412,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.sbe_header.block_length - 83
         doc: 'Bytes the stated block holds beyond the 83 this version reads'
@@ -507,8 +507,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: last_liquidity_ind
         type: u1
         enum: last_liquidity_ind
@@ -625,8 +625,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.sbe_header.block_length - 92
         doc: 'Bytes the stated block holds beyond the 92 this version reads'
@@ -740,8 +740,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.sbe_header.block_length - 104
         doc: 'Bytes the stated block holds beyond the 104 this version reads'
@@ -878,8 +878,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.sbe_header.block_length - 85
         doc: 'Bytes the stated block holds beyond the 85 this version reads'

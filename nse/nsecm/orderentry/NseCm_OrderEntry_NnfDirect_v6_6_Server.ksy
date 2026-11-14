@@ -943,14 +943,14 @@ types:
         type: s2
         doc: 'Indicator for security in Surveillance Measure Indicator for security in Surveillance Measure'
       - id: issue_start_date
-        type: s4
-        doc: 'This field contains the date of issue of the security'
+        type: dos_second_timestamp
+        doc: 'This field contains the date of issue of the security. Seconds since Dos epoch'
       - id: interest_payment_date
-        type: s4
-        doc: 'This field contains the interest payment date of the issue'
+        type: dos_second_timestamp
+        doc: 'This field contains the interest payment date of the issue. Seconds since Dos epoch'
       - id: issue_maturity_date
-        type: s4
-        doc: 'This field contains the maturity date'
+        type: dos_second_timestamp
+        doc: 'This field contains the maturity date. Seconds since Dos epoch'
       - id: board_lot_quantity
         type: s4
         doc: 'This field contains the board lot quantity'
@@ -967,41 +967,41 @@ types:
         size: 1
         doc: 'Reserved for future use 172 173'
       - id: listing_date
-        type: s4
-        doc: 'This field contains the date of listing'
+        type: dos_second_timestamp
+        doc: 'This field contains the date of listing. Seconds since Dos epoch'
       - id: expulsion_date
-        type: s4
-        doc: 'This field contains the date of expulsion'
+        type: dos_second_timestamp
+        doc: 'This field contains the date of expulsion. Seconds since Dos epoch'
       - id: re_admission_date
-        type: s4
-        doc: 'This field contains the date of readmission'
+        type: dos_second_timestamp
+        doc: 'This field contains the date of readmission. Seconds since Dos epoch'
       - id: record_date
-        type: s4
-        doc: 'This field contains the date of record changed'
+        type: dos_second_timestamp
+        doc: 'This field contains the date of record changed. Seconds since Dos epoch'
       - id: expiry_date
         type: dos_second_timestamp
         doc: 'This field contains the last date of trading before any corporate action. Seconds since Dos epoch'
       - id: no_delivery_start_date
-        type: s4
-        doc: 'This field contains the date from when physical delivery of share certificates is stopped for book closure'
+        type: dos_second_timestamp
+        doc: 'This field contains the date from when physical delivery of share certificates is stopped for book closure. Seconds since Dos epoch'
       - id: no_delivery_end_date
-        type: s4
-        doc: 'This field contains the date from when physical delivery of share certificates starts after book closure'
+        type: dos_second_timestamp
+        doc: 'This field contains the date from when physical delivery of share certificates starts after book closure. Seconds since Dos epoch'
       - id: eligiblity_indicators
         type: eligiblity_indicators
         doc: 'ELIGIBLITY INDICATORS'
       - id: book_closure_start_date
-        type: s4
-        doc: 'This field contains the date when the record books in the company for shareholder names starts'
+        type: dos_second_timestamp
+        doc: 'This field contains the date when the record books in the company for shareholder names starts. Seconds since Dos epoch'
       - id: book_closure_end_date
-        type: s4
-        doc: 'This field contains the date when the record books in the company for shareholder names ends'
+        type: dos_second_timestamp
+        doc: 'This field contains the date when the record books in the company for shareholder names ends. Seconds since Dos epoch'
       - id: purpose
         type: purpose
         doc: 'PURPOSE'
       - id: local_update_date_time
-        type: s4
-        doc: 'This field contains the local database update date and time'
+        type: dos_second_timestamp
+        doc: 'This field contains the local database update date and time. Seconds since Dos epoch'
       - id: delete_flag
         type: str
         size: 1

@@ -231,8 +231,8 @@ types:
         type: s4_nullable
         doc: 'If this tag is present, 35=f message is sent for the instrument. Nullable, No Value = 2147483647'
       - id: trade_date
-        type: u2_nullable
-        doc: 'Trade Session Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
@@ -826,8 +826,8 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC Date and time of last Security Definition add, update or delete on a given Market Data channel. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2_nullable
-        doc: 'Trade Session Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: md_security_trading_status
         type: u1_nullable
         doc: 'Identifies the current trading state of the instrument. Nullable, No Value = 255'
@@ -1865,14 +1865,14 @@ types:
         type: decimal_s8_9_nullable
         doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: issue_date
-        type: u2_nullable
-        doc: 'Issue Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Issue Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: dated_date
-        type: u2_nullable
-        doc: 'Dated Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Dated Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Maturity Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Maturity Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: coupon_rate
         type: decimal_s8_9_nullable
         doc: 'The rate of interest that, when multiplied by the principal, par value, or face value of a bond, provides the currency amount of the periodic interest payment. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
@@ -2079,11 +2079,11 @@ types:
         encoding: ASCII
         doc: 'Clearing organization'
       - id: start_date
-        type: u2_nullable
-        doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral. Days since Unix epoch. Nullable, No Value = 65535'
       - id: end_date
-        type: u2_nullable
-        doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral. Days since Unix epoch. Nullable, No Value = 65535'
       - id: termination_type
         type: str
         size: 8
@@ -2212,8 +2212,8 @@ types:
         type: u8_nullable
         doc: 'Underlying GUID. For Repo specials populated with individual instrument GUID of the underlying security. Nullable, No Value = 18446744073709551615'
       - id: underlying_maturity_date
-        type: u2_nullable
-        doc: 'Underlying Security''s Maturity Date. Will be populated with Maturity Date of the underlying security instrument for Repo Specials only. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Underlying Security''s Maturity Date. Will be populated with Maturity Date of the underlying security instrument for Repo Specials only. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.group_size.block_length - 118
         doc: 'Bytes the stated block holds beyond the 118 this version reads'
@@ -2262,11 +2262,11 @@ types:
         type: s4
         doc: 'Broken date Instrument Globex Security ID'
       - id: broken_date_start
-        type: u2_nullable
-        doc: 'Start date of a broken date period. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Start date of a broken date period. Days since Unix epoch. Nullable, No Value = 65535'
       - id: broken_date_end
-        type: u2_nullable
-        doc: 'End date of a broken date period. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'End date of a broken date period. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.group_size.block_length - 16
         doc: 'Bytes the stated block holds beyond the 16 this version reads'
@@ -2333,8 +2333,8 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: trade_date
-        type: u2_nullable
-        doc: 'Trade Session Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: trade_link_id
         type: u4
         doc: 'Contains the workup ID; unique per instrument per day'
@@ -2741,14 +2741,14 @@ types:
   trading_sessions_group:
     seq:
       - id: trade_date
-        type: u2_nullable
-        doc: 'Trade Session Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: settl_date
-        type: u2_nullable
-        doc: 'Settle (Value) Date corresponding to Trade Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Settle (Value) Date corresponding to Trade Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Maturity Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Maturity Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: security_alt_id
         type: str
         size: 12
@@ -3129,8 +3129,8 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC Date and time of last Security Definition add, update or delete on a given Market Data channel. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2_nullable
-        doc: 'Trade Session Date. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: md_security_trading_status
         type: u1_nullable
         doc: 'Identifies the current trading state of the instrument. Nullable, No Value = 255'
@@ -3343,13 +3343,20 @@ types:
     instances:
       is_null:
         value: value == 2147483647
-  u2_nullable:
+  epoch_date:
     seq:
-      - id: value
+      - id: days
         type: u2
     instances:
+      unix_seconds:
+        value: days * 86400
+  epoch_date_nullable:
+    seq:
+      - id: value
+        type: epoch_date
+    instances:
       is_null:
-        value: value == 65535
+        value: value.days == 65535
   u1_nullable:
     seq:
       - id: value
@@ -3392,20 +3399,13 @@ types:
     instances:
       is_null:
         value: value == 4294967295
-  epoch_date:
-    seq:
-      - id: days
-        type: u2
-    instances:
-      unix_seconds:
-        value: days * 86400
-  epoch_date_nullable:
+  u2_nullable:
     seq:
       - id: value
-        type: epoch_date
+        type: u2
     instances:
       is_null:
-        value: value.days == 65535
+        value: value == 65535
   decimal_s4_4:
     seq:
       - id: mantissa

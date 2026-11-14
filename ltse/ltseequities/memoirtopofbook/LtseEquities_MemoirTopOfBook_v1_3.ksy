@@ -121,8 +121,8 @@ types:
   instrument_directory_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -152,8 +152,8 @@ types:
   reg_sho_restriction_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -167,8 +167,8 @@ types:
   security_trading_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -186,8 +186,8 @@ types:
   snapshot_complete_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: as_of_sequence_number
         type: u8
         doc: 'AsOfSequenceNumber'
@@ -197,8 +197,8 @@ types:
   trading_session_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: trading_session
         type: u1
         enum: trading_session
@@ -209,8 +209,8 @@ types:
   best_bid_offer_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -232,8 +232,8 @@ types:
   best_bid_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -249,8 +249,8 @@ types:
   best_offer_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -266,8 +266,8 @@ types:
   best_bid_short_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -283,8 +283,8 @@ types:
   best_offer_short_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -300,14 +300,27 @@ types:
   clear_book_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
       - id: block_extension
         size: _parent.sbe_header.block_length - 10
         doc: 'Bytes the stated block holds beyond the 10 this version reads'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_s8_6:
     seq:
       - id: mantissa

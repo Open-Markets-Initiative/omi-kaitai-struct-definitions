@@ -236,14 +236,14 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Maturity date of instrument. Days since Unix epoch. Nullable, No Value = 65535'
       - id: coupon_rate_optional
         type: coupon_rate_optional
         doc: 'Number of entries in Market Data message'
       - id: trade_date
-        type: u2_nullable
-        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Days since Unix epoch. Nullable, No Value = 65535'
       - id: fair_coupon_pct
         type: fair_coupon_pct
         doc: 'Number of entries in Market Data message'
@@ -281,8 +281,8 @@ types:
         type: floating_payment
         doc: 'Number of entries in Market Data message'
       - id: next_fixed_payment_date
-        type: u2_nullable
-        doc: 'The date the next fixed payment will be made. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'The date the next fixed payment will be made. Days since Unix epoch. Nullable, No Value = 65535'
       - id: next_fixed_payment_amount
         type: next_fixed_payment_amount
         doc: 'Number of entries in Market Data message'
@@ -290,14 +290,14 @@ types:
         type: next_floating_payment_amount
         doc: 'Number of entries in Market Data message'
       - id: trading_reference_date
-        type: u2_nullable
-        doc: 'Indicates the business date for previous settlement price. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Indicates the business date for previous settlement price. Days since Unix epoch. Nullable, No Value = 65535'
       - id: previous_eris_pai
         type: previous_eris_pai
         doc: 'Number of entries in Market Data message'
       - id: fed_funds_date
-        type: u2_nullable
-        doc: 'The date that the for which the fed funds date was published. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'The date that the for which the fed funds date was published. Days since Unix epoch. Nullable, No Value = 65535'
       - id: accrual_days
         type: u4_nullable
         doc: 'How many days have passed since settlement price was last calculated. Nullable, No Value = 4294967295'
@@ -313,8 +313,8 @@ types:
         type: leg_contract_multiplier
         doc: 'Number of entries in Market Data message'
       - id: next_floating_payment_date
-        type: u2_nullable
-        doc: 'The date the next floating payment will be made. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'The date the next floating payment will be made. Days since Unix epoch. Nullable, No Value = 65535'
       - id: p_v_01
         type: p_v_01
         doc: 'Number of entries in Market Data message'
@@ -846,8 +846,8 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Maturity date of instrument. Days since Unix epoch. Nullable, No Value = 65535'
       - id: unit_of_measure
         type: str
         size: 5
@@ -1043,8 +1043,8 @@ types:
         type: leg_maturity_month_year
         doc: 'Number of legs (repeating groups)'
       - id: leg_maturity_date
-        type: u2_nullable
-        doc: 'Multileg instrument''s individual security''s leg MaturityDate. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Multileg instrument''s individual security''s leg MaturityDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: leg_strike_price
         type: decimal_s8_7_nullable
         doc: 'Multileg instrument''s individual security''s StrikePrice. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
@@ -1148,8 +1148,8 @@ types:
         encoding: ASCII
         doc: 'Indicates the product code for the instrument'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Maturity date of instrument. Days since Unix epoch. Nullable, No Value = 65535'
       - id: security_type_4
         type: str
         size: 4
@@ -1390,8 +1390,8 @@ types:
         type: u2
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
       - id: trade_date
-        type: u2_nullable
-        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.message_header.simple_binary_header.block_length - 13
         doc: 'Bytes the stated block holds beyond the 13 this version reads'
@@ -1464,8 +1464,8 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Maturity date of instrument. Days since Unix epoch. Nullable, No Value = 65535'
       - id: unit_of_measure
         type: str
         size: 5
@@ -1634,8 +1634,8 @@ types:
         type: u1_nullable
         doc: 'Identifies the type of product. Nullable, No Value = 255'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Maturity date of instrument. Days since Unix epoch. Nullable, No Value = 65535'
       - id: reference_id_50
         type: str
         size: 50
@@ -1748,8 +1748,8 @@ types:
         type: u1_nullable
         doc: 'Identifies the type of product. Nullable, No Value = 255'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Maturity date of instrument. Days since Unix epoch. Nullable, No Value = 65535'
       - id: reference_id_50
         type: str
         size: 50
@@ -1773,8 +1773,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2_nullable
-        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Days since Unix epoch. Nullable, No Value = 65535'
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
@@ -1840,8 +1840,8 @@ types:
         type: u1_nullable
         doc: 'Identifies the type of product. Nullable, No Value = 255'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Maturity date of instrument. Days since Unix epoch. Nullable, No Value = 65535'
       - id: coupon_rate
         type: decimal_s4_4_nullable
         doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
@@ -1887,8 +1887,8 @@ types:
         type: u2_nullable
         doc: 'Valid price types for intraday trade. Nullable, No Value = 65535'
       - id: settl_date
-        type: u2_nullable
-        doc: 'Indicates date of settlement. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Indicates date of settlement. Days since Unix epoch. Nullable, No Value = 65535'
       - id: quote_condition
         type: str
         size: 1
@@ -2042,8 +2042,8 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: maturity_date
-        type: u2_nullable
-        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Maturity date of instrument. Days since Unix epoch. Nullable, No Value = 65535'
       - id: currency
         type: str
         size: 3
@@ -2144,8 +2144,8 @@ types:
         encoding: ASCII
         doc: 'Rate Descriptor'
       - id: previous_fixing_date
-        type: u2_nullable
-        doc: 'Issue date for one leg of a multi-issue trade. It is the previous fixing date on the float leg. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Issue date for one leg of a multi-issue trade. It is the previous fixing date on the float leg. Days since Unix epoch. Nullable, No Value = 65535'
       - id: leg_pay_frequencey
         type: str
         size: 3
@@ -2255,6 +2255,20 @@ types:
     instances:
       is_null:
         value: value == 255
+  epoch_date:
+    seq:
+      - id: days
+        type: u2
+    instances:
+      unix_seconds:
+        value: days * 86400
+  epoch_date_nullable:
+    seq:
+      - id: value
+        type: epoch_date
+    instances:
+      is_null:
+        value: value.days == 65535
   u4_nullable:
     seq:
       - id: value

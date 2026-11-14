@@ -472,8 +472,8 @@ types:
         type: s8
         doc: 'aggressorOrderId'
       - id: aggressor_receive_time
-        type: s8
-        doc: 'aggressorReceiveTime'
+        type: nanosecond_timestamp
+        doc: 'aggressorReceiveTime. Nanoseconds since Unix epoch'
       - id: vwap_price
         type: decimal_s8_9
         doc: 'vwapPrice. Implied decimal with scale 1e-9'

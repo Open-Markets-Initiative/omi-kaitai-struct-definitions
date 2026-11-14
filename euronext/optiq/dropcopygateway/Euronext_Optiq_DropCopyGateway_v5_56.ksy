@@ -135,8 +135,8 @@ types:
         type: u4
         doc: 'symbolIndex'
       - id: event_time
-        type: u8
-        doc: 'eventTime'
+        type: nanosecond_timestamp
+        doc: 'eventTime. Nanoseconds since Unix epoch'
       - id: book_state
         type: u1
         enum: book_state
@@ -171,8 +171,8 @@ types:
         type: u1_nullable
         doc: 'scheduledEvent. Nullable, No Value = 255'
       - id: scheduled_event_time
-        type: u8_nullable
-        doc: 'scheduledEventTime. Nullable, No Value = 18446744073709551615'
+        type: nanosecond_timestamp_nullable
+        doc: 'scheduledEventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: trading_group_order_entry_qualifier
         type: u1_nullable
         doc: 'tradingGroupOrderEntryQualifier. Nullable, No Value = 255'
@@ -180,7 +180,7 @@ types:
         type: u1_nullable
         doc: 'instrumentOrderEntryQualifier. Nullable, No Value = 255'
       - id: phase_time
-        type: u8_nullable
+        type: hhmmss_time_nullable
         doc: 'phaseTime. Nullable, No Value = 18446744073709551615'
       - id: contract_symbol_index
         type: u4_nullable
@@ -250,8 +250,8 @@ types:
         type: u8
         doc: 'eventId'
       - id: event_time
-        type: u8
-        doc: 'eventTime'
+        type: nanosecond_timestamp
+        doc: 'eventTime. Nanoseconds since Unix epoch'
       - id: price_type
         type: u1
         enum: price_type
@@ -2907,6 +2907,19 @@ types:
       - id: block_extension
         size: _parent.message_header.block_length - 38
         doc: 'Bytes the stated block holds beyond the 38 this version reads'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   u1_nullable:
     seq:
       - id: value
@@ -2914,13 +2927,31 @@ types:
     instances:
       is_null:
         value: value == 255
-  u8_nullable:
+  nanosecond_timestamp_nullable:
     seq:
       - id: value
-        type: u8
+        type: nanosecond_timestamp
     instances:
       is_null:
-        value: value == 18446744073709551615
+        value: value.time == -1
+  hhmmss_time:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 10000 % 100
+      minute:
+        value: time / 100 % 100
+      second:
+        value: time % 100
+  hhmmss_time_nullable:
+    seq:
+      - id: value
+        type: hhmmss_time
+    instances:
+      is_null:
+        value: value.time == -1
   u4_nullable:
     seq:
       - id: value
@@ -2935,6 +2966,13 @@ types:
     instances:
       is_null:
         value: value == -9223372036854775808
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
   u2_nullable:
     seq:
       - id: value

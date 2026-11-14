@@ -123,10 +123,7 @@ types:
         enum: transaction_type
         doc: 'Side of the trader in the present trade B: Buy S: Sell'
       - id: timestamp
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: hhmmss_ascii_time
         doc: 'Time at which the trade occurred (Eastern Time) HHMMSS'
       - id: symbol
         type: str
@@ -257,10 +254,7 @@ types:
         enum: transaction_type
         doc: 'Side of the trader in the present trade B: Buy S: Sell'
       - id: timestamp
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: hhmmss_ascii_time
         doc: 'Time at which the trade occurred (Eastern Time) HHMMSS'
       - id: symbol
         type: str
@@ -391,10 +385,7 @@ types:
         enum: transaction_type
         doc: 'Side of the trader in the present trade B: Buy S: Sell'
       - id: timestamp
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: hhmmss_ascii_time
         doc: 'Time at which the trade occurred (Eastern Time) HHMMSS'
       - id: symbol
         type: str
@@ -525,10 +516,7 @@ types:
         enum: transaction_type
         doc: 'Side of the trader in the present trade B: Buy S: Sell'
       - id: timestamp
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: hhmmss_ascii_time
         doc: 'Time at which the trade occurred (Eastern Time) HHMMSS'
       - id: symbol
         type: str
@@ -659,10 +647,7 @@ types:
         enum: transaction_type
         doc: 'Side of the trader in the present trade B: Buy S: Sell'
       - id: timestamp
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: hhmmss_ascii_time
         doc: 'Time at which the trade occurred (Eastern Time) HHMMSS'
       - id: symbol
         type: str
@@ -805,10 +790,7 @@ types:
         enum: transaction_type
         doc: 'Side of the trader in the present trade B: Buy S: Sell'
       - id: timestamp
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: hhmmss_ascii_time
         doc: 'Time at which the trade occurred (Eastern Time) HHMMSS'
       - id: symbol
         type: str
@@ -956,6 +938,19 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Contains the error description'
+  hhmmss_ascii_time:
+    seq:
+      - id: text
+        type: str
+        size: 6
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.substring(0, 2).to_i
+      minute:
+        value: text.substring(2, 4).to_i
+      second:
+        value: text.substring(4, 6).to_i
 
 enums:
   message_flag:

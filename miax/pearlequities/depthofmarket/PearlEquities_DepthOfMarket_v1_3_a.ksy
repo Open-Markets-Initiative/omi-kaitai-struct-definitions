@@ -69,7 +69,7 @@ types:
         doc: 'protocol packet type'
       - id: session_number
         type: u1
-        doc: 'protocol packet type'
+        doc: 'The Session this packet was generated from'
   application_message:
     seq:
       - id: message_type

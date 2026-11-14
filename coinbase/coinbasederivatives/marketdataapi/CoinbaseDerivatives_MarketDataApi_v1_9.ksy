@@ -517,8 +517,8 @@ types:
         type: s8
         doc: 'aggressorOrderId'
       - id: aggressor_receive_time
-        type: s8
-        doc: 'aggressorReceiveTime'
+        type: nanosecond_timestamp
+        doc: 'aggressorReceiveTime. Nanoseconds since Unix epoch'
       - id: vwap_price
         type: decimal_s8_9
         doc: 'vwapPrice. Implied decimal with scale 1e-9'
@@ -687,8 +687,8 @@ types:
         type: decimal_s8_9
         doc: 'fairValue. Implied decimal with scale 1e-9'
       - id: final_funding_rate_timestamp
-        type: s8_nullable
-        doc: 'finalFundingRateTimestamp. Nullable, No Value = -9223372036854775808'
+        type: nanosecond_timestamp_nullable
+        doc: 'finalFundingRateTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
       - id: correlation_id
         type: s8
         doc: 'correlationId'
@@ -1046,8 +1046,8 @@ types:
         type: decimal_s8_9_nullable
         doc: 'finalFuturesMarkPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: final_funding_rate_timestamp
-        type: s8_nullable
-        doc: 'finalFundingRateTimestamp. Nullable, No Value = -9223372036854775808'
+        type: nanosecond_timestamp_nullable
+        doc: 'finalFundingRateTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
       - id: futures_mark_price_optional
         type: decimal_s8_9_nullable
         doc: 'futuresMarkPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'

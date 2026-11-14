@@ -1629,9 +1629,7 @@ types:
         enum: expiry_type
         doc: 'Expiry type'
       - id: contract_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'Contract date, in the form yyyymmdd'
       - id: strike_price
         type: u4
@@ -1995,6 +1993,19 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
   nanosecond_timestamp:
     seq:
       - id: time

@@ -423,9 +423,7 @@ types:
         type: u2
         doc: 'Number of Underlying shares per option contract'
       - id: maturity_date
-        type: str
-        size: 6
-        encoding: ASCII
+        type: yymmdd_ascii_date
         doc: 'Option maturity date - YYMMDD'
       - id: put_or_call
         type: u1
@@ -886,6 +884,19 @@ types:
     instances:
       is_null:
         value: value.time == 0
+  yymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 6
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 2).to_i
+      month:
+        value: text.substring(2, 4).to_i
+      day:
+        value: text.substring(4, 6).to_i
 
 enums:
   delivery_flag:

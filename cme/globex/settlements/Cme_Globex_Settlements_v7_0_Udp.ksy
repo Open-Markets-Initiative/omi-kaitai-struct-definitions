@@ -195,8 +195,8 @@ types:
         type: settl_price_type
         doc: 'SettlPriceType bit set'
       - id: trading_reference_date
-        type: u2_nullable
-        doc: 'Business date corresponding to a statistic entry. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Business date corresponding to a statistic entry. Days since Unix epoch. Nullable, No Value = 65535'
       - id: md_statistic_desc
         type: str
         size: 40
@@ -376,8 +376,8 @@ types:
         enum: open_close_settl_flag
         doc: 'Estimated vs Actual flag'
       - id: trading_reference_date
-        type: u2_nullable
-        doc: 'Business date corresponding to a statistic entry. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Business date corresponding to a statistic entry. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.group_size.block_length - 131
         doc: 'Bytes the stated block holds beyond the 131 this version reads'
@@ -478,8 +478,8 @@ types:
         enum: high_px_ind
         doc: 'High price origin indicator'
       - id: trading_reference_date
-        type: u2_nullable
-        doc: 'Business date corresponding to a statistic entry. Nullable, No Value = 65535'
+        type: epoch_date_nullable
+        doc: 'Business date corresponding to a statistic entry. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.group_size.block_length - 142
         doc: 'Bytes the stated block holds beyond the 142 this version reads'
@@ -560,6 +560,20 @@ types:
     instances:
       is_null:
         value: value.mantissa == 9223372036854775807
+  epoch_date:
+    seq:
+      - id: days
+        type: u2
+    instances:
+      unix_seconds:
+        value: days * 86400
+  epoch_date_nullable:
+    seq:
+      - id: value
+        type: epoch_date
+    instances:
+      is_null:
+        value: value.days == 65535
 
 enums:
   template_id:

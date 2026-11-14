@@ -116,8 +116,8 @@ types:
   timestamp_seconds_message:
     seq:
       - id: second
-        type: u4
-        doc: 'Number of seconds since midnight'
+        type: second_timestamp
+        doc: 'Number of seconds since midnight. Seconds since Midnight epoch'
   system_event_message:
     seq:
       - id: timestamp_nanoseconds
@@ -239,6 +239,17 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'NASDAQ TotalView-ITCH 4.0 sequence number when the NASDAQ GLIMPSE 4.0 snapshot was taken'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
 
 enums:
   client_packet_type:

@@ -234,8 +234,8 @@ types:
         type: u1_nullable
         doc: 'Defines the type of peg. Nullable, No Value = 255'
       - id: expire_time
-        type: u8_nullable
-        doc: 'The expiration time of a GoodForTime TimeInForce order. Expiration time must be at least a 1 millisecond in the future. If omitted, expiration time will be set to the end of the MEMX post-market trading session. Specified in UTC timestamp since unix epoch in nanoseconds. Nullable, No Value = 18446744073709551615'
+        type: nanosecond_timestamp_nullable
+        doc: 'The expiration time of a GoodForTime TimeInForce order. Expiration time must be at least a 1 millisecond in the future. If omitted, expiration time will be set to the end of the MEMX post-market trading session. Specified in UTC timestamp since unix epoch in nanoseconds. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: min_qty
         type: u4_nullable
         doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
@@ -369,8 +369,8 @@ types:
         type: u1_nullable
         doc: 'Defines the type of peg. Nullable, No Value = 255'
       - id: expire_time
-        type: u8_nullable
-        doc: 'The expiration time of a GoodForTime TimeInForce order. Expiration time must be at least a 1 millisecond in the future. If omitted, expiration time will be set to the end of the MEMX post-market trading session. Specified in UTC timestamp since unix epoch in nanoseconds. Nullable, No Value = 18446744073709551615'
+        type: nanosecond_timestamp_nullable
+        doc: 'The expiration time of a GoodForTime TimeInForce order. Expiration time must be at least a 1 millisecond in the future. If omitted, expiration time will be set to the end of the MEMX post-market trading session. Specified in UTC timestamp since unix epoch in nanoseconds. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: min_qty
         type: u4_nullable
         doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
@@ -415,8 +415,8 @@ types:
         type: u4
         doc: 'Total quantity (e.g. number of shares) filled'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
@@ -500,8 +500,8 @@ types:
         type: u4
         doc: 'Total quantity (e.g. number of shares) filled'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: last_liquidity_ind
         type: u1
         enum: last_liquidity_ind
@@ -634,8 +634,8 @@ types:
         type: u1_nullable
         doc: 'Reason code for order cancellation. Nullable, No Value = 255'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
@@ -779,8 +779,8 @@ types:
         type: u4
         doc: 'Total quantity (e.g. number of shares) filled'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
@@ -919,8 +919,8 @@ types:
         enum: exec_restatement_reason
         doc: 'The reason for the restatement'
       - id: transact_time
-        type: u8
-        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+        type: nanosecond_timestamp
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision. Nanoseconds since Unix epoch'
       - id: extended_restatement_reason
         type: u1_nullable
         doc: 'When ExecRestatementReason = 99 (Other) this field contains additional information about the restatement. Nullable, No Value = 255'
@@ -1044,13 +1044,13 @@ types:
     instances:
       is_null:
         value: value == 255
-  u8_nullable:
+  nanosecond_timestamp_nullable:
     seq:
       - id: value
-        type: u8
+        type: nanosecond_timestamp
     instances:
       is_null:
-        value: value == 18446744073709551615
+        value: value.time == -1
   u4_nullable:
     seq:
       - id: value

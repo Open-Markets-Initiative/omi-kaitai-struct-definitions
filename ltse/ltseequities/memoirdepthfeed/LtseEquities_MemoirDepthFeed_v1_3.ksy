@@ -123,8 +123,8 @@ types:
   instrument_directory_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -157,8 +157,8 @@ types:
   reg_sho_restriction_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -172,8 +172,8 @@ types:
   security_trading_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -191,8 +191,8 @@ types:
   trading_session_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: trading_session
         type: u1
         enum: trading_session
@@ -203,8 +203,8 @@ types:
   order_added_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -227,8 +227,8 @@ types:
   order_deleted_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -241,8 +241,8 @@ types:
   order_reduced_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -258,8 +258,8 @@ types:
   order_executed_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -281,8 +281,8 @@ types:
   trade_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -301,8 +301,8 @@ types:
   broken_trade_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -321,8 +321,8 @@ types:
   corrected_trade_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -347,8 +347,8 @@ types:
   clear_book_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'SecurityID'
@@ -358,14 +358,27 @@ types:
   snapshot_complete_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Timestamp. Nanoseconds since Unix epoch'
       - id: as_of_sequence_number
         type: u8
         doc: 'AsOfSequenceNumber'
       - id: block_extension
         size: _parent.sbe_header.block_length - 16
         doc: 'Bytes the stated block holds beyond the 16 this version reads'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_s8_6:
     seq:
       - id: mantissa

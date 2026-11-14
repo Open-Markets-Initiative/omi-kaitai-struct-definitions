@@ -683,7 +683,7 @@ types:
         encoding: ASCII
         doc: 'CrossExclusionIndicator'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'TradeDate'
       - id: multileg_reporting_type
         type: u1
@@ -794,7 +794,7 @@ types:
         encoding: ASCII
         doc: 'MarketingFeeCode'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'TradeDate'
   trade_cancel_correct_message:
     seq:
@@ -858,7 +858,7 @@ types:
         encoding: ASCII
         doc: 'Entire Cboe format symbol'
       - id: maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'When sending Cboe native symbology, set MaturityDate to zero'
       - id: strike_price
         type: decimal_s8_4
@@ -1100,7 +1100,7 @@ types:
       - id: prevent_match
         type: prevent_match
       - id: maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'When sending Cboe native symbology, set MaturityDate to zero'
       - id: strike_price
         type: decimal_s8_4
@@ -1303,6 +1303,17 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
 
 enums:
   firm_message_type:

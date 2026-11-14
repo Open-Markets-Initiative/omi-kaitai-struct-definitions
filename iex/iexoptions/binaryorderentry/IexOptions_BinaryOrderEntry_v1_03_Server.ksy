@@ -229,8 +229,8 @@ types:
         type: str_16_nullable
         doc: 'account. Nullable, No Value = 0'
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -335,8 +335,8 @@ types:
   unsolicited_modify_ack_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -383,8 +383,8 @@ types:
   order_cancel_ack_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -425,8 +425,8 @@ types:
   mass_cancel_ack_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
@@ -466,8 +466,8 @@ types:
   bulk_quote_ack_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: market_participant_id
         type: str
         size: 4
@@ -546,8 +546,8 @@ types:
   new_ioc_quote_ack_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: market_participant_id
         type: str
         size: 4
@@ -597,8 +597,8 @@ types:
   quote_restated_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -636,8 +636,8 @@ types:
   quote_canceled_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -673,8 +673,8 @@ types:
   purge_ack_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
@@ -739,8 +739,8 @@ types:
         type: str_16_nullable
         doc: 'account. Nullable, No Value = 0'
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -853,8 +853,8 @@ types:
   trade_bust_correct_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -900,8 +900,8 @@ types:
   application_layer_reject_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
@@ -935,8 +935,8 @@ types:
   underlying_ref_data_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: underlying_id
         type: u4
         doc: 'underlyingId'
@@ -960,8 +960,8 @@ types:
   instrument_ref_data_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
@@ -1005,8 +1005,8 @@ types:
   mpid_configuration_acknowledgement_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: market_participant_id
         type: str
         size: 4
@@ -1054,8 +1054,8 @@ types:
   market_maker_symbol_appointment_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: underlying_id
         type: u4
         doc: 'underlyingId'
@@ -1084,8 +1084,8 @@ types:
   session_configuration_acknowledgement_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: user_session_type
         type: s1
         enum: user_session_type
@@ -1134,8 +1134,8 @@ types:
   risk_control_acknowledgment_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
@@ -1192,8 +1192,8 @@ types:
   risk_control_alert_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: nanosecond_timestamp
+        doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
@@ -1231,6 +1231,19 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   str_4_nullable:
     seq:
       - id: value

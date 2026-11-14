@@ -146,10 +146,7 @@ types:
         pad-right: 0x20
         doc: 'Synthetic Future Symbol: The first 3 characters are the base symbol, followed by a single character expiration month code and a single digit expiration year code'
       - id: settlement_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Settlement date of the Option associated with the Synthetic Future in YYYYMMDD format'
       - id: symbol_status
         type: u1
@@ -306,6 +303,19 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
   decimal_u4_2:
     seq:
       - id: mantissa

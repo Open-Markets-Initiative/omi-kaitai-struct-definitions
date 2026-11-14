@@ -391,8 +391,8 @@ types:
         type: u8
         doc: 'Cboe generated identifier of this trade. This identifier is guaranteed to be unique for at least 7 calendar days'
       - id: trade_timestamp
-        type: u8
-        doc: 'Date/Time on which the trade occurred, encoded as the number of nanoseconds since the January 1st 1970 UTC (also known as the Unix epoch)'
+        type: nanosecond_timestamp
+        doc: 'Date/Time on which the trade occurred, encoded as the number of nanoseconds since the January 1st 1970 UTC (also known as the Unix epoch). Nanoseconds since Unix epoch'
       - id: execution_venue
         type: str
         size: 4
@@ -929,7 +929,7 @@ types:
   nanosecond_timestamp:
     seq:
       - id: time
-        type: s4
+        type: s8
     instances:
       hour:
         value: time / 3600000000000 % 24

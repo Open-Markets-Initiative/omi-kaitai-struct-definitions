@@ -432,8 +432,8 @@ types:
         type: u8
         doc: 'Cboe generated identifier of this trade. This identifier is guaranteed to be unique for at least 7 calendar days'
       - id: trade_timestamp
-        type: u8
-        doc: 'Date/Time on which the trade occurred, encoded as the number of nanoseconds since the January 1st 1970 UTC (also known as the Unix epoch)'
+        type: nanosecond_timestamp
+        doc: 'Date/Time on which the trade occurred, encoded as the number of nanoseconds since the January 1st 1970 UTC (also known as the Unix epoch). Nanoseconds since Unix epoch'
       - id: execution_venue
         type: str
         size: 4
@@ -536,8 +536,8 @@ types:
         type: u8
         doc: 'Cboe generated identifier of this trade. This identifier is guaranteed to be unique for at least 7 calendar days'
       - id: trade_timestamp
-        type: u8
-        doc: 'Date/Time on which the trade occurred, encoded as the number of nanoseconds since the January 1st 1970 UTC (also known as the Unix epoch)'
+        type: nanosecond_timestamp
+        doc: 'Date/Time on which the trade occurred, encoded as the number of nanoseconds since the January 1st 1970 UTC (also known as the Unix epoch). Nanoseconds since Unix epoch'
       - id: execution_venue
         type: str
         size: 4
@@ -668,8 +668,8 @@ types:
   index_quote_message:
     seq:
       - id: index_timestamp
-        type: u8
-        doc: 'Nanoseconds since midnight'
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: index_ticker
         type: str
         size: 10
@@ -686,8 +686,8 @@ types:
   index_quote_edsp_message:
     seq:
       - id: index_timestamp
-        type: u8
-        doc: 'Nanoseconds since midnight'
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: index_ticker
         type: str
         size: 10
@@ -733,6 +733,19 @@ types:
     instances:
       real:
         value: mantissa / 100.0
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:

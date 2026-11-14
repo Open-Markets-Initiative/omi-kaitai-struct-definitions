@@ -129,9 +129,7 @@ types:
         pad-right: 0x20
         doc: 'Protocol versions supported: A2, A3'
       - id: time
-        type: str
-        size: 6
-        encoding: ASCII
+        type: hhmmss_ascii_time
         doc: 'Time at which the Client Signon is sent (HHMMSS)'
       - id: username
         type: str
@@ -433,6 +431,19 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Identification of the Trade received from the Message Type 30 - Trade This refers to the Trade Number under which a New Allocation (or Give-Up) is to be created or under which an existing Allocation (or Give-Up) is to be modified'
+  hhmmss_ascii_time:
+    seq:
+      - id: text
+        type: str
+        size: 6
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.substring(0, 2).to_i
+      minute:
+        value: text.substring(2, 4).to_i
+      second:
+        value: text.substring(4, 6).to_i
 
 enums:
   message_flag:

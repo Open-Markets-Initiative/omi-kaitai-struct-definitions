@@ -648,8 +648,8 @@ types:
         type: str_5_nullable
         doc: 'executingTrader. Nullable, No Value = 0'
       - id: expire_date
-        type: u2_nullable
-        doc: 'expireDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: custodian_info
         type: custodian_info
         doc: 'NewOrderSingleMessage'
@@ -768,8 +768,8 @@ types:
         type: u1_nullable
         doc: 'accountType. Nullable, No Value = 0'
       - id: expire_date
-        type: u2_nullable
-        doc: 'expireDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: custodian_info
         type: custodian_info
         doc: 'NewOrderSingleMessage'
@@ -977,8 +977,8 @@ types:
         type: decimal_s8_4_nullable
         doc: 'protectionPrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: trade_date
-        type: u2
-        doc: 'tradeDate'
+        type: epoch_date
+        doc: 'tradeDate. Days since Unix epoch'
       - id: working_indicator
         type: u1
         enum: working_indicator
@@ -996,8 +996,8 @@ types:
         enum: time_in_force
         doc: 'timeInForce'
       - id: expire_date
-        type: u2_nullable
-        doc: 'expireDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: order_qty
         type: u8
         doc: 'orderQty'
@@ -1121,8 +1121,8 @@ types:
         type: decimal_s8_4_nullable
         doc: 'protectionPrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: trade_date
-        type: u2
-        doc: 'tradeDate'
+        type: epoch_date
+        doc: 'tradeDate. Days since Unix epoch'
       - id: working_indicator
         type: u1
         enum: working_indicator
@@ -1140,8 +1140,8 @@ types:
         enum: time_in_force
         doc: 'timeInForce'
       - id: expire_date
-        type: u2_nullable
-        doc: 'expireDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: order_qty
         type: u8
         doc: 'orderQty'
@@ -1231,8 +1231,8 @@ types:
         type: u8_nullable
         doc: 'origClOrdID. Nullable, No Value = 0'
       - id: trade_date
-        type: u2
-        doc: 'tradeDate'
+        type: epoch_date
+        doc: 'tradeDate. Days since Unix epoch'
       - id: working_indicator
         type: u1
         enum: working_indicator
@@ -1255,8 +1255,8 @@ types:
         enum: time_in_force
         doc: 'timeInForce'
       - id: expire_date
-        type: u2_nullable
-        doc: 'expireDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: order_qty
         type: u8
         doc: 'orderQty'
@@ -1368,8 +1368,8 @@ types:
         type: u8
         doc: 'orderID'
       - id: trade_date
-        type: u2
-        doc: 'tradeDate'
+        type: epoch_date
+        doc: 'tradeDate. Days since Unix epoch'
       - id: tot_no_related_sym
         type: u1_nullable
         doc: 'totNoRelatedSym. Nullable, No Value = 0'
@@ -1471,8 +1471,8 @@ types:
         enum: time_in_force
         doc: 'timeInForce'
       - id: expire_date
-        type: u2_nullable
-        doc: 'expireDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: order_qty
         type: u8
         doc: 'orderQty'
@@ -1593,8 +1593,8 @@ types:
         enum: settl_type_optional
         doc: 'settlType. Nullable, No Value = 0'
       - id: trade_date
-        type: u2
-        doc: 'tradeDate'
+        type: epoch_date
+        doc: 'tradeDate. Days since Unix epoch'
       - id: days_to_settlement_optional
         type: u2_nullable
         doc: 'daysToSettlement. Nullable, No Value = 65535'
@@ -2197,8 +2197,8 @@ types:
         enum: pos_trans_type
         doc: 'posTransType'
       - id: clearing_business_date
-        type: u2
-        doc: 'clearingBusinessDate'
+        type: epoch_date
+        doc: 'clearingBusinessDate. Days since Unix epoch'
       - id: contrary_instruction_indicator
         type: u1
         enum: contrary_instruction_indicator
@@ -2256,8 +2256,8 @@ types:
         type: u1_nullable
         doc: 'accountType. Nullable, No Value = 0'
       - id: clearing_business_date
-        type: u2
-        doc: 'clearingBusinessDate'
+        type: epoch_date
+        doc: 'clearingBusinessDate. Days since Unix epoch'
       - id: threshold_amount
         type: decimal_s8_4_nullable
         doc: 'thresholdAmount. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
@@ -2359,8 +2359,8 @@ types:
         type: u4
         doc: 'tradeID'
       - id: trade_date_optional
-        type: u2_nullable
-        doc: 'tradeDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'tradeDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: individual_alloc_id
         type: u8
         doc: 'individualAllocID'
@@ -2416,8 +2416,8 @@ types:
         enum: alloc_status
         doc: 'allocStatus'
       - id: trade_date_optional
-        type: u2_nullable
-        doc: 'tradeDate. Nullable, No Value = 0'
+        type: epoch_date_nullable
+        doc: 'tradeDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'transactTime. Nanoseconds since Unix epoch'
@@ -2598,17 +2598,31 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
-  u2_nullable:
+  epoch_date:
     seq:
-      - id: value
+      - id: days
         type: u2
     instances:
+      unix_seconds:
+        value: days * 86400
+  epoch_date_nullable:
+    seq:
+      - id: value
+        type: epoch_date
+    instances:
       is_null:
-        value: value == 0
+        value: value.days == 0
   s4_nullable:
     seq:
       - id: value
         type: s4
+    instances:
+      is_null:
+        value: value == 0
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
     instances:
       is_null:
         value: value == 0

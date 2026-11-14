@@ -161,8 +161,8 @@ types:
         enum: event_status
         doc: 'Current status of the event'
       - id: scheduled_time
-        type: u8
-        doc: 'Event trigger time in nanoseconds since Epoch (UTC)'
+        type: nanosecond_timestamp
+        doc: 'Event trigger time in nanoseconds since Epoch (UTC). Nanoseconds since Unix epoch'
   price_tick_size_message:
     seq:
       - id: timestamp
@@ -261,7 +261,7 @@ types:
         enum: asset_type
         doc: 'Asset type code. Blank if not applicable'
       - id: settle_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Settlement date in YYYYMMDD format'
       - id: reference_alpha_12
         type: str
@@ -586,6 +586,17 @@ types:
     instances:
       is_null:
         value: value.packed == 0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
 
 enums:
   client_packet_type:

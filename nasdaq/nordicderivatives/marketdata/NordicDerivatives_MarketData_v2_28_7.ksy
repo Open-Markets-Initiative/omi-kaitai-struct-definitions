@@ -99,8 +99,8 @@ types:
   seconds_message:
     seq:
       - id: second
-        type: u4
-        doc: 'Unix time (number of seconds since 1970-01-01 00:00:00 UTC)'
+        type: second_timestamp
+        doc: 'Unix time (number of seconds since 1970-01-01 00:00:00 UTC). Seconds since Unix epoch'
   order_book_directory:
     seq:
       - id: timestamp_nanoseconds
@@ -434,6 +434,17 @@ types:
       - id: best_ask_volume
         type: u8
         doc: 'Total volume of orders in the market on ask bid'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
   yyyymmdd_date:
     seq:
       - id: packed

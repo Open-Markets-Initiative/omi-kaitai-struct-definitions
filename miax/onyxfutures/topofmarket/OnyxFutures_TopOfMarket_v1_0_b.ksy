@@ -337,14 +337,14 @@ types:
         type: u4
         doc: 'Unique ID assigned by MIAX Futures Onyx'
       - id: mbb_price
-        type: decimal_s8_9
-        doc: 'Will be provided for updates as a result of any changes to the prices or sizes of the MBBO for an Simple Instrument or a Complex Instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Will be provided for updates as a result of any changes to the prices or sizes of the MBBO for an Simple Instrument or a Complex Instrument. Implied decimal with scale 1e-9. Nullable, No Interest = -999999999999999999'
       - id: mbb_size
         type: u4
         doc: 'Aggregate size in contracts at the displayed offer price'
       - id: mbo_price
-        type: decimal_s8_9
-        doc: 'Will be provided for updates as a result of any changes to the prices or sizes of the MBBO for an Simple Instrument or a Complex Instrumen. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Will be provided for updates as a result of any changes to the prices or sizes of the MBBO for an Simple Instrument or a Complex Instrumen. Implied decimal with scale 1e-9. Nullable, No Interest = 999999999999999999'
       - id: mbo_size
         type: u4
         doc: 'Aggregate size in contracts at the displayed offer price'
@@ -371,8 +371,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Business Trade Date'
+        type: epoch_date
+        doc: 'Business Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
         doc: 'Unique ID assigned by MIAX Futures Onyx'
@@ -408,6 +408,20 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == -999999999999999999
+  epoch_date:
+    seq:
+      - id: days
+        type: u2
+    instances:
+      unix_seconds:
+        value: days * 86400
 
 enums:
   packet_type:

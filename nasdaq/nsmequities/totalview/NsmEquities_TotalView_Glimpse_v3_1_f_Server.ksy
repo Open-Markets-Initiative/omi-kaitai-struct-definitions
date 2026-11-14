@@ -118,11 +118,8 @@ types:
   seconds_message:
     seq:
       - id: second
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Number of second since midnight'
+        type: second_ascii_timestamp
+        doc: 'Number of second since midnight. Seconds since Midnight epoch'
   milliseconds_message:
     seq:
       - id: millisecond
@@ -215,6 +212,19 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'TotalView-ITCH 3.1f sequence number when the GLIMPSE 3.1f snapshot was taken'
+  second_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 5
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600 % 24
+      minute:
+        value: text.to_i / 60 % 60
+      second:
+        value: text.to_i % 60
 
 enums:
   client_packet_type:

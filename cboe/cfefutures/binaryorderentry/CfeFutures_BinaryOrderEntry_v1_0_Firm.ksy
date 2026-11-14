@@ -172,7 +172,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Required for TimeInForce = 6 orders, specifies the date-time (in UTC) that the order expires. Nanoseconds since Unix epoch'
       - id: maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: open_close
         type: u1
@@ -510,6 +510,17 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
 
 enums:
   firm_message_type:

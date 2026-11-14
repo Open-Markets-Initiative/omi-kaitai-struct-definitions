@@ -1159,7 +1159,7 @@ types:
         type: u1
         doc: 'To be combined with IMPrice'
       - id: order_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Date of order (YYYYMMDD)'
       - id: order_priority_date
         type: u4
@@ -1435,6 +1435,17 @@ types:
         value: text.substring(2, 4).to_i
       second:
         value: text.substring(4, 6).to_i
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
   hhmmssmmm_time:
     seq:
       - id: time

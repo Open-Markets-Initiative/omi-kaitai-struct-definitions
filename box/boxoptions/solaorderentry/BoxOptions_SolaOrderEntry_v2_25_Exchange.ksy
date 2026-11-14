@@ -225,9 +225,7 @@ types:
         type: str_8_nullable
         doc: 'Identifies all the incoming business messages for one connection. Must be sequential and start at 1 at the beginning of the day. Used by SOLA® to track gaps in message sequence. When the maximum User Sequence ID of 99999999 is reached, the Participant is required to reset back to 0 (zero), and then increment by 1 for each new business message sent to the Exchange. The same reset is required when the Participant reaches the next maximum User Sequence ID of 99999999 and so on. Nullable, No Value = 0'
       - id: time
-        type: str
-        size: 6
-        encoding: ASCII
+        type: hhmmss_ascii_time
         doc: 'HHMMSS'
   error_notice:
     seq:
@@ -879,9 +877,7 @@ types:
         encoding: ASCII
         doc: 'Price with format indicator and price mantissa Format indicator (1): If the format indicator is Alpha, it means that the price is negative (A means negative value with no decimal, B means negative value with 1 decimal, C means negative value with 2 decimals, etc.). If the format indicator is Numeric, it means that the price is positive (0 means positive value with no decimal, 1 means positive value with one decimal, 2 means positive value with 2 decimals, etc.). If the format indicator is set to spaces, it means that the price is not significant. Price mantissa (9): Represents the price value including the number of decimals defined in the format indicator. Examples: Format indicator = 2; Price mantissa = 3509438; Price = 35094.38 Format indicator = A; Price mantissa = 3567838; Price = -3567838 Format indicator = ; Price mantissa = 3567838; Price = not significant'
       - id: time_trade_hhmmss
-        type: str
-        size: 6
-        encoding: ASCII
+        type: hhmmss_ascii_time
         doc: 'HHMMSS'
       - id: clearing_data
         type: clearing_data
@@ -1044,9 +1040,7 @@ types:
         encoding: ASCII
         doc: 'Price with format indicator and price mantissa Format indicator (1): If the format indicator is Alpha, it means that the price is negative (A means negative value with no decimal, B means negative value with 1 decimal, C means negative value with 2 decimals, etc.). If the format indicator is Numeric, it means that the price is positive (0 means positive value with no decimal, 1 means positive value with one decimal, 2 means positive value with 2 decimals, etc.). If the format indicator is set to spaces, it means that the price is not significant. Price mantissa (9): Represents the price value including the number of decimals defined in the format indicator. Examples: Format indicator = 2; Price mantissa = 3509438; Price = 35094.38 Format indicator = A; Price mantissa = 3567838; Price = -3567838 Format indicator = ; Price mantissa = 3567838; Price = not significant'
       - id: time_of_the_trade_hhmmss
-        type: str
-        size: 6
-        encoding: ASCII
+        type: hhmmss_ascii_time
         doc: 'HHMMSS'
       - id: clearing_data
         type: clearing_data
@@ -1193,9 +1187,7 @@ types:
         encoding: ASCII
         doc: 'Price with format indicator and price mantissa Format indicator (1): If the format indicator is Alpha, it means that the price is negative (A means negative value with no decimal, B means negative value with 1 decimal, C means negative value with 2 decimals, etc.). If the format indicator is Numeric, it means that the price is positive (0 means positive value with no decimal, 1 means positive value with one decimal, 2 means positive value with 2 decimals, etc.). If the format indicator is set to spaces, it means that the price is not significant. Price mantissa (9): Represents the price value including the number of decimals defined in the format indicator. Examples: Format indicator = 2; Price mantissa = 3509438; Price = 35094.38 Format indicator = A; Price mantissa = 3567838; Price = -3567838 Format indicator = ; Price mantissa = 3567838; Price = not significant'
       - id: time_of_the_trade_hhmmss
-        type: str
-        size: 6
-        encoding: ASCII
+        type: hhmmss_ascii_time
         doc: 'HHMMSS'
       - id: clearing_data
         type: clearing_data
@@ -1284,9 +1276,7 @@ types:
         encoding: ASCII
         doc: 'Price with format indicator and price mantissa Format indicator (1): If the format indicator is Alpha, it means that the price is negative (A means negative value with no decimal, B means negative value with 1 decimal, C means negative value with 2 decimals, etc.). If the format indicator is Numeric, it means that the price is positive (0 means positive value with no decimal, 1 means positive value with one decimal, 2 means positive value with 2 decimals, etc.). If the format indicator is set to spaces, it means that the price is not significant. Price mantissa (9): Represents the price value including the number of decimals defined in the format indicator. Examples: Format indicator = 2; Price mantissa = 3509438; Price = 35094.38 Format indicator = A; Price mantissa = 3567838; Price = -3567838 Format indicator = ; Price mantissa = 3567838; Price = not significant'
       - id: time_trade_hhmmss
-        type: str
-        size: 6
-        encoding: ASCII
+        type: hhmmss_ascii_time
         doc: 'HHMMSS'
       - id: clearing_data
         type: clearing_data
@@ -1434,6 +1424,19 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: text == "0"
+  hhmmss_ascii_time:
+    seq:
+      - id: text
+        type: str
+        size: 6
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.substring(0, 2).to_i
+      minute:
+        value: text.substring(2, 4).to_i
+      second:
+        value: text.substring(4, 6).to_i
   str_2_nullable:
     seq:
       - id: value

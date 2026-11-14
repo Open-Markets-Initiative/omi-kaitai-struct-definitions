@@ -115,7 +115,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
   time_message:
     seq:
@@ -450,7 +450,7 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62 symbol'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
       - id: settlement_price
         type: decimal_u8_4
@@ -471,7 +471,7 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62 symbol'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
       - id: open_interest
         type: u4
@@ -570,6 +570,17 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
   decimal_u8_4:
     seq:
       - id: mantissa

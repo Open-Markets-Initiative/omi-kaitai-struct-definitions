@@ -1174,8 +1174,8 @@ types:
         type: s8
         doc: 'mmpGroupId'
       - id: frozen_until_time
-        type: s8_nullable
-        doc: 'frozenUntilTime. Nullable, No Value = -9223372036854775808'
+        type: nanosecond_timestamp_nullable
+        doc: 'frozenUntilTime. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
   get_mass_quote_mmp_status_reject_message:
     seq:
       - id: timestamp
@@ -1200,8 +1200,8 @@ types:
         type: s8
         doc: 'currencyPairId'
       - id: frozen_until_time
-        type: s8_nullable
-        doc: 'frozenUntilTime. Nullable, No Value = -9223372036854775808'
+        type: nanosecond_timestamp_nullable
+        doc: 'frozenUntilTime. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
   get_orders_mmp_status_reject_message:
     seq:
       - id: timestamp
@@ -1729,6 +1729,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == -9223372036854775808
 
 enums:
   template_id:

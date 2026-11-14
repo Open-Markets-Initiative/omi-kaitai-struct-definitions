@@ -276,9 +276,7 @@ types:
         type: second_ascii_timestamp
         doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. Seconds since Midnight epoch'
       - id: trade_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'Current Trade Date as represented by YYYYMMDD'
   expanded_bid_update_message:
     seq:
@@ -686,6 +684,19 @@ types:
         value: text.to_i / 60 % 60
       second:
         value: text.to_i % 60
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
 
 enums:
   message_type:

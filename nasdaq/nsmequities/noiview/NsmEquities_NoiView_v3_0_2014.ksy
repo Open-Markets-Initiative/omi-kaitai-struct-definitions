@@ -295,7 +295,7 @@ types:
         pad-right: 0x20
         doc: 'Stock symbol, right padded with spaces'
       - id: ipo_quotation_release_time
-        type: u4
+        type: hhmmss_time
         doc: 'Denotes the IPO release time for quotation to the nearest second. Format: HHMMSS'
       - id: ipo_quotation_release_qualifier
         type: u1
@@ -324,6 +324,17 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  hhmmss_time:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 10000 % 100
+      minute:
+        value: time / 100 % 100
+      second:
+        value: time % 100
 
 enums:
   message_type:

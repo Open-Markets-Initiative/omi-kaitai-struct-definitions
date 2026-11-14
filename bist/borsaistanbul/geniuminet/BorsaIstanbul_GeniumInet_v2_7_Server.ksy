@@ -184,7 +184,7 @@ types:
         type: s4
         doc: 'Only applicable for derivative instruments'
       - id: expiration_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Date of order expiration. Only applicable for derivative instruments. Valid format is YYYYMMDD'
       - id: decimals_in_strike_price
         type: u2
@@ -370,6 +370,17 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
   nanosecond_timestamp:
     seq:
       - id: time

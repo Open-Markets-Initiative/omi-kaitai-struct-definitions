@@ -149,8 +149,8 @@ types:
         type: u4
         doc: 'Order rank information for the order position within the order book'
       - id: business_time
-        type: u8
-        doc: 'Transaction time. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Null means N/A'
+        type: nanosecond_timestamp
+        doc: 'Transaction time. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Null means N/A. Nanoseconds since Unix epoch'
       - id: filler_1
         size: 1
         doc: 'Padding'
@@ -254,8 +254,8 @@ types:
         enum: side
         doc: 'Side of the order'
       - id: business_time
-        type: u8
-        doc: 'Transaction time. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Null means N/A'
+        type: nanosecond_timestamp
+        doc: 'Transaction time. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Null means N/A. Nanoseconds since Unix epoch'
       - id: filler_1
         size: 1
         doc: 'Padding'
@@ -328,8 +328,8 @@ types:
         type: u4
         doc: 'Order rank information for the order position within the order book'
       - id: business_time
-        type: u8
-        doc: 'Transaction time. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Null means N/A'
+        type: nanosecond_timestamp
+        doc: 'Transaction time. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Null means N/A. Nanoseconds since Unix epoch'
   open_interest_message:
     seq:
       - id: day_indicator

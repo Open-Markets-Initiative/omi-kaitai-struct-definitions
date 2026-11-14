@@ -382,8 +382,8 @@ types:
         type: s1_nullable
         doc: 'cancelInsteadOfSlide. Nullable, No Value = -128'
       - id: send_time
-        type: u8
-        doc: 'sendTime'
+        type: nanosecond_timestamp
+        doc: 'sendTime. Nanoseconds since Unix epoch'
       - id: aiq
         type: str
         size: 3
@@ -456,8 +456,8 @@ types:
         type: u8
         doc: 'clOrdId'
       - id: send_time
-        type: u8
-        doc: 'sendTime'
+        type: nanosecond_timestamp
+        doc: 'sendTime. Nanoseconds since Unix epoch'
       - id: ack_style_mass_cancel_ack_style
         type: u1
         enum: ack_style_mass_cancel_ack_style
@@ -487,8 +487,8 @@ types:
         type: u8
         doc: 'clOrdId'
       - id: send_time
-        type: u8
-        doc: 'sendTime'
+        type: nanosecond_timestamp
+        doc: 'sendTime. Nanoseconds since Unix epoch'
       - id: ack_style_purge_request_ack_style
         type: u1
         enum: ack_style_purge_request_ack_style
@@ -607,6 +607,19 @@ types:
     instances:
       is_null:
         value: value == -128
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_s4_4:
     seq:
       - id: mantissa

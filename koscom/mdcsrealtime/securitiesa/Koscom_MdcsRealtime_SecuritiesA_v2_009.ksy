@@ -2523,10 +2523,7 @@ types:
         pad-right: 0x20
         doc: 'ETF''s underlying assets replication methods type code'
       - id: expiration_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Expiration Date'
       - id: distribution_type_code
         type: str
@@ -3494,10 +3491,7 @@ types:
         pad-right: 0x20
         doc: 'Payment methods C: Cash D: Spot A: Cash + Spot O: N/A'
       - id: last_trading_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Last Trading Date'
       - id: elw_payment_date
         type: str
@@ -3607,10 +3601,7 @@ types:
         pad-right: 0x20
         doc: 'Payment methods C: Cash D: Spot A: Cash + Spot O: N/A'
       - id: last_trading_date
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: yyyymmdd_ascii_date
         doc: 'Last Trading Date'
       - id: etn_payment_date
         type: str

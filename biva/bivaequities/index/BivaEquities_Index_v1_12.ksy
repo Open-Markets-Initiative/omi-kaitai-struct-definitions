@@ -189,10 +189,10 @@ types:
         type: u4
         doc: 'Price decimals'
       - id: delisting_or_maturity_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Yyyymmdd, 0 represents no delisting date'
       - id: delisting_time
-        type: u4
+        type: hhmmss_time
         doc: 'Hhmmss, ignore if delisting date is 0'
       - id: turnover_ratio
         type: str
@@ -279,6 +279,28 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
+  hhmmss_time:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 10000 % 100
+      minute:
+        value: time / 100 % 100
+      second:
+        value: time % 100
 
 enums:
   message_type:

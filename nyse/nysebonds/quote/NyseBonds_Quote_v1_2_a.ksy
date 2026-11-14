@@ -108,8 +108,8 @@ types:
         type: u4
         doc: 'The numerical representation of the symbol'
       - id: source_time
-        type: u4
-        doc: 'The quote generation time, in milliseconds since midnight of the same day'
+        type: millisecond_timestamp
+        doc: 'The quote generation time, in milliseconds since midnight of the same day. Milliseconds since Midnight epoch'
       - id: quote_link_id
         type: u4
         doc: 'Identifies a unique quote, allowing quotes to be correlated to the last sale. For future use'
@@ -189,8 +189,8 @@ types:
         type: u4
         doc: 'The numerical representation of the symbol'
       - id: source_time
-        type: u4
-        doc: 'The quote generation time, in milliseconds since midnight of the same day'
+        type: millisecond_timestamp
+        doc: 'The quote generation time, in milliseconds since midnight of the same day. Milliseconds since Midnight epoch'
       - id: quote_link_id
         type: u4
         doc: 'Identifies a unique quote, allowing quotes to be correlated to the last sale. For future use'

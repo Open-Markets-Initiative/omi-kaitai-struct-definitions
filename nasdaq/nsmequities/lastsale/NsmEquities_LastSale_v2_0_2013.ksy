@@ -449,10 +449,7 @@ types:
         pad-right: 0x20
         doc: 'Stock symbol right padded with spaces'
       - id: ipo_quotation_release_time
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: hhmmss_ascii_time
         doc: 'Denotes the IPO release time for quotation to the nearest second. Format: HHMMSS'
       - id: ipo_quotation_release_qualifier
         type: u1
@@ -479,6 +476,19 @@ types:
         value: text.to_i / 1000 % 60
       millisecond:
         value: text.to_i % 1000
+  hhmmss_ascii_time:
+    seq:
+      - id: text
+        type: str
+        size: 6
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.substring(0, 2).to_i
+      minute:
+        value: text.substring(2, 4).to_i
+      second:
+        value: text.substring(4, 6).to_i
 
 enums:
   message_type:

@@ -160,8 +160,8 @@ types:
         enum: closing_only
         doc: 'ClosingOnly'
       - id: closing_time
-        type: u8
-        doc: 'ClosingTime'
+        type: nanosecond_timestamp
+        doc: 'ClosingTime. Nanoseconds since Unix epoch'
       - id: is_test_symbol
         type: u1
         enum: is_test_symbol

@@ -110,8 +110,8 @@ types:
   add_order_message:
     seq:
       - id: time
-        type: u4
-        doc: 'Message creation timestamp in milliseconds since midnight'
+        type: millisecond_timestamp
+        doc: 'Message creation timestamp in milliseconds since midnight. Milliseconds since Midnight epoch'
       - id: sequence_number
         type: u4
         doc: 'Message sequence number, 1 to 2147483647'
@@ -182,8 +182,8 @@ types:
   modify_order_message:
     seq:
       - id: time
-        type: u4
-        doc: 'Message creation timestamp in milliseconds since midnight'
+        type: millisecond_timestamp
+        doc: 'Message creation timestamp in milliseconds since midnight. Milliseconds since Midnight epoch'
       - id: sequence_number
         type: u4
         doc: 'Message sequence number, 1 to 2147483647'
@@ -254,8 +254,8 @@ types:
   delete_order_message:
     seq:
       - id: time
-        type: u4
-        doc: 'Message creation timestamp in milliseconds since midnight'
+        type: millisecond_timestamp
+        doc: 'Message creation timestamp in milliseconds since midnight. Milliseconds since Midnight epoch'
       - id: sequence_number
         type: u4
         doc: 'Message sequence number, 1 to 2147483647'
@@ -308,8 +308,8 @@ types:
   imbalance_message:
     seq:
       - id: time
-        type: u4
-        doc: 'Message creation timestamp in milliseconds since midnight'
+        type: millisecond_timestamp
+        doc: 'Message creation timestamp in milliseconds since midnight. Milliseconds since Midnight epoch'
       - id: sequence_number
         type: u4
         doc: 'Message sequence number, 1 to 2147483647'
@@ -372,8 +372,8 @@ types:
   system_event_message:
     seq:
       - id: time
-        type: u4
-        doc: 'Message creation timestamp in milliseconds since midnight'
+        type: millisecond_timestamp
+        doc: 'Message creation timestamp in milliseconds since midnight. Milliseconds since Midnight epoch'
       - id: sequence_number
         type: u4
         doc: 'Message sequence number, 1 to 2147483647'
@@ -403,6 +403,19 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Not used'
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
   hhmm_ascii_time:
     seq:
       - id: text

@@ -256,9 +256,7 @@ types:
         type: decimal_u8_8
         doc: 'Strike price of the option series. Implied decimal with scale 1e-8'
       - id: maturity_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'Maturity date of the option in YYYYMMDD format'
       - id: contract_multiplier
         type: u4
@@ -1335,6 +1333,19 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
 
 enums:
   msg_type:

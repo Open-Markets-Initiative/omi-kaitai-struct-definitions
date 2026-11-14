@@ -203,8 +203,8 @@ types:
         type: second_timestamp
         doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. Seconds since Midnight epoch'
       - id: epoch_time
-        type: u4
-        doc: 'C1 Options Only. Number of whole seconds since the Epoch (midnight January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'C1 Options Only. Number of whole seconds since the Epoch (midnight January 1, 1970 UTC). Seconds since Unix epoch'
   unit_clear_message:
     seq:
       - id: time_offset

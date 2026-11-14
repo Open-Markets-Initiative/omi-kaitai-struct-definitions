@@ -108,8 +108,8 @@ types:
   last_sale_message:
     seq:
       - id: last_sale_time
-        type: u4
-        doc: 'Time the trade occurred, in milliseconds since midnight'
+        type: millisecond_timestamp
+        doc: 'Time the trade occurred, in milliseconds since midnight. Milliseconds since Midnight epoch'
       - id: sequence_number
         type: u4
         doc: 'Message sequence number, 1 to 2147483647'
@@ -159,8 +159,8 @@ types:
   trade_bust_or_correction_message:
     seq:
       - id: last_sale_time
-        type: u4
-        doc: 'Time the trade occurred, in milliseconds since midnight'
+        type: millisecond_timestamp
+        doc: 'Time the trade occurred, in milliseconds since midnight. Milliseconds since Midnight epoch'
       - id: sequence_number
         type: u4
         doc: 'Message sequence number, 1 to 2147483647'
@@ -214,8 +214,8 @@ types:
   nyse_bond_closing_price_message:
     seq:
       - id: closing_time
-        type: u4
-        doc: 'Time the closing price was set, in milliseconds since midnight'
+        type: millisecond_timestamp
+        doc: 'Time the closing price was set, in milliseconds since midnight. Milliseconds since Midnight epoch'
       - id: sequence_number
         type: u4
         doc: 'Message sequence number, 1 to 2147483647'
@@ -262,6 +262,19 @@ types:
         size: 3
         encoding: ASCII
         doc: 'Not used'
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
 
 enums:
   message_type:

@@ -93,11 +93,11 @@ types:
         type: u1
         doc: 'Refer to the Multicast PITCH specification for Matching Unit mappings'
       - id: begin_time
-        type: u4
-        doc: 'Number of milliseconds from midnight (London time)'
+        type: millisecond_timestamp
+        doc: 'Number of milliseconds from midnight (London time). Milliseconds since Midnight epoch'
       - id: end_time
-        type: u4
-        doc: 'Number of milliseconds from midnight (London time)'
+        type: millisecond_timestamp
+        doc: 'Number of milliseconds from midnight (London time). Milliseconds since Midnight epoch'
       - id: count
         type: u4
         doc: 'Count of orders used in calculation of all other metrics from Begin Time to End Time'
@@ -137,6 +137,19 @@ types:
       - id: percentile_25
         size: 8
         doc: '25 percentile of order processing latency (seconds) from Begin Time to End Time'
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
 
 enums:
   message_type:

@@ -121,8 +121,8 @@ types:
   instrument_directory_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -152,8 +152,8 @@ types:
   reg_sho_restriction_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -167,8 +167,8 @@ types:
   security_trading_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -186,8 +186,8 @@ types:
   snapshot_complete_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: as_of_sequence_number
         type: u8
         doc: 'The sequence number on the real time multicast channel the snapshot is based upon; discard buffered messages at or below it and apply those above it'
@@ -197,8 +197,8 @@ types:
   trading_session_status_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: trading_session
         type: u1
         enum: trading_session
@@ -209,8 +209,8 @@ types:
   best_bid_offer_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -232,8 +232,8 @@ types:
   best_bid_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -249,8 +249,8 @@ types:
   best_offer_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -266,8 +266,8 @@ types:
   best_bid_short_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -283,8 +283,8 @@ types:
   best_offer_short_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
@@ -300,14 +300,27 @@ types:
   clear_book_message:
     seq:
       - id: timestamp
-        type: u8
-        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
+        type: nanosecond_timestamp
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
       - id: block_extension
         size: _parent.sbe_header.block_length - 10
         doc: 'Bytes the stated block holds beyond the 10 this version reads'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_s8_6:
     seq:
       - id: mantissa

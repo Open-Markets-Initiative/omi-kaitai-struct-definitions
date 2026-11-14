@@ -869,8 +869,8 @@ types:
         type: u8
         doc: 'Message ID. Binary data type: any combination of bits'
       - id: sent_timestamp
-        type: u8
-        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT'
+        type: nanosecond_timestamp
+        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT. Nanoseconds since Unix epoch'
       - id: block_status_code
         type: u1
         enum: block_status_code
@@ -907,8 +907,8 @@ types:
         type: u8
         doc: 'Message ID. Binary data type: any combination of bits'
       - id: sent_timestamp
-        type: u8
-        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT'
+        type: nanosecond_timestamp
+        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT. Nanoseconds since Unix epoch'
       - id: block_status_code
         type: u1
         enum: block_status_code
@@ -951,8 +951,8 @@ types:
         type: u8
         doc: 'Message ID. Binary data type: any combination of bits'
       - id: sent_timestamp
-        type: u8
-        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT'
+        type: nanosecond_timestamp
+        doc: 'UNIX epoch time in nanoseconds. Time the message is sent to the Exchange; passed to CAT. Nanoseconds since Unix epoch'
       - id: status_code
         type: u1
         enum: status_code
@@ -1200,6 +1200,19 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   client_packet_type:

@@ -6,8 +6,8 @@
 #   Protocol: Headers Only
 #   Encoding: Mach
 #   Version: 1.0
-#   Date: 6/26/2020
-#   Specification: tcp_session_mgmt_esesm.pdf
+#   Date: 10/31/2024
+#   Specification: onyx miax mach protocol v1.0.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -36,7 +36,6 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Futures Onyx Headers Only Mach v1.0'
-doc-ref: https://www.miaxequities.com/interface-specifications/pearl-equities
 
 seq:
   - id: mach_message

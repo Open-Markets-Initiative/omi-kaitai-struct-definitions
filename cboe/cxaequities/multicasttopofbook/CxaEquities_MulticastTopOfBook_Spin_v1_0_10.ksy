@@ -247,8 +247,8 @@ types:
         type: decimal_u8_7
         doc: 'The calculated value. Implied decimal with scale 1e-7'
       - id: value_timestamp
-        type: u8
-        doc: 'Timestamp when the calculated value was generated in nanoseconds since epoch'
+        type: nanosecond_timestamp
+        doc: 'Timestamp when the calculated value was generated in nanoseconds since epoch. Nanoseconds since Unix epoch'
   nanosecond_timestamp:
     seq:
       - id: time

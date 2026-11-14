@@ -113,7 +113,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
   time_message:
     seq:
@@ -121,8 +121,8 @@ types:
         type: second_timestamp
         doc: 'Number of whole seconds elapsed since the start of the current Central Time calendar day, derived by converting the current Central wall clock time (HH:MM:SS) to seconds. On Daylight Saving Time transition days, Time reflects wall clock seconds and does not adjust for the UTC offset change. On a DST spring- forward day, the maximum value will be 82,799 (23 hours). On a DST fall-back day, values between 3,600 and 7,199 will appear twice. Recipients requiring unambiguous absolute timestamps should use Epoch Time (where available) or Midnight Reference in the Time Reference message. Seconds since Midnight epoch'
       - id: epoch_time
-        type: u4
-        doc: 'Number of whole seconds since the Epoch (Midnight January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'Number of whole seconds since the Epoch (Midnight January 1, 1970 UTC). Seconds since Unix epoch'
   oof_symbol_mapping_message:
     seq:
       - id: time_offset
@@ -336,7 +336,7 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
       - id: settlement_price
         type: decimal_u8_4
@@ -357,7 +357,7 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
       - id: open_interest
         type: u4
@@ -506,6 +506,17 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
   decimal_u8_4:
     seq:
       - id: mantissa

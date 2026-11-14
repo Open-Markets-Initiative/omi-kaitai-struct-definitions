@@ -188,8 +188,8 @@ types:
         type: u1_nullable
         doc: 'PegPriceType. Nullable, No Value = 255'
       - id: expire_time
-        type: u8_nullable
-        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
+        type: nanosecond_timestamp_nullable
+        doc: 'ExpireTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: min_qty
         type: u4_nullable
         doc: 'MinQty. Nullable, No Value = 4294967295'
@@ -435,13 +435,26 @@ types:
     instances:
       is_null:
         value: value == 255
-  u8_nullable:
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
     seq:
       - id: value
-        type: u8
+        type: nanosecond_timestamp
     instances:
       is_null:
-        value: value == 18446744073709551615
+        value: value.time == -1
   u4_nullable:
     seq:
       - id: value
@@ -483,6 +496,13 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
 
 enums:
   message_type:

@@ -469,8 +469,8 @@ types:
         type: s4
         doc: 'Transaction Id of the order'
       - id: timestamp
-        type: s8
-        doc: 'Time stamped at the matching engine, in nanoseconds from January 1 1980 for the transaction codes the appendix lists'
+        type: dos_nanosecond_timestamp
+        doc: 'Time stamped at the matching engine, in nanoseconds from January 1 1980 for the transaction codes the appendix lists. Nanoseconds since Dos epoch'
       - id: pan
         type: str
         size: 10
@@ -502,8 +502,8 @@ types:
         type: s4
         doc: 'Id of the user'
       - id: timestamp
-        type: s8
-        doc: 'Time stamped at the matching engine, in nanoseconds from January 1 1980 for the transaction codes the appendix lists'
+        type: dos_nanosecond_timestamp
+        doc: 'Time stamped at the matching engine, in nanoseconds from January 1 1980 for the transaction codes the appendix lists. Nanoseconds since Dos epoch'
       - id: time_stamp_1_char_8
         type: str
         size: 8
@@ -613,8 +613,8 @@ types:
         type: s4
         doc: 'User ID of the user entering the order'
       - id: timestamp
-        type: s8
-        doc: 'Time stamped at the matching engine, in nanoseconds from January 1 1980 for the transaction codes the appendix lists'
+        type: dos_nanosecond_timestamp
+        doc: 'Time stamped at the matching engine, in nanoseconds from January 1 1980 for the transaction codes the appendix lists. Nanoseconds since Dos epoch'
       - id: reference
         type: s4
         doc: 'Echo of the value received in the filler or reference field of the order packet'
@@ -651,6 +651,21 @@ types:
         value: time / 60 % 60
       second:
         value: time % 60
+  dos_nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      unix_seconds:
+        value: time / 1000000000 + 315532800
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   transaction_code:
