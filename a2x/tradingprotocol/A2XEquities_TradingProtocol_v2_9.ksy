@@ -479,8 +479,8 @@ types:
         type: status
         doc: 'Status of order and reject or cancel code'
       - id: trade_ref
-        type: u4
-        doc: 'Trade reference number'
+        type: u4_nullable
+        doc: 'Trade reference number. Nullable, No Value = 0'
       - id: request_ref
         type: u4_nullable
         doc: 'Sequence number (msgSeqNo) of the trading Member''s request message. Nullable, No Value = 0'
@@ -503,8 +503,8 @@ types:
         enum: side
         doc: 'Side of the order'
       - id: trade_ref
-        type: u4
-        doc: 'Trade reference number'
+        type: u4_nullable
+        doc: 'Trade reference number. Nullable, No Value = 0'
       - id: ccp_code
         type: u1
         enum: ccp_code
@@ -540,8 +540,8 @@ types:
         enum: side
         doc: 'Side of the order'
       - id: trade_ref
-        type: u4
-        doc: 'Trade reference number'
+        type: u4_nullable
+        doc: 'Trade reference number. Nullable, No Value = 0'
       - id: bust_timestamp
         type: nanosecond_timestamp
         doc: 'Time that the trade was busted by A2X Market Operations. Nanoseconds since Unix epoch'

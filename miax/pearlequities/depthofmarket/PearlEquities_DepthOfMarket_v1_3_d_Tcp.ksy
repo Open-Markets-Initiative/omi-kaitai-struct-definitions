@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Pearl Equities Depth Of Market Mach v1.3.d'
-doc-ref: https://www.miaxglobal.com/markets/us-equities/pearl-equities/interface-specifications
+doc-ref:
+  - https://www.miaxglobal.com/markets/us-equities/pearl-equities/interface-specifications
+  - https://www.miaxequities.com/interface-specifications/pearl-equities
 
 seq:
   - id: esesm_tcp_packet

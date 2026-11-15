@@ -72,8 +72,8 @@ types:
       - id: protocol_id
         type: u1
         doc: 'Coinbase protocol identifier'
-      - id: flags
-        type: flags
+      - id: session_flags
+        type: session_flags
         doc: 'Uint8 bit set carrying the isResend indicator'
       - id: message_length
         type: u2
@@ -103,7 +103,7 @@ types:
       - id: version
         type: u2
         doc: 'Schema version'
-  flags:
+  session_flags:
     meta:
       bit-endian: le
     seq:

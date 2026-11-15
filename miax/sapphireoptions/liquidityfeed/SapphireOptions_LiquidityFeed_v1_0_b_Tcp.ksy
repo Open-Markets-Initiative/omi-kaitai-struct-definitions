@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Sapphire Options Liquidity Feed Mach v1.0.b'
-doc-ref: https://www.miaxglobal.com/markets/us-options/miax-sapphire/interface-specifications
+doc-ref:
+  - https://www.miaxglobal.com/markets/us-options/miax-sapphire/interface-specifications
+  - https://www.miaxglobal.com/markets/us-options/sapphire-options/interface-specifications
 
 seq:
   - id: sesm_tcp_packet

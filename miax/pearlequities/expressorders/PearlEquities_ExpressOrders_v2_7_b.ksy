@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Pearl Equities Express Orders Meo v2.7.b'
-doc-ref: https://www.miaxglobal.com/markets/us-equities/pearl-equities/interface-specifications
+doc-ref:
+  - https://www.miaxglobal.com/markets/us-equities/pearl-equities/interface-specifications
+  - https://www.miaxequities.com/interface-specifications/pearl-equities
 
 seq:
   - id: esesm_tcp_packet
@@ -182,8 +184,8 @@ types:
         type: u1
         enum: order_status
         doc: 'Order Status'
-      - id: reserved_19
-        size: 19
+      - id: reserved_10
+        size: 10
         doc: 'Reserved for future use'
   modify_order_response_message:
     seq:
@@ -372,7 +374,7 @@ types:
         doc: 'Routing Flags'
       - id: trading_collar_dollar_value
         type: decimal_s8_6
-        doc: 'Market Order Custom Dollar Value Trading Collar Protection. Implied decimal with scale 1e-6'
+        doc: 'Custom Dollar Value Trading Collar Protection. Implied decimal with scale 1e-6'
       - id: capacity
         type: u1
         enum: capacity
@@ -450,7 +452,7 @@ types:
         doc: 'Attributable Order'
       - id: min_qty_exec_type
         type: b2
-        doc: 'Attributable Order'
+        doc: 'MinQty Exec Type'
       - id: cancel_order_if_not_a_nbbo_setter
         type: b1
         doc: 'Cancel Order if not a NBBO Setter'
@@ -832,7 +834,7 @@ types:
         doc: 'Routing Flags'
       - id: trading_collar_dollar_value
         type: decimal_s8_6
-        doc: 'Market Order Custom Dollar Value Trading Collar Protection. Implied decimal with scale 1e-6'
+        doc: 'Custom Dollar Value Trading Collar Protection. Implied decimal with scale 1e-6'
       - id: capacity
         type: u1
         enum: capacity

@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Options Top Of Market Mach v2.3'
-doc-ref: https://www.miaxoptions.com/interface-specifications
+doc-ref:
+  - https://www.miaxoptions.com/interface-specifications
+  - https://www.miaxglobal.com/markets/us-options/miax-options/interface-specifications
 
 seq:
   - id: mach_message
@@ -66,7 +68,7 @@ types:
       - id: packet_type
         type: u1
         enum: packet_type
-        doc: 'protocol packet type'
+        doc: 'Mach protocol packet type'
       - id: session_number
         type: u1
         doc: 'The Session this packet was generated from'
@@ -180,7 +182,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Eg: ToM01.01'
+        doc: 'Eg: TOM2.1'
       - id: session_id
         type: u4
         doc: 'MIAX assigned ID for the current trading session'
@@ -483,7 +485,7 @@ enums:
       doc: 'Mach Heartbeat Message'
     1:
       id: 'start_of_session'
-      doc: 'Mach Start Of Session Message'
+      doc: 'Mach Start Of Session Message; Sequence Number is set to 0'
     2:
       id: 'end_of_session'
       doc: 'Mach end of session Message'
@@ -514,10 +516,10 @@ enums:
       doc: 'This is the message format that will be used to disseminate MIAX Top of Market for options with high premiums or large aggregate MIAX Best Bid or Offer (MBBO) size.'
     0x64:
       id: 'simple_double_sided_top_of_market_compact_message'
-      doc: 'This is the message format that will be used, in the refresh service only, to disseminate both sides of the MIAX Top of Market for options with low premiums and small aggregate MIAX Best Bid or Offer (MBBO) size.'
+      doc: 'This is the message format that will be used in the real-time feed and refresh service to disseminate both sides of the MIAX Simple Top of Market for options with low premiums and small aggregate MIAX Best Bid or Offer (MBBO) size.'
     0x44:
       id: 'simple_double_sided_top_of_market_wide_message'
-      doc: 'This is the message format that will be used to disseminate the “seconds” part of the timestamp that is applicable to all messages that are sent in the current second.This is the message format that will be used, in the refresh service only, to disseminate both sides of the MIAX Top of Market for options with high premiums or large aggregate MIAX Best Bid or Offer (MBBO) sizes.'
+      doc: 'This is the message format that will be used in the real-time feed and refresh service to disseminate both sides of the MIAX Simple Top of Market for options with high premiums or large aggregate MIAX Best Bid or Offer (MBBO) sizes.'
     0x54:
       id: 'last_sale_message'
       doc: 'This is the message format that will be used to disseminate Trades that are resulting from executions on MIAX during the current trading session.'
@@ -646,7 +648,7 @@ enums:
       doc: 'Regular Eligible For Automatic Execution'
     0x42:
       id: 'public_customer_interest'
-      doc: 'Quote Contains Public Customer Interest Priority Less Than Non Priority Customer Interest'
+      doc: 'Quote contains Public Customer interest (Priority & Non-Priority Customer Interest)'
     0x43:
       id: 'not_firm'
       doc: 'Quote Is Not Firm On This Side'
@@ -662,7 +664,7 @@ enums:
       doc: 'Regular Eligible For Automatic Execution'
     0x42:
       id: 'public_customer_interest'
-      doc: 'Quote Contains Public Customer Interest Priority Less Than Non Priority Customer Interest'
+      doc: 'Quote contains Public Customer interest (Priority & Non-Priority Customer Interest)'
     0x43:
       id: 'not_firm'
       doc: 'Quote Is Not Firm On This Side'
@@ -678,7 +680,7 @@ enums:
       doc: 'Regular Eligible For Automatic Execution'
     0x42:
       id: 'public_customer_interest'
-      doc: 'Quote Contains Public Customer Interest Priority Less Than Non Priority Customer Interest'
+      doc: 'Quote contains Public Customer interest (Priority & Non-Priority Customer Interest)'
     0x43:
       id: 'not_firm'
       doc: 'Quote Is Not Firm On This Side'

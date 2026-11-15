@@ -55,7 +55,7 @@ types:
           switch-on: message_header.schema_id
           cases:
             'schema_id::session': session_message
-            'schema_id::order': order_message
+            'schema_id::orders_api': order_message
       - id: padding
         size: 0
         doc: 'Tcp sbe alignment padding'
@@ -64,8 +64,8 @@ types:
       - id: protocol_id
         type: u1
         doc: 'Coinbase protocol identifier'
-      - id: flags
-        type: flags
+      - id: session_flags
+        type: session_flags
         doc: 'Uint8 bit set carrying the isResend indicator'
       - id: message_length
         type: u2
@@ -96,7 +96,7 @@ types:
       - id: version
         type: u2
         doc: 'Schema version'
-  flags:
+  session_flags:
     meta:
       bit-endian: le
     seq:
@@ -989,7 +989,7 @@ enums:
       id: 'session'
       doc: 'Sbe Schema Id for fairx.gateway.sbe.codec.session'
     1101:
-      id: 'order'
+      id: 'orders_api'
       doc: 'Sbe Schema Id for fairx.gateway.sbe.codec.order'
   reset_seq_num:
     0:

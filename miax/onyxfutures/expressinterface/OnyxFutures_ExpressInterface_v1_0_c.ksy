@@ -1000,6 +1000,7 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
+        doc: 'SesM protocol version: 1.0 (right padded with spaces)'
       - id: username
         type: str
         size: 5
@@ -1125,7 +1126,7 @@ enums:
       doc: 'SesM Logout Request'
     0x47:
       id: 'goodbye_packet'
-      doc: 'SesM Logout Request'
+      doc: 'SesM GoodBye Packet'
     0x45:
       id: 'end_of_session'
       doc: 'SesM End of Session'

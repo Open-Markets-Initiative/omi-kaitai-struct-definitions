@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Emerald Options Order Feed Mach v1.1.b'
-doc-ref: https://www.miaxglobal.com/markets/us-options/miax-emerald/interface-specifications
+doc-ref:
+  - https://www.miaxglobal.com/markets/us-options/miax-emerald/interface-specifications
+  - https://www.miaxglobal.com/markets/us-options/emerald-options/interface-specifications
 
 seq:
   - id: sesm_tcp_packet

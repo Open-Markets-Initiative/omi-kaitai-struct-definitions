@@ -406,6 +406,9 @@ enums:
       id: 'end_of_refresh_notification_message'
       doc: 'Sent by MIAX Options over the MPF Retransmission Interface (SesM Unsequenced Data Packet) when the refresh response is complete.'
   refresh_message_type:
+    0x73:
+      id: 'symbol_definition_refresh'
+      doc: 'Symbol Definition Refresh'
     0x49:
       id: 'index_update_refresh'
       doc: 'Index Update Refresh'

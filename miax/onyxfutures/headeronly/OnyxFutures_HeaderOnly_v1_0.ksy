@@ -7,7 +7,7 @@
 #   Encoding: Mach
 #   Version: 1.0
 #   Date: 10/31/2024
-#   Specification: onyx miax mach protocol v1.0.pdf
+#   Specification: onyx_miax_mach_protocol_v1.0.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -61,11 +61,11 @@ types:
         doc: 'Sequence number of this data packet'
       - id: packet_length
         type: u2
-        doc: 'Length of the packet. This includes the header and application data'
+        doc: 'Length of the packet, including the header and application data'
       - id: packet_type
         type: u1
         enum: packet_type
-        doc: 'protocol packet type'
+        doc: 'Mach protocol packet type'
       - id: session_number
         type: u1
         doc: 'The Session this packet was generated from'

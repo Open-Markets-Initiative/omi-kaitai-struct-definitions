@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Pearl Equities Express Orders Meo v2.7.a'
-doc-ref: https://www.miaxglobal.com/markets/us-equities/pearl-equities/interface-specifications
+doc-ref:
+  - https://www.miaxglobal.com/markets/us-equities/pearl-equities/interface-specifications
+  - https://www.miaxequities.com/interface-specifications/pearl-equities
 
 seq:
   - id: esesm_tcp_packet
@@ -92,7 +94,7 @@ types:
         type:
           switch-on: sequenced_message_type
           cases:
-            '"SU"': symbol_update
+            '"SU"': symbol_update_message
             '"NR"': new_order_response_message
             '"MR"': modify_order_response
             '"CR"': cancel_order_response
@@ -104,7 +106,7 @@ types:
             '"P1"': order_price_update_notification
             '"RA"': reserve_order_replenishment_notification
             '"E1"': execution_notification
-  symbol_update:
+  symbol_update_message:
     seq:
       - id: matching_engine_time
         type: nanosecond_timestamp
@@ -125,8 +127,8 @@ types:
         type: u1
         enum: test_security_indicator
         doc: 'Test Security Indicator'
-      - id: future
-        type: u1
+      - id: second_reserved_1
+        size: 1
         doc: 'Reserved for future use'
       - id: lot_size
         type: u4
@@ -182,8 +184,8 @@ types:
         type: u1
         enum: order_status
         doc: 'Order Status'
-      - id: reserved_19
-        size: 19
+      - id: reserved_10
+        size: 10
         doc: 'Reserved for future use'
   modify_order_response:
     seq:
@@ -372,7 +374,7 @@ types:
         doc: 'Routing Flags'
       - id: trading_collar_dollar_value
         type: decimal_s8_6
-        doc: 'Market Order Custom Dollar Value Trading Collar Protection. Implied decimal with scale 1e-6'
+        doc: 'Custom Dollar Value Trading Collar Protection. Implied decimal with scale 1e-6'
       - id: capacity
         type: u1
         enum: capacity
@@ -450,7 +452,7 @@ types:
         doc: 'Attributable Order'
       - id: min_qty_exec_type
         type: b2
-        doc: 'Attributable Order'
+        doc: 'MinQty Exec Type'
       - id: cancel_order_if_not_a_nbbo_setter
         type: b1
         doc: 'Cancel Order if NOT a NBBO Setter'
@@ -481,11 +483,8 @@ types:
         type: b3
         doc: 'Routing Instruction'
       - id: routing_strategy
-        type: b3
+        type: b5
         doc: 'Routing Strategy'
-      - id: unused_2
-        type: b2
-        doc: 'Reserved for future use'
   modify_order_notification:
     seq:
       - id: matching_engine_time
@@ -700,6 +699,9 @@ types:
       - id: order_execution_instructions
         type: order_execution_instructions
         doc: 'Order Exucution Instructions'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved for future use'
       - id: executing_trading_center
         type: u1
         enum: executing_trading_center
@@ -832,7 +834,7 @@ types:
         doc: 'Routing Flags'
       - id: trading_collar_dollar_value
         type: decimal_s8_6
-        doc: 'Market Order Custom Dollar Value Trading Collar Protection. Implied decimal with scale 1e-6'
+        doc: 'Custom Dollar Value Trading Collar Protection. Implied decimal with scale 1e-6'
       - id: capacity
         type: u1
         enum: capacity
@@ -1083,8 +1085,8 @@ types:
       - id: side
         type: b1
         doc: 'Side'
-      - id: unused_15
-        type: b15
+      - id: unused_7
+        type: b7
         doc: 'Reserved for future use'
   aggressive_side_purge_response:
     seq:

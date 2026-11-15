@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Pearl Equities Top Of Market Mach v1.1.a'
-doc-ref: https://www.miaxequities.com/interface-specifications/pearl-equities
+doc-ref:
+  - https://www.miaxequities.com/interface-specifications/pearl-equities
+  - https://www.miaxglobal.com/markets/us-equities/pearl-equities/interface-specifications
 
 seq:
   - id: mach_message
@@ -66,7 +68,7 @@ types:
       - id: mach_packet_type
         type: u1
         enum: mach_packet_type
-        doc: 'protocol packet type'
+        doc: 'Mach protocol packet type'
       - id: session_number
         type: u1
         doc: 'The Session this packet was generated from'

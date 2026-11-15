@@ -899,13 +899,13 @@ enums:
   member_type:
     0x45:
       id: 'electronic_exchange_member'
-      doc: 'Option leg: Electronic Exchange Member (EEM)'
+      doc: 'Electronic Exchange Member (EEM)'
     0x4d:
       id: 'market_maker'
-      doc: 'Option leg: Market Maker'
+      doc: 'Market Maker'
     0x52:
       id: 'routing_broker'
-      doc: 'Option leg: Routing Broker'
+      doc: 'Routing Broker'
   origin:
     0x43:
       id: 'priority_customer'
@@ -928,13 +928,13 @@ enums:
   contra_member_type:
     0x45:
       id: 'electronic_exchange_member'
-      doc: 'Option leg: Electronic Exchange Member (EEM)'
+      doc: 'Electronic Exchange Member (EEM)'
     0x4d:
       id: 'market_maker'
-      doc: 'Option leg: Market Maker'
+      doc: 'Market Maker'
     0x52:
       id: 'routing_broker'
-      doc: 'Option leg: Routing Broker'
+      doc: 'Routing Broker'
   contra_origin:
     0x43:
       id: 'priority_customer'

@@ -66,7 +66,7 @@ types:
       - id: packet_type
         type: u1
         enum: packet_type
-        doc: 'protocol packet type'
+        doc: 'Mach protocol packet type'
       - id: session_number
         type: u1
         doc: 'The Session this packet was generated from'

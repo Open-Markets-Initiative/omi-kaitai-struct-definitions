@@ -567,9 +567,8 @@ types:
         enum: status
         doc: 'status'
       - id: cancel_reason
-        type: s1
-        enum: cancel_reason
-        doc: 'cancelReason'
+        type: s1_nullable
+        doc: 'cancelReason. Nullable, No Value = -128'
       - id: new_order_response_message_fills_groups
         type: new_order_response_message_fills_groups
         doc: 'fills Block'
@@ -731,9 +730,8 @@ types:
         enum: status
         doc: 'status'
       - id: cancel_reason
-        type: s1
-        enum: cancel_reason
-        doc: 'cancelReason'
+        type: s1_nullable
+        doc: 'cancelReason. Nullable, No Value = -128'
       - id: amend_order_response_message_fills_groups
         type: amend_order_response_message_fills_groups
         doc: 'fills Block'
@@ -1278,9 +1276,8 @@ types:
         type: total_filled
         doc: 'NewOrderResponseMessage'
       - id: cancel_reason
-        type: s1
-        enum: cancel_reason
-        doc: 'cancelReason'
+        type: s1_nullable
+        doc: 'cancelReason. Nullable, No Value = -128'
       - id: flags_cancel_flags
         type: flags_cancel_flags
         doc: 'CancelFlags bit set'
@@ -1331,9 +1328,8 @@ types:
         enum: status
         doc: 'status'
       - id: cancel_reason
-        type: s1
-        enum: cancel_reason
-        doc: 'cancelReason'
+        type: s1_nullable
+        doc: 'cancelReason. Nullable, No Value = -128'
       - id: order_placed_message_fills_groups
         type: order_placed_message_fills_groups
         doc: 'fills Block'
@@ -1457,9 +1453,8 @@ types:
         enum: status
         doc: 'status'
       - id: cancel_reason
-        type: s1
-        enum: cancel_reason
-        doc: 'cancelReason'
+        type: s1_nullable
+        doc: 'cancelReason. Nullable, No Value = -128'
       - id: block_extension
         size: _parent.group_size_encoding.block_length - 62
         doc: 'Bytes the stated block holds beyond the 62 this version reads'
@@ -1637,6 +1632,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  s1_nullable:
+    seq:
+      - id: value
+        type: s1
+    instances:
+      is_null:
+        value: value == -128
 
 enums:
   template_id:

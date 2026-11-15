@@ -56,7 +56,7 @@ types:
           switch-on: message_header.schema_id
           cases:
             'schema_id::session': session_message
-            'schema_id::order': order_message
+            'schema_id::orders_api': order_message
       - id: padding
         size: 0
         doc: 'Tcp sbe alignment padding'
@@ -65,9 +65,9 @@ types:
       - id: protocol_id
         type: u1
         doc: 'Coinbase protocol identifier'
-      - id: flags
-        type: flags
-        doc: 'NewOrderFlags bit set'
+      - id: session_flags
+        type: session_flags
+        doc: 'Uint8 bit set carrying the isResend indicator'
       - id: message_length
         type: u2
         doc: 'Total message length in bytes including this header'
@@ -97,16 +97,16 @@ types:
       - id: version
         type: u2
         doc: 'Schema version'
-  flags:
+  session_flags:
     meta:
       bit-endian: le
     seq:
-      - id: post_only
+      - id: is_resend
         type: b1
-        doc: 'postOnly'
-      - id: reserved_7
+        doc: 'Possibly resent message indicator (Bit 0)'
+      - id: reserved_bits
         type: b7
-        doc: '7 reserved bits'
+        doc: 'Bits reserved for future use'
   session_message:
     seq:
       - id: session_payload
@@ -378,9 +378,9 @@ types:
         type: s1
         enum: side
         doc: '1 buy, -1 sell'
-      - id: flags
-        type: flags
-        doc: 'NewOrderFlags bit set'
+      - id: new_order_padding
+        type: s1
+        doc: 'padding'
       - id: good_til_date
         type: u2_nullable
         doc: 'goodTilDate. Nullable, No Value = 0'
@@ -1061,7 +1061,7 @@ enums:
       id: 'session'
       doc: 'Sbe Schema Id for fairx.gateway.sbe.codec.session'
     1101:
-      id: 'order'
+      id: 'orders_api'
       doc: 'Sbe Schema Id for fairx.gateway.sbe.codec.order'
   reset_seq_num:
     0:

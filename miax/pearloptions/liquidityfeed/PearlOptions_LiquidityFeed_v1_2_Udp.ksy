@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Pearl Options Liquidity Feed Mach v1.2'
-doc-ref: https://www.miaxglobal.com/markets/us-options/miax-pearl/interface-specifications
+doc-ref:
+  - https://www.miaxglobal.com/markets/us-options/miax-pearl/interface-specifications
+  - https://www.miaxglobal.com/markets/us-options/pearl-options/interface-specifications
 
 seq:
   - id: mach_message
@@ -66,7 +68,7 @@ types:
       - id: packet_type
         type: u1
         enum: packet_type
-        doc: 'protocol packet type'
+        doc: 'Mach protocol packet type'
       - id: session_number
         type: u1
         doc: 'The Session this packet was generated from'

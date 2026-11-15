@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Options Complex Top Of Market Mach v1.1'
-doc-ref: https://www.miaxoptions.com/interface-specifications
+doc-ref:
+  - https://www.miaxoptions.com/interface-specifications
+  - https://www.miaxglobal.com/markets/us-options/miax-options/interface-specifications
 
 seq:
   - id: mach_message
@@ -66,7 +68,7 @@ types:
       - id: packet_type
         type: u1
         enum: packet_type
-        doc: 'protocol packet type'
+        doc: 'Mach protocol packet type'
       - id: session_number
         type: u1
         doc: 'The Session this packet was generated from'
@@ -528,7 +530,7 @@ enums:
       doc: 'Mach Heartbeat Message'
     1:
       id: 'start_of_session'
-      doc: 'Mach Start Of Session Message'
+      doc: 'Mach Start Of Session Message; Sequence Number is set to 0'
     2:
       id: 'end_of_session'
       doc: 'Mach end of session Message'
@@ -724,7 +726,7 @@ enums:
       doc: 'Simple Market Auction Or Timer In Progress'
     0x43:
       id: 'complex_auction'
-      doc: 'Complex Auction In Progress'
+      doc: 'Complex Auction in Progress'
     0x4d:
       id: 'simple_market_protection'
       doc: 'Simple Market Protections Strategy Match Blocked'
@@ -746,7 +748,7 @@ enums:
       doc: 'Simple Market Auction Or Timer In Progress'
     0x43:
       id: 'complex_auction'
-      doc: 'Complex Auction In Progress'
+      doc: 'Complex Auction in Progress'
     0x4d:
       id: 'simple_market_protection'
       doc: 'Simple Market Protections Strategy Match Blocked'

@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Miami International Holdings MIAX Sapphire Options Top of Market Mach v2.0'
-doc-ref: https://www.miaxglobal.com/markets/us-options/miax-sapphire/interface-specifications
+doc-ref:
+  - https://www.miaxglobal.com/markets/us-options/miax-sapphire/interface-specifications
+  - https://www.miaxglobal.com/markets/us-options/sapphire-options/interface-specifications
 
 seq:
   - id: mach_message
@@ -66,7 +68,7 @@ types:
       - id: packet_type
         type: u1
         enum: packet_type
-        doc: 'protocol packet type'
+        doc: 'Mach protocol packet type'
       - id: session_number
         type: u1
         doc: 'The Session this packet was generated from'

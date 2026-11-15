@@ -62,11 +62,11 @@ types:
         doc: 'Sequence number of this data packet'
       - id: packet_length
         type: u2
-        doc: 'Length of the packet. This includes the header and application data'
+        doc: 'Length of the packet, including the header and application data'
       - id: packet_type
         type: u1
         enum: packet_type
-        doc: 'protocol packet type'
+        doc: 'Mach protocol packet type'
       - id: session_number
         type: u1
         doc: 'The Session this packet was generated from'
@@ -631,17 +631,17 @@ enums:
       doc: 'Trade Cancel Message'
   underlying_asset_type:
     0x45:
-      id: 'equity'
-      doc: 'Equity'
+      id: 'equity_index'
+      doc: 'Equity Index'
     0x41:
       id: 'commodity_agriculture'
       doc: 'Commodity Agriculture'
     0x46:
-      id: 'futures'
-      doc: 'Futures'
+      id: 'futures_contract'
+      doc: 'Futures Contract'
     0x4e:
-      id: 'not_field'
-      doc: 'Not'
+      id: 'not_applicable'
+      doc: 'Not Applicable'
   instrument_id_source:
     0x45:
       id: 'exchange'
@@ -651,14 +651,14 @@ enums:
       id: 'futures'
       doc: 'Futures'
     0x4f:
-      id: 'options_on'
-      doc: 'Options On'
+      id: 'options_on_futures'
+      doc: 'Options On Futures'
     0x54:
-      id: 'trade_at'
-      doc: 'Trade At'
+      id: 'trade_at_settlement_tas'
+      doc: 'Trade At Settlement Tas'
     0x42:
-      id: 'basis'
-      doc: 'Basis'
+      id: 'basis_trade_at_index_close_btic'
+      doc: 'Basis Trade At Index Close Btic'
   instrument_listing_status:
     0x41:
       id: 'active'
@@ -687,54 +687,54 @@ enums:
       doc: 'Theoretical'
   trading_collar_variation_type:
     0x44:
-      id: 'product'
-      doc: 'Product'
+      id: 'product_dollar_collar_value'
+      doc: 'Product Dollar Collar Value'
     0x50:
-      id: 'product_x50'
-      doc: 'Product'
+      id: 'product_collar_percentage_value'
+      doc: 'Product Collar Percentage Value'
     0x4e:
-      id: 'not_field'
-      doc: 'Not'
+      id: 'not_applicable'
+      doc: 'Not Applicable'
   option_strike_currency:
     0x55:
       id: 'us_dollar'
       doc: 'Us Dollar'
     0x4e:
-      id: 'na_when'
-      doc: 'Na When'
+      id: 'na_when_instrument_type_not_equal_to_o'
+      doc: 'Na When Instrument Type Not Equal To O'
   option_type:
     0x43:
-      id: 'call'
-      doc: 'Call'
+      id: 'call_options'
+      doc: 'Call Options'
     0x50:
-      id: 'put'
-      doc: 'Put'
+      id: 'put_options'
+      doc: 'Put Options'
     0x4e:
-      id: 'na_when'
-      doc: 'Na When'
+      id: 'na_when_instrument_type_not_equal_to_o'
+      doc: 'Na When Instrument Type Not Equal To O'
   option_expiration_type:
     0x41:
-      id: 'american_style'
-      doc: 'American Style'
+      id: 'american_style_options'
+      doc: 'American Style Options'
     0x45:
-      id: 'european_style'
-      doc: 'European Style'
+      id: 'european_style_options'
+      doc: 'European Style Options'
     0x4e:
-      id: 'na_when'
-      doc: 'Na When'
+      id: 'na_when_instrument_type_not_equal_to_o'
+      doc: 'Na When Instrument Type Not Equal To O'
   spread_type:
     0x53:
-      id: 'standard'
-      doc: 'Standard'
+      id: 'standard_calendar_spread'
+      doc: 'Standard Calendar Spread'
     0x45:
-      id: 'equity'
-      doc: 'Equity'
+      id: 'equity_calendar_spread'
+      doc: 'Equity Calendar Spread'
     0x42:
-      id: 'butterfly'
-      doc: 'Butterfly'
+      id: 'butterfly_spread'
+      doc: 'Butterfly Spread'
     0x43:
-      id: 'cross'
-      doc: 'Cross'
+      id: 'cross_product_spread'
+      doc: 'Cross Product Spread'
   listing_status:
     0x41:
       id: 'active'
@@ -750,28 +750,28 @@ enums:
       id: 'end_of_system_hours'
       doc: 'End Of System Hours'
     0x31:
-      id: 'start_of_test_session'
-      doc: 'Start Of Test Session'
+      id: 'start_of_test_session_sent_before_tests'
+      doc: 'Start Of Test Session Sent Before Tests'
     0x32:
       id: 'end_of_test_session'
       doc: 'End Of Test Session'
   trade_type:
     0x4f:
-      id: 'outright'
-      doc: 'Outright'
+      id: 'outright_trade_between_two_simple_orders'
+      doc: 'Outright Trade Between Two Simple Orders'
     0x53:
-      id: 'strategy'
-      doc: 'Strategy'
+      id: 'strategy_match_net_level_trade'
+      doc: 'Strategy Match Net Level Trade'
     0x4d:
-      id: 'strategy_x4d'
-      doc: 'Strategy'
+      id: 'strategy_match_component_leg_trade'
+      doc: 'Strategy Match Component Leg Trade'
     0x43:
-      id: 'complex'
-      doc: 'Complex'
+      id: 'complex_legging_derived_net_level_trade'
+      doc: 'Complex Legging Derived Net Level Trade'
     0x4c:
-      id: 'complex_x4c'
-      doc: 'Complex'
+      id: 'complex_legging_derived_component_leg_trade'
+      doc: 'Complex Legging Derived Component Leg Trade'
     0x41:
-      id: 'adjusted_late'
-      doc: 'Adjusted Late'
+      id: 'adjusted_late_manual_trade'
+      doc: 'Adjusted Late Manual Trade'
 
