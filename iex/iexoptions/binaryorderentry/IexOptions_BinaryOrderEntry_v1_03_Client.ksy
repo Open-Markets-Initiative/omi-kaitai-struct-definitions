@@ -221,7 +221,7 @@ types:
       - id: price_price_8_optional
         type: decimal_s8_8_nullable
         doc: 'price. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
-      - id: order_qty_quantity_non_zero
+      - id: order_qty
         type: u4
         doc: 'orderQty'
       - id: block_extension
@@ -295,7 +295,7 @@ types:
       - id: price_price_8_optional
         type: decimal_s8_8_nullable
         doc: 'price. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
-      - id: order_qty_quantity_non_zero
+      - id: order_qty
         type: u4
         doc: 'orderQty'
       - id: block_extension
@@ -381,7 +381,7 @@ types:
       - id: price_price_4_optional
         type: decimal_s4_4_nullable
         doc: 'price. Implied decimal with scale 1e-4. Nullable, No Value = -2147483648'
-      - id: order_qty_quantity_zero_optional
+      - id: order_qty_optional
         type: u4_nullable
         doc: 'Order quantity. Nullable, No Value = 4294967295'
       - id: quote_type

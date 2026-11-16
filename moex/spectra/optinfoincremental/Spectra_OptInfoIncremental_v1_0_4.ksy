@@ -92,7 +92,7 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'TransactTime. Nanoseconds since Unix epoch'
-      - id: exchange_trading_session_i_d_uint_32_optional
+      - id: exchange_trading_session_id_optional
         type: u4_nullable
         doc: 'ExchangeTradingSessionID. Nullable, No Value = 4294967295'
   message_struct:

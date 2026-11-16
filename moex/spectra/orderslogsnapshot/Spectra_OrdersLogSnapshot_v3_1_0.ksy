@@ -123,7 +123,7 @@ types:
       - id: security_id
         type: s4
         doc: 'SecurityID'
-      - id: last_msg_seq_num_processed_u_int_32
+      - id: last_msg_seq_num_processed
         type: u4
         doc: 'LastMsgSeqNumProcessed'
       - id: rpt_seq
@@ -158,19 +158,19 @@ types:
         doc: 'numInGroup'
   order_book_snapshot_message_no_m_d_entries_group:
     seq:
-      - id: md_entry_id_int_64_null_optional
+      - id: md_entry_id_optional
         type: s8_nullable
         doc: 'Order ID. Nullable, No Value = -9223372036854775808'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'TransactTime. Nanoseconds since Unix epoch'
-      - id: md_entry_px_decimal_5_null_optional
+      - id: md_entry_px_optional
         type: decimal_s8_5_nullable
         doc: 'MDEntryPx. Implied decimal with scale 1e-5. Nullable, No Value = 9223372036854775807'
-      - id: md_entry_size_int_64_null_optional
+      - id: md_entry_size_optional
         type: s8_nullable
         doc: 'MDEntrySize. Nullable, No Value = -9223372036854775808'
-      - id: trade_id_int_64_null_optional
+      - id: trade_id_optional
         type: s8_nullable
         doc: 'Trade ID. Nullable, No Value = -9223372036854775808'
       - id: md_flags

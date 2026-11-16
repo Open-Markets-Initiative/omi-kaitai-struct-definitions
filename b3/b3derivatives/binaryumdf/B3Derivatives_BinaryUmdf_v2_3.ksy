@@ -724,7 +724,7 @@ types:
       - id: md_corporate_offset_price_optional
         type: decimal_s8_4_nullable
         doc: 'mDEntryPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
-      - id: md_entry_size_quantity_optional
+      - id: md_entry_size_optional
         type: s8_nullable
         doc: 'mDEntrySize. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
@@ -784,7 +784,7 @@ types:
       - id: imbalance_condition
         type: imbalance_condition
         doc: 'ImbalanceCondition bit set'
-      - id: md_entry_size_quantity_optional
+      - id: md_entry_size_optional
         type: s8_nullable
         doc: 'mDEntrySize. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
@@ -966,7 +966,7 @@ types:
       - id: md_future_price
         type: decimal_s8_4
         doc: 'mDEntryPx. Implied decimal with scale 1e-4'
-      - id: md_entry_size_quantity
+      - id: md_entry_size
         type: s8
         doc: 'mDEntrySize'
       - id: trade_id
@@ -1111,7 +1111,7 @@ types:
       - id: trade_date
         type: epoch_date
         doc: 'tradeDate. Days since Unix epoch'
-      - id: md_entry_size_quantity
+      - id: md_entry_size
         type: s8
         doc: 'mDEntrySize'
       - id: md_entry_timestamp
@@ -1177,7 +1177,7 @@ types:
       - id: md_corporate_offset_price_optional
         type: decimal_s8_4_nullable
         doc: 'mDEntryPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
-      - id: md_entry_size_quantity
+      - id: md_entry_size
         type: s8
         doc: 'mDEntrySize'
       - id: offset_28_padding_4
@@ -1222,7 +1222,7 @@ types:
       - id: offset_11_padding_5
         size: 5
         doc: '5 bytes padding'
-      - id: md_entry_size_quantity
+      - id: md_entry_size
         type: s8
         doc: 'mDEntrySize'
       - id: secondary_order_id
@@ -1286,7 +1286,7 @@ types:
       - id: md_future_price
         type: decimal_s8_4
         doc: 'mDEntryPx. Implied decimal with scale 1e-4'
-      - id: md_entry_size_quantity
+      - id: md_entry_size
         type: s8
         doc: 'mDEntrySize'
       - id: trade_id
@@ -1334,7 +1334,7 @@ types:
       - id: md_future_price
         type: decimal_s8_4
         doc: 'mDEntryPx. Implied decimal with scale 1e-4'
-      - id: md_entry_size_quantity
+      - id: md_entry_size
         type: s8
         doc: 'mDEntrySize'
       - id: trade_id
@@ -1463,7 +1463,7 @@ types:
       - id: md_future_price
         type: decimal_s8_4
         doc: 'mDEntryPx. Implied decimal with scale 1e-4'
-      - id: md_entry_size_quantity
+      - id: md_entry_size
         type: s8
         doc: 'mDEntrySize'
       - id: trade_id
@@ -1510,7 +1510,7 @@ types:
       - id: md_corporate_offset_price_optional
         type: decimal_s8_4_nullable
         doc: 'mDEntryPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
-      - id: md_entry_size_quantity
+      - id: md_entry_size
         type: s8
         doc: 'mDEntrySize'
       - id: offset_16_padding_4

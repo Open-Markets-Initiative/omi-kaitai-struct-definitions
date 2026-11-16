@@ -414,7 +414,7 @@ types:
         type: u1
         enum: mm_protection_reset
         doc: 'mmProtectionReset'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: account
@@ -517,7 +517,7 @@ types:
         type: u1
         enum: mm_protection_reset
         doc: 'mmProtectionReset'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: account
@@ -587,7 +587,7 @@ types:
         type: u1
         enum: mm_protection_reset
         doc: 'mmProtectionReset'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: account
@@ -697,7 +697,7 @@ types:
         type: u1
         enum: mm_protection_reset
         doc: 'mmProtectionReset'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: account
@@ -787,7 +787,7 @@ types:
       - id: offset_18_padding_2
         size: 2
         doc: '2 bytes padding'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: security_id
@@ -839,7 +839,7 @@ types:
       - id: offset_18_padding_2
         size: 2
         doc: '2 bytes padding'
-      - id: crossid
+      - id: cross_id
         type: u8
         doc: 'crossID'
       - id: sender_location
@@ -912,7 +912,7 @@ types:
       - id: entering_firm_optional
         type: u4_nullable
         doc: 'enteringFirm. Nullable, No Value = 0'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: block_extension
@@ -931,7 +931,7 @@ types:
         type: u1
         enum: ord_status
         doc: 'ordStatus'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: secondary_order_id
@@ -995,7 +995,7 @@ types:
       - id: max_floor
         type: u8_nullable
         doc: 'maxFloor. Nullable, No Value = 0'
-      - id: crossid_optional
+      - id: cross_id_optional
         type: u8_nullable
         doc: 'crossID. Nullable, No Value = 0'
       - id: block_extension
@@ -1039,7 +1039,7 @@ types:
         type: u1
         enum: ord_status
         doc: 'ordStatus'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: secondary_order_id
@@ -1134,7 +1134,7 @@ types:
         type: u1
         enum: ord_status
         doc: 'ordStatus'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: secondary_order_id
@@ -1228,7 +1228,7 @@ types:
         type: u1
         enum: ord_status
         doc: 'ordStatus'
-      - id: clordid_optional
+      - id: cl_ord_id_optional
         type: u8_nullable
         doc: 'clOrdID. Nullable, No Value = 0'
       - id: secondary_order_id
@@ -1298,7 +1298,7 @@ types:
       - id: exec_ref_id
         type: u8_nullable
         doc: 'execRefID. Nullable, No Value = 0'
-      - id: crossid_optional
+      - id: cross_id_optional
         type: u8_nullable
         doc: 'crossID. Nullable, No Value = 0'
       - id: crossed_indicator
@@ -1329,7 +1329,7 @@ types:
         type: u1
         enum: cxl_rej_response_to
         doc: 'cxlRejResponseTo'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: secondary_order_id_optional
@@ -1383,7 +1383,7 @@ types:
       - id: max_floor
         type: u8_nullable
         doc: 'maxFloor. Nullable, No Value = 0'
-      - id: crossid_optional
+      - id: cross_id_optional
         type: u8_nullable
         doc: 'crossID. Nullable, No Value = 0'
       - id: crossed_indicator
@@ -1425,7 +1425,7 @@ types:
         type: u1
         enum: ord_status
         doc: 'ordStatus'
-      - id: clordid_optional
+      - id: cl_ord_id_optional
         type: u8_nullable
         doc: 'clOrdID. Nullable, No Value = 0'
       - id: secondary_order_id
@@ -2330,7 +2330,7 @@ types:
       - id: mass_action_scope
         type: u1_nullable
         doc: 'massActionScope. Nullable, No Value = 0'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: mass_cancel_restatement_reason
@@ -2373,7 +2373,7 @@ types:
       - id: mass_action_scope
         type: u1_nullable
         doc: 'massActionScope. Nullable, No Value = 0'
-      - id: clordid
+      - id: cl_ord_id
         type: u8
         doc: 'clOrdID'
       - id: mass_action_report_id

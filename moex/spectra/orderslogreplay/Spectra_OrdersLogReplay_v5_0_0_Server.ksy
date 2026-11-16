@@ -142,7 +142,7 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'TransactTime. Nanoseconds since Unix epoch'
-      - id: exchange_trading_session_i_d_uint_32_optional
+      - id: exchange_trading_session_id_optional
         type: u4_nullable
         doc: 'ExchangeTradingSessionID. Nullable, No Value = 4294967295'
   server_replay_message:
@@ -203,7 +203,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 36 this version reads'
   empty_book_message:
     seq:
-      - id: last_msg_seq_num_processed_u_int_32_null_optional
+      - id: last_msg_seq_num_processed_optional
         type: u4_nullable
         doc: 'LastMsgSeqNumProcessed. Nullable, No Value = 4294967295'
       - id: block_extension
@@ -211,13 +211,13 @@ types:
         doc: 'Bytes the stated block holds beyond the 4 this version reads'
   order_update_message:
     seq:
-      - id: md_entry_id_int_64
+      - id: md_entry_id
         type: s8
         doc: 'MDEntryID'
-      - id: md_entry_px_decimal_5
+      - id: md_entry_px
         type: decimal_s8_5
         doc: 'MDEntryPx. Implied decimal with scale 1e-5'
-      - id: md_entry_size_int_64
+      - id: md_entry_size
         type: s8
         doc: 'MDEntrySize'
       - id: md_flags
@@ -451,13 +451,13 @@ types:
         doc: '63 reserved bits'
   order_execution_message:
     seq:
-      - id: md_entry_id_int_64
+      - id: md_entry_id
         type: s8
         doc: 'MDEntryID'
-      - id: md_entry_px_decimal_5_null_optional
+      - id: md_entry_px_optional
         type: decimal_s8_5_nullable
         doc: 'MDEntryPx. Implied decimal with scale 1e-5. Nullable, No Value = 9223372036854775807'
-      - id: md_entry_size_int_64_null_optional
+      - id: md_entry_size_optional
         type: s8_nullable
         doc: 'MDEntrySize. Nullable, No Value = -9223372036854775808'
       - id: last_px
@@ -466,7 +466,7 @@ types:
       - id: last_qty
         type: s8
         doc: 'LastQty'
-      - id: trade_id_int_64
+      - id: trade_id
         type: s8
         doc: 'TradeID'
       - id: md_flags

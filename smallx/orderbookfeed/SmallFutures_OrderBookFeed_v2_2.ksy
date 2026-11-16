@@ -205,10 +205,10 @@ types:
       - id: last_trade_size
         type: decimal_s8_0_nullable
         doc: 'Size of the last trade. Implied decimal with scale 1e0. Nullable, No Value = -9223372036854775808'
-      - id: last_trade_time_timestamp_optional
+      - id: last_trade_time_optional
         type: nanosecond_timestamp_nullable
         doc: 'Timestamp of the last trade for the day. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
-      - id: total_volume_quantity
+      - id: total_volume
         type: decimal_s8_0
         doc: 'Total day traded volume for the instrument. Implied decimal with scale 1e0'
       - id: block_extension
@@ -302,10 +302,10 @@ types:
       - id: last_trade_size
         type: decimal_s8_0_nullable
         doc: 'Size of the last trade. Implied decimal with scale 1e0. Nullable, No Value = -9223372036854775808'
-      - id: last_trade_time_timestamp_optional
+      - id: last_trade_time_optional
         type: nanosecond_timestamp_nullable
         doc: 'Timestamp of the last trade for the day. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
-      - id: total_volume_quantity
+      - id: total_volume
         type: decimal_s8_0
         doc: 'Total day traded volume for the instrument. Implied decimal with scale 1e0'
       - id: block_extension
@@ -385,10 +385,10 @@ types:
       - id: last_trade_size
         type: decimal_s8_0_nullable
         doc: 'Size of the last trade. Implied decimal with scale 1e0. Nullable, No Value = -9223372036854775808'
-      - id: last_trade_time_timestamp_optional
+      - id: last_trade_time_optional
         type: nanosecond_timestamp_nullable
         doc: 'Timestamp of the last trade for the day. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
-      - id: total_volume_quantity
+      - id: total_volume
         type: decimal_s8_0
         doc: 'Total day traded volume for the instrument. Implied decimal with scale 1e0'
       - id: block_extension
@@ -702,10 +702,10 @@ types:
       - id: last_trade_size
         type: decimal_s8_0_nullable
         doc: 'Size of the last trade. Implied decimal with scale 1e0. Nullable, No Value = -9223372036854775808'
-      - id: last_trade_time_timestamp
+      - id: last_trade_time
         type: nanosecond_timestamp_nullable
         doc: 'Timestamp of the session last trade. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
-      - id: total_volume_quantity_optional
+      - id: total_volume_optional
         type: decimal_s8_0_nullable
         doc: 'Total traded volume for the instrument session. Implied decimal with scale 1e0. Nullable, No Value = -9223372036854775808'
       - id: open_price

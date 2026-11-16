@@ -92,7 +92,7 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'TransactTime. Nanoseconds since Unix epoch'
-      - id: exchange_trading_session_i_d_uint_32_optional
+      - id: exchange_trading_session_id_optional
         type: u4_nullable
         doc: 'ExchangeTradingSessionID. Nullable, No Value = 4294967295'
   message_struct:
@@ -321,13 +321,13 @@ types:
       - id: trade_mode_mask
         type: s4_nullable
         doc: 'TradeModeMask. Nullable, No Value = -2147483648'
-      - id: group_mask_int_64_null_optional
+      - id: group_mask_optional
         type: s8_nullable
         doc: 'GroupMask. Nullable, No Value = -9223372036854775808'
-      - id: section_id_int_32_null_optional
+      - id: section_id_optional
         type: s4_nullable
         doc: 'SectionID. Nullable, No Value = -2147483648'
-      - id: base_contract_id_int_32_null_optional
+      - id: base_contract_id_optional
         type: s4_nullable
         doc: 'BaseContractID. Nullable, No Value = -2147483648'
       - id: security_trading_status

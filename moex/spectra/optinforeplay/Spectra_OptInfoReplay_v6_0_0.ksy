@@ -278,13 +278,13 @@ types:
       - id: trade_mode_id
         type: s4
         doc: 'TradeModeID'
-      - id: group_mask_int_64
+      - id: group_mask
         type: s8
         doc: 'GroupMask'
-      - id: section_id_int_32
+      - id: section_id
         type: s4
         doc: 'SectionID'
-      - id: base_contract_id_int_32
+      - id: base_contract_id
         type: s4
         doc: 'BaseContractID'
       - id: trade_period_access
@@ -607,13 +607,13 @@ types:
       - id: trade_mode_mask
         type: s4_nullable
         doc: 'TradeModeMask. Nullable, No Value = -2147483648'
-      - id: group_mask_int_64_null_optional
+      - id: group_mask_optional
         type: s8_nullable
         doc: 'GroupMask. Nullable, No Value = -9223372036854775808'
-      - id: section_id_int_32_null_optional
+      - id: section_id_optional
         type: s4_nullable
         doc: 'SectionID. Nullable, No Value = -2147483648'
-      - id: base_contract_id_int_32_null_optional
+      - id: base_contract_id_optional
         type: s4_nullable
         doc: 'BaseContractID. Nullable, No Value = -2147483648'
       - id: security_trading_status
