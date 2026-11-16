@@ -12,11 +12,6 @@ from nyse_nationalequities_integratedfeedstocksummary_pillar_v2_5_g import NyseN
 
 class NyseNationalequitiesIntegratedfeedstocksummaryPillarV25GTests(unittest.TestCase):
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/NationalEquities.IntegratedFeedStockSummary.Pillar.v2.5.g/MessageSequence.pcap"):
-            parsed = NyseNationalequitiesIntegratedfeedstocksummaryPillarV25G.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_stocksummarymessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/NationalEquities.IntegratedFeedStockSummary.Pillar.v2.5.g/StockSummaryMessage.pcap"):
             parsed = NyseNationalequitiesIntegratedfeedstocksummaryPillarV25G.from_bytes(payload)

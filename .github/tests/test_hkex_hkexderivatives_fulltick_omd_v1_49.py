@@ -37,11 +37,6 @@ class HkexHkexderivativesFulltickOmdV149Tests(unittest.TestCase):
             parsed = HkexHkexderivativesFulltickOmdV149.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Hkex/HkexDerivatives.FullTick.Omd.v1.49/MessageSequence.pcap"):
-            parsed = HkexHkexderivativesFulltickOmdV149.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_quoterequest(self):
         for payload in payloads.of("omi-data-packets/Hkex/HkexDerivatives.FullTick.Omd.v1.49/QuoteRequest.pcap"):
             parsed = HkexHkexderivativesFulltickOmdV149.from_bytes(payload)

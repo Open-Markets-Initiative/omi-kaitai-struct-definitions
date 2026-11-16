@@ -7,7 +7,7 @@
 #   Encoding: eXtreme Message Transfer
 #   Version: 2.10
 #   Date: 6/26/2014
-#   Specification: Unknown
+#   Specification: https://github.com/zkutch/xmt_protocol_parser
 #
 # Script:
 #   Generator: 1.0.0.0

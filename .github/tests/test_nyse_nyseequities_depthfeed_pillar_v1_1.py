@@ -22,11 +22,6 @@ class NyseNyseequitiesDepthfeedPillarV11Tests(unittest.TestCase):
             parsed = NyseNyseequitiesDepthfeedPillarV11.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/NyseEquities.DepthFeed.Pillar.v1.1/MessageSequence.pcap"):
-            parsed = NyseNyseequitiesDepthfeedPillarV11.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_securitystatusmessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/NyseEquities.DepthFeed.Pillar.v1.1/SecurityStatusMessage.pcap"):
             parsed = NyseNyseequitiesDepthfeedPillarV11.from_bytes(payload)

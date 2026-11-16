@@ -7,7 +7,7 @@
 #   Encoding: Simple Binary Encoding
 #   Version: 4.0
 #   Date: 1/1/2022
-#   Specification: Unknown
+#   Specification: mdg_binary_sbe_input_300.xml
 #
 # Script:
 #   Generator: 1.0.0.0

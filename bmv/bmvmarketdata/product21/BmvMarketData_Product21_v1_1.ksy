@@ -273,13 +273,13 @@ types:
       - id: last_12_months_performance
         type: decimal_s8_8
         doc: 'Last 12 Months Performance. Implied decimal with scale 1e-8'
-      - id: field_24_hours_daily_performance
+      - id: n24_hours_daily_performance
         type: decimal_s8_8
         doc: '24 Hours Daily Performance. Implied decimal with scale 1e-8'
-      - id: field_24_hours_annual_performance
+      - id: n24_hours_annual_performance
         type: decimal_s8_8
         doc: '24 Hours Annual Performance. Implied decimal with scale 1e-8'
-      - id: field_24_hours_monthly_performance
+      - id: n24_hours_monthly_performance
         type: decimal_s8_8
         doc: '24 Hours Monthly Performance. Implied decimal with scale 1e-8'
       - id: last_12_months_24_hours_performance

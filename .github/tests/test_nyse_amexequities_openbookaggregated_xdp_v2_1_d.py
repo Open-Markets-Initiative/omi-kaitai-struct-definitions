@@ -12,11 +12,6 @@ from nyse_amexequities_openbookaggregated_xdp_v2_1_d import NyseAmexequitiesOpen
 
 class NyseAmexequitiesOpenbookaggregatedXdpV21DTests(unittest.TestCase):
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/AmexEquities.OpenBook.Aggregated.Xdp.v2.1.d/MessageSequence.pcap"):
-            parsed = NyseAmexequitiesOpenbookaggregatedXdpV21D.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_orderbookdeltaupdatemessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/AmexEquities.OpenBook.Aggregated.Xdp.v2.1.d/OrderbookDeltaUpdateMessage.pcap"):
             parsed = NyseAmexequitiesOpenbookaggregatedXdpV21D.from_bytes(payload)

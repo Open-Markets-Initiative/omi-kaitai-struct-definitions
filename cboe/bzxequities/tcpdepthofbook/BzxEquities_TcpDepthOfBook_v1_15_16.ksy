@@ -7,7 +7,7 @@
 #   Encoding: Ascii Pitch
 #   Version: 1.15.16
 #   Date: 09/09/2026
-#   Specification: Unknown
+#   Specification: http://markets.cboe.com/us/equities/support/technical
 #
 # Script:
 #   Generator: 1.0.0.0

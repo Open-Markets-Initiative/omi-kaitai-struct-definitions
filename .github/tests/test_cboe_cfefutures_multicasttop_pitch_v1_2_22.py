@@ -22,11 +22,6 @@ class CboeCfefuturesMulticasttopPitchV1222Tests(unittest.TestCase):
             parsed = CboeCfefuturesMulticasttopPitchV1222.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.MulticastTop.Pitch.v1.2.22/MessageSequence.pcap"):
-            parsed = CboeCfefuturesMulticasttopPitchV1222.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_pricelimitsmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.MulticastTop.Pitch.v1.2.22/PriceLimitsMessage.pcap"):
             parsed = CboeCfefuturesMulticasttopPitchV1222.from_bytes(payload)

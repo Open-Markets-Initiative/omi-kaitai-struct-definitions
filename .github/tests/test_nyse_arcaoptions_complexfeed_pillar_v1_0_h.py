@@ -17,11 +17,6 @@ class NyseArcaoptionsComplexfeedPillarV10HTests(unittest.TestCase):
             parsed = NyseArcaoptionsComplexfeedPillarV10H.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.ComplexFeed.Pillar.v1.0.h/MessageSequence.pcap"):
-            parsed = NyseArcaoptionsComplexfeedPillarV10H.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_optionsquotemessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.ComplexFeed.Pillar.v1.0.h/OptionsQuoteMessage.pcap"):
             parsed = NyseArcaoptionsComplexfeedPillarV10H.from_bytes(payload)

@@ -12,11 +12,6 @@ from nyse_amexoptions_deepfeed_pillar_v1_2_m import NyseAmexoptionsDeepfeedPilla
 
 class NyseAmexoptionsDeepfeedPillarV12MTests(unittest.TestCase):
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/AmexOptions.DeepFeed.Pillar.v1.2.m/MessageSequence.pcap"):
-            parsed = NyseAmexoptionsDeepfeedPillarV12M.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_optionsaddordermessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/AmexOptions.DeepFeed.Pillar.v1.2.m/OptionsAddOrderMessage.pcap"):
             parsed = NyseAmexoptionsDeepfeedPillarV12M.from_bytes(payload)

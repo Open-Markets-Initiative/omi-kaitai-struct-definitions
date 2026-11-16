@@ -22,11 +22,6 @@ class HkexHkexsecuritiesFulltickOmdV146Tests(unittest.TestCase):
             parsed = HkexHkexsecuritiesFulltickOmdV146.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Hkex/HkexSecurities.FullTick.Omd.v1.46/MessageSequence.pcap"):
-            parsed = HkexHkexsecuritiesFulltickOmdV146.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_modifyordermessage(self):
         for payload in payloads.of("omi-data-packets/Hkex/HkexSecurities.FullTick.Omd.v1.46/ModifyOrderMessage.pcap"):
             parsed = HkexHkexsecuritiesFulltickOmdV146.from_bytes(payload)

@@ -7,7 +7,7 @@
 #   Encoding: Simple Binary Encoding
 #   Version: 7.0
 #   Date: 12/03/2018
-#   Specification: Unknown
+#   Specification: svstreammkktdata.xml
 #
 # Script:
 #   Generator: 1.0.0.0

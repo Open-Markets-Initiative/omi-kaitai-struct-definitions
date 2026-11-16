@@ -7,7 +7,7 @@
 #   Encoding: Simple Binary Encoding
 #   Version: 1.10
 #   Date: 10/2/2026
-#   Specification: Unknown
+#   Specification: cde-sbe-market-api.xml
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -209,8 +209,8 @@ types:
         type: definition_flags
         doc: 'InstrumentDefinitionFlags bit set'
       - id: contract_size
-        type: s8
-        doc: 'contractSize'
+        type: decimal_s8_8
+        doc: 'contractSize. Implied decimal with scale 1e-8'
       - id: logical_expiry
         type: logical_expiry
         doc: 'OutrightInstrumentDefinitionMessage'
@@ -229,8 +229,8 @@ types:
         type: u1
         doc: 'Bitset marking where the transaction begins and ends: 0x01 start of transaction, 0x02 end of transaction, 0x04 clear book'
       - id: instrument_side
-        type: s1
-        doc: '1 buy, -1 sell, 0 opening fill, and -128 where side does not apply to the message'
+        type: s1_nullable
+        doc: '1 buy, -1 sell, 0 opening fill, and -128 where side does not apply to the message. Nullable, No Value = -128'
       - id: instrument_id
         type: s4
         doc: 'instrumentId'
@@ -774,8 +774,8 @@ types:
         enum: trading_status
         doc: 'tradingStatus'
       - id: contract_size
-        type: s8
-        doc: 'contractSize'
+        type: decimal_s8_8
+        doc: 'contractSize. Implied decimal with scale 1e-8'
       - id: logical_expiry
         type: logical_expiry
         doc: 'OutrightInstrumentDefinitionMessage'
@@ -1124,6 +1124,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  s1_nullable:
+    seq:
+      - id: value
+        type: s1
+    instances:
+      is_null:
+        value: value == -128
   epoch_date:
     seq:
       - id: days
@@ -1145,6 +1152,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
   s2_nullable:
     seq:
       - id: value
@@ -1255,6 +1269,13 @@ enums:
     202:
       id: 'retransmit_reject_message'
       doc: 'RetransmitRejectMessage'
+  instrument_side:
+    1:
+      id: 'buy'
+      doc: 'Buy'
+    0:
+      id: 'opening_fill'
+      doc: 'Opening fill'
   product_group:
     0:
       id: 'currency'

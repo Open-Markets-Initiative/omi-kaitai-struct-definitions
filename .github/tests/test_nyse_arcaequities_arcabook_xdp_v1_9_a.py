@@ -32,11 +32,6 @@ class NyseArcaequitiesArcabookXdpV19ATests(unittest.TestCase):
             parsed = NyseArcaequitiesArcabookXdpV19A.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/ArcaEquities.ArcaBook.Xdp.v1.9.a/MessageSequence.pcap"):
-            parsed = NyseArcaequitiesArcabookXdpV19A.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_modifyordermessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/ArcaEquities.ArcaBook.Xdp.v1.9.a/ModifyOrderMessage.pcap"):
             parsed = NyseArcaequitiesArcabookXdpV19A.from_bytes(payload)

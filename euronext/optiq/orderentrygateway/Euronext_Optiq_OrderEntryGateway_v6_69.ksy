@@ -7,7 +7,7 @@
 #   Encoding: Simple Binary Encoding
 #   Version: 6.69
 #   Date: 8/25/2026
-#   Specification: Unknown
+#   Specification: oegbinarysbeinput369.xml
 #
 # Script:
 #   Generator: 1.0.0.0

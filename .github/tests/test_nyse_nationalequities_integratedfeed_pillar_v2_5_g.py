@@ -32,11 +32,6 @@ class NyseNationalequitiesIntegratedfeedPillarV25GTests(unittest.TestCase):
             parsed = NyseNationalequitiesIntegratedfeedPillarV25G.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/NationalEquities.IntegratedFeed.Pillar.v2.5.g/MessageSequence.pcap"):
-            parsed = NyseNationalequitiesIntegratedfeedPillarV25G.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_modifyordermessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/NationalEquities.IntegratedFeed.Pillar.v2.5.g/ModifyOrderMessage.pcap"):
             parsed = NyseNationalequitiesIntegratedfeedPillarV25G.from_bytes(payload)

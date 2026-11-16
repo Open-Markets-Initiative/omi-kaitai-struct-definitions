@@ -7,7 +7,7 @@
 #   Encoding: Simple Binary Encoding
 #   Version: 8.5
 #   Date: 02/27/2020
-#   Specification: Unknown
+#   Specification: ilinkbinary.xml
 #
 # Script:
 #   Generator: 1.0.0.0

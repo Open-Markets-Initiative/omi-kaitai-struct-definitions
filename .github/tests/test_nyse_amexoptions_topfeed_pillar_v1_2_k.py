@@ -12,11 +12,6 @@ from nyse_amexoptions_topfeed_pillar_v1_2_k import NyseAmexoptionsTopfeedPillarV
 
 class NyseAmexoptionsTopfeedPillarV12KTests(unittest.TestCase):
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/AmexOptions.TopFeed.Pillar.v1.2.k/MessageSequence.pcap"):
-            parsed = NyseAmexoptionsTopfeedPillarV12K.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_optionsquotemessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/AmexOptions.TopFeed.Pillar.v1.2.k/OptionsQuoteMessage.pcap"):
             parsed = NyseAmexoptionsTopfeedPillarV12K.from_bytes(payload)

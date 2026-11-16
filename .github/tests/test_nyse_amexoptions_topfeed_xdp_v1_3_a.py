@@ -12,11 +12,6 @@ from nyse_amexoptions_topfeed_xdp_v1_3_a import NyseAmexoptionsTopfeedXdpV13A
 
 class NyseAmexoptionsTopfeedXdpV13ATests(unittest.TestCase):
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/AmexOptions.TopFeed.Xdp.v1.3.a/MessageSequence.pcap"):
-            parsed = NyseAmexoptionsTopfeedXdpV13A.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_outrightboldrfqmessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/AmexOptions.TopFeed.Xdp.v1.3.a/OutrightBoldRfqMessage.pcap"):
             parsed = NyseAmexoptionsTopfeedXdpV13A.from_bytes(payload)

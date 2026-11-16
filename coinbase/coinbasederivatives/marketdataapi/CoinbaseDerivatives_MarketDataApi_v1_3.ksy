@@ -177,8 +177,8 @@ types:
         type: epoch_date
         doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: contract_size
-        type: s4
-        doc: 'contractSize'
+        type: decimal_s4_8
+        doc: 'contractSize. Implied decimal with scale 1e-8'
       - id: prior_settlement_price_optional
         type: decimal_s8_9_nullable
         doc: 'priorSettlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
@@ -214,8 +214,8 @@ types:
         type: u1
         doc: 'Bitset marking where the transaction begins and ends: 0x01 start of transaction, 0x02 end of transaction, 0x04 clear book'
       - id: instrument_side
-        type: s1
-        doc: '1 buy, -1 sell, 0 opening fill, and -128 where side does not apply to the message'
+        type: s1_nullable
+        doc: '1 buy, -1 sell, 0 opening fill, and -128 where side does not apply to the message. Nullable, No Value = -128'
       - id: instrument_id
         type: s4
         doc: 'instrumentId'
@@ -287,8 +287,8 @@ types:
         type: epoch_date
         doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: contract_size
-        type: s4
-        doc: 'contractSize'
+        type: decimal_s4_8
+        doc: 'contractSize. Implied decimal with scale 1e-8'
       - id: prior_settlement_price_optional
         type: decimal_s8_9_nullable
         doc: 'priorSettlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
@@ -664,8 +664,8 @@ types:
         type: s4
         doc: 'productId'
       - id: contract_size
-        type: s4
-        doc: 'contractSize'
+        type: decimal_s4_8
+        doc: 'contractSize. Implied decimal with scale 1e-8'
       - id: order_count
         type: s4
         doc: 'orderCount'
@@ -729,8 +729,8 @@ types:
         type: s4
         doc: 'productId'
       - id: contract_size
-        type: s4
-        doc: 'contractSize'
+        type: decimal_s4_8
+        doc: 'contractSize. Implied decimal with scale 1e-8'
       - id: order_count
         type: s4
         doc: 'orderCount'
@@ -977,6 +977,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  s1_nullable:
+    seq:
+      - id: value
+        type: s1
+    instances:
+      is_null:
+        value: value == -128
   epoch_date:
     seq:
       - id: days
@@ -991,6 +998,13 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s4_8:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100000000.0
   decimal_s8_9_nullable:
     seq:
       - id: value
@@ -1088,6 +1102,13 @@ enums:
     202:
       id: 'retransmit_reject_message'
       doc: 'RetransmitRejectMessage'
+  instrument_side:
+    1:
+      id: 'buy'
+      doc: 'Buy'
+    0:
+      id: 'opening_fill'
+      doc: 'Opening fill'
   product_group:
     0:
       id: 'currency'

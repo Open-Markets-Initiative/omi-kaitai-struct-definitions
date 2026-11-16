@@ -27,11 +27,6 @@ class NyseAmexequitiesOpenbookUltraV21BTests(unittest.TestCase):
             parsed = NyseAmexequitiesOpenbookUltraV21B.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/AmexEquities.OpenBook.Ultra.v2.1.b/MessageSequence.pcap"):
-            parsed = NyseAmexequitiesOpenbookUltraV21B.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_sequencenumberresetmessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/AmexEquities.OpenBook.Ultra.v2.1.b/SequenceNumberResetMessage.pcap"):
             parsed = NyseAmexequitiesOpenbookUltraV21B.from_bytes(payload)

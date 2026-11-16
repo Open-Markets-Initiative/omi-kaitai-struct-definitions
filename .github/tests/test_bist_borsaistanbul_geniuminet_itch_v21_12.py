@@ -17,11 +17,6 @@ class BistBorsaistanbulGeniuminetItchV2112Tests(unittest.TestCase):
             parsed = BistBorsaistanbulGeniuminetItchV2112.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Bist/BorsaIstanbul.GeniumInet.Itch.v21.12/MessageSequence.pcap"):
-            parsed = BistBorsaistanbulGeniuminetItchV2112.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_orderbookdirectory(self):
         for payload in payloads.of("omi-data-packets/Bist/BorsaIstanbul.GeniumInet.Itch.v21.12/OrderBookDirectory.pcap"):
             parsed = BistBorsaistanbulGeniuminetItchV2112.from_bytes(payload)

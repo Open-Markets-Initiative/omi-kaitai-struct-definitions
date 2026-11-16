@@ -12,11 +12,6 @@ from nyse_arcaoptions_deepfeed_xdp_v1_3_a import NyseArcaoptionsDeepfeedXdpV13A
 
 class NyseArcaoptionsDeepfeedXdpV13ATests(unittest.TestCase):
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/MessageSequence.pcap"):
-            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_outrightmarketdepthbuymessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/OutrightMarketDepthBuyMessage.pcap"):
             parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)

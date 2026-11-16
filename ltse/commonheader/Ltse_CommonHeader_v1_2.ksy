@@ -7,7 +7,7 @@
 #   Encoding: Tcp
 #   Version: 1.2
 #   Date: 12/13/2023
-#   Specification: Unknown
+#   Specification: https://ltse.com/trading/user-guide-technical-specifications
 #
 # Script:
 #   Generator: 1.0.0.0
