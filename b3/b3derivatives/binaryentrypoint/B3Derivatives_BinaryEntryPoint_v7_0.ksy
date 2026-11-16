@@ -666,14 +666,14 @@ types:
   custodian_info:
     seq:
       - id: custodian
-        type: u4
-        doc: 'custodian'
+        type: u4_nullable
+        doc: 'custodian. Nullable, No Value = 0'
       - id: custody_account
-        type: u4
-        doc: 'custodyAccount'
+        type: u4_nullable
+        doc: 'custodyAccount. Nullable, No Value = 0'
       - id: custody_allocation_type
-        type: u4
-        doc: 'custodyAllocationType'
+        type: u4_nullable
+        doc: 'custodyAllocationType. Nullable, No Value = 0'
   desk_id:
     seq:
       - id: len_desk_id_data
@@ -1713,8 +1713,8 @@ types:
         type: u1
         doc: 'possResend'
       - id: market_segment_id_optional
-        type: u1
-        doc: 'marketSegmentID'
+        type: u1_nullable
+        doc: 'marketSegmentID. Nullable, No Value = 0'
       - id: padding_char_2
         type: str
         size: 2

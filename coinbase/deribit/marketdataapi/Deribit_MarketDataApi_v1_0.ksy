@@ -96,6 +96,7 @@ types:
           cases:
             'template_id::instrument_definition_message': instrument_definition_message
             'template_id::index_definition_message': index_definition_message
+            'template_id::index_info_message': index_info_message
             'template_id::instrument_info_message': instrument_info_message
             'template_id::instrument_ref_message': instrument_ref_message
             'template_id::instrument_status_update_message': instrument_status_update_message
@@ -284,6 +285,14 @@ types:
         size: 128
         encoding: ASCII
         doc: 'name'
+  index_info_message:
+    seq:
+      - id: index_id
+        type: s8
+        doc: 'indexId'
+      - id: index_price
+        type: decimal_s8_9
+        doc: 'indexPrice. Implied decimal with scale 1e-9'
   instrument_info_message:
     seq:
       - id: instrument_id
@@ -295,9 +304,6 @@ types:
       - id: max_buy_price
         type: decimal_s8_9
         doc: 'maxBuyPrice. Implied decimal with scale 1e-9'
-      - id: index_price
-        type: decimal_s8_9
-        doc: 'indexPrice. Implied decimal with scale 1e-9'
       - id: mark_price
         type: decimal_s8_9
         doc: 'markPrice. Implied decimal with scale 1e-9'
@@ -321,6 +327,9 @@ types:
       - id: settlement_price
         type: decimal_s8_9_nullable
         doc: 'settlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
+      - id: open_interest
+        size: 8
+        doc: 'openInterest. Nullable, No Value = NaN'
   instrument_status_update_message:
     seq:
       - id: instrument_id
@@ -438,9 +447,12 @@ types:
       - id: is_liquidation
         type: b1
         doc: 'isLiquidation'
-      - id: reserved_30
-        type: b30
-        doc: '30 reserved bits'
+      - id: was_delayed
+        type: b1
+        doc: 'wasDelayed'
+      - id: reserved_29
+        type: b29
+        doc: '29 reserved bits'
   trade_message:
     seq:
       - id: match_id
@@ -471,9 +483,12 @@ types:
       - id: is_liquidation
         type: b1
         doc: 'isLiquidation'
-      - id: reserved_30
-        type: b30
-        doc: '30 reserved bits'
+      - id: was_delayed
+        type: b1
+        doc: 'wasDelayed'
+      - id: reserved_29
+        type: b29
+        doc: '29 reserved bits'
   block_trade_message:
     seq:
       - id: match_id
@@ -509,6 +524,14 @@ types:
       - id: number_of_legs
         type: u2
         doc: 'numberOfLegs'
+      - id: padding_2
+        size: 2
+        if: not _io.eof
+        doc: 'padding2'
+      - id: execution_timestamp
+        type: nanosecond_timestamp_nullable
+        if: not _io.eof
+        doc: 'executionTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
   snapshot_header_message:
     seq:
       - id: instrument_id
@@ -608,6 +631,9 @@ enums:
     11:
       id: 'index_definition_message'
       doc: 'IndexDefinitionMessage'
+    12:
+      id: 'index_info_message'
+      doc: 'IndexInfoMessage'
     14:
       id: 'instrument_info_message'
       doc: 'InstrumentInfoMessage'

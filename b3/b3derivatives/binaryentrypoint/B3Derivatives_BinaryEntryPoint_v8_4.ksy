@@ -219,17 +219,17 @@ types:
   semantic_version:
     seq:
       - id: major_number
-        type: u1
-        doc: 'majorNumber'
+        type: u1_nullable
+        doc: 'majorNumber. Nullable, No Value = 255'
       - id: minor_number
-        type: u1
-        doc: 'minorNumber'
+        type: u1_nullable
+        doc: 'minorNumber. Nullable, No Value = 255'
       - id: patch_number
-        type: u1
-        doc: 'patchNumber'
+        type: u1_nullable
+        doc: 'patchNumber. Nullable, No Value = 255'
       - id: build_number
-        type: u1
-        doc: 'buildNumber'
+        type: u1_nullable
+        doc: 'buildNumber. Nullable, No Value = 255'
   negotiate_reject_message:
     seq:
       - id: session_id
@@ -510,14 +510,14 @@ types:
   investor_id:
     seq:
       - id: prefix
-        type: u2
-        doc: 'prefix'
+        type: u2_nullable
+        doc: 'prefix. Nullable, No Value = 0'
       - id: offset_2_padding_2
         size: 2
         doc: '2 bytes padding'
       - id: document
-        type: u4
-        doc: 'document'
+        type: u4_nullable
+        doc: 'document. Nullable, No Value = 0'
   memo:
     seq:
       - id: len_memo_data
@@ -695,14 +695,14 @@ types:
   custodian_info:
     seq:
       - id: custodian
-        type: u4
-        doc: 'custodian'
+        type: u4_nullable
+        doc: 'custodian. Nullable, No Value = 0'
       - id: custody_account
-        type: u4
-        doc: 'custodyAccount'
+        type: u4_nullable
+        doc: 'custodyAccount. Nullable, No Value = 0'
       - id: custody_allocation_type
-        type: u4
-        doc: 'custodyAllocationType'
+        type: u4_nullable
+        doc: 'custodyAllocationType. Nullable, No Value = 0'
   desk_id:
     seq:
       - id: len_desk_id_data
@@ -1104,8 +1104,8 @@ types:
         type: u1
         doc: 'eventIndicator'
       - id: market_segment_id_optional
-        type: u1
-        doc: 'marketSegmentID'
+        type: u1_nullable
+        doc: 'marketSegmentID. Nullable, No Value = 0'
   execution_report_modify_message:
     seq:
       - id: outbound_business_header
@@ -1468,11 +1468,11 @@ types:
   implied_event_id:
     seq:
       - id: event_id
-        type: u4
-        doc: 'eventID'
+        type: u4_nullable
+        doc: 'eventID. Nullable, No Value = 0'
       - id: no_related_trades
-        type: u2
-        doc: 'noRelatedTrades'
+        type: u2_nullable
+        doc: 'noRelatedTrades. Nullable, No Value = 0'
   execution_report_reject_message:
     seq:
       - id: outbound_business_header
@@ -1900,8 +1900,8 @@ types:
         type: u1
         doc: 'eventIndicator'
       - id: market_segment_id_optional
-        type: u1
-        doc: 'marketSegmentID'
+        type: u1_nullable
+        doc: 'marketSegmentID. Nullable, No Value = 0'
       - id: padding_char_2
         type: str
         size: 2
@@ -2621,6 +2621,13 @@ types:
     instances:
       is_null:
         value: value == 0
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
   u8_nullable:
     seq:
       - id: value
@@ -2635,13 +2642,6 @@ types:
     instances:
       is_null:
         value: value.time == 0
-  u1_nullable:
-    seq:
-      - id: value
-        type: u1
-    instances:
-      is_null:
-        value: value == 0
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -2656,6 +2656,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 0
   str_5_nullable:
     seq:
       - id: value
@@ -2683,13 +2690,6 @@ types:
     seq:
       - id: value
         type: s4
-    instances:
-      is_null:
-        value: value == 0
-  u2_nullable:
-    seq:
-      - id: value
-        type: u2
     instances:
       is_null:
         value: value == 0

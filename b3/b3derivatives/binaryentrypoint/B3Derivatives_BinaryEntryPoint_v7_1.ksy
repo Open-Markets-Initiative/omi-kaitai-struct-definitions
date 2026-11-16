@@ -494,14 +494,14 @@ types:
   investor_id:
     seq:
       - id: prefix
-        type: u2
-        doc: 'prefix'
+        type: u2_nullable
+        doc: 'prefix. Nullable, No Value = 0'
       - id: offset_2_padding_2
         size: 2
         doc: '2 bytes padding'
       - id: document
-        type: u4
-        doc: 'document'
+        type: u4_nullable
+        doc: 'document. Nullable, No Value = 0'
   deprecated_investor_id:
     seq:
       - id: len_deprecated_investor_id_data
@@ -692,14 +692,14 @@ types:
   custodian_info:
     seq:
       - id: custodian
-        type: u4
-        doc: 'custodian'
+        type: u4_nullable
+        doc: 'custodian. Nullable, No Value = 0'
       - id: custody_account
-        type: u4
-        doc: 'custodyAccount'
+        type: u4_nullable
+        doc: 'custodyAccount. Nullable, No Value = 0'
       - id: custody_allocation_type
-        type: u4
-        doc: 'custodyAllocationType'
+        type: u4_nullable
+        doc: 'custodyAllocationType. Nullable, No Value = 0'
   desk_id:
     seq:
       - id: len_desk_id_data
@@ -1742,8 +1742,8 @@ types:
         type: u1
         doc: 'possResend'
       - id: market_segment_id_optional
-        type: u1
-        doc: 'marketSegmentID'
+        type: u1_nullable
+        doc: 'marketSegmentID. Nullable, No Value = 0'
       - id: padding_char_2
         type: str
         size: 2
@@ -2525,6 +2525,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 0
   str_5_nullable:
     seq:
       - id: value
@@ -2548,13 +2555,6 @@ types:
     instances:
       is_null:
         value: value.days == 0
-  u2_nullable:
-    seq:
-      - id: value
-        type: u2
-    instances:
-      is_null:
-        value: value == 0
   decimal_s8_7:
     seq:
       - id: mantissa

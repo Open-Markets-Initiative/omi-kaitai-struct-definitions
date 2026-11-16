@@ -92,9 +92,9 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'TransactTime. Nanoseconds since Unix epoch'
-      - id: exchange_trading_session_id
-        type: u4
-        doc: 'ExchangeTradingSessionID'
+      - id: exchange_trading_session_i_d_uint_32_optional
+        type: u4_nullable
+        doc: 'ExchangeTradingSessionID. Nullable, No Value = 4294967295'
   message_struct:
     seq:
       - id: sbe_header
@@ -353,6 +353,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
   decimal_s8_5:
     seq:
       - id: mantissa

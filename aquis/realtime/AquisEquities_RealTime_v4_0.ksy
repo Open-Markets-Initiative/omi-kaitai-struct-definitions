@@ -701,6 +701,41 @@ enums:
     1:
       id: 'duplicative'
       doc: 'Duplicative'
+  mac_enabled:
+    0:
+      id: 'not_enabled_for_mac'
+      doc: 'Security is not enabled for the MaC'
+    1:
+      id: 'enabled_for_mac'
+      doc: 'Security is enabled for the MaC'
+  test_stock:
+    0:
+      id: 'not_test_stock'
+      doc: 'Security is not a test stock'
+    1:
+      id: 'test_stock'
+      doc: 'Security is a test stock'
+  illiquid:
+    0:
+      id: 'liquid'
+      doc: 'Security is liquid'
+    1:
+      id: 'illiquid'
+      doc: 'Security is illiquid'
+  aod_enabled:
+    0:
+      id: 'not_enabled_for_aod'
+      doc: 'Security is not enabled for the AoD'
+    1:
+      id: 'enabled_for_aod'
+      doc: 'Security is enabled for the AoD'
+  avx_enabled:
+    0:
+      id: 'not_enabled_for_avm'
+      doc: 'Security is not enabled for AVM'
+    1:
+      id: 'enabled_for_avm'
+      doc: 'Security is enabled for AVM'
   trading_status:
     1:
       id: 'active'

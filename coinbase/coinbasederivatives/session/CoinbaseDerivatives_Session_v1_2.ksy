@@ -55,14 +55,14 @@ types:
         type:
           switch-on: message_header.template_id
           cases:
-            'template_id::logon_message': logon_message
-            'template_id::logon_conf_message': logon_conf_message
-            'template_id::logout_message': logout_message
-            'template_id::logged_out_message': logged_out_message
-            'template_id::heartbeat_message': heartbeat_message
-            'template_id::test_request_message': test_request_message
-            'template_id::resend_request_message': resend_request_message
-            'template_id::gap_fill_message': gap_fill_message
+            'template_id::session_logon_message': logon_message
+            'template_id::session_logon_conf_message': logon_conf_message
+            'template_id::session_logout_message': logout_message
+            'template_id::session_logged_out_message': logged_out_message
+            'template_id::session_heartbeat_message': heartbeat_message
+            'template_id::session_test_request_message': test_request_message
+            'template_id::session_resend_request_message': resend_request_message
+            'template_id::session_gap_fill_message': gap_fill_message
             'template_id::reject_message': reject_message
       - id: padding
         size: 0
@@ -119,12 +119,12 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'username'
+        doc: 'Logon username'
       - id: password
         type: str
         size: 32
         encoding: ASCII
-        doc: 'password'
+        doc: 'Logon password'
       - id: reset_seq_num
         type: s1
         enum: reset_seq_num
@@ -203,15 +203,15 @@ types:
       - id: ref_sequence_number
         type: u4
         doc: 'refSequenceNumber'
-      - id: reason_reject_reason
+      - id: reject_reason
         type: s4
-        enum: reason_reject_reason
+        enum: reject_reason
         doc: 'reason'
       - id: details
         type: str
         size: 64
         encoding: ASCII
-        doc: 'details'
+        doc: 'Logout details'
       - id: block_extension
         size: _parent.message_header.block_length - 72
         doc: 'Bytes the stated block holds beyond the 72 this version reads'
@@ -232,28 +232,28 @@ types:
 enums:
   template_id:
     100:
-      id: 'logon_message'
+      id: 'session_logon_message'
       doc: 'LogonMessage'
     200:
-      id: 'logon_conf_message'
+      id: 'session_logon_conf_message'
       doc: 'LogonConfMessage'
     101:
-      id: 'logout_message'
+      id: 'session_logout_message'
       doc: 'LogoutMessage'
     201:
-      id: 'logged_out_message'
+      id: 'session_logged_out_message'
       doc: 'LoggedOutMessage'
     10:
-      id: 'heartbeat_message'
+      id: 'session_heartbeat_message'
       doc: 'HeartbeatMessage'
     11:
-      id: 'test_request_message'
+      id: 'session_test_request_message'
       doc: 'TestRequestMessage'
     102:
-      id: 'resend_request_message'
+      id: 'session_resend_request_message'
       doc: 'ResendRequestMessage'
     202:
-      id: 'gap_fill_message'
+      id: 'session_gap_fill_message'
       doc: 'GapFillMessage'
     210:
       id: 'reject_message'
@@ -265,7 +265,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'TRUE'
-  reason_reject_reason:
+  reject_reason:
     1:
       id: 'invalid_schema_id'
       doc: 'INVALID_SCHEMA_ID'

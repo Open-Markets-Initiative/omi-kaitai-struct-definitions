@@ -1,0 +1,72 @@
+# Generated Kaitai Struct definition tests: captures from omi-data-packets
+
+import sys
+import unittest
+
+sys.path.insert(0, "generated/python")
+
+import payloads
+
+from nyse_arcaoptions_deepfeed_xdp_v1_3_a import NyseArcaoptionsDeepfeedXdpV13A
+
+
+class NyseArcaoptionsDeepfeedXdpV13ATests(unittest.TestCase):
+
+    def test_messagesequence(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/MessageSequence.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_outrightmarketdepthbuymessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/OutrightMarketDepthBuyMessage.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_outrightmarketdepthsellmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/OutrightMarketDepthSellMessage.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_outrightseriesstatusmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/OutrightSeriesStatusMessage.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_refreshoutrightmarketdepthbuymessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/RefreshOutrightMarketDepthBuyMessage.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_refreshoutrightmarketdepthsellmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/RefreshOutrightMarketDepthSellMessage.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_sequencenumberresetmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/SequenceNumberResetMessage.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_seriesindexmappingmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/SeriesIndexMappingMessage.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_streamidmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/StreamIdMessage.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_underlyingindexmappingmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/UnderlyingIndexMappingMessage.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_underlyingstatusmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.DeepFeed.Xdp.v1.3.a/UnderlyingStatusMessage.pcap"):
+            parsed = NyseArcaoptionsDeepfeedXdpV13A.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -464,31 +464,31 @@ types:
   maturity_month_year:
     seq:
       - id: year
-        type: u2
-        doc: 'year'
+        type: u2_nullable
+        doc: 'year. Nullable, No Value = 0'
       - id: month
-        type: u1
-        doc: 'month'
+        type: u1_nullable
+        doc: 'month. Nullable, No Value = 0'
       - id: day
-        type: u1
-        doc: 'day'
+        type: u1_nullable
+        doc: 'day. Nullable, No Value = 0'
       - id: week
-        type: u1
-        doc: 'week'
+        type: u1_nullable
+        doc: 'week. Nullable, No Value = 0'
   contract_settl_month:
     seq:
       - id: year
-        type: u2
-        doc: 'year'
+        type: u2_nullable
+        doc: 'year. Nullable, No Value = 0'
       - id: month
-        type: u1
-        doc: 'month'
+        type: u1_nullable
+        doc: 'month. Nullable, No Value = 0'
       - id: day
-        type: u1
-        doc: 'day'
+        type: u1_nullable
+        doc: 'day. Nullable, No Value = 0'
       - id: week
-        type: u1
-        doc: 'week'
+        type: u1_nullable
+        doc: 'week. Nullable, No Value = 0'
   underlyings_groups:
     seq:
       - id: group_size_encoding

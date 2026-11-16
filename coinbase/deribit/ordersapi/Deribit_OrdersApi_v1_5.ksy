@@ -95,6 +95,7 @@ types:
             'template_id::orders_mmp_triggered_message': orders_mmp_triggered_message
             'template_id::mass_quote_mmp_unfrozen_message': mass_quote_mmp_unfrozen_message
             'template_id::orders_mmp_unfrozen_message': orders_mmp_unfrozen_message
+            'template_id::position_moved_message': position_moved_message
       - id: padding
         size: 0
         doc: 'Tcp sbe alignment padding'
@@ -157,7 +158,13 @@ types:
       - id: session_cancel_on_disconnect
         type: s1
         enum: session_cancel_on_disconnect
+        if: not _io.eof
         doc: 'sessionCancelOnDisconnect'
+      - id: liquidation_notifications
+        type: s1
+        enum: liquidation_notifications
+        if: not _io.eof
+        doc: 'liquidationNotifications'
   logon_conf_message:
     seq:
       - id: heartbeat_interval_seconds
@@ -279,15 +286,15 @@ types:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   show_qty:
     seq:
-      - id: mantissa
+      - id: mantissa_optional
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = -9223372036854775808'
       - id: exponent
         type: s1
         doc: 'exponent'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa_optional * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   flags_order_flags:
     meta:
       bit-endian: le
@@ -615,6 +622,7 @@ types:
         doc: 'cancelReason. Nullable, No Value = -128'
       - id: flags_order_flags
         type: flags_order_flags
+        if: _parent.message_header.schema_version > 18
         doc: 'OrderFlags bit set'
       - id: new_order_response_message_fills_groups
         type: new_order_response_message_fills_groups
@@ -892,9 +900,11 @@ types:
         doc: 'receiveTime. Nanoseconds since Unix epoch'
       - id: quantity
         type: quantity
+        if: not _io.eof
         doc: 'NewOrderRequestMessage'
       - id: total_filled
         type: total_filled
+        if: not _io.eof
         doc: 'NewOrderResponseMessage'
   cancel_order_reject_message:
     seq:
@@ -1298,9 +1308,12 @@ types:
       - id: is_fully_filled
         type: b1
         doc: 'isFullyFilled'
-      - id: reserved_6
-        type: b6
-        doc: '6 reserved bits'
+      - id: is_liquidation
+        type: b1
+        doc: 'isLiquidation'
+      - id: reserved_5
+        type: b5
+        doc: '5 reserved bits'
   order_filled_message_legs_groups:
     seq:
       - id: group_size_encoding
@@ -1709,6 +1722,38 @@ types:
       - id: correlation_id_optional
         type: s8_nullable
         doc: 'correlationId. Nullable, No Value = -9223372036854775808'
+  position_moved_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'timestamp. Nanoseconds since Unix epoch'
+      - id: exec_id
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
+      - id: instrument_id
+        type: s8
+        doc: 'instrumentId'
+      - id: match_id
+        type: s8
+        doc: 'matchId'
+      - id: price
+        type: decimal_s8_9
+        doc: 'price. Implied decimal with scale 1e-9'
+      - id: quantity
+        type: quantity
+        doc: 'NewOrderRequestMessage'
+      - id: side
+        type: s1
+        enum: side
+        doc: 'side'
+      - id: role
+        type: s1
+        enum: role
+        doc: 'role'
+      - id: reason_position_move_reason
+        type: s1
+        enum: reason_position_move_reason
+        doc: 'reason'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1880,6 +1925,9 @@ enums:
     326:
       id: 'orders_mmp_unfrozen_message'
       doc: 'OrdersMmpUnfrozenMessage'
+    330:
+      id: 'position_moved_message'
+      doc: 'PositionMovedMessage'
   reset_seq_num:
     0:
       id: 'false_field'
@@ -1888,6 +1936,13 @@ enums:
       id: 'true_field'
       doc: 'TRUE'
   session_cancel_on_disconnect:
+    0:
+      id: 'false_field'
+      doc: 'FALSE'
+    1:
+      id: 'true_field'
+      doc: 'TRUE'
+  liquidation_notifications:
     0:
       id: 'false_field'
       doc: 'FALSE'
@@ -1913,6 +1968,9 @@ enums:
     6:
       id: 'gateway_not_active'
       doc: 'GATEWAY_NOT_ACTIVE'
+    7:
+      id: 'message_not_permitted'
+      doc: 'message type not in portfolio whitelist'
   side:
     1:
       id: 'buy'
@@ -2118,6 +2176,12 @@ enums:
     31:
       id: 'cancel_only'
       doc: 'only cancel-only orders can be submitted'
+    32:
+      id: 'portfolio_instrument_not_allowed'
+      doc: 'instrument not in portfolio whitelist'
+    33:
+      id: 'mmp_required'
+      doc: 'portfolio is MMP-only; only MMP orders and mass quotes are accepted'
   reason_cancel_order_reject_reason:
     0:
       id: 'error'
@@ -2299,6 +2363,12 @@ enums:
     31:
       id: 'cancel_only'
       doc: 'only cancel-only orders can be submitted'
+    32:
+      id: 'portfolio_instrument_not_allowed'
+      doc: 'instrument not in portfolio whitelist'
+    33:
+      id: 'mmp_required'
+      doc: 'portfolio is MMP-only; only MMP orders and mass quotes are accepted'
   ask_reject_reason:
     0:
       id: 'system_error'
@@ -2396,6 +2466,12 @@ enums:
     31:
       id: 'cancel_only'
       doc: 'only cancel-only orders can be submitted'
+    32:
+      id: 'portfolio_instrument_not_allowed'
+      doc: 'instrument not in portfolio whitelist'
+    33:
+      id: 'mmp_required'
+      doc: 'portfolio is MMP-only; only MMP orders and mass quotes are accepted'
   reason_mass_quote_reject_reason:
     0:
       id: 'system_error'
@@ -2427,6 +2503,9 @@ enums:
     9:
       id: 'mmp_min_freeze_time_not_elapsed'
       doc: 'MMP minimum freeze duration not yet elapsed'
+    10:
+      id: 'portfolio_instrument_not_allowed'
+      doc: 'instrument not in portfolio whitelist'
   reason_mass_cancel_reject_reason:
     0:
       id: 'error'
@@ -2457,4 +2536,18 @@ enums:
     2:
       id: 'vega'
       doc: 'VEGA'
+  role:
+    1:
+      id: 'taker'
+      doc: 'this portfolio is the source of the move (the liquidated portfolio)'
+    2:
+      id: 'maker'
+      doc: 'this portfolio received the moved position (LSP or ADL counterparty)'
+  reason_position_move_reason:
+    1:
+      id: 'lsp'
+      doc: 'position absorbed by a Liquidity Support Provider'
+    2:
+      id: 'adl'
+      doc: 'position assigned by Auto-Deleveraging'
 

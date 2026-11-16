@@ -219,17 +219,17 @@ types:
   logical_expiry:
     seq:
       - id: year
-        type: s2
-        doc: 'year'
+        type: s2_nullable
+        doc: 'year. Nullable, No Value = 0'
       - id: month
-        type: s2
-        doc: 'month'
+        type: s2_nullable
+        doc: 'month. Nullable, No Value = 0'
       - id: week_of_month
-        type: s2
-        doc: 'weekOfMonth'
+        type: s2_nullable
+        doc: 'weekOfMonth. Nullable, No Value = 0'
       - id: day_of_month
-        type: s2
-        doc: 'dayOfMonth'
+        type: s2_nullable
+        doc: 'dayOfMonth. Nullable, No Value = 0'
   flags:
     meta:
       bit-endian: le
@@ -548,6 +548,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  s2_nullable:
+    seq:
+      - id: value
+        type: s2
+    instances:
+      is_null:
+        value: value == 0
   s8_nullable:
     seq:
       - id: value
