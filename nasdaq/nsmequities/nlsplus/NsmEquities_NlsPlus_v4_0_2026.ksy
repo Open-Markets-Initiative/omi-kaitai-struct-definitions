@@ -324,7 +324,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Denotes the security symbol for the issue in the Nasdaq execution system'
+        doc: 'Denotes the security symbol for the issue in Nasdaq execution system'
       - id: market_category
         type: u1
         enum: market_category
@@ -504,7 +504,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Denotes the security symbol for the issue in the Nasdaq execution system'
+        doc: 'Denotes the security symbol for the issue in Nasdaq execution system'
       - id: ipo_quotation_release_time
         type: second_timestamp
         doc: 'Denotes the IPO release time, in seconds since midnight, for quotation to the nearest second. Seconds since Midnight epoch'
@@ -523,7 +523,7 @@ types:
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp. Nanoseconds since Midnight epoch'
-      - id: stock_alpha_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII

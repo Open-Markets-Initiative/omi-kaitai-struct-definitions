@@ -90,8 +90,8 @@ types:
   incremental_packet_header_struct:
     seq:
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'TransactTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'TransactTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: exchange_trading_session_id_optional
         type: u4_nullable
         doc: 'ExchangeTradingSessionID. Nullable, No Value = 4294967295'
@@ -309,6 +309,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   u4_nullable:
     seq:
       - id: value

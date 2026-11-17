@@ -220,9 +220,9 @@ types:
       - id: ref_sequence_number
         type: s8
         doc: 'refSequenceNumber'
-      - id: reason_reject_reason
+      - id: reject_reason
         type: s1
-        enum: reason_reject_reason
+        enum: reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -347,9 +347,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_replace_order_flags_0
+      - id: unused_1
         type: b1
-        doc: 'Unused ReplaceOrderFlags 0'
+        doc: '1 unused bit'
       - id: post_only
         type: b1
         doc: 'postOnly'
@@ -738,9 +738,9 @@ types:
       - id: instrument_id
         type: s8
         doc: 'instrumentId'
-      - id: reason_order_reject_reason
+      - id: order_reject_reason
         type: s1
-        enum: reason_order_reject_reason
+        enum: order_reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -868,9 +868,9 @@ types:
       - id: instrument_id
         type: s8
         doc: 'instrumentId'
-      - id: reason_order_reject_reason
+      - id: order_reject_reason
         type: s1
-        enum: reason_order_reject_reason
+        enum: order_reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -926,9 +926,9 @@ types:
       - id: instrument_id
         type: s8
         doc: 'instrumentId'
-      - id: reason_cancel_order_reject_reason
+      - id: cancel_order_reject_reason
         type: s1
-        enum: reason_cancel_order_reject_reason
+        enum: cancel_order_reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -1147,9 +1147,9 @@ types:
       - id: mmp_group_id
         type: s8
         doc: 'mmpGroupId'
-      - id: reason_mass_quote_reject_reason
+      - id: mass_quote_reject_reason
         type: s1
-        enum: reason_mass_quote_reject_reason
+        enum: mass_quote_reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -1182,9 +1182,9 @@ types:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
-      - id: reason_mass_cancel_reject_reason
+      - id: mass_cancel_reject_reason
         type: s1
-        enum: reason_mass_cancel_reject_reason
+        enum: mass_cancel_reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -1211,9 +1211,9 @@ types:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
-      - id: reason_mmp_status_reject_reason
+      - id: mmp_status_reject_reason
         type: s1
-        enum: reason_mmp_status_reject_reason
+        enum: mmp_status_reject_reason
         doc: 'reason'
   get_orders_mmp_status_response_message:
     seq:
@@ -1237,9 +1237,9 @@ types:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
-      - id: reason_mmp_status_reject_reason
+      - id: mmp_status_reject_reason
         type: s1
-        enum: reason_mmp_status_reject_reason
+        enum: mmp_status_reject_reason
         doc: 'reason'
   order_filled_message:
     seq:
@@ -1597,7 +1597,7 @@ types:
       - id: match_id
         type: s8
         doc: 'matchId'
-      - id: order_id_fill_id
+      - id: order_id
         type: s8
         doc: 'orderId'
       - id: fill_price
@@ -1750,9 +1750,9 @@ types:
         type: s1
         enum: role
         doc: 'role'
-      - id: reason_position_move_reason
+      - id: position_move_reason
         type: s1
-        enum: reason_position_move_reason
+        enum: position_move_reason
         doc: 'reason'
   nanosecond_timestamp:
     seq:
@@ -1949,7 +1949,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'TRUE'
-  reason_reject_reason:
+  reject_reason:
     1:
       id: 'invalid_schema_id'
       doc: 'INVALID_SCHEMA_ID'
@@ -2079,7 +2079,7 @@ enums:
     0:
       id: 'both'
       doc: 'for use as mass cancel filter criteria'
-  reason_order_reject_reason:
+  order_reject_reason:
     0:
       id: 'system_error'
       doc: 'SYSTEM_ERROR'
@@ -2182,7 +2182,7 @@ enums:
     33:
       id: 'mmp_required'
       doc: 'portfolio is MMP-only; only MMP orders and mass quotes are accepted'
-  reason_cancel_order_reject_reason:
+  cancel_order_reject_reason:
     0:
       id: 'error'
       doc: 'ERROR'
@@ -2472,7 +2472,7 @@ enums:
     33:
       id: 'mmp_required'
       doc: 'portfolio is MMP-only; only MMP orders and mass quotes are accepted'
-  reason_mass_quote_reject_reason:
+  mass_quote_reject_reason:
     0:
       id: 'system_error'
       doc: 'SYSTEM_ERROR'
@@ -2506,7 +2506,7 @@ enums:
     10:
       id: 'portfolio_instrument_not_allowed'
       doc: 'instrument not in portfolio whitelist'
-  reason_mass_cancel_reject_reason:
+  mass_cancel_reject_reason:
     0:
       id: 'error'
       doc: 'ERROR'
@@ -2519,7 +2519,7 @@ enums:
     3:
       id: 'not_allowed_by_market_state'
       doc: 'NOT_ALLOWED_BY_MARKET_STATE'
-  reason_mmp_status_reject_reason:
+  mmp_status_reject_reason:
     0:
       id: 'system_error'
       doc: 'SYSTEM_ERROR'
@@ -2543,7 +2543,7 @@ enums:
     2:
       id: 'maker'
       doc: 'this portfolio received the moved position (LSP or ADL counterparty)'
-  reason_position_move_reason:
+  position_move_reason:
     1:
       id: 'lsp'
       doc: 'position absorbed by a Liquidity Support Provider'

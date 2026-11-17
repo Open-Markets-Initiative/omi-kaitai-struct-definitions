@@ -4527,7 +4527,7 @@ enums:
     13:
       id: 'end_of_trading_session_mic'
       doc: 'End of trading session MIC'
-  event_type_event_type:
+  event_type:
     1:
       id: 'flush'
       doc: 'Flush the test scenario'
@@ -4544,7 +4544,7 @@ enums:
     2:
       id: 'retained'
       doc: 'Order modification did not cause loss of priority'
-  event_type_order_book_event_type:
+  order_book_event_type:
     1:
       id: 'clear'
       doc: 'Clear order book'

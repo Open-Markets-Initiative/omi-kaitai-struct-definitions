@@ -150,7 +150,7 @@ types:
         size: 1
         doc: 'Padding to the two byte alignment of the next field'
       - id: filler
-        type: s4
+        size: 4
         doc: 'Filler'
       - id: nnf_field
         type: floating_point_integer
@@ -361,7 +361,7 @@ types:
         size: 1
         doc: 'Padding to the two byte alignment of the next field'
       - id: filler
-        type: s4
+        size: 4
         doc: 'Filler'
       - id: nnf_field
         type: floating_point_integer
@@ -507,7 +507,7 @@ types:
         size: 1
         doc: 'Padding to the two byte alignment of the next field'
       - id: filler
-        type: s4
+        size: 4
         doc: 'Filler'
       - id: nnf_field
         type: floating_point_integer

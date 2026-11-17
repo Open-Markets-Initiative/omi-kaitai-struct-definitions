@@ -100,7 +100,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'e.g.: CTD1.0. The CTD Version field value for this release will be CTD1.0. Firms are advised to send CTD1.0 in the SesM Login Request'
-      - id: session_id
+      - id: trading_session_id
         type: u4
         doc: 'Sapphire assigned ID for the current trading session. A change in Session ID will mean that restarting at message sequence number 1'
       - id: system_status

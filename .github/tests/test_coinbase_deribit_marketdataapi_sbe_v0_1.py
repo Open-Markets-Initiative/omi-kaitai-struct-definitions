@@ -52,8 +52,23 @@ class CoinbaseDeribitMarketdataapiSbeV01Tests(unittest.TestCase):
             parsed = CoinbaseDeribitMarketdataapiSbeV01.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_snapshotheadermessage(self):
+        for payload in payloads.of("omi-data-packets/Coinbase/Deribit.MarketDataApi.Sbe.v0.1/SnapshotHeaderMessage.pcap"):
+            parsed = CoinbaseDeribitMarketdataapiSbeV01.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_snapshottrailermessage(self):
         for payload in payloads.of("omi-data-packets/Coinbase/Deribit.MarketDataApi.Sbe.v0.1/SnapshotTrailerMessage.pcap"):
+            parsed = CoinbaseDeribitMarketdataapiSbeV01.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_trademessage(self):
+        for payload in payloads.of("omi-data-packets/Coinbase/Deribit.MarketDataApi.Sbe.v0.1/TradeMessage.pcap"):
+            parsed = CoinbaseDeribitMarketdataapiSbeV01.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_tradesummarymessage(self):
+        for payload in payloads.of("omi-data-packets/Coinbase/Deribit.MarketDataApi.Sbe.v0.1/TradeSummaryMessage.pcap"):
             parsed = CoinbaseDeribitMarketdataapiSbeV01.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

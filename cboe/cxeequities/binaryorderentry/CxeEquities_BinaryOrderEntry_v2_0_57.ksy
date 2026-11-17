@@ -809,7 +809,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
-      - id: last_px_trade_price_8
+      - id: trade_capture_last_px
         type: decimal_u8_7
         doc: 'Corresponds to LastPx (31) in Cboe FIX. Price of this fill. Implied decimal with scale 1e-7'
       - id: number_of_trade_capture_report_v_2_bitfields
@@ -1313,7 +1313,7 @@ types:
         type: u4
         if: number_of_return_bitfields >= 5 and order_acknowledgment_v_2_return_bitfield_5.order_acknowledgment_v_2_return_bitfield_5_last_shares
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_acknowledgment_v_2_return_bitfield_5.order_acknowledgment_v_2_return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
@@ -2480,7 +2480,7 @@ types:
         type: u4
         if: number_of_return_bitfields >= 5 and order_modified_v_2_return_bitfield_5.order_modified_v_2_return_bitfield_5_last_shares
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_modified_v_2_return_bitfield_5.order_modified_v_2_return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
@@ -3097,7 +3097,7 @@ types:
         type: u4
         if: number_of_return_bitfields >= 5 and order_restated_v_2_return_bitfield_5.order_restated_v_2_return_bitfield_5_last_shares
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_restated_v_2_return_bitfield_5.order_restated_v_2_return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
@@ -4172,7 +4172,7 @@ types:
         type: u4
         if: number_of_return_bitfields >= 5 and order_cancelled_v_2_return_bitfield_5.order_cancelled_v_2_return_bitfield_5_last_shares
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_cancelled_v_2_return_bitfield_5.order_cancelled_v_2_return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
@@ -5162,7 +5162,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: leaves_qty
@@ -5799,7 +5799,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: corrected_price
@@ -7417,7 +7417,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
-      - id: last_px_trade_price_8
+      - id: trade_capture_last_px
         type: decimal_u8_7
         doc: 'Corresponds to LastPx (31) in Cboe FIX. Price of this fill. Implied decimal with scale 1e-7'
       - id: contra_broker
@@ -8004,7 +8004,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
-      - id: last_px_trade_price_8
+      - id: trade_capture_last_px
         type: decimal_u8_7
         doc: 'Corresponds to LastPx (31) in Cboe FIX. Price of this fill. Implied decimal with scale 1e-7'
       - id: contra_broker

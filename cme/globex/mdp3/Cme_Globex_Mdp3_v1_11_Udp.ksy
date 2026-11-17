@@ -680,12 +680,9 @@ types:
       - id: reserved_bits
         type: b1
         doc: 'ReservedBits'
-      - id: unused_settl_price_type_5
-        type: b1
-        doc: 'Unused SettlPriceType 5'
-      - id: unused_settl_price_type_6
-        type: b1
-        doc: 'Unused SettlPriceType 6'
+      - id: unused_2
+        type: b2
+        doc: '2 unused bits'
       - id: null_value
         type: b1
         doc: 'NullValue'

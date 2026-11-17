@@ -826,10 +826,10 @@ types:
       - id: open_interest
         type: u4
         doc: 'Unused in CEDX'
-      - id: high_price_binary_price_8
+      - id: high_price
         type: decimal_u8_4
         doc: 'Highest trade price for the day. Implied decimal with scale 1e-4'
-      - id: low_price_binary_price_8
+      - id: low_price
         type: decimal_u8_4
         doc: 'Lowest trade price for the day. Implied decimal with scale 1e-4'
       - id: open_price

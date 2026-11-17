@@ -63,15 +63,7 @@ types:
             'transaction_code::order_entry_request_message': order_entry_request_message
             'transaction_code::order_modification_request_message': order_modification_request_message
             'transaction_code::order_cancellation_request_message': order_cancellation_request_message
-            'transaction_code::order_confirmation_message': order_confirmation_message
-            'transaction_code::order_modification_confirmation_message': order_modification_confirmation_message
-            'transaction_code::order_entry_message': order_entry_message
-            'transaction_code::order_entry_message_2042': order_entry_message
-            'transaction_code::order_entry_message_2062': order_entry_message
-            'transaction_code::order_entry_message_2072': order_entry_message
-            'transaction_code::order_entry_message_2170': order_entry_message
-            'transaction_code::order_entry_message_2231': order_entry_message
-            'transaction_code::order_entry_message_9002': order_entry_message
+            'transaction_code::kill_switch_request_message': kill_switch_request_message
             'transaction_code::price_modification_message': price_modification_message
             'transaction_code::price_modification_message_20406': price_modification_message
             'transaction_code::trade_inquiry_message': trade_inquiry_message
@@ -118,8 +110,8 @@ types:
         enum: transaction_code
         doc: 'Transaction code of the record carried'
       - id: log_time
-        type: dos_second_timestamp
-        doc: 'Time the record was logged. Seconds since Dos epoch'
+        type: dos_second_timestamp_nullable
+        doc: 'Time the record was logged. Seconds since Dos epoch. Nullable, No Value = 0'
       - id: alpha_char
         type: str
         size: 2
@@ -130,24 +122,17 @@ types:
         type: s4
         doc: 'Trader Id of the connected user'
       - id: error_code
-        type: s2
-        enum: error_code
-        doc: 'Error code of the record'
+        type: s2_nullable
+        doc: 'Error code of the record. Nullable, No Error = 0'
       - id: header_timestamp
         type: s8
         doc: 'Host end field, carrying nanoseconds since midnight 01-Jan-1980 on the transaction codes listed in the appendix'
       - id: time_stamp_1
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Current time in jiffies from the host, 65536 jiffies to the second'
+        type: str_8_nullable
+        doc: 'Current time in jiffies from the host, 65536 jiffies to the second. Nullable, No Value = 00000000'
       - id: time_stamp_2
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Number of the machine the packet came from'
+        type: str_8_nullable
+        doc: 'Number of the machine the packet came from. Nullable, No Value = 00000000'
       - id: message_length
         type: s2
         doc: 'Length of the record including this header'
@@ -304,10 +289,7 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
   update_local_database_in_message:
     seq:
@@ -410,7 +392,7 @@ types:
       - id: participant_type
         type: u1
         enum: participant_type
-        doc: 'Type of participant the order belongs to'
+        doc: 'Type of participant the order belongs to. Nullable, No Value ='
       - id: reserved_1
         size: 1
         doc: 'Reserved'
@@ -560,22 +542,13 @@ types:
         size: 1
         doc: 'Reserved'
       - id: filler_116
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Sixteen filler bits carrying no meaning'
       - id: filler_17
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: filler_18
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: nnf_field
         type: floating_point_integer
@@ -706,17 +679,7 @@ types:
       - id: order_entry_body
         type: order_entry_body
         doc: 'Order Entry Body'
-  order_confirmation_message:
-    seq:
-      - id: order_entry_body
-        type: order_entry_body
-        doc: 'Order Entry Body'
-  order_modification_confirmation_message:
-    seq:
-      - id: order_entry_body
-        type: order_entry_body
-        doc: 'Order Entry Body'
-  order_entry_message:
+  kill_switch_request_message:
     seq:
       - id: order_entry_body
         type: order_entry_body
@@ -864,10 +827,7 @@ types:
         pad-right: 0x20
         doc: 'Type of participant the first leg belongs to'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: competitor_period_1
         type: s2
@@ -882,10 +842,7 @@ types:
         pad-right: 0x20
         doc: 'Who modified or cancelled the order'
       - id: filler_9
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: reason_code_1
         type: s2
@@ -915,22 +872,13 @@ types:
         pad-right: 0x20
         doc: 'Counter party trading member Id'
       - id: fillerx_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: filler_options_1
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: fillery_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: order_type_1
         type: s2
@@ -1030,22 +978,13 @@ types:
         size: 1
         doc: 'Reserved'
       - id: filler_116
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Sixteen filler bits carrying no meaning'
       - id: filler_17
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: filler_18
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: nnf_field
         type: floating_point_integer
@@ -1094,10 +1033,7 @@ types:
         pad-right: 0x20
         doc: 'Counter party trading member Id'
       - id: fillerx_2
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: order_type_2
         type: s2
@@ -1145,10 +1081,7 @@ types:
         size: 1
         doc: 'Reserved'
       - id: filler_y
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
   secure_box_registration_request_in_message:
     seq:
@@ -1329,6 +1262,29 @@ types:
         value: time / 60 % 60
       second:
         value: time % 60
+  dos_second_timestamp_nullable:
+    seq:
+      - id: value
+        type: dos_second_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
+  s2_nullable:
+    seq:
+      - id: value
+        type: s2
+    instances:
+      is_null:
+        value: value == 0
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "00000000"
   floating_point_integer:
     seq:
       - id: value
@@ -1390,7 +1346,7 @@ enums:
       doc: 'Opens the message download for a stream'
     7021:
       id: 'message_record_message'
-      doc: 'Carries one downloaded message wrapped in an inner header'
+      doc: 'Carries one downloaded message wrapped in a second message header'
     7031:
       id: 'trailer_record_message'
       doc: 'Signals the message download is complete for a stream'
@@ -1410,26 +1366,26 @@ enums:
       id: 'order_modification_confirmation_message'
       doc: 'Order modification confirmation, carried in the shared order entry structure'
     2012:
-      id: 'order_entry_message'
-      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      id: 'order_response_message'
+      doc: 'Price confirmation, modification and cancellation rejections, freeze, order error and batch cancellation, all carried in the shared order entry structure. Transaction Code in the header names the response'
     2042:
-      id: 'order_entry_message_2042'
-      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
-    2062:
-      id: 'order_entry_message_2062'
-      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      id: 'order_response_message_2042'
+      doc: 'Price confirmation, modification and cancellation rejections, freeze, order error and batch cancellation, all carried in the shared order entry structure. Transaction Code in the header names the response'
     2072:
-      id: 'order_entry_message_2072'
-      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      id: 'order_response_message_2072'
+      doc: 'Price confirmation, modification and cancellation rejections, freeze, order error and batch cancellation, all carried in the shared order entry structure. Transaction Code in the header names the response'
     2170:
-      id: 'order_entry_message_2170'
-      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      id: 'order_response_message_2170'
+      doc: 'Price confirmation, modification and cancellation rejections, freeze, order error and batch cancellation, all carried in the shared order entry structure. Transaction Code in the header names the response'
     2231:
-      id: 'order_entry_message_2231'
-      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      id: 'order_response_message_2231'
+      doc: 'Price confirmation, modification and cancellation rejections, freeze, order error and batch cancellation, all carried in the shared order entry structure. Transaction Code in the header names the response'
     9002:
-      id: 'order_entry_message_9002'
-      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      id: 'order_response_message_9002'
+      doc: 'Price confirmation, modification and cancellation rejections, freeze, order error and batch cancellation, all carried in the shared order entry structure. Transaction Code in the header names the response'
+    2062:
+      id: 'kill_switch_request_message'
+      doc: 'Cancels all of a trader''s orders, or all on one contract, carried in the shared order entry structure'
     2013:
       id: 'price_modification_message'
       doc: 'Modifies the price of a live order, and its acknowledgement'

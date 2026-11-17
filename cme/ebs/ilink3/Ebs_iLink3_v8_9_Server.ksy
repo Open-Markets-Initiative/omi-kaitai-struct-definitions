@@ -3625,9 +3625,9 @@ types:
       - id: security_id
         type: s4
         doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
-      - id: side_side
+      - id: quote_side
         type: u1
-        enum: side_side
+        enum: quote_side
         doc: 'Quote side'
       - id: quote_entry_reject_reason_optional
         type: u1_nullable
@@ -4241,7 +4241,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'True, Yes'
-  side_side:
+  quote_side:
     1:
       id: 'buy'
       doc: 'Buy'

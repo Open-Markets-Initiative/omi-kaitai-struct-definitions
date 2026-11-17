@@ -142,7 +142,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 4 this version reads'
   logout_message:
     seq:
-      - id: reason_string_64
+      - id: logout_reason
         type: str
         size: 64
         encoding: ASCII
@@ -152,7 +152,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 64 this version reads'
   logged_out_message:
     seq:
-      - id: reason_string_64
+      - id: logout_reason
         type: str
         size: 64
         encoding: ASCII

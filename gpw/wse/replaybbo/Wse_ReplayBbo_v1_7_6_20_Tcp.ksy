@@ -267,7 +267,7 @@ types:
       - id: external_underlying_id
         type: u4
         doc: 'External underlying ID'
-      - id: product_identification_product_identification
+      - id: product_identification
         type: str
         size: 30
         encoding: ASCII
@@ -363,14 +363,14 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Market structure''s Market Identifier Code (MIC) as specified in ISO 10383'
-      - id: nominal_value_price
+      - id: nominal_value
         type: decimal_s8_8
         doc: 'Nominal value of the financial instrument. Implied decimal with scale 1e-8'
       - id: nominal_value_type
         type: u1
         enum: nominal_value_type
         doc: 'Type of the product''s nominal value (no nominal, constant or unknown)'
-      - id: multiplier_multiplier
+      - id: multiplier
         type: decimal_s8_8
         doc: 'Product value multiplier. Implied decimal with scale 1e-8'
       - id: strike_price
@@ -380,7 +380,7 @@ types:
         type: u2
         enum: strike_price_currency
         doc: 'Strike Price Currency'
-      - id: product_identification_product_identification
+      - id: product_identification
         type: str
         size: 30
         encoding: ASCII
@@ -627,7 +627,7 @@ types:
         doc: 'Underlying type of index'
   product_identification_public_product_identification:
     seq:
-      - id: product_identification_product_identification
+      - id: product_identification
         type: str
         size: 30
         encoding: ASCII
@@ -678,7 +678,7 @@ types:
         type: b7
   public_product_identification:
     seq:
-      - id: product_identification_product_identification
+      - id: product_identification
         type: str
         size: 30
         encoding: ASCII
@@ -808,7 +808,7 @@ types:
       - id: instrument_id
         type: u4
         doc: 'ID of financial instrument'
-      - id: settlement_value_value
+      - id: trade_settlement_value
         type: decimal_s8_2
         doc: 'Settlement value. Implied decimal with scale 1e-2'
       - id: settlement_date
@@ -834,7 +834,7 @@ types:
       - id: quantity
         type: u8
         doc: 'Auction quantity (final auction volume)'
-      - id: nominal_value_value
+      - id: trade_nominal_value
         type: decimal_s8_2
         doc: 'Nominal value. Implied decimal with scale 1e-2'
       - id: nominal_currency
@@ -1074,7 +1074,7 @@ types:
         type: u1
         enum: product_identification_type
         doc: 'Product identification type'
-      - id: product_identification_product_identification
+      - id: product_identification
         type: str
         size: 30
         encoding: ASCII
@@ -1120,7 +1120,7 @@ types:
       - id: lower_liquidity
         type: u1
         doc: 'The positive field value (true) informs if the company was qualified to Lower Liquidity Space'
-      - id: multiplier_number
+      - id: product_summary_multiplier
         type: decimal_s8_8
         doc: 'Instrument multiplier. Implied decimal with scale 1e-8'
       - id: dividend_rate
@@ -1219,7 +1219,7 @@ types:
       - id: settlement_price
         type: decimal_s8_8
         doc: 'Settlement price. Implied decimal with scale 1e-8'
-      - id: settlement_value_price
+      - id: settlement_value
         type: decimal_s8_8
         doc: 'Settlement value. Implied decimal with scale 1e-8'
       - id: end_trading_date
@@ -1281,7 +1281,7 @@ types:
       - id: settlement_price
         type: decimal_s8_8
         doc: 'Settlement price. Implied decimal with scale 1e-8'
-      - id: settlement_value_price
+      - id: settlement_value
         type: decimal_s8_8
         doc: 'Settlement value. Implied decimal with scale 1e-8'
       - id: end_trading_date
@@ -1343,7 +1343,7 @@ types:
       - id: settlement_price
         type: decimal_s8_8
         doc: 'Settlement price. Implied decimal with scale 1e-8'
-      - id: settlement_value_price
+      - id: settlement_value
         type: decimal_s8_8
         doc: 'Settlement value. Implied decimal with scale 1e-8'
       - id: end_trading_date
@@ -1405,7 +1405,7 @@ types:
       - id: settlement_price
         type: decimal_s8_8
         doc: 'Settlement price. Implied decimal with scale 1e-8'
-      - id: settlement_value_price
+      - id: settlement_value
         type: decimal_s8_8
         doc: 'Settlement value. Implied decimal with scale 1e-8'
       - id: end_trading_date

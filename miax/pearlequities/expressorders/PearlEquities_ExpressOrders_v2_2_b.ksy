@@ -339,9 +339,9 @@ types:
       - id: routing
         type: routing
         doc: 'Routing Flags'
-      - id: trading_collar_dollar_value_price_6u_8
-        type: decimal_u8_6
-        doc: 'As specified in the New Order Request. Implied decimal with scale 1e-6'
+      - id: trading_collar_dollar_value
+        type: decimal_s8_6
+        doc: 'Market Order Custom Dollar Value Trading Collar Protection. Implied decimal with scale 1e-6'
       - id: capacity
         type: u1
         enum: capacity
@@ -752,7 +752,7 @@ types:
       - id: routing
         type: routing
         doc: 'Routing Flags'
-      - id: trading_collar_dollar_value_price_6s_8
+      - id: trading_collar_dollar_value
         type: decimal_s8_6
         doc: 'Market Order Custom Dollar Value Trading Collar Protection. Implied decimal with scale 1e-6'
       - id: capacity

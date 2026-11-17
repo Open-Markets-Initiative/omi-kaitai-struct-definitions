@@ -270,7 +270,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -768,7 +768,7 @@ types:
         doc: 'Repeating group stated QuoteCnt times'
   quote:
     seq:
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -1019,7 +1019,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -1638,7 +1638,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -2196,7 +2196,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -2661,7 +2661,7 @@ types:
       - id: working_price
         type: u8
         doc: 'New working price'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -3243,7 +3243,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -3709,7 +3709,7 @@ types:
       - id: order_id
         type: u8
         doc: 'Corresponds to OrderID (37) in CFE FIX. Order identifier supplied by CFE. This identifier corresponds to the identifiers used in CFE market data products. Sent to the OCC in the Exchange Data field'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -3839,7 +3839,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -4373,7 +4373,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -4862,7 +4862,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in CFE FIX. Sent to the OCC in the Trade ID field. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be represented on ODROP and FIXDROP ports as base 36 ASCII. Example conversion: Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -5012,7 +5012,7 @@ types:
         type: trade_cancelor_correct_return_bitfield_18
         if: number_of_return_bitfields >= 18
         doc: 'BitSet TradeCancelorCorrect byte 18'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -5988,7 +5988,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_tas_restatement_bitfields >= 1 and tas_restatement_bitfield_1.tas_restatement_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -6562,7 +6562,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_variance_restatement_bitfields >= 1 and variance_restatement_bitfield_1.variance_restatement_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -7041,7 +7041,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in CFE FIX. Sent to the OCC in the Trade ID field. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be represented on ODROP and FIXDROP ports as base 36 ASCII. Example conversion: Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -7069,7 +7069,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in CFE FIX. Sent to the OCC in the Trade ID field. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be represented on ODROP and FIXDROP ports as base 36 ASCII. Example conversion: Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII

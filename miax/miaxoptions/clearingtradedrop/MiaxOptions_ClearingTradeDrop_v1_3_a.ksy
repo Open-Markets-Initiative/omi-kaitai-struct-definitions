@@ -99,7 +99,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Eg: CTD01.02'
-      - id: session_id
+      - id: trading_session_id
         type: u4
         doc: 'MIAX assigned ID for the current trading session. A change in Session ID will mean that restarting at message sequence number 1'
       - id: system_status

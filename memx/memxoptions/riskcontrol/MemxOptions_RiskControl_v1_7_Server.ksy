@@ -213,15 +213,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 38 this version reads'
   active_risk_threshold_change_rejected_message:
     seq:
-      - id: cl_ord_id_active_risk_threshold_change_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_threshold_change_rejected_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_active_risk_threshold_change_rejected_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: threshold_quantity
@@ -262,17 +262,17 @@ types:
         doc: 'Bytes the stated block holds beyond the 38 this version reads'
   active_risk_acknowledge_rejected_message:
     seq:
-      - id: cl_ord_id_active_risk_acknowledge_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_acknowledge_rejected_underlier
+      - id: underlier
         type: str
         size: 6
         encoding: ASCII
         doc: 'Underlier'
-      - id: efid_active_risk_acknowledge_rejected_efid
+      - id: efid
         type: str
         size: 4
         encoding: ASCII
@@ -490,7 +490,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 44 this version reads'
   risk_threshold_update_rejected_message:
     seq:
-      - id: cl_ord_id_risk_threshold_update_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
@@ -617,13 +617,13 @@ types:
         doc: 'Bytes the stated block holds beyond the 36 this version reads'
   single_order_allow_market_orders_state_message:
     seq:
-      - id: cl_ord_id_single_order_allow_market_orders_state_cl_ord_id_optional
+      - id: clordid_optional
         type: str_20_nullable
         doc: 'ClOrdID. Nullable, No Value = 0'
-      - id: underlier_single_order_allow_market_orders_state_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_single_order_allow_market_orders_state_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -638,15 +638,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 33 this version reads'
   single_order_restricted_underlier_state_message:
     seq:
-      - id: cl_ord_id_single_order_restricted_underlier_state_cl_ord_id_optional
+      - id: clordid_optional
         type: str_20_nullable
         doc: 'ClOrdID. Nullable, No Value = 0'
-      - id: underlier_single_order_restricted_underlier_state_underlier
+      - id: underlier
         type: str
         size: 6
         encoding: ASCII
         doc: 'Underlier'
-      - id: efid_single_order_restricted_underlier_state_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -674,7 +674,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 24 this version reads'
   risk_settings_query_rejected_message:
     seq:
-      - id: cl_ord_id_risk_settings_query_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
@@ -688,15 +688,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 22 this version reads'
   manual_cp_breach_trigger_rejected_message:
     seq:
-      - id: cl_ord_id_manual_cp_breach_trigger_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_manual_cp_breach_trigger_rejected_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_manual_cp_breach_trigger_rejected_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -711,7 +711,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 34 this version reads'
   breach_clear_rejected_message:
     seq:
-      - id: cl_ord_id_breach_clear_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
@@ -739,7 +739,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 28 this version reads'
   breach_clear_all_accepted_message:
     seq:
-      - id: cl_ord_id_breach_clear_all_accepted_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
@@ -749,7 +749,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 20 this version reads'
   breach_clear_all_rejected_message:
     seq:
-      - id: cl_ord_id_breach_clear_all_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
@@ -763,15 +763,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 22 this version reads'
   breach_clear_all_by_efid_or_underlier_accepted_message:
     seq:
-      - id: cl_ord_id_breach_clear_all_by_efid_or_underlier_accepted_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_breach_clear_all_by_efid_or_underlier_accepted_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_breach_clear_all_by_efid_or_underlier_accepted_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: block_extension
@@ -779,15 +779,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 30 this version reads'
   breach_clear_all_by_efid_or_underlier_rejected_message:
     seq:
-      - id: cl_ord_id_breach_clear_all_by_efid_or_underlier_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_breach_clear_all_by_efid_or_underlier_rejected_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_breach_clear_all_by_efid_or_underlier_rejected_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: reject_reason

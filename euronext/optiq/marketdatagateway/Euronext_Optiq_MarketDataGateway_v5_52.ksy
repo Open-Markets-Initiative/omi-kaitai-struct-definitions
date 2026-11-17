@@ -726,9 +726,9 @@ types:
       - id: exceptional_market_conditions
         type: b1
         doc: 'ExceptionalMarketConditions'
-      - id: unused_phase_qualifierset_8
+      - id: unused_1
         type: b1
-        doc: 'Unused PhaseQualifier_set 8'
+        doc: '1 unused bit'
       - id: quoting_period
         type: b1
         doc: 'QuotingPeriod'

@@ -278,8 +278,8 @@ types:
       - id: block_extension
         size: _parent.sbe_header.block_length - 298
         doc: 'Bytes the stated block holds beyond the 298 this version reads'
-      - id: security_definition_message_no_m_d_feed_types_groups
-        type: security_definition_message_no_m_d_feed_types_groups
+      - id: security_definition_message_no_md_feed_types_groups
+        type: security_definition_message_no_md_feed_types_groups
         doc: 'NoMDFeedTypes Block'
       - id: security_definition_message_no_underlyings_groups
         type: security_definition_message_no_underlyings_groups
@@ -306,15 +306,9 @@ types:
       - id: evening_or_morning_session
         type: b1
         doc: 'EveningOrMorningSession'
-      - id: unused_flags_set_1
-        type: b1
-        doc: 'Unused FlagsSet 1'
-      - id: unused_flags_set_2
-        type: b1
-        doc: 'Unused FlagsSet 2'
-      - id: unused_flags_set_3
-        type: b1
-        doc: 'Unused FlagsSet 3'
+      - id: unused_3
+        type: b3
+        doc: '3 unused bits'
       - id: anonymous_trading
         type: b1
         doc: 'AnonymousTrading'
@@ -324,39 +318,15 @@ types:
       - id: day_session
         type: b1
         doc: 'DaySession'
-      - id: unused_flags_set_7
+      - id: unused_1
         type: b1
-        doc: 'Unused FlagsSet 7'
+        doc: '1 unused bit'
       - id: multi_leg
         type: b1
         doc: 'MultiLeg'
-      - id: unused_flags_set_9
-        type: b1
-        doc: 'Unused FlagsSet 9'
-      - id: unused_flags_set_10
-        type: b1
-        doc: 'Unused FlagsSet 10'
-      - id: unused_flags_set_11
-        type: b1
-        doc: 'Unused FlagsSet 11'
-      - id: unused_flags_set_12
-        type: b1
-        doc: 'Unused FlagsSet 12'
-      - id: unused_flags_set_13
-        type: b1
-        doc: 'Unused FlagsSet 13'
-      - id: unused_flags_set_14
-        type: b1
-        doc: 'Unused FlagsSet 14'
-      - id: unused_flags_set_15
-        type: b1
-        doc: 'Unused FlagsSet 15'
-      - id: unused_flags_set_16
-        type: b1
-        doc: 'Unused FlagsSet 16'
-      - id: unused_flags_set_17
-        type: b1
-        doc: 'Unused FlagsSet 17'
+      - id: unused_9
+        type: b9
+        doc: '9 unused bits'
       - id: collateral
         type: b1
         doc: 'Collateral'
@@ -366,13 +336,13 @@ types:
       - id: reserved_44
         type: b44
         doc: '44 reserved bits'
-  security_definition_message_no_m_d_feed_types_groups:
+  security_definition_message_no_md_feed_types_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'groupSize'
-      - id: security_definition_message_no_m_d_feed_types_group
-        type: security_definition_message_no_m_d_feed_types_group
+      - id: security_definition_message_no_md_feed_types_group
+        type: security_definition_message_no_md_feed_types_group
         repeat: expr
         repeat-expr: group_size.num_in_group_uint_8
         doc: 'NoMDFeedTypes'
@@ -384,7 +354,7 @@ types:
       - id: num_in_group_uint_8
         type: u1
         doc: 'numInGroup'
-  security_definition_message_no_m_d_feed_types_group:
+  security_definition_message_no_md_feed_types_group:
     seq:
       - id: md_feed_type
         type: str

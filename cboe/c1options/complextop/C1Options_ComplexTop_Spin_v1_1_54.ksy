@@ -240,7 +240,7 @@ types:
         doc: 'Repeating leg definition group inside the Complex Instrument Definition Expanded message. Repeats Leg Count times'
   complex_leg:
     seq:
-      - id: leg_symbol_printable_ascii_8
+      - id: leg_symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -295,7 +295,7 @@ types:
         doc: 'Repeating leg definition group inside the Exchange Designated Complex Instrument Definition message. Repeats Leg Count times'
   edcid_leg:
     seq:
-      - id: leg_symbol_printable_ascii_6
+      - id: leg_symbol_short
         type: str
         size: 6
         encoding: ASCII

@@ -369,9 +369,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_trading_session_validityset_0
+      - id: unused_1
         type: b1
-        doc: 'Unused TradingSessionValidity_set 0'
+        doc: '1 unused bit'
       - id: session_1
         type: b1
         doc: 'Session1'
@@ -638,9 +638,9 @@ types:
       - id: nav_trade_expressed_in_price_currency
         type: b1
         doc: 'NAVTradeExpressedInPriceCurrency'
-      - id: unused_trade_qualifierset_7
+      - id: unused_1
         type: b1
-        doc: 'Unused TradeQualifier_set 7'
+        doc: '1 unused bit'
   fill_optional_field_groups:
     seq:
       - id: group_size_encoding

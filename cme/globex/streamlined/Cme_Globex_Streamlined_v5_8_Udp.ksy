@@ -371,15 +371,9 @@ types:
       - id: reserved_bits
         type: b1
         doc: 'ReservedBits'
-      - id: unused_settl_price_type_4
-        type: b1
-        doc: 'Unused SettlPriceType 4'
-      - id: unused_settl_price_type_5
-        type: b1
-        doc: 'Unused SettlPriceType 5'
-      - id: unused_settl_price_type_6
-        type: b1
-        doc: 'Unused SettlPriceType 6'
+      - id: unused_3
+        type: b3
+        doc: '3 unused bits'
       - id: null_value
         type: b1
         doc: 'NullValue'
@@ -637,7 +631,7 @@ types:
         doc: 'Number of entries in AltID group'
   eris_security_alt_id_group:
     seq:
-      - id: security_alt_id_50
+      - id: security_alt_id
         type: str
         size: 26
         encoding: ASCII
@@ -957,7 +951,7 @@ types:
         size: 9
         encoding: ASCII
         doc: 'Underlying Security''s SecurityType'
-      - id: underlying_security_exchange_string_4
+      - id: underlying_security_exchange
         type: str
         size: 4
         encoding: ASCII
@@ -1061,7 +1055,7 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Multileg instrument''s individual security''s leg SecurityExchange'
-      - id: leg_ratio_qty_u_int_16_null
+      - id: leg_ratio_qty
         type: u2_nullable
         doc: 'The ratio of quantity for this individual leg relative to the entire multileg security. Nullable, No Value = 65535'
       - id: leg_side
@@ -1983,11 +1977,11 @@ types:
         size: 9
         encoding: ASCII
         doc: 'Underlying Security''s SecurityType'
-      - id: underlying_security_exchange_security_exchange
+      - id: underlying_security_exchange
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Underlying Security''s SecurityExchange and it can be used to identify the underlying security'
+        doc: 'Underlying Security''s SecurityExchange'
       - id: block_extension
         size: _parent.group_size.block_length - 68
         doc: 'Bytes the stated block holds beyond the 68 this version reads'
@@ -2003,7 +1997,7 @@ types:
         doc: 'Number of entries in AltID group'
   otc_security_alt_id_group:
     seq:
-      - id: security_alt_i_d_string_length_50
+      - id: security_alt_id_50
         type: str
         size: 50
         encoding: ASCII
@@ -2159,7 +2153,7 @@ types:
         size: 50
         encoding: ASCII
         doc: 'This tag contains the instrument group of the requested security definition. Must be present when tag 555-NoLegs is present. Also must be first tag in repeating group. Multileg instrument''s individual security''s Symbol'
-      - id: leg_ratio_qty_int_32_null
+      - id: eris_leg_ratio_qty
         type: s4_nullable
         doc: 'The ratio of quantity for this individual leg relative to the entire multi-leg instrument. Nullable, No Value = 2147483647'
       - id: leg_side

@@ -119,9 +119,9 @@ types:
         doc: 'Last sent sequence number'
   login_response:
     seq:
-      - id: result_login_result
+      - id: login_result
         type: u1
-        enum: result_login_result
+        enum: login_result
         doc: 'Login response status code'
       - id: next_expected_seq_num
         type: u4
@@ -134,9 +134,9 @@ types:
         doc: 'ID of the session'
   connection_close:
     seq:
-      - id: reason_connection_close_reason
+      - id: connection_close_reason
         type: u1
-        enum: reason_connection_close_reason
+        enum: connection_close_reason
         doc: 'Connection close reason'
   reject:
     seq:
@@ -339,13 +339,13 @@ types:
       - id: filled
         type: u8
         doc: 'Indicates the quantity of the order which has already been filled'
-      - id: status_order_status
+      - id: order_status
         type: u1
-        enum: status_order_status
+        enum: order_status
         doc: 'Status of the given order'
-      - id: reason_order_rejection_reason
+      - id: order_rejection_reason
         type: u2
-        enum: reason_order_rejection_reason
+        enum: order_rejection_reason
         doc: 'Reason for rejecting the given order'
       - id: exec_type_reason
         type: u1
@@ -390,13 +390,13 @@ types:
       - id: order_id
         type: order_id
         doc: 'Unique for each trading day order identifier based on the sequence number of order message, bulk sequence number, session ID and connection ID'
-      - id: status_order_status
+      - id: order_status
         type: u1
-        enum: status_order_status
+        enum: order_status
         doc: 'Status of the given order'
-      - id: reason_order_rejection_reason
+      - id: order_rejection_reason
         type: u2
-        enum: reason_order_rejection_reason
+        enum: order_rejection_reason
         doc: 'Reason for rejecting the given order'
       - id: exec_type_reason
         type: u1
@@ -443,17 +443,17 @@ types:
       - id: filled
         type: u8
         doc: 'Indicates the quantity of the order which has already been filled'
-      - id: status_order_status
+      - id: order_status
         type: u1
-        enum: status_order_status
+        enum: order_status
         doc: 'Status of the given order'
       - id: priority_flag
         type: u1
         enum: priority_flag
         doc: 'Indicates whether the priority flag is lost or retained after modification'
-      - id: reason_order_rejection_reason
+      - id: order_rejection_reason
         type: u2
-        enum: reason_order_rejection_reason
+        enum: order_rejection_reason
         doc: 'Reason for rejecting the given order'
       - id: client_order_id
         type: str
@@ -509,9 +509,9 @@ types:
       - id: market_segment_id
         type: u4
         doc: 'Identifies the market segment for request type CancelOrdersForMarketSegment. Optional: Required for MassCancelRequestType::CancelOrdersForMarketSegment, otherwise 0'
-      - id: reason_mass_cancel_rejection_reason
+      - id: mass_cancel_rejection_reason
         type: u2
-        enum: reason_mass_cancel_rejection_reason
+        enum: mass_cancel_rejection_reason
         doc: 'Reason for rejecting the given mass order cancel request'
       - id: client_order_id
         type: str
@@ -675,13 +675,13 @@ types:
       - id: responses
         type: responses
         doc: 'QuoteOrderResponses'
-      - id: status_mass_quote_status
+      - id: mass_quote_status
         type: u1
-        enum: status_mass_quote_status
+        enum: mass_quote_status
         doc: 'Status of the given mass quote order'
-      - id: reason_mass_quote_rejection_reason
+      - id: mass_quote_rejection_reason
         type: u2
-        enum: reason_mass_quote_rejection_reason
+        enum: mass_quote_rejection_reason
         doc: 'Reason for rejecting the given mass quote order'
       - id: fee_structure_id
         type: u1
@@ -728,13 +728,13 @@ types:
       - id: ask_order_id
         type: ask_order_id
         doc: 'Unique for each trading day order identifier based on the sequence number of order message, bulk sequence number, session ID and connection ID'
-      - id: status_order_status
+      - id: order_status
         type: u1
-        enum: status_order_status
+        enum: order_status
         doc: 'Status of the given order'
-      - id: reason_order_rejection_reason
+      - id: order_rejection_reason
         type: u2
-        enum: reason_order_rejection_reason
+        enum: order_rejection_reason
         doc: 'Reason for rejecting the given order'
   bid_order_id:
     meta:
@@ -782,9 +782,9 @@ types:
       - id: ref_id
         type: u4
         doc: 'A reference id to the Market Maker command request message'
-      - id: result_command_result
+      - id: command_result
         type: u1
-        enum: result_command_result
+        enum: command_result
         doc: 'Confirmation of achieving the intended action. If the action (e.g., Buy Only state) has already been achieved before the command, the result will be positive'
       - id: rejection_code
         type: u2
@@ -795,9 +795,9 @@ types:
       - id: instrument_id
         type: u4
         doc: 'ID of the instrument being traded'
-      - id: reason_request_for_execution_reason
+      - id: request_for_execution_reason
         type: u1
-        enum: reason_request_for_execution_reason
+        enum: request_for_execution_reason
         doc: 'The reason for this RFE'
   bid_offer_update:
     seq:
@@ -1099,13 +1099,13 @@ types:
       - id: secondary_trade_report_id
         type: secondary_trade_report_id
         doc: 'Unique for each trading day order identifier based on the sequence number of order message, bulk sequence number, session ID and connection ID'
-      - id: status_tcr_status
+      - id: tcr_status
         type: u1
-        enum: status_tcr_status
+        enum: tcr_status
         doc: 'Status of the given order'
-      - id: reason_tcr_rejection_reason
+      - id: tcr_rejection_reason
         type: u2
-        enum: reason_tcr_rejection_reason
+        enum: tcr_rejection_reason
         doc: 'Reason for rejecting the given TCR'
   trade_bust:
     seq:
@@ -1236,7 +1236,7 @@ enums:
     23:
       id: 'trade_bust'
       doc: 'Message used to inform about cancellation of previously accepted Trade'
-  result_login_result:
+  login_result:
     1:
       id: 'ok'
       doc: 'Successful login'
@@ -1264,7 +1264,7 @@ enums:
     9:
       id: 'other'
       doc: 'Other errors'
-  reason_connection_close_reason:
+  connection_close_reason:
     1:
       id: 'protocol_error'
       doc: 'Invalid message or frame length'
@@ -1443,7 +1443,7 @@ enums:
     68:
       id: 'custom'
       doc: 'Custom clearing identifier'
-  status_order_status:
+  order_status:
     1:
       id: 'new_field'
       doc: 'New order( for Mass Quotes ->operation accepted)'
@@ -1462,7 +1462,7 @@ enums:
     6:
       id: 'expired'
       doc: 'Order expired (Not applicable to mass quotes)'
-  reason_order_rejection_reason:
+  order_rejection_reason:
     0:
       id: 'na'
       doc: 'Not applicable'
@@ -1878,7 +1878,7 @@ enums:
     122:
       id: 'investment_decision_maker'
       doc: 'Investment decision maker'
-  reason_mass_cancel_rejection_reason:
+  mass_cancel_rejection_reason:
     99:
       id: 'other'
       doc: 'Other'
@@ -2463,14 +2463,14 @@ enums:
     999:
       id: 'xxx'
       doc: 'The codes assigned for transactions where no currency is involved'
-  status_mass_quote_status:
+  mass_quote_status:
     1:
       id: 'accepted'
       doc: 'Mass quote acknowledged by system'
     2:
       id: 'rejected'
       doc: 'Mass quote rejected'
-  reason_mass_quote_rejection_reason:
+  mass_quote_rejection_reason:
     1:
       id: 'na'
       doc: 'Not applicable'
@@ -2556,7 +2556,7 @@ enums:
     3:
       id: 'revoke_knock_out'
       doc: 'Revoke Knock Out'
-  result_command_result:
+  command_result:
     1:
       id: 'success'
       doc: 'Success'
@@ -2609,7 +2609,7 @@ enums:
     3020:
       id: 'command_not_allowed_in_current_state'
       doc: 'Command Not Allowed In Current State'
-  reason_request_for_execution_reason:
+  request_for_execution_reason:
     1:
       id: 'passive_quote'
       doc: 'Passive Quote'
@@ -2698,7 +2698,7 @@ enums:
     3:
       id: 'riskless_principal'
       doc: 'Riskless Principal (mapped to MTCH)'
-  status_tcr_status:
+  tcr_status:
     1:
       id: 'new_field'
       doc: 'New'
@@ -2711,7 +2711,7 @@ enums:
     4:
       id: 'cancelled'
       doc: 'Cancelled'
-  reason_tcr_rejection_reason:
+  tcr_rejection_reason:
     1:
       id: 'na'
       doc: 'Not applicable'

@@ -281,7 +281,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_new_order_v_2_bitfields >= 1 and new_order_v_2_bitfield_1.new_order_v_2_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -601,7 +601,7 @@ types:
         repeat: expr
         repeat-expr: num_order_allocations
         doc: 'Repeating group stated GroupCnt times'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -844,7 +844,7 @@ types:
         type: u1
         enum: time_in_force
         if: number_of_new_complex_order_bitfields >= 1 and new_complex_order_bitfield_1.new_complex_order_bitfield_1_time_in_force
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -1122,7 +1122,7 @@ types:
         repeat: expr
         repeat-expr: num_new_order_cross_multileg_order_allocations
         doc: 'Repeating group stated GroupCnt times'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -1506,7 +1506,7 @@ types:
         doc: 'Repeating group stated QuoteCnt times'
   quote:
     seq:
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -1625,7 +1625,7 @@ types:
         type: str
         size: 4
         encoding: ASCII
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -1710,7 +1710,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
-      - id: last_px_trade_price_8
+      - id: trade_capture_last_px
         type: decimal_u8_7
         doc: 'Corresponds to LastPx (31) in Cboe FIX. Price of this fill. Note the use of Binary Price to represent positive and negative prices, which can occur with complex/spread instruments. Implied decimal with scale 1e-7'
       - id: number_of_trade_capture_report_v_2_bitfields
@@ -1743,7 +1743,7 @@ types:
       - id: no_sides
         type: u1
         doc: 'Corresponds to NoSides (552) in Cboe FIX. Indicates the number of repeating groups to fol- low. Must be 2'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -2080,7 +2080,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_acknowledgment_v_2_return_bitfield_1.order_acknowledgment_v_2_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -2145,7 +2145,7 @@ types:
         type: u4
         if: number_of_return_bitfields >= 5 and order_acknowledgment_v_2_return_bitfield_5.order_acknowledgment_v_2_return_bitfield_5_last_shares
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_acknowledgment_v_2_return_bitfield_5.order_acknowledgment_v_2_return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
@@ -2689,7 +2689,7 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cross_order_acknowledgment_return_bitfield_1.cross_order_acknowledgment_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -3328,7 +3328,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_rejected_v_2_return_bitfield_1.order_rejected_v_2_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -3896,7 +3896,7 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cross_order_rejected_return_bitfield_1.cross_order_rejected_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -4465,7 +4465,7 @@ types:
         type: u4
         if: number_of_return_bitfields >= 5 and order_modified_v_2_return_bitfield_5.order_modified_v_2_return_bitfield_5_last_shares
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_modified_v_2_return_bitfield_5.order_modified_v_2_return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
@@ -5010,7 +5010,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_restated_v_2_return_bitfield_1.order_restated_v_2_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -5075,7 +5075,7 @@ types:
         type: u4
         if: number_of_return_bitfields >= 5 and order_restated_v_2_return_bitfield_5.order_restated_v_2_return_bitfield_5_last_shares
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_restated_v_2_return_bitfield_5.order_restated_v_2_return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
@@ -5530,7 +5530,7 @@ types:
       - id: working_price
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -6112,7 +6112,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_cancelled_v_2_return_bitfield_1.order_cancelled_v_2_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -6177,7 +6177,7 @@ types:
         type: u4
         if: number_of_return_bitfields >= 5 and order_cancelled_v_2_return_bitfield_5.order_cancelled_v_2_return_bitfield_5_last_shares
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_cancelled_v_2_return_bitfield_5.order_cancelled_v_2_return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
@@ -6621,7 +6621,7 @@ types:
       - id: order_id
         type: u8
         doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identi- fier corresponds to the identifiers used in Cboe market data products'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -6742,7 +6742,7 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cross_order_cancelled_return_bitfield_1.cross_order_cancelled_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -7337,7 +7337,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and cancel_rejected_v_2_return_bitfield_1.cancel_rejected_v_2_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -7785,7 +7785,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: leaves_qty
@@ -7899,7 +7899,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_execution_v_2_return_bitfield_1.order_execution_v_2_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -8412,7 +8412,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in Cboe FIX. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be rep- resented on ODROP, FIXDROP and standard DROP ports as base 36 ASCII. Example conversion: Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -8424,7 +8424,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: leaves_qty
@@ -8481,7 +8481,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
-      - id: last_px_binary_price_8
+      - id: last_px
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: corrected_price
@@ -8568,7 +8568,7 @@ types:
         type: trade_cancelor_correct_v_2_return_bitfield_18
         if: number_of_return_bitfields >= 18
         doc: 'BitSet TradeCancelorCorrectV2 byte 18'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -9456,7 +9456,7 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -10473,7 +10473,7 @@ types:
         repeat: expr
         repeat-expr: num_trd_cap_ack_side_grp
         doc: 'Repeating group stated NoSides times'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -11026,7 +11026,7 @@ types:
         repeat: expr
         repeat-expr: num_trade_capture_report_reject_v_2_trd_cap_ack_side_grp
         doc: 'Repeating group stated NoSides times'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -11487,7 +11487,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
-      - id: last_px_trade_price_8
+      - id: trade_capture_last_px
         type: decimal_u8_7
         doc: 'Corresponds to LastPx (31) in Cboe FIX. Price of this fill. Note the use of Binary Price to represent positive and negative prices, which can occur with complex/spread instruments. Implied decimal with scale 1e-7'
       - id: contra_broker
@@ -11581,7 +11581,7 @@ types:
         repeat: expr
         repeat-expr: num_trade_capture_confirm_v_2_trd_cap_ack_side_grp
         doc: 'Repeating group stated NoSides times'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -12075,7 +12075,7 @@ types:
       - id: last_shares
         type: u4
         doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
-      - id: last_px_trade_price_8
+      - id: trade_capture_last_px
         type: decimal_u8_7
         doc: 'Corresponds to LastPx (31) in Cboe FIX. Price of this fill. Note the use of Binary Price to represent positive and negative prices, which can occur with complex/spread instruments. Implied decimal with scale 1e-7'
       - id: contra_broker
@@ -12178,7 +12178,7 @@ types:
         repeat: expr
         repeat-expr: num_trade_capture_report_decline_v_2_trd_cap_ack_side_grp
         doc: 'Repeating group stated NoSides times'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII

@@ -196,9 +196,9 @@ types:
       - id: ref_sequence_number
         type: s8
         doc: 'refSequenceNumber'
-      - id: reason_reject_reason
+      - id: reject_reason
         type: s1
-        enum: reason_reject_reason
+        enum: reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -275,9 +275,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_order_flags_0
+      - id: unused_1
         type: b1
-        doc: 'Unused OrderFlags 0'
+        doc: '1 unused bit'
       - id: post_only
         type: b1
         doc: 'postOnly'
@@ -323,9 +323,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_replace_order_flags_0
+      - id: unused_1
         type: b1
-        doc: 'Unused ReplaceOrderFlags 0'
+        doc: '1 unused bit'
       - id: post_only
         type: b1
         doc: 'postOnly'
@@ -446,9 +446,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_order_flags_0
+      - id: unused_1
         type: b1
-        doc: 'Unused OrderFlags 0'
+        doc: '1 unused bit'
       - id: post_only
         type: b1
         doc: 'postOnly'
@@ -471,9 +471,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_order_flags_0
+      - id: unused_1
         type: b1
-        doc: 'Unused OrderFlags 0'
+        doc: '1 unused bit'
       - id: post_only
         type: b1
         doc: 'postOnly'
@@ -683,9 +683,9 @@ types:
       - id: instrument_id
         type: s8
         doc: 'instrumentId'
-      - id: reason_order_reject_reason
+      - id: order_reject_reason
         type: s1
-        enum: reason_order_reject_reason
+        enum: order_reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -813,9 +813,9 @@ types:
       - id: instrument_id
         type: s8
         doc: 'instrumentId'
-      - id: reason_order_reject_reason
+      - id: order_reject_reason
         type: s1
-        enum: reason_order_reject_reason
+        enum: order_reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -863,9 +863,9 @@ types:
       - id: instrument_id
         type: s8
         doc: 'instrumentId'
-      - id: reason_cancel_order_reject_reason
+      - id: cancel_order_reject_reason
         type: s1
-        enum: reason_cancel_order_reject_reason
+        enum: cancel_order_reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -1084,9 +1084,9 @@ types:
       - id: mmp_group_id
         type: s8
         doc: 'mmpGroupId'
-      - id: reason_mass_quote_reject_reason
+      - id: mass_quote_reject_reason
         type: s1
-        enum: reason_mass_quote_reject_reason
+        enum: mass_quote_reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -1119,9 +1119,9 @@ types:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
-      - id: reason_mass_cancel_reject_reason
+      - id: mass_cancel_reject_reason
         type: s1
-        enum: reason_mass_cancel_reject_reason
+        enum: mass_cancel_reject_reason
         doc: 'reason'
       - id: details
         type: details
@@ -1473,7 +1473,7 @@ types:
       - id: match_id
         type: s8
         doc: 'matchId'
-      - id: order_id_fill_id
+      - id: order_id
         type: s8
         doc: 'orderId'
       - id: fill_price
@@ -1748,7 +1748,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'TRUE'
-  reason_reject_reason:
+  reject_reason:
     1:
       id: 'invalid_schema_id'
       doc: 'INVALID_SCHEMA_ID'
@@ -1866,7 +1866,7 @@ enums:
     0:
       id: 'both'
       doc: 'for use as mass cancel filter criteria'
-  reason_order_reject_reason:
+  order_reject_reason:
     0:
       id: 'system_error'
       doc: 'SYSTEM_ERROR'
@@ -1954,7 +1954,7 @@ enums:
     28:
       id: 'order_size_limit_exceeded'
       doc: 'open order aggregate size limit exceeded'
-  reason_cancel_order_reject_reason:
+  cancel_order_reject_reason:
     0:
       id: 'error'
       doc: 'ERROR'
@@ -2202,7 +2202,7 @@ enums:
     28:
       id: 'order_size_limit_exceeded'
       doc: 'open order aggregate size limit exceeded'
-  reason_mass_quote_reject_reason:
+  mass_quote_reject_reason:
     0:
       id: 'system_error'
       doc: 'SYSTEM_ERROR'
@@ -2227,7 +2227,7 @@ enums:
     7:
       id: 'portfolio_locked'
       doc: 'Portfolio is locked'
-  reason_mass_cancel_reject_reason:
+  mass_cancel_reject_reason:
     0:
       id: 'error'
       doc: 'ERROR'

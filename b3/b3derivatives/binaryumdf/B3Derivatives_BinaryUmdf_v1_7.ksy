@@ -1065,30 +1065,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_imbalance_condition_0
-        type: b1
-        doc: 'Unused ImbalanceCondition 0'
-      - id: unused_imbalance_condition_1
-        type: b1
-        doc: 'Unused ImbalanceCondition 1'
-      - id: unused_imbalance_condition_2
-        type: b1
-        doc: 'Unused ImbalanceCondition 2'
-      - id: unused_imbalance_condition_3
-        type: b1
-        doc: 'Unused ImbalanceCondition 3'
-      - id: unused_imbalance_condition_4
-        type: b1
-        doc: 'Unused ImbalanceCondition 4'
-      - id: unused_imbalance_condition_5
-        type: b1
-        doc: 'Unused ImbalanceCondition 5'
-      - id: unused_imbalance_condition_6
-        type: b1
-        doc: 'Unused ImbalanceCondition 6'
-      - id: unused_imbalance_condition_7
-        type: b1
-        doc: 'Unused ImbalanceCondition 7'
+      - id: unused_8
+        type: b8
+        doc: '8 unused bits'
       - id: imbalance_more_buyers
         type: b1
         doc: 'ImbalanceMoreBuyers'
@@ -1318,42 +1297,24 @@ types:
       - id: out_of_sequence
         type: b1
         doc: 'OutOfSequence'
-      - id: unused_trade_condition_4
-        type: b1
-        doc: 'Unused TradeCondition 4'
-      - id: unused_trade_condition_5
-        type: b1
-        doc: 'Unused TradeCondition 5'
+      - id: unused_2
+        type: b2
+        doc: '2 unused bits'
       - id: trade_on_behalf
         type: b1
         doc: 'TradeOnBehalf'
-      - id: unused_trade_condition_7
-        type: b1
-        doc: 'Unused TradeCondition 7'
-      - id: unused_trade_condition_8
-        type: b1
-        doc: 'Unused TradeCondition 8'
-      - id: unused_trade_condition_9
-        type: b1
-        doc: 'Unused TradeCondition 9'
-      - id: unused_trade_condition_10
-        type: b1
-        doc: 'Unused TradeCondition 10'
-      - id: unused_trade_condition_11
-        type: b1
-        doc: 'Unused TradeCondition 11'
-      - id: unused_trade_condition_12
-        type: b1
-        doc: 'Unused TradeCondition 12'
+      - id: unused_6
+        type: b6
+        doc: '6 unused bits'
       - id: regular_trade
         type: b1
         doc: 'RegularTrade'
       - id: block_trade
         type: b1
         doc: 'BlockTrade'
-      - id: unused_trade_condition_15
+      - id: unused_1
         type: b1
-        doc: 'Unused TradeCondition 15'
+        doc: '1 unused bit'
   snapshot_full_refresh_header_30_message:
     seq:
       - id: security_id

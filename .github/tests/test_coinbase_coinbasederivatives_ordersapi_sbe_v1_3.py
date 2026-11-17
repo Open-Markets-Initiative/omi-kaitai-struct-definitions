@@ -26,6 +26,20 @@ class CoinbaseCoinbasederivativesOrdersapiSbeV13Tests(unittest.TestCase):
             parsed = CoinbaseCoinbasederivativesOrdersapiSbeV13.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_instrumentinfomessage(self):
+        for payload in payloads.of("omi-data-packets/Coinbase/CoinbaseDerivatives.OrdersApi.Sbe.v1.3/InstrumentInfoMessage.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 0):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CoinbaseCoinbasederivativesOrdersapiSbeV13.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_instrumentinforequestmessage(self):
+        for payload in payloads.of("omi-data-packets/Coinbase/CoinbaseDerivatives.OrdersApi.Sbe.v1.3/InstrumentInfoRequestMessage.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 0):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CoinbaseCoinbasederivativesOrdersapiSbeV13.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_lastexecidmessage(self):
         for payload in payloads.of("omi-data-packets/Coinbase/CoinbaseDerivatives.OrdersApi.Sbe.v1.3/LastExecIdMessage.pcap"):
             if payloads.partial(payload, 2, 2, "little", 0):

@@ -559,9 +559,9 @@ types:
       - id: dark_passive_order_indicator
         type: b1
         doc: 'DarkPassiveOrderIndicator'
-      - id: unused_dark_execution_instructionset_7
+      - id: unused_1
         type: b1
-        doc: 'Unused DarkExecutionInstruction_set 7'
+        doc: '1 unused bit'
   execution_instruction:
     meta:
       bit-endian: le
@@ -715,9 +715,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_trading_session_validityset_0
+      - id: unused_1
         type: b1
-        doc: 'Unused TradingSessionValidity_set 0'
+        doc: '1 unused bit'
       - id: session_1
         type: b1
         doc: 'Session1'

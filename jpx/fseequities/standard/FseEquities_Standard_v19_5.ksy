@@ -236,7 +236,7 @@ types:
       - id: status_information
         type: status_information
         doc: 'Status Information'
-      - id: time_c_12
+      - id: precise_time
         type: hhmmssuuuuuu_ascii_time
         doc: 'Indicates the changed time of Status Change Information'
       - id: reserved_4
@@ -288,7 +288,7 @@ types:
       - id: price
         type: price
         doc: 'Price'
-      - id: time_c_6
+      - id: time
         type: hhmmss_ascii_time
         doc: 'Indicates the time at which the current price, Special Quote price or Sequential Trade Quote price of the relevant issue, which is subject to computation of Direct and Final yield, occurred or changed'
       - id: change_flag
@@ -301,7 +301,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'A numerical value from 0 to 4 indicating the number of decimal places that are set to zero'
-      - id: price_c_14
+      - id: price_value
         type: str
         size: 14
         encoding: ASCII
@@ -320,7 +320,7 @@ types:
       - id: price
         type: price
         doc: 'Price'
-      - id: time_c_6
+      - id: time
         type: hhmmss_ascii_time
         doc: 'Indicates the time at which the current price, Special Quote price or Sequential Trade Quote price of the relevant issue, which is subject to computation of Direct and Final yield, occurred or changed'
       - id: change_flag
@@ -336,7 +336,7 @@ types:
       - id: price
         type: price
         doc: 'Price'
-      - id: time_c_6
+      - id: time
         type: hhmmss_ascii_time
         doc: 'Indicates the time at which the current price, Special Quote price or Sequential Trade Quote price of the relevant issue, which is subject to computation of Direct and Final yield, occurred or changed'
       - id: change_flag
@@ -348,7 +348,7 @@ types:
       - id: price
         type: price
         doc: 'Price'
-      - id: time_c_12
+      - id: precise_time
         type: hhmmssuuuuuu_ascii_time
         doc: 'Indicates the changed time of Status Change Information'
       - id: current_change_flag
@@ -392,7 +392,7 @@ types:
       - id: price
         type: price
         doc: 'Price'
-      - id: time_c_12
+      - id: precise_time
         type: hhmmssuuuuuu_ascii_time
         doc: 'Indicates the changed time of Status Change Information'
       - id: quote_flag
@@ -427,7 +427,7 @@ types:
       - id: price
         type: price
         doc: 'Price'
-      - id: time_c_12
+      - id: precise_time
         type: hhmmssuuuuuu_ascii_time
         doc: 'Indicates the changed time of Status Change Information'
       - id: quote_flag
@@ -583,7 +583,7 @@ types:
         type: u1
         enum: change_flag
         doc: 'For issue status, status flag or short selling regulation flag, indicates whether this has changed or not'
-      - id: time_c_12
+      - id: precise_time
         type: hhmmssuuuuuu_ascii_time
         doc: 'Indicates the changed time of Status Change Information'
       - id: quote_quantity
@@ -595,7 +595,7 @@ types:
         type: u1
         enum: change_flag
         doc: 'For issue status, status flag or short selling regulation flag, indicates whether this has changed or not'
-      - id: time_c_12
+      - id: precise_time
         type: hhmmssuuuuuu_ascii_time
         doc: 'Indicates the changed time of Status Change Information'
       - id: quote_quantity
@@ -621,7 +621,7 @@ types:
         type: u1
         enum: change_flag
         doc: 'For issue status, status flag or short selling regulation flag, indicates whether this has changed or not'
-      - id: time_c_12
+      - id: precise_time
         type: hhmmssuuuuuu_ascii_time
         doc: 'Indicates the changed time of Status Change Information'
       - id: quote_quantity
@@ -633,7 +633,7 @@ types:
         type: u1
         enum: change_flag
         doc: 'For issue status, status flag or short selling regulation flag, indicates whether this has changed or not'
-      - id: time_c_12
+      - id: precise_time
         type: hhmmssuuuuuu_ascii_time
         doc: 'Indicates the changed time of Status Change Information'
       - id: quote_quantity
@@ -662,13 +662,13 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'The unit of the numerical value to be set in the integral part'
-      - id: trading_volume_c_14
+      - id: trading_volume_value
         type: str
         size: 14
         encoding: ASCII
         pad-right: 0x20
         doc: 'This item shows the cumulative Trading Volume for the morning and afternoon sessions'
-      - id: time_c_6
+      - id: time
         type: hhmmss_ascii_time
         doc: 'Indicates the time at which the current price, Special Quote price or Sequential Trade Quote price of the relevant issue, which is subject to computation of Direct and Final yield, occurred or changed'
       - id: second_reserved_1
@@ -706,7 +706,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'This item shows the cumulative turnover for the morning and afternoon sessions'
-      - id: time_c_6
+      - id: time
         type: hhmmss_ascii_time
         doc: 'Indicates the time at which the current price, Special Quote price or Sequential Trade Quote price of the relevant issue, which is subject to computation of Direct and Final yield, occurred or changed'
       - id: second_reserved_1
@@ -741,7 +741,7 @@ types:
         type: u1
         enum: lot_size_unit_flag
         doc: 'Indicates the lot size unit flag'
-      - id: all_day_vwap_c_14
+      - id: all_day_vwap_value
         type: str
         size: 14
         encoding: ASCII
@@ -751,7 +751,7 @@ types:
         type: u1
         enum: sign
         doc: 'Indicates sign'
-      - id: time_c_6
+      - id: time
         type: hhmmss_ascii_time
         doc: 'Indicates the time at which the current price, Special Quote price or Sequential Trade Quote price of the relevant issue, which is subject to computation of Direct and Final yield, occurred or changed'
       - id: second_reserved_1
@@ -772,7 +772,7 @@ types:
         type: u1
         enum: lot_size_unit_flag
         doc: 'Indicates the lot size unit flag'
-      - id: current_session_vwap_c_14
+      - id: current_session_vwap_value
         type: str
         size: 14
         encoding: ASCII
@@ -782,7 +782,7 @@ types:
         type: u1
         enum: sign
         doc: 'Indicates sign'
-      - id: time_c_6
+      - id: time
         type: hhmmss_ascii_time
         doc: 'Indicates the time at which the current price, Special Quote price or Sequential Trade Quote price of the relevant issue, which is subject to computation of Direct and Final yield, occurred or changed'
       - id: second_reserved_1
@@ -808,7 +808,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'A numerical value from 0 to 4 indicating the number of decimal places that are set to zero'
-      - id: parity_estimated_price_c_14
+      - id: parity_estimated_price_value
         type: str
         size: 14
         encoding: ASCII
@@ -818,7 +818,7 @@ types:
         type: u1
         enum: sign
         doc: 'Indicates sign'
-      - id: time_c_6
+      - id: time
         type: hhmmss_ascii_time
         doc: 'Indicates the time at which the current price, Special Quote price or Sequential Trade Quote price of the relevant issue, which is subject to computation of Direct and Final yield, occurred or changed'
       - id: reserved_1
@@ -841,7 +841,7 @@ types:
       - id: final_yield
         type: final_yield
         doc: 'Final Yield'
-      - id: time_c_6
+      - id: time
         type: hhmmss_ascii_time
         doc: 'Indicates the time at which the current price, Special Quote price or Sequential Trade Quote price of the relevant issue, which is subject to computation of Direct and Final yield, occurred or changed'
       - id: reserved_1
@@ -852,7 +852,7 @@ types:
         doc: 'This item is reserved'
   direct_yield:
     seq:
-      - id: direct_yield_c_8
+      - id: direct_yield_value
         type: str
         size: 8
         encoding: ASCII
@@ -864,7 +864,7 @@ types:
         doc: 'Indicates sign'
   final_yield:
     seq:
-      - id: final_yield_c_8
+      - id: final_yield_value
         type: str
         size: 8
         encoding: ASCII
@@ -890,7 +890,7 @@ types:
         type: u1
         enum: start_end_flag
         doc: 'Indicates the flag for identifying the distinction between Start and End'
-      - id: time_c_6
+      - id: time
         type: hhmmss_ascii_time
         doc: 'Indicates the time at which the current price, Special Quote price or Sequential Trade Quote price of the relevant issue, which is subject to computation of Direct and Final yield, occurred or changed'
   issue_realtime_medium_classification_value:

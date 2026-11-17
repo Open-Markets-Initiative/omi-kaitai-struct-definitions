@@ -12,6 +12,11 @@ from coinbase_coinbasederivatives_marketdataapi_sbe_v1_2 import CoinbaseCoinbase
 
 class CoinbaseCoinbasederivativesMarketdataapiSbeV12Tests(unittest.TestCase):
 
+    def test_endofsnapshotmessage(self):
+        for payload in payloads.of("omi-data-packets/Coinbase/CoinbaseDerivatives.MarketDataApi.Sbe.v1.2/EndOfSnapshotMessage.pcap"):
+            parsed = CoinbaseCoinbasederivativesMarketdataapiSbeV12.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_orderdeletemessage(self):
         for payload in payloads.of("omi-data-packets/Coinbase/CoinbaseDerivatives.MarketDataApi.Sbe.v1.2/OrderDeleteMessage.pcap"):
             parsed = CoinbaseCoinbasederivativesMarketdataapiSbeV12.from_bytes(payload)

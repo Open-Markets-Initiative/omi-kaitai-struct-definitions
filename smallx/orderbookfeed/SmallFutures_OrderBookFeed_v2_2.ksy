@@ -602,12 +602,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_snapshot_message_instructions_0
-        type: b1
-        doc: 'Unused SnapshotMessageInstructions 0'
-      - id: unused_snapshot_message_instructions_1
-        type: b1
-        doc: 'Unused SnapshotMessageInstructions 1'
+      - id: unused_2
+        type: b2
+        doc: '2 unused bits'
       - id: instrument_begin
         type: b1
         doc: 'Set in the first message of an instrument within a single transaction or snapshot replay'
@@ -620,9 +617,9 @@ types:
       - id: book_end
         type: b1
         doc: 'Set in the last Order Book Incremental or Order Book Snapshot message of an instrument'
-      - id: unused_snapshot_message_instructions_6
+      - id: unused_1
         type: b1
-        doc: 'Unused SnapshotMessageInstructions 6'
+        doc: '1 unused bit'
       - id: snapshot_begin
         type: b1
         doc: 'Marks the first message of a single snapshot replay in a line'

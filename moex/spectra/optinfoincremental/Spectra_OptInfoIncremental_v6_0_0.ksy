@@ -90,8 +90,8 @@ types:
   incremental_packet_header_struct:
     seq:
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'TransactTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'TransactTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: exchange_trading_session_id_optional
         type: u4_nullable
         doc: 'ExchangeTradingSessionID. Nullable, No Value = 4294967295'
@@ -282,8 +282,8 @@ types:
         enum: security_trading_status
         doc: 'SecurityTradingStatus'
       - id: status_change_time
-        type: yyyymmddhhmmssmmm_timestamp
-        doc: 'TransactTime'
+        type: nanosecond_timestamp
+        doc: 'TransactTime. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.sbe_header.block_length - 38
         doc: 'Bytes the stated block holds beyond the 38 this version reads'
@@ -300,6 +300,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   u4_nullable:
     seq:
       - id: value
@@ -555,4 +562,17 @@ enums:
     8:
       id: 'group_instruments_and_fut_base_contract'
       doc: 'Group instruments and futures base contract'
+  section_id_optional:
+    0:
+      id: 'all_sections'
+      doc: 'All sections'
+    1:
+      id: 'stock_section'
+      doc: 'Stock section'
+    2:
+      id: 'commodity_section'
+      doc: 'Commodity section'
+    3:
+      id: 'money_section'
+      doc: 'Money section'
 

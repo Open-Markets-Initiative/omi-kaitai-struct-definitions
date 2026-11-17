@@ -159,7 +159,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'The total number of shares associated with the order being added to the book'
-      - id: stock_alpha_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
@@ -189,7 +189,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'The total number of shares associated with the order being added to the book'
-      - id: stock_alpha_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
@@ -209,12 +209,12 @@ types:
         doc: 'BX market participant identifier associated with the entered order'
   stock_directory_message:
     seq:
-      - id: stock_alphabetic_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Denotes the security symbol for the issue in the feed'
+        doc: 'The security symbol for which the order is being added'
       - id: market_category
         type: u1
         enum: market_category
@@ -235,12 +235,12 @@ types:
         doc: 'Indicates if NASDAQ or BX system limits order entry for issue'
   stock_trading_action_message:
     seq:
-      - id: stock_alphanumeric_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Stock symbol right padded with spaces'
+        doc: 'The security symbol for which the order is being added'
       - id: trading_state
         type: u1
         enum: trading_state
@@ -259,7 +259,7 @@ types:
         doc: 'Trading Action reason'
   reg_sho_restriction_message:
     seq:
-      - id: stock_alpha_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII

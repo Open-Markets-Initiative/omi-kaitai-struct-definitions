@@ -128,7 +128,7 @@ types:
       - id: quantity_long
         type: u4
         doc: 'Number of shares being added to the book (may be less than the number entered)'
-      - id: symbol_short
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -152,7 +152,7 @@ types:
       - id: quantity_short
         type: u2
         doc: 'Number of shares being added to the book (may be less than the number entered)'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -176,7 +176,7 @@ types:
       - id: quantity_long
         type: u4
         doc: 'Number of shares being added to the book (may be less than the number entered)'
-      - id: symbol_short
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -334,7 +334,7 @@ types:
       - id: shares_long
         type: u4
         doc: 'Number of shares associated with this order after this modify (may be less than the number of shares entered)'
-      - id: symbol_short
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -382,7 +382,7 @@ types:
       - id: shares_short
         type: u2
         doc: 'Number of shares associated with this order after this modify (may be less than the number of shares entered)'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -405,7 +405,7 @@ types:
       - id: shares_extended
         type: u8
         doc: 'Number of shares executed'
-      - id: symbol_short
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -499,7 +499,7 @@ types:
       - id: time_offset
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol_short
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -517,7 +517,7 @@ types:
       - id: time_offset
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol_short
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -539,7 +539,7 @@ types:
       - id: time_offset
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol_short
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -571,7 +571,7 @@ types:
       - id: time_offset
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol_short
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII

@@ -311,7 +311,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Denotes the security symbol for the issue in the Nasdaq execution system'
+        doc: 'Denotes the security symbol for the issue in Nasdaq execution system'
       - id: market_category
         type: u1
         enum: market_category
@@ -407,7 +407,7 @@ types:
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp. Nanoseconds since Midnight epoch'
-      - id: stock_alpha_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII

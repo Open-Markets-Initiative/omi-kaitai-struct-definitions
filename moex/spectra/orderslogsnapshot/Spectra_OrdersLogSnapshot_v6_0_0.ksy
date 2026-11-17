@@ -135,16 +135,16 @@ types:
       - id: block_extension
         size: _parent.sbe_header.block_length - 16
         doc: 'Bytes the stated block holds beyond the 16 this version reads'
-      - id: order_book_snapshot_message_no_m_d_entries_groups
-        type: order_book_snapshot_message_no_m_d_entries_groups
+      - id: order_book_snapshot_message_no_md_entries_groups
+        type: order_book_snapshot_message_no_md_entries_groups
         doc: 'NoMDEntries Block'
-  order_book_snapshot_message_no_m_d_entries_groups:
+  order_book_snapshot_message_no_md_entries_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'groupSize'
-      - id: order_book_snapshot_message_no_m_d_entries_group
-        type: order_book_snapshot_message_no_m_d_entries_group
+      - id: order_book_snapshot_message_no_md_entries_group
+        type: order_book_snapshot_message_no_md_entries_group
         repeat: expr
         repeat-expr: group_size.num_in_group_uint_8
         doc: 'NoMDEntries'
@@ -156,14 +156,14 @@ types:
       - id: num_in_group_uint_8
         type: u1
         doc: 'numInGroup'
-  order_book_snapshot_message_no_m_d_entries_group:
+  order_book_snapshot_message_no_md_entries_group:
     seq:
       - id: md_entry_id_optional
         type: s8_nullable
         doc: 'Order ID. Nullable, No Value = -9223372036854775808'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'TransactTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'TransactTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: md_entry_px_optional
         type: decimal_s8_5_nullable
         doc: 'MDEntryPx. Implied decimal with scale 1e-5. Nullable, No Value = 9223372036854775807'
@@ -199,33 +199,9 @@ types:
       - id: non_quote
         type: b1
         doc: 'NonQuote'
-      - id: unused_md_flags_set_3
-        type: b1
-        doc: 'Unused MDFlagsSet 3'
-      - id: unused_md_flags_set_4
-        type: b1
-        doc: 'Unused MDFlagsSet 4'
-      - id: unused_md_flags_set_5
-        type: b1
-        doc: 'Unused MDFlagsSet 5'
-      - id: unused_md_flags_set_6
-        type: b1
-        doc: 'Unused MDFlagsSet 6'
-      - id: unused_md_flags_set_7
-        type: b1
-        doc: 'Unused MDFlagsSet 7'
-      - id: unused_md_flags_set_8
-        type: b1
-        doc: 'Unused MDFlagsSet 8'
-      - id: unused_md_flags_set_9
-        type: b1
-        doc: 'Unused MDFlagsSet 9'
-      - id: unused_md_flags_set_10
-        type: b1
-        doc: 'Unused MDFlagsSet 10'
-      - id: unused_md_flags_set_11
-        type: b1
-        doc: 'Unused MDFlagsSet 11'
+      - id: unused_9
+        type: b9
+        doc: '9 unused bits'
       - id: end_of_transaction
         type: b1
         doc: 'EndOfTransaction'
@@ -235,18 +211,9 @@ types:
       - id: second_leg
         type: b1
         doc: 'SecondLeg'
-      - id: unused_md_flags_set_15
-        type: b1
-        doc: 'Unused MDFlagsSet 15'
-      - id: unused_md_flags_set_16
-        type: b1
-        doc: 'Unused MDFlagsSet 16'
-      - id: unused_md_flags_set_17
-        type: b1
-        doc: 'Unused MDFlagsSet 17'
-      - id: unused_md_flags_set_18
-        type: b1
-        doc: 'Unused MDFlagsSet 18'
+      - id: unused_4
+        type: b4
+        doc: '4 unused bits'
       - id: fok
         type: b1
         doc: 'FOK'
@@ -259,129 +226,69 @@ types:
       - id: mass_cancel
         type: b1
         doc: 'MassCancel'
-      - id: unused_md_flags_set_23
-        type: b1
-        doc: 'Unused MDFlagsSet 23'
-      - id: unused_md_flags_set_24
-        type: b1
-        doc: 'Unused MDFlagsSet 24'
-      - id: unused_md_flags_set_25
-        type: b1
-        doc: 'Unused MDFlagsSet 25'
+      - id: unused_3
+        type: b3
+        doc: '3 unused bits'
       - id: negotiated
         type: b1
         doc: 'Negotiated'
       - id: multi_leg
         type: b1
         doc: 'MultiLeg'
-      - id: unused_md_flags_set_28
+      - id: unused_1
         type: b1
-        doc: 'Unused MDFlagsSet 28'
+        doc: '1 unused bit'
       - id: cross_trade
         type: b1
         doc: 'CrossTrade'
-      - id: unused_md_flags_set_30
+      - id: second_unused_1
         type: b1
-        doc: 'Unused MDFlagsSet 30'
+        doc: '1 unused bit'
       - id: negotiated_match_by_ref
         type: b1
         doc: 'NegotiatedMatchByRef'
       - id: cod
         type: b1
         doc: 'COD'
-      - id: unused_md_flags_set_33
-        type: b1
-        doc: 'Unused MDFlagsSet 33'
-      - id: unused_md_flags_set_34
-        type: b1
-        doc: 'Unused MDFlagsSet 34'
-      - id: unused_md_flags_set_35
-        type: b1
-        doc: 'Unused MDFlagsSet 35'
-      - id: unused_md_flags_set_36
-        type: b1
-        doc: 'Unused MDFlagsSet 36'
-      - id: unused_md_flags_set_37
-        type: b1
-        doc: 'Unused MDFlagsSet 37'
-      - id: unused_md_flags_set_38
-        type: b1
-        doc: 'Unused MDFlagsSet 38'
-      - id: unused_md_flags_set_39
-        type: b1
-        doc: 'Unused MDFlagsSet 39'
-      - id: unused_md_flags_set_40
-        type: b1
-        doc: 'Unused MDFlagsSet 40'
+      - id: unused_8
+        type: b8
+        doc: '8 unused bits'
       - id: active_side
         type: b1
         doc: 'ActiveSide'
       - id: passive_side
         type: b1
         doc: 'PassiveSide'
-      - id: unused_md_flags_set_43
-        type: b1
-        doc: 'Unused MDFlagsSet 43'
-      - id: unused_md_flags_set_44
-        type: b1
-        doc: 'Unused MDFlagsSet 44'
+      - id: unused_2
+        type: b2
+        doc: '2 unused bits'
       - id: synthetic
         type: b1
         doc: 'Synthetic'
       - id: rfs
         type: b1
         doc: 'RFS'
-      - id: unused_md_flags_set_47
-        type: b1
-        doc: 'Unused MDFlagsSet 47'
-      - id: unused_md_flags_set_48
-        type: b1
-        doc: 'Unused MDFlagsSet 48'
-      - id: unused_md_flags_set_49
-        type: b1
-        doc: 'Unused MDFlagsSet 49'
-      - id: unused_md_flags_set_50
-        type: b1
-        doc: 'Unused MDFlagsSet 50'
-      - id: unused_md_flags_set_51
-        type: b1
-        doc: 'Unused MDFlagsSet 51'
-      - id: unused_md_flags_set_52
-        type: b1
-        doc: 'Unused MDFlagsSet 52'
-      - id: unused_md_flags_set_53
-        type: b1
-        doc: 'Unused MDFlagsSet 53'
-      - id: unused_md_flags_set_54
-        type: b1
-        doc: 'Unused MDFlagsSet 54'
-      - id: unused_md_flags_set_55
-        type: b1
-        doc: 'Unused MDFlagsSet 55'
-      - id: unused_md_flags_set_56
-        type: b1
-        doc: 'Unused MDFlagsSet 56'
+      - id: unused_10
+        type: b10
+        doc: '10 unused bits'
       - id: synthetic_passive
         type: b1
         doc: 'SyntheticPassive'
-      - id: unused_md_flags_set_58
-        type: b1
-        doc: 'Unused MDFlagsSet 58'
-      - id: unused_md_flags_set_59
-        type: b1
-        doc: 'Unused MDFlagsSet 59'
+      - id: second_unused_2
+        type: b2
+        doc: '2 unused bits'
       - id: boc
         type: b1
         doc: 'BOC'
-      - id: unused_md_flags_set_61
+      - id: third_unused_1
         type: b1
-        doc: 'Unused MDFlagsSet 61'
+        doc: '1 unused bit'
       - id: during_discrete_auction
         type: b1
         doc: 'DuringDiscreteAuction'
-      - id: unused_md_flags_set_63
+      - id: fourth_unused_1
         type: b1
-        doc: 'Unused MDFlagsSet 63'
+        doc: '1 unused bit'
   md_flags_2:
     meta:
       bit-endian: le
@@ -412,6 +319,13 @@ types:
     instances:
       is_null:
         value: value == -9223372036854775808
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   decimal_s8_5:
     seq:
       - id: mantissa

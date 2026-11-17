@@ -247,9 +247,9 @@ types:
       - id: conditional_order
         type: b1
         doc: 'ConditionalOrder'
-      - id: unused_execution_instructionset_7
+      - id: unused_1
         type: b1
-        doc: 'Unused ExecutionInstruction_set 7'
+        doc: '1 unused bit'
   dark_execution_instruction:
     meta:
       bit-endian: le
@@ -399,9 +399,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_trading_session_validityset_0
+      - id: unused_1
         type: b1
-        doc: 'Unused TradingSessionValidity_set 0'
+        doc: '1 unused bit'
       - id: session_1
         type: b1
         doc: 'Session1'
@@ -1284,9 +1284,9 @@ types:
       - id: conditional_order
         type: b1
         doc: 'ConditionalOrder'
-      - id: unused_execution_instructionset_7
+      - id: unused_1
         type: b1
-        doc: 'Unused ExecutionInstruction_set 7'
+        doc: '1 unused bit'
   clearing_dataset_groups:
     seq:
       - id: group_size_encoding

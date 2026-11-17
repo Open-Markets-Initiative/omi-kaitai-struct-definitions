@@ -157,7 +157,7 @@ types:
       - id: trade_time
         type: millisecond_timestamp
         doc: 'Time the operation was carried out. Milliseconds since Unix epoch'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
       - id: price
@@ -211,7 +211,7 @@ types:
       - id: probable_allocation_price
         type: decimal_s8_8
         doc: 'Probable allocation price. Implied decimal with scale 1e-8'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
   continuous_auctions_beginning_message:
@@ -297,7 +297,7 @@ types:
       - id: number_of_operations
         type: s4
         doc: 'Number of operations'
-      - id: volume_int_648
+      - id: volume_long
         type: s8
         doc: 'Traded volume'
       - id: amount
@@ -334,7 +334,7 @@ types:
       - id: number
         type: s4
         doc: 'Virtual trade number'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
       - id: concertation
@@ -378,7 +378,7 @@ types:
       - id: number_of_orders
         type: s2
         doc: 'Level number of orders (Document label: Number of orders-1)'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
   best_offer_message:
@@ -386,7 +386,7 @@ types:
       - id: instrument_number
         type: s4
         doc: 'Always zero'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
       - id: price_rate

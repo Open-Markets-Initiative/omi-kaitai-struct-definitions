@@ -206,7 +206,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'ISIN code used to identify the financial instrument, as defined in ISO 6166'
-      - id: price_ascii_ch_20
+      - id: traded_price
         type: str
         size: 20
         encoding: ASCII
@@ -296,7 +296,7 @@ types:
       - id: source_seq_num
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
-      - id: price_binary_int_4
+      - id: price
         type: u4
         doc: 'Last Price of the trading day (To be calculated with the ScaleCode)'
       - id: highest_price

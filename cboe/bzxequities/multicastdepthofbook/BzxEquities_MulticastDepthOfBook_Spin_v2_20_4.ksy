@@ -191,7 +191,7 @@ types:
         type: u1
         enum: side_indicator
         doc: '"B" = Buy Order "S" = Sell Order'
-      - id: quantity_binary_4
+      - id: quantity_long
         type: u4
         doc: 'Number of shares/contracts being added to the book (may be less than the number entered)'
       - id: symbol_short
@@ -200,7 +200,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
-      - id: price_binary_long_price_8
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
       - id: add_flags
@@ -228,7 +228,7 @@ types:
         type: u1
         enum: side_indicator
         doc: '"B" = Buy Order "S" = Sell Order'
-      - id: quantity_binary_2
+      - id: quantity_short
         type: u2
         doc: 'Number of shares/contracts being added to the book (may be less than the number entered)'
       - id: symbol_short
@@ -237,7 +237,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
-      - id: price_binary_short_price_2
+      - id: price_short
         type: decimal_u2_2
         doc: 'The limit order price. Implied decimal with scale 1e-2'
       - id: add_flags
@@ -255,7 +255,7 @@ types:
         type: u1
         enum: side_indicator
         doc: '"B" = Buy Order "S" = Sell Order'
-      - id: quantity_binary_4
+      - id: quantity_long
         type: u4
         doc: 'Number of shares/contracts being added to the book (may be less than the number entered)'
       - id: symbol_long
@@ -264,7 +264,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
-      - id: price_binary_long_price_8
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
       - id: add_flags
@@ -307,7 +307,7 @@ types:
       - id: execution_id
         type: u8
         doc: 'BATS generated day-unique execution identifier of this execution. Execution Id is also referenced in the'
-      - id: price_binary_long_price_8
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
   reduce_size_long_message:
@@ -318,7 +318,7 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: canceled_quantity_binary_4
+      - id: canceled_quantity_long
         type: u4
         doc: 'Number of shares/contracts'
   reduce_size_short_message:
@@ -329,7 +329,7 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: canceled_quantity_binary_2
+      - id: canceled_quantity_short
         type: u2
         doc: 'Number of shares/contracts'
   modify_order_long_message:
@@ -340,10 +340,10 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: quantity_binary_4
+      - id: quantity_long
         type: u4
         doc: 'Number of shares/contracts being added to the book (may be less than the number entered)'
-      - id: price_binary_long_price_8
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
       - id: modify_flags
@@ -370,10 +370,10 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: quantity_binary_2
+      - id: quantity_short
         type: u2
         doc: 'Number of shares/contracts being added to the book (may be less than the number entered)'
-      - id: price_binary_short_price_2
+      - id: price_short
         type: decimal_u2_2
         doc: 'The limit order price. Implied decimal with scale 1e-2'
       - id: modify_flags
@@ -399,7 +399,7 @@ types:
         type: u1
         enum: side_indicator
         doc: '"B" = Buy Order "S" = Sell Order'
-      - id: quantity_binary_4
+      - id: quantity_long
         type: u4
         doc: 'Number of shares/contracts being added to the book (may be less than the number entered)'
       - id: symbol_short
@@ -408,7 +408,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
-      - id: price_binary_long_price_8
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
       - id: execution_id
@@ -426,7 +426,7 @@ types:
         type: u1
         enum: side_indicator
         doc: '"B" = Buy Order "S" = Sell Order'
-      - id: quantity_binary_2
+      - id: quantity_short
         type: u2
         doc: 'Number of shares/contracts being added to the book (may be less than the number entered)'
       - id: symbol_short
@@ -435,7 +435,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
-      - id: price_binary_short_price_2
+      - id: price_short
         type: decimal_u2_2
         doc: 'The limit order price. Implied decimal with scale 1e-2'
       - id: execution_id
@@ -453,7 +453,7 @@ types:
         type: u1
         enum: side_indicator
         doc: '"B" = Buy Order "S" = Sell Order'
-      - id: quantity_binary_4
+      - id: quantity_long
         type: u4
         doc: 'Number of shares/contracts being added to the book (may be less than the number entered)'
       - id: symbol_long
@@ -462,7 +462,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
-      - id: price_binary_long_price_8
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
       - id: execution_id
@@ -569,9 +569,9 @@ types:
         type: u1
         enum: auction_type
         doc: '"O" = Opening Auction "C" = Closing Auction "H" = Halt Auction "I" = IPO Auction'
-      - id: price_binary_8
-        type: u8
-        doc: 'Auction price'
+      - id: price_long
+        type: decimal_u8_4
+        doc: 'The limit order price. Implied decimal with scale 1e-4'
       - id: shares
         type: u4
         doc: 'Cumulative number of shares executed'

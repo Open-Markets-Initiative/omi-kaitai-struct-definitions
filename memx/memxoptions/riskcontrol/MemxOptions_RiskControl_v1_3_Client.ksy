@@ -165,12 +165,12 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_threshold_change_req_underlier
+      - id: underlier
         type: str
         size: 6
         encoding: ASCII
         doc: 'Underlier'
-      - id: efid_active_risk_threshold_change_req_efid
+      - id: efid
         type: str
         size: 4
         encoding: ASCII

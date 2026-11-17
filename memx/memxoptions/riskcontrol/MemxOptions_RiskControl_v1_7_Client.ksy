@@ -165,15 +165,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 20 this version reads'
   active_risk_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_active_risk_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_active_risk_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: threshold_quantity
@@ -184,17 +184,17 @@ types:
         doc: 'Bytes the stated block holds beyond the 34 this version reads'
   active_risk_acknowledgement_request_message:
     seq:
-      - id: cl_ord_id_active_risk_acknowledgement_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_acknowledgement_request_underlier
+      - id: underlier
         type: str
         size: 6
         encoding: ASCII
         doc: 'Underlier'
-      - id: efid_active_risk_acknowledgement_request_efid
+      - id: efid
         type: str
         size: 4
         encoding: ASCII
@@ -207,15 +207,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 34 this version reads'
   cp_volume_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_volume_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_volume_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_volume_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -232,15 +232,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 44 this version reads'
   cp_executed_notional_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_executed_notional_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_executed_notional_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_executed_notional_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -257,15 +257,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 44 this version reads'
   cp_total_executions_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_total_executions_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_total_executions_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_total_executions_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -282,15 +282,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_percent_outstanding_contracts_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_percent_outstanding_contracts_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_percent_outstanding_contracts_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_percent_outstanding_contracts_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: percent
@@ -304,15 +304,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 38 this version reads'
   cp_breach_count_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_breach_count_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_breach_count_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_breach_count_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -329,15 +329,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 40 this version reads'
   manual_cp_breach_trigger_request_message:
     seq:
-      - id: cl_ord_id_manual_cp_breach_trigger_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_manual_cp_breach_trigger_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_manual_cp_breach_trigger_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -351,7 +351,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 33 this version reads'
   cp_clear_breach_request_message:
     seq:
-      - id: cl_ord_id_cp_clear_breach_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
@@ -364,15 +364,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 28 this version reads'
   single_order_allow_iso_orders_change_request_message:
     seq:
-      - id: cl_ord_id_single_order_allow_iso_orders_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_allow_iso_orders_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_single_order_allow_iso_orders_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -387,15 +387,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 33 this version reads'
   single_order_allow_orders_in_crossed_market_change_request_message:
     seq:
-      - id: cl_ord_id_single_order_allow_orders_in_crossed_market_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_allow_orders_in_crossed_market_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_single_order_allow_orders_in_crossed_market_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -410,15 +410,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 33 this version reads'
   single_order_max_notional_change_request_message:
     seq:
-      - id: cl_ord_id_single_order_max_notional_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_max_notional_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_single_order_max_notional_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -432,15 +432,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 40 this version reads'
   single_order_max_contracts_change_request_message:
     seq:
-      - id: cl_ord_id_single_order_max_contracts_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_max_contracts_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_single_order_max_contracts_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -454,15 +454,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 36 this version reads'
   single_order_allow_market_orders_change_request_message:
     seq:
-      - id: cl_ord_id_single_order_allow_market_orders_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_allow_market_orders_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_single_order_allow_market_orders_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -477,17 +477,17 @@ types:
         doc: 'Bytes the stated block holds beyond the 33 this version reads'
   single_order_restricted_underlier_change_request_message:
     seq:
-      - id: cl_ord_id_single_order_restricted_underlier_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_restricted_underlier_change_request_underlier
+      - id: underlier
         type: str
         size: 6
         encoding: ASCII
         doc: 'Underlier'
-      - id: efid_single_order_restricted_underlier_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -502,15 +502,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 33 this version reads'
   cp_gross_notional_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_gross_notional_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_gross_notional_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_gross_notional_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -524,15 +524,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_market_order_gross_notional_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_market_order_gross_notional_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_market_order_gross_notional_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_market_order_gross_notional_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -546,15 +546,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_net_notional_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_net_notional_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_net_notional_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_net_notional_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -568,15 +568,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_market_order_net_notional_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_market_order_net_notional_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_market_order_net_notional_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_market_order_net_notional_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -590,15 +590,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_duplicate_order_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_duplicate_order_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_duplicate_order_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_duplicate_order_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -618,15 +618,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 41 this version reads'
   cp_order_rate_threshold_change_request_message:
     seq:
-      - id: cl_ord_id_cp_order_rate_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_order_rate_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_order_rate_threshold_change_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -643,7 +643,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_clear_all_breaches_request_message:
     seq:
-      - id: cl_ord_id_cp_clear_all_breaches_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
@@ -653,15 +653,15 @@ types:
         doc: 'Bytes the stated block holds beyond the 20 this version reads'
   cp_clear_all_breaches_by_efid_or_underlier_request_message:
     seq:
-      - id: cl_ord_id_cp_clear_all_breaches_by_efid_or_underlier_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_clear_all_breaches_by_efid_or_underlier_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efid_cp_clear_all_breaches_by_efid_or_underlier_request_efid_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: block_extension
@@ -669,17 +669,17 @@ types:
         doc: 'Bytes the stated block holds beyond the 30 this version reads'
   active_risk_acknowledge_all_request_message:
     seq:
-      - id: cl_ord_id_active_risk_acknowledge_all_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_acknowledge_all_request_underlier
+      - id: underlier
         type: str
         size: 6
         encoding: ASCII
         doc: 'Underlier'
-      - id: efid_active_risk_acknowledge_all_request_efid
+      - id: efid
         type: str
         size: 4
         encoding: ASCII

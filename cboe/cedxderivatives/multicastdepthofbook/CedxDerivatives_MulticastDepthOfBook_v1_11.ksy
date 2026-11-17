@@ -260,8 +260,8 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: contracts_short
-        type: u2
+      - id: contracts_long
+        type: u4
         doc: 'Number of contracts associated with this order after this modify'
       - id: price
         type: decimal_u8_4
@@ -300,8 +300,8 @@ types:
         type: u1
         enum: side_indicator
         doc: 'Order Side'
-      - id: contracts_short
-        type: u2
+      - id: contracts_long
+        type: u4
         doc: 'Number of contracts associated with this order after this modify'
       - id: symbol_long
         type: str
@@ -375,7 +375,7 @@ types:
       - id: time_offset
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: contracts_long
+      - id: contracts_extended
         type: u8
         doc: 'Number of contracts executed'
       - id: symbol_long
@@ -542,8 +542,8 @@ types:
       - id: price
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
-      - id: contracts_short
-        type: u2
+      - id: contracts_long
+        type: u4
         doc: 'Number of contracts associated with this order after this modify'
   opening_auction_update_message:
     seq:
@@ -612,8 +612,8 @@ types:
       - id: price
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
-      - id: contracts_short
-        type: u2
+      - id: contracts_long
+        type: u4
         doc: 'Number of contracts associated with this order after this modify'
       - id: customer_indicator
         type: u1
@@ -650,8 +650,8 @@ types:
       - id: price
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
-      - id: contracts_short
-        type: u2
+      - id: contracts_long
+        type: u4
         doc: 'Number of contracts associated with this order after this modify'
       - id: execution_flags
         type: execution_flags

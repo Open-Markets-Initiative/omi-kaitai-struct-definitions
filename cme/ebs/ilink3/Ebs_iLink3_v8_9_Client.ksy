@@ -1342,9 +1342,9 @@ types:
       - id: order_qty
         type: u4
         doc: 'Number of shares or contracts ordered'
-      - id: side_side
+      - id: quote_side
         type: u1
-        enum: side_side
+        enum: quote_side
         doc: 'Quote side'
       - id: quote_entry_id
         type: u4
@@ -2118,7 +2118,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'True, Yes'
-  side_side:
+  quote_side:
     1:
       id: 'buy'
       doc: 'Buy'

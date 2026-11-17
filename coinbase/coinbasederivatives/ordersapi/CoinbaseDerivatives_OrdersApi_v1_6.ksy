@@ -150,7 +150,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 4 this version reads'
   logout_message:
     seq:
-      - id: reason
+      - id: logout_reason
         type: str
         size: 64
         encoding: ASCII
@@ -160,7 +160,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 64 this version reads'
   logged_out_message:
     seq:
-      - id: reason
+      - id: logout_reason
         type: str
         size: 64
         encoding: ASCII
@@ -882,7 +882,7 @@ types:
         type: s1
         enum: resend_reject_reason
         doc: 'rejectReason'
-      - id: details_string_55
+      - id: event_resend_reject_details
         type: str
         size: 55
         encoding: ASCII

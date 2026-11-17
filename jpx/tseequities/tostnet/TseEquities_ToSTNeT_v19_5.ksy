@@ -231,7 +231,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Indicates the state of trading halt for the issue on the ToSTNeT'
-      - id: time_c_6
+      - id: time
         type: hhmm_ascii_time
         doc: 'Indicates time'
   price:
@@ -246,7 +246,7 @@ types:
         type: u1
         enum: lot_size_unit_flag
         doc: 'Indicates that this is the lot size unit flag'
-      - id: price_c_14
+      - id: price_value
         type: str
         size: 14
         encoding: ASCII
@@ -256,7 +256,7 @@ types:
         type: u1
         enum: sign
         doc: 'Indicates Sign of Price'
-      - id: time_c_12
+      - id: precise_time
         type: hhmmssmm_ascii_time
         doc: 'Indicates the time at which the trade was established'
   trading_volume:
@@ -265,7 +265,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the trading volume/turnover unit flag'
-      - id: trading_volume_c_14
+      - id: trading_volume_value
         type: str
         size: 14
         encoding: ASCII
@@ -277,7 +277,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the trading volume/turnover unit flag'
-      - id: turnover_c_14
+      - id: turnover_value
         type: str
         size: 14
         encoding: ASCII
@@ -306,7 +306,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Indicates the state of trading halt for the issue on the ToSTNeT'
-      - id: time_c_6
+      - id: time
         type: hhmm_ascii_time
         doc: 'Indicates time'
   control_message:
@@ -325,7 +325,7 @@ types:
         type: u1
         enum: start_end_flag
         doc: 'Indicates the flag for identifying the distinction between start and end'
-      - id: time_c_6
+      - id: time
         type: hhmm_ascii_time
         doc: 'Indicates time'
   issue_realtime_medium_classification_value:

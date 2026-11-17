@@ -175,7 +175,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Title'
-      - id: text_ascii_str_1000
+      - id: mail_text
         type: str
         size: 1000
         encoding: ASCII
@@ -315,8 +315,9 @@ types:
         type: u2
         enum: stock_exchange_code
         doc: 'Indicates the Market Place'
-      - id: type_of_instrument_binary_int_2
+      - id: type_of_instrument
         type: u2
+        enum: type_of_instrument
         doc: 'Type of instrument'
       - id: event_date
         type: yyyymmdd_ascii_date
@@ -693,7 +694,7 @@ types:
       - id: source_seq_num
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
-      - id: date_binary_int_4
+      - id: date
         type: yyyymmdd_date
         doc: 'Stock Exchange date (YYYYMMDD)'
       - id: multiplier
@@ -1147,7 +1148,7 @@ types:
       - id: source_time_micro_secs
         type: u2
         doc: 'Number of micro seconds'
-      - id: text_ascii_ch_100
+      - id: text
         type: str
         size: 100
         encoding: ASCII
@@ -1255,7 +1256,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Treasury Bond Future short name'
-      - id: date_ascii_str_8
+      - id: start_date
         type: yyyymmdd_ascii_date
         doc: 'Start date'
       - id: underlying_isin_code
@@ -1335,7 +1336,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Treasury Bond Future ISIN Code'
-      - id: type_of_instrument_ascii_str_4
+      - id: kid_type_of_instrument
         type: str
         size: 4
         encoding: ASCII
@@ -1589,6 +1590,124 @@ enums:
     989:
       id: 'bond_spot_ats'
       doc: 'Bond Spot Ats'
+  type_of_instrument:
+    0:
+      id: 'index'
+      doc: 'Index'
+    100:
+      id: 'equity_ordinary_shares'
+      doc: 'Equity Ordinary Shares'
+    101:
+      id: 'equity_preferred_shares'
+      doc: 'Equity Preferred Shares'
+    102:
+      id: 'equity_preference_shares'
+      doc: 'Equity Preference Shares'
+    103:
+      id: 'equity_convertible_shares'
+      doc: 'Equity Convertible Shares'
+    104:
+      id: 'equity_depositary_receipts'
+      doc: 'Equity Depositary Receipts'
+    105:
+      id: 'equity_unit_trust_units'
+      doc: 'Equity Unit Trust Units'
+    106:
+      id: 'equity_investment_trust_shares'
+      doc: 'Equity Investment Trust Shares'
+    107:
+      id: 'equity_national_fund_certificates'
+      doc: 'Equity National Fund Certificates'
+    108:
+      id: 'equity_linked_allotment_rights'
+      doc: 'Equity Linked Allotment Rights'
+    109:
+      id: 'equity_linked_subscription_rights'
+      doc: 'Equity Linked Subscription Rights'
+    110:
+      id: 'equity_linked_issue_rights'
+      doc: 'Equity Linked Issue Rights'
+    111:
+      id: 'structured_product_cash_certificates'
+      doc: 'Structured Product Cash Certificates'
+    112:
+      id: 'equity_linked_subscription_warrants'
+      doc: 'Equity Linked Subscription Warrants'
+    200:
+      id: 'bond_bonds'
+      doc: 'Bond Bonds'
+    201:
+      id: 'bond_treasury_bonds'
+      doc: 'Bond Treasury Bonds'
+    202:
+      id: 'bond_treasury_notes'
+      doc: 'Bond Treasury Notes'
+    203:
+      id: 'bond_treasury_bills'
+      doc: 'Bond Treasury Bills'
+    204:
+      id: 'bond_municipal_bond'
+      doc: 'Bond Municipal Bond'
+    205:
+      id: 'bond_corporate_bonds'
+      doc: 'Bond Corporate Bonds'
+    206:
+      id: 'bond_commercial_papers'
+      doc: 'Bond Commercial Papers'
+    207:
+      id: 'bond_convertible_bonds'
+      doc: 'Bond Convertible Bonds'
+    208:
+      id: 'bond_mortgage_backed_bonds'
+      doc: 'Bond Mortgage Backed Bonds'
+    209:
+      id: 'bond_public_mortgage_bonds'
+      doc: 'Bond Public Mortgage Bonds'
+    210:
+      id: 'structured_product_cash_structured_bonds'
+      doc: 'Structured Product Cash Structured Bonds'
+    300:
+      id: 'tracker_etf'
+      doc: 'Tracker Etf'
+    301:
+      id: 'tracker_etn'
+      doc: 'Tracker Etn'
+    302:
+      id: 'tracker_etc'
+      doc: 'Tracker Etc'
+    303:
+      id: 'tracker_etv'
+      doc: 'Tracker Etv'
+    400:
+      id: 'structured_product_warrants'
+      doc: 'Structured Product Warrants'
+    401:
+      id: 'structured_product_warrants_with_knock_out'
+      doc: 'Structured Product Warrants With Knock Out'
+    402:
+      id: 'structured_product_certificates_with_knock_out'
+      doc: 'Structured Product Certificates With Knock Out'
+    403:
+      id: 'structured_product_leveraged_structured_certificates'
+      doc: 'Structured Product Leveraged Structured Certificates'
+    404:
+      id: 'structured_product_certificates'
+      doc: 'Structured Product Certificates'
+    410:
+      id: 'structured_product_structured_bonds'
+      doc: 'Structured Product Structured Bonds'
+    500:
+      id: 'futures_futures'
+      doc: 'Futures Futures'
+    600:
+      id: 'options_vanilla_options'
+      doc: 'Options Vanilla Options'
+    601:
+      id: 'options_binary_options'
+      doc: 'Options Binary Options'
+    700:
+      id: 'participation_unit_index_participation_units'
+      doc: 'Participation Unit Index Participation Units'
   instrument_category:
     0x41:
       id: 'stock'

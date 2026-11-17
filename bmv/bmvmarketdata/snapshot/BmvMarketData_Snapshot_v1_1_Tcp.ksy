@@ -255,7 +255,7 @@ types:
       - id: trade_time
         type: millisecond_timestamp
         doc: 'Time the operation was carried out. Milliseconds since Unix epoch'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
       - id: price
@@ -281,13 +281,13 @@ types:
       - id: amount
         type: decimal_s8_8
         doc: 'Amount. Implied decimal with scale 1e-8'
-      - id: buy_alpha_5
+      - id: buy_broker
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
         doc: 'Buyers’ brokerage house short key'
-      - id: sell_alpha_5
+      - id: sell_broker
         type: str
         size: 5
         encoding: ASCII
@@ -309,7 +309,7 @@ types:
       - id: probable_allocation_price
         type: decimal_s8_8
         doc: 'Probable allocation price. Implied decimal with scale 1e-8'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
   continuous_auctions_beginning_message:
@@ -421,7 +421,7 @@ types:
       - id: number_of_operations
         type: s4
         doc: 'Number of operations'
-      - id: volume_int_648
+      - id: volume_long
         type: s8
         doc: 'Traded volume'
       - id: amount
@@ -458,20 +458,20 @@ types:
       - id: number
         type: s4
         doc: 'Virtual trade number'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
       - id: concertation
         type: u1
         enum: concertation
         doc: 'See the table of Concertation Type Catalog on the Connections and Appendix document'
-      - id: buy_alpha_5
+      - id: buy_broker
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
         doc: 'Buyers’ brokerage house short key'
-      - id: sell_alpha_5
+      - id: sell_broker
         type: str
         size: 5
         encoding: ASCII
@@ -492,7 +492,7 @@ types:
         type: u1
         enum: direction
         doc: 'C - Buy V - Sell'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
       - id: price
@@ -515,7 +515,7 @@ types:
       - id: number
         type: s4
         doc: 'Virtual trade number'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
       - id: trade_number
@@ -556,7 +556,7 @@ types:
         type: u1
         enum: direction
         doc: 'C - Buy V - Sell'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
       - id: price
@@ -587,7 +587,7 @@ types:
       - id: number_of_orders
         type: s2
         doc: 'Level number of orders (Document label: Number of orders-1)'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
   best_offer_message:
@@ -595,7 +595,7 @@ types:
       - id: instrument_number
         type: s4
         doc: 'Always zero'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
       - id: price_rate
@@ -617,7 +617,7 @@ types:
       - id: number
         type: s4
         doc: 'Virtual trade number'
-      - id: volume_int_648
+      - id: volume_long
         type: s8
         doc: 'Traded volume'
       - id: discount_rate_or_price
@@ -637,13 +637,13 @@ types:
         type: u1
         enum: settlement
         doc: 'See the table of Settlement Type Catalog on the Connections and Appendix document'
-      - id: buy_alpha_5
+      - id: buy_broker
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
         doc: 'Buyers’ brokerage house short key'
-      - id: sell_alpha_5
+      - id: sell_broker
         type: str
         size: 5
         encoding: ASCII
@@ -674,7 +674,7 @@ types:
       - id: trade_time
         type: millisecond_timestamp
         doc: 'Time the operation was carried out. Milliseconds since Unix epoch'
-      - id: volume_int_324
+      - id: volume
         type: s4
         doc: 'Traded stocks'
       - id: price_rate
@@ -735,10 +735,10 @@ types:
       - id: indices_hour
         type: millisecond_timestamp
         doc: 'Time Indices was calculated. Milliseconds since Unix epoch'
-      - id: volume_int_648
+      - id: volume_long
         type: s8
         doc: 'Traded volume'
-      - id: indices_price_44
+      - id: indices_value
         type: decimal_s4_4
         doc: 'Indices value. Implied decimal with scale 1e-4'
       - id: variation
@@ -822,10 +822,10 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Side (Document label: Side)'
-      - id: buy_precio_88
+      - id: dollar_buy
         type: decimal_s8_8
         doc: 'Buy. Implied decimal with scale 1e-8'
-      - id: sell_precio_88
+      - id: dollar_sell
         type: decimal_s8_8
         doc: 'Sell. Implied decimal with scale 1e-8'
       - id: last_deal
@@ -943,7 +943,7 @@ types:
       - id: decimal_amount
         type: s4
         doc: 'Decimal amount of Circulation field'
-      - id: indices_precio_88
+      - id: benchmark_value
         type: decimal_s8_8
         doc: 'Benchmark value at calculation date. Implied decimal with scale 1e-8'
       - id: indices_24
@@ -1488,7 +1488,7 @@ types:
       - id: probable_price_of_allocation
         type: decimal_s8_8
         doc: 'Probable price of allocation. Implied decimal with scale 1e-8'
-      - id: volume_int_648
+      - id: volume_long
         type: s8
         doc: 'Traded volume'
   relation_between_bmvbiva_instruments_message:
@@ -1515,7 +1515,7 @@ types:
       - id: time_of_the_trade
         type: millisecond_timestamp
         doc: 'Time when the transaction took place. Milliseconds since Unix epoch'
-      - id: volume_int_648
+      - id: volume_long
         type: s8
         doc: 'Traded volume'
       - id: price
@@ -1589,7 +1589,7 @@ types:
       - id: probable_price_of_allotment
         type: decimal_s8_8
         doc: 'Probable price of allotment. Implied decimal with scale 1e-8'
-      - id: volume_int_648
+      - id: volume_long
         type: s8
         doc: 'Traded volume'
       - id: best_selling_price
@@ -1617,7 +1617,7 @@ types:
       - id: consecutive_number
         type: s8
         doc: 'Consecutive Number Assigned to the order when it is recorded'
-      - id: volume_int_648
+      - id: volume_long
         type: s8
         doc: 'Traded volume'
       - id: consecutive_number_of_the_trade
@@ -1661,7 +1661,7 @@ types:
         type: u1
         enum: direction
         doc: 'C - Buy V - Sell'
-      - id: volume_int_648
+      - id: volume_long
         type: s8
         doc: 'Traded volume'
       - id: price
@@ -1697,7 +1697,7 @@ types:
         type: u1
         enum: origin
         doc: 'Origin of the message: M (BMV), I (BIVA), A (Both)'
-      - id: volume_int_648
+      - id: volume_long
         type: s8
         doc: 'Traded volume'
       - id: price_rate

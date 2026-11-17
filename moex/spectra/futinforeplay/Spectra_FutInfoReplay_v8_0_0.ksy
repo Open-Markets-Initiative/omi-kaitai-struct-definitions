@@ -284,6 +284,7 @@ types:
         doc: 'GroupMask'
       - id: section_id
         type: s4
+        enum: section_id
         doc: 'SectionID'
       - id: base_contract_id
         type: s4
@@ -294,8 +295,8 @@ types:
       - id: block_extension
         size: _parent.sbe_header.block_length - 326
         doc: 'Bytes the stated block holds beyond the 326 this version reads'
-      - id: security_definition_message_no_m_d_feed_types_groups
-        type: security_definition_message_no_m_d_feed_types_groups
+      - id: security_definition_message_no_md_feed_types_groups
+        type: security_definition_message_no_md_feed_types_groups
         doc: 'NoMDFeedTypes Block'
       - id: security_definition_message_no_underlyings_groups
         type: security_definition_message_no_underlyings_groups
@@ -319,60 +320,24 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_flags_set_0
-        type: b1
-        doc: 'Unused FlagsSet 0'
-      - id: unused_flags_set_1
-        type: b1
-        doc: 'Unused FlagsSet 1'
-      - id: unused_flags_set_2
-        type: b1
-        doc: 'Unused FlagsSet 2'
-      - id: unused_flags_set_3
-        type: b1
-        doc: 'Unused FlagsSet 3'
+      - id: unused_4
+        type: b4
+        doc: '4 unused bits'
       - id: anonymous_trading
         type: b1
         doc: 'AnonymousTrading'
       - id: private_trading
         type: b1
         doc: 'PrivateTrading'
-      - id: unused_flags_set_6
-        type: b1
-        doc: 'Unused FlagsSet 6'
-      - id: unused_flags_set_7
-        type: b1
-        doc: 'Unused FlagsSet 7'
+      - id: unused_2
+        type: b2
+        doc: '2 unused bits'
       - id: multi_leg
         type: b1
         doc: 'MultiLeg'
-      - id: unused_flags_set_9
-        type: b1
-        doc: 'Unused FlagsSet 9'
-      - id: unused_flags_set_10
-        type: b1
-        doc: 'Unused FlagsSet 10'
-      - id: unused_flags_set_11
-        type: b1
-        doc: 'Unused FlagsSet 11'
-      - id: unused_flags_set_12
-        type: b1
-        doc: 'Unused FlagsSet 12'
-      - id: unused_flags_set_13
-        type: b1
-        doc: 'Unused FlagsSet 13'
-      - id: unused_flags_set_14
-        type: b1
-        doc: 'Unused FlagsSet 14'
-      - id: unused_flags_set_15
-        type: b1
-        doc: 'Unused FlagsSet 15'
-      - id: unused_flags_set_16
-        type: b1
-        doc: 'Unused FlagsSet 16'
-      - id: unused_flags_set_17
-        type: b1
-        doc: 'Unused FlagsSet 17'
+      - id: unused_9
+        type: b9
+        doc: '9 unused bits'
       - id: collateral
         type: b1
         doc: 'Collateral'
@@ -401,13 +366,13 @@ types:
       - id: reserved_60
         type: b60
         doc: '60 reserved bits'
-  security_definition_message_no_m_d_feed_types_groups:
+  security_definition_message_no_md_feed_types_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'groupSize'
-      - id: security_definition_message_no_m_d_feed_types_group
-        type: security_definition_message_no_m_d_feed_types_group
+      - id: security_definition_message_no_md_feed_types_group
+        type: security_definition_message_no_md_feed_types_group
         repeat: expr
         repeat-expr: group_size.num_in_group_uint_8
         doc: 'NoMDFeedTypes'
@@ -419,7 +384,7 @@ types:
       - id: num_in_group_uint_8
         type: u1
         doc: 'numInGroup'
-  security_definition_message_no_m_d_feed_types_group:
+  security_definition_message_no_md_feed_types_group:
     seq:
       - id: md_feed_type
         type: str
@@ -678,8 +643,8 @@ types:
         enum: security_trading_status
         doc: 'SecurityTradingStatus'
       - id: status_change_time
-        type: yyyymmddhhmmssmmm_timestamp
-        doc: 'TransactTime'
+        type: nanosecond_timestamp
+        doc: 'TransactTime. Nanoseconds since Unix epoch'
       - id: block_extension
         size: _parent.sbe_header.block_length - 38
         doc: 'Bytes the stated block holds beyond the 38 this version reads'
@@ -918,6 +883,19 @@ enums:
     1:
       id: 'eligible'
       doc: 'Futures prices and options strikes are not limited'
+  section_id:
+    0:
+      id: 'all_sections'
+      doc: 'All sections'
+    1:
+      id: 'stock_section'
+      doc: 'Stock section'
+    2:
+      id: 'commodity_section'
+      doc: 'Commodity section'
+    3:
+      id: 'money_section'
+      doc: 'Money section'
   trad_ses_status:
     1:
       id: 'halted'
@@ -969,4 +947,17 @@ enums:
     8:
       id: 'group_instruments_and_fut_base_contract'
       doc: 'Group instruments and futures base contract'
+  section_id_optional:
+    0:
+      id: 'all_sections'
+      doc: 'All sections'
+    1:
+      id: 'stock_section'
+      doc: 'Stock section'
+    2:
+      id: 'commodity_section'
+      doc: 'Commodity section'
+    3:
+      id: 'money_section'
+      doc: 'Money section'
 

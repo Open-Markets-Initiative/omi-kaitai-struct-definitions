@@ -691,12 +691,9 @@ types:
       - id: reserved_bits
         type: b1
         doc: 'ReservedBits'
-      - id: unused_settl_price_type_5
-        type: b1
-        doc: 'Unused SettlPriceType 5'
-      - id: unused_settl_price_type_6
-        type: b1
-        doc: 'Unused SettlPriceType 6'
+      - id: unused_2
+        type: b2
+        doc: '2 unused bits'
       - id: null_value
         type: b1
         doc: 'NullValue'
@@ -1301,7 +1298,7 @@ types:
       - id: lot_type
         type: s1
         doc: 'This tag is required to interpret the value in tag 1231-MinLotSize'
-      - id: min_lot_size_decimal_qty
+      - id: min_lot_size
         type: decimal_s4_4_nullable
         doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
       - id: block_extension
@@ -2677,7 +2674,7 @@ types:
       - id: lot_type
         type: s1
         doc: 'This tag is required to interpret the value in tag 1231-MinLotSize'
-      - id: min_lot_size_u_int_64
+      - id: fx_min_lot_size
         type: u8
         doc: 'For FX instruments in the repeating group with Tag 1093-LotType=2, Tag 1231-MinLotSize provides a Regular Amount - a default order size on the Workstation screen. With tag 1093-LotType= 5, Tag 1231-MinLotSize value represents standard min order qty increment'
       - id: block_extension

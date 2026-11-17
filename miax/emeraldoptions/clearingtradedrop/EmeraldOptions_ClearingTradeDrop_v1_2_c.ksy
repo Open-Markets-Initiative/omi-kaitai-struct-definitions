@@ -100,7 +100,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'E.g.: CTD1.0. Firm are advised to send the CTD Version number indicated on the cover page this document'
-      - id: session_id
+      - id: trading_session_id
         type: u4
         doc: 'Emerald assigned ID for the current trading session. A change in Session ID will mean that restarting at message sequence number 1'
       - id: system_status
@@ -151,9 +151,9 @@ types:
         type: u1
         enum: correction_type
         doc: 'Gives more information to the user when this is a correction'
-      - id: event_id_binary_u_4
+      - id: event_id
         type: u4
-        doc: 'Event ID in case this trade is a result of a liquidity gathering event at Emerald. 0 otherwise. Please refer to the TransactionType field for the Event type associated with this Event ID'
+        doc: 'Unique ID assigned by Emerald for this event. Can be used to order events. Event Type S Event ID will equal zero'
       - id: strategy_id
         type: u4
         doc: 'Emerald- assigned unique Complex Strategy ID for the day. Populated only for complex trades, otherwise set to zero'
@@ -459,7 +459,7 @@ types:
         type: u1
         enum: event_type
         doc: 'Event Type'
-      - id: event_id_binary_4u_4
+      - id: event_id
         type: u4
         doc: 'Unique ID assigned by Emerald for this event. Can be used to order events. Event Type S Event ID will equal zero'
       - id: configured_counting_time_period

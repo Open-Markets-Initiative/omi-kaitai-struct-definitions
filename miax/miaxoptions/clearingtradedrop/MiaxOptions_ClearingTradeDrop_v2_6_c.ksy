@@ -100,7 +100,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'E.g.: CTD2.0. Firms are advised to send CTD Version number certified with MIAX (i.e. CTD2.0)'
-      - id: session_id
+      - id: trading_session_id
         type: u4
         doc: 'MIAX assigned ID for the current trading session. A change in Session ID will mean that restarting at message sequence number 1'
       - id: system_status
@@ -151,9 +151,9 @@ types:
         type: u1
         enum: correction_type
         doc: 'Gives more information to the user when this is a correction'
-      - id: event_id_binary_u_4
+      - id: event_id
         type: u4
-        doc: 'Event ID in case this trade is a result of a liquidity gathering event at MIAX. 0 otherwise. Please refer to the TransactionType field for the Event type associated with this Event ID'
+        doc: 'Unique ID assigned by MIAX for this event. Can be used to order events. Event Type S Event ID will equal zero'
       - id: strategy_id
         type: u4
         doc: 'MIAX assigned unique Complex Strategy ID for the day. Populated only for complex trades, otherwise set to zero'
@@ -459,7 +459,7 @@ types:
         type: u1
         enum: event_type
         doc: 'Event Type'
-      - id: event_id_binary_4u_4
+      - id: event_id
         type: u4
         doc: 'Unique ID assigned by MIAX for this event. Can be used to order events. Event Type S Event ID will equal zero'
       - id: configured_counting_time_period

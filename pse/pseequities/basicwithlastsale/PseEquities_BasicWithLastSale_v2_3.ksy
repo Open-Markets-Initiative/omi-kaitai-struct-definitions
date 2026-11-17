@@ -146,7 +146,7 @@ types:
       - id: tick_size_table_id
         type: u4
         doc: 'Indicates the Tick Size Table id'
-      - id: tick_size_integer_4
+      - id: price_tick_size
         type: u4
         doc: 'Price Tick Size'
       - id: price_start
@@ -160,7 +160,7 @@ types:
       - id: tick_size_table_id
         type: u4
         doc: 'Indicates the Tick Size Table id'
-      - id: tick_size_integer_8
+      - id: quantity_tick_size
         type: u8
         doc: 'Quantity Tick Size'
       - id: quantity_start

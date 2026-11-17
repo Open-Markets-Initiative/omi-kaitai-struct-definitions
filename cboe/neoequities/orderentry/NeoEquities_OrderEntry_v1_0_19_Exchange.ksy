@@ -694,7 +694,7 @@ types:
       - id: broker_id
         type: u2
         doc: 'Identifies the broker'
-      - id: symbol_8
+      - id: symbol_short
         type: str
         size: 8
         encoding: ASCII

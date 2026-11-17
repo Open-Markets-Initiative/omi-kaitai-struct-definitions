@@ -115,24 +115,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_event_indicator_0
-        type: b1
-        doc: 'Unused EventIndicator 0'
-      - id: unused_event_indicator_1
-        type: b1
-        doc: 'Unused EventIndicator 1'
-      - id: unused_event_indicator_2
-        type: b1
-        doc: 'Unused EventIndicator 2'
-      - id: unused_event_indicator_3
-        type: b1
-        doc: 'Unused EventIndicator 3'
-      - id: unused_event_indicator_4
-        type: b1
-        doc: 'Unused EventIndicator 4'
-      - id: unused_event_indicator_5
-        type: b1
-        doc: 'Unused EventIndicator 5'
+      - id: unused_6
+        type: b6
+        doc: '6 unused bits'
       - id: recovery_message
         type: b1
         doc: 'RecoveryMessage'
@@ -157,9 +142,9 @@ types:
         type: u1
   incremental_refresh_spectrum_group:
     seq:
-      - id: md_entry_type_spectrum_entry_type
+      - id: spectrum_md_entry_type
         type: u1
-        enum: md_entry_type_spectrum_entry_type
+        enum: spectrum_md_entry_type
         doc: 'Market Data entry type, identifies the element'
       - id: financial_instrument_full_name
         type: str
@@ -215,9 +200,9 @@ types:
         doc: 'Number of entries in Market Data message'
   incremental_refresh_ticker_group:
     seq:
-      - id: md_entry_type_ticker_entry_type
+      - id: ticker_md_entry_type
         type: u1
-        enum: md_entry_type_ticker_entry_type
+        enum: ticker_md_entry_type
         doc: 'Market Data entry type, identifies the element'
       - id: security_id
         type: s4
@@ -299,9 +284,9 @@ types:
         doc: 'Number of entries in Market Data message'
   snapshot_refresh_spectrum_group:
     seq:
-      - id: md_entry_type_spectrum_entry_type
+      - id: spectrum_md_entry_type
         type: u1
-        enum: md_entry_type_spectrum_entry_type
+        enum: spectrum_md_entry_type
         doc: 'Market Data entry type, identifies the element'
       - id: md_entry_px
         type: decimal_s8_9
@@ -357,9 +342,9 @@ types:
         doc: 'Number of entries in Market Data message'
   snapshot_refresh_ticker_group:
     seq:
-      - id: md_entry_type_ticker_entry_type
+      - id: ticker_md_entry_type
         type: u1
-        enum: md_entry_type_ticker_entry_type
+        enum: ticker_md_entry_type
         doc: 'Market Data entry type, identifies the element'
       - id: md_entry_px
         type: decimal_s8_9
@@ -450,14 +435,14 @@ enums:
     307:
       id: 'global_day_roll'
       doc: 'GlobalDayRoll'
-  md_entry_type_spectrum_entry_type:
+  spectrum_md_entry_type:
     0x39:
       id: 'vwap'
       doc: 'Volume weighted average traded price'
     0x74:
       id: 'twap'
       doc: 'Average traded price'
-  md_entry_type_ticker_entry_type:
+  ticker_md_entry_type:
     0x6b:
       id: 'touch_high'
       doc: 'Touch High'
