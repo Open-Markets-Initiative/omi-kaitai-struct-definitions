@@ -108,7 +108,7 @@ types:
         doc: 'Refer to System Event Codes below'
   stock_directory_message:
     seq:
-      - id: stock_alphanumeric_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
@@ -176,7 +176,7 @@ types:
         doc: 'Indicates the directional relationship between the ETP and underlying index'
   stock_trading_action_message:
     seq:
-      - id: stock_alphanumeric_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
@@ -200,7 +200,7 @@ types:
         doc: 'Tracking identifier for the trading action'
   reg_sho_restriction_message:
     seq:
-      - id: stock_alpha_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
@@ -228,7 +228,7 @@ types:
         type: u1
         enum: imbalance_direction
         doc: 'Indicates the market side of the imbalance'
-      - id: stock_alpha_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
@@ -268,7 +268,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'The number of shares matched in the NASDAQ Cross'
-      - id: stock_alpha_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
@@ -298,7 +298,7 @@ types:
         doc: 'Tracking identifier for the trading action'
   ipo_quoting_period_update_message:
     seq:
-      - id: stock_alphanumeric_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII

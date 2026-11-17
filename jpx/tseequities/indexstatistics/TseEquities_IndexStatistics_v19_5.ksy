@@ -240,7 +240,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: total_market_value_c_14
+      - id: total_market_value_amount
         type: str
         size: 14
         encoding: ASCII
@@ -252,7 +252,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: day_on_day_comparison_c_14
+      - id: day_on_day_comparison
         type: str
         size: 14
         encoding: ASCII
@@ -287,7 +287,7 @@ types:
         doc: 'Yield Day-on-day comparison'
   simple_yield:
     seq:
-      - id: simple_yield_c_8
+      - id: simple_yield_value
         type: str
         size: 8
         encoding: ASCII
@@ -299,7 +299,7 @@ types:
         doc: 'Indicates the sign of Day-on-day comparison'
   yield_day_on_day_comparison:
     seq:
-      - id: day_on_day_comparison_c_8
+      - id: day_on_day_comparison_rate
         type: str
         size: 8
         encoding: ASCII
@@ -334,7 +334,7 @@ types:
         doc: 'Yield Day-on-day comparison'
   weighted_yield:
     seq:
-      - id: weighted_yield_c_8
+      - id: weighted_yield_value
         type: str
         size: 8
         encoding: ASCII
@@ -373,7 +373,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: simple_stock_price_average_c_14
+      - id: simple_stock_price_average_value
         type: str
         size: 14
         encoding: ASCII
@@ -389,7 +389,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: day_on_day_comparison_c_14
+      - id: day_on_day_comparison
         type: str
         size: 14
         encoding: ASCII
@@ -428,7 +428,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: weighted_stock_price_average_c_14
+      - id: weighted_stock_price_average_value
         type: str
         size: 14
         encoding: ASCII
@@ -501,7 +501,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: simple_average_c_14
+      - id: simple_average_value
         type: str
         size: 14
         encoding: ASCII
@@ -515,7 +515,7 @@ types:
         type: u1
         enum: second_unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: day_on_day_comparison_c_14
+      - id: day_on_day_comparison
         type: str
         size: 14
         encoding: ASCII
@@ -527,7 +527,7 @@ types:
         doc: 'Indicates the sign of Day-on-day comparison'
   overall_divergence_average:
     seq:
-      - id: divergence_average_c_8
+      - id: divergence_average_value
         type: str
         size: 8
         encoding: ASCII
@@ -537,7 +537,7 @@ types:
         type: u1
         enum: sign
         doc: 'Indicates the sign of Day-on-day comparison'
-      - id: day_on_day_comparison_c_8
+      - id: day_on_day_comparison_rate
         type: str
         size: 8
         encoding: ASCII
@@ -553,7 +553,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: parity_average_c_14
+      - id: parity_average_value
         type: str
         size: 14
         encoding: ASCII
@@ -567,7 +567,7 @@ types:
         type: u1
         enum: second_unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: day_on_day_comparison_c_14
+      - id: day_on_day_comparison
         type: str
         size: 14
         encoding: ASCII
@@ -579,7 +579,7 @@ types:
         doc: 'Indicates the sign of Day-on-day comparison'
   overall_direct_yield_average:
     seq:
-      - id: direct_yield_average_c_8
+      - id: direct_yield_average_value
         type: str
         size: 8
         encoding: ASCII
@@ -589,7 +589,7 @@ types:
         type: u1
         enum: sign
         doc: 'Indicates the sign of Day-on-day comparison'
-      - id: day_on_day_comparison_c_8
+      - id: day_on_day_comparison_rate
         type: str
         size: 8
         encoding: ASCII
@@ -619,7 +619,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: simple_average_c_14
+      - id: simple_average_value
         type: str
         size: 14
         encoding: ASCII
@@ -631,7 +631,7 @@ types:
         doc: 'Indicates the sign of Day-on-day comparison'
   divergence_average:
     seq:
-      - id: divergence_average_c_8
+      - id: divergence_average_value
         type: str
         size: 8
         encoding: ASCII
@@ -647,7 +647,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: parity_average_c_14
+      - id: parity_average_value
         type: str
         size: 14
         encoding: ASCII
@@ -659,7 +659,7 @@ types:
         doc: 'Indicates the sign of Day-on-day comparison'
   direct_yield_average:
     seq:
-      - id: direct_yield_average_c_8
+      - id: direct_yield_average_value
         type: str
         size: 8
         encoding: ASCII
@@ -846,7 +846,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: estimated_total_trading_volume_c_14
+      - id: estimated_total_trading_volume_value
         type: str
         size: 14
         encoding: ASCII
@@ -884,7 +884,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: estimated_total_turnover_c_14
+      - id: estimated_total_turnover_value
         type: str
         size: 14
         encoding: ASCII
@@ -922,7 +922,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: vwap_by_market_c_14
+      - id: vwap_by_market_value
         type: str
         size: 14
         encoding: ASCII
@@ -942,7 +942,7 @@ types:
         type: u1
         enum: second_unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: day_on_day_comparison_c_14
+      - id: day_on_day_comparison
         type: str
         size: 14
         encoding: ASCII
@@ -998,7 +998,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: trading_volume_c_14
+      - id: trading_volume_value
         type: str
         size: 14
         encoding: ASCII
@@ -1050,7 +1050,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: turnover_c_14
+      - id: turnover_value
         type: str
         size: 14
         encoding: ASCII
@@ -1104,7 +1104,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: current_price_c_14
+      - id: current_price_value
         type: str
         size: 14
         encoding: ASCII
@@ -1180,7 +1180,7 @@ types:
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: current_price_c_14
+      - id: current_price_value
         type: str
         size: 14
         encoding: ASCII
@@ -1236,7 +1236,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: single_issue_transaction_c_14
+      - id: single_issue_transaction
         type: str
         size: 14
         encoding: ASCII
@@ -1256,7 +1256,7 @@ types:
         type: u1
         enum: third_trading_volumeturnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: basket_transaction_c_14
+      - id: basket_transaction
         type: str
         size: 14
         encoding: ASCII
@@ -1278,7 +1278,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: single_issue_transaction_c_14
+      - id: single_issue_transaction
         type: str
         size: 14
         encoding: ASCII
@@ -1298,7 +1298,7 @@ types:
         type: u1
         enum: third_trading_volumeturnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: basket_transaction_c_14
+      - id: basket_transaction
         type: str
         size: 14
         encoding: ASCII
@@ -1316,13 +1316,13 @@ types:
         doc: 'Indicates the aggregate of turnovers for transactions conducted on the ToSTNeT'
   number_of_transactions:
     seq:
-      - id: single_issue_transaction_c_8
+      - id: single_issue_transaction_count
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
         doc: 'Indicates the number of single-issue transactions. Unit: transaction'
-      - id: basket_transaction_c_8
+      - id: basket_transaction_count
         type: str
         size: 8
         encoding: ASCII

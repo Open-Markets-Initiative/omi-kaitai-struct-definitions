@@ -221,7 +221,7 @@ types:
         type: u1
         enum: side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
       - id: number_of_new_order_bitfields
@@ -281,7 +281,7 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_clearing_account
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -303,7 +303,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_max_floor
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -688,10 +688,10 @@ types:
         type: u1
         enum: cross_prioritization
         doc: 'Corresponds to CrossPrioritization (550) in Cboe FIX. Indicates which side of the cross order will be prioritized for execution. This identifies the Agency side. 1 = Buy 2 = Sell'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
       - id: number_of_new_order_cross_bitfields
@@ -721,7 +721,7 @@ types:
         repeat: expr
         repeat-expr: num_order_allocations
         doc: 'Repeating group stated GroupCnt times'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -951,7 +951,7 @@ types:
         type: u1
         enum: side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
       - id: number_of_new_complex_order_bitfields
@@ -1011,7 +1011,7 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_new_complex_order_bitfields >= 1 and new_complex_order_bitfield_1.new_complex_order_bitfield_1_clearing_account
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_new_complex_order_bitfields >= 1 and new_complex_order_bitfield_1.new_complex_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -1023,7 +1023,7 @@ types:
         type: u1
         enum: time_in_force
         if: number_of_new_complex_order_bitfields >= 1 and new_complex_order_bitfield_1.new_complex_order_bitfield_1_time_in_force
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -1396,10 +1396,10 @@ types:
         type: u1
         enum: cross_prioritization
         doc: 'Corresponds to CrossPrioritization (550) in Cboe FIX. Indicates which side of the cross order will be prioritized for execution. This identifies the Agency side. 1 = Buy 2 = Sell'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
       - id: number_of_new_order_cross_multileg_bitfields
@@ -1437,7 +1437,7 @@ types:
         repeat: expr
         repeat-expr: num_new_order_cross_multileg_order_allocations
         doc: 'Repeating group stated GroupCnt times'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -1835,11 +1835,11 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_clearing_firm
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -1956,7 +1956,7 @@ types:
         doc: 'Repeating group stated QuoteCnt times'
   quote:
     seq:
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -1968,10 +1968,10 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
       - id: reserved_12
@@ -2020,7 +2020,7 @@ types:
         doc: 'Repeating group stated QuoteCnt times'
   quote_update_short_quote:
     seq:
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -2032,10 +2032,10 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-      - id: price_binary_price_4
+      - id: price_short
         type: decimal_s4_4
         doc: 'Limit price. To cancel an existing quote, specify a size of 0. Implied decimal with scale 1e-4'
-      - id: order_qty_binary_2
+      - id: order_qty_short
         type: u2
         doc: 'Order quantity. System limit is 999,999 contracts. To cancel an existing quote, specify a size of 0'
       - id: reserved_2
@@ -2131,7 +2131,7 @@ types:
         doc: 'Repeating group stated QuoteCnt times'
   complex_quote_update_short_quote:
     seq:
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -2143,10 +2143,10 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-      - id: price_binary_price_4
+      - id: price_short
         type: decimal_s4_4
         doc: 'Limit price. To cancel an existing quote, specify a size of 0. Implied decimal with scale 1e-4'
-      - id: order_qty_binary_2
+      - id: order_qty_short
         type: u2
         doc: 'Order quantity. System limit is 999,999 contracts. To cancel an existing quote, specify a size of 0'
       - id: reserved_2
@@ -2372,7 +2372,7 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Corresponds to ClOrdID (11) in Cboe FIX. ID chosen by the client. Characters in the ASCII range 33-126 are allowed, except for comma, semicolon, pipe, the ‘at’ symbol (@) and double quotes. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders, which includes long-lived, persisting GTC/GTD orders. However, we strongly recommend that you keep your ClOrdID values unique'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -2414,10 +2414,10 @@ types:
         type: u1
         enum: side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: transaction_time
@@ -2447,7 +2447,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in Cboe FIX. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be represented on ODROP and FIXDROP ports as nine character, base 36 ASCII. Leading zeros should be added if the converted base 36 value is shorter than nine characters. Table 2. Example Conversion Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -2478,7 +2478,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in Cboe FIX. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be represented on ODROP and FIXDROP ports as nine character, base 36 ASCII. Leading zeros should be added if the converted base 36 value is shorter than nine characters. Table 2. Example Conversion Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -2608,7 +2608,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -2627,7 +2627,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -2658,7 +2658,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_max_floor
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -2705,7 +2705,7 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_acknowledgment_return_bitfield_5.order_acknowledgment_return_bitfield_5_display_price
         doc: 'Implied decimal with scale 1e-4'
-      - id: working_price_binary_price_8
+      - id: working_price
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_acknowledgment_return_bitfield_5.order_acknowledgment_return_bitfield_5_working_price
         doc: 'Implied decimal with scale 1e-4'
@@ -3406,7 +3406,7 @@ types:
         repeat: expr
         repeat-expr: num_cross_order_acknowledgment_order_allocations
         doc: 'Repeating group stated GroupCnt times'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cross_order_acknowledgment_return_bitfield_1.cross_order_acknowledgment_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -3414,12 +3414,12 @@ types:
         type: u1
         enum: exec_inst
         if: number_of_return_bitfields >= 1 and cross_order_acknowledgment_return_bitfield_1.cross_order_acknowledgment_return_bitfield_1_exec_inst
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and cross_order_acknowledgment_return_bitfield_2.cross_order_acknowledgment_return_bitfield_2_symbol
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         if: number_of_return_bitfields >= 3 and cross_order_acknowledgment_return_bitfield_3.cross_order_acknowledgment_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -4078,7 +4078,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -4097,7 +4097,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -4128,7 +4128,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_max_floor
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -4844,7 +4844,7 @@ types:
         type: cross_order_rejected_return_bitfield_21
         if: number_of_return_bitfields >= 21
         doc: 'BitSet CrossOrderRejected byte 21'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cross_order_rejected_return_bitfield_1.cross_order_rejected_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -4852,12 +4852,12 @@ types:
         type: u1
         enum: exec_inst
         if: number_of_return_bitfields >= 1 and cross_order_rejected_return_bitfield_1.cross_order_rejected_return_bitfield_1_exec_inst
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and cross_order_rejected_return_bitfield_2.cross_order_rejected_return_bitfield_2_symbol
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         if: number_of_return_bitfields >= 3 and cross_order_rejected_return_bitfield_3.cross_order_rejected_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -5474,7 +5474,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -5493,7 +5493,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -5520,7 +5520,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_max_floor
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -5549,7 +5549,7 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_modified_return_bitfield_5.order_modified_return_bitfield_5_display_price
         doc: 'Implied decimal with scale 1e-4'
-      - id: working_price_binary_price_8
+      - id: working_price
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_modified_return_bitfield_5.order_modified_return_bitfield_5_working_price
         doc: 'Implied decimal with scale 1e-4'
@@ -6212,7 +6212,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -6231,7 +6231,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -6262,7 +6262,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_max_floor
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -6309,7 +6309,7 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_display_price
         doc: 'Implied decimal with scale 1e-4'
-      - id: working_price_binary_price_8
+      - id: working_price
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_working_price
         doc: 'Implied decimal with scale 1e-4'
@@ -6848,10 +6848,10 @@ types:
         doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identifier corresponds to the identifiers used in Cboe market data products'
       - id: leaves_qty
         type: u4
-      - id: working_price_binary_8
-        type: u8
-        doc: 'New working price'
-      - id: symbol_alphanumeric_6
+      - id: working_price
+        type: decimal_s8_4
+        doc: 'Implied decimal with scale 1e-4'
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -7525,7 +7525,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -7544,7 +7544,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -7575,7 +7575,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_max_floor
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -7622,7 +7622,7 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_display_price
         doc: 'Implied decimal with scale 1e-4'
-      - id: working_price_binary_price_8
+      - id: working_price
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_working_price
         doc: 'Implied decimal with scale 1e-4'
@@ -8218,7 +8218,7 @@ types:
       - id: order_id
         type: u8
         doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identifier corresponds to the identifiers used in Cboe market data products'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -8347,7 +8347,7 @@ types:
         repeat: expr
         repeat-expr: num_cross_order_cancelled_order_allocations
         doc: 'Repeating group stated GroupCnt times'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cross_order_cancelled_return_bitfield_1.cross_order_cancelled_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -8355,7 +8355,7 @@ types:
         type: u1
         enum: exec_inst
         if: number_of_return_bitfields >= 1 and cross_order_cancelled_return_bitfield_1.cross_order_cancelled_return_bitfield_1_exec_inst
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -8365,7 +8365,7 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 3 and cross_order_cancelled_return_bitfield_3.cross_order_cancelled_return_bitfield_3_clearing_firm
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         if: number_of_return_bitfields >= 3 and cross_order_cancelled_return_bitfield_3.cross_order_cancelled_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -9005,7 +9005,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -9024,7 +9024,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -9620,7 +9620,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
@@ -9639,7 +9639,7 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_min_qty
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -9676,7 +9676,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_max_floor
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -10348,7 +10348,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in Cboe FIX. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be represented on ODROP and FIXDROP ports as nine character, base 36 ASCII. Leading zeros should be added if the converted base 36 value is shorter than nine characters. Table 2. Example Conversion Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -10409,7 +10409,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in Cboe FIX. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be represented on ODROP and FIXDROP ports as nine character, base 36 ASCII. Leading zeros should be added if the converted base 36 value is shorter than nine characters. Table 2. Example Conversion Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_6
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
@@ -10595,7 +10595,7 @@ types:
         type: trade_cancelor_correct_return_bitfield_21
         if: number_of_return_bitfields >= 21
         doc: 'BitSet TradeCancelorCorrect byte 21'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -12142,7 +12142,7 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Corresponds to ClOrdID (11) in Cboe FIX. ID chosen by the client. Characters in the ASCII range 33-126 are allowed, except for comma, semicolon, pipe, the ‘at’ symbol (@) and double quotes. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders, which includes long-lived, persisting GTC/GTD orders. However, we strongly recommend that you keep your ClOrdID values unique'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -13225,7 +13225,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in Cboe FIX. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be represented on ODROP and FIXDROP ports as nine character, base 36 ASCII. Leading zeros should be added if the converted base 36 value is shorter than nine characters. Table 2. Example Conversion Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -13237,10 +13237,10 @@ types:
         doc: 'Implied decimal with scale 1e-4'
       - id: maturity_date
         type: yyyymmdd_date
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: side
@@ -13276,7 +13276,7 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Corresponds to ClOrdID (11) in Cboe FIX. ID chosen by the client. Characters in the ASCII range 33-126 are allowed, except for comma, semicolon, pipe, the ‘at’ symbol (@) and double quotes. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders, which includes long-lived, persisting GTC/GTD orders. However, we strongly recommend that you keep your ClOrdID values unique'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -13318,10 +13318,10 @@ types:
         type: u1
         enum: side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: order_qty_binary_4
+      - id: order_qty_long
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
-      - id: price_binary_price_8
+      - id: price_long
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: transaction_time
@@ -13356,7 +13356,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in Cboe FIX. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be represented on ODROP and FIXDROP ports as nine character, base 36 ASCII. Leading zeros should be added if the converted base 36 value is shorter than nine characters. Table 2. Example Conversion Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII
@@ -13392,7 +13392,7 @@ types:
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in Cboe FIX. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be represented on ODROP and FIXDROP ports as nine character, base 36 ASCII. Leading zeros should be added if the converted base 36 value is shorter than nine characters. Table 2. Example Conversion Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
-      - id: symbol_alphanumeric_8
+      - id: symbol_long
         type: str
         size: 8
         encoding: ASCII

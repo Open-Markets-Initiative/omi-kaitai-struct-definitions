@@ -237,7 +237,7 @@ types:
       - id: error_code
         type: s2
         doc: 'Type of error, zero while sending to the host'
-      - id: time_stamp_1_long_long_8
+      - id: time_stamp_1
         type: s8
         doc: 'Time the message arrives at the trading system host'
       - id: time_stamp_2
@@ -369,7 +369,7 @@ types:
       - id: error_code
         type: s2
         doc: 'Type of error, zero while sending to the host'
-      - id: time_stamp_1_long_long_8
+      - id: time_stamp_1
         type: s8
         doc: 'Time the message arrives at the trading system host'
       - id: time_stamp_2
@@ -504,7 +504,7 @@ types:
       - id: timestamp
         type: dos_nanosecond_timestamp
         doc: 'Time stamped at the matching engine, in nanoseconds from January 1 1980 for the transaction codes the appendix lists. Nanoseconds since Dos epoch'
-      - id: time_stamp_1_char_8
+      - id: time_stamp_1_char
         type: str
         size: 8
         encoding: ASCII

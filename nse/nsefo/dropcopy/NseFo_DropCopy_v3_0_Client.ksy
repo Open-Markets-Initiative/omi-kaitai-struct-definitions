@@ -313,7 +313,7 @@ enums:
     12:
       id: 'call_auction_2_not_used'
       doc: 'Call Auction 2 Not Used'
-  pro_client_short_2:
+  pro_client:
     1:
       id: 'clients_order'
       doc: 'Clients Order'
@@ -323,7 +323,7 @@ enums:
     4:
       id: 'warehousing_order'
       doc: 'Warehousing Order'
-  segment_short_2:
+  segment:
     1:
       id: 'equity_derivatives_fo'
       doc: 'Equity Derivatives Fo'

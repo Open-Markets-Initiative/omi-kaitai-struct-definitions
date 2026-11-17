@@ -119,7 +119,7 @@ types:
         doc: 'See System Event Codes'
   stock_directory_message:
     seq:
-      - id: stock_alpha_6
+      - id: stock
         type: str
         size: 6
         encoding: ASCII
@@ -145,7 +145,7 @@ types:
         doc: 'Indicates if NASDAQ system limits order entry for issue'
   stock_trading_action_message:
     seq:
-      - id: stock_alpha_6
+      - id: stock
         type: str
         size: 6
         encoding: ASCII
@@ -175,12 +175,12 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Denotes the market participant identifier for which the position message is being generated'
-      - id: stock_alphanumeric_6
+      - id: stock
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Denotes the security symbol for which the position is being generated'
+        doc: 'Denotes the security symbol for the issue in NASDAQ Single Book. Refer to Appendix B for NASDAQ Single Book stock symbol convention information'
       - id: primary_market_maker
         type: u1
         enum: primary_market_maker
@@ -205,13 +205,13 @@ types:
         type: u1
         enum: side
         doc: 'The type of order being added'
-      - id: shares_numeric_6
+      - id: shares
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
         doc: 'The total number of shares associated with the order being added to the book'
-      - id: stock_alpha_6
+      - id: stock
         type: str
         size: 6
         encoding: ASCII
@@ -239,13 +239,13 @@ types:
         type: u1
         enum: side
         doc: 'The type of order being added'
-      - id: shares_numeric_6
+      - id: shares
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
         doc: 'The total number of shares associated with the order being added to the book'
-      - id: stock_alpha_6
+      - id: stock
         type: str
         size: 6
         encoding: ASCII
@@ -349,7 +349,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'The new reference number for this order. Note that new reference numbers mean new time priority, so this order belongs below other orders at the same price in priority'
-      - id: shares_numeric_6
+      - id: shares
         type: str
         size: 6
         encoding: ASCII
@@ -385,13 +385,13 @@ types:
         type: u1
         enum: side
         doc: 'The type of order being added'
-      - id: shares_numeric_6
+      - id: shares
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
         doc: 'The total number of shares associated with the order being added to the book'
-      - id: stock_alpha_6
+      - id: stock
         type: str
         size: 6
         encoding: ASCII
@@ -411,13 +411,13 @@ types:
         doc: 'The NASDAQ generated day-unique Match Number of this execution. The match number is also referenced in the Trade Break Message'
   cross_trade_message:
     seq:
-      - id: shares_numeric_9
+      - id: cross_shares
         type: str
         size: 9
         encoding: ASCII
         pad-right: 0x20
         doc: 'The number of shares matched in the NASDAQ Cross'
-      - id: stock_alpha_6
+      - id: stock
         type: str
         size: 6
         encoding: ASCII
@@ -465,7 +465,7 @@ types:
         type: u1
         enum: imbalance_direction
         doc: 'The market side of the order imbalance'
-      - id: stock_alpha_6
+      - id: stock
         type: str
         size: 6
         encoding: ASCII

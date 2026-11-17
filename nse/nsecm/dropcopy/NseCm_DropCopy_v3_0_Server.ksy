@@ -250,9 +250,9 @@ types:
         type: s2
         enum: book_type
         doc: 'Book type the order belongs to'
-      - id: pro_client_short_2
+      - id: pro_client
         type: s2
-        enum: pro_client_short_2
+        enum: pro_client
         doc: 'Whether the order is a client, broker or warehousing order'
       - id: algo_id
         type: s4
@@ -263,9 +263,9 @@ types:
       - id: nnf_field
         type: floating_point_integer
         doc: 'Fifteen digit unique identifier for the product, populated only on Trade Confirmation'
-      - id: segment_short_2
+      - id: segment
         type: s2
-        enum: segment_short_2
+        enum: segment
         doc: 'Business segment the trade belongs to'
       - id: broker_id
         type: str
@@ -274,10 +274,7 @@ types:
         pad-right: 0x20
         doc: 'Trading Member Id'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -393,9 +390,9 @@ types:
         type: s2
         enum: book_type
         doc: 'Book type the order belongs to'
-      - id: pro_client_short_2
+      - id: pro_client
         type: s2
-        enum: pro_client_short_2
+        enum: pro_client
         doc: 'Whether the order is a client, broker or warehousing order'
       - id: algo_id
         type: s4
@@ -406,9 +403,9 @@ types:
       - id: nnf_field
         type: floating_point_integer
         doc: 'Fifteen digit unique identifier for the product, populated only on Trade Confirmation'
-      - id: segment_short_2
+      - id: segment
         type: s2
-        enum: segment_short_2
+        enum: segment
         doc: 'Business segment the trade belongs to'
       - id: broker_id
         type: str
@@ -417,10 +414,7 @@ types:
         pad-right: 0x20
         doc: 'Trading Member Id'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -486,9 +480,9 @@ types:
         type: s2
         enum: book_type
         doc: 'Book type the order belongs to'
-      - id: pro_client_short_2
+      - id: pro_client
         type: s2
-        enum: pro_client_short_2
+        enum: pro_client
         doc: 'Whether the order is a client, broker or warehousing order'
       - id: algo_id
         type: s4
@@ -499,9 +493,9 @@ types:
       - id: nnf_field
         type: floating_point_integer
         doc: 'Fifteen digit unique identifier for the product, populated only on Trade Confirmation'
-      - id: segment_short_2
+      - id: segment
         type: s2
-        enum: segment_short_2
+        enum: segment
         doc: 'Business segment the trade belongs to'
       - id: broker_id
         type: str
@@ -510,10 +504,7 @@ types:
         pad-right: 0x20
         doc: 'Trading Member Id'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -579,9 +570,9 @@ types:
         type: s2
         enum: book_type
         doc: 'Book type the order belongs to'
-      - id: pro_client_short_2
+      - id: pro_client
         type: s2
-        enum: pro_client_short_2
+        enum: pro_client
         doc: 'Whether the order is a client, broker or warehousing order'
       - id: algo_id
         type: s4
@@ -592,9 +583,9 @@ types:
       - id: nnf_field
         type: floating_point_integer
         doc: 'Fifteen digit unique identifier for the product, populated only on Trade Confirmation'
-      - id: segment_short_2
+      - id: segment
         type: s2
-        enum: segment_short_2
+        enum: segment
         doc: 'Business segment the trade belongs to'
       - id: broker_id
         type: str
@@ -603,10 +594,7 @@ types:
         pad-right: 0x20
         doc: 'Trading Member Id'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -694,10 +682,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the security is suspended'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -705,7 +690,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Permanent Account Number'
-      - id: segment_char_1
+      - id: segment_char
         type: str
         size: 1
         encoding: ASCII
@@ -721,7 +706,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Account Number or client code'
-      - id: pro_client_char_1
+      - id: pro_client_char
         type: str
         size: 1
         encoding: ASCII
@@ -805,10 +790,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the security is suspended'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -816,7 +798,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Permanent Account Number'
-      - id: segment_char_1
+      - id: segment_char
         type: str
         size: 1
         encoding: ASCII
@@ -832,7 +814,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Account Number or client code'
-      - id: pro_client_char_1
+      - id: pro_client_char
         type: str
         size: 1
         encoding: ASCII
@@ -916,10 +898,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the security is suspended'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -927,7 +906,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Permanent Account Number'
-      - id: segment_char_1
+      - id: segment_char
         type: str
         size: 1
         encoding: ASCII
@@ -943,7 +922,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Account Number or client code'
-      - id: pro_client_char_1
+      - id: pro_client_char
         type: str
         size: 1
         encoding: ASCII
@@ -1027,10 +1006,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the security is suspended'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -1038,7 +1014,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Permanent Account Number'
-      - id: segment_char_1
+      - id: segment_char
         type: str
         size: 1
         encoding: ASCII
@@ -1054,7 +1030,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Account Number or client code'
-      - id: pro_client_char_1
+      - id: pro_client_char
         type: str
         size: 1
         encoding: ASCII
@@ -1138,10 +1114,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the security is suspended'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -1149,7 +1122,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Permanent Account Number'
-      - id: segment_char_1
+      - id: segment_char
         type: str
         size: 1
         encoding: ASCII
@@ -1165,7 +1138,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Account Number or client code'
-      - id: pro_client_char_1
+      - id: pro_client_char
         type: str
         size: 1
         encoding: ASCII
@@ -1249,10 +1222,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the security is suspended'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -1260,7 +1230,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Permanent Account Number'
-      - id: segment_char_1
+      - id: segment_char
         type: str
         size: 1
         encoding: ASCII
@@ -1276,7 +1246,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Account Number or client code'
-      - id: pro_client_char_1
+      - id: pro_client_char
         type: str
         size: 1
         encoding: ASCII
@@ -1360,10 +1330,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the security is suspended'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -1371,7 +1338,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Permanent Account Number'
-      - id: segment_char_1
+      - id: segment_char
         type: str
         size: 1
         encoding: ASCII
@@ -1387,7 +1354,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Account Number or client code'
-      - id: pro_client_char_1
+      - id: pro_client_char
         type: str
         size: 1
         encoding: ASCII
@@ -1471,10 +1438,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the security is suspended'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -1482,7 +1446,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Permanent Account Number'
-      - id: segment_char_1
+      - id: segment_char
         type: str
         size: 1
         encoding: ASCII
@@ -1498,7 +1462,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Account Number or client code'
-      - id: pro_client_char_1
+      - id: pro_client_char
         type: str
         size: 1
         encoding: ASCII
@@ -1582,10 +1546,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the security is suspended'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -1593,7 +1554,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Permanent Account Number'
-      - id: segment_char_1
+      - id: segment_char
         type: str
         size: 1
         encoding: ASCII
@@ -1609,7 +1570,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Account Number or client code'
-      - id: pro_client_char_1
+      - id: pro_client_char
         type: str
         size: 1
         encoding: ASCII
@@ -1693,10 +1654,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the security is suspended'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Filler'
       - id: pan
         type: str
@@ -1704,7 +1662,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Permanent Account Number'
-      - id: segment_char_1
+      - id: segment_char
         type: str
         size: 1
         encoding: ASCII
@@ -1720,7 +1678,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Account Number or client code'
-      - id: pro_client_char_1
+      - id: pro_client_char
         type: str
         size: 1
         encoding: ASCII
@@ -1902,7 +1860,7 @@ enums:
     12:
       id: 'call_auction_2'
       doc: 'Call Auction 2'
-  pro_client_short_2:
+  pro_client:
     1:
       id: 'clients_order'
       doc: 'Clients Order'
@@ -1912,7 +1870,7 @@ enums:
     4:
       id: 'warehousing_order'
       doc: 'Warehousing Order'
-  segment_short_2:
+  segment:
     1:
       id: 'equity_derivatives_fo'
       doc: 'Equity Derivatives Fo'

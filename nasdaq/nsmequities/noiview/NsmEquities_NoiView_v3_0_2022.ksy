@@ -110,7 +110,7 @@ types:
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
-      - id: stock_alpha_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
@@ -178,12 +178,12 @@ types:
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
-      - id: stock_alphanumeric_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Stock symbol, right padded with spaces'
+        doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: current_trading_state
         type: u1
         enum: current_trading_state
@@ -202,12 +202,12 @@ types:
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
-      - id: stock_alphanumeric_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Stock symbol, right padded with spaces'
+        doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: reg_sho_action
         type: u1
         enum: reg_sho_action
@@ -230,12 +230,12 @@ types:
         type: u1
         enum: imbalance_direction
         doc: 'Indicates the market side of the imbalance'
-      - id: stock_alphanumeric_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Stock symbol, right padded with spaces'
+        doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: far_price
         type: decimal_u4_4
         doc: 'A hypothetical auction-clearing price for cross orders only. Implied decimal with scale 1e-4'
@@ -264,12 +264,12 @@ types:
       - id: shares
         type: u8
         doc: 'The number of shares matched in the Nasdaq Cross'
-      - id: stock_alphanumeric_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Stock symbol, right padded with spaces'
+        doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: cross_price
         type: decimal_u4_4
         doc: 'The price at which the cross occurred. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
@@ -288,12 +288,12 @@ types:
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
-      - id: stock_alphanumeric_8
+      - id: stock
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Stock symbol, right padded with spaces'
+        doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: ipo_quotation_release_time
         type: hhmmss_time
         doc: 'Denotes the IPO release time for quotation to the nearest second. Format: HHMMSS'
