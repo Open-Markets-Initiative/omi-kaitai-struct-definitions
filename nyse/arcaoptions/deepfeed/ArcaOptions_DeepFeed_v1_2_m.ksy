@@ -1728,10 +1728,10 @@ enums:
       doc: 'Transaction Is Being Reported Late And Is Out Of Sequence'
   price_type:
     0:
-      id: 'strike_price_is_amount'
+      id: 'strike_price_is_dollar_amount'
       doc: 'Strike Price Is Amount'
     1:
-      id: 'strike_price_is_amount_1'
+      id: 'strike_price_is_percent_amount'
       doc: 'Strike Price Is Amount'
   cross_type:
     0x45:

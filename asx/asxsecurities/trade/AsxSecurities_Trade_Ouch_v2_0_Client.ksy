@@ -393,10 +393,10 @@ enums:
       id: 'limit_order'
       doc: 'Limit order'
     0x4e:
-      id: 'centre_point_order'
+      id: 'centre_point_order_mid_point_only'
       doc: 'Centre Point order (mid-point only)'
     0x44:
-      id: 'centre_point_order_x44'
+      id: 'centre_point_order_dark_limit_order'
       doc: 'Centre Point order (dark limit order)'
     0x53:
       id: 'sweep_order'
@@ -493,4 +493,44 @@ enums:
     24:
       id: 'inactivated_day_order'
       doc: 'Inactivated Day order'
+  deal_source:
+    1:
+      id: 'continuous_auto_match'
+      doc: 'Single series to single series auto-matched during continuous trading'
+    20:
+      id: 'auction_auto_match'
+      doc: 'Single series to single series auto-matched during an auction'
+    36:
+      id: 'tailor_made_combination_match'
+      doc: 'Tailor made combination match'
+    43:
+      id: 'combination_order_matched_against_outright_legs'
+      doc: 'Combination order matched against outright legs'
+    44:
+      id: 'booked_ucp_transaction'
+      doc: 'Booked transaction resulting from Unintentional Crossing Prevention'
+    45:
+      id: 'booked_ucp_auction_transaction'
+      doc: 'Booked transaction resulting from Unintentional Crossing Prevention during an auction'
+    46:
+      id: 'centre_point_preference_matched_trade'
+      doc: 'Centre Point Preference Matched trade'
+    47:
+      id: 'centre_point_trade'
+      doc: 'Centre Point trade'
+    48:
+      id: 'centre_point_booked_ucp'
+      doc: 'Centre Point booked transaction resulting from Unintentional Crossing Prevention'
+    49:
+      id: 'reserved_49'
+      doc: 'Reserved for future use'
+    50:
+      id: 'block_trade'
+      doc: 'Block Trade'
+    51:
+      id: 'preference_block_trade'
+      doc: 'Preference Block Trade'
+    52:
+      id: 'reserved_52'
+      doc: 'Reserved for future use'
 

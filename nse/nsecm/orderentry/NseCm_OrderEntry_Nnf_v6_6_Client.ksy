@@ -102,10 +102,10 @@ types:
         doc: 'Host end field, carrying nanoseconds since midnight 01-Jan-1980 on the transaction codes listed in the appendix'
       - id: time_stamp_1
         type: str_8_nullable
-        doc: 'Reserved for the host. Nullable, No Value = 00000000'
+        doc: 'Time the message arrived at the trading system host, in jiffies; zero when sent to the host. Nullable, No Value = 00000000'
       - id: time_stamp_2
         type: str_8_nullable
-        doc: 'Time the message reached the gateway. Nullable, No Value = 00000000'
+        doc: 'Number of the machine the packet comes from; zero when sent to the host. Nullable, No Value = 00000000'
       - id: message_length
         type: s2
         doc: 'Length of the entire message including the message header'

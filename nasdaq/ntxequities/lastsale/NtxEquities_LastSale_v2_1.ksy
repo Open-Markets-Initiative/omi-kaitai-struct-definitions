@@ -670,9 +670,9 @@ enums:
     0x42:
       id: 'bx_execution_system'
       doc: 'BX execution system'
-    0x58:
-      id: 'bx_execution_system_x58'
-      doc: 'BX execution system'
+    0x4c:
+      id: 'trade_reporting_facility'
+      doc: 'Over the Counter Trade Reporting Facility (ORF); Nasdaq/FINRA Trade Reporting Facility (TRF) in the NextShares messages'
   security_class:
     0x51:
       id: 'nasdaq'
@@ -681,7 +681,7 @@ enums:
       id: 'nyse'
       doc: 'NYSE'
     0x41:
-      id: 'nyse_amex'
+      id: 'nyse_american'
       doc: 'NYSE Amex'
     0x50:
       id: 'nyse_arca'
@@ -692,6 +692,9 @@ enums:
     0x56:
       id: 'investors_exchange'
       doc: 'Investors Exchange'
+    0x42:
+      id: 'bx_listed_securities'
+      doc: 'BX-listed securities (Pending SEC approval of listing exchange)'
   sale_condition_modifier_level_1:
     0x4a:
       id: 'proxy_price_settlement'
@@ -817,7 +820,7 @@ enums:
       id: 'nyse'
       doc: 'New York Stock Exchange (NYSE)'
     0x41:
-      id: 'nyse_mkt'
+      id: 'nyse_american'
       doc: 'NYSE MKT'
     0x50:
       id: 'nyse_arca'
@@ -940,10 +943,10 @@ enums:
       doc: 'Threshold Indicator not available'
   ipo_flag:
     0x59:
-      id: 'nasdaq_listed_instrument'
+      id: 'new_ipo_security'
       doc: 'NASDAQ listed instrument is set up as a new IPO security'
     0x4e:
-      id: 'nasdaq_listed_instrument_x4e'
+      id: 'not_new_ipo_security'
       doc: 'NASDAQ listed instrument is not set up as a new IPO security'
     0x20:
       id: 'na'
@@ -993,7 +996,7 @@ enums:
       id: 'bx'
       doc: 'BX'
     0x58:
-      id: 'bx_x58'
+      id: 'psx'
       doc: 'BX'
   operational_halt_action:
     0x48:

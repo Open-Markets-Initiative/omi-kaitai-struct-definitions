@@ -752,28 +752,28 @@ enums:
       doc: 'This message is also sent as notification that there is an exposed buy (sell) order available for execution at the National Best Offer (Bid).'
   event_code:
     0x4f:
-      id: 'start_of_messages_this_is_always_the_first_message_sent_in_any_trading_day'
+      id: 'start_of_messages'
       doc: 'After ~4:00am'
     0x53:
-      id: 'start_of_system_hours_this_message_indicates_that_phlx_is_open_and_ready_to_start_accepting_orders'
+      id: 'start_of_system_hours'
       doc: '7:00am'
     0x51:
-      id: 'start_of_opening_process_this_message_is_intended_to_indicate_that_phlx_has_started_its_opening_auction_process'
+      id: 'start_of_opening_process'
       doc: '9:30:00am'
     0x4e:
-      id: 'end_of_normal_hours_processing_this_message_is_intended_to_indicate_that_phlx_will_no_longer_accept_any_new_orders_or_changes_to_existing_orders_for_options_that_trade_during_normal_trading_hours'
+      id: 'end_of_normal_hours_processing'
       doc: '4:00:00pm'
     0x4c:
-      id: 'end_of_late_hours_processing_this_message_is_intended_to_indicate_that_phlx_will_no_longer_accept_any_new_orders_or_changes_to_existing_orders_for_options_that_trade_during_extended_hours'
+      id: 'end_of_late_hours_processing'
       doc: '4:15:00pm'
     0x45:
-      id: 'end_of_system_hours_this_message_indicates_that_phlx_options_system_is_now_closed'
+      id: 'end_of_system_hours'
       doc: '~5:15pm'
     0x43:
-      id: 'end_of_messages_this_is_always_the_last_message_sent_in_any_trading_day'
+      id: 'end_of_messages'
       doc: '~5:20pm'
     0x57:
-      id: 'end_of_wco_early_closing_this_message_is_intended_to_indicate_that_the_exchange_will_no_longer_accept_any_new_orders_or_changes_to_existing_orders_on_last_trading_date_of_wco_options'
+      id: 'end_of_wco_early_closing'
       doc: '12:00 Noon'
   option_type:
     0x43:
@@ -837,16 +837,16 @@ enums:
       id: 'sell'
       doc: 'Sell'
     0x58:
-      id: 'buy_x58'
+      id: 'buy_aon'
       doc: 'Buy AON'
     0x59:
-      id: 'sell_x59'
+      id: 'sell_aon'
       doc: 'Sell AON'
     0x4d:
-      id: 'buy_x4d'
+      id: 'buy_implied'
       doc: 'Buy Implied'
     0x4e:
-      id: 'sell_x4e'
+      id: 'sell_implied'
       doc: 'Sell Implied'
   printable:
     0x4e:
@@ -913,6 +913,6 @@ enums:
       id: 'professional'
       doc: 'Professional Customer'
     0x42:
-      id: 'non_phlx'
+      id: 'broker_dealer_non_phlx'
       doc: 'Broker Dealer/ Non-PHLX'
 

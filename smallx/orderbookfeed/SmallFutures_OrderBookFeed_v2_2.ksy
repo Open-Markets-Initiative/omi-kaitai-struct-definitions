@@ -602,7 +602,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_2
+      - id: unused_bits_0_to_1
         type: b2
         doc: '2 unused bits'
       - id: instrument_begin
@@ -617,7 +617,7 @@ types:
       - id: book_end
         type: b1
         doc: 'Set in the last Order Book Incremental or Order Book Snapshot message of an instrument'
-      - id: unused_1
+      - id: unused_bit_6
         type: b1
         doc: '1 unused bit'
       - id: snapshot_begin

@@ -288,7 +288,7 @@ types:
       - id: evening_or_morning_session
         type: b1
         doc: 'EveningOrMorningSession'
-      - id: unused_3
+      - id: unused_bits_1_to_3
         type: b3
         doc: '3 unused bits'
       - id: anonymous_trading
@@ -300,13 +300,13 @@ types:
       - id: day_session
         type: b1
         doc: 'DaySession'
-      - id: unused_1
+      - id: unused_bit_7
         type: b1
         doc: '1 unused bit'
       - id: multi_leg
         type: b1
         doc: 'MultiLeg'
-      - id: unused_9
+      - id: unused_bits_9_to_17
         type: b9
         doc: '9 unused bits'
       - id: collateral

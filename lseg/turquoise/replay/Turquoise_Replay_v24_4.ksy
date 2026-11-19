@@ -1335,22 +1335,22 @@ enums:
       doc: 'Start Of Day'
   source_venue:
     5:
-      id: 'turquoise_lit_order_book'
+      id: 'turquoise_lit_order_book_tghl'
       doc: 'Turquoise Lit Order Book'
     6:
-      id: 'turquoise_plato_order_book'
+      id: 'turquoise_plato_order_book_tghl'
       doc: 'Turquoise Plato Order Book'
     12:
-      id: 'turquoise_plato_lit_auctions_order_book'
+      id: 'turquoise_plato_lit_auctions_order_book_tghl'
       doc: 'Turquoise Plato Lit Auctions Order Book'
     14:
-      id: 'turquoise_lit_order_book_14'
+      id: 'turquoise_lit_order_book_tghe'
       doc: 'Turquoise Lit Order Book'
     15:
-      id: 'turquoise_plato_order_book_15'
+      id: 'turquoise_plato_order_book_tghe'
       doc: 'Turquoise Plato Order Book'
     16:
-      id: 'turquoise_plato_lit_auctions_order_book_16'
+      id: 'turquoise_plato_lit_auctions_order_book_tghe'
       doc: 'Turquoise Plato Lit Auctions Order Book'
   session_change_reason:
     0:

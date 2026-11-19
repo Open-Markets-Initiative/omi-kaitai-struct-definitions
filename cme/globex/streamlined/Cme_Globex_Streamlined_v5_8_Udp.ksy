@@ -371,7 +371,7 @@ types:
       - id: reserved_bits
         type: b1
         doc: 'ReservedBits'
-      - id: unused_3
+      - id: unused_bits_4_to_6
         type: b3
         doc: '3 unused bits'
       - id: null_value

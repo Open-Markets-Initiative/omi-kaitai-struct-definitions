@@ -432,7 +432,7 @@ enums:
       id: 'nyse'
       doc: 'New York Stock Exchange'
     0x41:
-      id: 'nyse_amex'
+      id: 'nyse_american'
       doc: 'New York Stock Exchange Amex'
     0x50:
       id: 'nyse_arca'
@@ -506,10 +506,10 @@ enums:
       doc: 'Threshold Indicator not available'
   ipo_flag:
     0x59:
-      id: 'nasdaq_listed_instrument'
+      id: 'new_ipo_security'
       doc: 'NASDAQ listed instrument is set up as a new IPO security'
     0x4e:
-      id: 'nasdaq_listed_instrument_x4e'
+      id: 'not_new_ipo_security'
       doc: 'NASDAQ listed instrument is not set up as a new IPO security'
     0x20:
       id: 'na'
@@ -549,7 +549,7 @@ enums:
       id: 'nyse'
       doc: 'New York Stock Exchange'
     0x41:
-      id: 'nyse_mkt'
+      id: 'nyse_american'
       doc: 'New York Stock Exchange MKT'
     0x50:
       id: 'nyse_arca'
@@ -560,9 +560,6 @@ enums:
     0x56:
       id: 'iexg'
       doc: 'Investors Exchange'
-    0x20:
-      id: 'na'
-      doc: 'Not Available'
   current_trading_state:
     0x48:
       id: 'halted'

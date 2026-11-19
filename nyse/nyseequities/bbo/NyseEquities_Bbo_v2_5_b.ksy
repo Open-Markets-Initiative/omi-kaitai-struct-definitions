@@ -643,7 +643,7 @@ enums:
       id: 'test'
       doc: 'TEST'
     0x55:
-      id: 'units_x55'
+      id: 'closed_end_fund'
       doc: 'UNITS'
     0x57:
       id: 'warrant'

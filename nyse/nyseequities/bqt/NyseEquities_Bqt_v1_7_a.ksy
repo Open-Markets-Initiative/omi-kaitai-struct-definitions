@@ -889,7 +889,7 @@ enums:
       id: 'test'
       doc: 'TEST'
     0x55:
-      id: 'units_x55'
+      id: 'closed_end_fund'
       doc: 'UNITS'
     0x57:
       id: 'warrant'
@@ -971,15 +971,9 @@ enums:
     0x50:
       id: 'pre_opening'
       doc: 'Pre-opening'
-    0x45:
-      id: 'early_session'
-      doc: 'Early session'
     0x4f:
       id: 'core_session'
       doc: 'Core session'
-    0x4c:
-      id: 'late_session_non_nyse_only'
-      doc: 'Late session (Non-NYSE only)'
     0x58:
       id: 'closed'
       doc: 'Closed'
@@ -1098,15 +1092,9 @@ enums:
     0x50:
       id: 'pre_opening'
       doc: 'Pre-opening'
-    0x45:
-      id: 'early_session'
-      doc: 'Early session'
     0x4f:
       id: 'core_session'
       doc: 'Core session'
-    0x4c:
-      id: 'late_session'
-      doc: 'Late session (Non-NYSE only)'
     0x58:
       id: 'closed'
       doc: 'Closed'
@@ -1156,7 +1144,7 @@ enums:
     0x02:
       id: 'retail_interest_on_the_ask_side'
       doc: 'Retail Interest on the Ask side'
-    0x04:
+    0x03:
       id: 'combination_of_retail_interest_on_bid_and_ask_side'
       doc: 'Combination of Retail Interest on Bid and Ask side'
   market_id_of_best_ask:

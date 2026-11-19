@@ -202,10 +202,8 @@ types:
         type: u4
         doc: 'Option ID assigned daily, valid for trading day'
       - id: open_state
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: open_state
         doc: 'The allowable values are Yes and No'
   add_order_message_short_form:
     seq:
@@ -708,17 +706,20 @@ enums:
       id: 'start_of_system_hours'
       doc: 'Start of System hours. This message indicates that NASDAQ is open and ready to start accepting orders.'
     0x51:
-      id: 'start_of_market_hours'
+      id: 'start_of_opening_process'
       doc: 'Start of Market hours. This message is intended to indicate that Market Hours orders are available for execution.'
-    0x4d:
-      id: 'end_of_market_hours'
-      doc: 'End of Market hours. This message is intended to indicate that Market Hours orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
       doc: 'End of System hours. It indicates that NASDAQ is now closed and will not accept any new orders today. It is still possible to receive Broken Trade messages and Order Delete messages after the End of Day.'
     0x43:
       id: 'end_of_messages'
       doc: 'End of Messages. This is always the last message sent in any trading day.'
+    0x4e:
+      id: 'end_of_normal_hours_processing'
+      doc: 'End of Normal Hours Processing - BX will no longer accept any new orders or changes to existing orders for options that trade during normal trading hours.'
+    0x4c:
+      id: 'end_of_late_hours_processing'
+      doc: 'End of Late Hours Processing - BX will no longer accept any new orders or changes to existing orders for options that trade during extended hours.'
   option_type:
     0x43:
       id: 'call'
@@ -763,6 +764,7 @@ enums:
     0x53:
       id: 'sell_side_trading_suspended'
       doc: 'Sell Side Trading Suspended –i.e. Sell orders are not executable)'
+  open_state:
     0x59:
       id: 'open'
       doc: 'Open for auto execution'
@@ -805,7 +807,7 @@ enums:
       id: 'bx_opening_reopening'
       doc: 'BX Opening/Reopening Auction'
     0x50:
-      id: 'bx_opening_reopening_x50'
+      id: 'price_improvement_prism_auction'
       doc: 'BX Opening/Reopening Auction'
   auction_type:
     0x4f:

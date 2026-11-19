@@ -483,10 +483,10 @@ enums:
       id: 'limit_order'
       doc: 'Limit order'
     0x4e:
-      id: 'centre_point_order'
+      id: 'centre_point_order_mid_point_only'
       doc: 'Centre Point order (mid-point only)'
     0x44:
-      id: 'centre_point_order_x44'
+      id: 'centre_point_order_dark_limit_order'
       doc: 'Centre Point order (dark limit order)'
     0x53:
       id: 'sweep_order'
@@ -590,9 +590,6 @@ enums:
     36:
       id: 'tailor_made_combination_match'
       doc: 'Tailor made combination match'
-    10:
-      id: 'deleted_by_asx'
-      doc: 'Order deleted by ASX on behalf of the customer'
     44:
       id: 'booked_ucp_transaction'
       doc: 'Booked transaction resulting from Unintentional Crossing Prevention'
@@ -609,7 +606,7 @@ enums:
       id: 'centre_point_booked_ucp'
       doc: 'Centre Point booked transaction resulting from Unintentional Crossing Prevention'
     49:
-      id: 'reserved'
+      id: 'reserved_49'
       doc: 'Reserved for future use'
     50:
       id: 'block_trade'
@@ -620,6 +617,9 @@ enums:
     52:
       id: 'reserved_52'
       doc: 'Reserved for future use'
+    43:
+      id: 'combination_order_matched_against_outright_legs'
+      doc: 'Combination order matched against outright legs'
   crossing_dealing_capacity:
     0:
       id: 'not_crossed'

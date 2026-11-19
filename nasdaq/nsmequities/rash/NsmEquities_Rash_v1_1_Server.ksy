@@ -964,13 +964,13 @@ enums:
       id: 'opening_cross'
       doc: 'Opening Cross'
     0x4d:
-      id: 'opening_cross_x4d'
+      id: 'opening_cross_imbalance_only'
       doc: 'Opening Cross (imbalance-only)'
     0x43:
       id: 'closing_cross'
       doc: 'Closing Cross'
     0x4c:
-      id: 'closing_cross_x4c'
+      id: 'closing_cross_imbalance_only'
       doc: 'Closing Cross (imbalance-only)'
     0x48:
       id: 'halt_ipo_cross'

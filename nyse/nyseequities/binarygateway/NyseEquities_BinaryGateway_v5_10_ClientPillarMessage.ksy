@@ -893,6 +893,15 @@ enums:
     6:
       id: 'cco_partial_fill_contra_side'
       doc: 'Capital Commitment Order (CCO) – partial fill contra-side'
+    1:
+      id: 'reserved_for_future_use_1'
+      doc: 'Reserved for future use'
+    2:
+      id: 'reserved_for_future_use_2'
+      doc: 'Reserved for future use'
+    3:
+      id: 'reserved_for_future_use_3'
+      doc: 'Reserved for future use'
   trading_session_id:
     1:
       id: 'early_trading_session'
@@ -1217,7 +1226,7 @@ enums:
       id: 'maximum_duplicative_orders'
       doc: 'Maximum Duplicative Orders'
     7:
-      id: 'reserved'
+      id: 'reserved_for_future_use_7'
       doc: 'Reserved for future use'
     8:
       id: 'activity_rolling_transaction'
@@ -1241,10 +1250,10 @@ enums:
       id: 'reject_moo_and_moc'
       doc: 'Reject MOO & MOC'
     15:
-      id: 'not_available_15'
+      id: 'reserved_for_future_use_15'
       doc: 'Not available'
     16:
-      id: 'not_available_16'
+      id: 'reserved_for_future_use_16'
       doc: 'Not available'
     17:
       id: 'reject_early_trading_session'
@@ -1747,7 +1756,7 @@ enums:
       id: 'invalid_leg_position_effect'
       doc: 'Invalid Leg Position Effect'
     90:
-      id: 'invalid_leg_symbol'
+      id: 'invalid_leg_symbol_field'
       doc: 'Invalid Leg Symbol'
     91:
       id: 'invalid_leg_cfi_code'
@@ -2083,7 +2092,7 @@ enums:
       id: 'cross_not_eligible'
       doc: 'Cross Not Eligible'
     202:
-      id: 'reserved_for_future_use'
+      id: 'reserved_for_future_use_202'
       doc: 'Reserved For Future Use'
     203:
       id: 'pending_acceptance_for_ack_on_order_arrival'
@@ -2173,7 +2182,7 @@ enums:
       id: 'mm_quote_price_lockcross_contra_side_nbbo'
       doc: 'Mm Quote Price Lockcross Contra Side Nbbo'
     232:
-      id: 'invalid_leg_symbol_232'
+      id: 'invalid_leg_symbol'
       doc: 'Invalid Leg Symbol'
     233:
       id: 'duplicate_leg_symbol'
@@ -2397,6 +2406,159 @@ enums:
     999:
       id: 'unknown_issue_encountered'
       doc: 'Unknown Issue Encountered'
+    306:
+      id: 'invalid_percentage_strike'
+      doc: 'Invalid Percentage Strike'
+    307:
+      id: 'cancel_remaining_gtx'
+      doc: 'Cancel Remaining Gtx'
+    308:
+      id: 'auction_not_running'
+      doc: 'Auction Not Running'
+    309:
+      id: 'invalid_ord_status'
+      doc: 'Invalid Ord Status'
+    310:
+      id: 'mmid_blocked'
+      doc: 'Mmid Blocked'
+    311:
+      id: 'invalid_catimid'
+      doc: 'Invalid Catimid'
+    312:
+      id: 'risk_rej_iso'
+      doc: 'Risk Rej Iso'
+    313:
+      id: 'risk_rej_mkt_orders'
+      doc: 'Risk Rej Mkt Orders'
+    314:
+      id: 'risk_rej_moo_moc'
+      doc: 'Risk Rej Moo Moc'
+    315:
+      id: 'risk_rej_early_trading'
+      doc: 'Risk Rej Early Trading'
+    316:
+      id: 'risk_rej_late_trading'
+      doc: 'Risk Rej Late Trading'
+    317:
+      id: 'risk_rej_restricted_symbol'
+      doc: 'Risk Rej Restricted Symbol'
+    318:
+      id: 'risk_rej_sell_short_for_symbol'
+      doc: 'Risk Rej Sell Short For Symbol'
+    319:
+      id: 'risk_rej_sell_short_exempt_for_symbol'
+      doc: 'Risk Rej Sell Short Exempt For Symbol'
+    320:
+      id: 'risk_rej_ord_max_qty_symbol_adv'
+      doc: 'Risk Rej Ord Max Qty Symbol Adv'
+    321:
+      id: 'risk_max_duplicative_ord'
+      doc: 'Risk Max Duplicative Ord'
+    322:
+      id: 'risk_require_locate_broker'
+      doc: 'Risk Require Locate Broker'
+    323:
+      id: 'invalid_risk_range_id'
+      doc: 'Invalid Risk Range Id'
+    324:
+      id: 'invalid_risk_minimum_value'
+      doc: 'Invalid Risk Minimum Value'
+    325:
+      id: 'invalid_price_scale'
+      doc: 'Invalid Price Scale'
+    326:
+      id: 'invalid_max_risk_symbols_exceeded'
+      doc: 'Invalid Max Risk Symbols Exceeded'
+    327:
+      id: 'invalid_risk_settings_incomplete'
+      doc: 'Invalid Risk Settings Incomplete'
+    328:
+      id: 'invalid_auction_id'
+      doc: 'Invalid Auction Id'
+    329:
+      id: 'group_id_blocked'
+      doc: 'Group Id Blocked'
+    330:
+      id: 'pending_flex_price_msg'
+      doc: 'Pending Flex Price Msg'
+    331:
+      id: 'risk_ord_rate_threshold'
+      doc: 'Risk Ord Rate Threshold'
+    332:
+      id: 'inconsistent_percentage_flex_legs'
+      doc: 'Inconsistent Percentage Flex Legs'
+    333:
+      id: 'cancelled_by_routing_venue'
+      doc: 'Cancelled By Routing Venue'
+    334:
+      id: 'invalid_target_strategy'
+      doc: 'Invalid Target Strategy'
+    335:
+      id: 'cancel_ioc_crossing_away_quote'
+      doc: 'Cancel Ioc Crossing Away Quote'
+    336:
+      id: 'routing_venue_not_available'
+      doc: 'Routing Venue Not Available'
+    337:
+      id: 'invalid_leg_price'
+      doc: 'Invalid Leg Price'
+    338:
+      id: 'invalid_routing_strategy'
+      doc: 'Invalid Routing Strategy'
+    341:
+      id: 'routing_is_not_available'
+      doc: 'Routing Is Not Available'
+    400:
+      id: 'repriced'
+      doc: 'Repriced'
+    500:
+      id: 'cancelled_by_ats'
+      doc: 'Cancelled By Ats'
+    501:
+      id: 'invalid_currency'
+      doc: 'Invalid Currency'
+    700:
+      id: 'invalid_trf_tag'
+      doc: 'Invalid Trf Tag'
+    701:
+      id: 'invalid_reporting_firm'
+      doc: 'Invalid Reporting Firm'
+    702:
+      id: 'invalid_contra_firm'
+      doc: 'Invalid Contra Firm'
+    703:
+      id: 'invalid_reporting_clearing'
+      doc: 'Invalid Reporting Clearing'
+    704:
+      id: 'invalid_contra_clearing'
+      doc: 'Invalid Contra Clearing'
+    705:
+      id: 'invalid_firm_relationship'
+      doc: 'Invalid Firm Relationship'
+    706:
+      id: 'unsupported_report_type'
+      doc: 'Unsupported Report Type'
+    707:
+      id: 'original_trade_not_found'
+      doc: 'Original Trade Not Found'
+    708:
+      id: 'invalid_price_luld'
+      doc: 'Invalid Price Luld'
+    709:
+      id: 'reject_trade_action_pending'
+      doc: 'Reject Trade Action Pending'
+    710:
+      id: 'finra_obr_down'
+      doc: 'Finra Obr Down'
+    799:
+      id: 'misc_prism_reject'
+      doc: 'Misc Prism Reject'
+    800:
+      id: 'broker_reject'
+      doc: 'Broker Reject'
+    906:
+      id: 'system_full_cga_rate_exceeded'
+      doc: 'System Full Cga Rate Exceeded'
   ack_type:
     1:
       id: 'new_interest'
@@ -2483,7 +2645,7 @@ enums:
       id: 'bulk_cancel_request'
       doc: 'Bulk Cancel Request reject'
     5:
-      id: 'reserved'
+      id: 'reserved_for_future_use_5'
       doc: 'Reserved for future use'
     6:
       id: 'manual_action_response'
@@ -2492,13 +2654,13 @@ enums:
       id: 'risk_limit_update_request'
       doc: 'Risk Limit Update Request reject'
     8:
-      id: 'not_applicable_equities'
+      id: 'not_applicable_for_equities_markets_8'
       doc: 'Not applicable for equities markets'
     9:
-      id: 'reserved_future'
+      id: 'reserved_for_future_use_9'
       doc: 'Reserved for future use'
     10:
-      id: 'not_applicable_equities_alt'
+      id: 'not_applicable_for_equities_markets_10'
       doc: 'Not applicable for equities markets'
     11:
       id: 'risk_action_request'

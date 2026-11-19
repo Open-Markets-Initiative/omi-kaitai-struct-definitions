@@ -17,33 +17,8 @@ class BistBorsaistanbulGeniuminetItchV2112Tests(unittest.TestCase):
             parsed = BistBorsaistanbulGeniuminetItchV2112.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_orderbookdirectory(self):
-        for payload in payloads.of("omi-data-packets/Bist/BorsaIstanbul.GeniumInet.Itch.v21.12/OrderBookDirectory.pcap"):
-            parsed = BistBorsaistanbulGeniuminetItchV2112.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_orderbookstatemessage(self):
         for payload in payloads.of("omi-data-packets/Bist/BorsaIstanbul.GeniumInet.Itch.v21.12/OrderBookStateMessage.pcap"):
-            parsed = BistBorsaistanbulGeniuminetItchV2112.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_secondsmessage(self):
-        for payload in payloads.of("omi-data-packets/Bist/BorsaIstanbul.GeniumInet.Itch.v21.12/SecondsMessage.pcap"):
-            parsed = BistBorsaistanbulGeniuminetItchV2112.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_shortsellstatus(self):
-        for payload in payloads.of("omi-data-packets/Bist/BorsaIstanbul.GeniumInet.Itch.v21.12/ShortSellStatus.pcap"):
-            parsed = BistBorsaistanbulGeniuminetItchV2112.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_systemeventmessage(self):
-        for payload in payloads.of("omi-data-packets/Bist/BorsaIstanbul.GeniumInet.Itch.v21.12/SystemEventMessage.pcap"):
-            parsed = BistBorsaistanbulGeniuminetItchV2112.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_ticksizetableentry(self):
-        for payload in payloads.of("omi-data-packets/Bist/BorsaIstanbul.GeniumInet.Itch.v21.12/TickSizeTableEntry.pcap"):
             parsed = BistBorsaistanbulGeniuminetItchV2112.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

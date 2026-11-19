@@ -932,22 +932,22 @@ enums:
       id: 'dot'
       doc: 'DOT'
     0x46:
-      id: 'opening_trade'
+      id: 'opening_trade_on_nyse'
       doc: 'Opening Trade (on NYSE)'
     0x47:
-      id: 'on_close_order'
+      id: 'on_close_order_on_nyse'
       doc: 'On-Close order (on NYSE)'
     0x4f:
       id: 'opening_cross'
       doc: 'Opening Cross'
     0x4d:
-      id: 'opening_cross_x4d'
+      id: 'opening_cross_imbalance_only'
       doc: 'Opening Cross (imbalance-only)'
     0x43:
       id: 'closing_cross'
       doc: 'Closing Cross'
     0x4c:
-      id: 'closing_cross_x4c'
+      id: 'closing_cross_imbalance_only'
       doc: 'Closing Cross (imbalance-only)'
     0x48:
       id: 'halt_ipo_cross'
@@ -974,10 +974,10 @@ enums:
       id: 'routed_to_psx'
       doc: 'Routed to PSX'
     0x54:
-      id: 'opening_trade_x54'
+      id: 'opening_trade_on_arca'
       doc: 'Opening Trade (on ARCA)'
     0x5a:
-      id: 'on_close_order_x5a'
+      id: 'on_close_order_on_arca'
       doc: 'On-Close order (on ARCA)'
     0x57:
       id: 'added_post_only'

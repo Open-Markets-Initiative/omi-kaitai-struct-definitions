@@ -8189,16 +8189,16 @@ enums:
       id: 'late_trade'
       doc: 'Late Trade'
     0x4d:
-      id: 'for_future_use'
+      id: 'for_future_use_m'
       doc: 'For Future Use'
     0x4e:
-      id: 'for_future_use_x4e'
+      id: 'for_future_use_n'
       doc: 'For Future Use'
     0x50:
       id: 'strategy_reporting'
       doc: 'Strategy Reporting'
     0x51:
-      id: 'for_future_use_x51'
+      id: 'for_future_use_q'
       doc: 'For Future Use'
     0x52:
       id: 'efr_reporting'
@@ -8219,10 +8219,10 @@ enums:
       id: 'price_volume_adjustment'
       doc: 'Price Volume Adjustment'
     0x59:
-      id: 'for_future_use_x59'
+      id: 'for_future_use_y'
       doc: 'For Future Use'
     0x5a:
-      id: 'for_future_use_x5a'
+      id: 'for_future_use_z'
       doc: 'For Future Use'
   symbol_month:
     0x46:

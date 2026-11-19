@@ -246,7 +246,7 @@ types:
       - id: conditional_order
         type: b1
         doc: 'ConditionalOrder'
-      - id: unused_1
+      - id: unused_bit_7
         type: b1
         doc: '1 unused bit'
   dark_execution_instruction:
@@ -398,7 +398,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_1
+      - id: unused_bit_0
         type: b1
         doc: '1 unused bit'
       - id: session_1
@@ -1280,7 +1280,7 @@ types:
       - id: conditional_order
         type: b1
         doc: 'ConditionalOrder'
-      - id: unused_1
+      - id: unused_bit_7
         type: b1
         doc: '1 unused bit'
   clearing_dataset_groups:

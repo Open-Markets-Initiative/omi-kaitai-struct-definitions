@@ -369,7 +369,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_1
+      - id: unused_bit_0
         type: b1
         doc: '1 unused bit'
       - id: session_1
@@ -638,7 +638,7 @@ types:
       - id: nav_trade_expressed_in_price_currency
         type: b1
         doc: 'NAVTradeExpressedInPriceCurrency'
-      - id: unused_1
+      - id: unused_bit_7
         type: b1
         doc: '1 unused bit'
   fill_optional_field_groups:

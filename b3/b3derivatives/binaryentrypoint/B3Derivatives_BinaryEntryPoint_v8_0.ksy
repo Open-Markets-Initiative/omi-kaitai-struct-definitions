@@ -4063,7 +4063,7 @@ enums:
       id: 'mkta_document_sell_not_allowed_for_symbols_market'
       doc: 'Mkta Document Sell Not Allowed For Symbols Market'
     030303:
-      id: 'tmox_document_max'
+      id: 'tmox_document_max_bidoffer_quantity_not_configured'
       doc: 'Tmox Document Max'
     030304:
       id: 'tmoc_document_max_bid_quantity_exceeded_for_single_order'
@@ -4084,7 +4084,7 @@ enums:
       id: 'std_document_order_quantity_exceeded_max_operations_forward_balance'
       doc: 'Std Document Order Quantity Exceeded Max Operations Forward Balance'
     030310:
-      id: 'rmkt'
+      id: 'rmkt_document_order_quantity_exceeded_max_market_risk'
       doc: 'Rmkt'
     030311:
       id: 'irmkt_document_order_quantity_exceeded_max_incremental_market_risk'
@@ -4093,7 +4093,7 @@ enums:
       id: 'spi_document_order_quantity_exceeded_previous_potencial_balance'
       doc: 'Spi Document Order Quantity Exceeded Previous Potencial Balance'
     030313:
-      id: 'std_document_termo_not_allowed'
+      id: 'std_document_termo_not_allowed_protected_mode_enabled'
       doc: 'Std Document Termo Not Allowed'
     030314:
       id: 'sfd_document_day_trade_cash_balance_stop_loss_not_configured'
@@ -4114,7 +4114,7 @@ enums:
       id: 'mkta_entering_trader_buy_not_allowed_for_symbols_market'
       doc: 'Mkta Entering Trader Buy Not Allowed For Symbols Market'
     030402:
-      id: 'mkta_entering'
+      id: 'mkta_entering_trader_sell_not_allowed_for_symbols_market'
       doc: 'Mkta Entering'
     030403:
       id: 'tmox_entering_trader_max_bidoffer_quantity_not_configured'
@@ -4123,7 +4123,7 @@ enums:
       id: 'tmoc_entering_trader_max_bid_quantity_exceeded_for_single_order'
       doc: 'Tmoc Entering Trader Max Bid Quantity Exceeded For Single Order'
     030405:
-      id: 'tmov_entering_trader_max_offer_quantity_exceeded_for_si'
+      id: 'tmov_entering_trader_max_offer_quantity_exceeded_for_single_order'
       doc: 'Tmov Entering Trader Max Offer Quantity Exceeded For Si'
     030406:
       id: 'spci_entering_trader_order_quantity_exceeded_max_bid_potential_balance'
@@ -4132,7 +4132,7 @@ enums:
       id: 'spvi_entering_trader_order_quantity_exceeded_max_offer_potential_balance'
       doc: 'Spvi Entering Trader Order Quantity Exceeded Max Offer Potential Balance'
     030408:
-      id: 'sdp_entering_trader_order_exceeded_max_financial_potential'
+      id: 'sdp_entering_trader_order_exceeded_max_financial_potential_balance_due'
       doc: 'Sdp Entering Trader Order Exceeded Max Financial Potential'
     030415:
       id: 'spvd_trader_order_exceeded_potential_short_uncovered_balance'
@@ -4183,10 +4183,10 @@ enums:
       id: 'oms_quoteid_cannot_be_empty'
       doc: 'Oms Quote Id Cannot Be Empty'
     030521:
-      id: 'oms_in'
+      id: 'oms_inflight_modification_is_not_allowed'
       doc: 'Oms In'
     030522:
-      id: 'oms'
+      id: 'oms_side_modification_is_not_allowed'
       doc: 'Oms'
     030523:
       id: 'oms_entering_firm_modification_is_not_allowed'
@@ -4195,124 +4195,124 @@ enums:
       id: 'oms_account_modification_on_dma_order_is_not_allowed'
       doc: 'Oms Account Modification On Dma Order Is Not Allowed'
     030525:
-      id: 'oms_account_information_missing_on_non'
+      id: 'oms_account_information_missing_on_nondma_order'
       doc: 'Oms Account Information Missing On Non'
     030526:
-      id: 'oms_entering_trader'
+      id: 'oms_entering_trader_modification_on_nondma_order_is_not_allowed'
       doc: 'Oms Entering Trader'
     030527:
       id: 'oms_received_execution_report_rejection_for_an_active_order'
       doc: 'Oms Received Execution Report Rejection For An Active Order'
     031011:
-      id: 'broker_negotiation_blocked_031011'
+      id: 'broker_negotiation_blocked_line_carrying'
       doc: 'Broker Negotiation Blocked'
     031012:
-      id: 'broker_not_available_031012'
+      id: 'broker_not_available_line_carrying'
       doc: 'Broker Not Available'
     031013:
-      id: 'brokers_capture_account_not_found_031013'
+      id: 'brokers_capture_account_not_found_line_carrying'
       doc: 'Brokers Capture Account Not Found'
     031014:
-      id: 'brokers_segment_negotiation_blocked_031014'
+      id: 'brokers_segment_negotiation_blocked_line_carrying'
       doc: 'Brokers Segment Negotiation Blocked'
     031015:
-      id: 'broker_segment_not_available_031015'
+      id: 'broker_segment_not_available_line_carrying'
       doc: 'Broker Segment Not Available'
     031016:
-      id: 'brokers_segment_protected_mode_under_activation_031016'
+      id: 'brokers_segment_protected_mode_under_activation_line_carrying'
       doc: 'Brokers Segment Protected Mode Under Activation'
     031021:
-      id: 'account_negotiation_blocked_031021'
+      id: 'account_negotiation_blocked_line_carrying'
       doc: 'Account Negotiation Blocked'
     031022:
-      id: 'account_not_available_031022'
+      id: 'account_not_available_line_carrying'
       doc: 'Account Not Available'
     031023:
-      id: 'accounts_protected_mode_under_activation_031023'
+      id: 'accounts_protected_mode_under_activation_line_carrying'
       doc: 'Accounts Protected Mode Under Activation'
     031024:
-      id: 'account_mandatory_on_dma_orders_031024'
+      id: 'account_mandatory_on_dma_orders_line_carrying'
       doc: 'Account Mandatory On Dma Orders'
     031025:
-      id: 'transient_account_is_hierarchically_blocked_on_protected_mode_031025'
+      id: 'transient_account_is_hierarchically_blocked_on_protected_mode_line_carrying'
       doc: 'Transient Account Is Hierarchically Blocked On Protected Mode'
     031026:
-      id: 'crossorders_or_crossforward_not_allowed_while_account_in_protected_mode_031026'
+      id: 'crossorders_or_crossforward_not_allowed_while_account_in_protected_mode_line_carrying'
       doc: 'Cross Orders Or Cross Forward Not Allowed While Account In Protected Mode'
     031027:
-      id: 'transient_account_not_allowed_in_extended_hours_031027'
+      id: 'transient_account_not_allowed_in_extended_hours_line_carrying'
       doc: 'Transient Account Not Allowed In Extended Hours'
     031031:
-      id: 'document_negotiation_blocked_031031'
+      id: 'document_negotiation_blocked_line_carrying'
       doc: 'Document Negotiation Blocked'
     031032:
-      id: 'document_not_available_031032'
+      id: 'document_not_available_line_carrying'
       doc: 'Document Not Available'
     031033:
-      id: 'documents_protected_mode_under_activation_031033'
+      id: 'documents_protected_mode_under_activation_line_carrying'
       doc: 'Documents Protected Mode Under Activation'
     031034:
-      id: 'executor_document_cannot_use_default_broker_profile_031034'
+      id: 'executor_document_cannot_use_default_broker_profile_line_carrying'
       doc: 'Executor Document Cannot Use Default Broker Profile'
     031035:
-      id: 'document_in_blocked_profile_031035'
+      id: 'document_in_blocked_profile_line_carrying'
       doc: 'Document In Blocked Profile'
     031036:
-      id: 'crossorders_or_crossforward_not_allowed_while_document_in_protected_mode_031036'
+      id: 'crossorders_or_crossforward_not_allowed_while_document_in_protected_mode_line_carrying'
       doc: 'Cross Orders Or Cross Forward Not Allowed While Document In Protected Mode'
     031041:
-      id: 'entering_trader_negotiation_blocked_031041'
+      id: 'entering_trader_negotiation_blocked_line_carrying'
       doc: 'Entering Trader Negotiation Blocked'
     031042:
-      id: 'entering_trader_not_available_031042'
+      id: 'entering_trader_not_available_line_carrying'
       doc: 'Entering Trader Not Available'
     031043:
-      id: 'entering_trader_blocked_by_sfd_overflow_031043'
+      id: 'entering_trader_blocked_by_sfd_overflow_line_carrying'
       doc: 'Entering Trader Blocked By Sfd Overflow'
     031044:
-      id: 'non_dma_orders_must_provide_account_while_in_brokers_protected_mode_031044'
+      id: 'non_dma_orders_must_provide_account_while_in_brokers_protected_mode_line_carrying'
       doc: 'Non Dma Orders Must Provide Account While In Brokers Protected Mode'
     031045:
-      id: 'entering_trader_not_authorized_to_trade_accountless_orders_031045'
+      id: 'entering_trader_not_authorized_to_trade_accountless_orders_line_carrying'
       doc: 'Entering Trader Not Authorized To Trade Accountless Orders'
     031046:
-      id: 'entering_trader_cannot_trade_on_behalf_of_other_firms_account_031046'
+      id: 'entering_trader_cannot_trade_on_behalf_of_other_firms_account_line_carrying'
       doc: 'Entering Trader Cannot Trade On Behalf Of Other Firms Account'
     031050:
-      id: 'symbol_not_available_031050'
+      id: 'symbol_not_available_line_carrying'
       doc: 'Symbol Not Available'
     031051:
-      id: 'symbol_internal_data_corrupted_031051'
+      id: 'symbol_internal_data_corrupted_line_carrying'
       doc: 'Symbol Internal Data Corrupted'
     031052:
-      id: 'fix_message_type_does_not_support_operations_on_such_symbol_031052'
+      id: 'fix_message_type_does_not_support_operations_on_such_symbol_line_carrying'
       doc: 'Fix Message Type Does Not Support Operations On Such Symbol'
     031053:
-      id: 'symbols_underlying_not_found_for_risk_aggregation_031053'
+      id: 'symbols_underlying_not_found_for_risk_aggregation_line_carrying'
       doc: 'Symbols Underlying Not Found For Risk Aggregation'
     031054:
-      id: 'symbols_risk_unit_matrix_not_available_031054'
+      id: 'symbols_risk_unit_matrix_not_available_line_carrying'
       doc: 'Symbols Risk Unit Matrix Not Available'
     031055:
-      id: 'symbols_reference_price_missing_market_orders_not_allowed_031055'
+      id: 'symbols_reference_price_missing_market_orders_not_allowed_line_carrying'
       doc: 'Symbols Reference Price Missing Market Orders Not Allowed'
     031056:
-      id: 'symbols_calculated_price_invalid_031056'
+      id: 'symbols_calculated_price_invalid_line_carrying'
       doc: 'Symbols Calculated Price Invalid'
     031060:
-      id: 'spreads_leg_not_available_031060'
+      id: 'spreads_leg_not_available_line_carrying'
       doc: 'Spreads Leg Not Available'
     031061:
-      id: 'spreads_leg_internal_data_corrupted_031061'
+      id: 'spreads_leg_internal_data_corrupted_line_carrying'
       doc: 'Spreads Leg Internal Data Corrupted'
     031070:
-      id: 'unexpected_internal_error_during_risk_evaluation_031070'
+      id: 'unexpected_internal_error_during_risk_evaluation_line_carrying'
       doc: 'Unexpected Internal Error During Risk Evaluation'
     031201:
-      id: 'mkta_account_buy_not_allowed_for_symbols_market_031201'
+      id: 'mkta_account_buy_not_allowed_for_symbols_market_line_carrying'
       doc: 'Mkta Account Buy Not Allowed For Symbols Market'
     031202:
-      id: 'mkta_account_sell_not_allowed_for_symbols_market_031202'
+      id: 'mkta_account_sell_not_allowed_for_symbols_market_line_carrying'
       doc: 'Mkta Account Sell Not Allowed For Symbols Market'
     031204:
       id: 'tmoc_account_max_bid_quantity_exceeded_for_single_order'
@@ -4339,19 +4339,19 @@ enums:
       id: 'spi_account_order_quantity_exceeded_previous_potencial_balance'
       doc: 'Spi Account Order Quantity Exceeded Previous Potencial Balance'
     031213:
-      id: 'std_account_termo_not_allowed_protected_mode_enabled_031213'
+      id: 'std_account_termo_not_allowed_protected_mode_enabled_line_carrying'
       doc: 'Std Account Termo Not Allowed Protected Mode Enabled'
     031215:
-      id: 'spvd_account_order_exceeded_potential_short_uncovered_balance_031215'
+      id: 'spvd_account_order_exceeded_potential_short_uncovered_balance_line_carrying'
       doc: 'Spvd Account Order Exceeded Potential Short Uncovered Balance'
     031300:
-      id: 'mkta_document_buysell_symbols_market_not_configured_031300'
+      id: 'mkta_document_buysell_symbols_market_not_configured_line_carrying'
       doc: 'Mkta Document Buy Sell Symbols Market Not Configured'
     031301:
-      id: 'mkta_document_buy_not_allowed_for_symbols_market_031301'
+      id: 'mkta_document_buy_not_allowed_for_symbols_market_line_carrying'
       doc: 'Mkta Document Buy Not Allowed For Symbols Market'
     031302:
-      id: 'mkta_document_sell_not_allowed_for_symbols_market_031302'
+      id: 'mkta_document_sell_not_allowed_for_symbols_market_line_carrying'
       doc: 'Mkta Document Sell Not Allowed For Symbols Market'
     031303:
       id: 'tmox_document_maximum_order_size_not_configured'
@@ -4384,28 +4384,28 @@ enums:
       id: 'spi_document_order_quantity_exceeded_long_and_short_position_reducing_mode'
       doc: 'Spi Document Order Quantity Exceeded Long And Short Position Reducing Mode'
     031313:
-      id: 'std_document_termo_not_allowed_protected_mode_enabled'
+      id: 'std_document_termo_not_allowed_protected_mode_enabled_line_carrying'
       doc: 'Std Document Termo Not Allowed Protected Mode Enabled'
     031314:
-      id: 'sfd_document_day_trade_cash_balance_stop_loss_not_configured_031314'
+      id: 'sfd_document_day_trade_cash_balance_stop_loss_not_configured_line_carrying'
       doc: 'Sfd Document Day Trade Cash Balance Stop Loss Not Configured'
     031315:
       id: 'spvd_document_order_exceeded_potential_short_uncovered_balance_031315'
       doc: 'Spvd Document Order Exceeded Potential Short Uncovered Balance'
     031316:
-      id: 'rmse_document_order_exceeded_risk_increase_at_extended_session_031316'
+      id: 'rmse_document_order_exceeded_risk_increase_at_extended_session_line_carrying'
       doc: 'Rmse Document Order Exceeded Risk Increase At Extended Session'
     031317:
-      id: 'rmse_document_order_exceeded_risk_increase_of_broker_at_extended_session_031317'
+      id: 'rmse_document_order_exceeded_risk_increase_of_broker_at_extended_session_line_carrying'
       doc: 'Rmse Document Order Exceeded Risk Increase Of Broker At Extended Session'
     031400:
-      id: 'mkta_entering_trader_buysell_symbols_market_not_configured_031400'
+      id: 'mkta_entering_trader_buysell_symbols_market_not_configured_line_carrying'
       doc: 'Mkta Entering Trader Buy Sell Symbols Market Not Configured'
     031401:
-      id: 'mkta_entering_trader_buy_not_allowed_for_symbols_market_031401'
+      id: 'mkta_entering_trader_buy_not_allowed_for_symbols_market_line_carrying'
       doc: 'Mkta Entering Trader Buy Not Allowed For Symbols Market'
     031402:
-      id: 'mkta_entering_trader_sell_not_allowed_for_symbols_market'
+      id: 'mkta_entering_trader_sell_not_allowed_for_symbols_market_line_carrying'
       doc: 'Mkta Entering Trader Sell Not Allowed For Symbols Market'
     031403:
       id: 'tmox_entering_trader_maximum_order_size_not_configured'
@@ -4426,70 +4426,70 @@ enums:
       id: 'sdp_entering_trader_order_exceeded_cash_settlement_exposure'
       doc: 'Sdp Entering Trader Order Exceeded Cash Settlement Exposure'
     031500:
-      id: 'oms_unexpected_internal_error_031500'
+      id: 'oms_unexpected_internal_error_line_carrying'
       doc: 'Oms Unexpected Internal Error'
     031501:
-      id: 'oms_invalid_session_or_symbol_031501'
+      id: 'oms_invalid_session_or_symbol_line_carrying'
       doc: 'Oms Invalid Session Or Symbol'
     031502:
-      id: 'oms_clordid_cannot_be_empty_031502'
+      id: 'oms_clordid_cannot_be_empty_line_carrying'
       doc: 'Oms Cl Ord Id Cannot Be Empty'
     031503:
-      id: 'oms_clordid_is_duplicated_031503'
+      id: 'oms_clordid_is_duplicated_line_carrying'
       doc: 'Oms Cl Ord Id Is Duplicated'
     031504:
-      id: 'oms_clordid_not_found_031504'
+      id: 'oms_clordid_not_found_line_carrying'
       doc: 'Oms Cl Ord Id Not Found'
     031505:
-      id: 'oms_origclordid_cannot_be_empty_031505'
+      id: 'oms_origclordid_cannot_be_empty_line_carrying'
       doc: 'Oms Orig Cl Ord Id Cannot Be Empty'
     031506:
-      id: 'oms_crossid_cannot_be_empty_031506'
+      id: 'oms_crossid_cannot_be_empty_line_carrying'
       doc: 'Oms Cross Id Cannot Be Empty'
     031507:
-      id: 'oms_clordid_is_duplicated_within_cross_order_031507'
+      id: 'oms_clordid_is_duplicated_within_cross_order_line_carrying'
       doc: 'Oms Cl Ord Id Is Duplicated Within Cross Order'
     031508:
-      id: 'oms_cross_order_modification_is_not_allowed_031508'
+      id: 'oms_cross_order_modification_is_not_allowed_line_carrying'
       doc: 'Oms Cross Order Modification Is Not Allowed'
     031509:
-      id: 'oms_orderid_not_found_031509'
+      id: 'oms_orderid_not_found_line_carrying'
       doc: 'Oms Order Id Not Found'
     031510:
-      id: 'oms_orderid_cannot_be_empty_031510'
+      id: 'oms_orderid_cannot_be_empty_line_carrying'
       doc: 'Oms Order Id Cannot Be Empty'
     031511:
-      id: 'oms_quotereqid_cannot_be_empty_031511'
+      id: 'oms_quotereqid_cannot_be_empty_line_carrying'
       doc: 'Oms Quote Req Id Cannot Be Empty'
     031512:
-      id: 'oms_quotereqid_is_duplicated_031512'
+      id: 'oms_quotereqid_is_duplicated_line_carrying'
       doc: 'Oms Quote Req Id Is Duplicated'
     031513:
-      id: 'oms_quotereqid_not_found_031513'
+      id: 'oms_quotereqid_not_found_line_carrying'
       doc: 'Oms Quote Req Id Not Found'
     031514:
-      id: 'oms_quoteid_cannot_be_empty_031514'
+      id: 'oms_quoteid_cannot_be_empty_line_carrying'
       doc: 'Oms Quote Id Cannot Be Empty'
     031521:
-      id: 'oms_inflight_modification_is_not_allowed'
+      id: 'oms_inflight_modification_is_not_allowed_line_carrying'
       doc: 'Oms In Flight Modification Is Not Allowed'
     031522:
-      id: 'oms_side_modification_is_not_allowed'
+      id: 'oms_side_modification_is_not_allowed_line_carrying'
       doc: 'Oms Side Modification Is Not Allowed'
     031523:
-      id: 'oms_entering_firm_modification_is_not_allowed_031523'
+      id: 'oms_entering_firm_modification_is_not_allowed_line_carrying'
       doc: 'Oms Entering Firm Modification Is Not Allowed'
     031524:
-      id: 'oms_account_modification_on_dma_order_is_not_allowed_031524'
+      id: 'oms_account_modification_on_dma_order_is_not_allowed_line_carrying'
       doc: 'Oms Account Modification On Dma Order Is Not Allowed'
     031525:
-      id: 'oms_account_information_missing_on_nondma_order'
+      id: 'oms_account_information_missing_on_nondma_order_line_carrying'
       doc: 'Oms Account Information Missing On Non Dma Order'
     031526:
-      id: 'oms_entering_trader_modification_on_nondma_order_is_not_allowed'
+      id: 'oms_entering_trader_modification_on_nondma_order_is_not_allowed_line_carrying'
       doc: 'Oms Entering Trader Modification On Non Dma Order Is Not Allowed'
     031527:
-      id: 'oms_received_execution_report_rejection_for_an_active_order_031527'
+      id: 'oms_received_execution_report_rejection_for_an_active_order_line_carrying'
       doc: 'Oms Received Execution Report Rejection For An Active Order'
     032000:
       id: 'field_missing_or_incorrect'
@@ -4573,10 +4573,10 @@ enums:
       id: 'unknown_market_segment_id'
       doc: 'Unknown Market Segment Id'
     033003:
-      id: 'field_missing_or_incorrect_033003'
+      id: 'field_missing_or_incorrect_binary_gateway'
       doc: 'Field Missing Or Incorrect'
     033050:
-      id: 'system_error_033050'
+      id: 'system_error_binary_gateway'
       doc: 'System Error'
   settl_type_optional:
     0x30:

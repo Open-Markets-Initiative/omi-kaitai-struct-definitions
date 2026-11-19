@@ -762,7 +762,7 @@ enums:
       id: 'miax_emerald'
       doc: 'MIAX EMERALD'
     0x45:
-      id: 'cboe_edgx_options'
+      id: 'cboe_edgx_options_exchange'
       doc: 'Cboe EDGX Options'
     0x48:
       id: 'nasdaq_gemx'
@@ -792,7 +792,7 @@ enums:
       id: 'nasdaq_bx_options'
       doc: 'NASDAQ BX Options'
     0x57:
-      id: 'cboe_c_2_options'
+      id: 'cboe_c2_options_exchange'
       doc: 'Cboe C2 Options'
     0x58:
       id: 'nasdaq_phlx'
@@ -892,78 +892,138 @@ enums:
     0x58:
       id: 'xmpt'
       doc: 'Transaction is Trade Through Exempt. The transaction should be treated like a regular sale.'
+    0x61:
+      id: 'slan'
+      doc: 'Single Leg Auction Non ISO'
+    0x62:
+      id: 'slai'
+      doc: 'Single Leg Auction ISO'
+    0x63:
+      id: 'slcn'
+      doc: 'Single Leg Cross Non ISO'
+    0x64:
+      id: 'scli'
+      doc: 'Single Leg Cross ISO'
+    0x65:
+      id: 'slft'
+      doc: 'Single Leg Floor Trade'
+    0x66:
+      id: 'mlet'
+      doc: 'Multi Leg auto-electronic trade'
+    0x67:
+      id: 'mlat'
+      doc: 'Multi Leg Auction'
+    0x68:
+      id: 'mlct'
+      doc: 'Multi Leg Cross'
+    0x69:
+      id: 'mlft'
+      doc: 'Multi Leg floor trade'
+    0x6a:
+      id: 'mesl'
+      doc: 'Multi Leg auto-electronic trade against single leg(s)'
+    0x6b:
+      id: 'tlat'
+      doc: 'Stock Options Auction'
+    0x6c:
+      id: 'masl'
+      doc: 'Multi Leg Auction against single leg(s)'
+    0x6d:
+      id: 'mfsl'
+      doc: 'Multi Leg floor trade against single leg(s)'
+    0x6e:
+      id: 'tlet'
+      doc: 'Stock Options auto-electronic trade'
+    0x6f:
+      id: 'tlct'
+      doc: 'Stock Options Cross'
+    0x70:
+      id: 'tlft'
+      doc: 'Stock Options floor trade'
+    0x71:
+      id: 'tesl'
+      doc: 'Stock Options auto-electronic trade against single leg(s)'
+    0x72:
+      id: 'tasl'
+      doc: 'Stock Options Auction against single leg(s)'
+    0x73:
+      id: 'tfsl'
+      doc: 'Stock Options floor trade against single leg(s)'
+    0x74:
+      id: 'cbmo'
+      doc: 'Multi Leg Floor Trade of Proprietary Products'
   expiration_month:
     0x41:
-      id: 'january'
+      id: 'january_call'
       doc: 'JANUARY'
     0x4d:
-      id: 'january_x4d'
+      id: 'january_put'
       doc: 'JANUARY'
     0x42:
-      id: 'february'
+      id: 'february_call'
       doc: 'FEBRUARY'
     0x4e:
-      id: 'february_x4e'
+      id: 'february_put'
       doc: 'FEBRUARY'
     0x43:
-      id: 'march'
+      id: 'march_call'
       doc: 'MARCH'
     0x4f:
-      id: 'march_x4f'
+      id: 'march_put'
       doc: 'MARCH'
     0x44:
-      id: 'april'
+      id: 'april_call'
       doc: 'APRIL'
     0x50:
-      id: 'april_x50'
+      id: 'april_put'
       doc: 'APRIL'
     0x45:
-      id: 'may'
+      id: 'may_call'
       doc: 'MAY'
     0x51:
-      id: 'may_x51'
+      id: 'may_put'
       doc: 'MAY'
     0x46:
-      id: 'june'
+      id: 'june_call'
       doc: 'JUNE'
     0x52:
-      id: 'june_x52'
+      id: 'june_put'
       doc: 'JUNE'
     0x47:
-      id: 'july'
+      id: 'july_call'
       doc: 'JULY'
     0x53:
-      id: 'july_x53'
+      id: 'july_put'
       doc: 'JULY'
     0x48:
-      id: 'august'
+      id: 'august_call'
       doc: 'AUGUST'
     0x54:
-      id: 'august_x54'
+      id: 'august_put'
       doc: 'AUGUST'
     0x49:
-      id: 'september'
+      id: 'september_call'
       doc: 'SEPTEMBER'
     0x55:
-      id: 'september_x55'
+      id: 'september_put'
       doc: 'SEPTEMBER'
     0x4a:
-      id: 'october'
+      id: 'october_call'
       doc: 'OCTOBER'
     0x56:
-      id: 'october_x56'
+      id: 'october_put'
       doc: 'OCTOBER'
     0x4b:
-      id: 'november'
+      id: 'november_call'
       doc: 'NOVEMBER'
     0x57:
-      id: 'november_x57'
+      id: 'november_put'
       doc: 'NOVEMBER'
     0x4c:
-      id: 'december'
+      id: 'december_call'
       doc: 'DECEMBER'
     0x58:
-      id: 'december_x58'
+      id: 'december_put'
       doc: 'DECEMBER'
   strike_price_denominator_code:
     0x41:
@@ -1081,7 +1141,7 @@ enums:
       doc: 'Bid Side of Quote Not Firm; Offer Side Firm'
   bbo_indicator:
     0x41:
-      id: 'no_best_bid_change_or_best_offer_change'
+      id: 'no_best_bid_change_no_best_offer_change'
       doc: 'No Best Bid Change Or Best Offer Change'
     0x42:
       id: 'no_best_bid_change_quote_contains_best_offer'
@@ -1145,7 +1205,7 @@ enums:
       id: 'miax_emerald'
       doc: 'MIAX EMERALD'
     0x45:
-      id: 'cboe_edgx_options'
+      id: 'cboe_edgx_options_exchange'
       doc: 'Cboe EDGX Options'
     0x48:
       id: 'nasdaq_gemx'
@@ -1175,7 +1235,7 @@ enums:
       id: 'nasdaq_bx_options'
       doc: 'NASDAQ BX Options'
     0x57:
-      id: 'cboe_c_2_options'
+      id: 'cboe_c2_options_exchange'
       doc: 'Cboe C2 Options'
     0x58:
       id: 'nasdaq_phlx'
@@ -1225,7 +1285,7 @@ enums:
       id: 'miax_emerald'
       doc: 'MIAX EMERALD'
     0x45:
-      id: 'cboe_edgx_options'
+      id: 'cboe_edgx_options_exchange'
       doc: 'Cboe EDGX Options'
     0x48:
       id: 'nasdaq_gemx'
@@ -1255,7 +1315,7 @@ enums:
       id: 'nasdaq_bx_options'
       doc: 'NASDAQ BX Options'
     0x57:
-      id: 'cboe_c_2_options'
+      id: 'cboe_c2_options_exchange'
       doc: 'Cboe C2 Options'
     0x58:
       id: 'nasdaq_phlx'

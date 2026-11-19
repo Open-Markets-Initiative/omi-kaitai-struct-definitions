@@ -263,19 +263,19 @@ types:
       - id: non_quote
         type: b1
         doc: 'NonQuote'
-      - id: unused_9
+      - id: unused_bits_3_to_11
         type: b9
         doc: '9 unused bits'
       - id: end_of_transaction
         type: b1
         doc: 'EndOfTransaction'
-      - id: unused_1
+      - id: unused_bit_13
         type: b1
         doc: '1 unused bit'
       - id: second_leg
         type: b1
         doc: 'SecondLeg'
-      - id: unused_4
+      - id: unused_bits_15_to_18
         type: b4
         doc: '4 unused bits'
       - id: fok
@@ -290,7 +290,7 @@ types:
       - id: mass_cancel
         type: b1
         doc: 'MassCancel'
-      - id: unused_3
+      - id: unused_bits_23_to_25
         type: b3
         doc: '3 unused bits'
       - id: negotiated
@@ -299,19 +299,19 @@ types:
       - id: multi_leg
         type: b1
         doc: 'MultiLeg'
-      - id: second_unused_1
+      - id: unused_bit_28
         type: b1
         doc: '1 unused bit'
       - id: cross_trade
         type: b1
         doc: 'CrossTrade'
-      - id: unused_2
+      - id: unused_bits_30_to_31
         type: b2
         doc: '2 unused bits'
       - id: cod
         type: b1
         doc: 'COD'
-      - id: unused_8
+      - id: unused_bits_33_to_40
         type: b8
         doc: '8 unused bits'
       - id: active_side
@@ -320,7 +320,7 @@ types:
       - id: passive_side
         type: b1
         doc: 'PassiveSide'
-      - id: second_unused_2
+      - id: unused_bits_43_to_44
         type: b2
         doc: '2 unused bits'
       - id: synthetic

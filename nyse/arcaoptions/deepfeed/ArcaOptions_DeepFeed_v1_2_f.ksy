@@ -757,9 +757,8 @@ types:
         enum: printable_flag
         doc: 'PrintableFlag'
       - id: trade_cond_1
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: trade_cond_1
         doc: 'Valid values:'
       - id: reserved_3
         size: 3
@@ -1140,11 +1139,8 @@ enums:
       id: 'accepted'
       doc: 'Message was accepted'
     0x31:
-      id: 'rejected'
+      id: 'invalid_source_id'
       doc: 'Rejected due to an Invalid Source ID'
-    0x32:
-      id: 'invalid_sequence_range'
-      doc: 'Rejected due to invalid sequence range'
     0x33:
       id: 'maximum_sequence_range'
       doc: 'Rejected due to maximum sequence range (see threshold limits)'
@@ -1370,7 +1366,7 @@ enums:
       id: 'standard_series'
       doc: 'Standard Series'
     0x31:
-      id: 'call'
+      id: 'closing_only_series'
       doc: 'Call'
   series_status:
     0x34:
@@ -1412,12 +1408,12 @@ enums:
       id: 'derived'
       doc: 'Derived'
   auction_type:
-    0x6d:
+    0x4d:
       id: 'core_opening_auction'
       doc: 'Core Opening Auction'
-    0x68:
-      id: 'reopening_auction'
-      doc: 'Reopening Auction'
+    0x48:
+      id: 'reopening_auction_halt_resume'
+      doc: 'Reopening Auction (Halt resume)'
   imbalance_side:
     0x42:
       id: 'buy_side'
@@ -1487,18 +1483,61 @@ enums:
     1:
       id: 'trade_included_in_total_volume'
       doc: 'Trade Included In Total Volume'
+  trade_cond_1:
+    0x61:
+      id: 'outright_series_orderquote_trading_electronically_with_a_outright_series_cube_exposed_order_or_outright_series_cube_exposed_order_trading_electronically_with_outright_series'
+      doc: 'outright series order/quote trading electronically with a outright series CUBE Exposed order or outright series CUBE Exposed order trading electronically with outright series'
+    0x63:
+      id: 'trading_of_a_outright_series_qcc_order'
+      doc: 'trading of a outright series QCC order'
+    0x65:
+      id: 'outright_series_floor_trade'
+      doc: 'outright series floor trade'
+    0x49:
+      id: 'all_outright_series_electronic_trades_excluding_away_market_executions_that_were_not_part_of_certain_transactions'
+      doc: 'all outright series electronic trades (excluding away market executions) that were not part of the following transactions: Outright series CUBE, Outright series QCC, Complex order trading electronically with the outright series orders/quotes, ISO trade'
+    0x53:
+      id: 'all_outright_series_trades_generated_as_part_of_an_intermarket_sweep_order'
+      doc: 'all outright series trades that are generated as part of an Intermarket Sweep order'
+    0x44:
+      id: 'any_of_the_above_published_after_90_seconds_of_occurring'
+      doc: 'any of the above published after 90 seconds of occurring'
+    0x66:
+      id: 'complex_order_trades_that_were_not_part_of_certain_transactions'
+      doc: 'complex order trades that were not part of the following transactions: Complex CUBE, Complex QCC, Complex order trading electronically with the outright series orders/quotes'
+    0x67:
+      id: 'complex_order_trading_electronically_with_a_complex_cube_exposed_order_or_complex_cube_exposed_order_trading_electronically_with_complex_cube_covered_order'
+      doc: 'complex order trading electronically with a complex CUBE Exposed order or complex CUBE Exposed order trading electronically with Complex CUBE Covered order'
+    0x68:
+      id: 'trading_of_a_complex_qcc_order'
+      doc: 'trading of a complex QCC order'
+    0x69:
+      id: 'complex_order_to_complex_order_floor_trade'
+      doc: 'complex order to complex order floor trade'
+    0x6a:
+      id: 'complex_order_trading_electronically_with_the_outright_series_ordersquotes'
+      doc: 'complex order trading electronically with the outright series orders/quotes'
+    0x6d:
+      id: 'complex_order_to_outright_series_order_floor_trade'
+      doc: 'complex order to outright series order floor trade'
+    0x70:
+      id: 'complex_order_with_stock_to_complex_order_with_stock_floor_trade'
+      doc: 'complex order with stock to complex order with stock floor trade'
+    0x73:
+      id: 'complex_order_with_stock_to_outright_series_order_floor_trade'
+      doc: 'complex order with stock to outright series order floor trade'
   price_type:
     0:
-      id: 'strike_price_is_amount'
+      id: 'strike_price_is_dollar_amount'
       doc: 'Strike Price Is Amount'
     1:
-      id: 'strike_price_is_amount_1'
+      id: 'strike_price_is_percent_amount'
       doc: 'Strike Price Is Amount'
   cross_type:
-    0x30:
-      id: 'market_center_opening_auction'
-      doc: 'Market Center Opening Auction'
     0x35:
       id: 'market_center_reopening_auction'
       doc: 'Market Center Reopening Auction'
+    0x4f:
+      id: 'market_center_opening_auction'
+      doc: 'Market Center Opening Auction'
 

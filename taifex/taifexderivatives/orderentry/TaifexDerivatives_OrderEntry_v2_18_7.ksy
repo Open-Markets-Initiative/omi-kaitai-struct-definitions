@@ -2387,7 +2387,7 @@ enums:
       id: 'block_trade_order_quantity_error'
       doc: 'Block Trade Order Quantity Error'
     153:
-      id: 'invalid_prod_count'
+      id: 'invalid_prod_count_in_combine_product_block_trade'
       doc: 'Invalid prod_count'
     154:
       id: 'prod_count_is_not_match_with_the_number_of_legs_in_a_block_trade_order'
@@ -2411,7 +2411,7 @@ enums:
       id: 'participant_fcm_id_error'
       doc: 'participant_fcm_id error'
     161:
-      id: 'invalid_prod_count_161'
+      id: 'invalid_prod_count_of_b21_xb21'
       doc: 'Invalid prod_count'
     162:
       id: 'block_trade_id_does_not_exist'
@@ -2788,7 +2788,7 @@ enums:
       id: 'block_trade_order_quantity_error'
       doc: 'Block Trade Order Quantity Error'
     153:
-      id: 'invalid_prod_count'
+      id: 'invalid_prod_count_in_combine_product_block_trade'
       doc: 'Invalid prod_count'
     154:
       id: 'prod_count_is_not_match_with_the_number_of_legs_in_a_block_trade_order'
@@ -2812,7 +2812,7 @@ enums:
       id: 'participant_fcm_id_error'
       doc: 'participant_fcm_id error'
     161:
-      id: 'invalid_prod_count_161'
+      id: 'invalid_prod_count_of_b21_xb21'
       doc: 'Invalid prod_count'
     162:
       id: 'block_trade_id_does_not_exist'

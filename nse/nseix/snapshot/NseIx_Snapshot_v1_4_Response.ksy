@@ -1,0 +1,114 @@
+# ---------------------------------------------------------------------
+# Kaitai struct definition for: Nse NseIx Snapshot Tbt v1.4
+#
+# Protocol:
+#   Organization: National Stock Exchange of India Ltd
+#   Protocol: Mtbt Order Book Snapshot Recovery
+#   Encoding: Tbt
+#   Version: 1.4
+#   Date: 1/28/2026
+#   Specification: NSEIFSCMTBTAPIv1_4_2_20260324142815.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: MIT No Attribution
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The protocol compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
+# ---------------------------------------------------------------------
+
+meta:
+  id: nse_nseix_snapshot_tbt_v1_4_response
+  title: Nse NseIx Snapshot Tbt v1.4
+  license: MIT-0
+  endian: le
+
+doc: 'National Stock Exchange of India Ltd NSE International Exchange Mtbt Order Book Snapshot Recovery Tbt v1.4'
+doc-ref: https://www.nseix.com/technology/tradingprotocol
+
+seq:
+  - id: stream_header
+    type: stream_header_struct
+    doc: 'STREAM_HEADER. For this message the sequence number will have the value 0'
+  - id: response_message
+    type: response_message_struct
+    doc: 'STREAM_DATA. First field is always Message Type and must be read/interpreted first'
+
+types:
+  stream_header_struct:
+    seq:
+      - id: message_length
+        type: s2
+        doc: 'Total size of the packet including Stream Header and Stream Data [2, Short]'
+      - id: stream_id
+        type: s2
+        doc: 'Unique Stream Reference'
+      - id: sequence_number
+        type: u4
+        doc: 'Sequence number of the packet for this Stream Id, zero on a snapshot recovery response [4, Uint]'
+  response_message_struct:
+    seq:
+      - id: response_message_type
+        type: u1
+        enum: response_message_type
+        doc: 'cMsgType. Code identifying message type [1, Char]'
+      - id: response_payload
+        size-eos: true
+        type:
+          switch-on: response_message_type
+          cases:
+            'response_message_type::order_book_snapshot_recovery_response_message': order_book_snapshot_recovery_response_message
+  order_book_snapshot_recovery_response_message:
+    seq:
+      - id: request_status
+        type: u1
+        enum: request_status
+        doc: 'Request Status'
+
+enums:
+  trans_code:
+    10501:
+      id: 'order_book_snapshot'
+      doc: 'Transcode carried by every Mtbt order book snapshot buffer'
+  message_type:
+    0x4e:
+      id: 'new_order_message'
+      doc: 'Outstanding normal order in the order book at the last snapshot refresh.'
+    0x47:
+      id: 'new_spread_order_message'
+      doc: 'Outstanding spread order in the order book at the last snapshot refresh.'
+  order_type:
+    0x42:
+      id: 'buy_order'
+      doc: 'Buy Order'
+    0x53:
+      id: 'sell_order'
+      doc: 'Sell Order'
+  client_message_type:
+    0x4f:
+      id: 'order_book_snapshot_recovery_request_message'
+      doc: 'Sent to the Orderbook Snapshot Recovery Server to request the order book snapshot.'
+  response_message_type:
+    0x42:
+      id: 'order_book_snapshot_recovery_response_message'
+      doc: 'Sent by the Orderbook Snapshot Recovery Server to indicate whether the request was processed successfully; the Stream Header''s sequence number is zero.'
+  request_status:
+    0x53:
+      id: 'success'
+      doc: 'Success'
+    0x45:
+      id: 'error'
+      doc: 'Error'
+

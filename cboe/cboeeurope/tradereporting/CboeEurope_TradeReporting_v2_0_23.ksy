@@ -111,7 +111,53 @@ types:
         doc: 'Number of bytes for the parameter group, in- cluding this field'
       - id: param_group_type
         type: u1
-        doc: '0x80'
+        doc: '0x80 = Unit Sequences, 0x81 = Return Bitfields'
+      - id: paramgrouppayload
+        type:
+          switch-on: param_group_type
+          cases:
+            128: unit_sequences_param_group
+            129: return_bitfields_param_group
+  unit_sequences_param_group:
+    seq:
+      - id: no_unspecified_unit_replay
+        type: u1
+        doc: 'Echoed back from the original Login Request V2 message'
+      - id: num_units
+        type: u1
+        doc: 'A number, n, of unit/sequence pairs to follow, one per unit. A pair for every unit will be sent, even if no messages have been sent to this port today. For unsuccessful logins, this will be 0'
+      - id: units
+        type: units
+        repeat: expr
+        repeat-expr: num_units
+        doc: 'Repeating group stated NumberOfUnits times'
+  units:
+    seq:
+      - id: unit_number
+        type: u1
+        doc: 'A unit number'
+      - id: unit_sequence
+        type: u4
+        doc: 'Highest available Cboe to Participant sequence number for the unit'
+  return_bitfields_param_group:
+    seq:
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Return message type for which the bitfields are being specified (e.g., 0x30 for a Trade Cap- ture Report Acknowledgment V2 mes- sage)'
+      - id: num_return_bitfields
+        type: u1
+        doc: 'Number of bitfields that follow; the fields they gate are appended'
+      - id: return_bitfields
+        type: return_bitfields
+        repeat: expr
+        repeat-expr: num_return_bitfields
+        doc: 'Repeating group stated NumberOfReturnBitfields times'
+  return_bitfields:
+    seq:
+      - id: return_bitfield
+        type: u1
+        doc: 'Bitfield identifying fields to return'
   login_response_v_2_message:
     seq:
       - id: login_response_status
@@ -145,14 +191,6 @@ types:
         repeat: expr
         repeat-expr: num_param_group
         doc: 'Repeating group stated NumberOfParamGroups times'
-  units:
-    seq:
-      - id: unit_number
-        type: u1
-        doc: 'A unit number'
-      - id: unit_sequence
-        type: u4
-        doc: 'Highest available Cboe to Participant sequence number for the unit'
   logout_message:
     seq:
       - id: logout_reason
@@ -3653,15 +3691,18 @@ enums:
     5:
       id: 'post_trading'
       doc: 'Post Trading 10 = Out of Main Session Trading'
+    10:
+      id: 'out_of_main_session_trading'
+      doc: 'Out of Main Session Trading'
   match_type:
     1:
-      id: 'trade_reporting'
+      id: 'trade_reporting_off_exchange'
       doc: 'Trade Reporting (Off-Exchange)'
     3:
-      id: 'trade_reporting_3'
+      id: 'trade_reporting_on_exchange'
       doc: 'Trade Reporting (On-Exchange)'
     9:
-      id: 'trade_reporting_9'
+      id: 'trade_reporting_systematic_internalizer'
       doc: 'Trade Reporting (Systematic Internalizer)'
   trade_price_condition:
     0:
@@ -3670,6 +3711,9 @@ enums:
     2:
       id: 'ex_dividend'
       doc: 'Ex Dividend (deprecated) 13 = Special Dividend (SDIV)'
+    13:
+      id: 'special_dividend'
+      doc: 'Special Dividend (SDIV)'
   trade_publish_indicator:
     0:
       id: 'do_not_publish'
@@ -3722,10 +3766,10 @@ enums:
       id: 'pre_trade_transparency_waiver_for_illiquid_instrument'
       doc: 'Pre-Trade Transparency Waiver for Illiquid Instrument (for SI only) (ILQD)'
     0x35:
-      id: 'pre_trade_transparency_waiver_for_above_standard_mar'
+      id: 'pre_trade_transparency_waiver_for_above_standard_market_size'
       doc: 'Pre-Trade Transparency Waiver for Above Standard Mar- ket Size (for SI only) (SIZE)'
     0x42:
-      id: 'pre_trade_transparency_waiver_for_illiquid_instrument_x42'
+      id: 'pre_trade_transparency_waiver_for_illiquid_instrument_and_for_above_standard_market_size'
       doc: 'Pre-Trade Transparency Waiver for Illiquid Instrument (for SI only) (ILQD) AND Pre-Trade Transparency Waiver for Above Standard Market Size (for SI only) (SIZE) Each Pre-Trade Transparency Waiver is represented by a dis- tinct value that can be requested individually. Waivers that can be applied together are represented by a value that indi- cates both waivers being set together. Based upon what is requested, the system calculates which of these are valid. The business confirmation contains the waiver(s) that have been appplied.'
   deferral_reason:
     0x2d:
@@ -3741,10 +3785,10 @@ enums:
       id: 'deferral_for_size_specific'
       doc: 'Deferral for Size Specific (for RTS2 only) (SIZE)'
     0x43:
-      id: 'deferral_for_illiquid_instrument_x43'
+      id: 'deferral_for_illiquid_instrument_and_deferral_for_large_in_scale'
       doc: 'Deferral for Illiquid Instrument (for RTS2 only) (ILQD) AND Deferral for Large In Scale (LRGS)'
     0x44:
-      id: 'deferral_for_illiquid_instrument_x44'
+      id: 'deferral_for_illiquid_instrument_and_deferral_for_size_specific'
       doc: 'Deferral for Illiquid Instrument (for RTS2 only) (ILQD) AND Deferral for Size Specific (for RTS2 only) (SIZE) Each Deferral Reason is represented by a distinct value that can be requested individually. Deferrals that can be applied together are represented by values that indicates the deferrals being set together. Based upon what is requested, the system calculates which of these are valid. The business confirmation contains the deferral(s) that have been appplied.'
   reason:
     0x41:

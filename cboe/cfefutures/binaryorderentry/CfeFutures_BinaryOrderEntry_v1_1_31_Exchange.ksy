@@ -203,7 +203,7 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None = 0'
+        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None Null = 0'
       - id: leaves_qty
         type: u4
         doc: 'Quantity still open for further execution'
@@ -332,7 +332,7 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None = 0'
+        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None Null = 0'
       - id: leaves_qty
         type: u4
         doc: 'Quantity still open for further execution'
@@ -814,7 +814,7 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None = 0'
+        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None Null = 0'
       - id: cmta_number
         type: u4
         doc: 'CMTA Number of the firm that will clear the trade'
@@ -878,7 +878,7 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None = 0'
+        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None Null = 0'
       - id: cmta_number
         type: u4
         doc: 'CMTA Number of the firm that will clear the trade'
@@ -1386,13 +1386,13 @@ enums:
       id: 'electronic'
       doc: 'Electronic'
     0x43:
-      id: 'vendor_provided_platform_billed_by'
+      id: 'vendorprovided_platform_billed_by_executing_broker'
       doc: 'Vendor Provided Platform Billed By'
     0x47:
-      id: 'sponsored_access_via_exchange_api'
+      id: 'sponsored_access_via_exchange_api_or_fix_provided_by_executing_broker'
       doc: 'Sponsored Access Via Exchange Api'
     0x48:
-      id: 'premium_algorithmic_trading'
+      id: 'premium_algorithmic_trading_provider_billed_by_executing_broker'
       doc: 'Premium Algorithmic Trading'
     0x44:
       id: 'other'
@@ -1662,7 +1662,7 @@ enums:
       id: 'order_persisted'
       doc: 'Order Persisted'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -1738,7 +1738,7 @@ enums:
       id: 'order_persisted'
       doc: 'Order Persisted'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -1770,7 +1770,7 @@ enums:
       id: 'simple_instrument_execution'
       doc: 'Simple Instrument Execution'
     0x32:
-      id: 'part_of_a_spread_execution'
+      id: 'simple_instrument_execution_that_is_part_of_a_spread_execution'
       doc: 'Part Of A Spread Execution'
     0x33:
       id: 'spread_instrument_execution'
@@ -1831,7 +1831,7 @@ enums:
       id: 'order_persisted'
       doc: 'Order Persisted'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -1907,7 +1907,7 @@ enums:
       id: 'order_persisted'
       doc: 'Order Persisted'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -1983,7 +1983,7 @@ enums:
       id: 'order_persisted'
       doc: 'Order Persisted'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -2059,7 +2059,7 @@ enums:
       id: 'order_persisted'
       doc: 'Order Persisted'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -2093,7 +2093,7 @@ enums:
       id: 'no_change'
       doc: 'Matches existing quote'
     0x44:
-      id: 'new_quote_x44'
+      id: 'new_quote_but_may_remove_liquidity'
       doc: 'May remove liquidity'
     0x64:
       id: 'modified_but_may_remove_liquidity'
@@ -2123,7 +2123,7 @@ enums:
       id: 'risk_management_product_root_level'
       doc: 'Risk Management Product Root Level'
     0x6e:
-      id: 'risk_management_configuration_is_insuffcient'
+      id: 'risk_management_configuration_is_insufficient'
       doc: 'Risk Management Configuration Is Insuffcient'
     0x75:
       id: 'rejected_other_reason'
@@ -2142,7 +2142,7 @@ enums:
       id: 'incorrect_data_center'
       doc: 'Incorrect Data Center'
     0x4b:
-      id: 'order_rate_threshold_exceeded'
+      id: 'message_rate_threshold'
       doc: 'Order Rate Threshold Exceeded'
     0x4c:
       id: 'invalid_quote_cnt'
@@ -2178,7 +2178,7 @@ enums:
       id: 'invalid_oeoid'
       doc: 'Invalid Oeoid'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x69:
       id: 'invalid_cti_code'
@@ -2205,7 +2205,7 @@ enums:
       id: 'exceeds_max_size_per_order'
       doc: 'Exceeds Max Size Per Order'
     0x79:
-      id: 'order_received_by_cfe_during_replay'
+      id: 'quote_received_by_cfe_during_replay'
       doc: 'Order Received By Cfe During Replay'
     0x7a:
       id: 'invalid_size_modifier'
@@ -2228,7 +2228,7 @@ enums:
       id: 'rejected_exceeds_firm_reset_limit'
       doc: 'Rejected Exceeds Firm Reset Limit'
     0x43:
-      id: 'rejected_exceeds_custom_group_id'
+      id: 'rejected_exceeds_custom_group_id_limit'
       doc: 'Rejected Exceeds Custom Group Id'
     0x45:
       id: 'rejected_empty_reset_risk_field'
@@ -2237,7 +2237,7 @@ enums:
       id: 'rejected_incorrect_data_center'
       doc: 'Rejected Incorrect Data Center'
     0x53:
-      id: 'rejected_exceeds_product_level_reset'
+      id: 'rejected_exceeds_product_level_reset_limit'
       doc: 'Rejected Exceeds Product Level Reset'
     0x55:
       id: 'rejected_invalid_risk_root'
@@ -2248,7 +2248,4 @@ enums:
     0x79:
       id: 'rejected_in_replay'
       doc: 'Rejected In Replay'
-    0x44:
-      id: 'custom_group_id_lockout_reset'
-      doc: 'Custom Group Id Lockout Reset'
 

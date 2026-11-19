@@ -122,7 +122,53 @@ types:
         doc: 'Number of bytes for the parameter group, in- cluding this field'
       - id: param_group_type
         type: u1
-        doc: '0x80'
+        doc: '0x80 = Unit Sequences, 0x81 = Return Bitfields'
+      - id: paramgrouppayload
+        type:
+          switch-on: param_group_type
+          cases:
+            128: unit_sequences_param_group
+            129: return_bitfields_param_group
+  unit_sequences_param_group:
+    seq:
+      - id: no_unspecified_unit_replay
+        type: u1
+        doc: 'Echoed back from the original Login Request V2 message'
+      - id: num_units
+        type: u1
+        doc: 'A number, n, of unit/sequence pairs to follow, one per unit. A pair for every unit will be sent, even if no messages have been sent to this port today. For unsuccessful logins, this will be 0'
+      - id: units
+        type: units
+        repeat: expr
+        repeat-expr: num_units
+        doc: 'Repeating group stated NumberOfUnits times'
+  units:
+    seq:
+      - id: unit_number
+        type: u1
+        doc: 'A unit number'
+      - id: unit_sequence
+        type: u4
+        doc: 'Highest available Cboe to Participant sequence number for the unit'
+  return_bitfields_param_group:
+    seq:
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Return message type for which the bitfields are being specified (e.g., 0x25 for an Order Ac- knowledgment V2 message)'
+      - id: num_return_bitfields
+        type: u1
+        doc: 'Number of bitfields that follow; the fields they gate are appended'
+      - id: return_bitfields
+        type: return_bitfields
+        repeat: expr
+        repeat-expr: num_return_bitfields
+        doc: 'Repeating group stated NumberOfReturnBitfields times'
+  return_bitfields:
+    seq:
+      - id: return_bitfield
+        type: u1
+        doc: 'Bitfield identifying fields to return'
   login_response_v_2_message:
     seq:
       - id: login_response_status
@@ -156,14 +202,6 @@ types:
         repeat: expr
         repeat-expr: num_param_group
         doc: 'Repeating group stated NumberOfParamGroups times'
-  units:
-    seq:
-      - id: unit_number
-        type: u1
-        doc: 'A unit number'
-      - id: unit_sequence
-        type: u4
-        doc: 'Highest available Cboe to Participant sequence number for the unit'
   logout_message:
     seq:
       - id: logout_reason

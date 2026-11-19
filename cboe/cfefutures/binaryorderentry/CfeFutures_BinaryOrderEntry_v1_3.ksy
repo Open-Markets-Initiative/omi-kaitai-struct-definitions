@@ -2553,9 +2553,8 @@ types:
         enum: pending_status
         if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_pending_status
       - id: multileg_reporting_type
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: multileg_reporting_type
         if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_multileg_reporting_type
       - id: secondary_exec_id
         type: u8
@@ -3062,9 +3061,8 @@ types:
         encoding: ASCII
         if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_symbol
       - id: multileg_reporting_type
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: multileg_reporting_type
         if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_multileg_reporting_type
       - id: secondary_exec_id
         type: u8
@@ -3271,9 +3269,8 @@ types:
         encoding: ASCII
         if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_symbol
       - id: multileg_reporting_type
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: multileg_reporting_type
         if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_multileg_reporting_type
       - id: secondary_exec_id
         type: u8
@@ -3574,10 +3571,10 @@ enums:
       doc: 'None'
   cti_code:
     0x31:
-      id: 'cti_2'
+      id: 'cti_1'
       doc: 'Cti 2'
     0x32:
-      id: 'cti_2_x32'
+      id: 'cti_2'
       doc: 'Cti 2'
     0x33:
       id: 'cti_3'
@@ -3592,15 +3589,6 @@ enums:
     0x4e:
       id: 'automated_order_entry'
       doc: 'Automated Order Entry'
-    0x31:
-      id: 'simple_instrument_execution'
-      doc: 'Simple Instrument Execution'
-    0x32:
-      id: 'simple_instrument_execution_that_is_part_of_a_spread_execution'
-      doc: 'Simple Instrument Execution That Is Part Of A Spread Execution'
-    0x33:
-      id: 'spread_instrument_execution'
-      doc: 'Spread Instrument Execution'
   cancel_orig_on_reject:
     0x4e:
       id: 'leave_original_order_alone'
@@ -3635,10 +3623,10 @@ enums:
       doc: 'New Quote'
     0x4c:
       id: 'modified_loss_of_priority'
-      doc: 'Modified Loss Of Priority'
+      doc: 'Modified loss of priority'
     0x52:
       id: 'modified_retains_priority'
-      doc: 'Modified Retains Priority'
+      doc: 'Modified retains priority'
     0x4e:
       id: 'no_change_matches_existing_quote'
       doc: 'No Change Matches Existing Quote'
@@ -3658,7 +3646,7 @@ enums:
       id: 'rejected_cant_post'
       doc: 'Rejected Cant Post'
     0x66:
-      id: 'risk_management_firm_or_custom_group_id_level'
+      id: 'risk_management_efid_or_custom_group_id_level'
       doc: 'Risk Management Firm Or Custom Group Id Level'
     0x53:
       id: 'rejected_symbol_not_found'
@@ -3667,7 +3655,7 @@ enums:
       id: 'rejected_invalid_price'
       doc: 'Rejected Invalid Price'
     0x73:
-      id: 'risk_management_risk_root_level'
+      id: 'risk_management_product_root_level'
       doc: 'Risk Management Risk Root Level'
     0x75:
       id: 'rejected_other_reason'
@@ -3679,9 +3667,6 @@ enums:
     0x55:
       id: 'market_turner'
       doc: 'Market Turner'
-    0x4e:
-      id: 'normal'
-      doc: 'Normal'
   order_reject_reason:
     0x41:
       id: 'admin'
@@ -3735,7 +3720,7 @@ enums:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -3755,6 +3740,9 @@ enums:
     0x7a:
       id: 'session_end'
       doc: 'Session End'
+    0x68:
+      id: 'order_persisted'
+      doc: 'Order persisted'
   modify_reject_reason:
     0x41:
       id: 'admin'
@@ -3808,7 +3796,7 @@ enums:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -3828,6 +3816,9 @@ enums:
     0x7a:
       id: 'session_end'
       doc: 'Session End'
+    0x68:
+      id: 'order_persisted'
+      doc: 'Order persisted'
   cancel_reason:
     0x41:
       id: 'admin'
@@ -3881,7 +3872,7 @@ enums:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -3901,6 +3892,9 @@ enums:
     0x7a:
       id: 'session_end'
       doc: 'Session End'
+    0x68:
+      id: 'order_persisted'
+      doc: 'Order persisted'
   cancel_reject_reason:
     0x41:
       id: 'admin'
@@ -3954,7 +3948,7 @@ enums:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -3974,6 +3968,9 @@ enums:
     0x7a:
       id: 'session_end'
       doc: 'Session End'
+    0x68:
+      id: 'order_persisted'
+      doc: 'Order persisted'
   pending_status:
     0x4e:
       id: 'not_applicable'
@@ -3981,6 +3978,16 @@ enums:
     0x50:
       id: 'pending'
       doc: 'Pending'
+  multileg_reporting_type:
+    0x31:
+      id: 'simple_instrument_execution'
+      doc: 'Simple instrument execution'
+    0x32:
+      id: 'simple_instrument_execution_that_is_part_of_a_spread_execution'
+      doc: 'Simple instrument execution that is part of a Spread execution'
+    0x33:
+      id: 'spread_instrument_execution'
+      doc: 'Spread instrument execution'
   purge_reject_reason:
     0x41:
       id: 'admin'
@@ -4034,7 +4041,7 @@ enums:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
     0x66:
-      id: 'risk_management_mpid_or_custom_group_id_level'
+      id: 'risk_management_efid_level_or_custom_group_id_level'
       doc: 'Risk Management Mpid Or Custom Group Id Level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
@@ -4054,6 +4061,9 @@ enums:
     0x7a:
       id: 'session_end'
       doc: 'Session End'
+    0x68:
+      id: 'order_persisted'
+      doc: 'Order persisted'
   risk_reset_result:
     0x20:
       id: 'ignored'
@@ -4068,8 +4078,8 @@ enums:
       id: 'rejected_exceeds_custom_group_id_limit'
       doc: 'Rejected Exceeds Custom Group Id Limit'
     0x45:
-      id: 'rejected_empty_reset_risk_field'
-      doc: 'Rejected Empty Reset Risk Field'
+      id: 'rejected_empty_resetrisk_field'
+      doc: 'Rejected Empty ResetRisk Field'
     0x49:
       id: 'rejected_incorrect_data_center'
       doc: 'Rejected Incorrect Data Center'
@@ -4077,11 +4087,11 @@ enums:
       id: 'rejected_exceeds_product_level_reset_limit'
       doc: 'Rejected Exceeds Product Level Reset Limit'
     0x55:
-      id: 'rejected_invalid_risk_root'
-      doc: 'Rejected Invalid Risk Root'
+      id: 'rejected_invalid_riskroot'
+      doc: 'Rejected Invalid RiskRoot'
     0x63:
-      id: 'rejected_invalid_efid_or_clearing_firm'
-      doc: 'Rejected Invalid Efid Or Clearing Firm'
+      id: 'rejected_invalid_efid_or_clearingfirm'
+      doc: 'Rejected Invalid Efid or ClearingFirm'
     0x79:
       id: 'rejected_in_replay'
       doc: 'Rejected In Replay'

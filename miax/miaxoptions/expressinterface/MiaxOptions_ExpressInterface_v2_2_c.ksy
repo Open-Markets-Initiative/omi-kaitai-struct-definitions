@@ -1495,10 +1495,10 @@ enums:
       id: 'complex_strategy_auction_in_progress'
       doc: 'Complex Strategy Auction in progress. Only applicable to Complex eQuotes.'
     0x50:
-      id: 'reserved'
+      id: 'reserved_p'
       doc: 'Reserved'
     0x51:
-      id: 'reserved_x51'
+      id: 'reserved_q'
       doc: 'Reserved'
   trade_status:
     0x45:

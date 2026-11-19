@@ -108,7 +108,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_6
+      - id: unused_bits_0_to_5
         type: b6
         doc: '6 unused bits'
       - id: recovery_message

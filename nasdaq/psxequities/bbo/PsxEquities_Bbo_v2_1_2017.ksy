@@ -404,7 +404,7 @@ enums:
       id: 'nyse'
       doc: 'New York Stock Exchange (NYSE)'
     0x41:
-      id: 'nyse_amex'
+      id: 'nyse_american'
       doc: 'NYSE Amex'
     0x50:
       id: 'nyse_arca'
@@ -570,7 +570,7 @@ enums:
       id: 'nyse'
       doc: 'NYSE'
     0x41:
-      id: 'nyse_mkt'
+      id: 'nyse_american'
       doc: 'NYSE MKT'
     0x50:
       id: 'nyse_arca'

@@ -903,10 +903,10 @@ enums:
       id: 'national_best_offer_equals_lower_limit_price_band'
       doc: 'National Best Offer equals Lower Limit Price Band'
     0x47:
-      id: 'national_best_bid_equals_upper_limit_price_band_x47'
+      id: 'national_best_bid_equals_upper_limit_price_band_and_national_best_ask_above_upper_limit_price_band'
       doc: 'National Best Bid equals Upper Limit Price Band'
     0x48:
-      id: 'national_best_ask_equals_lower_limit_price_band'
+      id: 'national_best_ask_equals_lower_limit_price_band_and_national_best_bid_below_lower_limit_price_band'
       doc: 'National Best Ask equals Lower Limit Price Band'
     0x49:
       id: 'national_best_bid_equals_upper_limit_price_band_and_national_best_ask_equals_lower_limit_price_band'

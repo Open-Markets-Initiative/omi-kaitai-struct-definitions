@@ -668,11 +668,8 @@ enums:
       id: 'end_of_transmissions'
       doc: 'Denotes that the PSX Last Sale has ended its daily transmission schedule.'
   market_center_identifier:
-    0x42:
-      id: 'psx_execution_system'
-      doc: 'PSX execution system'
     0x58:
-      id: 'psx_execution_system_x58'
+      id: 'psx_execution_system'
       doc: 'PSX execution system'
   security_class:
     0x51:
@@ -682,7 +679,7 @@ enums:
       id: 'nyse'
       doc: 'NYSE'
     0x41:
-      id: 'nyse_amex'
+      id: 'nyse_american'
       doc: 'NYSE Amex'
     0x50:
       id: 'nyse_arca'
@@ -818,7 +815,7 @@ enums:
       id: 'nyse'
       doc: 'New York Stock Exchange (NYSE)'
     0x41:
-      id: 'nyse_mkt'
+      id: 'nyse_american'
       doc: 'NYSE MKT'
     0x50:
       id: 'nyse_arca'
@@ -941,10 +938,10 @@ enums:
       doc: 'Threshold Indicator not available'
   ipo_flag:
     0x59:
-      id: 'nasdaq_listed_instrument'
+      id: 'new_ipo_security'
       doc: 'NASDAQ listed instrument is set up as a new IPO security'
     0x4e:
-      id: 'nasdaq_listed_instrument_x4e'
+      id: 'not_new_ipo_security'
       doc: 'NASDAQ listed instrument is not set up as a new IPO security'
     0x20:
       id: 'na'

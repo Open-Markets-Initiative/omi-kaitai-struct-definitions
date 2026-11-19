@@ -1657,12 +1657,6 @@ enums:
     0x4e:
       id: 'ipl_lower_bound_violation'
       doc: 'Ipl Lower Bound Violation Asking Too Low'
-    0x46:
-      id: 'final_field'
-      doc: 'Final'
-    0x20:
-      id: 'non_endex_spot_market'
-      doc: 'Non Endex Spot Market'
   leg_side:
     0x20:
       id: 'none'

@@ -559,7 +559,7 @@ types:
       - id: dark_passive_order_indicator
         type: b1
         doc: 'DarkPassiveOrderIndicator'
-      - id: unused_1
+      - id: unused_bit_7
         type: b1
         doc: '1 unused bit'
   execution_instruction:
@@ -715,7 +715,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_1
+      - id: unused_bit_0
         type: b1
         doc: '1 unused bit'
       - id: session_1

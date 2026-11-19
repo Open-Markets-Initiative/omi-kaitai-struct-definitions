@@ -2005,19 +2005,19 @@ enums:
       id: 'late_trade'
       doc: 'Late Trade'
     0x4d:
-      id: 'for_future_use'
+      id: 'for_future_use_m'
       doc: 'For Future Use'
     0x4e:
-      id: 'for_future_use_x4e'
+      id: 'for_future_use_n'
       doc: 'For Future Use'
     0x4f:
-      id: 'for_future_use_x4f'
+      id: 'for_future_use_o'
       doc: 'For Future Use'
     0x50:
-      id: 'for_future_use_x50'
+      id: 'for_future_use_p'
       doc: 'For Future Use'
     0x51:
-      id: 'for_future_use_x51'
+      id: 'for_future_use_q'
       doc: 'For Future Use'
     0x54:
       id: 'committed'

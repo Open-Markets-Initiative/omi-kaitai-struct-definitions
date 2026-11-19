@@ -4053,6 +4053,9 @@ enums:
     0x67:
       id: 'nasdaq_gemx'
       doc: 'Nasdaq Gemx'
+    0x6d:
+      id: 'nasdaq_mrx'
+      doc: 'Nasdaq MRX'
   mass_cancel_lockout:
     0x30:
       id: 'no_lockout'
@@ -4176,6 +4179,9 @@ enums:
     0x79:
       id: 'quote_received_by_cboe_during_replay'
       doc: 'Quote Received By Cboe During Replay'
+    0x55:
+      id: 'message_unable_to_be_sent_to_matching_engine'
+      doc: 'Message unable to be sent to Matching Engine'
   quote_result:
     0x41:
       id: 'new_quote'
@@ -4361,7 +4367,7 @@ enums:
       id: 'unsolicited_floor_action'
       doc: 'Unsolicited Floor Action'
     0x4b:
-      id: 'price_sliding_reprice_x4b'
+      id: 'quote_price_sliding_reprice'
       doc: 'Price Sliding Reprice'
   modify_reject_reason:
     0x41:

@@ -732,7 +732,7 @@ types:
       - id: exceptional_market_conditions
         type: b1
         doc: 'ExceptionalMarketConditions'
-      - id: unused_1
+      - id: unused_bit_8
         type: b1
         doc: '1 unused bit'
       - id: quoting_period

@@ -598,22 +598,22 @@ enums:
       doc: 'Start Of Day'
   source_venue:
     5:
-      id: 'turquoise_lit_order_book'
+      id: 'turquoise_lit_order_book_tghl'
       doc: 'Turquoise Lit Order Book'
     6:
-      id: 'turquoise_plato_order_book'
+      id: 'turquoise_plato_order_book_tghl'
       doc: 'Turquoise Plato Order Book'
     12:
-      id: 'turquoise_plato_lit_auctions_order_book'
+      id: 'turquoise_plato_lit_auctions_order_book_tghl'
       doc: 'Turquoise Plato Lit Auctions Order Book'
     14:
-      id: 'turquoise_lit_order_book_14'
+      id: 'turquoise_lit_order_book_tghe'
       doc: 'Turquoise Lit Order Book'
     15:
-      id: 'turquoise_plato_order_book_15'
+      id: 'turquoise_plato_order_book_tghe'
       doc: 'Turquoise Plato Order Book'
     16:
-      id: 'turquoise_plato_lit_auctions_order_book_16'
+      id: 'turquoise_plato_lit_auctions_order_book_tghe'
       doc: 'Turquoise Plato Lit Auctions Order Book'
   trading_status:
     0x48:
@@ -690,21 +690,6 @@ enums:
     0x54:
       id: 'trade_at_last'
       doc: 'Trade At Last'
-    0x41:
-      id: 'aesp'
-      doc: 'Aesp'
-    0x42:
-      id: 'edsp'
-      doc: 'Edsp'
-    0x45:
-      id: 'resume_auction'
-      doc: 'Resume Auction'
-    0x46:
-      id: 'periodic_auction'
-      doc: 'Periodic Auction'
-    0x47:
-      id: 'scheduled_level_1_only_auction'
-      doc: 'Scheduled Level 1 Only Auction'
   cross_type:
     6:
       id: 'internal_btf'

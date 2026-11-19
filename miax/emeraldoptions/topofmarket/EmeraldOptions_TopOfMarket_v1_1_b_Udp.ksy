@@ -734,7 +734,7 @@ enums:
       id: 'reopening_of_an_option'
       doc: 'Trade due to reopening of an Option in which trading has been previously halted; process as a regular transaction.'
     0x4b:
-      id: 'reserved'
+      id: 'reserved_k'
       doc: 'Reserved for future use'
     0x4c:
       id: 'a_buy_and_a_sell_in_the_same_class'
@@ -743,10 +743,10 @@ enums:
       id: 'a_buy_and_a_sell_in_a_put_and_a_call'
       doc: 'Transaction represents a trade in two options in the same class (a buy and a sell in a put and a call). Prefix appears solely for information; process as a regular transaction.'
     0x4e:
-      id: 'reserved_x4e'
+      id: 'reserved_n'
       doc: 'Reserved for future use'
     0x4f:
-      id: 'reserved_x4f'
+      id: 'reserved_o'
       doc: 'Reserved for future use'
     0x50:
       id: 'buy_or_sell_of_a_call_or_put'
@@ -761,7 +761,7 @@ enums:
       id: 'execution_of_an_iso_order'
       doc: 'Trade was the execution of an order identified as an Intermarket Sweep Order (ISO).'
     0x54:
-      id: 'reserved_x54'
+      id: 'reserved_t'
       doc: 'Reserved for future use'
     0x58:
       id: 'trade_through_exempt'
@@ -770,16 +770,16 @@ enums:
       id: 'paired_prime'
       doc: 'Trade from a Paired PRIME transaction'
     0x62:
-      id: 'reserved_x62'
+      id: 'reserved_b'
       doc: 'Reserved for future use'
     0x63:
       id: 'prime_customer_to_customer_cross_or_prime_qcc'
       doc: 'Trade from PRIME Customer to Customer Cross or PRIME QCC transaction'
     0x64:
-      id: 'reserved_x64'
+      id: 'reserved_d'
       doc: 'Reserved for future use'
     0x65:
-      id: 'reserved_x65'
+      id: 'reserved_e'
       doc: 'Reserved for future use'
     0x66:
       id: 'complex_transaction_that_is_not_complex_stock_tied_and_does_not_involve_legging'
@@ -791,7 +791,7 @@ enums:
       id: 'complex_prime_customer_to_customer_cross_or_complex_prime_qcc_transaction_that_is_not_complex_stock_tied'
       doc: 'Trade from a Complex PRIME Customer to Customer Cross or Complex PRIME QCC transaction that is not Complex stock-tied'
     0x69:
-      id: 'reserved_x69'
+      id: 'reserved_i'
       doc: 'Reserved for future use'
     0x6a:
       id: 'complex_legging_transaction_that_is_not_complex_stock_tied'
@@ -803,7 +803,7 @@ enums:
       id: 'complex_prime_legging_transaction_that_is_not_complex_stock_tied'
       doc: 'Trade from a Complex PRIME legging transaction that is not Complex stock-tied'
     0x6d:
-      id: 'reserved_x6d'
+      id: 'reserved_m'
       doc: 'Reserved for future use'
     0x6e:
       id: 'complex_stock_tied_transaction_that_does_not_involve_legging'
@@ -812,19 +812,19 @@ enums:
       id: 'complex_customer_to_customer_cross_stock_tied_or_complex_qcc_stock_tied_transaction'
       doc: 'Trade from Complex Customer to Customer Cross stock-tied or Complex QCC stock-tied transaction'
     0x70:
-      id: 'reserved_x70'
+      id: 'reserved_p'
       doc: 'Reserved for future use'
     0x71:
-      id: 'reserved_x71'
+      id: 'reserved_q'
       doc: 'Reserved for future use'
     0x72:
-      id: 'reserved_x72'
+      id: 'reserved_r'
       doc: 'Reserved for future use'
     0x73:
-      id: 'reserved_x73'
+      id: 'reserved_s'
       doc: 'Reserved for future use'
     0x74:
-      id: 'reserved_x74'
+      id: 'reserved_lower_case_t'
       doc: 'Reserved for future use'
   trading_status:
     0x48:

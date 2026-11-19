@@ -477,6 +477,9 @@ types:
       - id: channel_id
         type: u1
         doc: 'Multicast channel ID of the symbols being provided'
+      - id: reserved_2
+        size: 2
+        doc: 'Filler'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -693,7 +696,7 @@ enums:
       id: 'test'
       doc: 'TEST'
     0x55:
-      id: 'units_x55'
+      id: 'closed_end_fund'
       doc: 'UNITS'
     0x57:
       id: 'warrant'

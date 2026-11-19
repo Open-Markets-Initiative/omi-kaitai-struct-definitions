@@ -554,23 +554,23 @@ enums:
       doc: 'Inactive Not Tradable On Pearl'
   pearl_bbo_posting_increment_indicator:
     0x50:
-      id: 'penny_001'
+      id: 'penny'
       doc: 'Penny 001'
     0x4e:
-      id: 'penny_001_x4e'
+      id: 'penny_or_nickel'
       doc: 'Penny 001 Nickel 005'
     0x44:
-      id: 'nickel_005'
+      id: 'nickel_or_dime'
       doc: 'Nickel 005 Dime 010'
   liquidity_acceptance_increment_indicator:
     0x50:
-      id: 'penny_001'
+      id: 'penny'
       doc: 'Penny 001'
     0x4e:
-      id: 'penny_001_x4e'
+      id: 'penny_or_nickel'
       doc: 'Penny 001 Nickel 005'
     0x44:
-      id: 'nickel_005'
+      id: 'nickel_or_dime'
       doc: 'Nickel 005 Dime 010'
   opening_underlying_market_code:
     0x41:
@@ -607,10 +607,10 @@ enums:
       id: 'nyse_arca'
       doc: 'Nyse Arca Exchange'
     0x51:
-      id: 'nasdaq_omx'
+      id: 'nasdaq_omx_utp'
       doc: 'Nasdaq Omx Via Utp Feed'
     0x54:
-      id: 'nasdaq_omx_x54'
+      id: 'nasdaq_omx_cta'
       doc: 'Nasdaq Omx Via Cta Feed'
     0x56:
       id: 'iex'
@@ -714,31 +714,31 @@ enums:
       id: 'trade_that_is_late_report_of_the_opening_trade_and_is_in_correct_sequence'
       doc: 'Trade That Is Late Report Of The Opening Trade And Is In Correct Sequence'
     0x49:
-      id: 'reserved_for_future_use'
+      id: 'reserved_for_future_use_i'
       doc: 'Reserved For Future Use'
     0x4a:
       id: 'trade_due_to_reopening_of_an_option_in_which_trading_has_been_previously_halted'
       doc: 'Trade Due To Reopening Of An Option In Which Trading Has Been Previously Halted Process As A Regular Transaction'
     0x4b:
-      id: 'reserved_for_future_use_x4b'
+      id: 'reserved_for_future_use_k'
       doc: 'Reserved For Future Use'
     0x4c:
-      id: 'reserved_for_future_use_x4c'
+      id: 'reserved_for_future_use_l'
       doc: 'Reserved For Future Use'
     0x4d:
-      id: 'reserved_for_future_use_x4d'
+      id: 'reserved_for_future_use_m'
       doc: 'Reserved For Future Use'
     0x4e:
-      id: 'reserved_for_future_use_x4e'
+      id: 'reserved_for_future_use_n'
       doc: 'Reserved For Future Use'
     0x4f:
-      id: 'reserved_for_future_use_x4f'
+      id: 'reserved_for_future_use_o'
       doc: 'Reserved For Future Use'
     0x50:
-      id: 'reserved_for_future_use_x50'
+      id: 'reserved_for_future_use_p'
       doc: 'Reserved For Future Use'
     0x51:
-      id: 'reserved_for_future_use_x51'
+      id: 'reserved_for_future_use_q'
       doc: 'Reserved For Future Use'
     0x52:
       id: 'trade_was_the_execution_of_an_order_which_was_stopped_at_a_price_that_did_not_constitute_a_trade_through_on_another_market_at_the_time_of_the_stop'
@@ -747,7 +747,7 @@ enums:
       id: 'trade_was_the_execution_of_an_order_identified'
       doc: 'Trade Was The Execution Of An Order Identified As An Intermarket Sweep Order Iso'
     0x54:
-      id: 'reserved_for_future_use_x54'
+      id: 'reserved_for_future_use_t'
       doc: 'Reserved For Future Use'
     0x58:
       id: 'trade_that_is_trade_through_exempt'

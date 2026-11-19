@@ -139,7 +139,53 @@ types:
         doc: 'Number of bytes for the parameter group, in- cluding this field'
       - id: param_group_type
         type: u1
-        doc: '0x80'
+        doc: '0x80 = Unit Sequences, 0x81 = Return Bitfields'
+      - id: paramgrouppayload
+        type:
+          switch-on: param_group_type
+          cases:
+            128: unit_sequences_param_group
+            129: return_bitfields_param_group
+  unit_sequences_param_group:
+    seq:
+      - id: no_unspecified_unit_replay
+        type: u1
+        doc: 'Echoed back from the original Login Request V2 message'
+      - id: num_units
+        type: u1
+        doc: 'A number, n, of unit/sequence pairs to follow, one per unit. A pair for every unit will be sent, even if no messages have been sent to this port today. For unsuccessful logins, this will be 0'
+      - id: units
+        type: units
+        repeat: expr
+        repeat-expr: num_units
+        doc: 'Repeating group stated NumberOfUnits times'
+  units:
+    seq:
+      - id: unit_number
+        type: u1
+        doc: 'A unit number'
+      - id: unit_sequence
+        type: u4
+        doc: 'Highest available Cboe to Participant sequence number for the unit'
+  return_bitfields_param_group:
+    seq:
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Return message type for which the bitfields are being specified (e.g., 0x25 for an Order Ac- knowledgment V2 message)'
+      - id: num_return_bitfields
+        type: u1
+        doc: 'Number of bitfields that follow; the fields they gate are appended'
+      - id: return_bitfields
+        type: return_bitfields
+        repeat: expr
+        repeat-expr: num_return_bitfields
+        doc: 'Repeating group stated NumberOfReturnBitfields times'
+  return_bitfields:
+    seq:
+      - id: return_bitfield
+        type: u1
+        doc: 'Bitfield identifying fields to return'
   login_response_v_2_message:
     seq:
       - id: login_response_status
@@ -173,14 +219,6 @@ types:
         repeat: expr
         repeat-expr: num_param_group
         doc: 'Repeating group stated NumberOfParamGroups times'
-  units:
-    seq:
-      - id: unit_number
-        type: u1
-        doc: 'A unit number'
-      - id: unit_sequence
-        type: u4
-        doc: 'Highest available Cboe to Participant sequence number for the unit'
   logout_message:
     seq:
       - id: logout_reason
@@ -12924,10 +12962,10 @@ enums:
       id: 'vendor_provided_platform_billed_by_executing_broker'
       doc: 'Vendor-provided Platform billed by Executing Broker (For complex)'
     0x47:
-      id: 'sponsored_access_via_exchange_api_or_fix_provided_by'
+      id: 'sponsored_access_via_exchange_api_or_fix_provided_by_executing_broker'
       doc: 'Sponsored Access via Exchange API or FIX, provided by Executing Broker (For complex)'
     0x48:
-      id: 'premium_algorithmic_trading_provider_billed_by_execut'
+      id: 'premium_algorithmic_trading_provider_billed_by_executing_broker'
       doc: 'Premium Algorithmic Trading Provider, billed by Execut- ing Broker (For complex)'
     0x44:
       id: 'other_including_other_provided_screen'
@@ -13132,10 +13170,10 @@ enums:
       id: 'new_quote'
       doc: 'New Quote'
     0x4c:
-      id: 'modified'
+      id: 'modified_loss_of_priority'
       doc: 'Modified; loss of priority'
     0x52:
-      id: 'modified_x52'
+      id: 'modified_retains_priority'
       doc: 'Modified; retains priority (size reduction)'
     0x4e:
       id: 'no_change_matches_existing_quote'
@@ -13667,31 +13705,31 @@ enums:
       id: 'success'
       doc: 'Success'
     0x46:
-      id: 'rejected'
+      id: 'rejected_exceeds_firm_reset_limit'
       doc: 'Rejected; exceeds firm reset limit'
     0x43:
-      id: 'rejected_x43'
+      id: 'rejected_exceeds_custom_group_id_limit'
       doc: 'Rejected; exceeds Custom Group ID limit'
     0x44:
-      id: 'rejected_x44'
+      id: 'rejected_automatic_risk_resets_are_disabled'
       doc: 'Rejected; automatic risk resets are disabled'
     0x45:
-      id: 'rejected_x45'
+      id: 'rejected_empty_resetrisk_field'
       doc: 'Rejected; empty ResetRisk field'
     0x49:
-      id: 'rejected_x49'
+      id: 'rejected_incorrect_data_center'
       doc: 'Rejected; Incorrect data center'
     0x53:
-      id: 'rejected_x53'
+      id: 'rejected_exceeds_risk_root_reset_limit'
       doc: 'Rejected; exceeds risk root reset limit'
     0x55:
-      id: 'rejected_x55'
+      id: 'rejected_invalid_underlying'
       doc: 'Rejected; invalid underlying'
     0x63:
-      id: 'rejected_x63'
+      id: 'rejected_invalid_clearingfirm'
       doc: 'Rejected; invalid ClearingFirm'
     0x79:
-      id: 'rejected_x79'
+      id: 'rejected_in_replay'
       doc: 'Rejected; in replay Additional reject values may be added in the fu- ture with no notice.'
   revised_legs:
     0x31:

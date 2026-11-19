@@ -408,7 +408,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_1
+      - id: unused_bit_0
         type: b1
         doc: '1 unused bit'
       - id: session_1

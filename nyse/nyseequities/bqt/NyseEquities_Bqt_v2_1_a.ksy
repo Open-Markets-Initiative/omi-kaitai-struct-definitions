@@ -868,6 +868,9 @@ enums:
     0x5a:
       id: 'bats'
       doc: 'BATS'
+    0x43:
+      id: 'nyse_national'
+      doc: 'NYSE National'
   security_type:
     0x41:
       id: 'adr'
@@ -912,7 +915,7 @@ enums:
       id: 'test'
       doc: 'TEST'
     0x55:
-      id: 'units_x55'
+      id: 'closed_end_fund'
       doc: 'UNITS'
     0x57:
       id: 'warrant'
@@ -1195,6 +1198,9 @@ enums:
     9:
       id: 'nyse_american'
       doc: 'NYSE American'
+    10:
+      id: 'nyse_national'
+      doc: 'NYSE National'
   market_id_of_best_bid:
     0:
       id: 'nyse_group_bqt'
@@ -1208,6 +1214,9 @@ enums:
     9:
       id: 'nyse_american'
       doc: 'NYSE American'
+    10:
+      id: 'nyse_national'
+      doc: 'NYSE National'
   side:
     0x42:
       id: 'buy'
@@ -1342,6 +1351,9 @@ enums:
     9:
       id: 'nyse_american'
       doc: 'NYSE American'
+    10:
+      id: 'nyse_national'
+      doc: 'NYSE National'
   market_id_of_low_price:
     0:
       id: 'nyse_group_bqt'
@@ -1355,6 +1367,9 @@ enums:
     9:
       id: 'nyse_american'
       doc: 'NYSE American'
+    10:
+      id: 'nyse_national'
+      doc: 'NYSE National'
   market_id_of_open_price:
     0:
       id: 'nyse_group_bqt'
@@ -1368,6 +1383,9 @@ enums:
     9:
       id: 'nyse_american'
       doc: 'NYSE American'
+    10:
+      id: 'nyse_national'
+      doc: 'NYSE National'
   market_id_of_the_close:
     0:
       id: 'nyse_group_bqt'
@@ -1381,6 +1399,9 @@ enums:
     9:
       id: 'nyse_american'
       doc: 'NYSE American'
+    10:
+      id: 'nyse_national'
+      doc: 'NYSE National'
   reason:
     0:
       id: 'new_trade'

@@ -380,22 +380,22 @@ enums:
       doc: 'Start Of Day'
   source_venue:
     5:
-      id: 'turquoise_lit_order_book'
+      id: 'turquoise_lit_order_book_tghl'
       doc: 'Turquoise Lit Order Book'
     6:
-      id: 'turquoise_plato_order_book'
+      id: 'turquoise_dark_order_book_tghl'
       doc: 'Turquoise Plato Order Book'
     12:
-      id: 'turquoise_plato_lit_auctions_order_book'
+      id: 'turquoise_periodic_auctions_order_book_tghl'
       doc: 'Turquoise Plato Lit Auctions Order Book'
     14:
-      id: 'turquoise_lit_order_book_14'
+      id: 'turquoise_lit_order_book_tghe'
       doc: 'Turquoise Lit Order Book'
     15:
-      id: 'turquoise_plato_order_book_15'
+      id: 'turquoise_dark_order_book_tghe'
       doc: 'Turquoise Plato Order Book'
     16:
-      id: 'turquoise_plato_lit_auctions_order_book_16'
+      id: 'turquoise_periodic_auctions_order_book_tghe'
       doc: 'Turquoise Plato Lit Auctions Order Book'
   trading_status:
     0x48:
@@ -411,10 +411,10 @@ enums:
       id: 'halted_regulatory_halt'
       doc: 'Halted Regulatory Halt'
     0x54:
-      id: 'regular_trading_start_of_trqb_session'
+      id: 'regular_trading'
       doc: 'Regular Trading Start Of Trqb Session'
     0x74:
-      id: 'end_of_regular_trading_end_of_trqb_session'
+      id: 'end_of_regular_trading'
       doc: 'End Of Regular Trading End Of Trqb Session'
     0x63:
       id: 'closed'

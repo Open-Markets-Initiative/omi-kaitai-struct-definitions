@@ -65,7 +65,7 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Q for Consolidated Quotation System'
+        doc: 'T for Consolidated Tape System (CTS)'
       - id: retransmission_indicator
         type: u1
         enum: retransmission_indicator

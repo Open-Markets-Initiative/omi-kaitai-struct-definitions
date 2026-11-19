@@ -1065,7 +1065,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_8
+      - id: unused_bits_0_to_7
         type: b8
         doc: '8 unused bits'
       - id: imbalance_more_buyers
@@ -1297,13 +1297,13 @@ types:
       - id: out_of_sequence
         type: b1
         doc: 'OutOfSequence'
-      - id: unused_2
+      - id: unused_bits_4_to_5
         type: b2
         doc: '2 unused bits'
       - id: trade_on_behalf
         type: b1
         doc: 'TradeOnBehalf'
-      - id: unused_6
+      - id: unused_bits_7_to_12
         type: b6
         doc: '6 unused bits'
       - id: regular_trade
@@ -1312,7 +1312,7 @@ types:
       - id: block_trade
         type: b1
         doc: 'BlockTrade'
-      - id: unused_1
+      - id: unused_bit_15
         type: b1
         doc: '1 unused bit'
   snapshot_full_refresh_header_30_message:

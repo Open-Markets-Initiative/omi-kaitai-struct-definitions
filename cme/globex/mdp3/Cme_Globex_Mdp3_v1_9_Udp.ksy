@@ -411,7 +411,7 @@ types:
       - id: reserved_bits
         type: b1
         doc: 'ReservedBits'
-      - id: unused_2
+      - id: unused_bits_5_to_6
         type: b2
         doc: '2 unused bits'
       - id: null_value

@@ -323,7 +323,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_4
+      - id: unused_bits_0_to_3
         type: b4
         doc: '4 unused bits'
       - id: anonymous_trading
@@ -332,13 +332,13 @@ types:
       - id: private_trading
         type: b1
         doc: 'PrivateTrading'
-      - id: unused_2
+      - id: unused_bits_6_to_7
         type: b2
         doc: '2 unused bits'
       - id: multi_leg
         type: b1
         doc: 'MultiLeg'
-      - id: unused_9
+      - id: unused_bits_9_to_17
         type: b9
         doc: '9 unused bits'
       - id: collateral

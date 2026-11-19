@@ -838,13 +838,13 @@ enums:
       id: 'open_cross'
       doc: 'Open Cross'
     0x4d:
-      id: 'open_cross_x4d'
+      id: 'open_cross_imbalance_only'
       doc: 'Open Cross (imbalance-only)'
     0x43:
       id: 'closing_cross'
       doc: 'Closing Cross'
     0x4c:
-      id: 'closing_cross_x4c'
+      id: 'closing_cross_imbalance_only'
       doc: 'Closing Cross (imbalance-only)'
     0x48:
       id: 'halt_ipo_cross'

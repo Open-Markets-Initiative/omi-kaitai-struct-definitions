@@ -316,7 +316,7 @@ enums:
       id: 'directed_reporting_or_off_market_trades_crossing'
       doc: 'Directed Reporting Or Off Market Trades Crossing'
     0x45:
-      id: 'special_crossing_less_than_a_marketable_parcel'
+      id: 'special_crossing_less_than_a_marketable_parcel_crossing'
       doc: 'Special Crossing Less Than A Marketable Parcel'
     0x46:
       id: 'forward_delivery'
@@ -340,7 +340,7 @@ enums:
       id: 'block_special_crossing_or_loan_securities'
       doc: 'Block Special Crossing Or Loan Securities'
     0x51:
-      id: 'special_crossing_less_than_a_marketable_parcel_x51'
+      id: 'special_crossing_less_than_a_marketable_parcel'
       doc: 'Special Crossing Less Than A Marketable Parcel'
     0x52:
       id: 'strategy'

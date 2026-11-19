@@ -277,7 +277,7 @@ types:
       - id: reserved_bits
         type: b1
         doc: 'ReservedBits'
-      - id: unused_1
+      - id: unused_bit_6
         type: b1
         doc: '1 unused bit'
       - id: null_value

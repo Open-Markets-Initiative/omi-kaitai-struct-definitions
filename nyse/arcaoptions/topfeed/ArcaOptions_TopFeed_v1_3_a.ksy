@@ -658,6 +658,9 @@ types:
       - id: channel_id
         type: u1
         doc: 'Multicast channel ID of the symbols being provided'
+      - id: reserved_2
+        size: 2
+        doc: 'Filler'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -793,11 +796,11 @@ enums:
       id: 'floor_trade'
       doc: 'Floor trade'
     0x53:
-      id: 'so_sweep_trade'
+      id: 'iso_sweep_trade'
       doc: 'SO sweep trade'
   trade_cond_2:
     0x50:
-      id: 'complex_trade_with_equity'
+      id: 'complex_trade_with_equity_trade'
       doc: 'Complex trade with equity trade'
     0x4c:
       id: 'complex_trade'
@@ -968,7 +971,7 @@ enums:
       id: 'test'
       doc: 'TEST'
     0x55:
-      id: 'units_x55'
+      id: 'closed_end_fund'
       doc: 'UNITS'
     0x57:
       id: 'warrant'

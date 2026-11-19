@@ -122,30 +122,30 @@ types:
         doc: 'Equity And Index Last Sale message type'
       - id: equity_and_index_last_sale_message_payload
         type:
-          switch-on: equity_and_index_last_sale_message_type
+          switch-on: equity_and_index_last_sale_message_type.to_i.as<s4>
           cases:
-            'equity_and_index_last_sale_message_type::regular': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::canc': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::oseq': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::cncl': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::late': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::cnco': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::open': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::cnol': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::opnl': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::auto_field': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::reop': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::ajst': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::sprd': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::stdl': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::stpd': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::cstp': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::bwrt': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::cmbo': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::spim': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::isoi': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::bnmt': equity_and_index_last_sale_message
-            'equity_and_index_last_sale_message_type::xmpt': equity_and_index_last_sale_message
+            32: equity_and_index_last_sale_message
+            65: equity_and_index_last_sale_message
+            66: equity_and_index_last_sale_message
+            67: equity_and_index_last_sale_message
+            68: equity_and_index_last_sale_message
+            69: equity_and_index_last_sale_message
+            70: equity_and_index_last_sale_message
+            71: equity_and_index_last_sale_message
+            72: equity_and_index_last_sale_message
+            73: equity_and_index_last_sale_message
+            74: equity_and_index_last_sale_message
+            75: equity_and_index_last_sale_message
+            76: equity_and_index_last_sale_message
+            77: equity_and_index_last_sale_message
+            78: equity_and_index_last_sale_message
+            79: equity_and_index_last_sale_message
+            80: equity_and_index_last_sale_message
+            81: equity_and_index_last_sale_message
+            82: equity_and_index_last_sale_message
+            83: equity_and_index_last_sale_message
+            84: equity_and_index_last_sale_message
+            88: equity_and_index_last_sale_message
   equity_and_index_last_sale_message:
     seq:
       - id: message_indicator
@@ -586,23 +586,23 @@ types:
         doc: 'Control Message Type'
       - id: control_message_payload
         type:
-          switch-on: control_message_type
+          switch-on: control_message_type.to_i.as<s4>
           cases:
-            'control_message_type::start_of_test_cycle': control_message
-            'control_message_type::end_of_test_cycle': control_message
-            'control_message_type::start_of_day': control_message
-            'control_message_type::good_morning': control_message
-            'control_message_type::start_of_summary': control_message
-            'control_message_type::end_of_summary': control_message
-            'control_message_type::early_market_close': control_message
-            'control_message_type::end_of_transaction_reporting': control_message
-            'control_message_type::good_night': control_message
-            'control_message_type::end_of_day': control_message
-            'control_message_type::reset_block_sequence_number': control_message
-            'control_message_type::start_of_open_interest': control_message
-            'control_message_type::end_of_open_interest': control_message
-            'control_message_type::line_integrity': control_message
-            'control_message_type::disaster_recovery_data_center_activation': control_message
+            65: control_message
+            66: control_message
+            67: control_message
+            68: control_message
+            69: control_message
+            70: control_message
+            71: control_message
+            72: control_message
+            73: control_message
+            74: control_message
+            75: control_message
+            76: control_message
+            77: control_message
+            78: control_message
+            80: control_message
   control_message:
     seq:
       - id: message_indicator
@@ -769,8 +769,23 @@ enums:
       id: 'regular'
       doc: 'Regular Trading Session'
     0x58:
-      id: 'pre_market'
-      doc: 'ASCII ''X'' for Pre-Market extended hours trading session (only used during Pre-Market Extended Session)'
+      id: 'gth_opra_generated'
+      doc: 'ASCII ''X'' on any messages generated by OPRA in the Global Trading Hours session, e.g. Control messages or Zero Quote messages'
+    1:
+      id: 'gth_monday'
+      doc: 'Global Trading Hours session for trade day Monday (Sunday into Monday)'
+    2:
+      id: 'gth_tuesday'
+      doc: 'Global Trading Hours session for trade day Tuesday (Monday into Tuesday)'
+    3:
+      id: 'gth_wednesday'
+      doc: 'Global Trading Hours session for trade day Wednesday (Tuesday into Wednesday)'
+    4:
+      id: 'gth_thursday'
+      doc: 'Global Trading Hours session for trade day Thursday (Wednesday into Thursday)'
+    5:
+      id: 'gth_friday'
+      doc: 'Global Trading Hours session for trade day Friday (Thursday into Friday)'
   participant_id:
     0x41:
       id: 'nyse_american'
@@ -785,7 +800,7 @@ enums:
       id: 'miax_emerald'
       doc: 'MIAX EMERALD'
     0x45:
-      id: 'cboe_edgx_options'
+      id: 'cboe_edgx_options_exchange'
       doc: 'Cboe EDGX Options'
     0x48:
       id: 'nasdaq_gemx'
@@ -815,7 +830,7 @@ enums:
       id: 'nasdaq_bx_options'
       doc: 'NASDAQ BX Options'
     0x57:
-      id: 'cboe_c_2_options'
+      id: 'cboe_c2_options_exchange'
       doc: 'Cboe C2 Options'
     0x58:
       id: 'nasdaq_phlx'
@@ -849,9 +864,6 @@ enums:
       id: 'underlying_value'
       doc: 'Underlying Value Message'
   equity_and_index_last_sale_message_type:
-    0x20:
-      id: 'regular'
-      doc: 'Indicates that the transaction was a regular sale and was made without stated conditions.'
     0x41:
       id: 'canc'
       doc: 'Transaction previously reported (other than as the last or opening report for the particular option contract) is now to be cancelled.'
@@ -882,111 +894,147 @@ enums:
     0x4a:
       id: 'reop'
       doc: 'Transaction is a reopening of an option contract in which trading has been previously halted. Prefix appears solely for information; process as a regular transaction.'
-    0x4b:
-      id: 'ajst'
-      doc: 'Transaction is an option contract for which the terms have been adjusted to reflect a stock dividend, stock split, or similar event. Prefix appears solely for information; process as a regular transaction.'
-    0x4c:
-      id: 'sprd'
-      doc: 'Transaction represents a trade in two options in the same class (a buy and a sell in the same class). Prefix appears solely for information; process as a regular transaction.'
-    0x4d:
-      id: 'stdl'
-      doc: 'Transaction represents a trade in two options in the same class (a buy and a sell in a put and a call). Prefix appears solely for information; process as a regular transaction.'
-    0x4e:
-      id: 'stpd'
-      doc: 'Transaction is the execution of a sale at a price agreed upon by the floor personnel involved, where a condition of the trade is that it reported following a non-stopped trade of the same series at the same price.'
-    0x4f:
-      id: 'cstp'
-      doc: 'Cancel stopped transaction.'
-    0x50:
-      id: 'bwrt'
-      doc: 'Transaction represents the option portion of an order involving a single option leg (buy or sell of a call or put) and stock. Prefix appears solely for information: process as a regular transaction.'
-    0x51:
-      id: 'cmbo'
-      doc: 'Transaction represents the buying of a call and the selling of a put for the same underlying stock or index. Prefix appears solely for information; process as a regular transaction.'
-    0x52:
-      id: 'spim'
-      doc: 'Transaction was the execution of an order which was “stopped” at a price that did not constitute a Trade-Through on another market at the time of the stop. Process like a normal transaction.'
     0x53:
       id: 'isoi'
       doc: 'Transaction was the execution of an order identified as an Intermarket Sweep Order. Process like normal transaction.'
-    0x54:
-      id: 'bnmt'
-      doc: 'Transaction reflects the execution of a “benchmark trade”. A “Benchmark Trade” is a trade resulting from the matching of “Benchmark Orders”. A “Benchmark Order” is an order for which the price is not based, directly or indirectly, on the quote price of the option at the time of the order’s execution and for which the material terms were not reasonably determinable at the time a commitment to trade the order was made. Process like a normal transaction except don’t update “last”.'
-    0x58:
-      id: 'xmpt'
-      doc: 'Transaction is Trade Through Exempt. The transaction should be treated like a regular sale.'
+    0x61:
+      id: 'slan'
+      doc: 'Single Leg Auction Non ISO'
+    0x62:
+      id: 'slai'
+      doc: 'Single Leg Auction ISO'
+    0x63:
+      id: 'slcn'
+      doc: 'Single Leg Cross Non ISO'
+    0x64:
+      id: 'scli'
+      doc: 'Single Leg Cross ISO'
+    0x65:
+      id: 'slft'
+      doc: 'Single Leg Floor Trade'
+    0x66:
+      id: 'mlet'
+      doc: 'Multi Leg auto-electronic trade'
+    0x67:
+      id: 'mlat'
+      doc: 'Multi Leg Auction'
+    0x68:
+      id: 'mlct'
+      doc: 'Multi Leg Cross'
+    0x69:
+      id: 'mlft'
+      doc: 'Multi Leg floor trade'
+    0x6a:
+      id: 'mesl'
+      doc: 'Multi Leg auto-electronic trade against single leg(s)'
+    0x6b:
+      id: 'tlat'
+      doc: 'Stock Options Auction'
+    0x6c:
+      id: 'masl'
+      doc: 'Multi Leg Auction against single leg(s)'
+    0x6d:
+      id: 'mfsl'
+      doc: 'Multi Leg floor trade against single leg(s)'
+    0x6e:
+      id: 'tlet'
+      doc: 'Stock Options auto-electronic trade'
+    0x6f:
+      id: 'tlct'
+      doc: 'Stock Options Cross'
+    0x70:
+      id: 'tlft'
+      doc: 'Stock Options floor trade'
+    0x71:
+      id: 'tesl'
+      doc: 'Stock Options auto-electronic trade against single leg(s)'
+    0x72:
+      id: 'tasl'
+      doc: 'Stock Options Auction against single leg(s)'
+    0x73:
+      id: 'tfsl'
+      doc: 'Stock Options floor trade against single leg(s)'
+    0x74:
+      id: 'cbmo'
+      doc: 'Multi Leg Floor Trade of Proprietary Products'
+    0x75:
+      id: 'mctp'
+      doc: 'Multilateral Compression Trade of Proprietary Products'
+    0x76:
+      id: 'exht'
+      doc: 'Extended Hours Trade'
   expiration_month:
     0x41:
-      id: 'january'
+      id: 'january_call'
       doc: 'JANUARY'
     0x4d:
-      id: 'january_x4d'
+      id: 'january_put'
       doc: 'JANUARY'
     0x42:
-      id: 'february'
+      id: 'february_call'
       doc: 'FEBRUARY'
     0x4e:
-      id: 'february_x4e'
+      id: 'february_put'
       doc: 'FEBRUARY'
     0x43:
-      id: 'march'
+      id: 'march_call'
       doc: 'MARCH'
     0x4f:
-      id: 'march_x4f'
+      id: 'march_put'
       doc: 'MARCH'
     0x44:
-      id: 'april'
+      id: 'april_call'
       doc: 'APRIL'
     0x50:
-      id: 'april_x50'
+      id: 'april_put'
       doc: 'APRIL'
     0x45:
-      id: 'may'
+      id: 'may_call'
       doc: 'MAY'
     0x51:
-      id: 'may_x51'
+      id: 'may_put'
       doc: 'MAY'
     0x46:
-      id: 'june'
+      id: 'june_call'
       doc: 'JUNE'
     0x52:
-      id: 'june_x52'
+      id: 'june_put'
       doc: 'JUNE'
     0x47:
-      id: 'july'
+      id: 'july_call'
       doc: 'JULY'
     0x53:
-      id: 'july_x53'
+      id: 'july_put'
       doc: 'JULY'
     0x48:
-      id: 'august'
+      id: 'august_call'
       doc: 'AUGUST'
     0x54:
-      id: 'august_x54'
+      id: 'august_put'
       doc: 'AUGUST'
     0x49:
-      id: 'september'
+      id: 'september_call'
       doc: 'SEPTEMBER'
     0x55:
-      id: 'september_x55'
+      id: 'september_put'
       doc: 'SEPTEMBER'
     0x4a:
-      id: 'october'
+      id: 'october_call'
       doc: 'OCTOBER'
     0x56:
-      id: 'october_x56'
+      id: 'october_put'
       doc: 'OCTOBER'
     0x4b:
-      id: 'november'
+      id: 'november_call'
       doc: 'NOVEMBER'
     0x57:
-      id: 'november_x57'
+      id: 'november_put'
       doc: 'NOVEMBER'
     0x4c:
-      id: 'december'
+      id: 'december_call'
       doc: 'DECEMBER'
     0x58:
-      id: 'december_x58'
+      id: 'december_put'
       doc: 'DECEMBER'
   strike_price_denominator_code:
     0x41:
@@ -1104,7 +1152,7 @@ enums:
       doc: 'Bid Side of Quote Not Firm; Offer Side Firm'
   bbo_indicator:
     0x41:
-      id: 'no_best_bid_change_or_best_offer_change'
+      id: 'no_best_bid_change_no_best_offer_change'
       doc: 'No Best Bid Change Or Best Offer Change'
     0x42:
       id: 'no_best_bid_change_quote_contains_best_offer'
@@ -1168,7 +1216,7 @@ enums:
       id: 'miax_emerald'
       doc: 'MIAX EMERALD'
     0x45:
-      id: 'cboe_edgx_options'
+      id: 'cboe_edgx_options_exchange'
       doc: 'Cboe EDGX Options'
     0x48:
       id: 'nasdaq_gemx'
@@ -1198,7 +1246,7 @@ enums:
       id: 'nasdaq_bx_options'
       doc: 'NASDAQ BX Options'
     0x57:
-      id: 'cboe_c_2_options'
+      id: 'cboe_c2_options_exchange'
       doc: 'Cboe C2 Options'
     0x58:
       id: 'nasdaq_phlx'
@@ -1248,7 +1296,7 @@ enums:
       id: 'miax_emerald'
       doc: 'MIAX EMERALD'
     0x45:
-      id: 'cboe_edgx_options'
+      id: 'cboe_edgx_options_exchange'
       doc: 'Cboe EDGX Options'
     0x48:
       id: 'nasdaq_gemx'
@@ -1278,7 +1326,7 @@ enums:
       id: 'nasdaq_bx_options'
       doc: 'NASDAQ BX Options'
     0x57:
-      id: 'cboe_c_2_options'
+      id: 'cboe_c2_options_exchange'
       doc: 'Cboe C2 Options'
     0x58:
       id: 'nasdaq_phlx'
@@ -1380,24 +1428,6 @@ enums:
     0x50:
       id: 'disaster_recovery_data_center_activation'
       doc: 'Disaster Recovery Data Center Activation'
-    0x41:
-      id: 'start_of_test_cycle'
-      doc: 'Start of Test Cycle'
-    0x42:
-      id: 'end_of_test_cycle'
-      doc: 'End of Test Cycle'
-    0x44:
-      id: 'good_morning'
-      doc: 'Good Morning'
-    0x47:
-      id: 'early_market_close'
-      doc: 'Early Market Close'
-    0x48:
-      id: 'end_of_transaction_reporting'
-      doc: 'End of Transaction Reporting'
-    0x49:
-      id: 'good_night'
-      doc: 'Good Night'
   underlying_value_message_type:
     0x20:
       id: 'underlying_value_last_sale_message'

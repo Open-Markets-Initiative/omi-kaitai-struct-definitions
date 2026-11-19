@@ -549,20 +549,20 @@ enums:
       id: 'penny'
       doc: 'Penny'
     0x4e:
-      id: 'nickel'
+      id: 'penny_or_nickel'
       doc: 'Nickel'
     0x44:
-      id: 'dime'
+      id: 'nickel_or_dime'
       doc: 'Dime'
   liquidity_acceptance_increment_indicator:
     0x50:
       id: 'penny'
       doc: 'Penny'
     0x4e:
-      id: 'nickel'
+      id: 'penny_or_nickel'
       doc: 'Nickel'
     0x44:
-      id: 'dime'
+      id: 'nickel_or_dime'
       doc: 'Dime'
   opening_underlying_market_code:
     0x41:

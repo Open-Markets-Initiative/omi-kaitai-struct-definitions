@@ -410,6 +410,9 @@ types:
       - id: channel_id
         type: u1
         doc: 'Multicast channel ID of the symbols being provided'
+      - id: reserved_2
+        size: 2
+        doc: 'Filler'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -508,9 +511,6 @@ enums:
     0x34:
       id: 'pre_open'
       doc: 'Pre-open'
-    0x35:
-      id: 'rotation_legal_width_quote_pending'
-      doc: 'Rotation, legal width quote pending'
   trade_cond_1:
     0x20:
       id: 'regular_trade'
@@ -522,7 +522,7 @@ enums:
       id: 'floor_trade'
       doc: 'Floor trade'
     0x53:
-      id: 'so_sweep_trade'
+      id: 'iso_sweep_trade'
       doc: 'SO sweep trade'
   side:
     0x42:
@@ -532,12 +532,6 @@ enums:
       id: 'sell'
       doc: 'Sell'
   security_status:
-    0x4c:
-      id: 'light_up_a_dark_series'
-      doc: 'Light up a dark series'
-    0x4e:
-      id: 'open_a_dark_series'
-      doc: 'Open a dark series'
     0x4f:
       id: 'open'
       doc: 'Open indication'
@@ -547,12 +541,6 @@ enums:
     0x53:
       id: 'halt'
       doc: 'Halt'
-    0x55:
-      id: 'unhalt'
-      doc: 'Unhalt'
-    0x54:
-      id: 'unhalt_a_dark_series'
-      doc: 'Unhalt a dark series'
     0x51:
       id: 'end_of_rfq_auction'
       doc: 'End of RFQ auction'

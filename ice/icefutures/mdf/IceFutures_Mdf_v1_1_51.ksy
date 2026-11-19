@@ -594,9 +594,8 @@ types:
       - id: market_id
         type: s4
       - id: ipl_tpl_hold_type
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ipl_tpl_hold_type
         doc: 'IPL/TPLHoldType'
       - id: notification_date_time
         type: millisecond_timestamp
@@ -615,9 +614,8 @@ types:
         type: s8
         doc: 'IPL lower bound'
       - id: ipl_tpl_type
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ipl_tpl_type
         doc: 'IPL TPL Type'
   new_futures_strategy_definition_message:
     seq:
@@ -2176,19 +2174,33 @@ enums:
     0x41:
       id: 'implication_disabled_for_the_market'
       doc: 'Implication Disabled For The Market'
+    0x42:
+      id: 'trf_market_update'
+      doc: 'TRF Market Update'
+    0x43:
+      id: 'tpl_hold_exit'
+      doc: 'TPL Hold Exit'
+  ipl_tpl_hold_type:
+    0x53:
+      id: 'ipl_tpl_hold_start'
+      doc: 'IPL/TPL Hold Start'
+    0x45:
+      id: 'ipl_tpl_hold_end'
+      doc: 'IPL/TPL Hold End'
   is_up:
     0x59:
-      id: 'ipl_upper_bound_violation'
+      id: 'ipl_tpl_upper_bound_violation'
       doc: 'Ipl Upper Bound Violation Bidding Too High'
     0x4e:
-      id: 'ipl_lower_bound_violation'
+      id: 'ipl_tpl_lower_bound_violation'
       doc: 'Ipl Lower Bound Violation Asking Too Low'
-    0x46:
-      id: 'final_field'
-      doc: 'Final'
-    0x20:
-      id: 'non_endex_spot_market'
-      doc: 'Non Endex Spot Market'
+  ipl_tpl_type:
+    0x49:
+      id: 'ipl'
+      doc: 'IPL'
+    0x54:
+      id: 'tpl'
+      doc: 'TPL'
   leg_side:
     0x20:
       id: 'none'

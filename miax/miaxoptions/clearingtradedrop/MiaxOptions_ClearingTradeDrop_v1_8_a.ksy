@@ -693,31 +693,31 @@ enums:
       id: 'late_report_of_the_opening_trade_and_is_in_correct_sequence'
       doc: 'Trade that is late report of the opening trade and is in correct sequence'
     0x49:
-      id: 'reserved'
+      id: 'reserved_i'
       doc: 'Reserved for future use'
     0x4a:
       id: 'reopening_of_an_option'
       doc: 'Trade due to reopening of an Option in which trading has been previously halted; process as a regular transaction.'
     0x4b:
-      id: 'reserved_x4b'
+      id: 'reserved_k'
       doc: 'Reserved for future use'
     0x4c:
-      id: 'reserved_x4c'
+      id: 'reserved_l'
       doc: 'Reserved for future use'
     0x4d:
-      id: 'reserved_x4d'
+      id: 'reserved_m'
       doc: 'Reserved for future use'
     0x4e:
-      id: 'reserved_x4e'
+      id: 'reserved_n'
       doc: 'Reserved for future use'
     0x4f:
-      id: 'reserved_x4f'
+      id: 'reserved_o'
       doc: 'Reserved for future use'
     0x50:
-      id: 'reserved_x50'
+      id: 'reserved_p'
       doc: 'Reserved for future use'
     0x51:
-      id: 'reserved_x51'
+      id: 'reserved_q'
       doc: 'Reserved for future use'
     0x52:
       id: 'execution_of_a_stopped_order'
@@ -726,7 +726,7 @@ enums:
       id: 'execution_of_an_iso_order'
       doc: 'Trade was the execution of an order identified as an Intermarket Sweep Order (ISO).'
     0x54:
-      id: 'reserved_x54'
+      id: 'reserved_t'
       doc: 'Reserved for future use'
     0x58:
       id: 'trade_through_exempt'

@@ -310,7 +310,7 @@ enums:
       id: 'changed_to_non_displayed'
       doc: 'Entered as displayed but changed to non-displayed (Priced to comply)'
     0x4d:
-      id: 'mid_point'
+      id: 'mid_point_peg'
       doc: 'Mid-Point Peg'
     0x4f:
       id: 'retail_order_type_1'
@@ -484,16 +484,16 @@ enums:
       id: 'removed'
       doc: 'Removed'
     0x4a:
-      id: 'non_displayed'
+      id: 'non_displayed_and_added_liquidity'
       doc: 'Non-displayed adding liquidity'
     0x6d:
-      id: 'removed_x6d'
+      id: 'removed_liquidity_at_a_midpoint'
       doc: 'Removed liquidity at a midpoint'
     0x6b:
-      id: 'added_x6b'
+      id: 'added_liquidity_via_a_midpoint_order'
       doc: 'Added liquidity via a midpoint order'
     0x6a:
-      id: 'rpi'
+      id: 'rpi_order_provides_liquidity'
       doc: 'RPI (Retail Price Improving) order provides liquidity'
     0x72:
       id: 'rmo_retail_order_removes_rpi_liquidity'
@@ -561,7 +561,7 @@ enums:
       id: 'invalid_price'
       doc: 'Invalid price'
     0x4e:
-      id: 'invalid_minimum'
+      id: 'invalid_minimum_quantity'
       doc: 'Invalid Minimum Quantity'
     0x57:
       id: 'invalid_midpoint'
@@ -570,45 +570,45 @@ enums:
       id: 'midpoint_peg_orders_are_not_accepted'
       doc: 'Midpoint Peg orders are not accepted in a crossed market'
     0x61:
-      id: 'reject'
+      id: 'reject_all_enabled'
       doc: 'Reject All enabled'
     0x62:
-      id: 'easy_to_borrow_etb'
+      id: 'easy_to_borrow_reject'
       doc: 'Easy to Borrow (ETB) reject'
     0x63:
-      id: 'restricted'
+      id: 'restricted_symbol_list_reject'
       doc: 'Restricted symbol list reject'
     0x64:
-      id: 'iso'
+      id: 'iso_order_restriction'
       doc: 'ISO order restriction'
     0x65:
-      id: 'odd'
+      id: 'odd_lot_order_restriction'
       doc: 'Odd lot order restriction'
     0x66:
-      id: 'mid_point'
+      id: 'mid_point_order_restriction'
       doc: 'Mid-Point order restriction'
     0x67:
-      id: 'pre_market'
+      id: 'pre_market_order_restriction'
       doc: 'Pre-Market order restriction'
     0x68:
-      id: 'post_market'
+      id: 'post_market_order_restriction'
       doc: 'Post market order restriction'
     0x69:
-      id: 'short_sale'
+      id: 'short_sale_order_restriction'
       doc: 'Short sale order restriction'
     0x6a:
-      id: 'on_open'
+      id: 'on_open_order_restriction'
       doc: 'On Open order restriction'
     0x6b:
-      id: 'on_close'
+      id: 'on_close_order_restriction'
       doc: 'On Close order restriction'
     0x6c:
-      id: 'two_sided'
+      id: 'two_sided_quote_reject'
       doc: 'Two sided quote reject'
     0x6d:
-      id: 'exceeded'
+      id: 'exceeded_shares_limit'
       doc: 'Exceeded shares limit'
     0x6e:
-      id: 'exceeded_x6e'
+      id: 'exceeded_dollar_value_limit'
       doc: 'Exceeded dollar value limit'
 

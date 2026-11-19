@@ -111,7 +111,53 @@ types:
         doc: 'Number of bytes for the parameter group, in- cluding this field'
       - id: param_group_type
         type: u1
-        doc: '0x80'
+        doc: '0x80 = Unit Sequences, 0x81 = Return Bitfields'
+      - id: paramgrouppayload
+        type:
+          switch-on: param_group_type
+          cases:
+            128: unit_sequences_param_group
+            129: return_bitfields_param_group
+  unit_sequences_param_group:
+    seq:
+      - id: no_unspecified_unit_replay
+        type: u1
+        doc: 'Echoed back from the original Login Request V2 message'
+      - id: num_units
+        type: u1
+        doc: 'A number, n, of unit/sequence pairs to follow, one per unit. A pair for every unit will be sent, even if no messages have been sent to this port today. For unsuccessful logins, this will be 0'
+      - id: units
+        type: units
+        repeat: expr
+        repeat-expr: num_units
+        doc: 'Repeating group stated NumberOfUnits times'
+  units:
+    seq:
+      - id: unit_number
+        type: u1
+        doc: 'A unit number'
+      - id: unit_sequence
+        type: u4
+        doc: 'Highest available Cboe to Participant sequence number for the unit'
+  return_bitfields_param_group:
+    seq:
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Return message type for which the bitfields are being specified (e.g., 0x30 for a Trade Cap- ture Report Acknowledgment V2 mes- sage)'
+      - id: num_return_bitfields
+        type: u1
+        doc: 'Number of bitfields that follow; the fields they gate are appended'
+      - id: return_bitfields
+        type: return_bitfields
+        repeat: expr
+        repeat-expr: num_return_bitfields
+        doc: 'Repeating group stated NumberOfReturnBitfields times'
+  return_bitfields:
+    seq:
+      - id: return_bitfield
+        type: u1
+        doc: 'Bitfield identifying fields to return'
   login_response_v_2_message:
     seq:
       - id: login_response_status
@@ -145,14 +191,6 @@ types:
         repeat: expr
         repeat-expr: num_param_group
         doc: 'Repeating group stated NumberOfParamGroups times'
-  units:
-    seq:
-      - id: unit_number
-        type: u1
-        doc: 'A unit number'
-      - id: unit_sequence
-        type: u4
-        doc: 'Highest available Cboe to Participant sequence number for the unit'
   logout_message:
     seq:
       - id: logout_reason
@@ -287,6 +325,7 @@ types:
         if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_secondary_trd_type
       - id: trade_price_condition
         type: u1
+        enum: trade_price_condition
         if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trade_price_condition
       - id: trade_publish_indicator
         type: u1
@@ -4319,16 +4358,23 @@ enums:
     5:
       id: 'post_trading'
       doc: 'Post Trading 10 = Out of Main Session Trading'
+    10:
+      id: 'out_of_main_session_trading'
+      doc: 'Out of Main Session Trading'
   match_type:
     1:
-      id: 'trade_reporting'
+      id: 'trade_reporting_off_exchange'
       doc: 'Trade Reporting (Off-Exchange)'
     3:
-      id: 'trade_reporting_3'
+      id: 'trade_reporting_on_exchange'
       doc: 'Trade Reporting (On-Exchange)'
     9:
-      id: 'trade_reporting_9'
+      id: 'trade_reporting_systematic_internalizer'
       doc: 'Trade Reporting (Systematic Internalizer)'
+  trade_price_condition:
+    13:
+      id: 'special_dividend'
+      doc: 'Special Dividend (SDIV)'
   trade_publish_indicator:
     0:
       id: 'do_not_publish'
@@ -4381,13 +4427,13 @@ enums:
       id: 'negotiated_trade_in_illiquid_instrument'
       doc: 'Negotiated Trade in Illiquid Instrument (for MTF only) (OILQ)'
     0x32:
-      id: 'negotiated_trade_subject_to_conditions_other_than_the'
+      id: 'negotiated_trade_subject_to_conditions_other_than_the_current_market_price'
       doc: 'Negotiated Trade Subject to Conditions Other Than the Current Market Price (for MTF only) (PRIC)'
     0x38:
-      id: 'negotiated_trade_subject_to_a_pre_trade_transparency'
+      id: 'negotiated_trade_subject_to_a_pre_trade_transparency_waiver'
       doc: 'Negotiated Trade Subject to a Pre-Trade Transparency Waiver (for UK MTF only) (NETW)'
     0x63:
-      id: 'negotiated_trade_larger_than_lis_brought_onto_a'
+      id: 'negotiated_trade_larger_than_lis_brought_onto_a_venue_for_which_pre_trade_transparency_can_be_waived'
       doc: 'Negotiated Trade Larger Than LIS Brought Onto a Venue for which Pre-Trade Transparency Can be Waived (NTLS). Implies NETW. (For UK MTF only.)'
     0x33:
       id: 'reference_price'
@@ -4396,10 +4442,10 @@ enums:
       id: 'pre_trade_transparency_waiver_for_illiquid_instrument'
       doc: 'Pre-Trade Transparency Waiver for Illiquid Instrument (for SI only) (ILQD) (Deprecated)'
     0x35:
-      id: 'pre_trade_transparency_waiver_for_above_standard_mar'
+      id: 'pre_trade_transparency_waiver_for_above_standard_market_size'
       doc: 'Pre-Trade Transparency Waiver for Above Standard Mar- ket Size (for SI only) (SIZE) (Deprecated)'
     0x42:
-      id: 'pre_trade_transparency_waiver_for_illiquid_instrument_x42'
+      id: 'pre_trade_transparency_waiver_for_illiquid_instrument_and_for_above_standard_market_size'
       doc: 'Pre-Trade Transparency Waiver for Illiquid Instrument (for SI only) (ILQD) AND Pre-Trade Transparency Waiver for Above Standard Market Size (for SI only) (SIZE) (Deprecated) Note, the values 4, 5 or B can only be used for EU APA with TradeTime set to a date before 2 March 2026 Negotiated Trade Indicators and Pre-Trade Transparency Waivers are MMT Level 3.2 values. Reference Price is a MMT Level 3.5 value. ALL values are mutually exclusive and so only one may be requested. The Negotiated Trade Indicators (NLIQ, OILQ, PRIC, NETW) and Reference Price Waiver (RFPT) are MTF Only. For MTF reporting to UK APA, the new Negotiated Trade Subject to a Pre-Trade Transparency Waiver (NETW) should be used instead of NLIQ, OLIQ and PRIC. The Pre-Trade Transparency Waivers ILQD and SIZE are SI Only. If both ILQD and SIZE are required then the discrete value B must be used. The business confirmation contains the waiver(s) that have been appplied.'
   deferral_reason:
     0x2d:
@@ -4415,16 +4461,16 @@ enums:
       id: 'deferral_for_size_specific'
       doc: 'Deferral for Size Specific (for RTS2 only) (SIZE) (Dep- recated)'
     0x43:
-      id: 'deferral_for_illiquid_instrument_x43'
+      id: 'deferral_for_illiquid_instrument_and_deferral_for_large_in_scale'
       doc: 'Deferral for Illiquid Instrument (for RTS2 only) (ILQD) AND Deferral for Large In Scale (LRGS) (Deprecated)'
     0x44:
-      id: 'deferral_for_illiquid_instrument_x44'
+      id: 'deferral_for_illiquid_instrument_and_deferral_for_size_specific'
       doc: 'Deferral for Illiquid Instrument (for RTS2 only) (ILQD) AND Deferral for Size Specific (for RTS2 only) (SIZE) (Deprecated)'
     0x47:
       id: 'deferral_for_transactions_in_et_cs_et_ns_etc'
       doc: 'Deferral for transactions in ETCs, ETNs, etc (for RTS only), only applicable on EU APA (DEFF)'
     0x56:
-      id: 'indicates_a_net_asset_value'
+      id: 'indicates_a_net_asset_value_trade'
       doc: 'Indicates a Net Asset Value (NAV) Trade. Cboe will publish such trades immediately on receipt and they will not be considered as late reporting, regardless of the arrangement time on the message. Each Deferral Reason is represented by a distinct value that can be requested individually. Deferrals that can be applied together are represented by values that indicates the deferrals being set together. Based upon what is requested, the system calculates which of these are valid. The business confirmation contains the deferral(s) that have been appplied. The values 7, 8, C, D are deprecated and are only valid on EU APA with TradeTime set to a date before 2 March 2026.'
   intra_firm_trade_ind:
     0x4e:

@@ -13714,22 +13714,22 @@ enums:
       id: 'day'
       doc: 'Day - (Default) Expires at end of market day.'
     0x31:
-      id: 'gtc_remains_in_system_until_executed_cancelled_or'
+      id: 'gtc'
       doc: 'GTC* - Remains in system until executed, cancelled or option expires.'
     0x32:
-      id: 'at_the_open_will_remain_queued_and_only_interact_in_the'
+      id: 'at_the_open'
       doc: 'At the Open - Will remain queued and only interact in the Cboe Opening Process (C2 and EDGX only) or the Cboe Opening Auction (C1 only).'
     0x33:
-      id: 'ioc_portion_not_filled_immediately_is_cancelled'
+      id: 'ioc'
       doc: 'IOC - Portion not filled immediately is cancelled. Market orders are implicitly IOC for non-complex orders.'
     0x34:
-      id: 'fok_an_ioc_where_the_entire_size_must_be_filled_else_the'
+      id: 'fok'
       doc: 'FOK - An IOC where the entire size must be filled, else the order will be cancelled back. Not compatible with Step-Up Mechanism (SUM).'
     0x36:
-      id: 'gtd_expires_at_specified_expire_time_for_a_specified_day'
+      id: 'gtd'
       doc: 'GTD* - Expires at specified ExpireTime for a specified day.'
     0x37:
-      id: 'at_the_close_orders_held_for_execution_until_180_seconds'
+      id: 'at_the_close'
       doc: 'At the Close - Orders held for execution until 180 seconds before series is scheduled to close. *Bulk Quoting Ports only support TimeInForce = Day or GTD with a same day expiration on C1, C2, and EDGX.'
   capacity:
     0x43:
@@ -13807,7 +13807,7 @@ enums:
       id: 'attribute_client_id_only'
       doc: 'Attribute ClientID only.'
     0x5a:
-      id: 'attribute_both_clearing_firm'
+      id: 'attribute_both_clearingfirm_and_clientid'
       doc: 'Attribute both ClearingFirm (EFID) and ClientID'
   ex_destination:
     0x41:
@@ -13916,7 +13916,7 @@ enums:
       doc: 'Mark order as Held Default value is ''N'' if the order is direct routed to a Non-PAR Official on the floor.'
   cross_type:
     0x31:
-      id: 'automated_improvement_mechamism'
+      id: 'automated_improvement_mechanism'
       doc: 'Automated Improvement Mechamism (AIM)'
     0x32:
       id: 'qualified_contingent_cross'
@@ -13948,10 +13948,10 @@ enums:
       id: 'limit'
       doc: 'Limit'
     0x33:
-      id: 'market_x33'
+      id: 'market_no_starting_price_adjustments'
       doc: 'Market. No starting price adjustments.'
     0x34:
-      id: 'limit_x34'
+      id: 'limit_no_starting_price_adjustments'
       doc: 'Limit. No starting price adjustments.'
   last_priority:
     0x30:
@@ -14257,10 +14257,10 @@ enums:
       id: 'ioc_quote_accepted'
       doc: 'IOC Quote Accepted'
     0x4c:
-      id: 'modified'
+      id: 'modified_loss_of_priority'
       doc: 'Modified; loss of priority'
     0x52:
-      id: 'modified_x52'
+      id: 'modified_retains_priority'
       doc: 'Modified; retains priority (size reduction)'
     0x4e:
       id: 'no_change_matches_existing_quote'
@@ -14272,7 +14272,7 @@ enums:
       id: 'modified_but_may_remove_liquidity'
       doc: 'Modified, but may remove liquidity'
     0x56:
-      id: 'no_change_existing_constituent_series_quote'
+      id: 'no_change_existing_constituent_series_quote_modify_attempt_after_cutoff_time'
       doc: 'No change, existing constituent series quote modify attempt after cutoff time (C1 only) Cancellation:'
     0x55:
       id: 'user_cancelled'
@@ -14287,7 +14287,7 @@ enums:
       id: 'rejected_cant_post'
       doc: 'Rejected, can’t post'
     0x66:
-      id: 'risk_management_firm_or_custom_group_id'
+      id: 'risk_management_firm_or_custom_group_id_level'
       doc: 'Risk management firm or Custom Group ID level'
     0x53:
       id: 'rejected_symbol_not_found'
@@ -14311,7 +14311,7 @@ enums:
       id: 'rejected_closing_only_series'
       doc: 'Rejected, closing only series'
     0x76:
-      id: 'rejected_attempt_to_add_constituent_series'
+      id: 'rejected_attempt_to_add_constituent_series_quote_after_cutoff_time'
       doc: 'Rejected, attempt to add constituent series quote after cutoff time (C1 only) Additional reasons indicating a reject may be added in the future with no notice.'
   subreason:
     0x41:
@@ -14839,7 +14839,7 @@ enums:
       id: 'floor'
       doc: 'Floor'
     0x20:
-      id: 'or_not_present_for_electronic_execution'
+      id: 'electronic_execution'
       doc: '(or not present) for electronic execution.'
   base_liquidity_indicat:
     0x41:
@@ -14972,37 +14972,37 @@ enums:
       id: 'ignored'
       doc: 'Ignored; exceeds 1 reset per 100 milliseconds'
     0x43:
-      id: 'rejected'
+      id: 'rejected_exceeds_custom_group_id_limit'
       doc: 'Rejected; exceeds Custom Group ID limit'
     0x44:
-      id: 'rejected_x44'
+      id: 'rejected_automatic_risk_resets_are_disabled'
       doc: 'Rejected; automatic risk resets are disabled'
     0x45:
-      id: 'rejected_x45'
+      id: 'rejected_empty_resetrisk_field'
       doc: 'Rejected; empty ResetRisk field'
     0x46:
-      id: 'rejected_x46'
+      id: 'rejected_exceeds_firm_reset_limit'
       doc: 'Rejected; exceeds firm reset limit'
     0x49:
-      id: 'rejected_x49'
+      id: 'rejected_incorrect_data_center'
       doc: 'Rejected; incorrect data center'
     0x4d:
-      id: 'rejected_x4d'
+      id: 'rejected_invalid_matching_unit'
       doc: 'Rejected; invalid matching unit'
     0x53:
-      id: 'rejected_x53'
+      id: 'rejected_exceeds_risk_root_reset_limit'
       doc: 'Rejected; exceeds risk root reset limit'
     0x55:
-      id: 'rejected_x55'
+      id: 'rejected_invalid_riskroot'
       doc: 'Rejected; invalid RiskRoot'
     0x59:
       id: 'success'
       doc: 'Success'
     0x63:
-      id: 'rejected_x63'
+      id: 'rejected_invalid_efid_clearingfirm'
       doc: 'Rejected; invalid EFID/ClearingFirm'
     0x79:
-      id: 'rejected_x79'
+      id: 'rejected_in_replay'
       doc: 'Rejected; in replay Additional reject values may be added in the future with no notice.'
   mass_cancel_lock_out:
     0x59:

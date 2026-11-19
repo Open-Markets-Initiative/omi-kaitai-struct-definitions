@@ -222,7 +222,7 @@ enums:
       id: 'twenty_price_levels_of_local_and_global_market_indices_components_level_of_indices_and_levels_of_inavs'
       doc: '20 price levels of local and global Market, Indices components, level of Indices and levels of INAV''s'
     19:
-      id: 'ten_price_levels_of_derivate_futures_and_derivative_options'
+      id: 'ten_price_levels_of_derivative_futures_and_derivative_options'
       doc: '10 price levels of derivate futures and derivative options'
     20:
       id: 'best_offers_for_derivative_futures_and_derivative_options'
@@ -258,11 +258,20 @@ enums:
       id: 'analytics_market_quality'
       doc: 'Analytics Market Quality'
     33:
-      id: 'analytics_spead_performance'
-      doc: 'Analytics Spead Performance'
+      id: 'analytics_spread_performance'
+      doc: 'Analytics Spread Performance'
     34:
       id: 'analytics_negotiation'
       doc: 'Analytics Negotiation'
+    35:
+      id: 'indices_components_strategy'
+      doc: 'Indices Components (Strategy)'
+    36:
+      id: 'indices_components_esg'
+      doc: 'Indices Components (ESG)'
+    37:
+      id: 'moc_local_and_global_market'
+      doc: 'MOC local and global market'
     40:
       id: 'channel_zero_catalogs'
       doc: 'Channel Zero (catalogs)'
