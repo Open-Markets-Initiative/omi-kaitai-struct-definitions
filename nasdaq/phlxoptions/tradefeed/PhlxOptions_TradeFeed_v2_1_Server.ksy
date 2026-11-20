@@ -151,8 +151,8 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: u4
-        doc: 'Explicit strike price. Refer to Data Types for field processing notes'
+        type: decimal_s4_4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
         enum: option_type
@@ -214,8 +214,8 @@ types:
         pad-right: 0x20
         doc: 'The Trade Condition is the same as defined in the OPRA specification'
       - id: price
-        type: u4
-        doc: 'Reflects the transaction (premium) price on the execution'
+        type: decimal_s4_4
+        doc: 'Reflects the transaction (premium) price on the execution. Implied decimal with scale 1e-4'
       - id: volume
         type: u4
         doc: 'Current number of contracts traded for an option in one trade'
@@ -237,8 +237,8 @@ types:
         type: u4
         doc: 'Indicates the internal control number (cross id) associated with the given options trade transaction'
       - id: original_price
-        type: u4
-        doc: 'Reported Premium Price of an option contract in the original trade report message on this feed'
+        type: decimal_s4_4
+        doc: 'Reported Premium Price of an option contract in the original trade report message on this feed. Implied decimal with scale 1e-4'
       - id: original_volume
         type: u4
         doc: 'Reported number of contracts in the original trade report message on this feed'
@@ -263,6 +263,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   client_packet_type:

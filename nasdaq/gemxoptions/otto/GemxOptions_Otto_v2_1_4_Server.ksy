@@ -818,8 +818,8 @@ types:
         enum: price_protection
         doc: 'L=Local Market, N=National Market'
       - id: effective_time
-        type: u8
-        doc: 'Agreed upon time for the stopped price. UTC time in milliseconds'
+        type: millisecond_timestamp
+        doc: 'Agreed upon time for the stopped price. UTC time in milliseconds. Milliseconds since Unix epoch'
       - id: disclosure_mask
         type: u1
         doc: 'See Disclosure Mask Field'
@@ -1114,6 +1114,19 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
 
 enums:
   client_packet_type:

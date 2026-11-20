@@ -131,7 +131,7 @@ types:
     seq:
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -178,7 +178,7 @@ types:
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: bid_px
         type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
@@ -192,7 +192,7 @@ types:
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: last_px
         type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
@@ -200,10 +200,10 @@ types:
     seq:
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
         type: s4_nullable
-        doc: 'Nullable, No Value = 0x80000000'
+        doc: 'Total executed matched quantity of this match event. Nullable, No Value = 0x80000000'
       - id: pad4
         size: 4
       - id: transact_time
@@ -213,7 +213,7 @@ types:
     seq:
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: aggressor_timestamp
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -225,7 +225,7 @@ types:
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: last_qty
         type: s4_nullable
-        doc: 'Nullable, No Value = 0x80000000'
+        doc: 'Total executed matched quantity of this match event. Nullable, No Value = 0x80000000'
       - id: aggressor_side
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -257,13 +257,13 @@ types:
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: trd_match_id
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: last_qty
         type: s4_nullable
-        doc: 'Nullable, No Value = 0x80000000'
+        doc: 'Total executed matched quantity of this match event. Nullable, No Value = 0x80000000'
       - id: last_px
         type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
@@ -271,14 +271,14 @@ types:
     seq:
       - id: last_msg_seq_num_processed
         type: u4_nullable
-        doc: 'Nullable, No Value = 0xFFFFFFFF'
+        doc: 'Last message sequence number that was processed, regardless of message type. Nullable, No Value = 0xFFFFFFFF'
       - id: pad4
         size: 4
   instrument_state_change:
     seq:
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: security_status
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -297,7 +297,7 @@ types:
     seq:
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: last_update_time
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -345,7 +345,7 @@ types:
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: order_details_comp
         type: order_details_comp
   order_details_comp:
@@ -374,14 +374,14 @@ types:
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: order_details_comp
         type: order_details_comp
   order_mass_delete:
     seq:
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -403,7 +403,7 @@ types:
         size: 4
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: order_details_comp
         type: order_details_comp
   order_modify_same_prio:
@@ -421,7 +421,7 @@ types:
         size: 4
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: order_details_comp
         type: order_details_comp
   partial_order_execution:
@@ -439,13 +439,13 @@ types:
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: trd_match_id
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: last_qty
         type: s4_nullable
-        doc: 'Nullable, No Value = 0x80000000'
+        doc: 'Total executed matched quantity of this match event. Nullable, No Value = 0x80000000'
       - id: last_px
         type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
@@ -472,7 +472,7 @@ types:
     seq:
       - id: last_msg_seq_num_processed
         type: u4_nullable
-        doc: 'Nullable, No Value = 0xFFFFFFFF'
+        doc: 'Last message sequence number that was processed, regardless of message type. Nullable, No Value = 0xFFFFFFFF'
       - id: trading_session_id
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -489,10 +489,10 @@ types:
     seq:
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
         type: s4_nullable
-        doc: 'Nullable, No Value = 0x80000000'
+        doc: 'Total executed matched quantity of this match event. Nullable, No Value = 0x80000000'
       - id: side
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -512,7 +512,7 @@ types:
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: bid_px
         type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
@@ -523,7 +523,7 @@ types:
     seq:
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -532,7 +532,7 @@ types:
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: last_qty
         type: s4_nullable
-        doc: 'Nullable, No Value = 0x80000000'
+        doc: 'Total executed matched quantity of this match event. Nullable, No Value = 0x80000000'
       - id: last_px
         type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
@@ -548,7 +548,7 @@ types:
     seq:
       - id: security_id
         type: s8_nullable
-        doc: 'Nullable, No Value = 0x8000000000000000'
+        doc: 'Unique instrument identifier. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -557,7 +557,7 @@ types:
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: last_qty
         type: s4_nullable
-        doc: 'Nullable, No Value = 0x80000000'
+        doc: 'Total executed matched quantity of this match event. Nullable, No Value = 0x80000000'
       - id: last_px
         type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'

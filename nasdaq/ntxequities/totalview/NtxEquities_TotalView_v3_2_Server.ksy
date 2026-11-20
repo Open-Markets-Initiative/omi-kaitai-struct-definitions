@@ -122,19 +122,13 @@ types:
   seconds_message:
     seq:
       - id: second
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Number of second since midnight'
+        type: second_ascii_timestamp
+        doc: 'Number of second since midnight. Seconds since Midnight epoch'
   milliseconds_message:
     seq:
       - id: millisecond
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Number of milliseconds since last second'
+        type: millisecond_ascii_timestamp
+        doc: 'Number of milliseconds since last second. Milliseconds since Second epoch'
   system_event_message:
     seq:
       - id: event_code
@@ -277,6 +271,34 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'BX TotalView-ITCH 3.2 sequence number when the BX GLIMPSE 3.2 snapshot was taken. To keep the order book current, firms should process real-time BX TotalView-ITCH 3.2 messages beginning with the message sequence number reflected in this snapshot message'
+  second_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 5
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600 % 24
+      minute:
+        value: text.to_i / 60 % 60
+      second:
+        value: text.to_i % 60
+  millisecond_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 3
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600000 % 24
+      minute:
+        value: text.to_i / 60000 % 60
+      second:
+        value: text.to_i / 1000 % 60
+      millisecond:
+        value: text.to_i % 1000
 
 enums:
   client_packet_type:

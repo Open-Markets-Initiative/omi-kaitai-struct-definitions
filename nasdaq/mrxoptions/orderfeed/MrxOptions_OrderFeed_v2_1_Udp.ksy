@@ -127,8 +127,8 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: u4
-        doc: 'Explicit strike price. Refer to Data Types for field processing notes'
+        type: decimal_s4_4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
         enum: option_type
@@ -206,8 +206,8 @@ types:
         enum: order_qualifier
         doc: 'Order Qualifier'
       - id: limit_price
-        type: u4
-        doc: 'Original Limit Price of Limit or Stop Order, will not include repricing updates. Otherwise field is zero'
+        type: decimal_s4_4
+        doc: 'Original Limit Price of Limit or Stop Order, will not include repricing updates. Otherwise field is zero. Implied decimal with scale 1e-4'
       - id: all_or_none
         type: u1
         enum: all_or_none
@@ -275,8 +275,8 @@ types:
         enum: side
         doc: 'Side'
       - id: price
-        type: u4
-        doc: 'Price for the auction; hidden prices are set to zero'
+        type: decimal_s4_4
+        doc: 'Price for the auction; hidden prices are set to zero. Implied decimal with scale 1e-4'
       - id: imbalance_volume
         type: u4
         doc: 'Imbalance volume for opening auction. Will be 0 for other auctions'
@@ -322,6 +322,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   client_packet_type:

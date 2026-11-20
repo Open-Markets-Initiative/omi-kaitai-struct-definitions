@@ -451,6 +451,9 @@ types:
         doc: 'Reserved'
   auction_update_message:
     seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: stock_symbol
         type: str
         size: 8

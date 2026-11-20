@@ -128,7 +128,7 @@ types:
         size: 1
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The Bid Price Denominator denotes the whole dollar and decimal digit composition of the Ask Price field'
+        doc: 'The Bid Price Denominator field denotes the whole dollar and decimal digit composition of the Bid Price field'
       - id: bid_price
         type: str
         size: 12
@@ -234,7 +234,7 @@ types:
         size: 1
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The Inside Bid Price Denominator field denotes the whole dollar and decimal digit composition of the Inside Ask Price field'
+        doc: 'The Inside Bid Price Denominator field denotes the whole dollar and decimal digit composition of the Inside Bid Price field'
       - id: inside_bid_price
         type: str
         size: 12

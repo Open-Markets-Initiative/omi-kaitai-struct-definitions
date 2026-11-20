@@ -123,11 +123,8 @@ types:
   milliseconds_message:
     seq:
       - id: millisecond
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Number of milliseconds since last second'
+        type: millisecond_ascii_timestamp
+        doc: 'Number of milliseconds since last second. Milliseconds since Second epoch'
   system_event_message:
     seq:
       - id: event_code
@@ -163,7 +160,7 @@ types:
         size: 10
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Refer to Data Types for field processing notes'
+        doc: 'Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: display
         type: u1
         enum: display
@@ -197,7 +194,7 @@ types:
         size: 10
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Refer to Data Types for field processing notes'
+        doc: 'Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: attribution
         type: str
         size: 4
@@ -225,6 +222,21 @@ types:
         value: text.to_i / 60 % 60
       second:
         value: text.to_i % 60
+  millisecond_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 3
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600000 % 24
+      minute:
+        value: text.to_i / 60000 % 60
+      second:
+        value: text.to_i / 1000 % 60
+      millisecond:
+        value: text.to_i % 1000
 
 enums:
   client_packet_type:

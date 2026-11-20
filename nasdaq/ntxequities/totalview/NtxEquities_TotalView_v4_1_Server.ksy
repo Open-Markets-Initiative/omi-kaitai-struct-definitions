@@ -118,13 +118,13 @@ types:
   timestamp_seconds_message:
     seq:
       - id: second
-        type: u4
-        doc: 'Number of seconds since midnight'
+        type: second_timestamp
+        doc: 'Number of seconds since midnight. Seconds since Midnight epoch'
   system_event_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: event_code
         type: u1
         enum: event_code
@@ -132,8 +132,8 @@ types:
   add_order_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
         doc: 'The unique reference number assigned to the new order. The order reference number is increasing, but not necessarily sequential'
@@ -156,8 +156,8 @@ types:
   add_order_mpid_attribution_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
         doc: 'The unique reference number assigned to the new order. The order reference number is increasing, but not necessarily sequential'
@@ -186,8 +186,8 @@ types:
   stock_directory_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: stock
         type: str
         size: 8
@@ -212,8 +212,8 @@ types:
   stock_trading_action_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: stock
         type: str
         size: 8
@@ -236,8 +236,8 @@ types:
   reg_sho_restriction_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: stock
         type: str
         size: 8
@@ -256,6 +256,28 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'BX TotalView-ITCH 4.1 sequence number when the BX GLIMPSE 4.1 snapshot was taken. Note: While BX TotalView-ITCH 4.1 is a binary data feed, the SoupBINTCP protocol uses ASCII characters for the sequence number in the logon request message format'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
   decimal_u4_4:
     seq:
       - id: mantissa

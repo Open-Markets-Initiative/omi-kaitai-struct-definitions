@@ -588,9 +588,12 @@ enums:
     0x43:
       id: 'closing'
       doc: 'Closing Auction'
+    0x50:
+      id: 'extreme_closing_imbalance'
+      doc: 'Extreme Closing Imbalance (NYSE only)'
     0x52:
-      id: 'regulatory_imbalance'
-      doc: 'Regulatory Imbalance (NYSE only)'
+      id: 'regulatory_closing_imbalance'
+      doc: 'Regulatory Closing Imbalance (NYSE only)'
   imbalance_side:
     0x20:
       id: 'no_imbalance'
@@ -633,9 +636,9 @@ enums:
       doc: 'Sell side'
   significant_imbalance:
     0x20:
-      id: 'not_applicable'
-      doc: 'Not Applicable'
+      id: 'not_significant'
+      doc: 'Not significant, or not applicable (default till a future implementation date)'
     0x59:
-      id: 'yes_field'
-      doc: 'Yes'
+      id: 'significant'
+      doc: 'The current Imbalance is significant'
 

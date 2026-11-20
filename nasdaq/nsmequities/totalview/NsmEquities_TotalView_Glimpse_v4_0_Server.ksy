@@ -121,8 +121,8 @@ types:
   system_event_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: event_code
         type: u1
         enum: event_code
@@ -130,8 +130,8 @@ types:
   add_order_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
         doc: 'The unique reference number assigned to the new order'
@@ -149,13 +149,13 @@ types:
         pad-right: 0x20
         doc: 'The security symbol for which the order is being added'
       - id: price
-        type: u4
-        doc: 'The display price of the new order. Refer to Data Types for field processing notes'
+        type: decimal_u4_4
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
   add_order_mpid_attribution_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
         doc: 'The unique reference number assigned to the new order'
@@ -173,8 +173,8 @@ types:
         pad-right: 0x20
         doc: 'The security symbol for which the order is being added'
       - id: price
-        type: u4
-        doc: 'The display price of the new order. Refer to Data Types for field processing notes'
+        type: decimal_u4_4
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: attribution
         type: str
         size: 4
@@ -184,8 +184,8 @@ types:
   stock_directory_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: stock
         type: str
         size: 6
@@ -210,8 +210,8 @@ types:
   stock_trading_action_message:
     seq:
       - id: timestamp_nanoseconds
-        type: u4
-        doc: 'Nanoseconds portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: stock
         type: str
         size: 6
@@ -250,6 +250,24 @@ types:
         value: time / 60 % 60
       second:
         value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   client_packet_type:

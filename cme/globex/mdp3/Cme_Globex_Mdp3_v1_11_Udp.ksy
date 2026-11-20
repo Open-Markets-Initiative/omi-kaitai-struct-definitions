@@ -42,8 +42,8 @@ seq:
   - id: binary_packet_header
     type: binary_packet_header_struct
     doc: 'Cme Mdp Packet Header'
-  - id: message
-    type: message_struct
+  - id: mdp3_message
+    type: mdp3_message_struct
     repeat: eos
     doc: 'Cme Market Data Message'
 
@@ -56,7 +56,7 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
-  message_struct:
+  mdp3_message_struct:
     seq:
       - id: message_header
         type: message_header

@@ -257,8 +257,8 @@ types:
         pad-right: 0x20
         doc: 'Orderbook group identifier Blank if system wide event'
       - id: price
-        type: decimal_u4_1
-        doc: 'Price of the order For a reference price message, a value of 214,748,3647 (7FFFFFFF hex) denotes no reference price available. Implied decimal with scale 1e-1'
+        type: decimal_u4_1_nullable
+        doc: 'Price of the order. Implied decimal with scale 1e-1. Nullable, No Reference Price = 2147483647'
   order_executed_message:
     seq:
       - id: nanoseconds
@@ -296,8 +296,8 @@ types:
         type: u4
         doc: 'Total number of shares added to the book Ignore if reference price message'
       - id: price
-        type: decimal_u4_1
-        doc: 'Price of the order For a reference price message, a value of 214,748,3647 (7FFFFFFF hex) denotes no reference price available. Implied decimal with scale 1e-1'
+        type: decimal_u4_1_nullable
+        doc: 'Price of the order. Implied decimal with scale 1e-1. Nullable, No Reference Price = 2147483647'
   second_timestamp:
     seq:
       - id: time
@@ -327,6 +327,13 @@ types:
     instances:
       real:
         value: mantissa / 10.0
+  decimal_u4_1_nullable:
+    seq:
+      - id: value
+        type: decimal_u4_1
+    instances:
+      is_null:
+        value: value.mantissa == 2147483647
 
 enums:
   client_packet_type:

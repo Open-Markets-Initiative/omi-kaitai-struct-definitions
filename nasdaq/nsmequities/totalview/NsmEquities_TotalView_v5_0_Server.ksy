@@ -158,8 +158,8 @@ types:
         pad-right: 0x20
         doc: 'Stock symbol, right padded with spaces'
       - id: price
-        type: u4
-        doc: 'The display price of the new order. Refer to Data Types for field processing notes'
+        type: decimal_u4_4
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
   add_order_mpid_attribution_message:
     seq:
       - id: stock_locate
@@ -188,8 +188,8 @@ types:
         pad-right: 0x20
         doc: 'Stock symbol, right padded with spaces'
       - id: price
-        type: u4
-        doc: 'The display price of the new order. Refer to Data Types for field processing notes'
+        type: decimal_u4_4
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: attribution
         type: str
         size: 4
@@ -397,6 +397,13 @@ types:
         value: time.as<s8> / 1000000000 % 60
       millisecond:
         value: time.as<s8> / 1000000 % 1000
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   client_packet_type:

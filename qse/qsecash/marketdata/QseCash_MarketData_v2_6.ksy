@@ -288,8 +288,8 @@ types:
         type: u4
         doc: 'Indicative Matching Price: Price at which transaction on a security would occur if Opening occurred at this moment (To be calculated with the PriceScaleCode)'
       - id: variation
-        type: u4
-        doc: 'Percentage variation of the last IMP against the previous day’s (signed) reference price for the stock concerned, ie the last known price can be the last adjusted closing price or the last price indication (if an indication was entered after the last traded price).(To be calculated with the VariationScaleCode)'
+        type: s4
+        doc: 'Percentage variation of the last IMP against the previous day’s reference price for the stock concerned, ie the last known price can be the last adjusted closing price or the last price indication (if an indication was entered after the last traded price).(To be calculated with the VariationScaleCode)'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -809,7 +809,7 @@ types:
       - id: trade_origin
         type: u1
         enum: trade_origin
-        doc: 'QATAR EXCHANGE ONLY: Field Name Offset Size Format Description (Bytes) This field indicates the origin of the trade'
+        doc: 'QATAR EXCHANGE ONLY: This field indicates the origin of the trade'
       - id: opening_trade_indicator
         type: u1
         enum: opening_trade_indicator
@@ -873,8 +873,8 @@ types:
         type: u4
         doc: 'Lowest Price traded during the day(To be calculated with the PriceScaleCode)'
       - id: variation_last_price
-        type: u4
-        doc: 'Percentage variation of today’s price/last reference price(To be (signed) calculated with the VariationScaleCode)'
+        type: s4
+        doc: 'Percentage variation of today’s price/last reference price(To be calculated with the VariationScaleCode)'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -899,7 +899,7 @@ types:
       - id: trade_origin
         type: u1
         enum: trade_origin
-        doc: 'QATAR EXCHANGE ONLY: Field Name Offset Size Format Description (Bytes) This field indicates the origin of the trade'
+        doc: 'QATAR EXCHANGE ONLY: This field indicates the origin of the trade'
       - id: tick_direction
         type: u1
         enum: tick_direction
@@ -935,8 +935,8 @@ types:
         type: u4
         doc: 'Lowest Price traded during the day(To be calculated with the PriceScaleCode)'
       - id: variation_last_price
-        type: u4
-        doc: 'Percentage variation of today’s price/last reference price(To be (signed) calculated with the VariationScaleCode)'
+        type: s4
+        doc: 'Percentage variation of today’s price/last reference price(To be calculated with the VariationScaleCode)'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -983,8 +983,8 @@ types:
         type: u4
         doc: 'Cumulative number of shares traded on UTP/NSC since the start of the current trading session'
       - id: variation
-        type: u4
-        doc: 'Percentage variation of the last IMP against the previous day’s (signed) reference price for the stock concerned, ie the last known price can be the last adjusted closing price or the last price indication (if an indication was entered after the last traded price).(To be calculated with the VariationScaleCode)'
+        type: s4
+        doc: 'Percentage variation of the last IMP against the previous day’s reference price for the stock concerned, ie the last known price can be the last adjusted closing price or the last price indication (if an indication was entered after the last traded price).(To be calculated with the VariationScaleCode)'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -1211,8 +1211,8 @@ types:
         type: u4
         doc: 'The value of the last level for the index that is the subject of this message To be calculated with the LevelScaleCode)'
       - id: forerunner_level
-        type: u4
-        doc: 'The percentage of variation of the last Forerunner level for the index (signed) that is the subject of this message, if any (To be calculated with the LevelScaleCode)'
+        type: s4
+        doc: 'The percentage of variation of the last Forerunner level for the index that is the subject of this message, if any (To be calculated with the LevelScaleCode)'
       - id: session_high
         type: u4
         doc: 'Highest level of the day (To be calculated with the LevelScaleCode)'
@@ -1224,7 +1224,7 @@ types:
         doc: 'Percentage of capitalization for the active instruments in the index (To be calculated with the PercentageScaleCode)'
       - id: variation_from_previous_days_price
         type: s4
-        doc: 'Percentage of variation for day''s index / Previous day''s reference (To sPrice (signed) be calculated with the VariationScaleCode) Field Name Offset Size Format Description (Bytes)'
+        doc: 'Percentage of variation for day''s index / Previous day''s reference (To be calculated with the VariationScaleCode)'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -1293,8 +1293,8 @@ types:
         type: millisecond_timestamp
         doc: 'Time of provisional closing reference index level. Milliseconds since Midnight epoch'
       - id: percent_variation_prev_clos
-        type: u4
-        doc: 'Percentage of variation for last index level vs'
+        type: s4
+        doc: 'Percentage of variation for last index level vs. previous day''s closing (To be calculated with the VariationScaleCode)'
       - id: high_level
         type: u4
         doc: 'Highest index level (To be calculated with the LevelScaleCode)'

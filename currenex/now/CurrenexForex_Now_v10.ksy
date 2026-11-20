@@ -80,8 +80,8 @@ types:
         type: u4
         doc: 'Directional session based sequence number'
       - id: timestamp
-        type: u4
-        doc: 'Time in milliseconds since midnight GMT'
+        type: millisecond_timestamp
+        doc: 'Time in milliseconds since midnight GMT. Milliseconds since Midnight epoch'
       - id: message_type
         type: u1
         enum: message_type
@@ -144,8 +144,8 @@ types:
         pad-right: 0x20
         doc: 'Currency pair or metal code'
       - id: settlement_date
-        type: s8
-        doc: 'Epoch ms for settlement date'
+        type: millisecond_timestamp
+        doc: 'Epoch ms for settlement date. Milliseconds since Unix epoch'
   instrument_info_ack_message:
     seq:
       - id: session_id
@@ -303,8 +303,8 @@ types:
         encoding: ASCII
         doc: 'Paid or given'
       - id: transact_time
-        type: s8
-        doc: 'Epoch ms of trade'
+        type: millisecond_timestamp
+        doc: 'Epoch ms of trade. Milliseconds since Unix epoch'
   wamr_with_confidence_factor_message:
     seq:
       - id: instrument_index
@@ -323,8 +323,8 @@ types:
         type: conf_factor_25
         doc: '25th percentile confidence factor'
       - id: calculation_timestamp
-        type: s8
-        doc: 'Epoch microseconds of WAMR calc'
+        type: microsecond_timestamp
+        doc: 'Epoch microseconds of WAMR calc. Microseconds since Unix epoch'
   conf_factor_75:
     seq:
       - id: bid_price
@@ -375,6 +375,19 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Rejection reason text'
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
   decimal_s4_5:
     seq:
       - id: mantissa
@@ -396,6 +409,21 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  microsecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000 % 24
+      minute:
+        value: time / 60000000 % 60
+      second:
+        value: time / 1000000 % 60
+      millisecond:
+        value: time / 1000 % 1000
+      microsecond:
+        value: time % 1000
 
 enums:
   message_type:

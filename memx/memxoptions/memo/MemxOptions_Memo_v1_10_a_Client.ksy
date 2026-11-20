@@ -378,9 +378,44 @@ types:
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
-      - id: two_sided_quotes_groups
-        type: two_sided_quotes_groups
+      - id: long_two_sided_quotes_groups
+        type: long_two_sided_quotes_groups
         doc: 'Quotes Block'
+  long_two_sided_quotes_groups:
+    seq:
+      - id: repeating_group_dimensions
+        type: repeating_group_dimensions
+        doc: 'RepeatingGroupDimensions'
+      - id: long_two_sided_quotes_group
+        type: long_two_sided_quotes_group
+        repeat: expr
+        repeat-expr: repeating_group_dimensions.num_in_group
+        doc: 'Quotes'
+  long_two_sided_quotes_group:
+    seq:
+      - id: list_seq_no
+        type: u1
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
+      - id: options_security_id_long_two_sided_bulk_quote_options_security_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'OptionsSecurityID'
+      - id: bid_size_uint_32
+        type: u4
+        doc: 'BidSize'
+      - id: bid_px_price_type
+        type: decimal_u8_8
+        doc: 'BidPx. Implied decimal with scale 1e-8'
+      - id: offer_size_uint_32
+        type: u4
+        doc: 'OfferSize'
+      - id: offer_px_price_type
+        type: decimal_u8_8
+        doc: 'OfferPx. Implied decimal with scale 1e-8'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   short_one_sided_bulk_quote_message:
     seq:
       - id: sending_time
@@ -495,9 +530,42 @@ types:
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
-      - id: one_sided_quotes_groups
-        type: one_sided_quotes_groups
+      - id: long_one_sided_quotes_groups
+        type: long_one_sided_quotes_groups
         doc: 'Quotes Block'
+  long_one_sided_quotes_groups:
+    seq:
+      - id: repeating_group_dimensions
+        type: repeating_group_dimensions
+        doc: 'RepeatingGroupDimensions'
+      - id: long_one_sided_quotes_group
+        type: long_one_sided_quotes_group
+        repeat: expr
+        repeat-expr: repeating_group_dimensions.num_in_group
+        doc: 'Quotes'
+  long_one_sided_quotes_group:
+    seq:
+      - id: list_seq_no
+        type: u1
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
+      - id: options_security_id_long_one_sided_bulk_quote_options_security_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'OptionsSecurityID'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of the quote'
+      - id: quantity_long
+        type: u4
+        doc: 'Quantity'
+      - id: price
+        type: decimal_u8_8
+        doc: 'Price. Implied decimal with scale 1e-8'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   order_cancel_replace_request_message:
     seq:
       - id: sending_time

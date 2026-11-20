@@ -77,8 +77,8 @@ types:
         type: u4
         doc: 'Directional session based sequence number'
       - id: timestamp
-        type: u4
-        doc: 'Time in milliseconds since midnight GMT'
+        type: millisecond_timestamp
+        doc: 'Time in milliseconds since midnight GMT. Milliseconds since Midnight epoch'
       - id: message_type
         type: u1
         enum: message_type
@@ -141,8 +141,8 @@ types:
         pad-right: 0x20
         doc: 'Free form instrument definition string'
       - id: settlement_date
-        type: s8
-        doc: 'Settlement date in milliseconds since midnight 01 January 1900 GMT'
+        type: millisecond_timestamp
+        doc: 'Settlement date in milliseconds since midnight 01 January 1900 GMT. Milliseconds since Unix epoch'
   instrument_info_ack:
     seq:
       - id: session_id
@@ -191,7 +191,7 @@ types:
         type: s2
         doc: 'Numeric identifier for currency pair identified by the instrument id'
       - id: price_id
-        type: s1
+        type: s4
         doc: 'Id assigned to the price, unique across all currency pairs for the scope of the session'
       - id: side
         type: u1
@@ -222,7 +222,7 @@ types:
         type: s2
         doc: 'Numeric identifier for currency pair identified by the instrument id'
       - id: price_id
-        type: s1
+        type: s4
         doc: 'Id assigned to the price, unique across all currency pairs for the scope of the session'
   trade_ticker_message:
     seq:
@@ -237,8 +237,8 @@ types:
         enum: ticker_type
         doc: 'Trade execution rate'
       - id: transact_time
-        type: s8
-        doc: 'Trade transaction time in epoch time GMT'
+        type: millisecond_timestamp
+        doc: 'Trade transaction time in epoch time GMT. Milliseconds since Unix epoch'
   reject_message:
     seq:
       - id: session_id
@@ -255,6 +255,19 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Free form reject reason text'
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
   decimal_s8_2:
     seq:
       - id: mantissa

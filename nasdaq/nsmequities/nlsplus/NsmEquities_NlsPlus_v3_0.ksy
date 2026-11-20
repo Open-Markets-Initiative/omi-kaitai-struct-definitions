@@ -232,7 +232,7 @@ types:
         type: u4
         doc: 'Indicates the reported number of shares on the trade transaction'
       - id: nav_offset_amount
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The Nav offset that should be applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: sale_condition_modifier
         type: sale_condition_modifier
@@ -352,7 +352,7 @@ types:
         type: decimal_u4_4
         doc: 'The proxy price reported on the original trade transaction. Implied decimal with scale 1e-4'
       - id: original_nav_offset_amount
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The Nav offset originally applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: original_trade_size
         type: u4
@@ -505,7 +505,7 @@ types:
         type: decimal_u4_4
         doc: 'The proxy price reported on the original trade transaction. Implied decimal with scale 1e-4'
       - id: original_nav_offset_amount
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The Nav offset originally applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: original_trade_size
         type: u4
@@ -523,7 +523,7 @@ types:
         type: decimal_u4_4
         doc: 'The proxy price reported on the corrected trade transaction. Implied decimal with scale 1e-4'
       - id: corrected_nav_offset_amount
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The corrected Nav offset applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: corrected_trade_size
         type: u4
@@ -737,19 +737,19 @@ types:
         type: decimal_u4_4
         doc: 'The consolidated high price for the issue for the trading day. Implied decimal with scale 1e-4'
       - id: nav_offset_amount_high
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The Nav offset that should be applied to the consolidated high proxy price. Implied decimal with scale 1e-4'
       - id: consolidated_low_price
         type: decimal_u4_4
         doc: 'The consolidated low price for the issue for the trading day. Implied decimal with scale 1e-4'
       - id: nav_offset_amount_low
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The Nav offset that should be applied to the consolidated low proxy price. Implied decimal with scale 1e-4'
       - id: consolidated_closing_price
         type: decimal_u4_4
         doc: 'The consolidated closing price for the issue for the trading day. Implied decimal with scale 1e-4'
       - id: nav_offset_amount_closing
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The Nav offset that should be applied to the consolidated closing proxy price. Implied decimal with scale 1e-4'
       - id: consolidated_volume
         type: u8
@@ -758,7 +758,7 @@ types:
         type: decimal_u4_4
         doc: 'The consolidated opening price for the issue for the trading day. Implied decimal with scale 1e-4'
       - id: nav_offset_amount_open
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The Nav offset that should be applied to the consolidated opening proxy price. Implied decimal with scale 1e-4'
   ipo_information_message:
     seq:
@@ -854,6 +854,13 @@ types:
     seq:
       - id: mantissa
         type: u8
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
     instances:
       real:
         value: mantissa / 10000.0

@@ -42,8 +42,8 @@ seq:
   - id: binary_packet_header
     type: binary_packet_header_struct
     doc: 'Cme Mdp Packet Header'
-  - id: message
-    type: message_struct
+  - id: mdp3_message
+    type: mdp3_message_struct
     repeat: eos
     doc: 'Cme Market Data Message'
 
@@ -56,7 +56,7 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
-  message_struct:
+  mdp3_message_struct:
     seq:
       - id: message_header
         type: message_header
@@ -814,27 +814,27 @@ types:
       - id: block_extension
         size: _parent._parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_book_groups
-        type: incremental_refresh_book_groups
+      - id: incremental_refresh_book_legacy_groups
+        type: incremental_refresh_book_legacy_groups
         doc: 'NoMDEntries Block'
       - id: incremental_refresh_book_order_id_groups
         type: incremental_refresh_book_order_id_groups
         doc: 'NoOrderIDEntries Block'
-  incremental_refresh_book_groups:
+  incremental_refresh_book_legacy_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: incremental_refresh_book_group
-        type: incremental_refresh_book_group
+      - id: incremental_refresh_book_legacy_group
+        type: incremental_refresh_book_legacy_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  incremental_refresh_book_group:
+  incremental_refresh_book_legacy_group:
     seq:
-      - id: md_entry_px_optional_ex
-        type: decimal_s8_9_nullable
-        doc: 'Market Data entry price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: md_entry_px_optional
+        type: decimal_s8_7_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size_short_optional
         type: s4_nullable
         doc: 'Market Data entry size. Nullable, No Value = 2147483647'
@@ -923,24 +923,24 @@ types:
       - id: block_extension
         size: _parent._parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_daily_statistics_groups
-        type: incremental_refresh_daily_statistics_groups
+      - id: incremental_refresh_daily_statistics_legacy_groups
+        type: incremental_refresh_daily_statistics_legacy_groups
         doc: 'NoMDEntries Block'
-  incremental_refresh_daily_statistics_groups:
+  incremental_refresh_daily_statistics_legacy_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: incremental_refresh_daily_statistics_group
-        type: incremental_refresh_daily_statistics_group
+      - id: incremental_refresh_daily_statistics_legacy_group
+        type: incremental_refresh_daily_statistics_legacy_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  incremental_refresh_daily_statistics_group:
+  incremental_refresh_daily_statistics_legacy_group:
     seq:
-      - id: md_entry_px_optional_ex
-        type: decimal_s8_9_nullable
-        doc: 'Market Data entry price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: md_entry_px_optional
+        type: decimal_s8_7_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size_short_optional
         type: s4_nullable
         doc: 'Market Data entry size. Nullable, No Value = 2147483647'
@@ -984,30 +984,30 @@ types:
       - id: block_extension
         size: _parent._parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_limits_banding_groups
-        type: incremental_refresh_limits_banding_groups
+      - id: incremental_refresh_limits_banding_legacy_groups
+        type: incremental_refresh_limits_banding_legacy_groups
         doc: 'NoMDEntries Block'
-  incremental_refresh_limits_banding_groups:
+  incremental_refresh_limits_banding_legacy_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: incremental_refresh_limits_banding_group
-        type: incremental_refresh_limits_banding_group
+      - id: incremental_refresh_limits_banding_legacy_group
+        type: incremental_refresh_limits_banding_legacy_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  incremental_refresh_limits_banding_group:
+  incremental_refresh_limits_banding_legacy_group:
     seq:
-      - id: high_limit_price_ex
-        type: decimal_s8_9_nullable
-        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
-      - id: low_limit_price_ex
-        type: decimal_s8_9_nullable
-        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
-      - id: max_price_variation_ex
-        type: decimal_s8_9_nullable
-        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: high_limit_price
+        type: decimal_s8_7_nullable
+        doc: 'Allowable high limit price for the trading day. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
+      - id: low_limit_price
+        type: decimal_s8_7_nullable
+        doc: 'Allowable low limit price for the trading day. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
+      - id: max_price_variation
+        type: decimal_s8_7_nullable
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: security_id
         type: s4
         doc: 'Unique instrument ID'
@@ -1031,24 +1031,24 @@ types:
       - id: block_extension
         size: _parent._parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_session_statistics_groups
-        type: incremental_refresh_session_statistics_groups
+      - id: incremental_refresh_session_statistics_legacy_groups
+        type: incremental_refresh_session_statistics_legacy_groups
         doc: 'NoMDEntries Block'
-  incremental_refresh_session_statistics_groups:
+  incremental_refresh_session_statistics_legacy_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: incremental_refresh_session_statistics_group
-        type: incremental_refresh_session_statistics_group
+      - id: incremental_refresh_session_statistics_legacy_group
+        type: incremental_refresh_session_statistics_legacy_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  incremental_refresh_session_statistics_group:
+  incremental_refresh_session_statistics_legacy_group:
     seq:
-      - id: md_entry_px_ex
-        type: decimal_s8_9
-        doc: 'Trade price. Implied decimal with scale 1e-9'
+      - id: md_entry_px
+        type: decimal_s8_7
+        doc: 'Market Data entry price. Implied decimal with scale 1e-7'
       - id: security_id
         type: s4
         doc: 'Unique instrument ID'
@@ -1161,24 +1161,24 @@ types:
       - id: block_extension
         size: _parent._parent.message_header.simple_binary_header.block_length - 59
         doc: 'Bytes the stated block holds beyond the 59 this version reads'
-      - id: snapshot_full_refresh_groups
-        type: snapshot_full_refresh_groups
+      - id: snapshot_full_refresh_legacy_groups
+        type: snapshot_full_refresh_legacy_groups
         doc: 'NoMDEntries Block'
-  snapshot_full_refresh_groups:
+  snapshot_full_refresh_legacy_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: snapshot_full_refresh_group
-        type: snapshot_full_refresh_group
+      - id: snapshot_full_refresh_legacy_group
+        type: snapshot_full_refresh_legacy_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  snapshot_full_refresh_group:
+  snapshot_full_refresh_legacy_group:
     seq:
-      - id: md_entry_px_optional_ex
-        type: decimal_s8_9_nullable
-        doc: 'Market Data entry price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: md_entry_px_optional
+        type: decimal_s8_7_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size_short_optional
         type: s4_nullable
         doc: 'Market Data entry size. Nullable, No Value = 2147483647'
@@ -1496,27 +1496,27 @@ types:
       - id: block_extension
         size: _parent._parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_trade_summary_groups
-        type: incremental_refresh_trade_summary_groups
+      - id: incremental_refresh_trade_summary_legacy_groups
+        type: incremental_refresh_trade_summary_legacy_groups
         doc: 'NoMDEntries Block'
       - id: incremental_refresh_trade_summary_order_id_groups
         type: incremental_refresh_trade_summary_order_id_groups
         doc: 'NoOrderIDEntries Block'
-  incremental_refresh_trade_summary_groups:
+  incremental_refresh_trade_summary_legacy_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: incremental_refresh_trade_summary_group
-        type: incremental_refresh_trade_summary_group
+      - id: incremental_refresh_trade_summary_legacy_group
+        type: incremental_refresh_trade_summary_legacy_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of Trade Summary entries'
-  incremental_refresh_trade_summary_group:
+  incremental_refresh_trade_summary_legacy_group:
     seq:
-      - id: md_entry_px_ex
-        type: decimal_s8_9
-        doc: 'Trade price. Implied decimal with scale 1e-9'
+      - id: md_entry_px
+        type: decimal_s8_7
+        doc: 'Market Data entry price. Implied decimal with scale 1e-7'
       - id: md_entry_size_short
         type: s4
         doc: 'Cumulative traded volume'
@@ -1526,9 +1526,9 @@ types:
       - id: rpt_seq
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
-      - id: number_of_orders
-        type: s4
-        doc: 'The total number of real orders per instrument that participated in a match step within a match event'
+      - id: number_of_orders_optional
+        type: s4_nullable
+        doc: 'In Book entry - aggregate number of orders at given price level. Nullable, No Value = 2147483647'
       - id: aggressor_side
         type: u1_nullable
         doc: 'Indicates which side is the aggressor or if there is no aggressor. Nullable, No Value = 255'
@@ -1570,6 +1570,185 @@ types:
         size: _parent.group_size_8_byte.block_length - 16
         doc: 'Bytes the stated block holds beyond the 16 this version reads'
   md_incremental_refresh_order_book_legacy:
+    seq:
+      - id: transact_time
+        type: nanosecond_timestamp
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent._parent.message_header.simple_binary_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
+      - id: incremental_refresh_order_book_legacy_groups
+        type: incremental_refresh_order_book_legacy_groups
+        doc: 'NoMDEntries Block'
+  incremental_refresh_order_book_legacy_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_order_book_legacy_group
+        type: incremental_refresh_order_book_legacy_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  incremental_refresh_order_book_legacy_group:
+    seq:
+      - id: order_id_optional
+        type: u8_nullable
+        doc: 'Order ID. Nullable, No Value = 18446744073709551615'
+      - id: md_order_priority
+        type: u8_nullable
+        doc: 'Order priority for execution on the order book. Nullable, No Value = 18446744073709551615'
+      - id: md_entry_px_optional
+        type: decimal_s8_7_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
+      - id: md_display_qty_optional
+        type: s4_nullable
+        doc: 'Visible qty of order. Nullable, No Value = 2147483647'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_entry_type_book
+        type: u1
+        enum: md_entry_type_book
+        doc: 'Market Data entry type'
+      - id: padding_6
+        size: 6
+        doc: '6 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
+  snapshot_full_refresh_order_book_legacy:
+    seq:
+      - id: last_msg_seq_num_processed
+        type: u4
+        doc: 'Sequence number of the last Incremental feed packet processed. This value is used to synchronize the snapshot loop with the real-time feed'
+      - id: tot_num_reports
+        type: u4
+        doc: 'Total number of messages replayed in the loop'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: no_chunks
+        type: u4
+        doc: 'Total number of packets that constitutes a single instrument order book'
+      - id: current_chunk
+        type: u4
+        doc: 'Chunk sequence'
+      - id: transact_time
+        type: nanosecond_timestamp
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent._parent.message_header.simple_binary_header.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
+      - id: snapshot_full_refresh_order_book_legacy_groups
+        type: snapshot_full_refresh_order_book_legacy_groups
+        doc: 'NoMDEntries Block'
+  snapshot_full_refresh_order_book_legacy_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: snapshot_full_refresh_order_book_legacy_group
+        type: snapshot_full_refresh_order_book_legacy_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  snapshot_full_refresh_order_book_legacy_group:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'Unique Order ID'
+      - id: md_order_priority
+        type: u8_nullable
+        doc: 'Order priority for execution on the order book. Nullable, No Value = 18446744073709551615'
+      - id: md_entry_px
+        type: decimal_s8_7
+        doc: 'Market Data entry price. Implied decimal with scale 1e-7'
+      - id: md_display_qty
+        type: s4
+        doc: 'Visible order qty'
+      - id: md_entry_type_book
+        type: u1
+        enum: md_entry_type_book
+        doc: 'Market Data entry type'
+      - id: block_extension
+        size: _parent.group_size.block_length - 29
+        doc: 'Bytes the stated block holds beyond the 29 this version reads'
+  md_incremental_refresh_book:
+    seq:
+      - id: transact_time
+        type: nanosecond_timestamp
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent._parent.message_header.simple_binary_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
+      - id: incremental_refresh_book_groups
+        type: incremental_refresh_book_groups
+        doc: 'NoMDEntries Block'
+      - id: incremental_refresh_book_order_id_groups
+        type: incremental_refresh_book_order_id_groups
+        doc: 'NoOrderIDEntries Block'
+  incremental_refresh_book_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_book_group
+        type: incremental_refresh_book_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  incremental_refresh_book_group:
+    seq:
+      - id: md_entry_px_optional_ex
+        type: decimal_s8_9_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: md_entry_size_short_optional
+        type: s4_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 2147483647'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: number_of_orders_optional
+        type: s4_nullable
+        doc: 'In Book entry - aggregate number of orders at given price level. Nullable, No Value = 2147483647'
+      - id: md_price_level
+        type: u1
+        doc: 'Aggregate book level'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_entry_type_book
+        type: u1
+        enum: md_entry_type_book
+        doc: 'Market Data entry type'
+      - id: padding_5
+        size: 5
+        doc: '5 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
+  md_incremental_refresh_order_book:
     seq:
       - id: transact_time
         type: nanosecond_timestamp
@@ -1627,7 +1806,317 @@ types:
       - id: block_extension
         size: _parent.group_size.block_length - 40
         doc: 'Bytes the stated block holds beyond the 40 this version reads'
-  snapshot_full_refresh_order_book_legacy:
+  md_incremental_refresh_trade_summary:
+    seq:
+      - id: transact_time
+        type: nanosecond_timestamp
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent._parent.message_header.simple_binary_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
+      - id: incremental_refresh_trade_summary_groups
+        type: incremental_refresh_trade_summary_groups
+        doc: 'NoMDEntries Block'
+      - id: incremental_refresh_trade_summary_order_id_groups
+        type: incremental_refresh_trade_summary_order_id_groups
+        doc: 'NoOrderIDEntries Block'
+  incremental_refresh_trade_summary_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_trade_summary_group
+        type: incremental_refresh_trade_summary_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of Trade Summary entries'
+  incremental_refresh_trade_summary_group:
+    seq:
+      - id: md_entry_px_ex
+        type: decimal_s8_9
+        doc: 'Trade price. Implied decimal with scale 1e-9'
+      - id: md_entry_size_short
+        type: s4
+        doc: 'Cumulative traded volume'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: number_of_orders
+        type: s4
+        doc: 'The total number of real orders per instrument that participated in a match step within a match event'
+      - id: aggressor_side
+        type: u1_nullable
+        doc: 'Indicates which side is the aggressor or if there is no aggressor. Nullable, No Value = 255'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_trade_entry_id
+        type: u4_nullable
+        doc: 'Market Data Trade entry ID. Nullable, No Value = 4294967295'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
+  md_incremental_refresh_daily_statistics:
+    seq:
+      - id: transact_time
+        type: nanosecond_timestamp
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent._parent.message_header.simple_binary_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
+      - id: incremental_refresh_daily_statistics_groups
+        type: incremental_refresh_daily_statistics_groups
+        doc: 'NoMDEntries Block'
+  incremental_refresh_daily_statistics_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_daily_statistics_group
+        type: incremental_refresh_daily_statistics_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  incremental_refresh_daily_statistics_group:
+    seq:
+      - id: md_entry_px_optional_ex
+        type: decimal_s8_9_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: md_entry_size_short_optional
+        type: s4_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 2147483647'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: trading_reference_date
+        type: epoch_date_nullable
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
+      - id: settl_price_type
+        type: settl_price_type
+        doc: 'SettlPriceType bit set'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_entry_type_daily_statistics
+        type: u1
+        enum: md_entry_type_daily_statistics
+        doc: 'Market Data entry type'
+      - id: padding_7
+        size: 7
+        doc: '7 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
+  md_incremental_refresh_limits_banding:
+    seq:
+      - id: transact_time
+        type: nanosecond_timestamp
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent._parent.message_header.simple_binary_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
+      - id: incremental_refresh_limits_banding_groups
+        type: incremental_refresh_limits_banding_groups
+        doc: 'NoMDEntries Block'
+  incremental_refresh_limits_banding_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_limits_banding_group
+        type: incremental_refresh_limits_banding_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  incremental_refresh_limits_banding_group:
+    seq:
+      - id: high_limit_price_ex
+        type: decimal_s8_9_nullable
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: low_limit_price_ex
+        type: decimal_s8_9_nullable
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: max_price_variation_ex
+        type: decimal_s8_9_nullable
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
+  md_incremental_refresh_session_statistics:
+    seq:
+      - id: transact_time
+        type: nanosecond_timestamp
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent._parent.message_header.simple_binary_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
+      - id: incremental_refresh_session_statistics_groups
+        type: incremental_refresh_session_statistics_groups
+        doc: 'NoMDEntries Block'
+  incremental_refresh_session_statistics_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_session_statistics_group
+        type: incremental_refresh_session_statistics_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  incremental_refresh_session_statistics_group:
+    seq:
+      - id: md_entry_px_ex
+        type: decimal_s8_9
+        doc: 'Trade price. Implied decimal with scale 1e-9'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: open_close_settl_flag
+        type: u1_nullable
+        doc: 'Flag describing IOP and Open Price entries. Nullable, No Value = 255'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_entry_type_statistics
+        type: u1
+        enum: md_entry_type_statistics
+        doc: 'Market Data entry type'
+      - id: md_entry_size_short_optional
+        type: s4_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 2147483647'
+      - id: padding_1
+        size: 1
+        doc: '1 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
+  snapshot_full_refresh:
+    seq:
+      - id: last_msg_seq_num_processed
+        type: u4
+        doc: 'Sequence number of the last Incremental feed packet processed. This value is used to synchronize the snapshot loop with the real-time feed'
+      - id: tot_num_reports
+        type: u4
+        doc: 'Total number of messages replayed in the loop'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: transact_time
+        type: nanosecond_timestamp
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: last_update_time
+        type: nanosecond_timestamp
+        doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
+      - id: trade_date
+        type: epoch_date_nullable
+        doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
+      - id: md_security_trading_status
+        type: u1_nullable
+        doc: 'Identifies the current state of the instrument. In Security Definition message this tag is available in the Instrument Replay feed only. Nullable, No Value = 255'
+      - id: high_limit_price_ex
+        type: decimal_s8_9_nullable
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: low_limit_price_ex
+        type: decimal_s8_9_nullable
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: max_price_variation_ex
+        type: decimal_s8_9_nullable
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: block_extension
+        size: _parent._parent.message_header.simple_binary_header.block_length - 59
+        doc: 'Bytes the stated block holds beyond the 59 this version reads'
+      - id: snapshot_full_refresh_groups
+        type: snapshot_full_refresh_groups
+        doc: 'NoMDEntries Block'
+  snapshot_full_refresh_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: snapshot_full_refresh_group
+        type: snapshot_full_refresh_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  snapshot_full_refresh_group:
+    seq:
+      - id: md_entry_px_optional_ex
+        type: decimal_s8_9_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: md_entry_size_short_optional
+        type: s4_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 2147483647'
+      - id: number_of_orders_optional
+        type: s4_nullable
+        doc: 'In Book entry - aggregate number of orders at given price level. Nullable, No Value = 2147483647'
+      - id: md_price_level_optional
+        type: s1_nullable
+        doc: 'Aggregate book position. Nullable, No Value = 127'
+      - id: trading_reference_date
+        type: epoch_date_nullable
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
+      - id: open_close_settl_flag
+        type: u1_nullable
+        doc: 'Flag describing IOP and Open Price entries. Nullable, No Value = 255'
+      - id: settl_price_type
+        type: settl_price_type
+        doc: 'SettlPriceType bit set'
+      - id: md_entry_type
+        type: u1
+        enum: md_entry_type
+        doc: 'Market Data entry type'
+      - id: block_extension
+        size: _parent.group_size.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
+  snapshot_full_refresh_order_book:
     seq:
       - id: last_msg_seq_num_processed
         type: u4
@@ -1684,181 +2173,6 @@ types:
       - id: block_extension
         size: _parent.group_size.block_length - 29
         doc: 'Bytes the stated block holds beyond the 29 this version reads'
-  md_incremental_refresh_book:
-    seq:
-      - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-      - id: match_event_indicator
-        type: match_event_indicator
-        doc: 'MatchEventIndicator bit set'
-      - id: padding_2
-        size: 2
-        doc: '2 bytes padding'
-      - id: block_extension
-        size: _parent._parent.message_header.simple_binary_header.block_length - 11
-        doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_book_groups
-        type: incremental_refresh_book_groups
-        doc: 'NoMDEntries Block'
-      - id: incremental_refresh_book_order_id_groups
-        type: incremental_refresh_book_order_id_groups
-        doc: 'NoOrderIDEntries Block'
-  md_incremental_refresh_order_book:
-    seq:
-      - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-      - id: match_event_indicator
-        type: match_event_indicator
-        doc: 'MatchEventIndicator bit set'
-      - id: padding_2
-        size: 2
-        doc: '2 bytes padding'
-      - id: block_extension
-        size: _parent._parent.message_header.simple_binary_header.block_length - 11
-        doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_order_book_groups
-        type: incremental_refresh_order_book_groups
-        doc: 'NoMDEntries Block'
-  md_incremental_refresh_trade_summary:
-    seq:
-      - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-      - id: match_event_indicator
-        type: match_event_indicator
-        doc: 'MatchEventIndicator bit set'
-      - id: padding_2
-        size: 2
-        doc: '2 bytes padding'
-      - id: block_extension
-        size: _parent._parent.message_header.simple_binary_header.block_length - 11
-        doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_trade_summary_groups
-        type: incremental_refresh_trade_summary_groups
-        doc: 'NoMDEntries Block'
-      - id: incremental_refresh_trade_summary_order_id_groups
-        type: incremental_refresh_trade_summary_order_id_groups
-        doc: 'NoOrderIDEntries Block'
-  md_incremental_refresh_daily_statistics:
-    seq:
-      - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-      - id: match_event_indicator
-        type: match_event_indicator
-        doc: 'MatchEventIndicator bit set'
-      - id: padding_2
-        size: 2
-        doc: '2 bytes padding'
-      - id: block_extension
-        size: _parent._parent.message_header.simple_binary_header.block_length - 11
-        doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_daily_statistics_groups
-        type: incremental_refresh_daily_statistics_groups
-        doc: 'NoMDEntries Block'
-  md_incremental_refresh_limits_banding:
-    seq:
-      - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-      - id: match_event_indicator
-        type: match_event_indicator
-        doc: 'MatchEventIndicator bit set'
-      - id: padding_2
-        size: 2
-        doc: '2 bytes padding'
-      - id: block_extension
-        size: _parent._parent.message_header.simple_binary_header.block_length - 11
-        doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_limits_banding_groups
-        type: incremental_refresh_limits_banding_groups
-        doc: 'NoMDEntries Block'
-  md_incremental_refresh_session_statistics:
-    seq:
-      - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-      - id: match_event_indicator
-        type: match_event_indicator
-        doc: 'MatchEventIndicator bit set'
-      - id: padding_2
-        size: 2
-        doc: '2 bytes padding'
-      - id: block_extension
-        size: _parent._parent.message_header.simple_binary_header.block_length - 11
-        doc: 'Bytes the stated block holds beyond the 11 this version reads'
-      - id: incremental_refresh_session_statistics_groups
-        type: incremental_refresh_session_statistics_groups
-        doc: 'NoMDEntries Block'
-  snapshot_full_refresh:
-    seq:
-      - id: last_msg_seq_num_processed
-        type: u4
-        doc: 'Sequence number of the last Incremental feed packet processed. This value is used to synchronize the snapshot loop with the real-time feed'
-      - id: tot_num_reports
-        type: u4
-        doc: 'Total number of messages replayed in the loop'
-      - id: security_id
-        type: s4
-        doc: 'Unique instrument ID'
-      - id: rpt_seq
-        type: u4
-        doc: 'Sequence number of the last Market Data entry processed for the instrument'
-      - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-      - id: last_update_time
-        type: nanosecond_timestamp
-        doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
-      - id: trade_date
-        type: epoch_date_nullable
-        doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
-      - id: md_security_trading_status
-        type: u1_nullable
-        doc: 'Identifies the current state of the instrument. In Security Definition message this tag is available in the Instrument Replay feed only. Nullable, No Value = 255'
-      - id: high_limit_price_ex
-        type: decimal_s8_9_nullable
-        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
-      - id: low_limit_price_ex
-        type: decimal_s8_9_nullable
-        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
-      - id: max_price_variation_ex
-        type: decimal_s8_9_nullable
-        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
-      - id: block_extension
-        size: _parent._parent.message_header.simple_binary_header.block_length - 59
-        doc: 'Bytes the stated block holds beyond the 59 this version reads'
-      - id: snapshot_full_refresh_groups
-        type: snapshot_full_refresh_groups
-        doc: 'NoMDEntries Block'
-  snapshot_full_refresh_order_book:
-    seq:
-      - id: last_msg_seq_num_processed
-        type: u4
-        doc: 'Sequence number of the last Incremental feed packet processed. This value is used to synchronize the snapshot loop with the real-time feed'
-      - id: tot_num_reports
-        type: u4
-        doc: 'Total number of messages replayed in the loop'
-      - id: security_id
-        type: s4
-        doc: 'Unique instrument ID'
-      - id: no_chunks
-        type: u4
-        doc: 'Total number of packets that constitutes a single instrument order book'
-      - id: current_chunk
-        type: u4
-        doc: 'Chunk sequence'
-      - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-      - id: block_extension
-        size: _parent._parent.message_header.simple_binary_header.block_length - 28
-        doc: 'Bytes the stated block holds beyond the 28 this version reads'
-      - id: snapshot_full_refresh_order_book_groups
-        type: snapshot_full_refresh_order_book_groups
-        doc: 'NoMDEntries Block'
   md_instrument_definition_future:
     seq:
       - id: match_event_indicator
@@ -2838,6 +3152,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == 2147483647
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
   decimal_s8_9:
     seq:
       - id: mantissa
@@ -2852,13 +3173,6 @@ types:
     instances:
       is_null:
         value: value.mantissa == 9223372036854775807
-  u8_nullable:
-    seq:
-      - id: value
-        type: u8
-    instances:
-      is_null:
-        value: value == 18446744073709551615
 
 enums:
   template_id:

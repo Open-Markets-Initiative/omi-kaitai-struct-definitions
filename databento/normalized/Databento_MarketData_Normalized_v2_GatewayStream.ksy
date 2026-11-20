@@ -542,7 +542,7 @@ types:
         doc: 'The original contract size'
       - id: trading_reference_date
         type: u2
-        doc: 'The trading session date corresponding to the settlement price in trading_reference_price, in number of days since the UNIX epoch'
+        doc: 'The trading session date corresponding to the settlement price in trading_reference_price, in number of days since the UNIX epoch. Days since Unix epoch'
       - id: appl_id
         type: s2
         doc: 'The appl id'

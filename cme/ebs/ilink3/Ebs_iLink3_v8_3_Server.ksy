@@ -609,9 +609,8 @@ types:
         enum: side
         doc: 'Side of order'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'Specifies how long the order remains in effect'
+        type: u1_nullable
+        doc: 'Specifies how long the order remains in effect. Nullable, No Value = 255'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -763,9 +762,8 @@ types:
         enum: side
         doc: 'Side of order'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'Specifies how long the order remains in effect'
+        type: u1_nullable
+        doc: 'Specifies how long the order remains in effect. Nullable, No Value = 255'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -881,9 +879,8 @@ types:
         enum: side
         doc: 'Side of order'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'Specifies how long the order remains in effect'
+        type: u1_nullable
+        doc: 'Specifies how long the order remains in effect. Nullable, No Value = 255'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -1018,9 +1015,8 @@ types:
         enum: side
         doc: 'Side of order'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'Specifies how long the order remains in effect'
+        type: u1_nullable
+        doc: 'Specifies how long the order remains in effect. Nullable, No Value = 255'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -1229,9 +1225,8 @@ types:
         enum: side
         doc: 'Side of order'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'Specifies how long the order remains in effect'
+        type: u1_nullable
+        doc: 'Specifies how long the order remains in effect. Nullable, No Value = 255'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -1612,9 +1607,8 @@ types:
         enum: side
         doc: 'Side of order'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'Specifies how long the order remains in effect'
+        type: u1_nullable
+        doc: 'Specifies how long the order remains in effect. Nullable, No Value = 255'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -1748,9 +1742,8 @@ types:
         enum: side
         doc: 'Side of order'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'Specifies how long the order remains in effect'
+        type: u1_nullable
+        doc: 'Specifies how long the order remains in effect. Nullable, No Value = 255'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -1869,9 +1862,8 @@ types:
         enum: side
         doc: 'Side of order'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'Specifies how long the order remains in effect'
+        type: u1_nullable
+        doc: 'Specifies how long the order remains in effect. Nullable, No Value = 255'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator

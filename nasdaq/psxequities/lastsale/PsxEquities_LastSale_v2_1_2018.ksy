@@ -180,7 +180,7 @@ types:
         type: u4
         doc: 'Indicates the reported number of shares on the trade transaction'
       - id: nav_premium_discount_amount
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'The NAV premium or discount that should be applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: sale_condition_modifier_level_1
         type: u1
@@ -258,7 +258,7 @@ types:
         type: decimal_u4_4
         doc: 'Reported price for the transaction. Implied decimal with scale 1e-4'
       - id: original_nav_premium_discount_amount
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'Original NAV premium or discount originally applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: original_trade_size
         type: u4
@@ -347,7 +347,7 @@ types:
         type: decimal_u4_4
         doc: 'Reported price for the transaction. Implied decimal with scale 1e-4'
       - id: original_nav_premium_discount_amount
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'Original NAV premium or discount originally applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: original_trade_size
         type: u4
@@ -368,7 +368,7 @@ types:
         type: decimal_u4_4
         doc: 'Indicates the price for the corrected trade transaction. Implied decimal with scale 1e-4'
       - id: corrected_nav_premium_discount_amount
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'Indicates the corrected NAV premium or discount originally applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: corrected_trade_size
         type: u4
@@ -523,6 +523,13 @@ types:
     seq:
       - id: mantissa
         type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
     instances:
       real:
         value: mantissa / 10000.0

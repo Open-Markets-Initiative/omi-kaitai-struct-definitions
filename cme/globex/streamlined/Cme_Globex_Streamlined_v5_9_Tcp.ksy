@@ -205,8 +205,8 @@ types:
         type: md_entry_px_decimal_optional
         doc: 'Number of entries in Market Data message'
       - id: open_close_settl_flag
-        type: s1_nullable
-        doc: 'Indicates whether the price is preliminary or previous day. Nullable, No Value = 127'
+        type: u1_nullable
+        doc: 'Flag that identifies a market data entry. Nullable, No Value = 255'
       - id: settl_price_type
         type: settl_price_type
         doc: 'SettlPriceType bit set'
@@ -344,8 +344,8 @@ types:
       - id: block_extension
         size: _parent.group_size.block_length - 419
         doc: 'Bytes the stated block holds beyond the 419 this version reads'
-      - id: eris_security_alt_id_groups
-        type: eris_security_alt_id_groups
+      - id: eris_reference_data_security_alt_id_groups
+        type: eris_reference_data_security_alt_id_groups
         doc: 'NoSecurityAltID Block'
       - id: incremental_refresh_eris_related_instruments_groups
         type: incremental_refresh_eris_related_instruments_groups
@@ -628,17 +628,17 @@ types:
     instances:
       real:
         value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
-  eris_security_alt_id_groups:
+  eris_reference_data_security_alt_id_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: eris_security_alt_id_group
-        type: eris_security_alt_id_group
+      - id: eris_reference_data_security_alt_id_group
+        type: eris_reference_data_security_alt_id_group
         repeat: expr
         repeat-expr: group_size.num_in_group_8
         doc: 'Number of entries in AltID group'
-  eris_security_alt_id_group:
+  eris_reference_data_security_alt_id_group:
     seq:
       - id: security_alt_id
         type: str
@@ -1203,8 +1203,8 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: events_groups
-        type: events_groups
+      - id: indices_events_groups
+        type: indices_events_groups
         doc: 'NoEvents Block'
   inst_attrib_groups:
     seq:
@@ -1235,6 +1235,28 @@ types:
       - id: block_extension
         size: _parent.group_size_encoding.block_length - 101
         doc: 'Bytes the stated block holds beyond the 101 this version reads'
+  indices_events_groups:
+    seq:
+      - id: group_size_encoding
+        type: group_size_encoding
+        doc: 'Repeating group dimensions'
+      - id: indices_events_group
+        type: indices_events_group
+        repeat: expr
+        repeat-expr: group_size_encoding.num_in_group
+        doc: 'Number of repeating EventType entries'
+  indices_events_group:
+    seq:
+      - id: event_type_indices
+        type: u1
+        enum: event_type_indices
+        doc: 'Code to represent the type of event'
+      - id: event_time
+        type: u8
+        doc: 'Time of event. This is number of days since unix epoch'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   md_incremental_refresh_indices:
     seq:
       - id: transact_time
@@ -1287,7 +1309,7 @@ types:
         size: 50
         encoding: ASCII
         doc: 'Instrument Name or Symbol'
-      - id: open_close_settl_flag
+      - id: indices_open_close_settl_flag
         type: s1_nullable
         doc: 'Indicates whether the price is preliminary or previous day. Nullable, No Value = 127'
       - id: yield_type
@@ -1648,8 +1670,8 @@ types:
       - id: eris_security_alt_id_groups
         type: eris_security_alt_id_groups
         doc: 'NoSecurityAltID Block'
-      - id: events_groups
-        type: events_groups
+      - id: incremental_refresh_eris_events_groups
+        type: incremental_refresh_eris_events_groups
         doc: 'NoEvents Block'
   cal_fut_px:
     seq:
@@ -1662,6 +1684,52 @@ types:
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+  eris_security_alt_id_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: eris_security_alt_id_group
+        type: eris_security_alt_id_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group_8
+        doc: 'Number of entries in AltID group'
+  eris_security_alt_id_group:
+    seq:
+      - id: security_alt_id
+        type: str
+        size: 26
+        encoding: ASCII
+        doc: 'Expanded instrument description'
+      - id: security_alt_id_source
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Identifies class or source of the SecurityAltID (455) value'
+      - id: block_extension
+        size: _parent.group_size.block_length - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
+  incremental_refresh_eris_events_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_eris_events_group
+        type: incremental_refresh_eris_events_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group_8
+        doc: 'Number of repeating EventType entries'
+  incremental_refresh_eris_events_group:
+    seq:
+      - id: event_type
+        type: u1
+        doc: 'Code to represent the type of event'
+      - id: event_time_optional
+        type: u8_nullable
+        doc: 'Time of event. This is number of days since unix epoch. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.group_size.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   md_incremental_refresh_eris_353:
     seq:
       - id: transact_time
@@ -1765,8 +1833,8 @@ types:
       - id: eris_security_alt_id_groups
         type: eris_security_alt_id_groups
         doc: 'NoSecurityAltID Block'
-      - id: events_groups
-        type: events_groups
+      - id: incremental_refresh_eris_events_groups
+        type: incremental_refresh_eris_events_groups
         doc: 'NoEvents Block'
   md_incremental_refresh_ot_c_356:
     seq:
@@ -1882,8 +1950,8 @@ types:
         type: s4_nullable
         doc: 'Indicates Market Data Entry Date. Nullable, No Value = 2147483647'
       - id: open_close_settl_flag
-        type: s1_nullable
-        doc: 'Indicates whether the price is preliminary or previous day. Nullable, No Value = 127'
+        type: u1_nullable
+        doc: 'Flag that identifies a market data entry. Nullable, No Value = 255'
       - id: price_type
         type: u2_nullable
         doc: 'Valid price types for intraday trade. Nullable, No Value = 65535'
@@ -2190,9 +2258,9 @@ types:
       - id: block_extension
         size: _parent.group_size.block_length - 115
         doc: 'Bytes the stated block holds beyond the 115 this version reads'
-      - id: eris_security_alt_id_groups
-        type: eris_security_alt_id_groups
-        doc: 'NoSecurityAltID Block'
+      - id: eris_leg_security_alt_id_groups
+        type: eris_leg_security_alt_id_groups
+        doc: 'NoLegSecurityAltID Block'
   previous_fixing_rate:
     seq:
       - id: mantissa
@@ -2215,6 +2283,29 @@ types:
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+  eris_leg_security_alt_id_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: eris_leg_security_alt_id_group
+        type: eris_leg_security_alt_id_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group_8
+        doc: 'Multileg instrument''s individual security''s NoSecurityAltID'
+  eris_leg_security_alt_id_group:
+    seq:
+      - id: leg_security_alt_id
+        type: str
+        size: 26
+        encoding: ASCII
+        doc: 'Multileg instrument''s individual security''s SecurityAltID'
+      - id: leg_security_alt_id_source
+        type: u1_nullable
+        doc: 'Multileg instrument''s individual security''s SecurityAltIDSource. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size.block_length - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
   md_incremental_refresh_trade_blocks_365:
     seq:
       - id: transact_time_optional
@@ -2605,8 +2696,8 @@ types:
         type: s4_nullable
         doc: 'Indicates Market Data Entry Date. Nullable, No Value = 2147483647'
       - id: open_close_settl_flag
-        type: s1_nullable
-        doc: 'Indicates whether the price is preliminary or previous day. Nullable, No Value = 127'
+        type: u1_nullable
+        doc: 'Flag that identifies a market data entry. Nullable, No Value = 255'
       - id: price_type
         type: u2_nullable
         doc: 'Valid price types for intraday trade. Nullable, No Value = 65535'
@@ -2680,20 +2771,6 @@ types:
     instances:
       is_null:
         value: value == 65535
-  s1_nullable:
-    seq:
-      - id: value
-        type: s1
-    instances:
-      is_null:
-        value: value == 127
-  u8_nullable:
-    seq:
-      - id: value
-        type: u8
-    instances:
-      is_null:
-        value: value == 18446744073709551615
   u1_nullable:
     seq:
       - id: value
@@ -2701,6 +2778,13 @@ types:
     instances:
       is_null:
         value: value == 255
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
   epoch_date:
     seq:
       - id: days
@@ -2773,6 +2857,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == 2147483647
+  s1_nullable:
+    seq:
+      - id: value
+        type: s1
+    instances:
+      is_null:
+        value: value == 127
   decimal_s8_9:
     seq:
       - id: mantissa
@@ -2877,6 +2968,16 @@ enums:
     0x4d:
       id: 'modify'
       doc: 'Modify'
+  event_type_indices:
+    5:
+      id: 'activation'
+      doc: 'Activation'
+    6:
+      id: 'deletion'
+      doc: 'Deletion'
+    120:
+      id: 'modification'
+      doc: 'Modification'
   md_entry_type_indices:
     0x30:
       id: 'bid'
