@@ -236,7 +236,7 @@ types:
       - id: is_prior_settlement_theoretical
         type: b1
         doc: 'isPriorSettlementTheoretical'
-      - id: reserved_15
+      - id: reserved_2_to_16
         type: b15
         doc: '15 reserved bits'
   spread_instrument_definition_message:

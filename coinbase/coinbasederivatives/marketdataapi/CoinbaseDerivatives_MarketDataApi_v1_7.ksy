@@ -254,7 +254,7 @@ types:
       - id: is_strike_delisted
         type: b1
         doc: 'isStrikeDelisted'
-      - id: reserved_12
+      - id: reserved_5_to_16
         type: b12
         doc: '12 reserved bits'
   logical_expiry:

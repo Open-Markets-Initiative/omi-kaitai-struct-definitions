@@ -213,7 +213,7 @@ types:
         doc: 'Parties Block'
   exec_inst:
     seq:
-      - id: reserved_13
+      - id: reserved_4_to_16
         type: b13
         doc: '13 reserved bits'
       - id: external_routing_not_allowed
@@ -687,7 +687,7 @@ types:
       - id: cancel_orders_from_this_port_only
         type: b1
         doc: 'CancelOrdersFromThisPortOnly'
-      - id: reserved_5
+      - id: reserved_4_to_8
         type: b5
         doc: '5 reserved bits'
   mass_cancel_clear_lockout_request_message:

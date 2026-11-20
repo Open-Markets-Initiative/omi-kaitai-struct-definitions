@@ -317,7 +317,7 @@ types:
       - id: reset_mmp
         type: b1
         doc: 'resetMmp'
-      - id: reserved_10
+      - id: reserved_7_to_16
         type: b10
         doc: '10 reserved bits'
   amend_order_request_message:
@@ -347,7 +347,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_bit_0
+      - id: unused_bit_1
         type: b1
         doc: '1 unused bit'
       - id: post_only
@@ -356,7 +356,7 @@ types:
       - id: post_only_reject
         type: b1
         doc: 'postOnlyReject'
-      - id: reserved_13
+      - id: reserved_4_to_16
         type: b13
         doc: '13 reserved bits'
   cancel_order_request_message:
@@ -408,7 +408,7 @@ types:
       - id: reset_mmp
         type: b1
         doc: 'resetMmp'
-      - id: reserved_7
+      - id: reserved_2_to_8
         type: b7
         doc: '7 reserved bits'
   mass_quote_request_message_quotes_groups:
@@ -499,7 +499,7 @@ types:
       - id: reset_mmp
         type: b1
         doc: 'resetMmp'
-      - id: reserved_10
+      - id: reserved_7_to_16
         type: b10
         doc: '10 reserved bits'
   ask_flags:
@@ -524,7 +524,7 @@ types:
       - id: reset_mmp
         type: b1
         doc: 'resetMmp'
-      - id: reserved_10
+      - id: reserved_7_to_16
         type: b10
         doc: '10 reserved bits'
   mass_cancel_request_message:
@@ -1311,7 +1311,7 @@ types:
       - id: is_liquidation
         type: b1
         doc: 'isLiquidation'
-      - id: reserved_5
+      - id: reserved_4_to_8
         type: b5
         doc: '5 reserved bits'
   order_filled_message_legs_groups:
@@ -1366,7 +1366,7 @@ types:
       - id: is_last_message
         type: b1
         doc: 'isLastMessage'
-      - id: reserved_7
+      - id: reserved_2_to_8
         type: b7
         doc: '7 reserved bits'
   orders_canceled_message_orders_groups:
@@ -1409,7 +1409,7 @@ types:
       - id: is_quote
         type: b1
         doc: 'isQuote'
-      - id: reserved_7
+      - id: reserved_2_to_8
         type: b7
         doc: '7 reserved bits'
   order_placed_message:

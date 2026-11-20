@@ -434,7 +434,7 @@ types:
       - id: intermarket_sweep
         type: b1
         doc: 'IntermarketSweep'
-      - id: reserved_7
+      - id: reserved_2_to_8
         type: b7
         doc: '7 reserved bits'
   clear_book_message:

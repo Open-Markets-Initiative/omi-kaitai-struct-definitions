@@ -281,7 +281,7 @@ types:
       - id: dark_stp_indicator
         type: b1
         doc: 'DarkSTPIndicator'
-      - id: reserved_2
+      - id: reserved_7_to_8
         type: b2
         doc: '2 reserved bits'
   mifid_indicators:
@@ -306,7 +306,7 @@ types:
       - id: frmaramplp
         type: b1
         doc: 'FRMARAMPLP'
-      - id: reserved_2
+      - id: reserved_7_to_8
         type: b2
         doc: '2 reserved bits'
   free_text_groups:
@@ -411,7 +411,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_bit_0
+      - id: unused_bit_1
         type: b1
         doc: '1 unused bit'
       - id: session_1
@@ -426,7 +426,7 @@ types:
       - id: session_4
         type: b1
         doc: 'Session4'
-      - id: reserved_3
+      - id: reserved_6_to_8
         type: b3
         doc: '3 reserved bits'
   order_clearing_fields_groups:
@@ -502,7 +502,7 @@ types:
       - id: leg_9
         type: b1
         doc: 'Leg9'
-      - id: reserved_6
+      - id: reserved_11_to_16
         type: b6
         doc: '6 reserved bits'
   not_used_groups:
@@ -707,7 +707,7 @@ types:
       - id: frmaramplp
         type: b1
         doc: 'FRMARAMPLP'
-      - id: reserved_2
+      - id: reserved_7_to_8
         type: b2
         doc: '2 reserved bits'
   fill_message:
@@ -2365,7 +2365,7 @@ types:
       - id: continuous_mode
         type: b1
         doc: 'ContinuousMode'
-      - id: reserved_6
+      - id: reserved_3_to_8
         type: b6
         doc: '6 reserved bits'
   mm_sign_in_message:
@@ -2791,7 +2791,7 @@ types:
       - id: pull
         type: b1
         doc: 'Pull'
-      - id: reserved_5
+      - id: reserved_4_to_8
         type: b5
         doc: '5 reserved bits'
   mmp_ack_groups:
@@ -3406,7 +3406,7 @@ types:
       - id: dark_stp_indicator
         type: b1
         doc: 'DarkSTPIndicator'
-      - id: reserved_2
+      - id: reserved_7_to_8
         type: b2
         doc: '2 reserved bits'
   wave_for_liquidity_message:
@@ -3493,7 +3493,7 @@ types:
       - id: local_community_of_specialist_lis
         type: b1
         doc: 'LocalCommunityOfSpecialistLIS'
-      - id: reserved_6
+      - id: reserved_11_to_16
         type: b6
         doc: '6 reserved bits'
   wave_for_liquidity_notification_message:

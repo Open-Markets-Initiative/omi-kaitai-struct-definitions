@@ -243,7 +243,7 @@ types:
       - id: is_perpetual
         type: b1
         doc: 'isPerpetual'
-      - id: reserved_29
+      - id: reserved_4_to_32
         type: b29
         doc: '29 reserved bits'
   trading_status_update_message:
@@ -394,7 +394,7 @@ types:
       - id: is_liquidation
         type: b1
         doc: 'isLiquidation'
-      - id: reserved_30
+      - id: reserved_3_to_32
         type: b30
         doc: '30 reserved bits'
   trade_message:
@@ -427,7 +427,7 @@ types:
       - id: is_liquidation
         type: b1
         doc: 'isLiquidation'
-      - id: reserved_30
+      - id: reserved_3_to_32
         type: b30
         doc: '30 reserved bits'
   block_trade_message:

@@ -272,7 +272,7 @@ types:
         enum: display_indicator
         doc: 'Treatment of Post Only orders on entry if creating a locked NBBO'
       - id: expire_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Only applicable for TimeInForce (59) = 6 (GTD) orders. Specifies the date on which a GTD order will expire'
   order_rejected_au_equities_v_1:
     seq:
@@ -739,7 +739,7 @@ types:
         enum: sub_liquidity_indicator
         doc: 'Additional information about the liquidity of an order. Nullable, No Additional Information = 0'
       - id: expire_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Only applicable for TimeInForce (59) = 6 (GTD) orders. Specifies the date on which a GTD order will expire'
   carried_restatement_au_equities_v_1:
     seq:
@@ -875,7 +875,7 @@ types:
         enum: display_indicator
         doc: 'Treatment of Post Only orders on entry if creating a locked NBBO'
       - id: expire_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Only applicable for TimeInForce (59) = 6 (GTD) orders. Specifies the date on which a GTD order will expire'
   done_for_day_au_equities_v_1:
     seq:
@@ -912,6 +912,17 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
 
 enums:
   firm_message_type:

@@ -61,7 +61,7 @@ types:
         doc: 'MsgSize'
       - id: msg_flags
         type: msg_flags
-        doc: 'Message flags, least significant bit first, as the schema''s MsgFlagsSet declares them'
+        doc: 'MsgFlagsSet bit set'
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'SendingTime. Nanoseconds since Unix epoch'
@@ -84,9 +84,9 @@ types:
       - id: poss_dup_flag
         type: b1
         doc: 'PossDupFlag'
-      - id: reserved_bits
+      - id: reserved_6_to_16
         type: b11
-        doc: 'Bits the schema''s MsgFlagsSet leaves unused'
+        doc: '11 reserved bits'
   incremental_packet_header_struct:
     seq:
       - id: transact_time
@@ -182,7 +182,7 @@ types:
       - id: offer_empty_book
         type: b1
         doc: 'OfferEmptyBook'
-      - id: reserved_6
+      - id: reserved_3_to_8
         type: b6
         doc: '6 reserved bits'
   empty_book_message:
@@ -237,19 +237,19 @@ types:
       - id: non_quote
         type: b1
         doc: 'NonQuote'
-      - id: unused_bits_3_to_11
+      - id: unused_bits_4_to_12
         type: b9
         doc: '9 unused bits'
       - id: end_of_transaction
         type: b1
         doc: 'EndOfTransaction'
-      - id: unused_bit_13
+      - id: unused_bit_14
         type: b1
         doc: '1 unused bit'
       - id: second_leg
         type: b1
         doc: 'SecondLeg'
-      - id: unused_bits_15_to_18
+      - id: unused_bits_16_to_19
         type: b4
         doc: '4 unused bits'
       - id: fok
@@ -264,7 +264,7 @@ types:
       - id: mass_cancel
         type: b1
         doc: 'MassCancel'
-      - id: unused_bits_23_to_25
+      - id: unused_bits_24_to_26
         type: b3
         doc: '3 unused bits'
       - id: negotiated
@@ -273,19 +273,19 @@ types:
       - id: multi_leg
         type: b1
         doc: 'MultiLeg'
-      - id: unused_bit_28
+      - id: unused_bit_29
         type: b1
         doc: '1 unused bit'
       - id: cross_trade
         type: b1
         doc: 'CrossTrade'
-      - id: unused_bits_30_to_31
+      - id: unused_bits_31_to_32
         type: b2
         doc: '2 unused bits'
       - id: cod
         type: b1
         doc: 'COD'
-      - id: unused_bits_33_to_40
+      - id: unused_bits_34_to_41
         type: b8
         doc: '8 unused bits'
       - id: active_side
@@ -294,7 +294,7 @@ types:
       - id: passive_side
         type: b1
         doc: 'PassiveSide'
-      - id: unused_bits_43_to_44
+      - id: unused_bits_44_to_45
         type: b2
         doc: '2 unused bits'
       - id: synthetic
@@ -303,27 +303,27 @@ types:
       - id: rfs
         type: b1
         doc: 'RFS'
-      - id: unused_bits_47_to_56
+      - id: unused_bits_48_to_57
         type: b10
         doc: '10 unused bits'
       - id: synthetic_passive
         type: b1
         doc: 'SyntheticPassive'
-      - id: unused_bits_58_to_59
+      - id: unused_bits_59_to_60
         type: b2
         doc: '2 unused bits'
       - id: boc
         type: b1
         doc: 'BOC'
-      - id: unused_bit_61
+      - id: unused_bit_62
         type: b1
         doc: '1 unused bit'
       - id: during_discrete_auction
         type: b1
         doc: 'DuringDiscreteAuction'
-      - id: unused_bit_63
+      - id: reserved_64
         type: b1
-        doc: '1 unused bit'
+        doc: '1 reserved bit'
   order_execution_message:
     seq:
       - id: md_entry_id

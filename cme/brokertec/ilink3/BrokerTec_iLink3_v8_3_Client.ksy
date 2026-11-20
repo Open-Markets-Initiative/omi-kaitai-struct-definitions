@@ -347,21 +347,9 @@ types:
       - id: nh
         type: b1
         doc: 'NH'
-      - id: exec_inst_reserved_1
-        type: b1
-        doc: 'Reserved1'
-      - id: exec_inst_reserved_2
-        type: b1
-        doc: 'Reserved2'
-      - id: exec_inst_reserved_3
-        type: b1
-        doc: 'Reserved3'
-      - id: exec_inst_reserved_4
-        type: b1
-        doc: 'Reserved4'
-      - id: exec_inst_reserved_5
-        type: b1
-        doc: 'Reserved5'
+      - id: reserved_4_to_8
+        type: b5
+        doc: '5 reserved bits'
   order_cancel_replace_request:
     seq:
       - id: price_optional

@@ -167,7 +167,7 @@ types:
         enum: settlement_type
         doc: 'Indicates the settlement period'
       - id: fut_settl_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Specific date of trade settlement'
       - id: ex_destination
         type: u1
@@ -180,7 +180,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Specifies the UTC Date/Time timestamp that the order expires. Nanoseconds since Unix epoch'
       - id: expire_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Specifies the date on which a GTD order will expire'
       - id: lei_order_origin
         type: u1
@@ -331,7 +331,7 @@ types:
         enum: settlement_type
         doc: 'Indicates the settlement period'
       - id: fut_settl_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Specific date of trade settlement'
       - id: ex_destination
         type: u1
@@ -344,7 +344,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Specifies the UTC Date/Time timestamp that the order expires. Nanoseconds since Unix epoch'
       - id: expire_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Specifies the date on which a GTD order will expire'
       - id: lei_order_origin
         type: u1
@@ -481,7 +481,7 @@ types:
         type: u4
         doc: 'Portion of OrderQty to display, used for iceberg orders'
       - id: expire_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Specifies the date on which a GTD order will expire'
       - id: lei_order_origin
         type: u1
@@ -565,7 +565,7 @@ types:
         enum: settlement_type
         doc: 'Indicates the settlement period'
       - id: fut_settl_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Specific date of trade settlement'
       - id: umir_user_id
         type: str
@@ -717,7 +717,7 @@ types:
         enum: settlement_type
         doc: 'Indicates the settlement period'
       - id: fut_settl_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Specific date of trade settlement'
       - id: umir_user_id
         type: str
@@ -853,6 +853,17 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
   nanosecond_timestamp:
     seq:
       - id: time

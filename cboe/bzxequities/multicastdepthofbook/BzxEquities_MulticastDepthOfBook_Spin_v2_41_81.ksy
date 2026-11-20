@@ -7,7 +7,7 @@
 #   Encoding: Spin
 #   Version: 2.41.81
 #   Date: 09/23/2026
-#   Specification: http://markets.cboe.com/us/equities/support/technical
+#   Specification: technical-specifications-cboe-titanium-u-s-equitiesoptions-multicast-pitch-specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Chicago Board Options Exchange Cboe Bzx Equities Multicast Depth Of Book Spin v2.41.81'
-doc-ref: http://markets.cboe.com/us/equities/support/technical
+doc-ref:
+  - http://markets.cboe.com/us/equities/support/technical
+  - http://markets.cboe.com/us/options/support/technical/
 
 seq:
   - id: packet_header
@@ -200,7 +202,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Current Trade Date'
   time_message:
     seq:
@@ -637,6 +639,17 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
   decimal_u8_4:
     seq:
       - id: mantissa

@@ -92,8 +92,8 @@ types:
   clear_quote_message:
     seq:
       - id: last_update_timestamp
-        type: u8
-        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe Summary Depth server''s cache'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe Summary Depth server''s cache. Nanoseconds since Midnight epoch'
       - id: symbol
         type: str
         size: 8
@@ -122,8 +122,8 @@ types:
   adap_message:
     seq:
       - id: last_update_timestamp
-        type: u8
-        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe Summary Depth server''s cache'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe Summary Depth server''s cache. Nanoseconds since Midnight epoch'
       - id: symbol
         type: str
         size: 8

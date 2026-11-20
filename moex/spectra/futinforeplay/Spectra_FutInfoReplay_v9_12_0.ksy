@@ -58,7 +58,7 @@ types:
         doc: 'MsgSize'
       - id: msg_flags
         type: msg_flags
-        doc: 'Message flags, least significant bit first, as the schema''s MsgFlagsSet declares them'
+        doc: 'MsgFlagsSet bit set'
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'SendingTime. Nanoseconds since Unix epoch'
@@ -81,9 +81,9 @@ types:
       - id: poss_dup_flag
         type: b1
         doc: 'PossDupFlag'
-      - id: reserved_bits
+      - id: reserved_6_to_16
         type: b11
-        doc: 'Bits the schema''s MsgFlagsSet leaves unused'
+        doc: '11 reserved bits'
   message_struct:
     seq:
       - id: sbe_header
@@ -323,7 +323,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_bits_0_to_3
+      - id: unused_bits_1_to_4
         type: b4
         doc: '4 unused bits'
       - id: anonymous_trading
@@ -332,13 +332,13 @@ types:
       - id: private_trading
         type: b1
         doc: 'PrivateTrading'
-      - id: unused_bits_6_to_7
+      - id: unused_bits_7_to_8
         type: b2
         doc: '2 unused bits'
       - id: multi_leg
         type: b1
         doc: 'MultiLeg'
-      - id: unused_bits_9_to_17
+      - id: unused_bits_10_to_18
         type: b9
         doc: '9 unused bits'
       - id: collateral
@@ -347,7 +347,7 @@ types:
       - id: intraday_exercise
         type: b1
         doc: 'IntradayExercise'
-      - id: reserved_44
+      - id: reserved_21_to_64
         type: b44
         doc: '44 reserved bits'
   trade_period_access:
@@ -366,7 +366,7 @@ types:
       - id: morning_session
         type: b1
         doc: 'MorningSession'
-      - id: reserved_60
+      - id: reserved_5_to_64
         type: b60
         doc: '60 reserved bits'
   security_definition_message_no_md_feed_types_groups:

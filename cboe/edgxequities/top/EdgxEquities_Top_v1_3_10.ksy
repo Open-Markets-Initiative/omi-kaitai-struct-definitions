@@ -7,7 +7,7 @@
 #   Encoding: Ascii Pitch
 #   Version: 1.3.10
 #   Date: 09/23/2026
-#   Specification: http://markets.cboe.com/us/equities/support/technical
+#   Specification: technical-specifications-cboe-titanium-u-s-equities-top-specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -113,17 +113,13 @@ types:
   seconds_message:
     seq:
       - id: seconds
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'Number of seconds since midnight; e.g,. 32400 = 9:00am'
+        type: second_ascii_timestamp
+        doc: 'Number of seconds since midnight; e.g,. 32400 = 9:00am. Seconds since Midnight epoch'
   milliseconds_message:
     seq:
       - id: milliseconds
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'Number of milliseconds since last Second message'
+        type: millisecond_ascii_timestamp
+        doc: 'Number of milliseconds since last Second message. Milliseconds since Second epoch'
   expanded_spin_message:
     seq:
       - id: timestamp
@@ -268,10 +264,8 @@ types:
         type: millisecond_ascii_timestamp
         doc: 'Time of top of book update; milliseconds since midnight, Eastern time. Milliseconds since Midnight epoch'
       - id: midnight_reference
-        type: str
-        size: 10
-        encoding: ASCII
-        doc: 'Midnight Eastern Time reference time for subsequent Timestamp values, expressed as number of whole seconds since the Epoch (Midnight January 1, 1970 UTC)'
+        type: second_ascii_timestamp
+        doc: 'Midnight Eastern Time reference time for subsequent Timestamp values, expressed as number of whole seconds since the Epoch (Midnight January 1, 1970 UTC). Seconds since Unix epoch'
       - id: time
         type: second_ascii_timestamp
         doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. Seconds since Midnight epoch'
@@ -656,11 +650,24 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reserved'
+  second_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 5
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600 % 24
+      minute:
+        value: text.to_i / 60 % 60
+      second:
+        value: text.to_i % 60
   millisecond_ascii_timestamp:
     seq:
       - id: text
         type: str
-        size: 8
+        size: 3
         encoding: ASCII
     instances:
       hour:
@@ -671,19 +678,6 @@ types:
         value: text.to_i / 1000 % 60
       millisecond:
         value: text.to_i % 1000
-  second_ascii_timestamp:
-    seq:
-      - id: text
-        type: str
-        size: 10
-        encoding: ASCII
-    instances:
-      hour:
-        value: text.to_i / 3600 % 24
-      minute:
-        value: text.to_i / 60 % 60
-      second:
-        value: text.to_i % 60
   yyyymmdd_ascii_date:
     seq:
       - id: text

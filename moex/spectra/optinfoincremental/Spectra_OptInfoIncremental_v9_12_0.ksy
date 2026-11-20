@@ -61,7 +61,7 @@ types:
         doc: 'MsgSize'
       - id: msg_flags
         type: msg_flags
-        doc: 'Message flags, least significant bit first, as the schema''s MsgFlagsSet declares them'
+        doc: 'MsgFlagsSet bit set'
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'SendingTime. Nanoseconds since Unix epoch'
@@ -84,9 +84,9 @@ types:
       - id: poss_dup_flag
         type: b1
         doc: 'PossDupFlag'
-      - id: reserved_bits
+      - id: reserved_6_to_16
         type: b11
-        doc: 'Bits the schema''s MsgFlagsSet leaves unused'
+        doc: '11 reserved bits'
   incremental_packet_header_struct:
     seq:
       - id: transact_time

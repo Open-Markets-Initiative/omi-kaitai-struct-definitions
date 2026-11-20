@@ -175,9 +175,9 @@ types:
       - id: recovery_msg
         type: b1
         doc: 'RecoveryMsg'
-      - id: reserved
+      - id: reserved_7
         type: b1
-        doc: 'Reserved'
+        doc: '1 reserved bit'
       - id: end_of_event
         type: b1
         doc: 'EndOfEvent'
@@ -1065,7 +1065,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_bits_0_to_7
+      - id: unused_bits_1_to_8
         type: b8
         doc: '8 unused bits'
       - id: imbalance_more_buyers
@@ -1074,7 +1074,7 @@ types:
       - id: imbalance_more_sellers
         type: b1
         doc: 'ImbalanceMoreSellers'
-      - id: reserved_6
+      - id: reserved_11_to_16
         type: b6
         doc: '6 reserved bits'
   price_band_20_message:
@@ -1297,13 +1297,13 @@ types:
       - id: out_of_sequence
         type: b1
         doc: 'OutOfSequence'
-      - id: unused_bits_4_to_5
+      - id: unused_bits_5_to_6
         type: b2
         doc: '2 unused bits'
       - id: trade_on_behalf
         type: b1
         doc: 'TradeOnBehalf'
-      - id: unused_bits_7_to_12
+      - id: unused_bits_8_to_13
         type: b6
         doc: '6 unused bits'
       - id: regular_trade
@@ -1312,9 +1312,9 @@ types:
       - id: block_trade
         type: b1
         doc: 'BlockTrade'
-      - id: unused_bit_15
+      - id: reserved_16
         type: b1
-        doc: '1 unused bit'
+        doc: '1 reserved bit'
   snapshot_full_refresh_header_30_message:
     seq:
       - id: security_id

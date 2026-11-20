@@ -56,8 +56,8 @@ types:
         type: u2
         doc: 'Length of the packet including this length field and the version'
       - id: sending_time
-        type: u8
-        doc: 'The time that this packet was sent. It applies to all messages in this packet'
+        type: millisecond_timestamp
+        doc: 'The time that this packet was sent. It applies to all messages in this packet. Milliseconds since Unix epoch'
       - id: message_count
         type: u1
         doc: 'The number of messages in this packet'
@@ -112,7 +112,7 @@ types:
         type: u4
         doc: 'Product key'
       - id: maturity_date
-        type: u8
+        type: yyyymmdd_date
         doc: 'Expiration date. Format is “YYYYMMDD”'
       - id: price_type
         type: u1
@@ -392,6 +392,30 @@ types:
       - id: security_trading_status
         type: u1
         enum: security_trading_status
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s8
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
 
 enums:
   template_id:

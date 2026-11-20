@@ -2225,24 +2225,9 @@ types:
       - id: stop_elected
         type: b1
         doc: 'stopElected'
-      - id: order_flags_reserved_2
-        type: b1
-        doc: 'reserved2'
-      - id: order_flags_reserved_3
-        type: b1
-        doc: 'reserved3'
-      - id: order_flags_reserved_4
-        type: b1
-        doc: 'reserved4'
-      - id: order_flags_reserved_5
-        type: b1
-        doc: 'reserved5'
-      - id: order_flags_reserved_6
-        type: b1
-        doc: 'reserved6'
-      - id: order_flags_reserved_7
-        type: b1
-        doc: 'reserved7'
+      - id: reserved_3_to_8
+        type: b6
+        doc: '6 reserved bits'
   execution_report_cancel_message:
     seq:
       - id: originator_user_id
@@ -2591,24 +2576,9 @@ types:
       - id: deal_adjust_indicator
         type: b1
         doc: 'dealAdjustIndicator'
-      - id: trade_flags_reserved_2
-        type: b1
-        doc: 'reserved2'
-      - id: trade_flags_reserved_3
-        type: b1
-        doc: 'reserved3'
-      - id: trade_flags_reserved_4
-        type: b1
-        doc: 'reserved4'
-      - id: trade_flags_reserved_5
-        type: b1
-        doc: 'reserved5'
-      - id: trade_flags_reserved_6
-        type: b1
-        doc: 'reserved6'
-      - id: trade_flags_reserved_7
-        type: b1
-        doc: 'reserved7'
+      - id: reserved_3_to_8
+        type: b6
+        doc: '6 reserved bits'
   quote_report_message:
     seq:
       - id: originator_user_id

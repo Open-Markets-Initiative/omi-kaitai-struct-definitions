@@ -56,8 +56,8 @@ types:
         type: u2
         doc: 'Length of the packet including this length field and the version'
       - id: sending_time
-        type: u8
-        doc: 'The time that this packet was sent. It applies to all messages in this packet'
+        type: millisecond_timestamp
+        doc: 'The time that this packet was sent. It applies to all messages in this packet. Milliseconds since Unix epoch'
       - id: message_count
         type: u1
         doc: 'The number of messages in this packet'
@@ -129,6 +129,19 @@ types:
       - id: md_entry_px_mantissa
         type: s4
         doc: 'Index value associated with MDEntryType'
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
 
 enums:
   template_id:

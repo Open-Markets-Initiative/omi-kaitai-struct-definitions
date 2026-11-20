@@ -236,7 +236,7 @@ types:
       - id: retail_present
         type: b1
         doc: 'RetailPresent'
-      - id: reserved_7
+      - id: reserved_2_to_8
         type: b7
         doc: '7 reserved bits'
   order_deleted_message:

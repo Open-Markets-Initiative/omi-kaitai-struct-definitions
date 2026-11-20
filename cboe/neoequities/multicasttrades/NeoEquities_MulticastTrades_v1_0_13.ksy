@@ -246,7 +246,7 @@ types:
         enum: settlement_type
         doc: 'Settlement terms of the order'
       - id: settlement_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'The date the order would settle'
       - id: reserved_1
         size: 1
@@ -313,7 +313,7 @@ types:
         type: u1
         doc: 'Original settlement terms of the order'
       - id: original_settlement_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Original date the order would settle'
       - id: corrected_quantity
         type: u4
@@ -325,7 +325,7 @@ types:
         type: u1
         doc: 'Corrected settlement terms of the order'
       - id: corrected_settlement_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Corrected date the order would settle'
       - id: execution_id
         type: u8
@@ -355,6 +355,17 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
 
 enums:
   message_type:

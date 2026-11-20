@@ -685,7 +685,7 @@ types:
       - id: wholesale_allowed
         type: b1
         doc: 'WholesaleAllowed'
-      - id: reserved_10
+      - id: reserved_7_to_16
         type: b10
         doc: '10 reserved bits'
   timetable_message:
@@ -1376,7 +1376,7 @@ types:
       - id: trade_at_settlement
         type: b1
         doc: 'TradeAtSettlement'
-      - id: reserved_10
+      - id: reserved_7_to_16
         type: b10
         doc: '10 reserved bits'
   mm_protections:
@@ -1389,7 +1389,7 @@ types:
       - id: volume
         type: b1
         doc: 'Volume'
-      - id: reserved_6
+      - id: reserved_3_to_8
         type: b6
         doc: '6 reserved bits'
   contract_emm_properties_groups:
@@ -1579,7 +1579,7 @@ types:
       - id: put_straddle_versus_sell_a_call_or_a_put
         type: b1
         doc: 'PutStraddleVersusSellACallOrAPut'
-      - id: reserved_16
+      - id: reserved_49_to_64
         type: b16
         doc: '16 reserved bits'
   outright_standing_data_message:

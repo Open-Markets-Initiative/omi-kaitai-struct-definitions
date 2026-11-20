@@ -141,7 +141,7 @@ types:
         pad-right: 0x20
         doc: 'Underlying futures contract product name'
       - id: futures_expiration
-        type: u4
+        type: yyyymmdd_date
         doc: 'Underlying futures contract expiration date'
       - id: futures_symbol
         type: str
@@ -157,7 +157,7 @@ types:
         enum: call_put_indicator
         doc: 'C = Call P = Put'
       - id: options_expiration
-        type: u4
+        type: yyyymmdd_date
         doc: 'Options contract expiration date'
       - id: options_on_futures_name
         type: str

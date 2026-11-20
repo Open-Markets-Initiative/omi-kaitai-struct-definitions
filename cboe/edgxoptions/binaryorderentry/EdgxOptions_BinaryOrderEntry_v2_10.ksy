@@ -1856,8 +1856,8 @@ types:
   order_acknowledgment_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'The time the event occurred in the CFE matching engine'
+        type: nanosecond_timestamp
+        doc: 'The time the event occurred in the CFE matching engine. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
@@ -3911,8 +3911,8 @@ types:
   order_cancelled_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'The time the event occurred in the CFE matching engine'
+        type: nanosecond_timestamp
+        doc: 'The time the event occurred in the CFE matching engine. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20

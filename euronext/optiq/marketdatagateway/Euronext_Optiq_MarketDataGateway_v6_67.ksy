@@ -732,7 +732,7 @@ types:
       - id: exceptional_market_conditions
         type: b1
         doc: 'ExceptionalMarketConditions'
-      - id: unused_bit_8
+      - id: unused_bit_9
         type: b1
         doc: '1 unused bit'
       - id: quoting_period
@@ -741,7 +741,7 @@ types:
       - id: execution_prevention_across_all_firms
         type: b1
         doc: 'ExecutionPreventionAcrossAllFirms'
-      - id: reserved_5
+      - id: reserved_12_to_16
         type: b5
         doc: '5 reserved bits'
   timetable_message:
@@ -1456,7 +1456,7 @@ types:
       - id: trade_at_settlement
         type: b1
         doc: 'TradeAtSettlement'
-      - id: reserved_10
+      - id: reserved_7_to_16
         type: b10
         doc: '10 reserved bits'
   mm_protections:
@@ -1469,7 +1469,7 @@ types:
       - id: volume
         type: b1
         doc: 'Volume'
-      - id: reserved_6
+      - id: reserved_3_to_8
         type: b6
         doc: '6 reserved bits'
   contract_emm_properties_groups:
@@ -1674,7 +1674,7 @@ types:
       - id: ratio_spread_option
         type: b1
         doc: 'RatioSpreadOption'
-      - id: reserved_11
+      - id: reserved_54_to_64
         type: b11
         doc: '11 reserved bits'
   outright_standing_data_message:

@@ -274,12 +274,9 @@ types:
       - id: cabinet
         type: b1
         doc: 'Cabinet'
-      - id: reserved_bits
-        type: b1
-        doc: 'ReservedBits'
-      - id: unused_bit_6
-        type: b1
-        doc: '1 unused bit'
+      - id: reserved_6_to_7
+        type: b2
+        doc: '2 reserved bits'
       - id: null_value
         type: b1
         doc: 'NullValue'

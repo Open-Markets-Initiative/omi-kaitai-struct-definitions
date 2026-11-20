@@ -360,7 +360,7 @@ types:
         enum: display_indicator
         doc: 'Treatment of Post Only orders on entry if creating a locked NBBO'
       - id: expire_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Only applicable for TimeInForce (59) = 6 (GTD) orders. Specifies the date on which a GTD order will expire'
   modify_order_au_equities_v_1:
     seq:
@@ -451,7 +451,7 @@ types:
         enum: cancel_orig_on_reject
         doc: 'Cancel original order if modification fails. Nullable, Apply Port Default = 0'
       - id: expire_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Only applicable for TimeInForce (59) = 6 (GTD) orders. Specifies the date on which a GTD order will expire'
   cancel_order_au_equities_v_1:
     seq:
@@ -514,6 +514,17 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
 
 enums:
   firm_message_type:

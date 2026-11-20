@@ -7,7 +7,7 @@
 #   Encoding: Ascii Pitch
 #   Version: 1.3.10
 #   Date: 09/23/2026
-#   Specification: http://markets.cboe.com/us/equities/support/technical
+#   Specification: technical-specifications-cboe-titanium-u-s-equities-top-specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -112,17 +112,13 @@ types:
   seconds_message:
     seq:
       - id: seconds
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'Number of seconds since midnight; e.g,. 32400 = 9:00am'
+        type: second_ascii_timestamp
+        doc: 'Number of seconds since midnight; e.g,. 32400 = 9:00am. Seconds since Midnight epoch'
   milliseconds_message:
     seq:
       - id: milliseconds
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'Number of milliseconds since last Second message'
+        type: millisecond_ascii_timestamp
+        doc: 'Number of milliseconds since last Second message. Milliseconds since Second epoch'
   expanded_spin_message:
     seq:
       - id: timestamp
@@ -639,11 +635,24 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reserved'
+  second_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 5
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600 % 24
+      minute:
+        value: text.to_i / 60 % 60
+      second:
+        value: text.to_i % 60
   millisecond_ascii_timestamp:
     seq:
       - id: text
         type: str
-        size: 8
+        size: 3
         encoding: ASCII
     instances:
       hour:

@@ -220,7 +220,7 @@ types:
       - id: rfq_confirmation
         type: b1
         doc: 'RFQConfirmation'
-      - id: reserved_2
+      - id: reserved_7_to_8
         type: b2
         doc: '2 reserved bits'
   dark_execution_instruction:
@@ -242,7 +242,7 @@ types:
       - id: minimum_quantity_type
         type: b1
         doc: 'MinimumQuantityType'
-      - id: reserved_3
+      - id: reserved_6_to_8
         type: b3
         doc: '3 reserved bits'
   mifid_indicators:
@@ -264,7 +264,7 @@ types:
       - id: deferral_indicator
         type: b1
         doc: 'DeferralIndicator'
-      - id: reserved_3
+      - id: reserved_6_to_8
         type: b3
         doc: '3 reserved bits'
   free_text_groups:
@@ -369,7 +369,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_bit_0
+      - id: unused_bit_1
         type: b1
         doc: '1 unused bit'
       - id: session_1
@@ -381,7 +381,7 @@ types:
       - id: session_3
         type: b1
         doc: 'Session3'
-      - id: reserved_4
+      - id: reserved_5_to_8
         type: b4
         doc: '4 reserved bits'
   order_clearing_fields_groups:
@@ -454,7 +454,7 @@ types:
       - id: leg_9
         type: b1
         doc: 'Leg9'
-      - id: reserved_6
+      - id: reserved_11_to_16
         type: b6
         doc: '6 reserved bits'
   ack_message:
@@ -539,7 +539,7 @@ types:
       - id: queue_indicator
         type: b1
         doc: 'QueueIndicator'
-      - id: reserved_6
+      - id: reserved_3_to_8
         type: b6
         doc: '6 reserved bits'
   fill_message:
@@ -638,9 +638,9 @@ types:
       - id: nav_trade_expressed_in_price_currency
         type: b1
         doc: 'NAVTradeExpressedInPriceCurrency'
-      - id: unused_bit_7
+      - id: reserved_8
         type: b1
-        doc: '1 unused bit'
+        doc: '1 reserved bit'
   fill_optional_field_groups:
     seq:
       - id: group_size_encoding

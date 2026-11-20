@@ -7,7 +7,7 @@
 #   Encoding: Ascii Pitch
 #   Version: 1.15.16
 #   Date: 09/09/2026
-#   Specification: http://markets.cboe.com/us/equities/support/technical
+#   Specification: technical-specifications-cboe-titanium-us-equities-tcp-depth-of-book-pitch-specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -286,10 +286,8 @@ types:
   time_reference_message:
     seq:
       - id: midnight_reference
-        type: str
-        size: 10
-        encoding: ASCII
-        doc: 'Midnight Eastern Time reference time for subsequent Timestamp values, expressed as number of whole seconds since the Epoch (Midnight January 1, 1970 UTC)'
+        type: second_ascii_timestamp
+        doc: 'Midnight Eastern Time reference time for subsequent Timestamp values, expressed as number of whole seconds since the Epoch (Midnight January 1, 1970 UTC). Seconds since Unix epoch'
       - id: time
         type: second_ascii_timestamp
         doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. Seconds since Midnight epoch'

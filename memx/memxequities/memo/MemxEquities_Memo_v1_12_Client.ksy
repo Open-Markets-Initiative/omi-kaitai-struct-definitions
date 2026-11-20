@@ -236,7 +236,7 @@ types:
         doc: 'Bytes the stated block holds beyond the 100 this version reads'
   exec_inst:
     seq:
-      - id: reserved_13
+      - id: reserved_4_to_16
         type: b13
         doc: '13 reserved bits'
       - id: external_routing_not_allowed

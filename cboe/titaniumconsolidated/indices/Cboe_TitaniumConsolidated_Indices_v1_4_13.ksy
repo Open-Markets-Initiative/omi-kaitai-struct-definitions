@@ -143,8 +143,8 @@ types:
   contributor_value_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'Time that data was calculated or produced from client. Applies only to this message within the packet'
+        type: millisecond_timestamp
+        doc: 'Time that data was calculated or produced from client. Applies only to this message within the packet. Milliseconds since Unix epoch'
       - id: symbol
         type: symbol
         doc: 'Symbol'
@@ -159,8 +159,8 @@ types:
   index_summary_message:
     seq:
       - id: transact_time
-        type: u8
-        doc: 'Time that data was calculated or produced from client. Applies only to this message within the packet'
+        type: millisecond_timestamp
+        doc: 'Time that data was calculated or produced from client. Applies only to this message within the packet. Milliseconds since Unix epoch'
       - id: effective_business_date
         type: effective_business_date
         doc: 'EffectiveBusinessDate'

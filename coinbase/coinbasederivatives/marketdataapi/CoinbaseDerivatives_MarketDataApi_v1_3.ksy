@@ -244,7 +244,7 @@ types:
       - id: is_call
         type: b1
         doc: 'isCall'
-      - id: reserved_13
+      - id: reserved_4_to_16
         type: b13
         doc: '13 reserved bits'
   spread_instrument_definition_message:

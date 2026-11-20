@@ -190,8 +190,8 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62 symbol'
       - id: unit_timestamp
-        type: u4
-        doc: 'Unit timestamp expressed as number of whole seconds since the Epoch (Midnight, January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'Unit timestamp expressed as number of whole seconds since the Epoch (Midnight, January 1, 1970 UTC). Seconds since Unix epoch'
       - id: report_symbol
         type: str
         size: 6
@@ -202,7 +202,7 @@ types:
         type: futures_flags
         doc: 'Futures Flags bitfields'
       - id: expiration_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Expiration Date of Instrument'
       - id: contract_size
         type: u2
@@ -226,7 +226,7 @@ types:
         type: u1
         doc: 'Reserved.Value will always be zero'
       - id: contract_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Populated for single leg instruments only. Zero-filled for spread instruments. The date that should be used in describing the future''s third party symbol and the measurement period of the contract'
       - id: future_leg
         type: future_leg
@@ -260,8 +260,8 @@ types:
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
       - id: unit_timestamp
-        type: u4
-        doc: 'Unit timestamp expressed as number of whole seconds since the Epoch (Midnight, January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'Unit timestamp expressed as number of whole seconds since the Epoch (Midnight, January 1, 1970 UTC). Seconds since Unix epoch'
       - id: feed_symbol
         type: str
         size: 6
@@ -312,8 +312,8 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62 symbol'
       - id: unit_timestamp
-        type: u4
-        doc: 'Unit timestamp expressed as number of whole seconds since the Epoch (Midnight, January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'Unit timestamp expressed as number of whole seconds since the Epoch (Midnight, January 1, 1970 UTC). Seconds since Unix epoch'
       - id: bid_price_short
         type: decimal_u2_2
         doc: 'Bid price (may be a zero or negative price for some instruments). Implied decimal with scale 1e-2'
@@ -363,8 +363,8 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62 symbol'
       - id: unit_timestamp
-        type: u4
-        doc: 'Unit timestamp expressed as number of whole seconds since the Epoch (Midnight, January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'Unit timestamp expressed as number of whole seconds since the Epoch (Midnight, January 1, 1970 UTC). Seconds since Unix epoch'
       - id: bid_price_long
         type: decimal_u8_4
         doc: 'Bid price (may be a zero or negative price for some instruments). Implied decimal with scale 1e-4'

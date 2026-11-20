@@ -164,9 +164,9 @@ types:
       - id: recovery_msg
         type: b1
         doc: 'RecoveryMsg'
-      - id: reserved
+      - id: reserved_7
         type: b1
-        doc: 'Reserved'
+        doc: '1 reserved bit'
       - id: end_of_event
         type: b1
         doc: 'EndOfEvent'
@@ -688,12 +688,9 @@ types:
       - id: intraday
         type: b1
         doc: 'Intraday'
-      - id: reserved_bits
-        type: b1
-        doc: 'ReservedBits'
-      - id: unused_bits_5_to_6
-        type: b2
-        doc: '2 unused bits'
+      - id: reserved_5_to_7
+        type: b3
+        doc: '3 reserved bits'
       - id: null_value
         type: b1
         doc: 'NullValue'
@@ -1280,7 +1277,7 @@ types:
       - id: hedge_instrument
         type: b1
         doc: 'HedgeInstrument'
-      - id: reserved_4
+      - id: reserved_29_to_32
         type: b4
         doc: '4 reserved bits'
   lot_type_rules_groups:

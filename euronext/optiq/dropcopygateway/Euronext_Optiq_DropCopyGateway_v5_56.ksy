@@ -228,7 +228,7 @@ types:
       - id: execution_prevention_across_all_firms
         type: b1
         doc: 'ExecutionPreventionAcrossAllFirms'
-      - id: reserved_5
+      - id: reserved_12_to_16
         type: b5
         doc: '5 reserved bits'
   dc_price_update_message:
@@ -556,7 +556,7 @@ types:
       - id: dark_stp_indicator
         type: b1
         doc: 'DarkSTPIndicator'
-      - id: reserved_2
+      - id: reserved_7_to_8
         type: b2
         doc: '2 reserved bits'
   execution_instruction:
@@ -609,7 +609,7 @@ types:
       - id: frmaramplp
         type: b1
         doc: 'FRMARAMPLP'
-      - id: reserved_2
+      - id: reserved_7_to_8
         type: b2
         doc: '2 reserved bits'
   trade_qualifier_optional:
@@ -712,7 +712,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_bit_0
+      - id: unused_bit_1
         type: b1
         doc: '1 unused bit'
       - id: session_1
@@ -727,7 +727,7 @@ types:
       - id: session_4
         type: b1
         doc: 'Session4'
-      - id: reserved_3
+      - id: reserved_6_to_8
         type: b3
         doc: '3 reserved bits'
   long_order_clearing_fields_groups:
@@ -797,7 +797,7 @@ types:
       - id: leg_9
         type: b1
         doc: 'Leg9'
-      - id: reserved_6
+      - id: reserved_11_to_16
         type: b6
         doc: '6 reserved bits'
   long_order_non_modifiable_opt_fields_groups:
@@ -1188,7 +1188,7 @@ types:
       - id: frmaramplp
         type: b1
         doc: 'FRMARAMPLP'
-      - id: reserved_2
+      - id: reserved_7_to_8
         type: b2
         doc: '2 reserved bits'
   d_c_short_order_reject_message_modifiable_short_codes_groups:

@@ -48,28 +48,28 @@ seq:
       cases:
         'exchange_message_type::login_response_message': login_response_message
         'exchange_message_type::logout_response_message': logout_response_message
-        'exchange_message_type::order_acknowledgement_message': order_acknowledgement_message
-        'exchange_message_type::order_rejected_message': order_rejected_message
-        'exchange_message_type::order_modified_message': order_modified_message
-        'exchange_message_type::modify_rejected_message': modify_rejected_message
-        'exchange_message_type::order_execution_message': order_execution_message
-        'exchange_message_type::order_cancelled_message': order_cancelled_message
-        'exchange_message_type::cancel_rejected_message': cancel_rejected_message
-        'exchange_message_type::mass_cancel_acknowledgement_message': mass_cancel_acknowledgement_message
-        'exchange_message_type::mass_cancel_rejected_message': mass_cancel_rejected_message
-        'exchange_message_type::purge_acknowledgement_message': purge_acknowledgement_message
-        'exchange_message_type::purge_rejected_message': purge_rejected_message
-        'exchange_message_type::trade_cancel_or_correct_message': trade_cancel_or_correct_message
-        'exchange_message_type::tas_restatement_message': tas_restatement_message
-        'exchange_message_type::variance_restatement_message': variance_restatement_message
-        'exchange_message_type::quote_update_acknowledgement_message': quote_update_acknowledgement_message
-        'exchange_message_type::quote_update_rejected_message': quote_update_rejected_message
-        'exchange_message_type::quote_restated_message': quote_restated_message
-        'exchange_message_type::quote_execution_message': quote_execution_message
-        'exchange_message_type::quote_cancelled_message': quote_cancelled_message
-        'exchange_message_type::tas_quote_restatement_message': tas_quote_restatement_message
-        'exchange_message_type::variance_quote_restatement_message': variance_quote_restatement_message
-        'exchange_message_type::reset_risk_acknowledgement_message': reset_risk_acknowledgement_message
+        'exchange_message_type::order_acknowledgement_message': order_acknowledgement
+        'exchange_message_type::order_rejected_message': order_rejected
+        'exchange_message_type::order_modified_message': order_modified
+        'exchange_message_type::modify_rejected_message': modify_rejected
+        'exchange_message_type::order_execution_message': order_execution
+        'exchange_message_type::order_cancelled_message': order_cancelled
+        'exchange_message_type::cancel_rejected_message': cancel_rejected
+        'exchange_message_type::mass_cancel_acknowledgement_message': mass_cancel_acknowledgement
+        'exchange_message_type::mass_cancel_rejected_message': mass_cancel_rejected
+        'exchange_message_type::purge_acknowledgement_message': purge_acknowledgement
+        'exchange_message_type::purge_rejected_message': purge_rejected
+        'exchange_message_type::trade_cancel_or_correct_message': trade_cancel_or_correct
+        'exchange_message_type::tas_restatement_message': tas_restatement
+        'exchange_message_type::variance_restatement_message': variance_restatement
+        'exchange_message_type::quote_update_acknowledgement_message': quote_update_acknowledgement
+        'exchange_message_type::quote_update_rejected_message': quote_update_rejected
+        'exchange_message_type::quote_restated_message': quote_restated
+        'exchange_message_type::quote_execution_message': quote_execution
+        'exchange_message_type::quote_cancelled_message': quote_cancelled
+        'exchange_message_type::tas_quote_restatement_message': tas_quote_restatement
+        'exchange_message_type::variance_quote_restatement_message': variance_quote_restatement
+        'exchange_message_type::reset_risk_acknowledgement_message': reset_risk_acknowledgement
 
 types:
   exchange_message_header_struct:
@@ -134,7 +134,7 @@ types:
         size: 60
         encoding: ASCII
         doc: 'Human-readable text with additional information about the reason for logout'
-  order_acknowledgement_message:
+  order_acknowledgement:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -264,7 +264,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Trading Group Id'
-  order_rejected_message:
+  order_rejected:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -288,7 +288,7 @@ types:
         size: 60
         encoding: ASCII
         doc: 'Human readable text with more information'
-  order_modified_message:
+  order_modified:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -343,7 +343,7 @@ types:
       - id: request_received_time
         type: nanosecond_timestamp
         doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
-  modify_rejected_message:
+  modify_rejected:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -372,7 +372,7 @@ types:
         size: 60
         encoding: ASCII
         doc: 'Human readable text with more information'
-  order_execution_message:
+  order_execution:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -441,7 +441,7 @@ types:
       - id: secondary_exec_id
         type: u8
         doc: 'Indicates whether an execution is a spread or a simple instrument execution that is part of a spread trade'
-  order_cancelled_message:
+  order_cancelled:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -463,7 +463,7 @@ types:
       - id: request_received_time
         type: nanosecond_timestamp
         doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
-  cancel_rejected_message:
+  cancel_rejected:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -487,7 +487,7 @@ types:
         size: 60
         encoding: ASCII
         doc: 'Human readable text with more information'
-  mass_cancel_acknowledgement_message:
+  mass_cancel_acknowledgement:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -503,7 +503,7 @@ types:
       - id: request_received_time
         type: nanosecond_timestamp
         doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
-  mass_cancel_rejected_message:
+  mass_cancel_rejected:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -522,7 +522,7 @@ types:
         size: 60
         encoding: ASCII
         doc: 'Human readable text with more information'
-  purge_acknowledgement_message:
+  purge_acknowledgement:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -538,7 +538,7 @@ types:
       - id: request_received_time
         type: nanosecond_timestamp
         doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
-  purge_rejected_message:
+  purge_rejected:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -557,7 +557,7 @@ types:
         size: 60
         encoding: ASCII
         doc: 'Human readable text with more information'
-  trade_cancel_or_correct_message:
+  trade_cancel_or_correct:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -619,7 +619,7 @@ types:
       - id: cmta_number
         type: u4
         doc: 'CMTA Number of the firm that will clear the trade'
-  tas_restatement_message:
+  tas_restatement:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -681,7 +681,7 @@ types:
       - id: secondary_exec_id
         type: u8
         doc: 'Indicates whether an execution is a spread or a simple instrument execution that is part of a spread trade'
-  variance_restatement_message:
+  variance_restatement:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -746,7 +746,7 @@ types:
       - id: secondary_exec_id
         type: u8
         doc: 'Indicates whether an execution is a spread or a simple instrument execution that is part of a spread trade'
-  quote_update_acknowledgement_message:
+  quote_update_acknowledgement:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -779,7 +779,7 @@ types:
         type: u1
         enum: sub_liquidity_indicator
         doc: 'Additional information about the liquidity of an order. Nullable, No Additional Information = 0'
-  quote_update_rejected_message:
+  quote_update_rejected:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -793,7 +793,7 @@ types:
         type: u1
         enum: quote_reject_reason
         doc: 'Reason for the quote rejection'
-  quote_restated_message:
+  quote_restated:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -825,7 +825,7 @@ types:
         type: u1
         enum: restatement_reason
         doc: 'The reason for this Quote Restated message'
-  quote_execution_message:
+  quote_execution:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -877,7 +877,7 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Indicates fee associated with an execution'
-  quote_cancelled_message:
+  quote_cancelled:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -903,7 +903,7 @@ types:
         type: u1
         enum: cancel_reason
         doc: 'Cancel reason'
-  tas_quote_restatement_message:
+  tas_quote_restatement:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -929,7 +929,7 @@ types:
       - id: clearing_price
         type: decimal_s8_4
         doc: 'Price as sent to clearing after applying post-close conversions to the original LastPx value. Implied decimal with scale 1e-4'
-  variance_quote_restatement_message:
+  variance_quote_restatement:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
@@ -958,7 +958,7 @@ types:
       - id: clearing_size
         type: u4
         doc: 'Size to clear with OCC'
-  reset_risk_acknowledgement_message:
+  reset_risk_acknowledgement:
     seq:
       - id: risk_status_id
         type: str

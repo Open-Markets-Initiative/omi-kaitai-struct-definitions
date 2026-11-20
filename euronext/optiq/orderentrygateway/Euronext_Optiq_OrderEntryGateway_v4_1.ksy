@@ -247,9 +247,9 @@ types:
       - id: conditional_order
         type: b1
         doc: 'ConditionalOrder'
-      - id: unused_bit_7
+      - id: reserved_8
         type: b1
-        doc: '1 unused bit'
+        doc: '1 reserved bit'
   dark_execution_instruction:
     meta:
       bit-endian: le
@@ -269,7 +269,7 @@ types:
       - id: minimum_quantity_type
         type: b1
         doc: 'MinimumQuantityType'
-      - id: reserved_3
+      - id: reserved_6_to_8
         type: b3
         doc: '3 reserved bits'
   mifid_indicators:
@@ -294,7 +294,7 @@ types:
       - id: frmaramplp
         type: b1
         doc: 'FRMARAMPLP'
-      - id: reserved_2
+      - id: reserved_7_to_8
         type: b2
         doc: '2 reserved bits'
   free_text_groups:
@@ -399,7 +399,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_bit_0
+      - id: unused_bit_1
         type: b1
         doc: '1 unused bit'
       - id: session_1
@@ -414,7 +414,7 @@ types:
       - id: session_4
         type: b1
         doc: 'Session4'
-      - id: reserved_3
+      - id: reserved_6_to_8
         type: b3
         doc: '3 reserved bits'
   order_clearing_fields_groups:
@@ -487,7 +487,7 @@ types:
       - id: leg_9
         type: b1
         doc: 'Leg9'
-      - id: reserved_6
+      - id: reserved_11_to_16
         type: b6
         doc: '6 reserved bits'
   not_used_groups:
@@ -671,7 +671,7 @@ types:
       - id: frmaramplp
         type: b1
         doc: 'FRMARAMPLP'
-      - id: reserved_2
+      - id: reserved_7_to_8
         type: b2
         doc: '2 reserved bits'
   fill_message:
@@ -1284,9 +1284,9 @@ types:
       - id: conditional_order
         type: b1
         doc: 'ConditionalOrder'
-      - id: unused_bit_7
+      - id: reserved_8
         type: b1
-        doc: '1 unused bit'
+        doc: '1 reserved bit'
   clearing_dataset_groups:
     seq:
       - id: group_size_encoding
@@ -2652,7 +2652,7 @@ types:
       - id: pull
         type: b1
         doc: 'Pull'
-      - id: reserved_5
+      - id: reserved_4_to_8
         type: b5
         doc: '5 reserved bits'
   mmp_ack_groups:
@@ -3261,7 +3261,7 @@ types:
       - id: minimum_quantity_type
         type: b1
         doc: 'MinimumQuantityType'
-      - id: reserved_3
+      - id: reserved_6_to_8
         type: b3
         doc: '3 reserved bits'
   logon_message:

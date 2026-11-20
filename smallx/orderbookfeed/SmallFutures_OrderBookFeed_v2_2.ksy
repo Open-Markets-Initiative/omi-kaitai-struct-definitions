@@ -84,7 +84,7 @@ types:
         doc: 'Set when the packet contains an administrative message such as an indication of the retransmission error'
       - id: reserved_5
         type: b5
-        doc: '5 reserved bits'
+        doc: 'Reserved5'
   sbe_frame_struct:
     seq:
       - id: frame_length
@@ -175,7 +175,7 @@ types:
       - id: book_reset
         type: b1
         doc: 'Marks an instrument order book as empty; the next order book message should be applied to the empty book'
-      - id: reserved_9
+      - id: reserved_8_to_16
         type: b9
         doc: '9 reserved bits'
   trades_incremental_message:
@@ -272,7 +272,7 @@ types:
       - id: auction
         type: b1
         doc: 'Trade is a result of opening auction'
-      - id: reserved_14
+      - id: reserved_3_to_16
         type: b14
         doc: '14 reserved bits'
   trade_correct_message:
@@ -512,7 +512,7 @@ types:
       - id: implied
         type: b1
         doc: 'Implied order'
-      - id: reserved_15
+      - id: reserved_2_to_16
         type: b15
         doc: '15 reserved bits'
   market_summary_incremental_message:
@@ -602,7 +602,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_bits_0_to_1
+      - id: unused_bits_1_to_2
         type: b2
         doc: '2 unused bits'
       - id: instrument_begin
@@ -617,7 +617,7 @@ types:
       - id: book_end
         type: b1
         doc: 'Set in the last Order Book Incremental or Order Book Snapshot message of an instrument'
-      - id: unused_bit_6
+      - id: unused_bit_7
         type: b1
         doc: '1 unused bit'
       - id: snapshot_begin
@@ -626,7 +626,7 @@ types:
       - id: snapshot_end
         type: b1
         doc: 'Marks the last message of a single snapshot replay in a line'
-      - id: reserved_7
+      - id: reserved_10_to_16
         type: b7
         doc: '7 reserved bits'
   snapshot_orders_groups:

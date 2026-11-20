@@ -246,7 +246,7 @@ types:
       - id: retail_present_on_bid
         type: b1
         doc: 'RetailPresentOnBid'
-      - id: reserved_7
+      - id: reserved_2_to_8
         type: b7
         doc: '7 reserved bits'
   offer_flags:
@@ -256,7 +256,7 @@ types:
       - id: retail_present_on_offer
         type: b1
         doc: 'RetailPresentOnOffer'
-      - id: reserved_7
+      - id: reserved_2_to_8
         type: b7
         doc: '7 reserved bits'
   best_bid_message:

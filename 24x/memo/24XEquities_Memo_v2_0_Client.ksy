@@ -241,7 +241,7 @@ types:
         doc: 'Parties Block'
   exec_inst:
     seq:
-      - id: reserved_13
+      - id: reserved_4_to_16
         type: b13
         doc: '13 reserved bits'
       - id: external_routing_not_allowed
@@ -255,7 +255,7 @@ types:
         doc: 'ParticipateDoNotInitiate'
   extended_exec_inst:
     seq:
-      - id: reserved_14
+      - id: reserved_3_to_16
         type: b14
         doc: '14 reserved bits'
       - id: non_attested_retail

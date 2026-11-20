@@ -265,7 +265,7 @@ types:
       - id: funding_rate_applicable
         type: b1
         doc: 'fundingRateApplicable'
-      - id: reserved_11
+      - id: reserved_6_to_16
         type: b11
         doc: '11 reserved bits'
   logical_expiry:
@@ -705,7 +705,7 @@ types:
       - id: is_final
         type: b1
         doc: 'isFinal'
-      - id: reserved_7
+      - id: reserved_2_to_8
         type: b7
         doc: '7 reserved bits'
   start_of_outright_instrument_snapshot_message:

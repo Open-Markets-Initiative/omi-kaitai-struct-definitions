@@ -222,7 +222,7 @@ types:
       - id: is_perpetual
         type: b1
         doc: 'isPerpetual'
-      - id: reserved_5
+      - id: reserved_4_to_8
         type: b5
         doc: '5 reserved bits'
   instrument_definition_message_large_tick_sizes_groups:
@@ -450,7 +450,7 @@ types:
       - id: was_delayed
         type: b1
         doc: 'wasDelayed'
-      - id: reserved_29
+      - id: reserved_4_to_32
         type: b29
         doc: '29 reserved bits'
   trade_message:
@@ -486,7 +486,7 @@ types:
       - id: was_delayed
         type: b1
         doc: 'wasDelayed'
-      - id: reserved_29
+      - id: reserved_4_to_32
         type: b29
         doc: '29 reserved bits'
   block_trade_message:

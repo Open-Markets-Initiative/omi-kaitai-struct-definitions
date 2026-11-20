@@ -47,13 +47,13 @@ seq:
       switch-on: firm_message_header.firm_message_type
       cases:
         'firm_message_type::login_request_message': login_request_message
-        'firm_message_type::new_order_message': new_order_message
-        'firm_message_type::modify_order_message': modify_order_message
-        'firm_message_type::cancel_order_message': cancel_order_message
-        'firm_message_type::mass_cancel_order_message': mass_cancel_order_message
-        'firm_message_type::purge_orders_message': purge_orders_message
-        'firm_message_type::quote_update_message': quote_update_message
-        'firm_message_type::reset_risk_message': reset_risk_message
+        'firm_message_type::new_order_message': new_order
+        'firm_message_type::modify_order_message': modify_order
+        'firm_message_type::cancel_order_message': cancel_order
+        'firm_message_type::mass_cancel_order_message': mass_cancel_order
+        'firm_message_type::purge_orders_message': purge_orders
+        'firm_message_type::quote_update_message': quote_update
+        'firm_message_type::reset_risk_message': reset_risk
 
 types:
   firm_message_header_struct:
@@ -114,7 +114,7 @@ types:
       - id: sequence_number
         type: u4
         doc: 'Last Received Sequence number for the unit'
-  new_order_message:
+  new_order:
     seq:
       - id: cl_ord_id
         type: str
@@ -224,7 +224,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Trading Group Id'
-  modify_order_message:
+  modify_order:
     seq:
       - id: cl_ord_id
         type: str
@@ -276,7 +276,7 @@ types:
         type: u1
         enum: cust_order_handling_inst
         doc: 'Execution source code provided during order entry to describe broker service. Nullable, Apply Default = 0'
-  cancel_order_message:
+  cancel_order:
     seq:
       - id: orig_cl_ord_id
         type: str
@@ -297,7 +297,7 @@ types:
         size: 18
         encoding: ASCII
         doc: 'Identifies the Order Entry Operator responsible for this message'
-  mass_cancel_order_message:
+  mass_cancel_order:
     seq:
       - id: mass_cancel_id
         type: str
@@ -352,7 +352,7 @@ types:
         size: 11
         encoding: ASCII
         doc: 'Gtc Order Filter'
-  purge_orders_message:
+  purge_orders:
     seq:
       - id: mass_cancel_id
         type: str
@@ -380,15 +380,13 @@ types:
         size: 18
         encoding: ASCII
         doc: 'Identifies the Order Entry Operator responsible for this message'
-      - id: num_custom_group_id
+      - id: custom_group_id_cnt
         type: u1
         doc: 'Number of repeating CustomGroupId’s included in this message'
       - id: custom_group_id
         type: u2
-        repeat: expr
-        repeat-expr: num_custom_group_id
         doc: 'Used to group orders for use in mass cancels where multiple orders can be cancelled by specifying a list of CustomGroupIds'
-  quote_update_message:
+  quote_update:
     seq:
       - id: quote_update_id
         type: str
@@ -465,7 +463,7 @@ types:
       - id: order_qty
         type: u4
         doc: 'Order quantity'
-  reset_risk_message:
+  reset_risk:
     seq:
       - id: risk_status_id
         type: str

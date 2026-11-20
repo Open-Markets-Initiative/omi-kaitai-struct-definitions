@@ -1101,11 +1101,24 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: event_indicator
-        type: u1
-        doc: 'eventIndicator'
+        type: event_indicator
+        doc: 'EventIndicator bit set'
       - id: market_segment_id_optional
         type: u1_nullable
         doc: 'marketSegmentID. Nullable, No Value = 0'
+  event_indicator:
+    meta:
+      bit-endian: le
+    seq:
+      - id: poss_resend
+        type: b1
+        doc: 'PossResend'
+      - id: low_priority
+        type: b1
+        doc: 'LowPriority'
+      - id: reserved_3_to_8
+        type: b6
+        doc: '6 reserved bits'
   execution_report_modify_message:
     seq:
       - id: outbound_business_header
@@ -1897,8 +1910,8 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: event_indicator
-        type: u1
-        doc: 'eventIndicator'
+        type: event_indicator
+        doc: 'EventIndicator bit set'
       - id: market_segment_id_optional
         type: u1_nullable
         doc: 'marketSegmentID. Nullable, No Value = 0'

@@ -698,7 +698,7 @@ types:
         pad-right: 0x20
         doc: 'Cboe Symbol for underlying Product'
       - id: expiration_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Expiration Date of Instrument'
       - id: contract_size
         type: u2
@@ -732,7 +732,7 @@ types:
         enum: call_put
         doc: 'P = Put C = Call'
       - id: expiration_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Expiration Date of Instrument'
       - id: strike_price
         type: decimal_u8_4
@@ -800,7 +800,7 @@ types:
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Trade Date for the settlement'
       - id: settlement_price
         type: decimal_u8_4
@@ -821,7 +821,7 @@ types:
         pad-right: 0x20
         doc: 'Symbol right padded with spaces'
       - id: trade_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Trade Date for the settlement'
       - id: open_interest
         type: u4
@@ -928,6 +928,17 @@ types:
     instances:
       real:
         value: mantissa / 10.0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
 
 enums:
   message_type:

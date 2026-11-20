@@ -304,8 +304,8 @@ types:
         enum: trade_report_type
         doc: 'Trade report type. Valid only for off-exchange trade reports, space otherwise'
       - id: trade_transaction_time
-        type: u8
-        doc: 'Nanosecond timestamp of the off-exchange trade as specified in the Trade Report submitted by the trading participant. Valid only for off-exchange trade reports, zero otherwise'
+        type: nanosecond_timestamp
+        doc: 'Nanosecond timestamp of the off-exchange trade as specified in the Trade Report submitted by the trading participant. Valid only for off-exchange trade reports, zero otherwise. Nanoseconds since Unix epoch'
       - id: flags
         type: flags
         doc: 'Trade flags'

@@ -123,8 +123,8 @@ types:
         type: second_timestamp
         doc: 'Number of whole seconds from midnight Central Time. Seconds since Midnight epoch'
       - id: epoch
-        type: u4
-        doc: 'Number of whole seconds Since Epoch: 1.1.1970'
+        type: second_timestamp
+        doc: 'Number of whole seconds Since Epoch: 1.1.1970. Seconds since Unix epoch'
   unit_clear_message:
     seq:
       - id: time_offset
@@ -142,8 +142,8 @@ types:
         pad-right: 0x20
         doc: 'Six character, base 62 symbol'
       - id: unit_timestamp
-        type: u4
-        doc: 'Unit timestamp expressed as number of whole seconds since the Epoch (Midnight, January 1, 1970 UTC)'
+        type: second_timestamp
+        doc: 'Unit timestamp expressed as number of whole seconds since the Epoch (Midnight, January 1, 1970 UTC). Seconds since Unix epoch'
       - id: report_symbol
         type: str
         size: 6
@@ -155,7 +155,7 @@ types:
         enum: futures_flags
         doc: 'Bit 0 – Variance (1: Variance Future, 0: Standard Future)'
       - id: expiration_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'Expiration Date of Instrument'
       - id: contract_size
         type: u2
@@ -177,7 +177,7 @@ types:
         type: u1
         doc: 'Variance Future parameter block begins at this offset from the beginning of the message. Possible values are 0 (no Variance Block) or 41 (Variance Block present)'
       - id: contract_date
-        type: u4
+        type: yyyymmdd_date
         doc: 'The date that should be used in describing the future''s third party symbol and the measurement period of the contract'
       - id: future_block
         type:
