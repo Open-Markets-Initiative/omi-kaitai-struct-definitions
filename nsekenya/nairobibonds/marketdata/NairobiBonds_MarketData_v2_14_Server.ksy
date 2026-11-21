@@ -22,8 +22,9 @@
 # The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
-#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US12101388B2/en
 #   https://patents.google.com/patent/US20240419416A1/en
+#   https://patents.google.com/patent/US20260368281A1/en
 #
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
@@ -261,17 +262,17 @@ types:
         doc: 'Day'
   download_data:
     seq:
-      - id: len_records
+      - id: uncompressed_length
         type: s4
         doc: 'Length of the decompressed data, ahead of the gzip stream (5.6)'
       - id: records
         type: records
-        size: len_records
+        size-eos: true
         doc: 'Decompressed records, a multiple of the size of the Data Type''s structure'
   records:
     seq:
       - id: record
-        size: _parent.len_records
+        size: 
         type:
           switch-on: _parent._parent.data_type
           cases:
@@ -2013,12 +2014,12 @@ types:
         doc: 'Indicates the sequence number of the index'
   daily_trend_reply_message:
     seq:
-      - id: len_daily_trend_data
+      - id: uncompressed_length
         type: s4
         doc: 'Length of the decompressed data, ahead of the gzip stream (5.6)'
       - id: daily_trend_data
         type: daily_trend_data
-        size: len_daily_trend_data
+        size-eos: true
         doc: 'The decompressed layout of 8.6'
   daily_trend_data:
     seq:
@@ -2050,12 +2051,12 @@ types:
         doc: 'Compressed Display and Depth Data'
   display_data:
     seq:
-      - id: len_display_records
+      - id: uncompressed_length
         type: s4
         doc: 'Length of the decompressed data, ahead of the gzip stream (5.6)'
       - id: display_records
         type: display_records
-        size: len_display_records
+        size-eos: true
         doc: 'Decompressed Display entries'
   display_records:
     seq:

@@ -22,8 +22,9 @@
 # The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
-#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US12101388B2/en
 #   https://patents.google.com/patent/US20240419416A1/en
+#   https://patents.google.com/patent/US20260368281A1/en
 #
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
@@ -54,8 +55,8 @@ types:
         type: u1
         doc: 'B3 Channel Id'
       - id: packet_reserved
-        type: u1
-        doc: 'Packet Reserved Field'
+        size: 1
+        doc: 'Reserved byte, carrying no meaning, between the channel id and the sequence version'
       - id: sequence_version
         type: u2
         doc: 'Packet Sequence Version'
@@ -2183,6 +2184,30 @@ enums:
     17:
       id: 'spot'
       doc: 'Spot Market.'
+  issue_date:
+    2932896:
+      id: 'no_end_date'
+      doc: '9999-12-31'
+  maturity_date:
+    2932896:
+      id: 'no_end_date'
+      doc: '9999-12-31'
+  start_date:
+    2932896:
+      id: 'no_end_date'
+      doc: '9999-12-31'
+  end_date:
+    2932896:
+      id: 'no_end_date'
+      doc: '9999-12-31'
+  settl_date:
+    2932896:
+      id: 'no_end_date'
+      doc: '9999-12-31'
+  dated_date:
+    2932896:
+      id: 'no_end_date'
+      doc: '9999-12-31'
   lot_type:
     1:
       id: 'odd_lot'
