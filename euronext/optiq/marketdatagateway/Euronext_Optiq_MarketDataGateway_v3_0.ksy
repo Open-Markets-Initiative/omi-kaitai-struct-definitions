@@ -144,7 +144,7 @@ types:
         type: u8
         doc: 'mDSeqNum'
       - id: session_trading_day
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'sessionTradingDay. Days since Unix epoch'
       - id: block_extension
         size: _parent.message_header.block_length - 10
@@ -155,7 +155,7 @@ types:
         type: u8
         doc: 'mDSeqNum'
       - id: session_trading_day
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'sessionTradingDay. Days since Unix epoch'
       - id: block_extension
         size: _parent.message_header.block_length - 10
@@ -807,7 +807,7 @@ types:
         encoding: ASCII
         doc: 'cFI'
       - id: instrument_event_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'instrumentEventDate. Days since Unix epoch'
       - id: strike_price
         type: s8_nullable
@@ -822,7 +822,7 @@ types:
         type: u4_nullable
         doc: 'darkMinQuantity. Nullable, No Value = 4294967295'
       - id: date_of_last_trade
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'dateOfLastTrade. Days since Unix epoch. Nullable, No Value = 65535'
       - id: depositary_list
         type: str_20_nullable
@@ -831,7 +831,7 @@ types:
         type: str_5_nullable
         doc: 'mainDepositary. Nullable, No Value = 0'
       - id: first_settlement_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'firstSettlementDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: guarantee_indicator
         type: u1_nullable
@@ -1217,7 +1217,7 @@ types:
         type: u2
         doc: 'partitionID'
       - id: contract_event_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'contractEventDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: exchange_code
         type: u1
@@ -1276,7 +1276,7 @@ types:
         type: str_12_nullable
         doc: 'underlyingISINCode. Nullable, No Value = 0'
       - id: underlying_expiry
-        type: epoch_date_nullable
+        type: epoch_date_u4_nullable
         doc: 'underlyingExpiry. Days since Unix epoch. Nullable, No Value = 4294967295'
       - id: order_type_rules
         type: order_type_rules
@@ -1597,7 +1597,7 @@ types:
         type: u4
         doc: 'contractSymbolIndex'
       - id: instrument_event_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'instrumentEventDate. Days since Unix epoch'
       - id: isin_code
         type: str
@@ -1617,7 +1617,7 @@ types:
         type: s8_nullable
         doc: 'strikePrice. Nullable, No Value = -9223372036854775808'
       - id: last_trading_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'lastTradingDate. Days since Unix epoch. Nullable, No Value = 65535'
       - id: days_to_expiry
         type: u2_nullable
@@ -2018,7 +2018,7 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2
@@ -2182,10 +2182,10 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
-  epoch_date_nullable:
+  epoch_date_u2_nullable:
     seq:
       - id: value
-        type: epoch_date
+        type: epoch_date_u2
     instances:
       is_null:
         value: value.days == 65535
@@ -2238,6 +2238,20 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  epoch_date_u4:
+    seq:
+      - id: days
+        type: u4
+    instances:
+      unix_seconds:
+        value: days * 86400
+  epoch_date_u4_nullable:
+    seq:
+      - id: value
+        type: epoch_date_u4
+    instances:
+      is_null:
+        value: value.days == 4294967295
   str_1_nullable:
     seq:
       - id: value

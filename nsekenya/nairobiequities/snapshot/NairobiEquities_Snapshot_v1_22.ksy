@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nairobi NairobiEquities RealTime Mitch v1.22
+# Kaitai struct definition for: NseKenya NairobiEquities Snapshot Mitch v1.22
 #
 # Protocol:
 #   Organization: Nairobi Securities Exchange
-#   Protocol: Nairobi Equities Real Time
+#   Protocol: Nairobi Equities Snapshot
 #   Encoding: Millennium Itch
 #   Version: 1.22
 #   Date: 11/24/2020
@@ -30,33 +30,39 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nairobi_nairobiequities_realtime_mitch_v1_22
-  title: Nairobi NairobiEquities RealTime Mitch v1.22
+  id: nsekenya_nairobiequities_snapshot_mitch_v1_22
+  title: NseKenya NairobiEquities Snapshot Mitch v1.22
   license: MIT-0
   endian: le
 
-doc: 'Nairobi Securities Exchange Nairobi Securities Exchange Equities Nairobi Equities Real Time Mitch v1.22'
+doc: 'Nairobi Securities Exchange Nairobi Securities Exchange Equities Nairobi Equities Snapshot Mitch v1.22'
 doc-ref: https://www.nse.co.ke/dataservices/api-specification-documents/
 
 seq:
-  - id: unit_header
-    type: unit_header_struct
-    doc: 'Nairobi Mitch Udp Unit Header'
-  - id: message
-    type: message_struct
-    repeat: expr
-    repeat-expr: unit_header.message_count
-    doc: 'Nairobi Mitch Udp Message'
+  - id: tcp_unit
+    type: tcp_unit_struct
+    repeat: eos
+    doc: 'One unit on the tcp stream: the unit header and its payload messages'
 
 types:
-  unit_header_struct:
+  tcp_unit_struct:
+    seq:
+      - id: unit_header
+        type: unit_header
+        doc: 'Nairobi Mitch Unit Header, defining the length of a unit, its message count, market data group and first sequence number'
+      - id: message
+        type: message
+        repeat: expr
+        repeat-expr: unit_header.message_count
+        doc: 'One Mitch message: its message header and payload'
+  unit_header:
     seq:
       - id: length
         type: u2
         doc: 'Length of the message block including the header and all payload messages'
       - id: message_count
         type: u1
-        doc: 'Number of payload messages that follow the header. Zero marks a heartbeat'
+        doc: 'Number of payload messages that will follow the header'
       - id: market_data_group
         type: str
         size: 1
@@ -64,17 +70,22 @@ types:
         doc: 'Identity of the market data group the payload messages relate to'
       - id: sequence_number
         type: u4
-        doc: 'Sequence number of the first payload message; zero in a unit header carrying unsequenced messages, other than a heartbeat'
-  message_struct:
+        doc: 'Sequence number from which client can build the order book'
+  message:
     seq:
       - id: message_header
         type: message_header
-        doc: 'Nairobi Mitch Udp Message Header'
+        doc: 'Nairobi Mitch Tcp Message Header'
       - id: payload
         size: message_header.message_length - 3
         type:
           switch-on: message_header.message_type
           cases:
+            'message_type::login_request_message': login_request_message
+            'message_type::login_response_message': login_response_message
+            'message_type::snapshot_request_message': snapshot_request_message
+            'message_type::snapshot_response_message': snapshot_response_message
+            'message_type::snapshot_complete_message': snapshot_complete_message
             'message_type::time_message': time_message
             'message_type::system_event_message': system_event_message
             'message_type::symbol_directory_message': symbol_directory_message
@@ -111,6 +122,136 @@ types:
         type: u1
         enum: message_type
         doc: 'Code identifying this message type'
+  login_request_message:
+    seq:
+      - id: username
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'CompID assigned to the client'
+      - id: password
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Password assigned to the CompID'
+  login_response_message:
+    seq:
+      - id: login_status
+        type: u1
+        enum: login_status
+        doc: 'Status of the login request. The document names this field Status'
+  snapshot_request_message:
+    seq:
+      - id: sequence_number
+        type: u4
+        doc: 'Sequence number from which client can build the order book'
+      - id: segment
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Segment the instrument is assigned to'
+      - id: symbol
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Instrument''s symbol'
+      - id: sub_book_flags
+        type: sub_book_flags
+        doc: 'Order books a message relates to, one bit per book. The document labels this field Sub Book, the label it also gives the single valued order book code of the trade and statistics messages; the two are different encodings'
+      - id: snapshot_type
+        type: u1
+        enum: snapshot_type
+        doc: 'Type of snapshot being requested'
+      - id: recover_from_time
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'Sending time of the last processed trade with regards to Trades (3), or of the last received announcement with regards to News (5), in local time for the server (i.e. not UTC). Ignored if the Snapshot Type is not Trades (3) or News (5)'
+      - id: request_id
+        type: u4
+        doc: 'Optional identifier of the request'
+  sub_book_flags:
+    meta:
+      bit-endian: le
+    seq:
+      - id: regular
+        type: b1
+        doc: 'Regular order book'
+      - id: off_book
+        type: b1
+        doc: 'Off-Book order book'
+      - id: block_trade
+        type: b1
+        doc: 'Block Trade order book'
+      - id: odd_lot
+        type: b1
+        doc: 'Odd Lot order book'
+      - id: early_settlement
+        type: b1
+        doc: 'Early Settlement order book'
+      - id: bulletin_board
+        type: b1
+        doc: 'Bulletin Board order book'
+      - id: auction
+        type: b1
+        doc: 'Auction order book'
+      - id: all_or_none
+        type: b1
+        doc: 'All or None order book'
+  snapshot_response_message:
+    seq:
+      - id: sequence_number
+        type: u4
+        doc: 'Sequence number from which client can build the order book'
+      - id: order_count
+        type: u4
+        doc: 'Number of orders that will be transmitted in the snapshot. This will be zero if Order Book is empty or Status is not "A". Ignore if Snapshot Type is not Order Book (0)'
+      - id: snapshot_status
+        type: u1
+        enum: snapshot_status
+        doc: 'Status of the snapshot request. The document names this field Status'
+      - id: snapshot_type
+        type: u1
+        enum: snapshot_type
+        doc: 'Type of snapshot being requested'
+      - id: request_id
+        type: u4
+        doc: 'Optional identifier of the request'
+  snapshot_complete_message:
+    seq:
+      - id: sequence_number
+        type: u4
+        doc: 'Sequence number from which client can build the order book'
+      - id: segment
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Segment the instrument is assigned to'
+      - id: symbol
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Instrument''s symbol'
+      - id: sub_book_flags
+        type: sub_book_flags
+        doc: 'Order books a message relates to, one bit per book. The document labels this field Sub Book, the label it also gives the single valued order book code of the trade and statistics messages; the two are different encodings'
+      - id: trading_status
+        type: u1
+        enum: trading_status
+        doc: 'Trading session that applies to the instrument'
+      - id: snapshot_type
+        type: u1
+        enum: snapshot_type
+        doc: 'Type of snapshot being requested'
+      - id: request_id
+        type: u4
+        doc: 'Optional identifier of the request'
   time_message:
     seq:
       - id: seconds
@@ -205,34 +346,6 @@ types:
       - id: reserved_17
         type: b7
         doc: 'Not defined'
-  sub_book_flags:
-    meta:
-      bit-endian: le
-    seq:
-      - id: regular
-        type: b1
-        doc: 'Regular order book'
-      - id: off_book
-        type: b1
-        doc: 'Off-Book order book'
-      - id: block_trade
-        type: b1
-        doc: 'Block Trade order book'
-      - id: odd_lot
-        type: b1
-        doc: 'Odd Lot order book'
-      - id: early_settlement
-        type: b1
-        doc: 'Early Settlement order book'
-      - id: bulletin_board
-        type: b1
-        doc: 'Bulletin Board order book'
-      - id: auction
-        type: b1
-        doc: 'Auction order book'
-      - id: all_or_none
-        type: b1
-        doc: 'All or None order book'
   symbol_status_message:
     seq:
       - id: nanosecond
@@ -1184,6 +1297,24 @@ types:
 
 enums:
   message_type:
+    0x01:
+      id: 'login_request_message'
+      doc: 'Used by the client to login to the Replay or Snapshot channel.'
+    0x02:
+      id: 'login_response_message'
+      doc: 'Used by the server to accept or reject a login request to the Replay or Snapshot channel.'
+    0x81:
+      id: 'snapshot_request_message'
+      doc: 'Used by the client to request for a snapshot of the current order book on the Snapshot channel.'
+    0x82:
+      id: 'snapshot_response_message'
+      doc: 'Used by the server to respond to a snapshot request on the Snapshot channel.'
+    0x83:
+      id: 'snapshot_complete_message'
+      doc: 'Used by the server to indicate that the transmission of an order book snapshot is complete.'
+    0x05:
+      id: 'logout_request_message'
+      doc: 'Used by the client to logout of the Replay or Snapshot channel.'
     0x54:
       id: 'time_message'
       doc: 'Sent by the server for every second for which at least one application message is generated; its time is the reference for the nanosecond offsets of every other application message.'
@@ -1265,36 +1396,72 @@ enums:
     0x71:
       id: 'top_of_book_message'
       doc: 'Communicates the best price and cumulative visible size of a side of an order book.'
-  event_code:
-    0x43:
-      id: 'end_of_day'
-      doc: 'End Of Day'
-    0x4f:
-      id: 'start_of_day'
-      doc: 'Start Of Day'
-  symbol_status:
-    0x48:
-      id: 'halted'
-      doc: 'Halted'
-    0x53:
-      id: 'suspended'
-      doc: 'Suspended'
+  login_status:
+    0x41:
+      id: 'login_accepted'
+      doc: 'Login Accepted'
     0x61:
-      id: 'inactive'
-      doc: 'Inactive'
-    0x20:
-      id: 'active'
-      doc: 'Active'
-  option_type:
-    0x43:
-      id: 'call_option'
-      doc: 'Call Option'
-    0x50:
-      id: 'put_option'
-      doc: 'Put Option'
-    0x20:
-      id: 'not_an_option'
-      doc: 'Not An Option'
+      id: 'comp_id_inactive_locked'
+      doc: 'Comp Id Inactive Locked'
+    0x62:
+      id: 'login_limit_reached'
+      doc: 'Login Limit Reached'
+    0x63:
+      id: 'service_unavailable'
+      doc: 'Service Unavailable'
+    0x64:
+      id: 'concurrent_limit_reached'
+      doc: 'Concurrent Limit Reached'
+    0x65:
+      id: 'failed_other'
+      doc: 'Failed Other'
+  snapshot_type:
+    0:
+      id: 'order_book'
+      doc: 'Order Book'
+    1:
+      id: 'symbol_status'
+      doc: 'Symbol Status'
+    2:
+      id: 'instrument'
+      doc: 'Instrument'
+    3:
+      id: 'trades'
+      doc: 'Trades'
+    4:
+      id: 'book_level_statistics'
+      doc: 'Book Level Statistics'
+    5:
+      id: 'news'
+      doc: 'News'
+    8:
+      id: 'top_of_book'
+      doc: 'Top Of Book'
+  snapshot_status:
+    0x41:
+      id: 'request_accepted'
+      doc: 'Request Accepted'
+    0x4f:
+      id: 'out_of_range'
+      doc: 'Out Of Range'
+    0x55:
+      id: 'snapshot_unavailable'
+      doc: 'Snapshot Unavailable'
+    0x61:
+      id: 'segment_symbol_or_sub_book_invalid_or_not_specified'
+      doc: 'Segment Symbol Or Sub Book Invalid Or Not Specified'
+    0x62:
+      id: 'request_limit_reached'
+      doc: 'Request Limit Reached'
+    0x63:
+      id: 'concurrent_limit_reached'
+      doc: 'Concurrent Limit Reached'
+    0x64:
+      id: 'unsupported_message_type'
+      doc: 'Unsupported Message Type'
+    0x65:
+      id: 'failed_other'
+      doc: 'Failed Other'
   trading_status:
     0x48:
       id: 'halt'
@@ -1362,6 +1529,36 @@ enums:
     0x30:
       id: 'auction_execution'
       doc: 'Auction Execution'
+  event_code:
+    0x43:
+      id: 'end_of_day'
+      doc: 'End Of Day'
+    0x4f:
+      id: 'start_of_day'
+      doc: 'Start Of Day'
+  symbol_status:
+    0x48:
+      id: 'halted'
+      doc: 'Halted'
+    0x53:
+      id: 'suspended'
+      doc: 'Suspended'
+    0x61:
+      id: 'inactive'
+      doc: 'Inactive'
+    0x20:
+      id: 'active'
+      doc: 'Active'
+  option_type:
+    0x43:
+      id: 'call_option'
+      doc: 'Call Option'
+    0x50:
+      id: 'put_option'
+      doc: 'Put Option'
+    0x20:
+      id: 'not_an_option'
+      doc: 'Not An Option'
   session_change_reason:
     0:
       id: 'scheduled_transition'

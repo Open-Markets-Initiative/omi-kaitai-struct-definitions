@@ -218,7 +218,7 @@ types:
         type: u1_nullable
         doc: 'securityTradingEvent. Nullable, No Value = 255'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: offset_14_padding_2
         size: 2
@@ -260,7 +260,7 @@ types:
         type: u1_nullable
         doc: 'securityTradingEvent. Nullable, No Value = 255'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: offset_14_padding_2
         size: 2
@@ -349,28 +349,28 @@ types:
         type: u4_nullable
         doc: 'corporateActionEventId. Nullable, No Value = 0'
       - id: issue_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'issueDate. Days since Unix epoch'
       - id: maturity_date
-        type: epoch_date_nullable
+        type: epoch_date_s4_nullable
         doc: 'maturityDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: country_of_issue
         type: str_2_nullable
         doc: 'countryOfIssue. Nullable, No Value = 0'
       - id: start_date
-        type: epoch_date_nullable
+        type: epoch_date_s4_nullable
         doc: 'startDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: end_date
-        type: epoch_date_nullable
+        type: epoch_date_s4_nullable
         doc: 'endDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: settl_type
         type: u2_nullable
         doc: 'settlType. Nullable, No Value = 65535'
       - id: settl_date
-        type: epoch_date_nullable
+        type: epoch_date_s4_nullable
         doc: 'settlDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: dated_date
-        type: epoch_date_nullable
+        type: epoch_date_s4_nullable
         doc: 'datedDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: isin_number
         type: str_12_nullable
@@ -668,28 +668,28 @@ types:
         type: u4_nullable
         doc: 'corporateActionEventId. Nullable, No Value = 0'
       - id: issue_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'issueDate. Days since Unix epoch'
       - id: maturity_date
-        type: epoch_date_nullable
+        type: epoch_date_s4_nullable
         doc: 'maturityDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: country_of_issue
         type: str_2_nullable
         doc: 'countryOfIssue. Nullable, No Value = 0'
       - id: start_date
-        type: epoch_date_nullable
+        type: epoch_date_s4_nullable
         doc: 'startDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: end_date
-        type: epoch_date_nullable
+        type: epoch_date_s4_nullable
         doc: 'endDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: settl_type
         type: u2_nullable
         doc: 'settlType. Nullable, No Value = 65535'
       - id: settl_date
-        type: epoch_date_nullable
+        type: epoch_date_s4_nullable
         doc: 'settlDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: dated_date
-        type: epoch_date_nullable
+        type: epoch_date_s4_nullable
         doc: 'datedDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: isin_number
         type: str_12_nullable
@@ -960,7 +960,7 @@ types:
         type: decimal_s8_8_nullable
         doc: 'netChgPrevDay. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: md_entry_timestamp
         type: nanosecond_timestamp_nullable
@@ -987,7 +987,7 @@ types:
         enum: md_update_action
         doc: 'mDUpdateAction'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: md_corporate_offset_price_optional
         type: decimal_s8_4_nullable
@@ -1023,10 +1023,10 @@ types:
         type: decimal_s8_8
         doc: 'mDEntryPx. Implied decimal with scale 1e-8'
       - id: last_trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'lastTradeDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: md_entry_timestamp
         type: nanosecond_timestamp_nullable
@@ -1189,7 +1189,7 @@ types:
         enum: md_update_action
         doc: 'mDUpdateAction'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: md_future_price
         type: decimal_s8_4
@@ -1216,7 +1216,7 @@ types:
         enum: md_update_action
         doc: 'mDUpdateAction'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: md_future_price
         type: decimal_s8_4
@@ -1261,7 +1261,7 @@ types:
         type: u4_nullable
         doc: 'mDEntrySeller. Nullable, No Value = 0'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: md_entry_timestamp
         type: nanosecond_timestamp_nullable
@@ -1330,7 +1330,7 @@ types:
         size: 1
         doc: '1 bytes padding'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: md_future_price
         type: decimal_s8_4
@@ -1371,7 +1371,7 @@ types:
         size: 1
         doc: '1 bytes padding'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: md_entry_size
         type: s8
@@ -1558,7 +1558,7 @@ types:
         type: u4_nullable
         doc: 'mDEntrySeller. Nullable, No Value = 0'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: trd_sub_type
         type: u1_nullable
@@ -1606,7 +1606,7 @@ types:
         type: u4_nullable
         doc: 'mDEntrySeller. Nullable, No Value = 0'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: md_entry_timestamp
         type: nanosecond_timestamp_nullable
@@ -1681,7 +1681,7 @@ types:
         enum: trading_session_id
         doc: 'tradingSessionID'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: trade_volume
         type: s8
@@ -1729,7 +1729,7 @@ types:
         type: u4
         doc: 'tradeID'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'tradeDate. Days since Unix epoch'
       - id: offset_34_padding_2
         size: 2
@@ -1818,7 +1818,7 @@ types:
     instances:
       is_null:
         value: value == 255
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2
@@ -1874,10 +1874,17 @@ types:
     instances:
       is_null:
         value: value == 0
-  epoch_date_nullable:
+  epoch_date_s4:
+    seq:
+      - id: days
+        type: s4
+    instances:
+      unix_seconds:
+        value: days * 86400
+  epoch_date_s4_nullable:
     seq:
       - id: value
-        type: epoch_date
+        type: epoch_date_s4
     instances:
       is_null:
         value: value.days == 0
@@ -1943,6 +1950,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  epoch_date_u2_nullable:
+    seq:
+      - id: value
+        type: epoch_date_u2
+    instances:
+      is_null:
+        value: value.days == 0
 
 enums:
   template_id:

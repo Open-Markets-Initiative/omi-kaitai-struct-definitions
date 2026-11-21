@@ -302,7 +302,7 @@ types:
         type: u4_nullable
         doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_type
         type: u1
@@ -405,7 +405,7 @@ types:
         type: u4_nullable
         doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_type
         type: u1
@@ -1232,10 +1232,10 @@ types:
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: start_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral. Days since Unix epoch. Nullable, No Value = 65535'
       - id: end_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral. Days since Unix epoch. Nullable, No Value = 65535'
       - id: max_no_of_substitutions
         type: u1_nullable
@@ -1339,17 +1339,17 @@ types:
     instances:
       is_null:
         value: value == 4294967295
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2
     instances:
       unix_seconds:
         value: days * 86400
-  epoch_date_nullable:
+  epoch_date_u2_nullable:
     seq:
       - id: value
-        type: epoch_date
+        type: epoch_date_u2
     instances:
       is_null:
         value: value.days == 65535

@@ -27,10 +27,10 @@ jobs:
         run: python3 -m compileall -q generated/python
 
       - name: Build CSharp Parsers
-        run: dotnet new classlib -n Omi.Kaitai.Parsers -o parsers && rm parsers/Class1.cs && dotnet add parsers package KaitaiStruct.Runtime.CSharp && cp generated/csharp/*.cs parsers/ && dotnet build parsers -p:Nullable=disable
+        run: dotnet new classlib -n Omi.Kaitai.Parsers -o parsers && rm parsers/Class1.cs && dotnet add parsers package KaitaiStruct.Runtime.CSharp && cp generated/csharp/*.cs parsers/ && dotnet build parsers -p:Nullable=disable && dotnet build-server shutdown
 
       - name: Build Java Parsers
-        run: curl -sSL --fail --retry 5 --retry-delay 5 --retry-all-errors https://repo1.maven.org/maven2/io/kaitai/kaitai-struct-runtime/0.11/kaitai-struct-runtime-0.11.jar -o "$RUNNER_TEMP/kaitai-runtime.jar" && find generated/java -name '*.java' | xargs javac -cp "$RUNNER_TEMP/kaitai-runtime.jar" -d "$RUNNER_TEMP/java-out"
+        run: curl -sSL --fail --retry 5 --retry-delay 5 --retry-all-errors https://repo1.maven.org/maven2/io/kaitai/kaitai-struct-runtime/0.11/kaitai-struct-runtime-0.11.jar -o "$RUNNER_TEMP/kaitai-runtime.jar" && find generated/java -name '*.java' | xargs -n 300 javac -J-Xmx3g -cp "$RUNNER_TEMP/kaitai-runtime.jar" -d "$RUNNER_TEMP/java-out"
 
       - name: Build C++ Parsers
         run: git clone --depth=1 https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime.git "$RUNNER_TEMP/kaitai-cpp" && find generated/cpp_stl -name '*.cpp' | xargs g++ -std=c++11 -fsyntax-only -I "$RUNNER_TEMP/kaitai-cpp" -I generated/cpp_stl

@@ -353,7 +353,7 @@ types:
         type: u4
         doc: 'Minimum fill quantity'
       - id: order_expiry_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'GTD Order Expiry date, set to zero for all other tifs. Days since Unix epoch. Nullable, Not Applicable = 0'
       - id: trading_collar_dollar_value
         type: decimal_s8_9
@@ -465,7 +465,7 @@ types:
         type: u4
         doc: 'Number of contracts to buy/sell'
       - id: order_expiry_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'GTD Order Expiry date, set to zero for all other tifs. Days since Unix epoch. Nullable, Not Applicable = 0'
       - id: self_trade_protection_group
         type: str
@@ -596,7 +596,7 @@ types:
         type: u8
         doc: 'Exchange assigned unique Execution ID. See notes below for details'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Business Trade Date. Days since Unix epoch'
       - id: correction_number
         type: u1
@@ -654,7 +654,7 @@ types:
         type: u8
         doc: 'Exchange assigned unique Complex Trade ID'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Business Trade Date. Days since Unix epoch'
       - id: last_net_price
         type: decimal_s8_9
@@ -769,7 +769,7 @@ types:
         type: u4
         doc: 'Minimum fill quantity'
       - id: order_expiry_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'GTD Order Expiry date, set to zero for all other tifs. Days since Unix epoch. Nullable, Not Applicable = 0'
       - id: trading_collar_dollar_value
         type: decimal_s8_9
@@ -830,7 +830,7 @@ types:
         type: u4
         doc: 'Number of contracts to buy/sell'
       - id: order_expiry_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'GTD Order Expiry date, set to zero for all other tifs. Days since Unix epoch. Nullable, Not Applicable = 0'
       - id: self_trade_protection_group
         type: str
@@ -1089,17 +1089,17 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2
     instances:
       unix_seconds:
         value: days * 86400
-  epoch_date_nullable:
+  epoch_date_u2_nullable:
     seq:
       - id: value
-        type: epoch_date
+        type: epoch_date_u2
     instances:
       is_null:
         value: value.days == 0

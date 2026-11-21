@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nairobi NairobiDerivatives MarketData Mits v2.14
+# Kaitai struct definition for: NseKenya NairobiDerivatives MarketData Mits v2.14
 #
 # Protocol:
 #   Organization: Nairobi Securities Exchange
@@ -30,8 +30,8 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nairobi_nairobiderivatives_marketdata_mits_v2_14_server
-  title: Nairobi NairobiDerivatives MarketData Mits v2.14
+  id: nsekenya_nairobiderivatives_marketdata_mits_v2_14_server
+  title: NseKenya NairobiDerivatives MarketData Mits v2.14
   license: MIT-0
   endian: le
 

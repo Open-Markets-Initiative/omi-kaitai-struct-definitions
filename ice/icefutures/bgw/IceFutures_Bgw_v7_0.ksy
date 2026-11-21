@@ -319,7 +319,7 @@ types:
         type: s4
         doc: 'underlyingStrategySymbol'
       - id: maturity_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'maturityDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: security_trading_status
         type: u1
@@ -713,19 +713,19 @@ types:
         type: s2_nullable
         doc: 'securitySubType. Nullable, No Value = -32768'
       - id: maturity_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'maturityDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: screen_last_trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'screenLastTradeDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: contract_multiplier
         type: s4
         doc: 'contractMultiplier'
       - id: start_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'startDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: end_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'endDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: put_or_call
         type: u1_nullable
@@ -1331,7 +1331,7 @@ types:
         type: s8_nullable
         doc: 'selfMatchPreventionID. Nullable, No Value = -9223372036854775808'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: self_match_prevention_instruction
         type: u1
@@ -1463,7 +1463,7 @@ types:
         type: s8_nullable
         doc: 'selfMatchPreventionID. Nullable, No Value = -9223372036854775808'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: self_match_prevention_instruction
         type: u1
@@ -1997,10 +1997,10 @@ types:
         type: s4_nullable
         doc: 'productID. Nullable, No Value = -2147483648'
       - id: start_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'startDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: end_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'endDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: security_type
         type: u1
@@ -2067,7 +2067,7 @@ types:
         enum: security_type
         doc: 'securityType'
       - id: maturity_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'maturityDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: product_i_d_optional
         type: s4_nullable
@@ -2370,7 +2370,7 @@ types:
         type: s8_nullable
         doc: 'stopPx. Nullable, No Value = -9223372036854775808'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'expireDate. Days since Unix epoch. Nullable, No Value = 0'
       - id: time_priority
         type: nanosecond_timestamp
@@ -2851,17 +2851,17 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2
     instances:
       unix_seconds:
         value: days * 86400
-  epoch_date_nullable:
+  epoch_date_u2_nullable:
     seq:
       - id: value
-        type: epoch_date
+        type: epoch_date_u2
     instances:
       is_null:
         value: value.days == 0

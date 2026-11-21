@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nairobi NairobiBonds MarketData Mits v2.14
+# Kaitai struct definition for: NseKenya NairobiDerivatives MarketData Mits v2.14
 #
 # Protocol:
 #   Organization: Nairobi Securities Exchange
-#   Protocol: Nairobi Bonds Market Data
+#   Protocol: Nairobi Derivatives Market Data
 #   Encoding: MITS Exchange System
 #   Version: 2.14
 #   Date: 08/21/2019
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nairobi_nairobibonds_marketdata_mits_v2_14_client
-  title: Nairobi NairobiBonds MarketData Mits v2.14
+  id: nsekenya_nairobiderivatives_marketdata_mits_v2_14_client
+  title: NseKenya NairobiDerivatives MarketData Mits v2.14
   license: MIT-0
   endian: le
 
-doc: 'Nairobi Securities Exchange Nairobi Securities Exchange Bonds Nairobi Bonds Market Data Mits v2.14'
+doc: 'Nairobi Securities Exchange Nairobi Securities Exchange Derivatives Nairobi Derivatives Market Data Mits v2.14'
 doc-ref: https://www.nse.co.ke/dataservices/api-specification-documents/
 
 seq:

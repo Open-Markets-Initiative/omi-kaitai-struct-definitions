@@ -7,7 +7,7 @@
 #   Encoding: Ascii Pitch
 #   Version: 1.15.13
 #   Date: 04/21/2025
-#   Specification: http://markets.cboe.com/us/equities/support/technical
+#   Specification: Cboe Titanium U.S. Equities TCP Depth of Book (PITCH) Specification (1.15.14 2026-03-23).pdf
 #
 # Script:
 #   Generator: 1.0.0.0

@@ -231,7 +231,7 @@ types:
         type: s4_nullable
         doc: 'If this tag is present, 35=f message is sent for the instrument. Nullable, No Value = 2147483647'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: match_event_indicator
         type: match_event_indicator
@@ -653,7 +653,7 @@ types:
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: settl_price_type
         type: settl_price_type
@@ -820,7 +820,7 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC Date and time of last Security Definition add, update or delete on a given Market Data channel. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: md_security_trading_status
         type: u1_nullable
@@ -865,7 +865,7 @@ types:
         type: s1_nullable
         doc: 'Aggregate book position. Nullable, No Value = 127'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: open_close_settl_flag
         type: u1_nullable
@@ -1069,7 +1069,7 @@ types:
         type: s4_nullable
         doc: 'Indicates the quantity that a contract will decay daily by once the decay start date is reached. Nullable, No Value = 2147483647'
       - id: decay_start_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates the date at which a decaying contract will begin to decay. Days since Unix epoch. Nullable, No Value = 65535'
       - id: original_contract_size
         type: s4_nullable
@@ -1092,7 +1092,7 @@ types:
         encoding: ASCII
         doc: 'User-defined instruments flag'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: instrument_guid
         type: u8_nullable
@@ -1453,7 +1453,7 @@ types:
         encoding: ASCII
         doc: 'User-defined instruments flag'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: instrument_guid
         type: u8_nullable
@@ -1662,7 +1662,7 @@ types:
         type: u1_nullable
         doc: 'Price Denominator of Sub Fraction. Nullable, No Value = 255'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: price_quote_method
         type: str
@@ -1844,7 +1844,7 @@ types:
         type: decimal_s8_9_nullable
         doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: high_limit_price
         type: decimal_s8_9_nullable
@@ -1859,13 +1859,13 @@ types:
         type: decimal_s8_9_nullable
         doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: issue_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Issue Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: dated_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Dated Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: maturity_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Maturity Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: coupon_rate
         type: decimal_s8_9_nullable
@@ -2051,7 +2051,7 @@ types:
         type: decimal_s8_9_nullable
         doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: high_limit_price
         type: decimal_s8_9_nullable
@@ -2073,10 +2073,10 @@ types:
         encoding: ASCII
         doc: 'Clearing organization'
       - id: start_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral. Days since Unix epoch. Nullable, No Value = 65535'
       - id: end_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral. Days since Unix epoch. Nullable, No Value = 65535'
       - id: termination_type
         type: str
@@ -2206,7 +2206,7 @@ types:
         type: u8_nullable
         doc: 'Underlying GUID. For Repo specials populated with individual instrument GUID of the underlying security. Nullable, No Value = 18446744073709551615'
       - id: underlying_maturity_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Underlying Security''s Maturity Date. Will be populated with Maturity Date of the underlying security instrument for Repo Specials only. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.group_size.block_length - 118
@@ -2256,10 +2256,10 @@ types:
         type: s4
         doc: 'Broken date Instrument Globex Security ID'
       - id: broken_date_start
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Start date of a broken date period. Days since Unix epoch. Nullable, No Value = 65535'
       - id: broken_date_end
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'End date of a broken date period. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.group_size.block_length - 16
@@ -2327,7 +2327,7 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: trade_link_id
         type: u4
@@ -2436,7 +2436,7 @@ types:
         enum: md_entry_type
         doc: 'Market Data entry type'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: settl_price_type
         type: settl_price_type
@@ -2735,13 +2735,13 @@ types:
   trading_sessions_group:
     seq:
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: settl_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Settle (Value) Date corresponding to Trade Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: maturity_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Maturity Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: security_alt_id
         type: str
@@ -3123,7 +3123,7 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC Date and time of last Security Definition add, update or delete on a given Market Data channel. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: md_security_trading_status
         type: u1_nullable
@@ -3337,17 +3337,17 @@ types:
     instances:
       is_null:
         value: value == 2147483647
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2
     instances:
       unix_seconds:
         value: days * 86400
-  epoch_date_nullable:
+  epoch_date_u2_nullable:
     seq:
       - id: value
-        type: epoch_date
+        type: epoch_date_u2
     instances:
       is_null:
         value: value.days == 65535

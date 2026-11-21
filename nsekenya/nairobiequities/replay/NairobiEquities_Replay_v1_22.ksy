@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nairobi NairobiEquities Replay Mitch v1.22
+# Kaitai struct definition for: NseKenya NairobiEquities Replay Mitch v1.22
 #
 # Protocol:
 #   Organization: Nairobi Securities Exchange
@@ -30,8 +30,8 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nairobi_nairobiequities_replay_mitch_v1_22
-  title: Nairobi NairobiEquities Replay Mitch v1.22
+  id: nsekenya_nairobiequities_replay_mitch_v1_22
+  title: NseKenya NairobiEquities Replay Mitch v1.22
   license: MIT-0
   endian: le
 

@@ -138,7 +138,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -190,7 +190,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -287,7 +287,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -370,7 +370,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -449,7 +449,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -527,7 +527,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -577,7 +577,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -678,7 +678,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -757,7 +757,7 @@ types:
         type: decimal_s8_7_nullable
         doc: 'Last index value. Implied decimal with scale 1e-7. Nullable, No Value = -9223372036854775808'
       - id: session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Index session date. Days since Unix epoch'
       - id: open_price
         type: decimal_s8_7_nullable
@@ -786,7 +786,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -819,16 +819,16 @@ types:
         enum: instrument_type
         doc: 'Instrument type'
       - id: maturity_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument maturity date. For multi-leg instruments is usually defined as the nearest maturity date from all legs. Days since Unix epoch'
       - id: first_trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument first trading business day. Days since Unix epoch'
       - id: last_trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument last trading business day. Days since Unix epoch'
       - id: expiration_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Day of instrument final expiration settlement price calculation. For multi-leg instruments is usually defined as the nearest expiration date from all legs. Days since Unix epoch'
       - id: cfi_code
         type: str
@@ -891,7 +891,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -919,16 +919,16 @@ types:
         enum: instrument_type
         doc: 'Instrument type'
       - id: maturity_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument maturity date. For multi-leg instruments is usually defined as the nearest maturity date from all legs. Days since Unix epoch'
       - id: first_trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument first trading business day. Days since Unix epoch'
       - id: last_trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument last trading business day. Days since Unix epoch'
       - id: expiration_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Day of instrument final expiration settlement price calculation. For multi-leg instruments is usually defined as the nearest expiration date from all legs. Days since Unix epoch'
       - id: cfi_code
         type: str
@@ -1003,7 +1003,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -1038,16 +1038,16 @@ types:
         enum: instrument_type
         doc: 'Instrument type'
       - id: maturity_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument maturity date. For multi-leg instruments is usually defined as the nearest maturity date from all legs. Days since Unix epoch'
       - id: first_trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument first trading business day. Days since Unix epoch'
       - id: last_trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument last trading business day. Days since Unix epoch'
       - id: expiration_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Day of instrument final expiration settlement price calculation. For multi-leg instruments is usually defined as the nearest expiration date from all legs. Days since Unix epoch'
       - id: cfi_code
         type: str
@@ -1110,7 +1110,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Message event timestamp; in snapshot messages, the last instrument incremental message event timestamp; in the Index Snapshot Message, the index value calculation time. Nanoseconds since Unix epoch'
       - id: trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trading session business date. Days since Unix epoch'
       - id: instrument_trading_status
         type: u1
@@ -1140,16 +1140,16 @@ types:
         enum: instrument_type
         doc: 'Instrument type'
       - id: maturity_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument maturity date. For multi-leg instruments is usually defined as the nearest maturity date from all legs. Days since Unix epoch'
       - id: first_trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument first trading business day. Days since Unix epoch'
       - id: last_trading_session_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Instrument last trading business day. Days since Unix epoch'
       - id: expiration_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Day of instrument final expiration settlement price calculation. For multi-leg instruments is usually defined as the nearest expiration date from all legs. Days since Unix epoch'
       - id: cfi_code
         type: str
@@ -1197,7 +1197,7 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2

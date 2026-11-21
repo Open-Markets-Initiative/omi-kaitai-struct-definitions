@@ -355,7 +355,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
@@ -377,7 +377,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
@@ -391,7 +391,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
@@ -479,7 +479,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
@@ -512,7 +512,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
@@ -556,7 +556,7 @@ types:
     instances:
       is_null:
         value: value.mantissa == 999999999999999999
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2

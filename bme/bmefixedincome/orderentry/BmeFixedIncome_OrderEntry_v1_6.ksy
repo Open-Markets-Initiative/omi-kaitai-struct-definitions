@@ -126,7 +126,7 @@ types:
         encoding: ASCII
         doc: 'Environment code'
       - id: session_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Session Date. Days since Unix epoch'
       - id: expected_sequence_number
         type: u4
@@ -342,10 +342,10 @@ types:
         encoding: ASCII
         doc: 'Security type'
       - id: maturity_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
@@ -400,7 +400,7 @@ types:
         enum: security_status
         doc: 'Security Status'
       - id: coupon_payment_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Coupon Payment Date. Days since Unix epoch'
       - id: min_price_increment
         type: decimal_s8_6
@@ -421,7 +421,7 @@ types:
         type: u1
         doc: 'Trading Scope'
       - id: first_trading_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'First Trading Date. Days since Unix epoch'
       - id: settlement_system
         type: u1
@@ -457,7 +457,7 @@ types:
         enum: accrued_interest_calculation_procedure
         doc: 'Accrued Interest Calculation Procedure'
       - id: next_redemption_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Next Redemption Date. Days since Unix epoch'
       - id: type_of_redemption
         type: str
@@ -472,7 +472,7 @@ types:
         enum: calculation_method
         doc: 'Calculation Method'
       - id: date_last_coupon_was_paid
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date Last Coupon Was Paid. Days since Unix epoch'
       - id: bond_seniority
         type: str
@@ -480,10 +480,10 @@ types:
         encoding: ASCII
         doc: 'Bond Seniority'
       - id: interest_accrual_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Start date for the coupon yield. Days since Unix epoch'
       - id: start_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Value date. Days since Unix epoch'
       - id: price_type
         type: u1
@@ -562,10 +562,10 @@ types:
         encoding: ASCII
         doc: 'Security type'
       - id: maturity_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
@@ -620,7 +620,7 @@ types:
         enum: security_status
         doc: 'Security Status'
       - id: coupon_payment_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Coupon Payment Date. Days since Unix epoch'
       - id: min_price_increment
         type: decimal_s8_6
@@ -641,7 +641,7 @@ types:
         type: u1
         doc: 'Trading Scope'
       - id: first_trading_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'First Trading Date. Days since Unix epoch'
       - id: settlement_system
         type: u1
@@ -677,7 +677,7 @@ types:
         enum: accrued_interest_calculation_procedure
         doc: 'Accrued Interest Calculation Procedure'
       - id: next_redemption_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Next Redemption Date. Days since Unix epoch'
       - id: type_of_redemption
         type: str
@@ -692,7 +692,7 @@ types:
         enum: calculation_method
         doc: 'Calculation Method'
       - id: date_last_coupon_was_paid
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date Last Coupon Was Paid. Days since Unix epoch'
       - id: bond_seniority
         type: str
@@ -700,10 +700,10 @@ types:
         encoding: ASCII
         doc: 'Bond Seniority'
       - id: interest_accrual_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Start date for the coupon yield. Days since Unix epoch'
       - id: start_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Value date. Days since Unix epoch'
       - id: price_type
         type: u1
@@ -781,7 +781,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
   quote_cancellation_market_member_message:
     seq:
@@ -1257,7 +1257,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: side
         type: u1
@@ -1534,7 +1534,7 @@ types:
         type: decimal_s8_6
         doc: 'Interest rate of coupon. Implied decimal with scale 1e-6'
       - id: settl_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
@@ -1544,7 +1544,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority
         type: u4
@@ -1589,7 +1589,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date_2
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority_2
         type: u4
@@ -1687,7 +1687,7 @@ types:
         type: decimal_s8_6
         doc: 'Interest rate of coupon. Implied decimal with scale 1e-6'
       - id: settl_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
@@ -1723,10 +1723,10 @@ types:
         type: nanosecond_timestamp
         doc: 'Trade date and time. Nanoseconds since Unix epoch'
       - id: trade_session_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Trade Session Date. Days since Unix epoch'
       - id: settl_date_2
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date of the second leg. Days since Unix epoch'
       - id: end_cash
         type: decimal_s8_4
@@ -1739,7 +1739,7 @@ types:
         type: u4
         doc: 'System Trade Number of the amended/cancelled trade'
       - id: amended_trade_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date of the amended/cancelled trade. Days since Unix epoch'
       - id: broker_trader
         type: str
@@ -1755,7 +1755,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority
         type: u4
@@ -1917,7 +1917,7 @@ types:
         type: decimal_s8_6
         doc: 'Interest rate of coupon. Implied decimal with scale 1e-6'
       - id: settl_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
@@ -1953,10 +1953,10 @@ types:
         type: nanosecond_timestamp
         doc: 'Trade date and time. Nanoseconds since Unix epoch'
       - id: trade_session_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Trade Session Date. Days since Unix epoch'
       - id: settl_date_2
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date of the second leg. Days since Unix epoch'
       - id: end_cash
         type: decimal_s8_4
@@ -1969,7 +1969,7 @@ types:
         type: u4
         doc: 'System Trade Number of the amended/cancelled trade'
       - id: amended_trade_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date of the amended/cancelled trade. Days since Unix epoch'
       - id: broker_trader
         type: str
@@ -1985,7 +1985,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority
         type: u4
@@ -2147,7 +2147,7 @@ types:
         type: decimal_s8_6
         doc: 'Interest rate of coupon. Implied decimal with scale 1e-6'
       - id: settl_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
@@ -2183,10 +2183,10 @@ types:
         type: nanosecond_timestamp
         doc: 'Trade date and time. Nanoseconds since Unix epoch'
       - id: trade_session_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Trade Session Date. Days since Unix epoch'
       - id: settl_date_2
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date of the second leg. Days since Unix epoch'
       - id: end_cash
         type: decimal_s8_4
@@ -2199,7 +2199,7 @@ types:
         type: u4
         doc: 'System Trade Number of the amended/cancelled trade'
       - id: amended_trade_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date of the amended/cancelled trade. Days since Unix epoch'
       - id: broker_trader
         type: str
@@ -2215,7 +2215,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority
         type: u4
@@ -2324,7 +2324,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date_2
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority_2
         type: u4
@@ -2488,7 +2488,7 @@ types:
         type: decimal_s8_6
         doc: 'Interest rate of coupon. Implied decimal with scale 1e-6'
       - id: settl_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
@@ -2498,7 +2498,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority
         type: u4
@@ -2596,7 +2596,7 @@ types:
         type: decimal_s8_6
         doc: 'Interest rate of coupon. Implied decimal with scale 1e-6'
       - id: settl_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
@@ -2606,7 +2606,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority
         type: u4
@@ -2647,7 +2647,7 @@ types:
       - id: client_data_id
         type: u2_nullable
         doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
-  epoch_date:
+  epoch_date_s4:
     seq:
       - id: days
         type: s4

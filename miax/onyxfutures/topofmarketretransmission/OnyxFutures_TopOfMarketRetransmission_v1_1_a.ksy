@@ -190,28 +190,28 @@ types:
         type: u4
         doc: 'The Contract Date will be assigned to each Simple Instrument'
       - id: maturity_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Maturity Date is the expiration date of a Simple Instrument. Days since Unix epoch'
       - id: valuation_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'The date that the Final Settlement Price will be calculated for purposes of Simple Instrument expiration. Days since Unix epoch'
       - id: first_trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'First Trade Date will be the Trading Date that the Simple Instrument is initially made available for Trading on MIAX Futures Onyx. Days since Unix epoch'
       - id: last_trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Last Trade Date will be the Maturity Date of the Simple Instrument. Days since Unix epoch'
       - id: first_notice_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Last business date of the month preceding the month of the Maturity Date of the Simple Instrument. Days since Unix epoch'
       - id: last_notice_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Last Notice Date will be the business day preceding the Last Delivery Date of the Simple Instrument. Days since Unix epoch'
       - id: first_delivery_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'First Delivery Date will be the first business day of the month of the Maturity Date of the Simple Instrument. Days since Unix epoch'
       - id: last_delivery_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Last Delivery Date will be the seventh business day following the Last Trading Date of the Simple Instrument. Days since Unix epoch'
       - id: option_strike_price
         type: decimal_s8_9_nullable
@@ -327,7 +327,7 @@ types:
         size: 4
         doc: 'Previously was Maturity Month-Year field; replaced by the Maturity Date field below. Currently reserved for future use'
       - id: maturity_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Maturity Date is the expiration date of a Simple Instrument. Days since Unix epoch'
       - id: reserved_6
         size: 6
@@ -389,7 +389,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Business Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
@@ -421,7 +421,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Matching Engine time. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: epoch_date
+        type: epoch_date_u2
         doc: 'Business Trade Date. Days since Unix epoch'
       - id: instrument_id
         type: u4
@@ -581,7 +581,7 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2

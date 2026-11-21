@@ -597,7 +597,7 @@ types:
         type: u4_nullable
         doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: delay_duration
         type: u2_nullable
@@ -744,7 +744,7 @@ types:
         type: u2
         doc: 'Code to identify reason for order rejection'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: delay_duration
         type: u2_nullable
@@ -870,7 +870,7 @@ types:
         type: u4_nullable
         doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_type_optional
         type: u1
@@ -1002,10 +1002,10 @@ types:
         type: u4
         doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates date of trading day (expressed in local time at place of trade). Days since Unix epoch. Nullable, No Value = 65535'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_status_trd
         type: u1
@@ -1066,10 +1066,10 @@ types:
         type: u1_nullable
         doc: 'Will be present when trade at fixing is assigned fixing price. Nullable, No Value = 255'
       - id: settl_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Specific date of trade settlement. Days since Unix epoch. Nullable, No Value = 65535'
       - id: maturity_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of maturity. Days since Unix epoch. Nullable, No Value = 65535'
       - id: calculated_ccy_last_qty
         type: calculated_ccy_last_qty
@@ -1286,10 +1286,10 @@ types:
         type: u4
         doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates date of trading day (expressed in local time at place of trade). Days since Unix epoch. Nullable, No Value = 65535'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_status_trd
         type: u1
@@ -1492,7 +1492,7 @@ types:
         type: u4
         doc: 'The unique ID assigned to the trade once it is received or matched by the exchange'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates date of trading day (expressed in local time at place of trade). Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_status_trd
         type: u1
@@ -1511,7 +1511,7 @@ types:
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: settl_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Specific date of trade settlement. Days since Unix epoch. Nullable, No Value = 65535'
       - id: calculated_ccy_last_qty
         type: calculated_ccy_last_qty
@@ -1681,7 +1681,7 @@ types:
         type: u4_nullable
         doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: delay_duration
         type: u2_nullable
@@ -1821,7 +1821,7 @@ types:
         type: u4_nullable
         doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_status
         type: u1
@@ -1945,7 +1945,7 @@ types:
         type: u4_nullable
         doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: delay_duration
         type: u2_nullable
@@ -2362,7 +2362,7 @@ types:
         type: u4_nullable
         doc: 'Refers back to the unique ID assigned to the corrected trade. Nullable, No Value = 4294967295'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates date of trading day (expressed in local time at place of trade). Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_status_trd_cxl
         type: u1
@@ -2410,10 +2410,10 @@ types:
         type: u1_nullable
         doc: 'Will be present when trade at fixing is assigned fixing price. Nullable, No Value = 255'
       - id: settl_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Specific date of trade settlement. Days since Unix epoch. Nullable, No Value = 65535'
       - id: maturity_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of maturity. Days since Unix epoch. Nullable, No Value = 65535'
       - id: calculated_ccy_last_qty
         type: calculated_ccy_last_qty
@@ -2543,7 +2543,7 @@ types:
         type: u4_nullable
         doc: 'Refers back to the unique ID assigned to the corrected trade. Nullable, No Value = 4294967295'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates date of trading day (expressed in local time at place of trade). Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_status_trd_cxl
         type: u1
@@ -2741,7 +2741,7 @@ types:
         type: u4_nullable
         doc: 'Refers back to the unique ID assigned to the corrected trade. Nullable, No Value = 4294967295'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates date of trading day (expressed in local time at place of trade). Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_status_trd_cxl
         type: u1
@@ -2764,7 +2764,7 @@ types:
         enum: side
         doc: 'Side of order'
       - id: settl_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Specific date of trade settlement. Days since Unix epoch. Nullable, No Value = 65535'
       - id: calculated_ccy_last_qty
         type: calculated_ccy_last_qty
@@ -2890,10 +2890,10 @@ types:
         type: u2_nullable
         doc: 'Not being currently used. Nullable, No Value = 65535'
       - id: start_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral. Days since Unix epoch. Nullable, No Value = 65535'
       - id: end_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral. Days since Unix epoch. Nullable, No Value = 65535'
       - id: max_no_of_substitutions
         type: u1_nullable
@@ -3189,7 +3189,7 @@ types:
         type: u4_nullable
         doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_type_optional
         type: u1
@@ -3290,7 +3290,7 @@ types:
         type: u4_nullable
         doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Days since Unix epoch. Nullable, No Value = 65535'
       - id: ord_type_optional
         type: u1
@@ -3384,17 +3384,17 @@ types:
     instances:
       is_null:
         value: value.mantissa == 9223372036854775807
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2
     instances:
       unix_seconds:
         value: days * 86400
-  epoch_date_nullable:
+  epoch_date_u2_nullable:
     seq:
       - id: value
-        type: epoch_date
+        type: epoch_date_u2
     instances:
       is_null:
         value: value.days == 65535

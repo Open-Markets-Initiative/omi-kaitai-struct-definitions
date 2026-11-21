@@ -332,7 +332,7 @@ types:
         type: s4_nullable
         doc: 'Indicates the quantity that a contract will decay daily by once the decay start date is reached. Nullable, No Value = 2147483647'
       - id: decay_start_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates the date at which a decaying contract will begin to decay. Days since Unix epoch. Nullable, No Value = 65535'
       - id: original_contract_size
         type: s4_nullable
@@ -355,7 +355,7 @@ types:
         encoding: ASCII
         doc: 'User-defined instruments flag'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.message_header.simple_binary_header.block_length - 216
@@ -696,7 +696,7 @@ types:
         type: u1_nullable
         doc: 'Price Denominator of Sub Fraction. Nullable, No Value = 255'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.message_header.simple_binary_header.block_length - 195
@@ -766,7 +766,7 @@ types:
         type: s4_nullable
         doc: 'If this tag is present, 35=f message is sent for the instrument. Nullable, No Value = 2147483647'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: match_event_indicator
         type: match_event_indicator
@@ -936,7 +936,7 @@ types:
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: settl_price_type
         type: settl_price_type
@@ -1189,7 +1189,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Trade Session Date. Days since Unix epoch. Nullable, No Value = 65535'
       - id: md_security_trading_status
         type: u1_nullable
@@ -1234,7 +1234,7 @@ types:
         type: s1_nullable
         doc: 'Aggregate book position. Nullable, No Value = 127'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: open_close_settl_flag
         type: u1_nullable
@@ -1458,7 +1458,7 @@ types:
         encoding: ASCII
         doc: 'User-defined instruments flag'
       - id: trading_reference_date
-        type: epoch_date_nullable
+        type: epoch_date_u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Days since Unix epoch. Nullable, No Value = 65535'
       - id: block_extension
         size: _parent.message_header.simple_binary_header.block_length - 213
@@ -1924,17 +1924,17 @@ types:
     instances:
       is_null:
         value: value == 2147483647
-  epoch_date:
+  epoch_date_u2:
     seq:
       - id: days
         type: u2
     instances:
       unix_seconds:
         value: days * 86400
-  epoch_date_nullable:
+  epoch_date_u2_nullable:
     seq:
       - id: value
-        type: epoch_date
+        type: epoch_date_u2
     instances:
       is_null:
         value: value.days == 65535

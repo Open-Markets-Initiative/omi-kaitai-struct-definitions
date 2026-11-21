@@ -107,7 +107,7 @@ types:
         encoding: ASCII
         doc: 'Environment code'
       - id: session_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Session Date. Days since Unix epoch'
       - id: expected_sequence_number
         type: u4
@@ -278,10 +278,10 @@ types:
         encoding: ASCII
         doc: 'Security type'
       - id: maturity_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
@@ -380,7 +380,7 @@ types:
         type: decimal_s8_6
         doc: 'Barrier. Implied decimal with scale 1e-6'
       - id: last_trading_day
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Last Trading Day. Days since Unix epoch'
       - id: automatic_expiration
         type: u1_nullable
@@ -422,7 +422,7 @@ types:
         type: decimal_s8_4
         doc: 'Outstanding Capital. Implied decimal with scale 1e-4'
       - id: first_trading_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'First Trading Date. Days since Unix epoch'
       - id: settlement_system
         type: u1
@@ -444,7 +444,7 @@ types:
         type: decimal_s8_4
         doc: 'Minimum Capital. Implied decimal with scale 1e-4'
       - id: last_admission_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Last Trading Date. Days since Unix epoch'
       - id: barrier_return
         type: decimal_s8_6
@@ -609,10 +609,10 @@ types:
         encoding: ASCII
         doc: 'Security type'
       - id: maturity_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
@@ -711,7 +711,7 @@ types:
         type: decimal_s8_6
         doc: 'Barrier. Implied decimal with scale 1e-6'
       - id: last_trading_day
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Last Trading Day. Days since Unix epoch'
       - id: automatic_expiration
         type: u1_nullable
@@ -753,7 +753,7 @@ types:
         type: decimal_s8_4
         doc: 'Outstanding Capital. Implied decimal with scale 1e-4'
       - id: first_trading_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'First Trading Date. Days since Unix epoch'
       - id: settlement_system
         type: u1
@@ -775,7 +775,7 @@ types:
         type: decimal_s8_4
         doc: 'Minimum Capital. Implied decimal with scale 1e-4'
       - id: last_admission_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Last Trading Date. Days since Unix epoch'
       - id: barrier_return
         type: decimal_s8_6
@@ -916,7 +916,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Actual UTC time for the end of the auction. Nanoseconds since Unix epoch'
       - id: liquidative_value_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date of the Net Asset Value. Days since Unix epoch'
       - id: bonus_warrants_with_active_bonus
         type: u1_nullable
@@ -985,7 +985,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: retail_flag
         type: u1_nullable
@@ -1056,7 +1056,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: retail_flag
         type: u1_nullable
@@ -1133,7 +1133,7 @@ types:
         enum: buyer_bolsa_code
         doc: 'Stock Exchange code of the buyer'
       - id: settl_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
@@ -1191,7 +1191,7 @@ types:
         enum: buyer_bolsa_code
         doc: 'Stock Exchange code of the buyer'
       - id: settl_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
@@ -1223,7 +1223,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Trade date and time. Nanoseconds since Unix epoch'
       - id: trade_session_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Trade Session Date. Days since Unix epoch'
       - id: volume_float
         type: decimal_u8_6
@@ -1240,7 +1240,7 @@ types:
         type: u4
         doc: 'System Trade Number of the amended/cancelled trade'
       - id: amended_trade_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Date of the amended/cancelled trade. Days since Unix epoch'
   trade_market_post_transparency_information_full_depth_message:
     seq:
@@ -1294,7 +1294,7 @@ types:
         enum: buyer_bolsa_code
         doc: 'Stock Exchange code of the buyer'
       - id: settl_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
@@ -1304,7 +1304,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority
         type: u4
@@ -1322,7 +1322,7 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: entry_date_2
-        type: epoch_date
+        type: epoch_date_s4
         doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority_2
         type: u4
@@ -1365,7 +1365,7 @@ types:
       - id: ask_px_1
         type: decimal_s8_6_nullable
         doc: 'Sell price. Implied decimal with scale 1e-6. Nullable, Market Orders = -9223372036854775808'
-  epoch_date:
+  epoch_date_s4:
     seq:
       - id: days
         type: s4
