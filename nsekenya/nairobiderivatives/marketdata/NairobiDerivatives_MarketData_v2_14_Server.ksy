@@ -272,7 +272,7 @@ types:
   records:
     seq:
       - id: record
-        size: 
+        repeat: eos
         type:
           switch-on: _parent._parent.data_type
           cases:
@@ -2144,6 +2144,7 @@ types:
         type: download_date
         doc: 'Download Date'
       - id: record
+        repeat: eos
         type:
           switch-on: data_type
           cases:

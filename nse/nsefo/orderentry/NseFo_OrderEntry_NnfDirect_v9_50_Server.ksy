@@ -86,7 +86,8 @@ types:
             'transaction_code::sign_on_request_out_message': sign_on_request_out_message
             'transaction_code::sign_off_request_out_message': sign_off_request_out_message
             'transaction_code::system_information_out_message': system_information_out_message
-            'transaction_code::gateway_router_response_message': gateway_router_response_message
+            'transaction_code::system_information_out_message_7321': system_information_out_message
+            'transaction_code::gateway_router_response_message': server_registration_packet_gateway_router_response_message
             'transaction_code::update_local_database_header_message': update_local_database_header_message
             'transaction_code::update_local_database_trailer_message': update_local_database_trailer_message
             'transaction_code::update_local_database_data_message': server_registration_packet_update_local_database_data_message
@@ -136,11 +137,8 @@ types:
         type: dos_second_timestamp_nullable
         doc: 'Time the record was logged. Seconds since Dos epoch. Nullable, No Value = 0'
       - id: alpha_char
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Alpha characters of the record'
+        type: str_2_nullable
+        doc: 'Alpha characters of the record. Nullable, No Value ='
       - id: trader_id
         type: s4
         doc: 'Trader Id of the connected user'
@@ -433,7 +431,7 @@ types:
       - id: reserved_113
         type: b13
         doc: 'Reserved'
-  gateway_router_response_message:
+  server_registration_packet_gateway_router_response_message:
     seq:
       - id: box_id
         type: s2
@@ -469,9 +467,9 @@ types:
         pad-right: 0x20
         doc: 'Key encrypting every message to the allocated gateway'
       - id: cryptographic_tail
-        type: cryptographic_tail
+        type: server_registration_packet_gateway_router_response_message_cryptographic_tail
         doc: 'Initialisation vectors, layout selected by Message Length'
-  cryptographic_tail:
+  server_registration_packet_gateway_router_response_message_cryptographic_tail:
     seq:
       - id: cryptographic_payload
         type:
@@ -2206,6 +2204,31 @@ types:
       - id: checksum
         size: 16
         doc: 'Md5 digest of the plain message data, or the Gcm authentication tag under the new encryption'
+      - id: server_message_data
+        type:
+          switch-on: peek_transaction_code
+          cases:
+            'transaction_code::order_confirmation_trimmed_message': trimmed_message
+            'transaction_code::order_confirmation_trimmed_message_20074': trimmed_message
+            'transaction_code::order_confirmation_trimmed_message_20075': trimmed_message
+            'transaction_code::trade_confirmation_trimmed_message': trimmed_message
+            'transaction_code::quick_acknowledgement_message': trimmed_message
+            'transaction_code::quick_acknowledgement_message_20403': trimmed_message
+            'transaction_code::quick_acknowledgement_message_20405': trimmed_message
+            'transaction_code::quick_acknowledgement_message_20407': trimmed_message
+            'transaction_code::quick_acknowledgement_message_20409': trimmed_message
+            'transaction_code::quick_acknowledgement_message_20411': trimmed_message
+            'transaction_code::quick_acknowledgement_message_20413': trimmed_message
+            'transaction_code::quick_acknowledgement_message_20415': trimmed_message
+            'transaction_code::quick_acknowledgement_message_20417': trimmed_message
+            _: server_full_message
+    instances:
+      peek_transaction_code:
+        pos: _io.pos
+        type: s2
+        enum: transaction_code
+  server_full_message:
+    seq:
       - id: message_header
         type: message_header
         doc: 'MESSAGE_HEADER'
@@ -2216,11 +2239,12 @@ types:
             'transaction_code::sign_on_request_out_message': sign_on_request_out_message
             'transaction_code::sign_off_request_out_message': sign_off_request_out_message
             'transaction_code::system_information_out_message': system_information_out_message
-            'transaction_code::gateway_router_response_message': gateway_router_response_message
+            'transaction_code::system_information_out_message_7321': system_information_out_message
+            'transaction_code::gateway_router_response_message': server_full_message_gateway_router_response_message
             'transaction_code::update_local_database_header_message': update_local_database_header_message
             'transaction_code::update_local_database_trailer_message': update_local_database_trailer_message
-            'transaction_code::update_local_database_data_message': server_session_packet_update_local_database_data_message
-            'transaction_code::message_record_message': server_session_packet_message_record_message
+            'transaction_code::update_local_database_data_message': server_full_message_update_local_database_data_message
+            'transaction_code::message_record_message': server_full_message_message_record_message
             'transaction_code::order_confirmation_message': order_confirmation_message
             'transaction_code::order_modification_confirmation_message': order_modification_confirmation_message
             'transaction_code::order_response_message': order_response_message
@@ -2255,8 +2279,54 @@ types:
             'transaction_code::user_address_unlock_approve_message': user_address_unlock_approve_message
             'transaction_code::giveup_confirmation_message': giveup_confirmation_message
             'transaction_code::giveup_confirmation_message_4507': giveup_confirmation_message
-            'transaction_code::order_cancellation_confirmation_message': server_session_packet_order_cancellation_confirmation_message
-  server_session_packet_update_local_database_data_message:
+            'transaction_code::order_cancellation_confirmation_message': server_full_message_order_cancellation_confirmation_message
+  server_full_message_gateway_router_response_message:
+    seq:
+      - id: box_id
+        type: s2
+        doc: 'Exchange provided box Id used for this connection'
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: filler
+        size: 1
+        doc: 'Filler'
+      - id: ip_address
+        type: str
+        size: 16
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Ip address assigned by the exchange'
+      - id: port
+        type: s4
+        doc: 'Port number given by the exchange'
+      - id: session_key
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Session key to be used for authentication'
+      - id: cryptographic_key
+        type: str
+        size: 32
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Key encrypting every message to the allocated gateway'
+      - id: cryptographic_tail
+        type: server_full_message_gateway_router_response_message_cryptographic_tail
+        doc: 'Initialisation vectors, layout selected by Message Length'
+  server_full_message_gateway_router_response_message_cryptographic_tail:
+    seq:
+      - id: cryptographic_payload
+        type:
+          switch-on: _parent._parent.message_header.message_length
+          cases:
+            124: existing_encryption_tail
+            136: new_encryption_tail
+  server_full_message_update_local_database_data_message:
     seq:
       - id: inner_header
         type: inner_header
@@ -2265,7 +2335,7 @@ types:
         type: local_database_data
         size: _parent.message_header.message_length - 80
         doc: 'Record body selected by Inner Transaction Code'
-  server_session_packet_message_record_message:
+  server_full_message_message_record_message:
     seq:
       - id: download_header
         type: download_header
@@ -2274,7 +2344,7 @@ types:
         type: message_download_data
         size: _parent.message_header.message_length - 80
         doc: 'Downloaded record body selected by Inner Transaction Code'
-  server_session_packet_order_cancellation_confirmation_message:
+  server_full_message_order_cancellation_confirmation_message:
     seq:
       - id: cancellation_confirmation_body
         type:
@@ -2282,6 +2352,578 @@ types:
           cases:
             316: order_entry_body
             480: spread_order_body
+  trimmed_message:
+    seq:
+      - id: transaction_code
+        type: s2
+        enum: transaction_code
+        doc: 'Transaction code of the record carried'
+      - id: trimmed_message_payload
+        type:
+          switch-on: transaction_code
+          cases:
+            'transaction_code::board_lot_in_trimmed_message': board_lot_in_trimmed_message
+            'transaction_code::board_lot_in_trimmed_message_20400': board_lot_in_trimmed_message
+            'transaction_code::order_modify_cancel_trimmed_message': order_modify_cancel_trimmed_message
+            'transaction_code::order_modify_cancel_trimmed_message_20060': order_modify_cancel_trimmed_message
+            'transaction_code::order_modify_cancel_trimmed_message_20070': order_modify_cancel_trimmed_message
+            'transaction_code::order_modify_cancel_trimmed_message_20402': order_modify_cancel_trimmed_message
+            'transaction_code::order_modify_cancel_trimmed_message_20404': order_modify_cancel_trimmed_message
+            'transaction_code::order_confirmation_trimmed_message': order_confirmation_trimmed_message
+            'transaction_code::order_confirmation_trimmed_message_20074': order_confirmation_trimmed_message
+            'transaction_code::order_confirmation_trimmed_message_20075': order_confirmation_trimmed_message
+            'transaction_code::trade_confirmation_trimmed_message': trade_confirmation_trimmed_message
+            'transaction_code::quick_acknowledgement_message': quick_acknowledgement_message
+            'transaction_code::quick_acknowledgement_message_20403': quick_acknowledgement_message
+            'transaction_code::quick_acknowledgement_message_20405': quick_acknowledgement_message
+            'transaction_code::quick_acknowledgement_message_20407': quick_acknowledgement_message
+            'transaction_code::quick_acknowledgement_message_20409': quick_acknowledgement_message
+            'transaction_code::quick_acknowledgement_message_20411': quick_acknowledgement_message
+            'transaction_code::quick_acknowledgement_message_20413': quick_acknowledgement_message
+            'transaction_code::quick_acknowledgement_message_20415': quick_acknowledgement_message
+            'transaction_code::quick_acknowledgement_message_20417': quick_acknowledgement_message
+  board_lot_in_trimmed_message:
+    seq:
+      - id: user_id
+        type: s4
+        doc: 'Id of the user signing on'
+      - id: reason_code
+        type: s2
+        enum: reason_code
+        doc: 'Reason the give up was rejected'
+      - id: token_no
+        type: s4
+        doc: 'Token number of the contract the order was placed for'
+      - id: contract_desc_tr
+        type: contract_desc_tr
+        doc: 'CONTRACT_DESC_TR'
+      - id: account_number
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Account number the order is for'
+      - id: book_type
+        type: s2
+        enum: book_type
+        doc: 'Book the order belonged to'
+      - id: buy_sell_indicator
+        type: s2
+        enum: buy_sell_indicator
+        doc: 'Whether the order is a buy or a sell'
+      - id: disclosed_volume
+        type: s4
+        doc: 'Quantity disclosed to the market'
+      - id: volume
+        type: s4
+        doc: 'Quantity of the order'
+      - id: price
+        type: decimal_s4_2
+        doc: 'New price of the order. Implied decimal with scale 1e-2'
+      - id: good_till_date
+        type: s4
+        doc: 'Number of days a good till date order remains, from two to the maximum the market allows'
+      - id: st_order_flags
+        type: st_order_flags
+        doc: 'Terms attached to the order'
+      - id: branch_id
+        type: s2
+        doc: 'Branch Id of the trading member'
+      - id: trader_id
+        type: s4
+        doc: 'Trader Id of the connected user'
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: open_close
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the trade opens or closes a position'
+      - id: settlor
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Settlor of the order'
+      - id: pro_client_indicator
+        type: s2
+        doc: 'Whether the order is proprietary or for a client'
+      - id: additional_order_flags
+        type: additional_order_flags
+        doc: 'Further terms attached to the order'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: filler_4
+        size: 4
+        doc: 'Filler'
+      - id: nnf_field
+        type: floating_point_integer
+        doc: 'Non Neat front end identifier supplied by the member'
+      - id: pan
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Permanent account number'
+      - id: algo_id
+        type: s4
+        doc: 'Identifier of the algorithm that generated the order'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved'
+      - id: reserved_32
+        size: 32
+        doc: 'Reserved'
+  contract_desc_tr:
+    seq:
+      - id: instrument_name
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Instrument the contract belongs to'
+      - id: symbol
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol of the underlying security'
+      - id: expiry_date
+        type: dos_second_timestamp
+        doc: 'Date the contract expires. Seconds since Dos epoch'
+      - id: strike_price
+        type: decimal_s4_2
+        doc: 'Strike price of an option contract. Implied decimal with scale 1e-2'
+      - id: option_type
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the option is a call or a put'
+  order_modify_cancel_trimmed_message:
+    seq:
+      - id: user_id
+        type: s4
+        doc: 'Id of the user signing on'
+      - id: modified_cancelled_by
+        type: u1
+        enum: modified_cancelled_by
+        doc: 'Who modified or cancelled the order'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: token_no
+        type: s4
+        doc: 'Token number of the contract the order was placed for'
+      - id: contract_desc_tr
+        type: contract_desc_tr
+        doc: 'CONTRACT_DESC_TR'
+      - id: order_number
+        type: floating_point_integer
+        doc: 'Order number of the order being modified'
+      - id: account_number
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Account number the order is for'
+      - id: book_type
+        type: s2
+        enum: book_type
+        doc: 'Book the order belonged to'
+      - id: buy_sell_indicator
+        type: s2
+        enum: buy_sell_indicator
+        doc: 'Whether the order is a buy or a sell'
+      - id: disclosed_volume
+        type: s4
+        doc: 'Quantity disclosed to the market'
+      - id: disclosed_volume_remaining
+        type: s4
+        doc: 'Disclosed quantity still outstanding'
+      - id: total_volume_remaining
+        type: s4
+        doc: 'Total quantity still outstanding'
+      - id: volume
+        type: s4
+        doc: 'Quantity of the order'
+      - id: volume_filled_today
+        type: s4
+        doc: 'Quantity traded today'
+      - id: price
+        type: decimal_s4_2
+        doc: 'New price of the order. Implied decimal with scale 1e-2'
+      - id: good_till_date
+        type: s4
+        doc: 'Number of days a good till date order remains, from two to the maximum the market allows'
+      - id: entry_date_time
+        type: dos_second_timestamp
+        doc: 'Time the order entered the system. Seconds since Dos epoch'
+      - id: last_modified
+        type: s4
+        doc: 'Time the order was last modified'
+      - id: st_order_flags
+        type: st_order_flags
+        doc: 'Terms attached to the order'
+      - id: branch_id
+        type: s2
+        doc: 'Branch Id of the trading member'
+      - id: trader_id
+        type: s4
+        doc: 'Trader Id of the connected user'
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: open_close
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the trade opens or closes a position'
+      - id: settlor
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Settlor of the order'
+      - id: pro_client_indicator
+        type: s2
+        doc: 'Whether the order is proprietary or for a client'
+      - id: additional_order_flags
+        type: additional_order_flags
+        doc: 'Further terms attached to the order'
+      - id: second_reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: filler_4
+        size: 4
+        doc: 'Filler'
+      - id: nnf_field
+        type: floating_point_integer
+        doc: 'Non Neat front end identifier supplied by the member'
+      - id: pan
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Permanent account number'
+      - id: algo_id
+        type: s4
+        doc: 'Identifier of the algorithm that generated the order'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved'
+      - id: last_activity_reference
+        type: s8
+        doc: 'Reference of the last activity on the order'
+      - id: reserved_24
+        size: 24
+        doc: 'Reserved'
+  order_confirmation_trimmed_message:
+    seq:
+      - id: log_time
+        type: dos_second_timestamp_nullable
+        doc: 'Time the record was logged. Seconds since Dos epoch. Nullable, No Value = 0'
+      - id: user_id
+        type: s4
+        doc: 'Id of the user signing on'
+      - id: error_code
+        type: s2_nullable
+        doc: 'Error code of the record. Nullable, No Error = 0'
+      - id: timestamp_1_long_long
+        type: s8
+        doc: 'Time the message arrived at the host'
+      - id: timestamp_2_char
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Time the message reached the gateway'
+      - id: modified_cancelled_by
+        type: u1
+        enum: modified_cancelled_by
+        doc: 'Who modified or cancelled the order'
+      - id: reason_code
+        type: s2
+        enum: reason_code
+        doc: 'Reason the give up was rejected'
+      - id: token_no
+        type: s4
+        doc: 'Token number of the contract the order was placed for'
+      - id: contract_desc_tr
+        type: contract_desc_tr
+        doc: 'CONTRACT_DESC_TR'
+      - id: closeout_flag
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the broker is in closeout status'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: order_number
+        type: floating_point_integer
+        doc: 'Order number of the order being modified'
+      - id: account_number
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Account number the order is for'
+      - id: book_type
+        type: s2
+        enum: book_type
+        doc: 'Book the order belonged to'
+      - id: buy_sell_indicator
+        type: s2
+        enum: buy_sell_indicator
+        doc: 'Whether the order is a buy or a sell'
+      - id: disclosed_volume
+        type: s4
+        doc: 'Quantity disclosed to the market'
+      - id: disclosed_volume_remaining
+        type: s4
+        doc: 'Disclosed quantity still outstanding'
+      - id: total_volume_remaining
+        type: s4
+        doc: 'Total quantity still outstanding'
+      - id: volume
+        type: s4
+        doc: 'Quantity of the order'
+      - id: volume_filled_today
+        type: s4
+        doc: 'Quantity traded today'
+      - id: price
+        type: decimal_s4_2
+        doc: 'New price of the order. Implied decimal with scale 1e-2'
+      - id: good_till_date
+        type: s4
+        doc: 'Number of days a good till date order remains, from two to the maximum the market allows'
+      - id: entry_date_time
+        type: dos_second_timestamp
+        doc: 'Time the order entered the system. Seconds since Dos epoch'
+      - id: last_modified
+        type: s4
+        doc: 'Time the order was last modified'
+      - id: st_order_flags
+        type: st_order_flags
+        doc: 'Terms attached to the order'
+      - id: branch_id
+        type: s2
+        doc: 'Branch Id of the trading member'
+      - id: trader_id
+        type: s4
+        doc: 'Trader Id of the connected user'
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: open_close
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the trade opens or closes a position'
+      - id: settlor
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Settlor of the order'
+      - id: pro_client_indicator
+        type: s2
+        doc: 'Whether the order is proprietary or for a client'
+      - id: additional_order_flags
+        type: additional_order_flags
+        doc: 'Further terms attached to the order'
+      - id: second_reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: filler_4
+        size: 4
+        doc: 'Filler'
+      - id: nnf_field
+        type: floating_point_integer
+        doc: 'Non Neat front end identifier supplied by the member'
+      - id: timestamp
+        type: s8
+        doc: 'Time the record was generated'
+      - id: pan
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Permanent account number'
+      - id: algo_id
+        type: s4
+        doc: 'Identifier of the algorithm that generated the order'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved'
+      - id: last_activity_reference
+        type: s8
+        doc: 'Reference of the last activity on the order'
+      - id: reserved_52
+        size: 52
+        doc: 'Reserved'
+  trade_confirmation_trimmed_message:
+    seq:
+      - id: log_time
+        type: dos_second_timestamp_nullable
+        doc: 'Time the record was logged. Seconds since Dos epoch. Nullable, No Value = 0'
+      - id: trader_id
+        type: s4
+        doc: 'Trader Id of the connected user'
+      - id: timestamp
+        type: s8
+        doc: 'Time the record was generated'
+      - id: timestamp_1_double
+        type: floating_point_integer
+        doc: 'Time the message arrived at the host'
+      - id: timestamp_2_double
+        type: floating_point_integer
+        doc: 'Time the message reached the gateway'
+      - id: response_order_number
+        type: floating_point_integer
+        doc: 'Order number the confirmation relates to'
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: account_number
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Account number the order is for'
+      - id: buy_sell_indicator
+        type: s2
+        enum: buy_sell_indicator
+        doc: 'Whether the order is a buy or a sell'
+      - id: original_volume
+        type: s4
+        doc: 'Original quantity of the order'
+      - id: disclosed_volume
+        type: s4
+        doc: 'Quantity disclosed to the market'
+      - id: remaining_volume
+        type: s4
+        doc: 'Quantity still outstanding'
+      - id: disclosed_volume_remaining
+        type: s4
+        doc: 'Disclosed quantity still outstanding'
+      - id: price
+        type: decimal_s4_2
+        doc: 'New price of the order. Implied decimal with scale 1e-2'
+      - id: st_order_flags
+        type: st_order_flags
+        doc: 'Terms attached to the order'
+      - id: good_till_date
+        type: s4
+        doc: 'Number of days a good till date order remains, from two to the maximum the market allows'
+      - id: fill_number
+        type: s4
+        doc: 'Number of the trade'
+      - id: fill_quantity
+        type: s4
+        doc: 'Quantity traded'
+      - id: fill_price
+        type: decimal_s4_2
+        doc: 'Price the trade occurred at. Implied decimal with scale 1e-2'
+      - id: volume_filled_today
+        type: s4
+        doc: 'Quantity traded today'
+      - id: activity_type
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Type of activity being confirmed'
+      - id: activity_time
+        type: dos_second_timestamp
+        doc: 'Time the activity occurred. Seconds since Dos epoch'
+      - id: token
+        type: s4
+        doc: 'Token number of the contract'
+      - id: contract_desc_tr
+        type: contract_desc_tr
+        doc: 'CONTRACT_DESC_TR'
+      - id: open_close
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the trade opens or closes a position'
+      - id: trade_book_type
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Book the order belongs to'
+      - id: participant
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Participant the trade is for'
+      - id: additional_order_flags
+        type: additional_order_flags
+        doc: 'Further terms attached to the order'
+      - id: pan
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Permanent account number'
+      - id: second_reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: algo_id
+        type: s4
+        doc: 'Identifier of the algorithm that generated the order'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved'
+      - id: last_activity_reference
+        type: s8
+        doc: 'Reference of the last activity on the order'
+      - id: reserved_52
+        size: 52
+        doc: 'Reserved'
+  quick_acknowledgement_message:
+    seq:
+      - id: trader_id
+        type: s4
+        doc: 'Trader Id of the connected user'
+      - id: timestamp
+        type: s8
+        doc: 'Time the record was generated'
+      - id: reference_long
+        type: s4
+        doc: 'Reference supplied with the request'
+      - id: error_code
+        type: s2_nullable
+        doc: 'Error code of the record. Nullable, No Error = 0'
+      - id: message_length
+        type: s2
+        doc: 'Length of the record including this header'
   dos_second_timestamp:
     seq:
       - id: time
@@ -2302,6 +2944,15 @@ types:
     instances:
       is_null:
         value: value.time == 0
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "  "
   s2_nullable:
     seq:
       - id: value
@@ -2335,6 +2986,66 @@ types:
 
 enums:
   transaction_code:
+    20000:
+      id: 'board_lot_in_trimmed_message'
+      doc: 'Trimmed order entry request, and the same structure sent as an immediate acknowledgement request'
+    20400:
+      id: 'board_lot_in_trimmed_message_20400'
+      doc: 'Trimmed order entry request, and the same structure sent as an immediate acknowledgement request'
+    20040:
+      id: 'order_modify_cancel_trimmed_message'
+      doc: 'Trimmed order modification and cancellation requests and their immediate acknowledgement requests'
+    20060:
+      id: 'order_modify_cancel_trimmed_message_20060'
+      doc: 'Trimmed order modification and cancellation requests and their immediate acknowledgement requests'
+    20070:
+      id: 'order_modify_cancel_trimmed_message_20070'
+      doc: 'Trimmed order modification and cancellation requests and their immediate acknowledgement requests'
+    20402:
+      id: 'order_modify_cancel_trimmed_message_20402'
+      doc: 'Trimmed order modification and cancellation requests and their immediate acknowledgement requests'
+    20404:
+      id: 'order_modify_cancel_trimmed_message_20404'
+      doc: 'Trimmed order modification and cancellation requests and their immediate acknowledgement requests'
+    20073:
+      id: 'order_confirmation_trimmed_message'
+      doc: 'Trimmed order, modification and cancellation confirmations'
+    20074:
+      id: 'order_confirmation_trimmed_message_20074'
+      doc: 'Trimmed order, modification and cancellation confirmations'
+    20075:
+      id: 'order_confirmation_trimmed_message_20075'
+      doc: 'Trimmed order, modification and cancellation confirmations'
+    20222:
+      id: 'trade_confirmation_trimmed_message'
+      doc: 'Trimmed trade confirmation'
+    20401:
+      id: 'quick_acknowledgement_message'
+      doc: 'Immediate acknowledgement that an order related request reached the exchange'
+    20403:
+      id: 'quick_acknowledgement_message_20403'
+      doc: 'Immediate acknowledgement that an order related request reached the exchange'
+    20405:
+      id: 'quick_acknowledgement_message_20405'
+      doc: 'Immediate acknowledgement that an order related request reached the exchange'
+    20407:
+      id: 'quick_acknowledgement_message_20407'
+      doc: 'Immediate acknowledgement that an order related request reached the exchange'
+    20409:
+      id: 'quick_acknowledgement_message_20409'
+      doc: 'Immediate acknowledgement that an order related request reached the exchange'
+    20411:
+      id: 'quick_acknowledgement_message_20411'
+      doc: 'Immediate acknowledgement that an order related request reached the exchange'
+    20413:
+      id: 'quick_acknowledgement_message_20413'
+      doc: 'Immediate acknowledgement that an order related request reached the exchange'
+    20415:
+      id: 'quick_acknowledgement_message_20415'
+      doc: 'Immediate acknowledgement that an order related request reached the exchange'
+    20417:
+      id: 'quick_acknowledgement_message_20417'
+      doc: 'Immediate acknowledgement that an order related request reached the exchange'
     2300:
       id: 'sign_on_request_in_message'
       doc: 'Logs a trader on to the trading system'
@@ -2349,6 +3060,9 @@ enums:
       doc: 'Requests the system information of the trading system'
     1601:
       id: 'system_information_out_message'
+      doc: 'Carries the system information of the trading system'
+    7321:
+      id: 'system_information_out_message_7321'
       doc: 'Carries the system information of the trading system'
     2400:
       id: 'gateway_router_request_message'

@@ -114,11 +114,8 @@ types:
         type: dos_second_timestamp_nullable
         doc: 'Time the record was logged. Seconds since Dos epoch. Nullable, No Value = 0'
       - id: alpha_char
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Alpha characters of the record'
+        type: str_2_nullable
+        doc: 'Alpha characters of the record. Nullable, No Value ='
       - id: trader_id
         type: s4
         doc: 'Trader Id of the connected user'
@@ -1270,6 +1267,15 @@ types:
     instances:
       is_null:
         value: value.time == 0
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "  "
   s2_nullable:
     seq:
       - id: value
@@ -1317,6 +1323,9 @@ enums:
       doc: 'Requests the system information of the trading system'
     1601:
       id: 'system_information_out_message'
+      doc: 'Carries the system information of the trading system'
+    7321:
+      id: 'system_information_out_message_7321'
       doc: 'Carries the system information of the trading system'
     2400:
       id: 'gateway_router_request_message'
